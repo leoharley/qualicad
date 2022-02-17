@@ -124,11 +124,14 @@
               </i>
             </a>
           </li>
-          <?php
+
+
+            <?php
             // Rol definetion in application/config/constants.php
             if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
             {
             ?>
+
             <li class="treeview">
               <a href="<?php echo base_url(); ?>tasks">
                 <i class="fa fa-tasks"></i>
@@ -141,51 +144,9 @@
                 <span>Adicionar tarefa</span>
               </a>
             </li>
-            <?php
-            }
-            if($role == ROLE_ADMIN)
-            {
-            ?>
-              <li class="treeview">
-                <a href="<?php echo base_url(); ?>userListing">
-                  <i class="fa fa-users"></i>
-                  <span>Comercial</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="<?php echo base_url(); ?>addNew">
-                  <i class="fa fa-plus-circle"></i>
-                  <span>Adicionar usuário</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="<?php echo base_url(); ?>log-history">
-                  <i class="fa fa-archive"></i>
-                  <span>Registro de acesso</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="<?php echo base_url(); ?>log-history-upload">
-                  <i class="fa fa-upload"></i>
-                  <span>Importação</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="<?php echo base_url(); ?>log-history-backup">
-                  <i class="fa fa-archive"></i>
-                  <span>Backup de registro de acesso</span>
-                </a>
-              </li>
-              <?php
-            }
-            if($role == ROLE_EMPLOYEE)
-            {
-            ?>
-                <li class="treeview">
-                  <a href="<?php echo base_url(); ?>etasks">
-                    <i class="fa fa-tasks"></i>
-                    <span>Tarefas</span>
-                  </a>
+
+
+
                   <?php
             }
             ?>
