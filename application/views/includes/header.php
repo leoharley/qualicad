@@ -134,37 +134,37 @@
             <hr>
                 <li class="treeview">
                   <a href="<?php echo base_url(); ?>cadastroUsuario">
-                    <i class="fa fa-tasks"></i>
+                    <i class="fa fa-th"></i>
                     <span>Usuário</span>
                   </a>
                 </li>
                 <li class="treeview">
                   <a href="<?php echo base_url(); ?>cadastroEmpresa">
-                    <i class="fa fa-plus-circle"></i>
+                    <i class="fa fa-th"></i>
                     <span>Empresa</span>
                   </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>cadastroUsuarioEmpresa">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Usuário/Empresa</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>cadastroPerfil">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Perfil</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>cadastroPermissao">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Permissão</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>cadastroTelas">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Telas</span>
                     </a>
                 </li>
@@ -178,61 +178,61 @@
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalPlano">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Plano</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalFaturamento">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Faturamento</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalFaturamentoItem">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Faturamento Item</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalRegra">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Regra</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalRegraGrupoPro">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>RegraGrupoPro</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalIndice">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Índice</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalIndiceGrupoPro">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>ÍndiceGrupoPro</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalProibicao">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>Proibição</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalRegraProibicao">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>RegraProibição</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalFracaoSimproBra">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-th"></i>
                         <span>FraçãoSimproBra</span>
                     </a>
                 </li>
