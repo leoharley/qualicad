@@ -238,7 +238,7 @@
                 </li>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalUnidade">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-register"></i>
                         <span>Unidade</span>
                     </a>
                 </li>
