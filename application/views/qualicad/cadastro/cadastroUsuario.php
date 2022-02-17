@@ -27,6 +27,22 @@
                         <div class="box-body">
                             <div class="row">
 
+                                <!-- VARCHAR/INTEGER/FLOAT -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fname">Nome</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('fname'); ?>" id="fname" name="fname" maxlength="128">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="id1">Data</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('id1'); ?>" id="id1" name="id1" maxlength="128">
+                                    </div>
+                                </div>
+
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="fname">Nome</label>
