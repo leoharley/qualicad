@@ -1,10 +1,10 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>BSEU</b> Yönetim Paneli | V1.0
+        Painel de cadastro | V1.0b
     </div>
-    <strong>Copyright &copy; 2018-2019
-        <a href="<?php echo base_url(); ?>">BSEU</a>
-    </strong> Tüm hakları saklıdır.
+    <strong>Todos os direitos reservados &copy; 2022
+        <a href="<?php echo base_url(); ?>">QUALICAD</a>
+    </strong>
 </footer>
 
 <!-- jQuery UI 1.11.2 -->
