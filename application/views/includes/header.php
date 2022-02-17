@@ -131,21 +131,43 @@
             if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
             {
             ?>
-
+<h3>CADASTRO</h3>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>tasks">
                 <i class="fa fa-tasks"></i>
-                <span>Tarefas</span>
+                <span>Usuário</span>
               </a>
             </li>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>addNewTask">
                 <i class="fa fa-plus-circle"></i>
-                <span>Adicionar tarefa</span>
+                <span>Empresa</span>
               </a>
             </li>
-
-
+            <li class="treeview">
+                <a href="<?php echo base_url(); ?>addNewTask">
+                    <i class="fa fa-plus-circle"></i>
+                    <span>Usuário/Empresa</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="<?php echo base_url(); ?>addNewTask">
+                    <i class="fa fa-plus-circle"></i>
+                    <span>Perfil</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="<?php echo base_url(); ?>addNewTask">
+                    <i class="fa fa-plus-circle"></i>
+                    <span>Permissão</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="<?php echo base_url(); ?>addNewTask">
+                    <i class="fa fa-plus-circle"></i>
+                    <span>Telas</span>
+                </a>
+            </li>
 
                   <?php
             }
