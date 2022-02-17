@@ -2,8 +2,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Kullanıcı Yönetimi
-            <small>Ekle / Düzenle</small>
+            <i class="fa fa-users"></i> Cadastro de Empresa
+            <small>Adicionar</small>
         </h1>
     </section>
 
@@ -18,7 +18,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Kullanıcı bilgilerini giriniz</h3>
+                        <h3 class="box-title">Preencha os campos abaixos</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -28,60 +28,77 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">Ad Soyad</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('fname'); ?>" id="fname" name="fname" maxlength="128">
+                                        <label for="nome_empresa">Nome</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('nome_empresa'); ?>" id="nome_empresa" name="nome_empresa" maxlength="128">
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Email adresi</label>
-                                        <input type="text" class="form-control required email" id="email" value="<?php echo set_value('email'); ?>" name="email"
+                                        <label for="cnpj">CNPJ</label>
+                                        <input type="text" class="form-control required cnpj" id="cnpj" value="<?php echo set_value('cnpj'); ?>" name="cnpj"
+                                            maxlength="13">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cd_empresaerp">Código</label>
+                                        <input type="text" class="form-control required cd_empresaerp" id="cd_empresaerp" value="<?php echo set_value('cd_empresaerp'); ?>" name="cd_empresaerp"
+                                            maxlength="13">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cd_empresaerp">Endereço</label>
+                                        <input type="text" class="form-control required cd_empresaerp" id="cd_empresaerp" value="<?php echo set_value('cd_empresaerp'); ?>" name="cd_empresaerp"
+                                            maxlength="13">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="nomecontato">Nome do contato</label>
+                                        <input type="text" class="form-control required" id="nomecontato" value="<?php echo set_value('nomecontato'); ?>" name="nomecontato"
                                             maxlength="128">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="password">Şifre</label>
-                                        <input type="password" class="form-control required" id="password" name="password" maxlength="20">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="cpassword">Şifre Doğrula</label>
-                                        <input type="password" class="form-control required equalTo" id="cpassword" name="cpassword" maxlength="20">
+                                        <label for="telefone">Telefone</label>
+                                        <input type="text" class="form-control required" id="telefone" value="<?php echo set_value('telefone'); ?>" name="telefone"
+                                            maxlength="11">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="mobile">Telefon Numarası</label>
-                                        <input type="text" class="form-control required digits" id="mobile" value="<?php echo set_value('mobile'); ?>" name="mobile"
-                                            maxlength="10">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control required" id="email" value="<?php echo set_value('email'); ?>" name="email"
+                                            maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="role">Yetki</label>
-                                        <select class="form-control required" id="role" name="role">
-                                            <option value="0">Yetki seçiniz</option>
-                                            <?php
-                                            if(!empty($roles))
-                                            {
-                                                foreach ($roles as $rl)
-                                                {
-                                                    ?>
-                                                <option value="<?php echo $rl->roleId ?>" <?php if($rl->roleId == set_value('role')) {echo "selected=selected";} ?>>
-                                                    <?php echo $rl->role ?>
-                                                </option>
-                                                <?php
-                                                }
-                                            }
-                                            ?>
-                                        </select>
+                                        <label for="dtvalidacontrato">Data de validade do contrato</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('dtvalidacontrato'); ?>" id="dtvalidacontrato" name="dtvalidacontrato">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dtativo">Data de atividade</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('dtativo'); ?>" id="dtativo" name="dtativo">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dtinativo">Data de inatividade</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('dtinativo'); ?>" id="dtinativo" name="dtinativo">
                                     </div>
                                 </div>
                             </div>
