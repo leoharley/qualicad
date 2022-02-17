@@ -131,45 +131,120 @@
             if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
             {
             ?>
-<h3>CADASTRO</h3>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>tasks">
-                <i class="fa fa-tasks"></i>
-                <span>Usuário</span>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>addNewTask">
-                <i class="fa fa-plus-circle"></i>
-                <span>Empresa</span>
-              </a>
-            </li>
-            <li class="treeview">
-                <a href="<?php echo base_url(); ?>addNewTask">
+            <hr>
+                <li class="treeview">
+                  <a href="<?php echo base_url(); ?>tasks">
+                    <i class="fa fa-tasks"></i>
+                    <span>Usuário</span>
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="<?php echo base_url(); ?>addNewTask">
                     <i class="fa fa-plus-circle"></i>
-                    <span>Usuário/Empresa</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="<?php echo base_url(); ?>addNewTask">
-                    <i class="fa fa-plus-circle"></i>
-                    <span>Perfil</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="<?php echo base_url(); ?>addNewTask">
-                    <i class="fa fa-plus-circle"></i>
-                    <span>Permissão</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="<?php echo base_url(); ?>addNewTask">
-                    <i class="fa fa-plus-circle"></i>
-                    <span>Telas</span>
-                </a>
-            </li>
+                    <span>Empresa</span>
+                  </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Usuário/Empresa</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Permissão</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Telas</span>
+                    </a>
+                </li>
 
-                  <?php
+                <hr>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>tasks">
+                        <i class="fa fa-tasks"></i>
+                        <span>Convênio</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Plano</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Faturamento</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Faturamento Item</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Regra</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>RegraGrupoPro</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Índice</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>ÍndiceGrupoPro</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Proibição</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>RegraProibição</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>FraçãoSimproBra</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>addNewTask">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Unidade</span>
+                    </a>
+                </li>
+
+
+                <?php
             }
             ?>
         </ul>
