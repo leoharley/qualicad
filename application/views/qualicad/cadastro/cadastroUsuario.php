@@ -30,40 +30,16 @@
                                 <!-- VARCHAR/INTEGER/FLOAT -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">Nome</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('fname'); ?>" id="fname" name="fname" maxlength="128">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="id1">Data</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('id1'); ?>" id="id1" name="id1" maxlength="128">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="role">Öncelik</label>
-                                        <select class="form-control required" id="priority" name="priority">
-                                            <option value="1">CAMPO_BD_TP_1</option>
-											<option value="2">CAMPO_BD_TP_2</option>
-                                        </select>
+                                        <label for="nome_usuario">Nome</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('nome_usuario'); ?>" id="nome_usuario" name="nome_usuario" maxlength="128">
                                     </div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">Nome</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('fname'); ?>" id="fname" name="fname" maxlength="128">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email">CPF</label>
-                                        <input type="text" class="form-control required email" id="email" value="<?php echo set_value('email'); ?>" name="email"
-                                            maxlength="128">
+                                        <label for="cpf_usuario">CPF</label>
+                                        <input type="text" class="form-control required cpf_usuario" id="cpf_usuario" value="<?php echo set_value('cpf_usuario'); ?>" name="cpf_usuario"
+                                            maxlength="11">
                                     </div>
                                 </div>
 
@@ -73,48 +49,62 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="password">Şifre</label>
-                                        <input type="password" class="form-control required" id="password" name="password" maxlength="20">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="cpassword">Şifre Doğrula</label>
-                                        <input type="password" class="form-control required equalTo" id="cpassword" name="cpassword" maxlength="20">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="mobile">Telefon Numarası</label>
-                                        <input type="text" class="form-control required digits" id="mobile" value="<?php echo set_value('mobile'); ?>" name="mobile"
-                                            maxlength="10">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="role">Yetki</label>
-                                        <select class="form-control required" id="role" name="role">
-                                            <option value="0">Yetki seçiniz</option>
-                                            <?php
-                                            if(!empty($roles))
-                                            {
-                                                foreach ($roles as $rl)
-                                                {
-                                                    ?>
-                                                <option value="<?php echo $rl->roleId ?>" <?php if($rl->roleId == set_value('role')) {echo "selected=selected";} ?>>
-                                                    <?php echo $rl->role ?>
-                                                </option>
-                                                <?php
-                                                }
-                                            }
-                                            ?>
+                                        <label for="tp_ativo">Usuário ativo?</label>
+                                        <select class="form-control required" id="tp_ativo" name="tp_ativo">
+                                            <option value="1">CAMPO_BD_TP_1</option>
+											<option value="2">CAMPO_BD_TP_2</option>
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dt_ativo">Data ativo</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('dt_ativo'); ?>" id="dt_ativo" name="dt_ativo" maxlength="128">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dt_ativo">Data ativo</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('dt_ativo'); ?>" id="dt_ativo" name="dt_ativo">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dt_inativo">Data inativo</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('dt_inativo'); ?>" id="dt_inativo" name="dt_inativo">
+                                    </div>
+                                </div>                         
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('email'); ?>" id="email" name="email" maxlength="128">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="senha">Senha</label>
+                                        <input type="password" class="form-control required" id="senha" name="senha" maxlength="20">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="resenha">Redigite a senha</label>
+                                        <input type="password" class="form-control required equalTo" id="resenha" name="resenha" maxlength="20">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <!-- /.box-body -->
