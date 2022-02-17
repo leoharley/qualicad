@@ -13,6 +13,10 @@ $route['dashboard'] = 'user';
 $route['logout'] = 'user/logout';
 
 /*********** ADMIN CONTROLLER ROUTES *******************/
+$route['cadastroUsuario'] = "cadastro/cadastroUsuario";
+
+
+/*********** ADMIN CONTROLLER ROUTES *******************/
 $route['noaccess'] = 'login/noaccess';
 $route['userListing'] = 'admin/userListing';
 $route['userListing/(:num)'] = "admin/userListing/$1";

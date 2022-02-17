@@ -18,7 +18,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Kullanıcı bilgilerini giriniz</h3>
+                        <h3 class="box-title">Cadastro de usuário</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -26,34 +26,40 @@
                     <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">Ad Soyad</label>
+                                        <label for="fname">Nome</label>
                                         <input type="text" class="form-control required" value="<?php echo set_value('fname'); ?>" id="fname" name="fname" maxlength="128">
                                     </div>
-
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Email adresi</label>
+                                        <label for="email">CPF</label>
                                         <input type="text" class="form-control required email" id="email" value="<?php echo set_value('email'); ?>" name="email"
                                             maxlength="128">
                                     </div>
                                 </div>
+
                             </div>
+
                             <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">Şifre</label>
                                         <input type="password" class="form-control required" id="password" name="password" maxlength="20">
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="cpassword">Şifre Doğrula</label>
                                         <input type="password" class="form-control required equalTo" id="cpassword" name="cpassword" maxlength="20">
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
