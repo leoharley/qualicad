@@ -42,7 +42,16 @@
                                     </div>
                                 </div>
 
-
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="role">Öncelik</label>
+                                        <select class="form-control required" id="priority" name="priority">
+                                            <option value="1">CAMPO_BD_TP_1</option>
+											<option value="2">CAMPO_BD_TP_2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="fname">Nome</label>
