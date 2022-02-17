@@ -46,4 +46,49 @@ class Cadastro extends BaseController
             $this->loadViews("qualicad/cadastro/cadastroUsuario", $this->global, $data, NULL);
     }
 
+    function cadastroEmpresa()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Empresa';
+
+        $this->loadViews("qualicad/cadastro/cadastroEmpresa", $this->global, $data, NULL);
+    }
+
+    function cadastroUsuarioEmpresa()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário/Empresa/Permissão';
+
+        $this->loadViews("qualicad/cadastro/cadastroUsuarioEmpresa", $this->global, $data, NULL);
+    }
+
+    function cadastroPerfil()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Perfil';
+
+        $this->loadViews("qualicad/cadastro/cadastroPerfil", $this->global, $data, NULL);
+    }
+
+    function cadastroPermissao()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Permissões';
+
+        $this->loadViews("qualicad/cadastro/cadastroPermissao", $this->global, $data, NULL);
+    }
+
+    function cadastroTelas()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Telas';
+
+        $this->loadViews("qualicad/cadastro/cadastroTelas", $this->global, $data, NULL);
+    }
+
 }

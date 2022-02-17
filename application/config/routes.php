@@ -12,8 +12,27 @@ $route['loginMe'] = 'login/loginMe';
 $route['dashboard'] = 'user';
 $route['logout'] = 'user/logout';
 
-/*********** ADMIN CONTROLLER ROUTES *******************/
+/*********** ROUTES DE CADASTRO *******************/
 $route['cadastroUsuario'] = "cadastro/cadastroUsuario";
+$route['cadastroEmpresa'] = "cadastro/cadastroEmpresa";
+$route['cadastroUsuarioEmpresa'] = "cadastro/cadastroUsuarioEmpresa";
+$route['cadastroPerfil'] = "cadastro/cadastroPerfil";
+$route['cadastroPermissao'] = "cadastro/cadastroPermissao";
+$route['cadastroTelas'] = "cadastro/cadastroTelas";
+
+/*********** ROUTES DO PRINCIPAL *******************/
+$route['principalConvenio'] = "principal/principalConvenio";
+$route['principalPlano'] = "principal/principalPlano";
+$route['principalFaturamento'] = "principal/principalFaturamento";
+$route['principalFaturamentoItem'] = "principal/principalFaturamentoItem";
+$route['principalRegra'] = "principal/principalRegra";
+$route['principalRegraGrupoPro'] = "principal/principalRegraGrupoPro";
+$route['principalIndice'] = "principal/principalIndice";
+$route['principalIndiceGrupoPro'] = "principal/principalIndiceGrupoPro";
+$route['principalProibicao'] = "principal/principalProibicao";
+$route['principalRegraProibicao'] = "principal/principalRegraProibicao";
+$route['principalFracaoSimproBra'] = "principal/principalFracaoSimproBra";
+$route['principalUnidade'] = "principal/principalUnidade";
 
 
 /*********** ADMIN CONTROLLER ROUTES *******************/
