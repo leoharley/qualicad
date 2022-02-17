@@ -2,8 +2,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Kullanıcı Yönetimi
-            <small>Ekle / Düzenle</small>
+            <i class="fa fa-users"></i> Cadastro de Usuários
+            <small>Adicionar</small>
         </h1>
     </section>
 
@@ -18,7 +18,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Cadastro de usuário</h3>
+                        <h3 class="box-title">Preencha os campos abaixos</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
