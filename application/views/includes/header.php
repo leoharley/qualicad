@@ -52,7 +52,7 @@
           <b>BSE</b>U</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-          <b>BSEU</b>YONETIM</span>
+          <b>QUALI</b>CAD</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">
