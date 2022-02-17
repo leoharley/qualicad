@@ -106,8 +106,8 @@
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Gönder" />
-                            <input type="reset" class="btn btn-default" value="Sıfırla" />
+                            <input type="submit" class="btn btn-primary" value="Salvar" />
+                            <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
                 </div>
