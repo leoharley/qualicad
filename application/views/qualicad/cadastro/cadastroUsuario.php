@@ -59,8 +59,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dt_ativo">Data ativo</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dt_ativo'); ?>" id="dt_ativo" name="dt_ativo" maxlength="128">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('email'); ?>" id="email" name="email" maxlength="128">
                                     </div>
                                 </div>
 
@@ -81,31 +81,20 @@
                                 </div>                         
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('email'); ?>" id="email" name="email" maxlength="128">
-                                    </div>
-                                </div>
-
+                            <div class="row">                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="senha">Senha</label>
                                         <input type="password" class="form-control required" id="senha" name="senha" maxlength="20">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="resenha">Redigite a senha</label>
                                         <input type="password" class="form-control required equalTo" id="resenha" name="resenha" maxlength="20">
                                     </div>
                                 </div>
-
-                            </div>
+                            </div>                            
                         </div>
                         <!-- /.box-body -->
 
