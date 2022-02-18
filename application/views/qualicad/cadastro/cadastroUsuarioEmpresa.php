@@ -18,7 +18,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Associe os campos abaixo</h3>
+                        <h3 class="box-title">Selecione os campos abaixo</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
