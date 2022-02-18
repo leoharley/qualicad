@@ -239,15 +239,17 @@
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalUnidade">
                         <i class="fa fa-th"></i>
-                        <span>Undade</span>
+                        <span>Unidade</span>
                     </a>
                 </li>
 
                 <hr>
 
                 <li class="treeview" data-toggle="collapse" data-target="#test">
-                    <i class="fa fa-archive"></i>
-                    <span style="margin-left:5px">Importação</span>
+
+                    <i class="fa fa-th"></i>
+                    <span style="margin-left:25px;color:white">Importação</span>
+
                     <ul class="nav nav-list collapse" id="test">
                         <li class="treeview">
                             <a href="<?php echo base_url(); ?>">
