@@ -2,8 +2,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Kullanıcı Yönetimi
-            <small>Ekle / Düzenle</small>
+            <i class="fa fa-users"></i> Cadastrar Fração Simpro Bra
+            <small>Associar / Adicionar</small>
         </h1>
     </section>
 
@@ -18,7 +18,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Kullanıcı bilgilerini giriniz</h3>
+                        <h3 class="box-title">Selecione e preencha os campos abaixo</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -28,60 +28,81 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">Ad Soyad</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('fname'); ?>" id="fname" name="fname" maxlength="128">
-                                    </div>
-
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email">Email adresi</label>
-                                        <input type="text" class="form-control required email" id="email" value="<?php echo set_value('email'); ?>" name="email"
-                                            maxlength="128">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="password">Şifre</label>
-                                        <input type="password" class="form-control required" id="password" name="password" maxlength="20">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="cpassword">Şifre Doğrula</label>
-                                        <input type="password" class="form-control required equalTo" id="cpassword" name="cpassword" maxlength="20">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="mobile">Telefon Numarası</label>
-                                        <input type="text" class="form-control required digits" id="mobile" value="<?php echo set_value('mobile'); ?>" name="mobile"
-                                            maxlength="10">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="role">Yetki</label>
-                                        <select class="form-control required" id="role" name="role">
-                                            <option value="0">Yetki seçiniz</option>
-                                            <?php
-                                            if(!empty($roles))
-                                            {
-                                                foreach ($roles as $rl)
-                                                {
-                                                    ?>
-                                                <option value="<?php echo $rl->roleId ?>" <?php if($rl->roleId == set_value('role')) {echo "selected=selected";} ?>>
-                                                    <?php echo $rl->role ?>
-                                                </option>
-                                                <?php
-                                                }
-                                            }
-                                            ?>
+                                        <label for="dsprofat">ProFat associada</label>
+                                        <select class="form-control required" id="dsprofat" name="dsprofat">
+                                            <option value="1">PROFAT_1</option>
+											<option value="2">PROFAT_2</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dsfaturamento">Faturamento associado</label>
+                                        <select class="form-control required" id="dsfaturamento" name="dsfaturamento">
+                                            <option value="1">FATURAMENTO_1</option>
+											<option value="2">FATURAMENTO_2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dstuss">TUSS associada</label>
+                                        <select class="form-control required" id="dstuss" name="dstuss">
+                                            <option value="1">TUSS_1</option>
+											<option value="2">TUSS_1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dsfracaosimprobra">Descrição fração simpro bra</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('dsfracaosimprobra'); ?>" id="dsfracaosimprobra" name="dsfracaosimprobra"
+                                        maxlength="128">>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dslaboratorio">Descrição laboratório</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('dslaboratorio'); ?>" id="dslaboratorio" name="dslaboratorio"
+                                        maxlength="128">>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dsapresentacao">Descrição apresentação</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('dsapresentacao'); ?>" id="dsapresentacao" name="dsapresentacao"
+                                        maxlength="128">>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tpmatmed">Tipo MatMed</label>
+                                        <select class="form-control required" id="tpmatmed" name="tpmatmed">
+                                            <option value="1">MATMED_1</option>
+											<option value="2">MATMED_2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="vlfatordivisao">Valor do fator de divisão</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('vlfatordivisao'); ?>" id="vlfatordivisao" name="vlfatordivisao"
+                                        maxlength="11">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="qtprod">Quantidade de produção</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('qtprod'); ?>" id="qtprod" name="qtprod"
+                                        maxlength="11">
                                     </div>
                                 </div>
                             </div>
@@ -89,8 +110,8 @@
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Gönder" />
-                            <input type="reset" class="btn btn-default" value="Sıfırla" />
+                            <input type="submit" class="btn btn-primary" value="Salvar" />
+                            <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
                 </div>
