@@ -295,13 +295,13 @@
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalUnidade">
+                    <a href="<?php echo base_url(); ?>loadChangePass">
                         <i class="fa fa-th"></i>
                         <span>Exportação</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalUnidade">
+                    <a href="<?php echo base_url(); ?>loadChangePass">
                         <i class="fa fa-th"></i>
                         <span>Relatórios</span>
                     </a>
