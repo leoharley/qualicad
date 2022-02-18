@@ -136,8 +136,8 @@
 <script>
     $('#teste').on('click', function(e) {
     e.preventDefault();
-    var url = "https://www.globo.com";
-    $(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
+    var url = "<?php echo base_url(); ?>principalplano";
+    $(".modal-body").html('<iframe width="100%" height="800px" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
 });
 </script>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
