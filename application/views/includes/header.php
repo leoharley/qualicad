@@ -245,7 +245,7 @@
 
                 <hr>
 
-                <li class="treeview" data-toggle="collapse" data-target="#test">
+                <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;">
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
                     <span style="margin-left:5px;color:white">Importação</span>
 
@@ -295,13 +295,13 @@
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>loadChangePass">
+                    <a href="<?php echo base_url(); ?>dadas">
                         <i class="fa fa-th"></i>
                         <span>Exportação</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>loadChangePass">
+                    <a href="<?php echo base_url(); ?>dasdas">
                         <i class="fa fa-th"></i>
                         <span>Relatórios</span>
                     </a>
