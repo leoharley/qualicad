@@ -55,6 +55,15 @@ class Principal extends BaseController
         $this->loadViews("qualicad/principal/principalPlano", $this->global, $data, NULL);
     }
 
+    function principalPlanoModal()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Plano';
+
+        $this->loadViewsModal("qualicad/principal/principalPlano", $this->global, $data, NULL);
+    }
+
     function principalFaturamento()
     {
         $data['roles'] = $this->user_model->getUserRoles();

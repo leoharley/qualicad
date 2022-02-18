@@ -118,6 +118,12 @@ class BaseController extends CI_Controller {
         $this->load->view($viewName, $pageInfo);
         $this->load->view('includes/footer', $footerInfo);
     }
+
+	function loadViewsModal($viewName = "", $headerInfo = NULL, $pageInfo = NULL, $footerInfo = NULL){
+
+        $this->load->view($viewName, $pageInfo);
+        $this->load->view('includes/footer', $footerInfo);
+    }
 	
 	/**
 	 * This function used provide the pagination resources

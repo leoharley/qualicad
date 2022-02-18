@@ -34,6 +34,8 @@ $route['principalRegraProibicao'] = "principal/principalRegraProibicao";
 $route['principalFracaoSimproBra'] = "principal/principalFracaoSimproBra";
 $route['principalUnidade'] = "principal/principalUnidade";
 
+$route['principalPlanoModal'] = "principal/principalPlanoModal";
+
 
 /*********** ADMIN CONTROLLER ROUTES *******************/
 $route['noaccess'] = 'login/noaccess';
