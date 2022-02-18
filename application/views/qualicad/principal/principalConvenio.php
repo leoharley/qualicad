@@ -133,10 +133,10 @@
     </section>
 </div>
 <script>
-    $('#exampleModal').on('show.bs.modal', function(e) {
-    var button = $(e.relatedTarget);
-    var modal = $(this);
-    modal.find('.modal-body').load(button.data("remote"));
-});
+    $('#exampleModal').on('click', function(e) {
+        e.preventDefault();
+        var url = "<?php echo base_url(); ?>principalPlano";
+        $(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
+    });
 </script>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
