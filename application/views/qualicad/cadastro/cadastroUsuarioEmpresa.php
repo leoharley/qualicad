@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Associar usuário / empresa
+            <i class="fa fa-users"></i> Associar usuário a empresa
             <small>Vinculação</small>
         </h1>
     </section>
