@@ -26,7 +26,7 @@ class User extends BaseController
      */
     public function index()
     {
-        $this->global['pageTitle'] = 'BSEU : Anasayfa';
+        $this->global['pageTitle'] = 'QUALICAD : Página inicial';
 
         $data['tasksCount'] = $this->user_model->tasksCount();
         $data['finishedTasksCount'] = $this->user_model->finishedTasksCount();
@@ -35,7 +35,7 @@ class User extends BaseController
 
         if ($this->getUserStatus() == TRUE)
         {
-            $this->session->set_flashdata('error', 'Lütfen güvenliğiniz için öncelikle şifrenizi değiştiriniz.');
+            $this->session->set_flashdata('error', 'Por favor, altere sua senha na primeira utilização.');
             redirect('loadChangePass');
         }
 
