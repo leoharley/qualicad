@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastro de Empresa
+            <i class="fa fa-users"></i> Cadastrar Empresa
             <small>Adicionar</small>
         </h1>
     </section>

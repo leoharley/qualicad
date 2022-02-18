@@ -3,7 +3,7 @@
     <section class="content-header">
         <h1>
             <i class="fa fa-users"></i> Cadastrar Permissão
-            <small>Adicionar</small>
+            <small>Associar</small>
         </h1>
     </section>
 
