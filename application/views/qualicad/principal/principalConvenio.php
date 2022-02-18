@@ -94,7 +94,7 @@
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input id="teste" data-remote="<?php echo base_url(); ?>principalPlanoModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Salvar" />
+                            <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Salvar" />
                             <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
