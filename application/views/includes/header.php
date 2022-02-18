@@ -172,7 +172,7 @@
                 <hr>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalConvenio">
-                        <i class="fa fa-tasks"></i>
+                        <i class="fa fa-th"></i>
                         <span>Convênio</span>
                     </a>
                 </li>
