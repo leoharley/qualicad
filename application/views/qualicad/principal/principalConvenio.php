@@ -136,7 +136,7 @@
 <script>
     $('#teste').on('click', function(e) {
     e.preventDefault();
-    var url = "www.globo.com";
+    var url = "https://www.globo.com";
     $(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
 });
 </script>
