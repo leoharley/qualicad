@@ -96,6 +96,15 @@
                                         <input type="date" class="form-control required" value="<?php echo set_value('dtcriacao'); ?>" id="dtcriacao" name="dtcriacao">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tpativo">Ativo?</label>
+                                        <select class="form-control required" id="tpativo" name="tpativo">
+                                            <option value="1">SIM</option>
+											<option value="2">NÃO</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.box-body -->
