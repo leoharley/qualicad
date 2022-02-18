@@ -137,7 +137,7 @@
     $('#teste').on('click', function(e) {
     e.preventDefault();
     var url = "<?php echo base_url(); ?>principalPlanoModal";
-    $(".modal-body").html('<iframe width="800px" height="500px" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
+    $(".modal-body").html('<iframe frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
 });
 </script>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
