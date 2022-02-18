@@ -246,8 +246,7 @@
                 <hr>
 
                 <li class="treeview" data-toggle="collapse" data-target="#test">
-
-                    <i class="fa fa-th"></i>
+                    <i class="fa fa-th" style="color:white"></i>
                     <span style="margin-left:25px;color:white">Importação</span>
 
                     <ul class="nav nav-list collapse" id="test">
