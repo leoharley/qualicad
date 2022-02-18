@@ -110,7 +110,7 @@
         </div>
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -136,7 +136,7 @@
     $('#exampleModal').on('click', function(e) {
         e.preventDefault();
         var url = "<?php echo base_url(); ?>principalPlano";
-        $(".modal-body").html('<iframe width="1000px" height="500px" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
+        $(".modal-body").html('<iframe width="1000px" height="500px" allowtransparency="true" src="'+url+'"></iframe>');
     });
 </script>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
