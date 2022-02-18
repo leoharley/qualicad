@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="vlm2filme">Valor m2 film</label>
+                                        <label for="vlm2filme">Valor m2 filme</label>
                                         <input type="text" class="form-control required" value="<?php echo set_value('vlm2filme'); ?>" id="vlm2filme" name="vlm2filme"
                                         maxlength="11">
                                     </div>
