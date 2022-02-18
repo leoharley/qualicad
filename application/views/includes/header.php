@@ -250,43 +250,43 @@
                     <span style="margin-left:5px;color:white">Importação</span>
 
                     <ul class="nav nav-list collapse" id="test">
-                        <li class="treeview">
+                        <li class="treeview" style="margin-left:23px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Produção</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview" style="margin-left:23px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Produto</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview" style="margin-left:23px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">GrupoFaturamento</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview" style="margin-left:23px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">ProFat</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview" style="margin-left:23px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">TUSS</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview" style="margin-left:23px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">GrupoPro</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview" style="margin-left:23px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">SimproBrasindice</span>
