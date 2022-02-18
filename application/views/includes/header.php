@@ -239,7 +239,7 @@
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalUnidade">
                         <i class="fa fa-th"></i>
-                        <span>Unidade</span>
+                        <span>Undade</span>
                     </a>
                 </li>
 
