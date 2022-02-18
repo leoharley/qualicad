@@ -94,7 +94,7 @@
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Salvar" />
+                            <input id="teste" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Salvar" />
                             <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
@@ -109,7 +109,7 @@
             </div>
         </div>
 
-        
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -133,4 +133,11 @@
 
     </section>
 </div>
+<script>
+    $('#teste').on('click', function(e) {
+    e.preventDefault();
+    var url = "www.globo.com";
+    $(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
+});
+</script>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
