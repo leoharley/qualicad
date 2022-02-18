@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <label for="dsfracaosimprobra">Descrição fração simpro bra</label>
                                         <input type="text" class="form-control required" value="<?php echo set_value('dsfracaosimprobra'); ?>" id="dsfracaosimprobra" name="dsfracaosimprobra"
-                                        maxlength="128">>
+                                        maxlength="128">
                                     </div>
                                 </div>
                             </div>
@@ -68,14 +68,14 @@
                                     <div class="form-group">
                                         <label for="dslaboratorio">Descrição laboratório</label>
                                         <input type="text" class="form-control required" value="<?php echo set_value('dslaboratorio'); ?>" id="dslaboratorio" name="dslaboratorio"
-                                        maxlength="128">>
+                                        maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="dsapresentacao">Descrição apresentação</label>
                                         <input type="text" class="form-control required" value="<?php echo set_value('dsapresentacao'); ?>" id="dsapresentacao" name="dsapresentacao"
-                                        maxlength="128">>
+                                        maxlength="128">
                                     </div>
                                 </div>
                             </div>
