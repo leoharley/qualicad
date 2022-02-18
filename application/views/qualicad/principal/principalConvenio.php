@@ -94,7 +94,7 @@
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Salvar" />
+                            <input id="teste" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Salvar" />
                             <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
