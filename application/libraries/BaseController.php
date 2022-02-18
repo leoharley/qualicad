@@ -120,7 +120,8 @@ class BaseController extends CI_Controller {
     }
 
 	function loadViewsModal($viewName = "", $headerInfo = NULL, $pageInfo = NULL, $footerInfo = NULL){
-
+		
+		$this->load->view('includes/headerModal', $headerInfo);
         $this->load->view($viewName, $pageInfo);
         $this->load->view('includes/footer', $footerInfo);
     }
