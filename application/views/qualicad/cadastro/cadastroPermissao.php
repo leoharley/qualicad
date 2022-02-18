@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="atualizar">Atualizar</label>
+                                        <label for="atualizar">Atualizar?</label>
                                         <select class="form-control required" id="atualizar" name="atualizar">
                                             <option value="1">SIM</option>
 											<option value="2">NÃO</option>
@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inserir">Inserir</label>
+                                        <label for="inserir">Inserir?</label>
                                         <select class="form-control required" id="inserir" name="inserir">
                                             <option value="1">SIM</option>
 											<option value="2">NÃO</option>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="excluir">Excluir</label>
+                                        <label for="excluir">Excluir?</label>
                                         <select class="form-control required" id="excluir" name="excluir">
                                             <option value="1">SIM</option>
 											<option value="2">NÃO</option>
@@ -68,7 +68,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="consultar">Consultar</label>
+                                        <label for="consultar">Consultar?</label>
                                         <select class="form-control required" id="consultar" name="consultar">
                                             <option value="1">SIM</option>
 											<option value="2">NÃO</option>
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="imprimir">Imprimir</label>
+                                        <label for="imprimir">Imprimir?</label>
                                         <select class="form-control required" id="imprimir" name="imprimir">
                                             <option value="1">SIM</option>
 											<option value="2">NÃO</option>
