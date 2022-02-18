@@ -245,7 +245,7 @@
 
                 <hr>
 
-                <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;">
+                <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
                     <span style="margin-left:5px;color:white">Importação</span>
 
