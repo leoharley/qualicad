@@ -2,15 +2,15 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-users"></i> Todas as tarefas
-      <small>Todas as tarefas em nosso painel</small>
+      <i class="fa fa-users"></i> Listar Usuários
+      <small>Listar</small>
     </h1>
   </section>
   <section class="content">
     <div class="col-xs-12">
       <div class="text-right">
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>addNewTask">
-          <i class="fa fa-plus"></i> Adicionar tarefa</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>cadastroUsuario/cadastrar">
+          <i class="fa fa-plus"></i> Adicionar usuário</a>
       </div>
       <div class="box">
         <div class="box-header">
