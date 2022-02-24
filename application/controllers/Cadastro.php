@@ -143,10 +143,11 @@ class Cadastro extends BaseController
                 $cpf = $this->input->post('Cpf_Usuario');
                 $email = $this->security->xss_clean($this->input->post('Email'));
                 $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
             //    $roleId = $this->input->post('role');
                 
                 $infoUsuario = array('Email'=>$nome, 'Senha'=>getHashedPassword($senha), 'Nome_Usuario'=> $nome,
-                                    'CriadoPor'=>$this->vendorId, 'Dt_Ativo'=>date('Y-m-d H:i:s'));
+                                    'CriadoPor'=>$this->vendorId, 'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>date('Y-m-d H:i:s'));
                                     
                 $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
                 

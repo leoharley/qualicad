@@ -57,7 +57,7 @@
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Usuário ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
-                                            <option value="S">Sim</option>
+                                            <option value="S" selected>Sim</option>
 											<option value="N">Não</option>
                                         </select>
                                     </div>
