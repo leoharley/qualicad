@@ -41,7 +41,7 @@
                 "<'row'<'col-sm-7 col-centered'p>>",
             lengthMenu: [
                 [10, 15, 25, 50, -1],
-                [10, 15, 25, 50, "Hepsi"]
+                [10, 15, 25, 50, "Todos"]
             ],
 
             //Dil
