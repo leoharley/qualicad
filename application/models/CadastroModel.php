@@ -53,7 +53,7 @@ class CadastroModel extends CI_Model
     function adicionaUsuario($infoUsuario)
     {
         $this->db->trans_start();
-        $this->db->insert('tabUsuario', $infoUsuario);
+        $this->db->insert('TabUsuario', $infoUsuario);
         
         $insert_id = $this->db->insert_id();
         
