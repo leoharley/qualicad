@@ -33,16 +33,16 @@ class CadastroModel extends CI_Model
      */
     function l_cadastroUsuario($searchText = '', $page, $segment)
     {
-        $this->db->select('BaseTbl.userId, BaseTbl.email, BaseTbl.name, BaseTbl.mobile, Role.role');
-        $this->db->from('tbl_users as BaseTbl');
+        $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email, Role.role');
+        $this->db->from('TabUsuario as Usuarios');
         $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
         if(!empty($searchText)) {
-            $likeCriteria = "(BaseTbl.email  LIKE '%".$searchText."%'
-                            OR  BaseTbl.name  LIKE '%".$searchText."%'
-                            OR  BaseTbl.mobile  LIKE '%".$searchText."%')";
+            $likeCriteria = "(Usuarios.Email  LIKE '%".$searchText."%'
+                            OR  Usuarios.Nome_Usuario  LIKE '%".$searchText."%'
+                            OR  Usuarios.Cpf_Usuario  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-        $this->db->where('BaseTbl.isDeleted', 0);
+   //     $this->db->where('Usuarios.tp_Ativo', 'S');
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         

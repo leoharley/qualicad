@@ -44,6 +44,7 @@
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
+                    <th>Id</th>
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>E-mail</th>
@@ -54,29 +55,32 @@
                 </thead>
                 <tbody>
                   <?php
-                      if(!empty($taskRecords))
+                      if(!empty($registrosUsuarios))
                       {
-                          foreach($taskRecords as $record)
+                          foreach($registrosUsuarios as $registro)
                           {
                       ?>
                     <tr>
                       <td>
-                        <?php echo $record->id ?>
+                        <?php echo $registro->Id_Usuario ?>
                       </td>
                       <td>
-                        <?php echo $record->title ?>
+                        <?php echo $registro->Nome_Usuario ?>
                       </td>
                       <td>
-                        <?php echo $record->comment ?>
+                        <?php echo $registro->Cpf_Usuario ?>
                       </td>
                       <td>
-                        <?php echo $record->comment ?>
+                        <?php echo $registro->Email ?>
                       </td>
                       <td>
-                        <?php echo $record->comment ?>
+                        <?php echo $registro->Tp_Ativo ?>
                       </td>
                       <td>
-                        <?php echo $record->comment ?>
+                        <?php echo $registro->Dt_Ativo ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Dt_Inativo ?>
                       </td>
                     </tr>
                     <?php
