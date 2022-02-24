@@ -18,6 +18,7 @@ class Cadastro extends BaseController
         parent::__construct();
         $this->load->model('login_model');
         $this->load->model('user_model');
+        $this->load->model('cadastroModel');
         // Datas -> libraries ->BaseController / This function used load user sessions
         $this->datas();
         // isLoggedIn / Login control function /  This function used login control
@@ -43,7 +44,24 @@ class Cadastro extends BaseController
             $data['roles'] = $this->user_model->getUserRoles();
 
             if ($tpTela == 'listar') {
-                $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário';
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->user_model->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
+                
+                $data['registrosUsuarios'] = $this->user_model->userListing($searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar usuários';
+                $processFunction = 'Cadastro/cadastroUsuario';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Usuário';
+                
                 $this->loadViews("qualicad/cadastro/l_cadastroUsuario", $this->global, $data, NULL);
             }
             else if ($tpTela == 'cadastrar') {
