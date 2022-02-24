@@ -35,7 +35,7 @@ class CadastroModel extends CI_Model
     {
         $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email, Role.role');
         $this->db->from('TabUsuario as Usuarios');
-        $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
+   //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(Usuarios.Email  LIKE '%".$searchText."%'
                             OR  Usuarios.Nome_Usuario  LIKE '%".$searchText."%'
