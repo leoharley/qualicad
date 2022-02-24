@@ -47,7 +47,7 @@
             //Dil
             language: {
                 select: {
-                    rows: "%d satır seçildi."
+                    rows: "%d linha selecionada."
                 },
 
                 url: "<?php echo base_url(); ?>assets/json/Portuguese.json"
