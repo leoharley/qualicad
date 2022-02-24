@@ -146,7 +146,7 @@ class Cadastro extends BaseController
             //    $roleId = $this->input->post('role');
                 
                 $infoUsuario = array('Email'=>$nome, 'Senha'=>getHashedPassword($senha), 'Nome_Usuario'=> $nome,
-                                    'createdBy'=>$this->vendorId, 'Dt_Ativo'=>date('Y-m-d H:i:s'));
+                                    'CriadoPor'=>$this->vendorId, 'Dt_Ativo'=>date('Y-m-d H:i:s'));
                                     
                 $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
                 
