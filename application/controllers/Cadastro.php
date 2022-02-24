@@ -145,9 +145,18 @@ class Cadastro extends BaseController
                 $senha = $this->input->post('Senha');
                 $tpativo = $this->input->post('Tp_Ativo');
             //    $roleId = $this->input->post('role');
+
+                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($tpativo == 'S') 
+                { 
+                    $dtativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $dtativo = null;
+                }
                 
                 $infoUsuario = array('Email'=>$nome, 'Senha'=>getHashedPassword($senha), 'Nome_Usuario'=> $nome,
-                                    'CriadoPor'=>$this->vendorId, 'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>date('Y-m-d H:i:s'));
+                                    'CriadoPor'=>$this->vendorId, 'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
                                     
                 $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
                 
