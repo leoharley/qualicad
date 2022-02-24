@@ -66,10 +66,10 @@ class CadastroModel extends CI_Model
      * This function is used to get the user roles information
      * @return array $result : This is result of the query
      */
-    function getUserRoles()
+    function carregaPerfisUsuarios()
     {
-        $this->db->select('roleId, role');
-        $this->db->from('tbl_roles');
+        $this->db->select('Id_CdPerfil, Ds_Perfil');
+        $this->db->from('TbPerfil');
         $query = $this->db->get();
         
         return $query->result();
