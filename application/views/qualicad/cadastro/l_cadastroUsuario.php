@@ -77,10 +77,10 @@
                         <?php echo $registro->Tp_Ativo ?>
                       </td>
                       <td>
-                        <?php echo date("d/m/Y", strtotime($registro->Dt_Ativo)) ?>
+                        <?php echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
                       </td>
                       <td>
-                        <?php echo date("d/m/Y", strtotime($registro->Dt_Inativo)) ?>
+                        <?php echo ($registro->Dt_Inativo != null) ? date("d/m/Y", strtotime($registro->Dt_Inativo)) : ''; ?>
                       </td>
                     </tr>
                     <?php
