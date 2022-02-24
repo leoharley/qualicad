@@ -18,7 +18,7 @@ class Cadastro extends BaseController
         parent::__construct();
         $this->load->model('login_model');
         $this->load->model('user_model');
-        $this->load->model('cadastroModel');
+        $this->load->model('CadastroModel');
         // Datas -> libraries ->BaseController / This function used load user sessions
         $this->datas();
         // isLoggedIn / Login control function /  This function used login control
@@ -41,7 +41,7 @@ class Cadastro extends BaseController
     function cadastroUsuario()
     {
             $tpTela = $this->uri->segment(2);
-            $data['roles'] = $this->cadastroModel->getUserRoles();
+            $data['roles'] = $this->CadastroModel->getUserRoles();
 
             if ($tpTela == 'listar') {
 
@@ -50,11 +50,11 @@ class Cadastro extends BaseController
                 
                 $this->load->library('pagination');
                 
-                $count = $this->cadastroModel->userListingCount($searchText);
+                $count = $this->CadastroModel->userListingCount($searchText);
 
                 $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
                 
-                $data['registrosUsuarios'] = $this->cadastroModel->userListing($searchText, $returns["page"], $returns["segment"]);
+                $data['registrosUsuarios'] = $this->CadastroModel->userListing($searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar usuários';
                 $processFunction = 'Cadastro/cadastroUsuario';

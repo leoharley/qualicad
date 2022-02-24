@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class cadastroModel extends CI_Model
+class CadastroModel extends CI_Model
 {
     /**
      * This function is used to get the user listing count
