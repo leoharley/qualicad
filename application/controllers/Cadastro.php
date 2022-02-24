@@ -149,7 +149,7 @@ class Cadastro extends BaseController
                 //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
                 if ($tpativo == 'S') 
                 { 
-                    $dtativo = date('Y-m-d H:i:s');
+                    $dtativo = date('d-m-Y H:i:s');
                 } else
                 {
                     $dtativo = null;
