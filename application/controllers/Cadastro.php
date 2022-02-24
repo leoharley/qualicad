@@ -152,7 +152,7 @@ class Cadastro extends BaseController
                     $dtativo = date('Y-m-d H:i:s');
                 } else
                 {
-                    $dtativo = '';
+                    $dtativo = null;
                 }
                 
                 $infoUsuario = array('Email'=>$nome, 'Senha'=>getHashedPassword($senha), 'Nome_Usuario'=> $nome,
