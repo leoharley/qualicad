@@ -50,11 +50,11 @@
                     rows: "%d satır seçildi."
                 },
 
-                url: "http://cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese.json"
+                url: "<?php echo base_url(); ?>assets/json/Portuguese.json"
             },
             buttons: [{
                     extend: "print",
-                    text: "Yazdır",
+                    text: "Imprimir",
                     exportOptions: {
                         orthogonal: 'export',
                         columns: ':visible'
