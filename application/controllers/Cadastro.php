@@ -41,7 +41,7 @@ class Cadastro extends BaseController
     function cadastroUsuario()
     {
             $tpTela = $this->uri->segment(2);
-            $data['roles'] = $this->CadastroModel->getUserRoles();
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
             if ($tpTela == 'listar') {
 
@@ -72,7 +72,7 @@ class Cadastro extends BaseController
 
     function cadastroEmpresa()
     {
-        $data['roles'] = $this->user_model->getUserRoles();
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
 
         $this->global['pageTitle'] = 'QUALICAD : Cadastro de Empresa';
 
@@ -81,7 +81,7 @@ class Cadastro extends BaseController
 
     function cadastroUsuarioEmpresa()
     {
-        $data['roles'] = $this->user_model->getUserRoles();
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
 
         $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário/Empresa/Permissão';
 
@@ -90,7 +90,7 @@ class Cadastro extends BaseController
 
     function cadastroPerfil()
     {
-        $data['roles'] = $this->user_model->getUserRoles();
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
 
         $this->global['pageTitle'] = 'QUALICAD : Cadastro de Perfil';
 
@@ -99,7 +99,7 @@ class Cadastro extends BaseController
 
     function cadastroPermissao()
     {
-        $data['roles'] = $this->user_model->getUserRoles();
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
 
         $this->global['pageTitle'] = 'QUALICAD : Cadastro de Permissões';
 
@@ -108,7 +108,7 @@ class Cadastro extends BaseController
 
     function cadastroTelas()
     {
-        $data['roles'] = $this->user_model->getUserRoles();
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
 
         $this->global['pageTitle'] = 'QUALICAD : Cadastro de Telas';
 
