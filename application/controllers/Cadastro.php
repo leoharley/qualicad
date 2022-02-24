@@ -127,7 +127,11 @@ class Cadastro extends BaseController
             
             if($this->form_validation->run() == FALSE)
             {
-                $this->addNew();
+
+            //    $data['roles'] = $this->user_model->getUserRoles();
+                $this->global['pageTitle'] = 'BSEU : Kullanıcı Ekle';
+                $this->loadViews("c_cadastroUsuario", $this->global, $data, NULL);
+
             }
             else
             {
