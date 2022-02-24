@@ -133,37 +133,37 @@
             ?>
             <hr>
                 <li class="treeview">
-                  <a href="<?php echo base_url(); ?>cadastroUsuario">
+                  <a href="<?php echo base_url(); ?>cadastroUsuario/listar">
                     <i class="fa fa-th"></i>
                     <span>Usuário</span>
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="<?php echo base_url(); ?>cadastroEmpresa">
+                  <a href="<?php echo base_url(); ?>cadastroEmpresa/listar">
                     <i class="fa fa-th"></i>
                     <span>Empresa</span>
                   </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>cadastroUsuarioEmpresa">
+                    <a href="<?php echo base_url(); ?>cadastroUsuarioEmpresa/listar">
                         <i class="fa fa-th"></i>
                         <span>Usuário/Empresa</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>cadastroPerfil">
+                    <a href="<?php echo base_url(); ?>cadastroPerfil/listar">
                         <i class="fa fa-th"></i>
                         <span>Perfil</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>cadastroPermissao">
+                    <a href="<?php echo base_url(); ?>cadastroPermissao/listar">
                         <i class="fa fa-th"></i>
                         <span>Permissão</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>cadastroTelas">
+                    <a href="<?php echo base_url(); ?>cadastroTelas/listar">
                         <i class="fa fa-th"></i>
                         <span>Telas</span>
                     </a>
@@ -171,73 +171,73 @@
 
                 <hr>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalConvenio">
+                    <a href="<?php echo base_url(); ?>principalConvenio/listar">
                         <i class="fa fa-th"></i>
                         <span>Convênio</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalPlano">
+                    <a href="<?php echo base_url(); ?>principalPlano/listar">
                         <i class="fa fa-th"></i>
                         <span>Plano</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalFaturamento">
+                    <a href="<?php echo base_url(); ?>principalFaturamento/listar">
                         <i class="fa fa-th"></i>
                         <span>Faturamento</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalFaturamentoItem">
+                    <a href="<?php echo base_url(); ?>principalFaturamentoItem/listar">
                         <i class="fa fa-th"></i>
                         <span>Faturamento Item</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalRegra">
+                    <a href="<?php echo base_url(); ?>principalRegra/listar">
                         <i class="fa fa-th"></i>
                         <span>Regra</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalRegraGrupoPro">
+                    <a href="<?php echo base_url(); ?>principalRegraGrupoPro/listar">
                         <i class="fa fa-th"></i>
                         <span>RegraGrupoPro</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalIndice">
+                    <a href="<?php echo base_url(); ?>principalIndice/listar">
                         <i class="fa fa-th"></i>
                         <span>Índice</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalIndiceGrupoPro">
+                    <a href="<?php echo base_url(); ?>principalIndiceGrupoPro/listar">
                         <i class="fa fa-th"></i>
                         <span>ÍndiceGrupoPro</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalProibicao">
+                    <a href="<?php echo base_url(); ?>principalProibicao/listar">
                         <i class="fa fa-th"></i>
                         <span>Proibição</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalRegraProibicao">
+                    <a href="<?php echo base_url(); ?>principalRegraProibicao/listar">
                         <i class="fa fa-th"></i>
                         <span>RegraProibição</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalFracaoSimproBra">
+                    <a href="<?php echo base_url(); ?>principalFracaoSimproBra/listar">
                         <i class="fa fa-th"></i>
                         <span>FraçãoSimproBra</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalUnidade">
+                    <a href="<?php echo base_url(); ?>principalUnidade/listar">
                         <i class="fa fa-th"></i>
                         <span>Unidade</span>
                     </a>
