@@ -49,6 +49,18 @@ class CadastroModel extends CI_Model
         $result = $query->result();        
         return $result;
     }
+
+    function adicionaUsuario($infoUsuario)
+    {
+        $this->db->trans_start();
+        $this->db->insert('tabUsuario', $infoUsuario);
+        
+        $insert_id = $this->db->insert_id();
+        
+        $this->db->trans_complete();
+        
+        return $insert_id;
+    }
     
     /**
      * This function is used to get the user roles information

@@ -23,22 +23,22 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addUser" action="<?php echo base_url() ?>adicionaUsuario" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
 
                                 <!-- VARCHAR/INTEGER/FLOAT -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="nome_usuario">Nome</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('nome_usuario'); ?>" id="nome_usuario" name="nome_usuario" maxlength="128">
+                                        <label for="Nome_Usuario">Nome</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('Nome_Usuario'); ?>" id="Nome_Usuario" name="Nome_Usuario" maxlength="128">
                                     </div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="cpf_usuario">CPF</label>
-                                        <input type="text" class="form-control required cpf_usuario" id="cpf_usuario" value="<?php echo set_value('cpf_usuario'); ?>" name="cpf_usuario"
+                                        <label for="Cpf_Usuario">CPF</label>
+                                        <input type="text" class="form-control required cpf_usuario" id="Cpf_Usuario" value="<?php echo set_value('Cpf_Usuario'); ?>" name="Cpf_Usuario"
                                             maxlength="11">
                                     </div>
                                 </div>
@@ -48,17 +48,17 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('email'); ?>" id="email" name="email" maxlength="128">
+                                        <label for="Email">Email</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('Email'); ?>" id="Email" name="Email" maxlength="128">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="tp_ativo">Usuário ativo?</label>
-                                        <select class="form-control required" id="tp_ativo" name="tp_ativo">
-                                            <option value="1">CAMPO_BD_TP_1</option>
-											<option value="2">CAMPO_BD_TP_2</option>
+                                        <label for="Tp_Ativo">Usuário ativo?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S">Sim</option>
+											<option value="N">Não</option>
                                         </select>
                                     </div>
                                 </div>
@@ -67,15 +67,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dt_ativo">Data ativo</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dt_ativo'); ?>" id="dt_ativo" name="dt_ativo">
+                                        <label for="Dt_Ativo">Data ativo</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_Ativo'); ?>" id="Dt_Ativo" name="Dt_Ativo">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dt_inativo">Data inativo</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dt_inativo'); ?>" id="dt_inativo" name="dt_inativo">
+                                        <label for="Dt_Inativo">Data inativo</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_Inativo'); ?>" id="Dt_Inativo" name="Dt_Inativo">
                                     </div>
                                 </div>                         
                             </div>
@@ -83,8 +83,8 @@
                             <div class="row">                                
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="senha">Senha</label>
-                                        <input type="password" class="form-control required" id="senha" name="senha" maxlength="20">
+                                        <label for="Senha">Senha</label>
+                                        <input type="password" class="form-control required" id="Senha" name="Senha" maxlength="20">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

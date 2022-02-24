@@ -115,4 +115,48 @@ class Cadastro extends BaseController
         $this->loadViews("qualicad/cadastro/cadastroTelas", $this->global, $data, NULL);
     }
 
+    function adicionaUsuario() {
+        $this->load->library('form_validation');
+            
+            $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+            $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+            
+            if($this->form_validation->run() == FALSE)
+            {
+                $this->addNew();
+            }
+            else
+            {
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+            //    $roleId = $this->input->post('role');
+                
+                $infoUsuario = array('Email'=>$nome, 'Senha'=>getHashedPassword($senha), 'Nome_Usuario'=> $nome,
+                                    'createdBy'=>$this->vendorId, 'Dt_Ativo'=>date('Y-m-d H:i:s'));
+                                    
+                $result = $this->CadastroModel->adicionarUsuario($infoUsuario);
+                
+                if($result > 0)
+                {
+                    $process = 'Adicionar usuário';
+                    $processFunction = 'Cadastro/adicionaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do usuário');
+                }
+                
+                redirect('cadastroUsuario/listar');
+            }
+    }
+
 }
