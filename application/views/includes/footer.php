@@ -50,7 +50,7 @@
                     rows: "%d satır seçildi."
                 },
 
-                url: "http://cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+                url: "http://cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese.json"
             },
             buttons: [{
                     extend: "print",
