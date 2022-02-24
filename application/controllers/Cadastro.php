@@ -40,6 +40,8 @@ class Cadastro extends BaseController
     function cadastroUsuario()
     {
             $tpTela = $this->uri->segment(3);
+            var_dump($tpTela);
+            exit;
             $data['roles'] = $this->user_model->getUserRoles();
 
             if ($tpTela == 'listar') {
