@@ -44,17 +44,12 @@
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Título da Tarefa</th>
-                    <th>Explicação</th>
-                    <th>Status</th>
-                    <th>Prioridade</th>
-                    <th>Usuário que criou</th>
-                    <th>Perfil do usuário</th>
-                    <th>Data de criação</th>
-                    <th>Data final</th>
-                    <th>Transações</th>
-                    <th>Terminar missão<th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>E-mail</th>
+                    <th>Usuário ativo?</th>
+                    <th>Data ativo</th>
+                    <th>Data inativo</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -75,53 +70,13 @@
                         <?php echo $record->comment ?>
                       </td>
                       <td>
-                        <div class="label label-<?php
-                        if ($record->statusId == '1')
-                        echo 'danger';
-                        else if ($record->statusId == '2')
-                        echo 'success';
-                        ?>">
-                          <?php echo $record->status ?>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div class="label label-<?php
-                        if ($record->priorityId == '1')
-                        echo 'danger';
-                        else if ($record->priorityId == '2')
-                        echo 'warning';
-                        else if ($record->priorityId == '3')
-                        echo 'info'
-                        ?>">
-                          <?php echo $record->priority ?>
-                        </div>
+                        <?php echo $record->comment ?>
                       </td>
                       <td>
-                        <?php echo $record->name ?>
+                        <?php echo $record->comment ?>
                       </td>
                       <td>
-                        <?php echo $record->role ?>
-                      </td>
-                      <td>
-                        <?php echo $record->createdDtm ?>
-                      </td>
-                      <td>
-                        <?php echo $record->endDtm ?>
-                      </td>
-                      <td class="text-center">
-                        <a class="btn btn-sm btn-info" href="<?php echo base_url().'editOldTask/'.$record->id; ?>" title="Düzenle">
-                          <i class="fa fa-pencil"></i>
-                        </a>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'deleteTask/'.$record->id; ?>" data-userid="<?php echo $record->id; ?>"
-                          title="Sil">
-                          <i class="fa fa-trash"></i>
-                        </a>
-                      </td>
-                      <td class="text-center">
-                        <a class="btn btn-sm btn-primary" href="<?= base_url().'endTask/'.$record->id; ?>" title="Görevi Bitir">
-                          <i class="fa fa-check-circle"></i>
-                        </a>
+                        <?php echo $record->comment ?>
                       </td>
                     </tr>
                     <?php
