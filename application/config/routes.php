@@ -13,12 +13,12 @@ $route['dashboard'] = 'user';
 $route['logout'] = 'user/logout';
 
 /*********** ROUTES DE CADASTRO *******************/
-$route['cadastroUsuario'] = "cadastro/cadastroUsuario";
-$route['cadastroEmpresa'] = "cadastro/cadastroEmpresa";
-$route['cadastroUsuarioEmpresa'] = "cadastro/cadastroUsuarioEmpresa";
-$route['cadastroPerfil'] = "cadastro/cadastroPerfil";
-$route['cadastroPermissao'] = "cadastro/cadastroPermissao";
-$route['cadastroTelas'] = "cadastro/cadastroTelas";
+$route['cadastroUsuario/:any'] = "cadastro/cadastroUsuario/$1";
+$route['cadastroEmpresa/:any'] = "cadastro/cadastroEmpresa/$1";
+$route['cadastroUsuarioEmpresa/:any'] = "cadastro/cadastroUsuarioEmpresa/$1";
+$route['cadastroPerfil/:any'] = "cadastro/cadastroPerfil/$1";
+$route['cadastroPermissao/:any'] = "cadastro/cadastroPermissao/$1";
+$route['cadastroTelas/:any'] = "cadastro/cadastroTelas/$1";
 
 /*********** ROUTES DO PRINCIPAL *******************/
 $route['principalConvenio'] = "principal/principalConvenio";

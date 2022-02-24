@@ -39,11 +39,17 @@ class Cadastro extends BaseController
 
     function cadastroUsuario()
     {
+            $tpTela = $this->uri->segment(3);
             $data['roles'] = $this->user_model->getUserRoles();
 
-            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário';
-
-            $this->loadViews("qualicad/cadastro/cadastroUsuario", $this->global, $data, NULL);
+            if ($tpTela == 'listar') {
+                $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário';
+                $this->loadViews("qualicad/cadastro/l_cadastroUsuario", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'cadastrar') {
+                $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário';
+                $this->loadViews("qualicad/cadastro/c_cadastroUsuario", $this->global, $data, NULL); 
+            }
     }
 
     function cadastroEmpresa()
