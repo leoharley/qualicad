@@ -64,22 +64,6 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Dt_Ativo">Data ativo</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_Ativo'); ?>" id="Dt_Ativo" name="Dt_Ativo">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Dt_Inativo">Data inativo</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_Inativo'); ?>" id="Dt_Inativo" name="Dt_Inativo">
-                                    </div>
-                                </div>                         
-                            </div>
-
                             <div class="row">                                
                                 <div class="col-md-6">
                                     <div class="form-group">
