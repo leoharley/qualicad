@@ -123,18 +123,22 @@ class Cadastro extends BaseController
             $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
             $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
             $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
         //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
             
-            if($this->form_validation->run() == FALSE)
-            {
+        //    if($this->form_validation->run() == FALSE)
+        //    {
 
-                $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
-                $this->global['pageTitle'] = 'QUALICAD : Adicionar usuário';
-                $this->loadViews("c_cadastroUsuario", $this->global, $data, NULL);
+        //        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+        //        $this->global['pageTitle'] = 'QUALICAD : Adicionar usuário';
+        //        $this->loadViews("c_cadastroUsuario", $this->global, $data, NULL);
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //{
+
                 $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
                 $cpf = $this->input->post('Cpf_Usuario');
                 $email = $this->security->xss_clean($this->input->post('Email'));
@@ -160,7 +164,8 @@ class Cadastro extends BaseController
                 }
                 
                 redirect('cadastroUsuario/listar');
-            }
+
+        //    }
     }
 
 }
