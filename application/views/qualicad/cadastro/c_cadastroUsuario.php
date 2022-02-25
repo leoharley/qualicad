@@ -93,13 +93,13 @@ if(!empty($infoUsuario))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Senha">Senha</label>
-                                        <input type="password" class="form-control required" id="Senha" name="Senha" maxlength="20">
+                                        <input type="password" class="form-control <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'required' : '' ; ?>" id="Senha" name="Senha" maxlength="20">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="resenha">Redigite a senha</label>
-                                        <input type="password" class="form-control required equalTo" id="resenha" name="resenha" maxlength="20">
+                                        <input type="password" class="form-control <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'required' : '' ; ?> equalTo" id="resenha" name="resenha" maxlength="20">
                                     </div>
                                 </div>
                             </div>                            
