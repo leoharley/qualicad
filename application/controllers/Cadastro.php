@@ -271,9 +271,9 @@ class Cadastro extends BaseController
     function apagaUsuario()
     {
             $IdUsuario = $this->uri->segment(2);
-            $infoUsuario = array('Deletado'=>'S','AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoUsuario = array('Deletado'=>'S');
             
-            $resultado = $this->CadastroModel->apagaUsuario('18', $infoUsuario);
+            $resultado = $this->CadastroModel->apagaUsuario($IdUsuario, $infoUsuario);
             
             if ($resultado > 0) {
                  echo(json_encode(array('status'=>TRUE)));
