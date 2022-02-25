@@ -68,6 +68,10 @@ class Cadastro extends BaseController
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário';
                 $this->loadViews("qualicad/cadastro/c_cadastroUsuario", $this->global, $data, NULL); 
             }
+            else if ($tpTela == 'editar') {
+                $this->global['pageTitle'] = 'QUALICAD : Editar Usuário';
+                $this->loadViews("qualicad/cadastro/c_cadastroUsuario", $this->global, $data, NULL); 
+            }
     }
 
     function cadastroEmpresa()
