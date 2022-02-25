@@ -82,6 +82,17 @@
                       <td>
                         <?php echo ($registro->Dt_Inativo != null) ? date("d/m/Y", strtotime($registro->Dt_Inativo)) : ''; ?>
                       </td>
+                      <td class="text-center">
+                        <!--  <a class="btn btn-sm btn-primary" href="<?= //base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
+                              <i class="fa fa-history"></i>
+                          </a> -->
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editOld/'.$record->userId; ?>" title="Editar">
+                              <i class="fa fa-pencil"></i>
+                          </a>
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'deleteTask/'.$record->id; ?>" data-userid="<?php echo $record->userId; ?>" title="Excluir">
+                              <i class="fa fa-trash"></i>
+                          </a>
+                      </td>
                     </tr>
                     <?php
                           }

@@ -156,7 +156,8 @@ class Cadastro extends BaseController
                 }
                 
                 $infoUsuario = array('Email'=>$nome, 'Senha'=>getHashedPassword($senha), 'Nome_Usuario'=> $nome,
-                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
                                     
                 $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
                 
