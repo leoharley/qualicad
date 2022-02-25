@@ -214,6 +214,8 @@ class Cadastro extends BaseController
             else
             { */
 
+                var_dump ($this->CadastroModel->carregaInfoUsuario($IdUsuario)['Tp_Ativo']);exit;
+
                 $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
                 $cpf = $this->input->post('Cpf_Usuario');
                 $email = $this->security->xss_clean($this->input->post('Email'));
