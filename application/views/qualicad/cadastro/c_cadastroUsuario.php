@@ -12,7 +12,7 @@ if(!empty($infoUsuario))
     foreach ($infoUsuario as $r)
     {
         $Id_Usuario = $r->Id_Usuario;
-        $naNome_Usuariome = $r->Nome_Usuario;
+        $Nome_Usuario = $r->Nome_Usuario;
         $Email = $r->Email;
         $Cpf_Usuario = $r->Cpf_Usuario;
         $Tp_Ativo = $r->Tp_Ativo;
