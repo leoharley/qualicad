@@ -26,8 +26,8 @@ if(!empty($infoUsuario))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Usuários
-            <small>Adicionar</small>
+            <i class="fa fa-users"></i> <? ($this->uri->segment(2) == 'adicionar') ? 'Cadastrar Usuários' : 'Editar Usuários' ; ?>
+            <small><? ($this->uri->segment(2) == 'adicionar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
