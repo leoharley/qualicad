@@ -378,7 +378,7 @@ class Cadastro extends BaseController
     {
             $this->load->library('form_validation');
             
-            $IdUsuario = $this->input->post('Id_Usuario');
+            $IdEmpresa = $this->input->post('Id_Empresa');
 
             //VALIDAÇÃO
             
@@ -396,57 +396,55 @@ class Cadastro extends BaseController
             else
             { */
 
-                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                $cpf = $this->input->post('Cpf_Usuario');
-                $email = $this->security->xss_clean($this->input->post('Email'));
-                $senha = $this->input->post('Senha');
-                $tpativo = $this->input->post('Tp_Ativo');
+                $Nome_Empresa = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Empresa'))));
+                $CNPJ = $this->input->post('CNPJ');
+                $Email_Empresa = $this->security->xss_clean($this->input->post('Email_Empresa'));
+                $Cd_EmpresaERP = $this->input->post('Cd_EmpresaERP');
+                $End_Empresa = $this->input->post('End_Empresa');
+                $Nome_Contato = $this->input->post('Nome_Contato');
+                $Telefone = $this->input->post('Telefone');
+                $Dt_Valida_Contrato = $this->input->post('Dt_Valida_Contrato');
+                $Tp_Ativo = $this->input->post('Tp_Ativo');     
 
-                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
-                    $tpativoatual = ($data->Tp_Ativo);
+                foreach ($this->CadastroModel->carregaInfoEmpresa($IdEmpresa) as $data){
+                    $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
 
-                if ($tpativoatual == 'N' && $tpativo == 'S')
+                if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
                 {
-                    $dtativo = date('Y-m-d H:i:s');
-                    $dtinativo = null;
-                } else if ($tpativo == 'N')
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                    $Dt_Inativo = null;
+                } else if ($Tp_Ativo == 'N')
                 {
-                    $dtativo = null;
-                    $dtinativo = date('Y-m-d H:i:s');
+                    $Dt_Ativo = null;
+                    $Dt_Inativo = date('Y-m-d H:i:s');
                 }
                 
-                $infoUsuario = array();
+                $infoEmpresa = array();
                 
-                if(empty($senha))
-                {
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email,
-                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                else
-                {
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>getHashedPassword($senha),
-                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
                 
-                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+                $infoEmpresa = array('Nome_Empresa'=> $Nome_Empresa, 'CNPJ'=>$CNPJ, 'Email_Empresa'=>$Email_Empresa,
+                                    'Cd_EmpresaERP'=>$Cd_EmpresaERP, 'End_Empresa'=>$End_Empresa, 'Nome_Contato'=>$Nome_Contato,
+                                    'Telefone'=>$Telefone, 'Dt_Valida_Contrato'=>$Dt_Valida_Contrato, 'Tp_Ativo'=>$Tp_Ativo,
+                                    'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+                
+                
+                $resultado = $this->CadastroModel->editaEmpresa($infoEmpresa, $IdEmpresa);
                 
                 if($resultado == true)
                 {
-                    $process = 'Usuário atualizado';
-                    $processFunction = 'Cadastro/editaUsuario';
+                    $process = 'Empresa atualizada';
+                    $processFunction = 'Cadastro/editaEmpresa';
                     $this->logrecord($process,$processFunction);
 
-                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                    $this->session->set_flashdata('success', 'Empresa atualizada com sucesso');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                    $this->session->set_flashdata('error', 'Falha na atualização da empresa');
                 }
                 
-                redirect('cadastroUsuario/listar');
+                redirect('cadastroEmpresa/listar');
            // }
     }
 
