@@ -31,7 +31,7 @@ class CadastroModel extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function l_cadastroUsuario($searchText = '', $page, $segment)
+    function listaUsuarios($searchText = '', $page, $segment)
     {
         $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email');
         $this->db->from('TabUsuario as Usuarios');
