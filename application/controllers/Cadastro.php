@@ -166,7 +166,7 @@ class Cadastro extends BaseController
                     $dtativo = null;
                 }
                 
-                $infoUsuario = array('Email'=>$nome, 'Senha'=>getHashedPassword($senha), 'Nome_Usuario'=> $nome,
+                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>getHashedPassword($senha),
                                     'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                                     'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
                                     
