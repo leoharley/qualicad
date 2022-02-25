@@ -268,4 +268,22 @@ class Cadastro extends BaseController
            // }
     }
 
+    function apagaUsuario()
+    {
+            $IdUsuario = $this->input->post('Id_Usuario');
+            $infoUsuario = array('Deletado'=>'S','AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->CadastroModel->apagaUsuario($IdUsuario, $infoUsuario);
+            
+            if ($resultado > 0) {
+                 echo(json_encode(array('status'=>TRUE)));
+
+                 $process = 'Exclusão de usuário';
+                 $processFunction = 'Cadastro/apagaUsuario';
+                 $this->logrecord($process,$processFunction);
+
+                }
+            else { echo(json_encode(array('status'=>FALSE))); }
+    }
+
 }

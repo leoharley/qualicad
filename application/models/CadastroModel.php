@@ -70,6 +70,14 @@ class CadastroModel extends CI_Model
         return TRUE;
     }
 
+    function apagaUsuario($infoUsuario, $IdUsuario)
+    {
+        $this->db->where('Id_Usuario', $IdUsuario);
+        $this->db->update('TabUsuario', $infoUsuario);
+        
+        return $this->db->affected_rows();
+    }
+
 
     
     /**

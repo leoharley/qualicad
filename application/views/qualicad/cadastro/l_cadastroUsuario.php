@@ -89,7 +89,7 @@
                           <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroUsuario/editar/'.$registro->Id_Usuario; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="#" data-userid="<?php echo $registro->Id_Usuario; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaUsuario'; ?>" data-userid="<?php echo $registro->Id_Usuario; ?>" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
