@@ -90,7 +90,7 @@
                               <i class="fa fa-pencil"></i>
                           </a>
                           <a class="btn btn-sm btn-danger deleteUser" href="#" data-userid="<?php echo $registro->Id_Usuario; ?>" title="Excluir">
-                              <i class="fa fa-delete"></i>
+                              <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
                     </tr>
