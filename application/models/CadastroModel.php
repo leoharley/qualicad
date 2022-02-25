@@ -31,6 +31,8 @@ class CadastroModel extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
+
+// INICIO DAS CONSULTAS NA TELA DE USUÁRIO
     function listaUsuarios($searchText = '', $page, $segment)
     {
         $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email');
@@ -78,6 +80,77 @@ class CadastroModel extends CI_Model
         return $this->db->affected_rows();
     }
 
+    function carregaInfoUsuario($IdUsuario)
+    {
+        $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
+        $this->db->from('TabUsuario');
+        $this->db->where('Id_Usuario', $IdUsuario);
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
+// FIM DAS CONSULTAS NA TELA DE USUÁRIO
+    
+// INICIO DAS CONSULTAS NA TELA DE EMPRESA
+function listaEmpresas($searchText = '', $page, $segment)
+{
+    $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa, Empresas.CNPJ, Empresas.Cd_EmpresaERP, Empresas.End_Empresa, Empresas.Nome_Contato, 
+    Empresas.Telefone, Empresas.Email_Empresa, Empresas.Dt_Valida_Contrato, Empresas.Tp_Ativo, Empresas.Dt_Ativo, Empresas.Dt_Inativo');
+    $this->db->from('TbEmpresa as Empresas');
+//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+    if(!empty($searchText)) {
+        $likeCriteria = "(Empresas.Email_Empresa  LIKE '%".$searchText."%'
+                        OR  Empresas.Nome_Empresa  LIKE '%".$searchText."%'
+                        OR  Empresas.CNPJ  LIKE '%".$searchText."%')";
+        $this->db->where($likeCriteria);
+    }
+    $this->db->where('Empresas.Deletado', 'N');
+    $this->db->limit($page, $segment);
+    $query = $this->db->get();
+    
+    $result = $query->result();        
+    return $result;
+}
+
+function adicionaEmpresa($infoEmpresa)
+{
+    $this->db->trans_start();
+    $this->db->insert('TbEmpresa', $infoEmpresa);
+    
+    $insert_id = $this->db->insert_id();
+    
+    $this->db->trans_complete();
+    
+    return $insert_id;
+}
+
+function editaEmpresa($infoEmpresa, $IdEmpresa)
+{
+    $this->db->where('Id_Empresa', $IdEmpresa);
+    $this->db->update('TbEmpresa', $infoEmpresa);
+    
+    return TRUE;
+}
+
+function apagaEmpresa($infoEmpresa, $IdEmpresa)
+{
+    $this->db->where('Id_Empresa', $IdEmpresa);
+    $this->db->update('TbEmpresa', $infoEmpresa);
+    
+    return $this->db->affected_rows();
+}
+
+function carregaInfoEmpresa($IdEmpresa)
+{
+    $this->db->select('Id_Empresa, Nome_Empresa, CNPJ, Cd_EmpresaERP, End_Empresa, Nome_Contato,
+    Telefone, Email_Empresa, Dt_Valida_Contrato, Tp_Ativo');
+    $this->db->from('TbEmpresa');
+    $this->db->where('Id_Usuario', $IdUsuario);
+    $query = $this->db->get();
+    
+    return $query->result();
+}
+// FIM DAS CONSULTAS NA TELA DE EMPRESA
 
     
     /**
@@ -93,15 +166,6 @@ class CadastroModel extends CI_Model
         return $query->result();
     }
 
-    function carregaInfoUsuario($IdUsuario)
-    {
-        $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
-        $this->db->from('TabUsuario');
-        $this->db->where('Id_Usuario', $IdUsuario);
-        $query = $this->db->get();
-        
-        return $query->result();
-    }
 
     /**
      * This function is used to check whether email id is already exist or not

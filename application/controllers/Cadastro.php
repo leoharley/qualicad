@@ -38,6 +38,8 @@ class Cadastro extends BaseController
         }
     }
 
+    // INICIO DAS FUNÇÕES DA TELA DE USUÁRIO
+
     function cadastroUsuario()
     {
             $tpTela = $this->uri->segment(2);
@@ -79,51 +81,6 @@ class Cadastro extends BaseController
                 $this->global['pageTitle'] = 'QUALICAD : Editar usuário';      
                 $this->loadViews("qualicad/cadastro/c_cadastroUsuario", $this->global, $data, NULL);
             }
-    }
-
-    function cadastroEmpresa()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
-
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Empresa';
-
-        $this->loadViews("qualicad/cadastro/cadastroEmpresa", $this->global, $data, NULL);
-    }
-
-    function cadastroUsuarioEmpresa()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
-
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário/Empresa/Permissão';
-
-        $this->loadViews("qualicad/cadastro/cadastroUsuarioEmpresa", $this->global, $data, NULL);
-    }
-
-    function cadastroPerfil()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
-
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Perfil';
-
-        $this->loadViews("qualicad/cadastro/cadastroPerfil", $this->global, $data, NULL);
-    }
-
-    function cadastroPermissao()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
-
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Permissões';
-
-        $this->loadViews("qualicad/cadastro/cadastroPermissao", $this->global, $data, NULL);
-    }
-
-    function cadastroTelas()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
-
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Telas';
-
-        $this->loadViews("qualicad/cadastro/cadastroTelas", $this->global, $data, NULL);
     }
 
     function adicionaUsuario() 
@@ -294,6 +251,269 @@ class Cadastro extends BaseController
                     $this->session->set_flashdata('error', 'Falha em excluir o usuário');
                 }
                 redirect('cadastroUsuario/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE USUÁRIO
+
+    // INICIO DAS FUNÇÕES DA TELA DE EMPRESA
+
+    function cadastroEmpresa()
+    {
+            $tpTela = $this->uri->segment(2);
+
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+            if ($tpTela == 'listar') {
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "cadastroEmpresa/listar", $count, 10 );
+                
+                $data['registrosEmpresas'] = $this->CadastroModel->listaEmpresas($searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar empresas';
+                $processFunction = 'Cadastro/cadastroEmpresa';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Empresa';
+                
+                $this->loadViews("qualicad/cadastro/l_cadastroEmpresa", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'cadastrar') {
+                $this->global['pageTitle'] = 'QUALICAD : Cadastro de Empresa';
+                $this->loadViews("qualicad/cadastro/c_cadastroEmpresa", $this->global, $data, NULL); 
+            }
+            else if ($tpTela == 'editar') {
+                $IdEmpresa = $this->uri->segment(3);
+                if($IdEmpresa == null)
+                {
+                    redirect('cadastroEmpresa/listar');
+                }
+                $data['infoEmpresa'] = $this->CadastroModel->carregaInfoEmpresa($IdEmpresa);
+                $this->global['pageTitle'] = 'QUALICAD : Editar empresa';      
+                $this->loadViews("qualicad/cadastro/c_cadastroEmpresa", $this->global, $data, NULL);
+            }
+    }
+
+    function adicionaEmpresa() 
+    {
+            $this->load->library('form_validation');
+            
+            $this->form_validation->set_rules('Nome_Empresa','Nome','trim|required|max_length[128]');
+            $this->form_validation->set_rules('CNPJ','CNPJ','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Cd_EmpresaERP','Cd_EmpresaERP','trim|required|max_length[128]');
+            $this->form_validation->set_rules('End_Empresa','Endereço','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Nome_Contato','Contato','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Telefone','Telefone','trim|required|max_length[20]');
+            $this->form_validation->set_rules('Email_Empresa','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('Dt_Valida_Contrato','Validade do Contrato','trim|required|max_length[128]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+            
+        //    if($this->form_validation->run() == FALSE)
+        //    {
+
+        //        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+        //        $this->global['pageTitle'] = 'QUALICAD : Adicionar usuário';
+        //        $this->loadViews("c_cadastroUsuario", $this->global, $data, NULL);
+
+        //    }
+        //    else
+        //{
+
+                $Nome_Empresa = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Empresa'))));
+                $CNPJ = $this->input->post('CNPJ');
+                $Email_Empresa = $this->security->xss_clean($this->input->post('Email_Empresa'));
+                $Cd_EmpresaERP = $this->input->post('Cd_EmpresaERP');
+                $End_Empresa = $this->input->post('End_Empresa');
+                $Nome_Contato = $this->input->post('Nome_Contato');
+                $Telefone = $this->input->post('Telefone');
+                $Dt_Valida_Contrato = $this->input->post('Dt_Valida_Contrato');
+                $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            //    $roleId = $this->input->post('role');
+
+                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S') 
+                { 
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $Dt_Ativo = null;
+                }
+                
+                $infoEmpresa = array('Nome_Empresa'=> $Nome_Empresa, 'CNPJ'=>$CNPJ, 'Email_Empresa'=>$Email_Empresa,
+                                    'Cd_EmpresaERP'=>$Cd_EmpresaERP, 'End_Empresa'=>$End_Empresa, 'Nome_Contato'=>$Nome_Contato,
+                                    'Telefone'=>$Telefone, 'Dt_Valida_Contrato'=>$Dt_Valida_Contrato, 'Tp_Ativo'=>$Tp_Ativo,
+                                    'Dt_Ativo'=>$Dt_Ativo);
+                                    
+                $result = $this->CadastroModel->adicionaEmpresa($infoEmpresa);
+                
+                if($result > 0)
+                {
+                    $process = 'Adicionar empresa';
+                    $processFunction = 'Cadastro/adicionaEmpresa';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Empresa criado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do empresa');
+                }
+                
+                redirect('cadastroEmpresa/listar');
+
+        //    }
+    }
+
+
+    function editaEmpresa()
+    {
+            $this->load->library('form_validation');
+            
+            $IdUsuario = $this->input->post('Id_Usuario');
+
+            //VALIDAÇÃO
+            
+         /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+            $this->form_validation->set_rules('role','Role','trim|required|numeric');
+            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+            
+            if($this->form_validation->run() == FALSE)
+            { 
+                $this->editOld($userId);
+            }
+            else
+            { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+
+                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                    $tpativoatual = ($data->Tp_Ativo);
+                }
+
+                if ($tpativoatual == 'N' && $tpativo == 'S')
+                {
+                    $dtativo = date('Y-m-d H:i:s');
+                    $dtinativo = null;
+                } else if ($tpativo == 'N')
+                {
+                    $dtativo = null;
+                    $dtinativo = date('Y-m-d H:i:s');
+                }
+                
+                $infoUsuario = array();
+                
+                if(empty($senha))
+                {
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email,
+                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                else
+                {
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>getHashedPassword($senha),
+                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                
+                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+                
+                if($resultado == true)
+                {
+                    $process = 'Usuário atualizado';
+                    $processFunction = 'Cadastro/editaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                }
+                
+                redirect('cadastroUsuario/listar');
+           // }
+    }
+
+    function apagaEmpresa()
+    {
+            $IdUsuario = $this->uri->segment(2);
+
+            $infoUsuario = array();
+
+            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                 $process = 'Exclusão de usuário';
+                 $processFunction = 'Cadastro/apagaUsuario';
+                 $this->logrecord($process,$processFunction);
+
+                 $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                }
+                redirect('cadastroUsuario/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE EMPRESA
+
+
+    function cadastroUsuarioEmpresa()
+    {
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário/Empresa/Permissão';
+
+        $this->loadViews("qualicad/cadastro/cadastroUsuarioEmpresa", $this->global, $data, NULL);
+    }
+
+    function cadastroPerfil()
+    {
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Perfil';
+
+        $this->loadViews("qualicad/cadastro/cadastroPerfil", $this->global, $data, NULL);
+    }
+
+    function cadastroPermissao()
+    {
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Permissões';
+
+        $this->loadViews("qualicad/cadastro/cadastroPermissao", $this->global, $data, NULL);
+    }
+
+    function cadastroTelas()
+    {
+        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
+
+        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Telas';
+
+        $this->loadViews("qualicad/cadastro/cadastroTelas", $this->global, $data, NULL);
     }
 
 }

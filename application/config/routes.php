@@ -16,7 +16,9 @@ $route['logout'] = 'user/logout';
 $route['cadastroUsuario/:any/:any'] = "cadastro/cadastroUsuario/$1/$2";
 $route['cadastroUsuario/:any'] = "cadastro/cadastroUsuario/$1";
 
+$route['cadastroEmpresa/:any/:any'] = "cadastro/cadastroEmpresa/$1/$2";
 $route['cadastroEmpresa/:any'] = "cadastro/cadastroEmpresa/$1";
+
 $route['cadastroUsuarioEmpresa/:any'] = "cadastro/cadastroUsuarioEmpresa/$1";
 $route['cadastroPerfil/:any'] = "cadastro/cadastroPerfil/$1";
 $route['cadastroPermissao/:any'] = "cadastro/cadastroPermissao/$1";
@@ -26,6 +28,11 @@ $route['cadastroTelas/:any'] = "cadastro/cadastroTelas/$1";
 $route['adicionaUsuario'] = "cadastro/adicionaUsuario";
 $route['editaUsuario'] = "cadastro/editaUsuario";
 $route['apagaUsuario/:any'] = "cadastro/apagaUsuario/$1";
+
+/*********** ROUTES PARA AÇÕES DA TELA EMPRESA *******************/
+$route['adicionaEmpresa'] = "cadastro/adicionaEmpresa";
+$route['editaEmpresa'] = "cadastro/editaEmpresa";
+$route['apagaEmpresa/:any'] = "cadastro/apagaEmpresa/$1";
 
 
 /*********** ROUTES DO PRINCIPAL *******************/
