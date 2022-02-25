@@ -75,6 +75,16 @@ class CadastroModel extends CI_Model
         return $query->result();
     }
 
+    function carregaInfoUsuario($IdUsuario)
+    {
+        $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
+        $this->db->from('TabUsuario');
+        $this->db->where('Id_Usuario', $IdUsuario);
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
+
     /**
      * This function is used to check whether email id is already exist or not
      * @param {string} $email : This is email id

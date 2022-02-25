@@ -1,3 +1,24 @@
+<?php
+$userId = '';
+$name = '';
+$email = '';
+$mobile = '';
+$roleId = '';
+
+if(!empty($infoUsuario))
+{
+    foreach ($infoUsuario as $uf)
+    {
+        $userId = $uf->userId;
+        $name = $uf->name;
+        $email = $uf->email;
+        $mobile = $uf->mobile;
+        $roleId = $uf->roleId;
+    }
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -32,6 +53,7 @@
                                     <div class="form-group">
                                         <label for="Nome_Usuario">Nome</label>
                                         <input type="text" class="form-control required" value="<?php echo set_value('Nome_Usuario'); ?>" id="Nome_Usuario" name="Nome_Usuario" maxlength="128">
+                                        <input type="hidden" value="<?php echo $userId; ?>" name="userId" id="userId" />
                                     </div>
                                 </div>
                                 

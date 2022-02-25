@@ -70,8 +70,14 @@ class Cadastro extends BaseController
                 $this->loadViews("qualicad/cadastro/c_cadastroUsuario", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
-                $this->global['pageTitle'] = 'QUALICAD : Editar Usuário';
-                $this->loadViews("qualicad/cadastro/c_cadastroUsuario", $this->global, $data, NULL); 
+                $IdUsuario = $this->uri->segment(3);
+                if($IdUsuario == null)
+                {
+                    redirect('cadastroUsuario/listar');
+                }
+                $data['infoUsuario'] = $this->CadastroModel->carregaInfoUsuario($IdUsuario);
+                $this->global['pageTitle'] = 'QUALICAD : Editar usuário';      
+                $this->loadViews("qualicad/cadastro/c_cadastroUsuario", $this->global, $data, NULL);
             }
     }
 
