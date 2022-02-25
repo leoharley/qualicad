@@ -214,7 +214,10 @@ class Cadastro extends BaseController
             else
             { */
 
-                var_dump (($this->CadastroModel->carregaInfoUsuario($IdUsuario)[0])=>'Tp_Ativo');exit;
+                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                    var_dump ($data->Tp_Ativo);
+                }
+                exit;
 
                 $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
                 $cpf = $this->input->post('Cpf_Usuario');
