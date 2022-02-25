@@ -18,12 +18,12 @@
 
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Preencha os campos abaixos<?php echo $this->uri->segment(2); ?></h3>
+                        <h3 class="box-title">Preencha os campos abaixos</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>adicionaUsuario" method="post" role="form">
+                    <form role="form" id="addUser" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaUsuario' : base_url().'editaUsuario'; " method="post" role="form">
                         <div class="box-body">
                             <div class="row">
 
