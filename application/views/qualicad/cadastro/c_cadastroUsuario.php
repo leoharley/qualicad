@@ -55,7 +55,7 @@ if(!empty($infoUsuario))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Nome_Usuario">Nome</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') set_value('Nome_Usuario') : $Nome_Usuario ; ?>" id="Nome_Usuario" name="Nome_Usuario" maxlength="128">
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Nome_Usuario') : $Nome_Usuario ; ?>" id="Nome_Usuario" name="Nome_Usuario" maxlength="128">
                                         <input type="hidden" value="<?php echo $userId; ?>" name="userId" id="userId" />
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@ if(!empty($infoUsuario))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Cpf_Usuario">CPF</label>
-                                        <input type="text" class="form-control required cpf_usuario" id="Cpf_Usuario" value="<?php echo ($this->uri->segment(2) == 'cadastrar') set_value('Cpf_Usuario') : $Cpf_Usuario; ?>" name="Cpf_Usuario"
+                                        <input type="text" class="form-control required cpf_usuario" id="Cpf_Usuario" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cpf_Usuario') : $Cpf_Usuario; ?>" name="Cpf_Usuario"
                                             maxlength="11">
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@ if(!empty($infoUsuario))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Email">Email</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') set_value('Email') : $Email; ?>" id="Email" name="Email" maxlength="128">
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Email') : $Email; ?>" id="Email" name="Email" maxlength="128">
                                     </div>
                                 </div>
 
