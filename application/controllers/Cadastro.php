@@ -279,14 +279,21 @@ class Cadastro extends BaseController
             $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
             
             if ($resultado > 0) {
-                 echo(json_encode(array('status'=>TRUE)));
+                // echo(json_encode(array('status'=>TRUE)));
 
                  $process = 'Exclusão de usuário';
                  $processFunction = 'Cadastro/apagaUsuario';
                  $this->logrecord($process,$processFunction);
 
+                 $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+
                 }
-            else { echo(json_encode(array('status'=>FALSE))); }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                }
+                redirect('cadastroUsuario/listar');
     }
 
 }
