@@ -18,7 +18,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Preencha os campos abaixos<?php echo $this->uri->segment(3); ?></h3>
+                        <h3 class="box-title">Preencha os campos abaixos<?php echo $this->uri->segment(2); ?></h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
