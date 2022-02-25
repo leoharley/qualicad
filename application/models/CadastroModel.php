@@ -74,8 +74,8 @@ class CadastroModel extends CI_Model
     {
         $this->db->where('Id_Usuario', $IdUsuario);
         $this->db->update('TabUsuario', $infoUsuario);
-
-        return TRUE;
+        
+        return $this->db->affected_rows();
     }
 
 
