@@ -42,7 +42,7 @@ class CadastroModel extends CI_Model
                             OR  Usuarios.Cpf_Usuario  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-   //     $this->db->where('Usuarios.tp_Ativo', 'S');
+        $this->db->where('Usuarios.Deletado', 'N');
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
