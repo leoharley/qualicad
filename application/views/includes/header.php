@@ -145,15 +145,15 @@
                   </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>cadastroUsuarioEmpresa/listar">
-                        <i class="fa fa-th"></i>
-                        <span>Usuário/Empresa</span>
-                    </a>
-                </li>
-                <li class="treeview">
                     <a href="<?php echo base_url(); ?>cadastroPerfil/listar">
                         <i class="fa fa-th"></i>
                         <span>Perfil</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>cadastroTelas/listar">
+                        <i class="fa fa-th"></i>
+                        <span>Telas</span>
                     </a>
                 </li>
                 <li class="treeview">
@@ -163,11 +163,11 @@
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>cadastroTelas/listar">
+                    <a href="<?php echo base_url(); ?>cadastroUsuarioEmpresa/listar">
                         <i class="fa fa-th"></i>
-                        <span>Telas</span>
+                        <span>Usuário/Empresa</span>
                     </a>
-                </li>
+                </li>    
 
                 <hr>
                 <li class="treeview">
