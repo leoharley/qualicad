@@ -145,7 +145,7 @@ function carregaInfoEmpresa($IdEmpresa)
     $this->db->select('Id_Empresa, Nome_Empresa, CNPJ, Cd_EmpresaERP, End_Empresa, Nome_Contato,
     Telefone, Email_Empresa, Dt_Valida_Contrato, Tp_Ativo');
     $this->db->from('TbEmpresa');
-    $this->db->where('Id_Usuario', $IdUsuario);
+    $this->db->where('Id_Usuario', $IdEmpresa);
     $query = $this->db->get();
     
     return $query->result();
