@@ -22,6 +22,7 @@ $route['cadastroPerfil/:any'] = "cadastro/cadastroPerfil/$1";
 $route['cadastroPermissao/:any'] = "cadastro/cadastroPermissao/$1";
 $route['cadastroTelas/:any'] = "cadastro/cadastroTelas/$1";
 
+/*********** ROUTES PARA AÇÕES DA TELA USUÁRIO *******************/
 $route['adicionaUsuario'] = "cadastro/adicionaUsuario";
 $route['editaUsuario'] = "cadastro/editaUsuario";
 $route['apagaUsuario/:any'] = "cadastro/apagaUsuario/$1";

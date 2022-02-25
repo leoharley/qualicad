@@ -51,6 +51,7 @@
                     <th>Usuário ativo?</th>
                     <th>Data ativo</th>
                     <th>Data inativo</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
