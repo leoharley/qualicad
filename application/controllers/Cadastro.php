@@ -214,18 +214,17 @@ class Cadastro extends BaseController
             else
             { */
 
-                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
-                    var_dump ($data->Tp_Ativo);
-                }
-                exit;
-
                 $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
                 $cpf = $this->input->post('Cpf_Usuario');
                 $email = $this->security->xss_clean($this->input->post('Email'));
                 $senha = $this->input->post('Senha');
                 $tpativo = $this->input->post('Tp_Ativo');
 
-                if ($this->CadastroModel->carregaInfoUsuario($IdUsuario)['Tp_Ativo'] == 'N' && $tpativo == 'S')
+                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                    $tpativoatual = ($data->Tp_Ativo);
+                }
+
+                if ($tpativoatual == 'N' && $tpativo == 'S')
                 {
                     $dtativo = date('Y-m-d H:i:s');
                 } else if ($tpativo == 'N')
