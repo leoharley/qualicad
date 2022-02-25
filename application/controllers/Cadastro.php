@@ -450,30 +450,30 @@ class Cadastro extends BaseController
 
     function apagaEmpresa()
     {
-            $IdUsuario = $this->uri->segment(2);
+            $IdEmpresa = $this->uri->segment(2);
 
-            $infoUsuario = array();
+            $infoEmpresa = array();
 
-            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoEmpresa = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
-            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            $resultado = $this->CadastroModel->apagaEmpresa($infoEmpresa, $IdEmpresa);
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
 
-                 $process = 'Exclusão de usuário';
-                 $processFunction = 'Cadastro/apagaUsuario';
+                 $process = 'Exclusão de empresa';
+                 $processFunction = 'Cadastro/apagaEmpresa';
                  $this->logrecord($process,$processFunction);
 
-                 $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+                 $this->session->set_flashdata('success', 'Empresa deletada com sucesso');
 
                 }
                 else 
                 { 
                     //echo(json_encode(array('status'=>FALSE))); 
-                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                    $this->session->set_flashdata('error', 'Falha em excluir a empresa');
                 }
-                redirect('cadastroUsuario/listar');
+                redirect('cadastroEmpresa/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE EMPRESA
 
