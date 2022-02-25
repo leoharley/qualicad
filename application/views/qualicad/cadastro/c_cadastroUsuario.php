@@ -26,8 +26,8 @@ if(!empty($infoUsuario))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'adicionar') ? 'Cadastrar Usuários' : 'Editar Usuários' ; ?>
-            <small><?php echo ($this->uri->segment(2) == 'adicionar') ? 'Adicionar' : 'Editar' ; ?></small>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Usuários' : 'Editar Usuários' ; ?>
+            <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
@@ -82,7 +82,7 @@ if(!empty($infoUsuario))
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Usuário ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
-                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'adicionar') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
 											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
