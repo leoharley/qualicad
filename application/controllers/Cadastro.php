@@ -41,7 +41,7 @@ class Cadastro extends BaseController
     function cadastroUsuario()
     {
             $tpTela = $this->uri->segment(2);
-            var_dump($tpTela);exit;
+
             $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
             if ($tpTela == 'listar') {
