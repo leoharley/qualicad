@@ -219,6 +219,14 @@ class Cadastro extends BaseController
                 $email = $this->security->xss_clean($this->input->post('Email'));
                 $senha = $this->input->post('Senha');
                 $tpativo = $this->input->post('Tp_Ativo');
+
+                if ($this->CadastroModel->carregaInfoUsuario($IdUsuario)['Tp_Ativo'] == 'N' && $tpativo == 'S')
+                {
+                    $dtativo = date('Y-m-d H:i:s');
+                } else if ($tpativo == 'N')
+                {
+                    $dtativo = null;
+                }
                 
                 $infoUsuario = array();
                 

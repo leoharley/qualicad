@@ -69,6 +69,8 @@ class CadastroModel extends CI_Model
         
         return TRUE;
     }
+
+
     
     /**
      * This function is used to get the user roles information
