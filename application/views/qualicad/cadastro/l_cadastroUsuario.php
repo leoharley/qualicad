@@ -86,10 +86,10 @@
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editOld/'.$record->userId; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editOld/'.$registro->Id_Usuario; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'deleteTask/'.$record->id; ?>" data-userid="<?php echo $record->userId; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="#" data-userid="<?php echo $registro->Id_Usuario; ?>" title="Excluir">
                               <i class="fa fa-trash"></i>
                           </a>
                       </td>
