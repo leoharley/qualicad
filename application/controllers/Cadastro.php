@@ -227,9 +227,11 @@ class Cadastro extends BaseController
                 if ($tpativoatual == 'N' && $tpativo == 'S')
                 {
                     $dtativo = date('Y-m-d H:i:s');
+                    $dtinativo = null;
                 } else if ($tpativo == 'N')
                 {
                     $dtativo = null;
+                    $dtinativo = date('Y-m-d H:i:s');
                 }
                 
                 $infoUsuario = array();
@@ -238,13 +240,13 @@ class Cadastro extends BaseController
                 {
                     $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email,
                                         'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
                 }
                 else
                 {
                     $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>getHashedPassword($senha),
                                 'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
                 }
                 
                 $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
