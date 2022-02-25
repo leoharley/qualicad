@@ -82,7 +82,7 @@ if(!empty($infoUsuario))
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Usuário ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
-                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if { ($this->uri->segment(2) == 'adicionar') {echo 'selected'; } ?>>Sim</option>
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'adicionar') { echo 'selected'; } ?>>Sim</option>
 											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
