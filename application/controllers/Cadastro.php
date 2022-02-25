@@ -274,7 +274,7 @@ class Cadastro extends BaseController
 
             $infoUsuario = array();
 
-            $infoUsuario = array('Deletdo'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
             $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
             
