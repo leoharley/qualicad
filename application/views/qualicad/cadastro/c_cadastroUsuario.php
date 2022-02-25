@@ -56,7 +56,7 @@ if(!empty($infoUsuario))
                                     <div class="form-group">
                                         <label for="Nome_Usuario">Nome</label>
                                         <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Nome_Usuario') : $Nome_Usuario ; ?>" id="Nome_Usuario" name="Nome_Usuario" maxlength="128">
-                                        <input type="hidden" value="<?php echo $userId; ?>" name="userId" id="userId" />
+                                        <input type="hidden" value="<?php echo $Id_Usuario; ?>" name="Id_Usuario" id="Id_Usuario" />
                                     </div>
                                 </div>
                                 
