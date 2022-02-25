@@ -270,7 +270,7 @@ class Cadastro extends BaseController
 
     function apagaUsuario()
     {
-            $IdUsuario = $this->uri->segment(3);
+            $IdUsuario = $this->uri->segment(2);
             var_dump($IdUsuario);exit;
             $infoUsuario = array('Deletado'=>'S','AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
