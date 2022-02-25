@@ -24,7 +24,7 @@ $route['cadastroTelas/:any'] = "cadastro/cadastroTelas/$1";
 
 $route['adicionaUsuario'] = "cadastro/adicionaUsuario";
 $route['editaUsuario'] = "cadastro/editaUsuario";
-$route['apagaUsuario'] = "cadastro/apagaUsuario";
+$route['apagaUsuario/:any'] = "cadastro/apagaUsuario/$1";
 
 
 /*********** ROUTES DO PRINCIPAL *******************/
