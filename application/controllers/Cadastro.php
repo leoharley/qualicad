@@ -645,30 +645,28 @@ class Cadastro extends BaseController
 
     function apagaPerfil()
     {
-            $IdEmpresa = $this->uri->segment(2);
+            $IdPerfil = $this->uri->segment(2);
 
-            $infoEmpresa = array();
-
-            $infoEmpresa = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoPerfil = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
-            $resultado = $this->CadastroModel->apagaEmpresa($infoEmpresa, $IdEmpresa);
+            $resultado = $this->CadastroModel->apagaPerfil($infoPerfil, $IdPerfil);
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
 
-                 $process = 'Exclusão de empresa';
-                 $processFunction = 'Cadastro/apagaEmpresa';
+                 $process = 'Exclusão de perfil';
+                 $processFunction = 'Cadastro/apagaPerfil';
                  $this->logrecord($process,$processFunction);
 
-                 $this->session->set_flashdata('success', 'Empresa deletada com sucesso');
+                 $this->session->set_flashdata('success', 'Perfil deletado com sucesso');
 
                 }
                 else 
                 { 
                     //echo(json_encode(array('status'=>FALSE))); 
-                    $this->session->set_flashdata('error', 'Falha em excluir a empresa');
+                    $this->session->set_flashdata('error', 'Falha em excluir o perfil');
                 }
-                redirect('cadastroEmpresa/listar');
+                redirect('cadastroPerfil/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE PERFIL
 
