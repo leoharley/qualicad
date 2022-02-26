@@ -67,15 +67,6 @@
                         <?php echo $registro->Ds_Perfil ?>
                       </td>
                       <td>
-                        <?php echo $registro->Dt_Ativo ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->Dt_Inativo ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->Tp_Ativo ?>
-                      </td>
-                      <td>
                         <?php echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
                       </td>
                       <td>
