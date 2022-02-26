@@ -1,9 +1,28 @@
+<?php
+
+$Id_CdPerfil  = '';
+$Ds_Perfil = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoPerfil))
+{
+    foreach ($infoPerfil as $r)
+    {
+        $Id_CdPerfil = $r->Id_CdPerfil;
+        $Ds_Perfil = $r->Ds_Perfil;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Perfil
-            <small>Adicionar</small>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Perfil' : 'Editar Perfil' ; ?>
+            <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
@@ -23,13 +42,23 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addPerfil" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaPerfil' : base_url().'editaPerfil'; ?>" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsperfil">Descrição</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('dsperfil'); ?>" id="dsperfil" name="dsperfil" maxlength="128">
+                                        <label for="Ds_Perfil">Descrição</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('Ds_Perfil'); ?>" id="Ds_Perfil" name="Ds_Perfil" maxlength="128">
+                                        <input type="hidden" value="<?php echo $Id_Perfil; ?>" name="Id_Perfil" id="Id_Perfil" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Tp_Ativo">Perfil ativa?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
