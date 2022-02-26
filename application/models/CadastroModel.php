@@ -152,7 +152,66 @@ function carregaInfoEmpresa($IdEmpresa)
 }
 // FIM DAS CONSULTAS NA TELA DE EMPRESA
 
+// INICIO DAS CONSULTAS NA TELA DE PERFIL
+function listaPerfis($searchText = '', $page, $segment)
+{
+    $this->db->select('Perfis.Id_CdPerfil, Perfis.Ds_Perfil, Perfis.CriadoPor, Perfis.AtualizadoPor, Perfis.Dt_Atualizacao, Perfis.Dt_Ativo, 
+    Perfis.Dt_Inativo, Perfis.Tp_Ativo');
+    $this->db->from('TbPerfil as Perfis');
+//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+    if(!empty($searchText)) {
+        $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
+        $this->db->where($likeCriteria);
+    }
+    $this->db->where('Perfis.Deletado', 'N');
+    $this->db->limit($page, $segment);
+    $query = $this->db->get();
     
+    $result = $query->result();        
+    return $result;
+}
+
+function adicionaEmpresa($infoEmpresa)
+{
+    $this->db->trans_start();
+    $this->db->insert('TbEmpresa', $infoEmpresa);
+    
+    $insert_id = $this->db->insert_id();
+    
+    $this->db->trans_complete();
+    
+    return $insert_id;
+}
+
+function editaEmpresa($infoEmpresa, $IdEmpresa)
+{
+    $this->db->where('Id_Empresa', $IdEmpresa);
+    $this->db->update('TbEmpresa', $infoEmpresa);
+    
+    return TRUE;
+}
+
+function apagaEmpresa($infoEmpresa, $IdEmpresa)
+{
+    $this->db->where('Id_Empresa', $IdEmpresa);
+    $this->db->update('TbEmpresa', $infoEmpresa);
+    
+    return $this->db->affected_rows();
+}
+
+function carregaInfoEmpresa($IdEmpresa)
+{
+    $this->db->select('Id_Empresa, Nome_Empresa, CNPJ, Cd_EmpresaERP, End_Empresa, Nome_Contato,
+    Telefone, Email_Empresa, Dt_Valida_Contrato, Tp_Ativo');
+    $this->db->from('TbEmpresa');
+    $this->db->where('Id_Empresa', $IdEmpresa);
+    $query = $this->db->get();
+    
+    return $query->result();
+}
+// FIM DAS CONSULTAS NA TELA DE EMPRESA
+
+
     /**
      * This function is used to get the user roles information
      * @return array $result : This is result of the query
