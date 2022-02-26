@@ -511,8 +511,8 @@ class Cadastro extends BaseController
                 $this->loadViews("qualicad/cadastro/c_cadastroPerfil", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
-                $IdEmpresa = $this->uri->segment(3);
-                if($IdEmpresa == null)
+                $IdPerfil = $this->uri->segment(3);
+                if($IdPerfil == null)
                 {
                     redirect('cadastroPerfil/listar');
                 }
