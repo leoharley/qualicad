@@ -19,8 +19,10 @@ $route['cadastroUsuario/:any'] = "cadastro/cadastroUsuario/$1";
 $route['cadastroEmpresa/:any/:any'] = "cadastro/cadastroEmpresa/$1/$2";
 $route['cadastroEmpresa/:any'] = "cadastro/cadastroEmpresa/$1";
 
-$route['cadastroUsuarioEmpresa/:any'] = "cadastro/cadastroUsuarioEmpresa/$1";
+$route['cadastroPerfil/:any/:any'] = "cadastro/cadastroPerfil/$1/$2";
 $route['cadastroPerfil/:any'] = "cadastro/cadastroPerfil/$1";
+
+$route['cadastroUsuarioEmpresa/:any'] = "cadastro/cadastroUsuarioEmpresa/$1";
 $route['cadastroPermissao/:any'] = "cadastro/cadastroPermissao/$1";
 $route['cadastroTelas/:any'] = "cadastro/cadastroTelas/$1";
 
