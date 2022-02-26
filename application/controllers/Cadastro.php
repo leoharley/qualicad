@@ -517,6 +517,7 @@ class Cadastro extends BaseController
                     redirect('cadastroPerfil/listar');
                 }
                 $data['infoPerfil'] = $this->CadastroModel->carregaInfoPerfil($IdPerfil);
+                var_dump($data);exit;
                 $this->global['pageTitle'] = 'QUALICAD : Editar Perfil';      
                 $this->loadViews("qualicad/cadastro/c_cadastroPerfil", $this->global, $data, NULL);
             }
