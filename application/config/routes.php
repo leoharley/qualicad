@@ -34,6 +34,11 @@ $route['adicionaEmpresa'] = "cadastro/adicionaEmpresa";
 $route['editaEmpresa'] = "cadastro/editaEmpresa";
 $route['apagaEmpresa/:any'] = "cadastro/apagaEmpresa/$1";
 
+/*********** ROUTES PARA AÇÕES DA TELA PERFIL *******************/
+$route['adicionaPerfil'] = "cadastro/adicionaPerfil";
+$route['editaPerfil'] = "cadastro/editaPerfil";
+$route['apagaPerfil/:any'] = "cadastro/apagaPerfil/$1";
+
 
 /*********** ROUTES DO PRINCIPAL *******************/
 $route['principalConvenio'] = "principal/principalConvenio";
