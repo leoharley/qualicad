@@ -171,10 +171,10 @@ function listaPerfis($searchText = '', $page, $segment)
     return $result;
 }
 
-function adicionaEmpresa($infoEmpresa)
+function adicionaPerfil($infoPerfil)
 {
     $this->db->trans_start();
-    $this->db->insert('TbEmpresa', $infoEmpresa);
+    $this->db->insert('TbPerfil', $infoPerfil);
     
     $insert_id = $this->db->insert_id();
     
@@ -183,33 +183,33 @@ function adicionaEmpresa($infoEmpresa)
     return $insert_id;
 }
 
-function editaEmpresa($infoEmpresa, $IdEmpresa)
+function editaPerfil($infoPerfil, $IdPerfil)
 {
-    $this->db->where('Id_Empresa', $IdEmpresa);
-    $this->db->update('TbEmpresa', $infoEmpresa);
+    $this->db->where('Id_CdPerfil', $IdPerfil);
+    $this->db->update('TbPerfil', $infoPerfil);
     
     return TRUE;
 }
 
-function apagaEmpresa($infoEmpresa, $IdEmpresa)
+function apagaPerfil($infoPerfil, $IdPerfil)
 {
-    $this->db->where('Id_Empresa', $IdEmpresa);
-    $this->db->update('TbEmpresa', $infoEmpresa);
+    $this->db->where('Id_CdPerfil', $IdPerfil);
+    $this->db->update('TbPerfil', $infoPerfil);
     
     return $this->db->affected_rows();
 }
 
-function carregaInfoEmpresa($IdEmpresa)
+function carregaInfoPerfil($IdPerfil)
 {
-    $this->db->select('Id_Empresa, Nome_Empresa, CNPJ, Cd_EmpresaERP, End_Empresa, Nome_Contato,
-    Telefone, Email_Empresa, Dt_Valida_Contrato, Tp_Ativo');
-    $this->db->from('TbEmpresa');
-    $this->db->where('Id_Empresa', $IdEmpresa);
+    $this->db->select('Id_CdPerfil , Ds_Perfil, CriadoPor, AtualizadoPor, Dt_Atualizacao, Dt_Ativo,
+    Dt_Inativo, Tp_Ativo');
+    $this->db->from('TbPerfil');
+    $this->db->where('Id_CdPerfil', $IdPerfil);
     $query = $this->db->get();
     
     return $query->result();
 }
-// FIM DAS CONSULTAS NA TELA DE EMPRESA
+// FIM DAS CONSULTAS NA TELA DE PERFIL
 
 
     /**
