@@ -557,7 +557,7 @@ class Cadastro extends BaseController
                     $Dt_Ativo = null;
                 }
                 
-                $infoPerfil = array('Ds_Perfil'=> $Nome_Empresa, 'CriadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
+                $infoPerfil = array('Ds_Perfil'=> $Ds_Perfil, 'CriadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
                                     'Tp_Ativo'=>$Tp_Ativo);
                                     
                 $resultado = $this->CadastroModel->adicionaPerfil($infoPerfil);
