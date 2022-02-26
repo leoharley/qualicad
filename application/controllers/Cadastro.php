@@ -585,7 +585,7 @@ class Cadastro extends BaseController
     {
             $this->load->library('form_validation');
             
-            $IdEmpresa = $this->input->post('Id_Empresa');
+            $IdPerfil = $this->input->post('Id_CdPerfil');
 
             //VALIDAÇÃO
             
@@ -603,17 +603,10 @@ class Cadastro extends BaseController
             else
             { */
 
-                $Nome_Empresa = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Empresa'))));
-                $CNPJ = $this->input->post('CNPJ');
-                $Email_Empresa = $this->security->xss_clean($this->input->post('Email_Empresa'));
-                $Cd_EmpresaERP = $this->input->post('Cd_EmpresaERP');
-                $End_Empresa = $this->input->post('End_Empresa');
-                $Nome_Contato = $this->input->post('Nome_Contato');
-                $Telefone = $this->input->post('Telefone');
-                $Dt_Valida_Contrato = $this->input->post('Dt_Valida_Contrato');
-                $Tp_Ativo = $this->input->post('Tp_Ativo');     
+                $Ds_Perfil = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Perfil'))));
+                $Tp_Ativo = $this->input->post('Tp_Ativo');  
 
-                foreach ($this->CadastroModel->carregaInfoEmpresa($IdEmpresa) as $data){
+                foreach ($this->CadastroModel->carregaInfoPerfil($IdPerfil) as $data){
                     $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
 
@@ -625,33 +618,28 @@ class Cadastro extends BaseController
                 {
                     $Dt_Ativo = null;
                     $Dt_Inativo = date('Y-m-d H:i:s');
-                }
+                }                
                 
-                $infoEmpresa = array();
-                
-                
-                $infoEmpresa = array('Nome_Empresa'=> $Nome_Empresa, 'CNPJ'=>$CNPJ, 'Email_Empresa'=>$Email_Empresa,
-                                    'Cd_EmpresaERP'=>$Cd_EmpresaERP, 'End_Empresa'=>$End_Empresa, 'Nome_Contato'=>$Nome_Contato,
-                                    'Telefone'=>$Telefone, 'Dt_Valida_Contrato'=>$Dt_Valida_Contrato, 'Tp_Ativo'=>$Tp_Ativo,
-                                    'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+                $infoPerfil = array('Ds_Perfil'=> $Ds_Perfil, 'AtualizadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
+                                    'Dt_Inativo'=>$Dt_Inativo,'Tp_Ativo'=>$Tp_Ativo);
                 
                 
-                $resultado = $this->CadastroModel->editaEmpresa($infoEmpresa, $IdEmpresa);
+                $resultado = $this->CadastroModel->editaPerfil($infoPerfil, $IdPerfil);
                 
                 if($resultado == true)
                 {
-                    $process = 'Empresa atualizada';
-                    $processFunction = 'Cadastro/editaEmpresa';
+                    $process = 'Perfil atualizado';
+                    $processFunction = 'Cadastro/editaPerfil';
                     $this->logrecord($process,$processFunction);
 
-                    $this->session->set_flashdata('success', 'Empresa atualizada com sucesso');
+                    $this->session->set_flashdata('success', 'Perfil atualizado com sucesso');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na atualização da empresa');
+                    $this->session->set_flashdata('error', 'Falha na atualização do perfil');
                 }
                 
-                redirect('cadastroEmpresa/listar');
+                redirect('cadastroPerfil/listar');
            // }
     }
 
