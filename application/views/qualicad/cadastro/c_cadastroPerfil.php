@@ -33,8 +33,6 @@ if(!empty($infoPerfil))
             <div class="col-md-8">
                 <!-- general form elements -->
 
-
-
                 <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title">Preencha o campo abaixo</h3>
@@ -48,7 +46,7 @@ if(!empty($infoPerfil))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Ds_Perfil">Descrição</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('Ds_Perfil'); ?>" id="Ds_Perfil" name="Ds_Perfil" maxlength="128">
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Perfil') : $Ds_Perfil ; ?>" id="Ds_Perfil" name="Ds_Perfil" maxlength="128">
                                         <input type="hidden" value="<?php echo $Id_CdPerfil; ?>" name="Id_CdPerfil" id="Id_CdPerfil" />
                                     </div>
                                 </div>
