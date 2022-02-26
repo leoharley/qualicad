@@ -557,27 +557,25 @@ class Cadastro extends BaseController
                     $Dt_Ativo = null;
                 }
                 
-                $infoEmpresa = array('Nome_Empresa'=> $Nome_Empresa, 'CNPJ'=>$CNPJ, 'Email_Empresa'=>$Email_Empresa,
-                                    'Cd_EmpresaERP'=>$Cd_EmpresaERP, 'End_Empresa'=>$End_Empresa, 'Nome_Contato'=>$Nome_Contato,
-                                    'Telefone'=>$Telefone, 'Dt_Valida_Contrato'=>$Dt_Valida_Contrato, 'Tp_Ativo'=>$Tp_Ativo,
-                                    'Dt_Ativo'=>$Dt_Ativo);
+                $infoPerfil = array('Ds_Perfil'=> $Nome_Empresa, 'CriadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
+                                    'Tp_Ativo'=>$Tp_Ativo);
                                     
-                $result = $this->CadastroModel->adicionaEmpresa($infoEmpresa);
+                $resultado = $this->CadastroModel->adicionaPerfil($infoPerfil);
                 
-                if($result > 0)
+                if($resultado > 0)
                 {
-                    $process = 'Adicionar empresa';
-                    $processFunction = 'Cadastro/adicionaEmpresa';
+                    $process = 'Adicionar perfil';
+                    $processFunction = 'Cadastro/adicionaPerfil';
                     $this->logrecord($process,$processFunction);
 
-                    $this->session->set_flashdata('success', 'Empresa criado com sucesso');
+                    $this->session->set_flashdata('success', 'Perfil criado com sucesso');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na criação do empresa');
+                    $this->session->set_flashdata('error', 'Falha na criação do perfil');
                 }
                 
-                redirect('cadastroEmpresa/listar');
+                redirect('cadastroPerfil/listar');
 
         //    }
     }
