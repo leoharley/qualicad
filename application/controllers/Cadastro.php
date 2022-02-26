@@ -694,14 +694,6 @@ class Cadastro extends BaseController
         $this->loadViews("qualicad/cadastro/cadastroUsuarioEmpresa", $this->global, $data, NULL);
     }
 
-    function cadastroPerfil()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
-
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Perfil';
-
-        $this->loadViews("qualicad/cadastro/cadastroPerfil", $this->global, $data, NULL);
-    }
 
     function cadastroPermissao()
     {
