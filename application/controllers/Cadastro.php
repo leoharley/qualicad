@@ -705,8 +705,9 @@ class Cadastro extends BaseController
                 $IdTelas = $this->uri->segment(3);
                 if($IdTelas == null)
                 {
-                    redirect('cadastroPerfil/listar');
+                    redirect('cadastroTela/listar');
                 }
+                var_dump($IdTelas);exit;
                 $data['infoTelas'] = $this->CadastroModel->carregaInfoTelas($IdTelas);
                 $this->global['pageTitle'] = 'QUALICAD : Editar Telas';      
                 $this->loadViews("qualicad/cadastro/c_cadastroTelas", $this->global, $data, NULL);
