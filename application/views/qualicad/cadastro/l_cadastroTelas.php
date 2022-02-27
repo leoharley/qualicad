@@ -43,6 +43,7 @@
                   <tr>
                     <th>Perfil</th>
                     <th>Tela</th>
+                    <th>Mostra tela neste perfil?</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -59,6 +60,9 @@
                       </td>
                       <td>
                         <?php echo $registro->Ds_Tela ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Tp_Ativo ?>
                       </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
