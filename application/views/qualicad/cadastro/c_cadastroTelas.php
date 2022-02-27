@@ -1,3 +1,22 @@
+<?php
+
+$Id_CdPerfil  = '';
+$Ds_Perfil = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoPerfil))
+{
+    foreach ($infoPerfil as $r)
+    {
+        $Id_CdPerfil = $r->Id_CdPerfil;
+        $Ds_Perfil = $r->Ds_Perfil;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
