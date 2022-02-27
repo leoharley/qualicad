@@ -1,16 +1,18 @@
 <?php
 
-$Id_CdPerfil  = '';
+$Id_Tela  = '';
 $Ds_Perfil = '';
+$Ds_Tela = '';
 $Tp_Ativo = '';
 
 if ($this->uri->segment(2) == 'editar') {
-if(!empty($infoPerfil))
+if(!empty($infoTela))
 {
-    foreach ($infoPerfil as $r)
+    foreach ($infoTela as $r)
     {
-        $Id_CdPerfil = $r->Id_CdPerfil;
+        $Id_Tela = $r->Id_Tela;
         $Ds_Perfil = $r->Ds_Perfil;
+        $Ds_Tela = $r->Ds_Tela;
         $Tp_Ativo = $r->Tp_Ativo;
     }
 }
@@ -21,8 +23,8 @@ if(!empty($infoPerfil))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Telas
-            <small>Associar</small>
+            <i class="fa fa-users"></i> Editar Tela
+            <small>Ativar/Desativar</small>
         </h1>
     </section>
 
@@ -42,80 +44,34 @@ if(!empty($infoPerfil))
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addUser" action="<?php echo base_url() ?>editaTelas" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsperfil">Perfil</label>
-                                        <select class="form-control required" id="dsperfil" name="dsperfil">
-                                            <option value="1">PERFIL_1</option>
-											<option value="2">PERFIL_2</option>
-                                        </select>
+                                        <label for="Ds_Perfil">Perfil</label>
+                                        <input type="text" class="form-control required" value="<?php echo $Ds_Perfil ; ?>" id="Ds_Perfil" name="Ds_Perfil" maxlength="128" disabled>
+                                        <input type="hidden" value="<?php echo $Id_Tela; ?>" name="Id_Tela" id="Id_Tela" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="telaconvenio">Acessa tela de convênio?</label>
-                                        <select class="form-control required" id="telaconvenio" name="telaconvenio">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
-                                        </select>
+                                        <label for="Ds_Tela">Tela</label>
+                                        <input type="text" class="form-control required" value="<?php echo $Ds_Tela ; ?>" id="Ds_Tela" name="Ds_Tela" maxlength="128" disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="telaplano">Acessa tela de plano?</label>
-                                        <select class="form-control required" id="telaplano" name="telaplano">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
+                                        <label for="Tp_Ativo">Mostra tela neste perfil?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($Tp_Ativo == 'S') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telaindice">Acessa tela de índice?</label>
-                                        <select class="form-control required" id="telaindice" name="telaindice">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telaregrafat">Acessa tela de regra de faturamento?</label>
-                                        <select class="form-control required" id="telaregrafat" name="telaregrafat">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telausuario">Acessa tela de usuário?</label>
-                                        <select class="form-control required" id="telausuario" name="telausuario">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telaempresa">Acessa tela de empresa?</label>
-                                        <select class="form-control required" id="telaempresa" name="telaempresa">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
-                                        </select>
-                                    </div>
-                                </div>
+                               
                             </div>
                             </div>
                         </div>
