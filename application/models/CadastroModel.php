@@ -179,6 +179,13 @@ function adicionaPerfil($infoPerfil)
     $insert_id = $this->db->insert_id();
     
     $this->db->trans_complete();
+
+    $this->db->trans_start();
+    $this->db->insert('TabTela');
+    
+    $insert_id2 = $this->db->insert_id();
+    
+    $this->db->trans_complete();
     
     return $insert_id;
 }
