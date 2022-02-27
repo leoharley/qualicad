@@ -708,7 +708,6 @@ class Cadastro extends BaseController
                     redirect('cadastroTela/listar');
                 }
                 $data['infoTelas'] = $this->CadastroModel->carregaInfoTelas($IdTelas);
-                var_dump($data);exit;
                 $this->global['pageTitle'] = 'QUALICAD : Editar Telas';      
                 $this->loadViews("qualicad/cadastro/c_cadastroTelas", $this->global, $data, NULL);
             }

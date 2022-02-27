@@ -23,7 +23,7 @@ if(!empty($infoTela))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Editar Tela
+            <i class="fa fa-users"></i> Editar Tela<?php echo $Ds_Tela; ?>
             <small>Ativar/Desativar</small>
         </h1>
     </section>
