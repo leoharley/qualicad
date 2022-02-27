@@ -180,6 +180,8 @@ function adicionaPerfil($infoPerfil)
     
     $this->db->trans_complete();
 
+    var_dump($infoPerfil);exit;
+
     foreach ($infoPerfil as $data){
         $idPerfil = ($data->Id_CdPerfil);
         $CriadoPor = ($data->CriadoPor);
