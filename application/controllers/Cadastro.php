@@ -543,6 +543,7 @@ class Cadastro extends BaseController
         //    else
         //{
 
+                $Id_CdPerfil = $this->input->post('Id_CdPerfil');
                 $Ds_Perfil = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Perfil'))));
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
@@ -557,7 +558,7 @@ class Cadastro extends BaseController
                     $Dt_Ativo = null;
                 }
                 
-                $infoPerfil = array('Ds_Perfil'=> $Ds_Perfil, 'CriadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
+                $infoPerfil = array('Id_CdPerfil'=>$Id_CdPerfil, 'Ds_Perfil'=> $Ds_Perfil, 'CriadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
                                     'Tp_Ativo'=>$Tp_Ativo);
                                     
                 $resultado = $this->CadastroModel->adicionaPerfil($infoPerfil);
