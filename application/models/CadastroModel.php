@@ -60,6 +60,16 @@ class CadastroModel extends CI_Model
         $insert_id = $this->db->insert_id();
         
         $this->db->trans_complete();
+
+        $infoUsuEmp = array('TabUsuario_Id_Usuario'=> $insert_id, 'CriadoPor'=>$infoUsuario['CriadoPor'],
+        'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $this->db->trans_start();
+        $this->db->insert('TbUsuEmp', $infoUsuEmp);
+        
+        $insert_id_UsuEmp = $this->db->insert_id();
+        
+        $this->db->trans_complete();
         
         return $insert_id;
     }
