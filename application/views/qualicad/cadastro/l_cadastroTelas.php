@@ -42,6 +42,7 @@
                 <thead>
                   <tr>
                     <th>Perfil</th>
+                    <th>Tela</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -55,6 +56,9 @@
                     <tr>
                       <td>
                         <?php echo $registro->Ds_Perfil ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Ds_Tela ?>
                       </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
