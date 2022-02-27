@@ -5,10 +5,9 @@ $Ds_Perfil = '';
 $Ds_Tela = '';
 $Tp_Ativo = '';
 
-if ($this->uri->segment(2) == 'editar') {
-if(!empty($infoTela))
+if(!empty($infoTelas))
 {
-    foreach ($infoTela as $r)
+    foreach ($infoTelas as $r)
     {
         $Id_Tela = $r->Id_Tela;
         $Ds_Perfil = $r->Ds_Perfil;
@@ -16,7 +15,7 @@ if(!empty($infoTela))
         $Tp_Ativo = $r->Tp_Ativo;
     }
 }
-}
+
 ?>
 
 <div class="content-wrapper">
