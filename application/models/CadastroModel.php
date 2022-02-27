@@ -180,11 +180,21 @@ function adicionaPerfil($infoPerfil)
     
     $this->db->trans_complete();
 
-    $infoTelas = array('TbPerfil_Id_CdPerfil'=> $insert_id, 'CriadoPor'=>$infoPerfil['CriadoPor']);
+    $infoTelas = array('TbPerfil_Id_CdPerfil'=> $insert_id, 'CriadoPor'=>$infoPerfil['CriadoPor'],
+    'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
     $this->db->trans_start();
     $this->db->insert('TabTela', $infoTelas);
     
-    $insert_id2 = $this->db->insert_id();
+    $insert_id_Tela = $this->db->insert_id();
+    
+    $this->db->trans_complete();
+
+    $infoPermissao = array('TbPerfil_Id_CdPerfil'=> $insert_id, 'TabTela_Id_Tela'=>$insert_id_Tela,
+    'CriadoPor'=>$infoPerfil['CriadoPor'],'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+    $this->db->trans_start();
+    $this->db->insert('TbPermissao', $infoPermissao);
+    
+    $insert_id_Permissao = $this->db->insert_id();
     
     $this->db->trans_complete();
     
