@@ -212,6 +212,45 @@ function carregaInfoPerfil($IdPerfil)
 // FIM DAS CONSULTAS NA TELA DE PERFIL
 
 
+// INICIO DAS CONSULTAS NA TELA DE TELAS
+function listaTelas($searchText = '', $page, $segment)
+{
+    $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.TelaConvenio, Telas.TelaPlano, Telas.TelaIndice, Telas.TelaRegraFat, 
+    Telas.TelaUsuario, Telas.TelaEmpresa');
+    $this->db->from('TabTela as Telas');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil	','inner');
+    if(!empty($searchText)) {
+        $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
+        $this->db->where($likeCriteria);
+    }
+    $this->db->limit($page, $segment);
+    $query = $this->db->get();
+    
+    $result = $query->result();        
+    return $result;
+}
+
+function editaTelas($infoTelas, $IdTelas)
+{
+    $this->db->where('Id_Tela', $IdTelas);
+    $this->db->update('TabTela', $infoTelas);
+    
+    return TRUE;
+}
+
+function carregaInfoTelas($IdTelas)
+{
+    $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.TelaConvenio, Telas.TelaPlano, Telas.TelaIndice, Telas.TelaRegraFat, 
+    Telas.TelaUsuario, Telas.TelaEmpresa');
+    $this->db->from('TabTela as Telas');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil	','inner');
+    $this->db->where('Id_Tela', $IdTelas);
+    $query = $this->db->get();
+    
+    return $query->result();
+}
+// FIM DAS CONSULTAS NA TELA DE TELAS
+
     /**
      * This function is used to get the user roles information
      * @return array $result : This is result of the query

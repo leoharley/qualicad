@@ -671,6 +671,111 @@ class Cadastro extends BaseController
     // FIM DAS FUNÇÕES DA TELA DE PERFIL
 
 
+    // INICIO DAS FUNÇÕES DA TELA DE TELAS
+
+    function cadastroTelas()
+    {
+            $tpTela = $this->uri->segment(2);
+
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+            if ($tpTela == 'listar') {
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "cadastroTelas/listar", $count, 10 );
+                
+                $data['registrosTelas'] = $this->CadastroModel->listaTelas($searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar telas';
+                $processFunction = 'Cadastro/cadastroTelas';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Telas';
+                
+                $this->loadViews("qualicad/cadastro/l_cadastroTelas", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'editar') {
+                $IdTelas = $this->uri->segment(3);
+                if($IdTelas == null)
+                {
+                    redirect('cadastroPerfil/listar');
+                }
+                $data['infoTelas'] = $this->CadastroModel->carregaInfoTelas($IdTelas);
+                $this->global['pageTitle'] = 'QUALICAD : Editar Telas';      
+                $this->loadViews("qualicad/cadastro/c_cadastroTelas", $this->global, $data, NULL);
+            }
+    }
+
+    function editaTelas()
+    {
+            $this->load->library('form_validation');
+            
+            $IdPerfil = $this->input->post('Id_CdPerfil');
+
+            //VALIDAÇÃO
+            
+         /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+            $this->form_validation->set_rules('role','Role','trim|required|numeric');
+            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+            
+            if($this->form_validation->run() == FALSE)
+            { 
+                $this->editOld($userId);
+            }
+            else
+            { */
+
+                $Ds_Perfil = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Perfil'))));
+                $Tp_Ativo = $this->input->post('Tp_Ativo');  
+
+                foreach ($this->CadastroModel->carregaInfoPerfil($IdPerfil) as $data){
+                    $Tp_Ativo_Atual = ($data->Tp_Ativo);
+                }
+
+                if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                    $Dt_Inativo = null;
+                } else if ($Tp_Ativo == 'N')
+                {
+                    $Dt_Ativo = null;
+                    $Dt_Inativo = date('Y-m-d H:i:s');
+                }                
+                
+                $infoPerfil = array('Ds_Perfil'=> $Ds_Perfil, 'AtualizadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
+                                    'Dt_Inativo'=>$Dt_Inativo,'Tp_Ativo'=>$Tp_Ativo);
+                
+                
+                $resultado = $this->CadastroModel->editaPerfil($infoPerfil, $IdPerfil);
+                
+                if($resultado == true)
+                {
+                    $process = 'Perfil atualizado';
+                    $processFunction = 'Cadastro/editaPerfil';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Perfil atualizado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na atualização do perfil');
+                }
+                
+                redirect('cadastroPerfil/listar');
+           // }
+    }
+// FIM DAS FUNÇÕES DA TELA DE TELAS
+
+
     function cadastroUsuarioEmpresa()
     {
         $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
@@ -690,13 +795,5 @@ class Cadastro extends BaseController
         $this->loadViews("qualicad/cadastro/cadastroPermissao", $this->global, $data, NULL);
     }
 
-    function cadastroTelas()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
-
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Telas';
-
-        $this->loadViews("qualicad/cadastro/cadastroTelas", $this->global, $data, NULL);
-    }
 
 }
