@@ -42,12 +42,6 @@
                 <thead>
                   <tr>
                     <th>Perfil</th>
-                    <th>Tela convênio</th>
-                    <th>Tela plano</th>
-                    <th>Tela índice</th>
-                    <th>Tela regra fat</th>
-                    <th>Tela usuário</th>
-                    <th>Tela empresa</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -61,24 +55,6 @@
                     <tr>
                       <td>
                         <?php echo $registro->Ds_Perfil ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->TelaConvenio ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->TelaPlano ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->TelaIndice ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->TelaRegraFat ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->TelaUsuario ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->TelaEmpresa ?>
                       </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
