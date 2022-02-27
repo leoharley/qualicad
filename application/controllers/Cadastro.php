@@ -717,7 +717,7 @@ class Cadastro extends BaseController
     {
             $this->load->library('form_validation');
             
-            $IdPerfil = $this->input->post('Id_CdPerfil');
+            $IdTela = $this->input->post('Id_Tela');
 
             //VALIDAÇÃO
             
@@ -735,10 +735,9 @@ class Cadastro extends BaseController
             else
             { */
 
-                $Ds_Perfil = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Perfil'))));
                 $Tp_Ativo = $this->input->post('Tp_Ativo');  
 
-                foreach ($this->CadastroModel->carregaInfoPerfil($IdPerfil) as $data){
+                foreach ($this->CadastroModel->carregaInfoTelas($IdTela) as $data){
                     $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
 
@@ -752,26 +751,26 @@ class Cadastro extends BaseController
                     $Dt_Inativo = date('Y-m-d H:i:s');
                 }                
                 
-                $infoPerfil = array('Ds_Perfil'=> $Ds_Perfil, 'AtualizadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
+                $infoTela = array('AtualizadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
                                     'Dt_Inativo'=>$Dt_Inativo,'Tp_Ativo'=>$Tp_Ativo);
                 
                 
-                $resultado = $this->CadastroModel->editaPerfil($infoPerfil, $IdPerfil);
+                $resultado = $this->CadastroModel->editaTelas($infoTela, $IdTela);
                 
                 if($resultado == true)
                 {
-                    $process = 'Perfil atualizado';
-                    $processFunction = 'Cadastro/editaPerfil';
+                    $process = 'Tela atualizada';
+                    $processFunction = 'Cadastro/editaTelas';
                     $this->logrecord($process,$processFunction);
 
-                    $this->session->set_flashdata('success', 'Perfil atualizado com sucesso');
+                    $this->session->set_flashdata('success', 'Tela atualizada com sucesso');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na atualização do perfil');
+                    $this->session->set_flashdata('error', 'Falha na atualização da tela');
                 }
                 
-                redirect('cadastroPerfil/listar');
+                redirect('cadastroTelas/listar');
            // }
     }
 // FIM DAS FUNÇÕES DA TELA DE TELAS
