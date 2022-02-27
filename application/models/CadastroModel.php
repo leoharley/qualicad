@@ -180,14 +180,7 @@ function adicionaPerfil($infoPerfil)
     
     $this->db->trans_complete();
 
-    var_dump($infoPerfil['CriadoPor']);exit;
-
-    foreach ($infoPerfil as $data){
-        $idPerfil = ($data->Id_CdPerfil);
-        $CriadoPor = ($data->CriadoPor);
-    }
-
-    $infoTelas = array('TbPerfil_Id_CdPerfil'=> $insert_id, 'CriadoPor'=>$CriadoPor);
+    $infoTelas = array('TbPerfil_Id_CdPerfil'=> $insert_id, 'CriadoPor'=>$infoPerfil['CriadoPor']);
     $this->db->trans_start();
     $this->db->insert('TabTela', $infoTelas);
     
