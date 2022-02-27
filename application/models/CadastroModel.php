@@ -253,8 +253,7 @@ function carregaInfoPerfil($IdPerfil)
 // INICIO DAS CONSULTAS NA TELA DE TELAS
 function listaTelas($searchText = '', $page, $segment)
 {
-    $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.TelaConvenio, Telas.TelaPlano, Telas.TelaIndice, Telas.TelaRegraFat, 
-    Telas.TelaUsuario, Telas.TelaEmpresa');
+    $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil');
     $this->db->from('TabTela as Telas');
     $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil	','inner');
     if(!empty($searchText)) {
@@ -278,8 +277,7 @@ function editaTelas($infoTelas, $IdTelas)
 
 function carregaInfoTelas($IdTelas)
 {
-    $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.TelaConvenio, Telas.TelaPlano, Telas.TelaIndice, Telas.TelaRegraFat, 
-    Telas.TelaUsuario, Telas.TelaEmpresa');
+    $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil');
     $this->db->from('TabTela as Telas');
     $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil	','inner');
     $this->db->where('Id_Tela', $IdTelas);
