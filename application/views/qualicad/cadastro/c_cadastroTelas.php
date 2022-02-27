@@ -22,7 +22,7 @@ if(!empty($infoTelas))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Editar Tela<?php echo $Ds_Tela; ?>
+            <i class="fa fa-users"></i> Editar Tela
             <small>Ativar/Desativar</small>
         </h1>
     </section>
@@ -33,8 +33,6 @@ if(!empty($infoTelas))
             <!-- left column -->
             <div class="col-md-8">
                 <!-- general form elements -->
-
-
 
                 <div class="box box-primary">
                     <div class="box-header">
