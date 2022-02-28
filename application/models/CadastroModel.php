@@ -324,8 +324,8 @@ function listaUsuarioEmpresa($searchText = '', $page, $segment)
 {
     $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
     $this->db->from('TbUsuEmp as UsuEmp');
-    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','inner');
-    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','inner');
+    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','left');
+    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','left');
     if(!empty($searchText)) {
         $likeCriteria = "(Usuario.Nome_Usuario  LIKE '%".$searchText."%'
                         OR  Empresa.Nome_Empresa  LIKE '%".$searchText."%')";
@@ -350,8 +350,8 @@ function carregaInfoUsuarioEmpresa($IdUsuEmp)
 {
     $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
     $this->db->from('TbUsuEmp as UsuEmp');
-    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','inner');
-    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','inner');
+    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','left');
+    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','left');
     $this->db->where('Id_UsuEmp', $IdUsuEmp);
     $query = $this->db->get();
     
