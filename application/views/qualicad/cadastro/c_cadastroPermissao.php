@@ -58,7 +58,7 @@ if(!empty($infoPermissoes))
                                     <div class="form-group">
                                         <label for="Ds_Perfil">Perfil</label>
                                         <input type="text" class="form-control required" value="<?php echo $Ds_Perfil ; ?>" id="Ds_Perfil" name="Ds_Perfil" maxlength="128" disabled>
-                                        <input type="hidden" value="<?php echo $Id_Tela; ?>" name="Id_Tela" id="Id_Tela" />
+                                        <input type="hidden" value="<?php echo $Id_Permissao; ?>" name="Id_Permissao" id="Id_Permissao" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
