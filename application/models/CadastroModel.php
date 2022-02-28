@@ -340,7 +340,6 @@ function listaUsuarioEmpresa($searchText = '', $page, $segment)
 
 function editaUsuarioEmpresa($infoUsuarioEmpresa, $IdUsuEmp)
 {
-    var_dump($infoUsuarioEmpresa);exit;
     $this->db->where('Id_UsuEmp', $IdUsuEmp);
     $this->db->update('TbUsuEmp', $infoUsuarioEmpresa);
     
