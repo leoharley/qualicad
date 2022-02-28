@@ -371,6 +371,8 @@ function carregaPerfis()
 {
     $this->db->select('Perfis.Id_CdPerfil, Perfis.Ds_Perfil');
     $this->db->from('TbPerfil as Perfis');
+    $this->db->where('Perfis.Deletado', 'N');
+    $this->db->where('Perfis.Tp_Ativo', 'S');
     $query = $this->db->get();
     
     return $query->result();
