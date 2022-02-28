@@ -2,6 +2,7 @@
 <?php
 
 $Id_UsuEmp  = '';
+$TbEmpresa_Id_Empresa = '';
 $Nome_Usuario = '';
 $Nome_Empresa = '';
 
@@ -10,6 +11,7 @@ if(!empty($infoUsuarioEmpresa))
     foreach ($infoUsuarioEmpresa as $r)
     {
         $Id_UsuEmp = $r->Id_UsuEmp;
+        $TbEmpresa_Id_Empresa = $r->TbEmpresa_Id_Empresa;
         $Nome_Usuario = $r->Nome_Usuario;
         $Nome_Empresa = $r->Nome_Empresa;
     }
@@ -62,7 +64,7 @@ if(!empty($infoUsuarioEmpresa))
                                                 foreach ($infoEmpresas as $empresa)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $empresa->Id_Empresa ?>" <?php if($empresa->Id_Empresa == set_value('Nome_Empresa')) {echo "selected=selected";} ?>>
+                                                <option value="<?php echo $empresa->Id_Empresa ?>" <?php if($empresa->Id_Empresa == $TbEmpresa_Id_Empresa) {echo "selected=selected";} ?>>
                                                     <?php echo $empresa->Nome_Empresa ?>
                                                 </option>
                                                 <?php
