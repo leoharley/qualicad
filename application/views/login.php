@@ -64,6 +64,24 @@
             <input type="password" class="form-control" placeholder="Senha" name="password" required />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
+          <div class="form-group" style="<?php ($this->session->userdata('isLoggedIn'))?'':'display:none';?>">
+              <label for="Id_Empresa">Empresa</label>
+              <select class="form-control required" id="Id_Empresa" name="Id_Empresa">
+                  <?php
+                  if(!empty($infoEmpresas))
+                  {
+                      foreach ($infoEmpresas as $empresa)
+                      {
+                          ?>
+                      <option value="<?php echo $empresa->Id_Empresa ?>" <?php if($empresa->Id_Empresa == $TbEmpresa_Id_Empresa) {echo "selected=selected";} ?>>
+                          <?php echo $empresa->Nome_Empresa ?>
+                      </option>
+                      <?php
+                      }
+                  }
+                  ?>
+              </select>
+          </div>
           <div class="row">
             <div class="col-xs-8">
               <!-- <div class="checkbox icheck">

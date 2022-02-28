@@ -21,13 +21,11 @@
 <body class="login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="#">
-			<b>QUALICAD</b>
-        <br>BEM VINDO</a>
+      <span>BEM VINDO</span>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">Login</p>
+    <!--  <p class="login-box-msg">Login</p> -->
       <?php $this->load->helper('form'); ?>
       <div class="row">
         <div class="col-md-12">

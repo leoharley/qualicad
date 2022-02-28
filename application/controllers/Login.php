@@ -124,7 +124,9 @@ class Login extends BaseController
                     $this->logrecord($process,$processFunction);
 
                 //    redirect('/dashboard');
-                    $this->load->view('welcome');
+                
+                    $this->loadViews("welcome", $this->global, $data, NULL);
+//                    $this->load->view('welcome');
                 }
             }
             else
