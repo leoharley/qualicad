@@ -931,10 +931,10 @@ function editaUsuarioEmpresa()
         else
         { */
 
-            $TbEmpresa_Id_Empresa = $this->input->post('TbEmpresa_Id_Empresa');
+            $Id_Empresa = $this->input->post('Id_Empresa');
             $TabUsuario_Id_Usuario = $this->input->post('TabUsuario_Id_Usuario');  
  
-            $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$TbEmpresa_Id_Empresa, 'TabUsuario_Id_Usuario'=>$TabUsuario_Id_Usuario,
+            $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$Id_Empresa, 'TabUsuario_Id_Usuario'=>$TabUsuario_Id_Usuario,
                                     'AtualizadoPor'=>$this->vendorId);
             
             $resultado = $this->CadastroModel->editaUsuarioEmpresa($infoUsuarioEmpresa, $IdUsuEmp);
