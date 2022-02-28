@@ -357,6 +357,16 @@ function carregaInfoUsuarioEmpresa($IdUsuEmp)
     
     return $query->result();
 }
+
+function carregaEmpresas()
+{
+    $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa');
+    $this->db->from('TbEmpresa as Empresas');
+    $query = $this->db->get();
+    
+    return $query->result();
+}
+
 // FIM DAS CONSULTAS NA TELA DE USUÁRIO/EMPRESA
 
     /**

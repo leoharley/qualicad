@@ -54,21 +54,21 @@ if(!empty($infoUsuarioEmpresa))
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="idempresa">Empresa</label>
-                                        <select class="form-control required" id="idempresa" name="idempresa">
-                                            <option value="1">EMPRESA_1</option>
-											<option value="2">EMPRESA_2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="idpermissao">Tipo de permissão</label>
-                                        <select class="form-control required" id="idpermissao" name="idpermissao">
-                                            <option value="1">PERMISSAO_1</option>
-											<option value="2">PERMISSAO_2</option>
+                                        <label for="Id_Empresa">Empresa</label>
+                                        <select class="form-control required" id="Id_Empresa" name="Id_Empresa">
+                                            <?php
+                                            if(!empty($infoEmpresas))
+                                            {
+                                                foreach ($infoEmpresas as $empresa)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $empresa->Id_Empresa ?>" <?php if($empresa->Id_Empresa == set_value('Nome_Empresa')) {echo "selected=selected";} ?>>
+                                                    <?php echo $empresa->Nome_Empresa ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>

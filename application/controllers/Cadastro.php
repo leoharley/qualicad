@@ -903,6 +903,7 @@ function cadastroUsuarioEmpresa()
                 redirect('cadastroUsuarioEmpresa/listar');
             }
             $data['infoUsuarioEmpresa'] = $this->CadastroModel->carregaInfoUsuarioEmpresa($IdUsuEmp);
+            $data['infoEmpresas'] = $this->CadastroModel->carregaEmpresas();
             $this->global['pageTitle'] = 'QUALICAD : Editar Usuários/Empresas';      
             $this->loadViews("qualicad/cadastro/c_cadastroUsuarioEmpresa", $this->global, $data, NULL);
         }
