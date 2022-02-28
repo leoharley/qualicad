@@ -245,7 +245,7 @@ function listaTelas($searchText = '', $page, $segment)
 {
     $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.Ds_Tela, Telas.Tp_Ativo');
     $this->db->from('TabTela as Telas');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil','inner');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil AND Perfis.Deletado = "N" AND Perfis.Tp_Ativo = "S"','inner');
     if(!empty($searchText)) {
         $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
@@ -269,7 +269,7 @@ function carregaInfoTelas($IdTelas)
 {
     $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.Ds_Tela, Telas.Tp_Ativo');
     $this->db->from('TabTela as Telas');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil	','inner');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil AND Perfis.Deletado = "N" AND Perfis.Tp_Ativo = "S"','inner');
     $this->db->where('Id_Tela', $IdTelas);
     $query = $this->db->get();
     
@@ -284,7 +284,7 @@ function listaPermissao($searchText = '', $page, $segment)
     Permissao.Inserir, Permissao.Excluir, Permissao.Consultar, Permissao.Imprimir');
     $this->db->from('TbPermissao as Permissao');
     $this->db->join('TabTela as Telas', 'Telas.Id_Tela = Permissao.TabTela_Id_Tela AND Telas.Tp_Ativo = "S"','inner');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Permissao.TbPerfil_Id_CdPerfil','inner');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Permissao.TbPerfil_Id_CdPerfil AND Perfis.Deletado = "N" AND Perfis.Tp_Ativo = "S"','inner');
     if(!empty($searchText)) {
         $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%'
                         OR  Telas.Ds_Tela  LIKE '%".$searchText."%')";
@@ -311,7 +311,7 @@ function carregaInfoPermissao($IdPermissao)
     Permissao.Inserir, Permissao.Excluir, Permissao.Consultar, Permissao.Imprimir');
     $this->db->from('TbPermissao as Permissao');
     $this->db->join('TabTela as Telas', 'Telas.Id_Tela = Permissao.TabTela_Id_Tela AND Telas.Tp_Ativo = "S"','inner');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Permissao.TbPerfil_Id_CdPerfil','inner');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Permissao.TbPerfil_Id_CdPerfil AND Perfis.Deletado = "N" AND Perfis.Tp_Ativo = "S"','inner');
     $this->db->where('Id_Permissao', $IdPermissao);
     $query = $this->db->get();
     
