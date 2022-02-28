@@ -280,7 +280,7 @@ function carregaInfoTelas($IdTelas)
 // INICIO DAS CONSULTAS NA TELA DE PERMISSOES
 function listaPermissao($searchText = '', $page, $segment)
 {
-    $this->db->select('Permissao.Id_Permissao, Permissao.Ds_Perfil, Telas.Ds_Tela, Permissao.Atualizar,
+    $this->db->select('Permissao.Id_Permissao, Perfis.Ds_Perfil, Telas.Ds_Tela, Permissao.Atualizar,
     Permissao.Inserir, Permissao.Excluir, Permissao.Consultar, Permissao.Imprimir');
     $this->db->from('TbPermissao as Permissao');
     $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil','inner');
@@ -307,7 +307,7 @@ function editaPermissao($infoPermissao, $IdPermissao)
 
 function carregaInfoPermissao($IdPermissao)
 {
-    $this->db->select('Permissao.Id_Permissao, Permissao.Ds_Perfil, Telas.Ds_Tela, Permissao.Atualizar,
+    $this->db->select('Permissao.Id_Permissao, Perfis.Ds_Perfil, Telas.Ds_Tela, Permissao.Atualizar,
     Permissao.Inserir, Permissao.Excluir, Permissao.Consultar, Permissao.Imprimir');
     $this->db->from('TbPermissao as Permissao');
     $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil','inner');
