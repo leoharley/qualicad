@@ -123,7 +123,8 @@ class Login extends BaseController
                     
                     $this->logrecord($process,$processFunction);
 
-                    redirect('/welcome');
+                //    redirect('/dashboard');
+                    $this->load->view('welcome');
                 }
             }
             else
@@ -145,7 +146,7 @@ class Login extends BaseController
         }
         else
         {
-            $this->load->view('welcome');
+            redirect('/dashboard');
         }
     }
 

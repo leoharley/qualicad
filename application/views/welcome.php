@@ -57,12 +57,7 @@
 
         <form action="<?php echo base_url(); ?>loginMe" method="post">
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email" name="email" required />
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Senha" name="password" required />
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <input type="email" class="form-control" placeholder="Escolha a empresa" name="escolhaEmpresa" required />
           </div>
           <div class="row">
             <div class="col-xs-8">
@@ -73,14 +68,13 @@
               </div>  -->
             </div>
             <!-- /.col -->
-            <div class="col-xs-4">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Entrar" />
+            <div class="col-xs-12 center">
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Painel de controle" />
             </div>
             <!-- /.col -->
           </div>
         </form>
 
-        <a href="<?php echo base_url() ?>forgotPassword">Esqueci a senha</a>
         <br>
 
     </div>
