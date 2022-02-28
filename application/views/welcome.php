@@ -61,7 +61,7 @@
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" value="<?php echo $this->session->userdata('email')?>" name="password" disabled />
+            <input type="password" class="form-control" value="password" name="password" disabled />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="form-group" style="<?php ($this->session->userdata('isLoggedIn'))?'':'display:none';?>">
