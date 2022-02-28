@@ -1,9 +1,37 @@
+<?php
+
+$Id_Permissao   = '';
+$Ds_Perfil = '';
+$Ds_Tela = '';
+$Atualizar = '';
+$Inserir = '';
+$Excluir = '';
+$Consultar = '';
+$Imprimir = '';
+
+if(!empty($infoPermissoes))
+{
+    foreach ($infoPermissoes as $r)
+    {
+        $Id_Permissao  = $r->Id_Permissao ;
+        $Ds_Perfil = $r->Ds_Perfil;
+        $Ds_Tela = $r->Ds_Tela;
+        $Atualizar = $r->Atualizar;
+        $Inserir = $r->Inserir;
+        $Excluir = $r->Excluir;
+        $Consultar = $r->Consultar;
+        $Imprimir = $r->Imprimir;
+    }
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Permissão
-            <small>Associar</small>
+            <i class="fa fa-users"></i> Editar Permissão
+            <small>Editar</small>
         </h1>
     </section>
 
@@ -28,20 +56,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsperfil">Perfil</label>
-                                        <select class="form-control required" id="dsperfil" name="dsperfil">
-                                            <option value="1">PERFIL_1</option>
-											<option value="2">PERFIL_2</option>
-                                        </select>
+                                        <label for="Ds_Perfil">Perfil</label>
+                                        <input type="text" class="form-control required" value="<?php echo $Ds_Perfil ; ?>" id="Ds_Perfil" name="Ds_Perfil" maxlength="128" disabled>
+                                        <input type="hidden" value="<?php echo $Id_Tela; ?>" name="Id_Tela" id="Id_Tela" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="atualizar">Atualizar?</label>
-                                        <select class="form-control required" id="atualizar" name="atualizar">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
-                                        </select>
+                                        <label for="Ds_Tela">Tela</label>
+                                        <input type="text" class="form-control required" value="<?php echo $Ds_Tela ; ?>" id="Ds_Tela" name="Ds_Tela" maxlength="128" disabled>
                                     </div>
                                 </div>
                             </div>
