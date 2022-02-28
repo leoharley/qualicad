@@ -8,6 +8,7 @@
 class BaseController extends CI_Controller {
 	// User session variables
 	protected $role = '';
+	protected $email = '';
 	protected $vendorId = '';
 	protected $name = '';
 	protected $roleText = '';
@@ -176,6 +177,7 @@ class BaseController extends CI_Controller {
 	function datas()
 	{
 		$this->role = $this->session->userdata ( 'role' );
+		$this->email = $this->session->userdata ( 'email' );
 		$this->vendorId = $this->session->userdata ( 'userId' );
 		$this->name = $this->session->userdata ( 'name' );
 		$this->roleText = $this->session->userdata ( 'roleText' );
@@ -184,6 +186,7 @@ class BaseController extends CI_Controller {
 		
 		
 		$this->global ['name'] = $this->name;
+		$this->global ['email'] = $this->email;
 		$this->global ['role'] = $this->role;
 		$this->global ['role_text'] = $this->roleText;
 		$this->global ['last_login'] = $this->lastLogin;
