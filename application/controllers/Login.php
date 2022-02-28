@@ -120,7 +120,7 @@ class Login extends BaseController
 
                     $this->session->set_userdata($sessionArray);
 
-                    var_dump($res->email);exit;
+                    var_dump($this->session->userdata('email'));exit;
 
                     unset($sessionArray['userId'], $sessionArray['isLoggedIn'], $sessionArray['lastLogin']);
                     
