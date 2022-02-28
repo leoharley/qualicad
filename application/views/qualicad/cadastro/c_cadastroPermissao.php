@@ -71,19 +71,19 @@ if(!empty($infoPermissao))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inserir">Inserir?</label>
-                                        <select class="form-control required" id="inserir" name="inserir">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
+                                        <label for="Atualizar">Atualizar</label>
+                                        <select class="form-control required" id="Atualizar" name="Atualizar">
+                                            <option value="S" <?php if ($Atualizar == 'S') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($Atualizar == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="excluir">Excluir?</label>
-                                        <select class="form-control required" id="excluir" name="excluir">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
+                                        <label for="Inserir">Inserir</label>
+                                        <select class="form-control required" id="Inserir" name="Inserir">
+                                            <option value="S" <?php if ($Inserir == 'S') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($Inserir == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
                                 </div>
@@ -91,23 +91,36 @@ if(!empty($infoPermissao))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="consultar">Consultar?</label>
-                                        <select class="form-control required" id="consultar" name="consultar">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
+                                        <label for="Excluir">Excluir</label>
+                                        <select class="form-control required" id="Excluir" name="Excluir">
+                                            <option value="S" <?php if ($Excluir == 'S') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($Excluir == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="imprimir">Imprimir?</label>
-                                        <select class="form-control required" id="imprimir" name="imprimir">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
+                                        <label for="Consultar">Consultar</label>
+                                        <select class="form-control required" id="Consultar" name="Consultar">
+                                            <option value="S" <?php if ($Consultar == 'S') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($Consultar == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Imprimir">Imprimir</label>
+                                        <select class="form-control required" id="Imprimir" name="Imprimir">
+                                            <option value="S" <?php if ($Imprimir == 'S') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($Imprimir == 'N') { echo 'selected'; } ?>>Não</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <!-- /.box-body -->
 
