@@ -149,7 +149,7 @@ class Login extends BaseController
         }
         else
         {
-            $data['teste'] = 'leo';
+            $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario(28);;
             $this->load->view('welcome',$data);
         }
     }

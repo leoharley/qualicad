@@ -68,9 +68,9 @@
               <label for="Id_Empresa">Empresa</label>
               <select class="form-control required" id="Id_Empresa" name="Id_Empresa">
                   <?php
-                  if(!empty($infoEmpresas))
+                  if(!empty($empresasPerfilUsuario))
                   {
-                      foreach ($infoEmpresas as $empresa)
+                      foreach ($empresasPerfilUsuario as $empresa)
                       {
                           ?>
                       <option value="<?php echo $empresa->Id_Empresa ?>" <?php if($empresa->Id_Empresa == $TbEmpresa_Id_Empresa) {echo "selected=selected";} ?>>
