@@ -66,25 +66,25 @@
                         <?php echo $registro->Ds_Tela ?>
                       </td>
                       <td>
-                        <?php echo $registro->Atualizar ?>
+                        <?php echo ($registro->Atualizar == 'S')?'Sim':'Não'; ?>
                       </td>
                       <td>
-                        <?php echo $registro->Inserir ?>
+                        <?php echo ($registro->Inserir == 'S')?'Sim':'Não'; ?>
                       </td>
                       <td>
-                        <?php echo $registro->Excluir ?>
+                        <?php echo ($registro->Excluir == 'S')?'Sim':'Não'; ?>
                       </td>
                       <td>
-                        <?php echo $registro->Consultar ?>
+                        <?php echo ($registro->Consultar == 'S')?'Sim':'Não'; ?>
                       </td>
                       <td>
-                        <?php echo $registro->Imprimir ?>
+                        <?php echo ($registro->Imprimir == 'S')?'Sim':'Não'; ?>
                       </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroTelas/editar/'.$registro->Id_Tela; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroPermissao/editar/'.$registro->Id_Permissao ; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
                       </td>
