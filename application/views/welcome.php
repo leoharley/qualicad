@@ -56,9 +56,29 @@
         <?php } ?>
 
         <form action="<?php echo base_url(); ?>loginMe" method="post">
-          <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Escolha a empresa" name="escolhaEmpresa" required />
+          <div class="form-group">
+              <label for="Id_Empresa">Empresa</label>
+              <select class="form-control required" id="Id_Empresa" name="Id_Empresa">
+                  <?php
+                  if(!empty($infoEmpresas))
+                  {
+                      foreach ($infoEmpresas as $empresa)
+                      {
+                          ?>
+                      <option value="<?php echo $empresa->Id_Empresa ?>" <?php if($empresa->Id_Empresa == $TbEmpresa_Id_Empresa) {echo "selected=selected";} ?>>
+                          <?php echo $empresa->Nome_Empresa ?>
+                      </option>
+                      <?php
+                      }
+                  }
+                  ?>
+              </select>
           </div>
+
+        <!--  <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Escolha a empresa" name="escolhaEmpresa" required />
+          </div> -->
+
           <div class="row">
             <div class="col-xs-8">
               <!-- <div class="checkbox icheck">
