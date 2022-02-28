@@ -108,7 +108,8 @@ class Login extends BaseController
                     $process = 'Giriş';
                     $processFunction = 'Login/loginMe';
 
-                    $sessionArray = array('userId'=>$res->userId,                    
+                    $sessionArray = array('userId'=>$res->userId,
+                                            'email'=>$res->email,               
                                             'role'=>$res->roleId,
                                             'roleText'=>$res->role,
                                             'name'=>$res->name,
