@@ -838,45 +838,34 @@ function editaPermissao()
         else
         { */
 
-            $Tp_Ativo = $this->input->post('Tp_Ativo');  
+            $Atualizar = $this->input->post('Atualizar');
+            $Inserir = $this->input->post('Inserir');  
+            $Excluir = $this->input->post('Excluir');  
+            $Consultar = $this->input->post('Consultar');  
+            $Imprimir = $this->input->post('Imprimir');  
 
-            foreach ($this->CadastroModel->carregaInfoTelas($IdTela) as $data){
-                $Tp_Ativo_Atual = ($data->Tp_Ativo);
-            }
-
-            if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
-            {
-                $Dt_Ativo = date('Y-m-d H:i:s');
-                $Dt_Inativo = null;
-            } else if ($Tp_Ativo == 'N')
-            {
-                $Dt_Ativo = null;
-                $Dt_Inativo = date('Y-m-d H:i:s');
-            }                
+            $infoPermissao = array('Atualizar'=>$Atualizar, 'Inserir'=>$Inserir, 'Excluir'=>$Excluir,
+                                'Consultar'=>$Consultar,'Imprimir'=>$Imprimir, 'AtualizadoPor'=>$this->vendorId);
             
-            $infoTela = array('AtualizadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
-                                'Dt_Inativo'=>$Dt_Inativo,'Tp_Ativo'=>$Tp_Ativo);
-            
-            
-            $resultado = $this->CadastroModel->editaTelas($infoTela, $IdTela);
+            $resultado = $this->CadastroModel->editaPermissao($infoPermissao, $IdPermissao);
             
             if($resultado == true)
             {
-                $process = 'Tela atualizada';
-                $processFunction = 'Cadastro/editaTelas';
+                $process = 'Permissão atualizada';
+                $processFunction = 'Cadastro/editaPermissao';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Tela atualizada com sucesso');
+                $this->session->set_flashdata('success', 'Permissões atualizadas com sucesso');
             }
             else
             {
-                $this->session->set_flashdata('error', 'Falha na atualização da tela');
+                $this->session->set_flashdata('error', 'Falha na atualização das permissões');
             }
             
-            redirect('cadastroTelas/listar');
+            redirect('cadastroPermissao/listar');
        // }
 }
-// FIM DAS FUNÇÕES DA TELA DE TELAS
+// FIM DAS FUNÇÕES DA TELA DE PERMISSAO
 
 
     function cadastroUsuarioEmpresa()
