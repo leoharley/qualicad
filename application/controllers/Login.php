@@ -149,7 +149,8 @@ class Login extends BaseController
         }
         else
         {
-            $this->load->view('welcome');
+            $data['teste'] = 'leo';
+            $this->load->view('welcome',$data);
         }
     }
 
