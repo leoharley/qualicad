@@ -775,6 +775,109 @@ class Cadastro extends BaseController
     }
 // FIM DAS FUNÇÕES DA TELA DE TELAS
 
+// INICIO DAS FUNÇÕES DA TELA DE PERMISSAO
+
+function cadastroPermissao()
+{
+        $tpTela = $this->uri->segment(2);
+
+        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+        if ($tpTela == 'listar') {
+
+            $searchText = $this->security->xss_clean($this->input->post('searchText'));
+            $data['searchText'] = $searchText;
+            
+            $this->load->library('pagination');
+            
+            $count = $this->CadastroModel->userListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "cadastroPermissao/listar", $count, 10 );
+            
+            $data['registrosPermissao'] = $this->CadastroModel->listaPermissao($searchText, $returns["page"], $returns["segment"]);
+            
+            $process = 'Listar telas';
+            $processFunction = 'Cadastro/cadastroPermissao';
+            $this->logrecord($process,$processFunction);
+
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Permissões';
+            
+            $this->loadViews("qualicad/cadastro/l_cadastroPermissao", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'editar') {
+            $IdPermissao = $this->uri->segment(3);
+            if($IdPermissao == null)
+            {
+                redirect('cadastroPermissao/listar');
+            }
+            $data['infoPermissao'] = $this->CadastroModel->carregaInfoPermissao($IdPermissao);
+            $this->global['pageTitle'] = 'QUALICAD : Editar Permissões';      
+            $this->loadViews("qualicad/cadastro/c_cadastroPermissao", $this->global, $data, NULL);
+        }
+}
+
+function editaPermissao()
+{
+        $this->load->library('form_validation');
+        
+        $IdPermissao = $this->input->post('Id_Permissao');
+
+        //VALIDAÇÃO
+        
+     /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+        $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+        $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+        $this->form_validation->set_rules('role','Role','trim|required|numeric');
+        $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+        
+        if($this->form_validation->run() == FALSE)
+        { 
+            $this->editOld($userId);
+        }
+        else
+        { */
+
+            $Tp_Ativo = $this->input->post('Tp_Ativo');  
+
+            foreach ($this->CadastroModel->carregaInfoTelas($IdTela) as $data){
+                $Tp_Ativo_Atual = ($data->Tp_Ativo);
+            }
+
+            if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+                $Dt_Inativo = null;
+            } else if ($Tp_Ativo == 'N')
+            {
+                $Dt_Ativo = null;
+                $Dt_Inativo = date('Y-m-d H:i:s');
+            }                
+            
+            $infoTela = array('AtualizadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
+                                'Dt_Inativo'=>$Dt_Inativo,'Tp_Ativo'=>$Tp_Ativo);
+            
+            
+            $resultado = $this->CadastroModel->editaTelas($infoTela, $IdTela);
+            
+            if($resultado == true)
+            {
+                $process = 'Tela atualizada';
+                $processFunction = 'Cadastro/editaTelas';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Tela atualizada com sucesso');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na atualização da tela');
+            }
+            
+            redirect('cadastroTelas/listar');
+       // }
+}
+// FIM DAS FUNÇÕES DA TELA DE TELAS
+
 
     function cadastroUsuarioEmpresa()
     {

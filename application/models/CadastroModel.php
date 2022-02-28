@@ -245,7 +245,7 @@ function listaTelas($searchText = '', $page, $segment)
 {
     $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.Ds_Tela, Telas.Tp_Ativo');
     $this->db->from('TabTela as Telas');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil	','inner');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil','inner');
     if(!empty($searchText)) {
         $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
@@ -277,6 +277,47 @@ function carregaInfoTelas($IdTelas)
 }
 // FIM DAS CONSULTAS NA TELA DE TELAS
 
+// INICIO DAS CONSULTAS NA TELA DE PERMISSOES
+function listaPermissao($searchText = '', $page, $segment)
+{
+    $this->db->select('Permissao.Id_Permissao, Permissao.Ds_Perfil, Telas.Ds_Tela, Permissao.Atualizar,
+    Permissao.Inserir, Permissao.Excluir, Permissao.Consultar, Permissao.Imprimir');
+    $this->db->from('TbPermissao as Permissao');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil','inner');
+    $this->db->join('TabTela as Telas', 'Telas.Id_Tela = Permissoes.TabTela_Id_Tela','inner');
+    if(!empty($searchText)) {
+        $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%'
+                        OR  Telas.Ds_Tela  LIKE '%".$searchText."%')";
+        $this->db->where($likeCriteria);
+    }
+    $this->db->limit($page, $segment);
+    $query = $this->db->get();
+    
+    $result = $query->result();        
+    return $result;
+}
+
+function editaPermissao($infoPermissao, $IdPermissao)
+{
+    $this->db->where('Id_Permissao', $IdPermissao);
+    $this->db->update('TbPermissao', $infoPermissao);
+    
+    return TRUE;
+}
+
+function carregaInfoPermissao($IdPermissao)
+{
+    $this->db->select('Permissao.Id_Permissao, Permissao.Ds_Perfil, Telas.Ds_Tela, Permissao.Atualizar,
+    Permissao.Inserir, Permissao.Excluir, Permissao.Consultar, Permissao.Imprimir');
+    $this->db->from('TbPermissao as Permissao');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil','inner');
+    $this->db->join('TabTela as Telas', 'Telas.Id_Tela = Permissoes.TabTela_Id_Tela','inner');
+    $this->db->where('Id_Permissao', $IdPermissao);
+    $query = $this->db->get();
+    
+    return $query->result();
+}
+// FIM DAS CONSULTAS NA TELA DE TELAS
     /**
      * This function is used to get the user roles information
      * @return array $result : This is result of the query
