@@ -75,7 +75,7 @@
                         <?php echo $registro->Email ?>
                       </td>
                       <td>
-                        <?php echo $registro->Tp_Ativo ?>
+                        <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
                       <td>
                         <?php echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>

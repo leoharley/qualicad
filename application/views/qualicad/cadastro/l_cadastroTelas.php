@@ -62,7 +62,7 @@
                         <?php echo $registro->Ds_Tela ?>
                       </td>
                       <td>
-                        <?php echo $registro->Tp_Ativo ?>
+                        <?php echo ($registro->Tp_Ativo == 'S')?'Sim':'Não'; ?>
                       </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
