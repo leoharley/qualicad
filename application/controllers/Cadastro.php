@@ -933,8 +933,6 @@ function editaUsuarioEmpresa()
 
             $Id_Empresa = $this->input->post('Id_Empresa');
             $TabUsuario_Id_Usuario = $this->input->post('TabUsuario_Id_Usuario');
-
-            var_dump($Id_Empresa);exit;
  
             $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$Id_Empresa, 'TabUsuario_Id_Usuario'=>$TabUsuario_Id_Usuario,
                                     'AtualizadoPor'=>$this->vendorId);
