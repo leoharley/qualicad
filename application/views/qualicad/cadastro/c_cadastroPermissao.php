@@ -9,9 +9,9 @@ $Excluir = '';
 $Consultar = '';
 $Imprimir = '';
 
-if(!empty($infoPermissoes))
+if(!empty($infoPermissao))
 {
-    foreach ($infoPermissoes as $r)
+    foreach ($infoPermissao as $r)
     {
         $Id_Permissao  = $r->Id_Permissao ;
         $Ds_Perfil = $r->Ds_Perfil;
