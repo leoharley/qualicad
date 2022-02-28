@@ -125,7 +125,7 @@ class Login extends BaseController
 
                 //    redirect('/dashboard');
                 
-                    $this->loadViews("login", $this->global, $data, NULL);
+                    redirect('/login');
 //                    $this->load->view('welcome');
                 }
             }
