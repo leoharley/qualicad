@@ -92,7 +92,7 @@
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Entrar" />
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Painel de Controle" />
             </div>
             <!-- /.col -->
           </div>
