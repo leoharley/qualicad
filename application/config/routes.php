@@ -12,6 +12,8 @@ $route['loginMe'] = 'login/loginMe';
 $route['dashboard'] = 'user';
 $route['logout'] = 'user/logout';
 
+$route['welcome'] = 'login/welcome';
+
 /*********** ROUTES DE CADASTRO *******************/
 $route['cadastroUsuario/:any/:any'] = "cadastro/cadastroUsuario/$1/$2";
 $route['cadastroUsuario/:any'] = "cadastro/cadastroUsuario/$1";
