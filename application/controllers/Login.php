@@ -125,7 +125,7 @@ class Login extends BaseController
 
                 //    redirect('/dashboard');
                 
-                    $this->loadViews("welcome", $this->global, $data, NULL);
+                    $this->loadViews("login", $this->global, $data, NULL);
 //                    $this->load->view('welcome');
                 }
             }
@@ -138,19 +138,6 @@ class Login extends BaseController
         }
     }
 
-    public function welcome()
-    {
-        $isLoggedIn = $this->session->userdata('isLoggedIn');
-        
-        if(!isset($isLoggedIn) || $isLoggedIn != TRUE)
-        {
-            redirect('/login');
-        }
-        else
-        {
-            redirect('/dashboard');
-        }
-    }
 
     /**
      * This function used to load forgot password view
