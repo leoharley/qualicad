@@ -23,7 +23,7 @@
     <div class="login-logo">
       <a href="#">
 			<b>QUALICAD</b>
-        <br>PAINEL ADMIN MODELO<?php echo $empresasPerfilUsuario;?></a>
+        <br>PAINEL ADMIN MODELO</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
