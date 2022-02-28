@@ -42,6 +42,7 @@
                   <tr>
                     <th>Usuário</th>
                     <th>Empresa</th>
+                    <th>Perfil</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -58,6 +59,9 @@
                       </td>
                       <td>
                         <?php echo $registro->Nome_Empresa ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Ds_Perfil ?>
                       </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">

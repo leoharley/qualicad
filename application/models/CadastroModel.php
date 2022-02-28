@@ -322,13 +322,15 @@ function carregaInfoPermissao($IdPermissao)
 // INICIO DAS CONSULTAS NA TELA DE USUÁRIO/EMPRESA
 function listaUsuarioEmpresa($searchText = '', $page, $segment)
 {
-    $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
+    $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa, Perfis.Ds_Perfil');
     $this->db->from('TbUsuEmp as UsuEmp');
     $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','left');
     $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','left');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfis.Tp_Ativo = "S" AND Perfis.Deletado = "N"','left');
     if(!empty($searchText)) {
         $likeCriteria = "(Usuario.Nome_Usuario  LIKE '%".$searchText."%'
-                        OR  Empresa.Nome_Empresa  LIKE '%".$searchText."%')";
+                        OR  Empresa.Nome_Empresa  LIKE '%".$searchText."%'
+                        OR  Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
     $this->db->limit($page, $segment);
