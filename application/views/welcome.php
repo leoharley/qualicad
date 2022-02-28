@@ -73,7 +73,7 @@
                       foreach ($empresasPerfilUsuario as $empresa)
                       {
                           ?>
-                      <option value="<?php echo $empresa->Id_Empresa ?>" <?php if($empresa->Id_Empresa == $TbEmpresa_Id_Empresa) {echo "selected=selected";} ?>>
+                      <option value="<?php echo $empresa->Id_Empresa ?>">
                           <?php echo $empresa->Nome_Empresa ?>
                       </option>
                       <?php
