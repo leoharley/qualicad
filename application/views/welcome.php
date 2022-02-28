@@ -23,7 +23,7 @@
     <div class="login-logo">
       <a href="#">
 			<b>QUALICAD</b>
-        <br>PAINEL ADMIN MODELO<?php $this->session->userdata('name')?></a>
+        <br>PAINEL ADMIN MODELO<?php echo $this->session->userdata('name')?></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
