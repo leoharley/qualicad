@@ -1,3 +1,22 @@
+
+<?php
+
+$Id_UsuEmp  = '';
+$Nome_Usuario = '';
+$Nome_Empresa = '';
+
+if(!empty($infoUsuarioEmpresa))
+{
+    foreach ($infoUsuarioEmpresa as $r)
+    {
+        $Id_UsuEmp = $r->Id_UsuEmp;
+        $Nome_Usuario = $r->Nome_Usuario;
+        $Nome_Empresa = $r->Nome_Empresa;
+    }
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -28,11 +47,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="idusuario">Usuário</label>
-                                        <select class="form-control required" id="idusuario" name="idusuario">
-                                            <option value="1">USUARIO_1</option>
-											<option value="2">USUARIO_2</option>
-                                        </select>
+                                        <label for="Nome_Usuario">Usuário</label>
+                                        <input type="text" class="form-control required" value="<?php echo $Nome_Usuario ; ?>" id="Nome_Usuario" name="Nome_Usuario" maxlength="128" disabled>
+                                        <input type="hidden" value="<?php echo $Id_UsuEmp; ?>" name="Id_UsuEmp" id="Id_UsuEmp" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
