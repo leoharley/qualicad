@@ -73,7 +73,7 @@ class Login extends BaseController
         }
         else
         {
-            redirect('/dashboard');
+            redirect('/login');
         }
     }
     
