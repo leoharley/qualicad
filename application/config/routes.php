@@ -49,7 +49,7 @@ $route['apagaPerfil/:any'] = "cadastro/apagaPerfil/$1";
 $route['editaTelas'] = "cadastro/editaTelas";
 
 /*********** ROUTES PARA AÇÕES DA TELA PERMISSAO *******************/
-$route['editaPermissoes'] = "cadastro/editaPermissoes";
+$route['editaPermissao'] = "cadastro/editaPermissao";
 
 
 /*********** ROUTES DO PRINCIPAL *******************/
