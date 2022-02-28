@@ -3,6 +3,7 @@
 
 $Id_UsuEmp  = '';
 $TbEmpresa_Id_Empresa = '';
+$TbPerfil_Id_CdPerfil = '';
 $Nome_Usuario = '';
 $Nome_Empresa = '';
 
@@ -12,6 +13,7 @@ if(!empty($infoUsuarioEmpresa))
     {
         $Id_UsuEmp = $r->Id_UsuEmp;
         $TbEmpresa_Id_Empresa = $r->TbEmpresa_Id_Empresa;
+        $TbPerfil_Id_CdPerfil = $r->TbPerfil_Id_CdPerfil;
         $Nome_Usuario = $r->Nome_Usuario;
         $Nome_Empresa = $r->Nome_Empresa;
     }
@@ -66,6 +68,29 @@ if(!empty($infoUsuarioEmpresa))
                                                     ?>
                                                 <option value="<?php echo $empresa->Id_Empresa ?>" <?php if($empresa->Id_Empresa == $TbEmpresa_Id_Empresa) {echo "selected=selected";} ?>>
                                                     <?php echo $empresa->Nome_Empresa ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Id_CdPerfil">Perfil</label>
+                                        <select class="form-control required" id="Id_CdPerfil" name="Id_CdPerfil">
+                                            <?php
+                                            if(!empty($infoPerfis))
+                                            {
+                                                foreach ($infoPerfis as $perfil)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $perfil->Id_CdPerfil  ?>" <?php if($perfil->Id_CdPerfil == $TbPerfil_Id_CdPerfil) {echo "selected=selected";} ?>>
+                                                    <?php echo $perfil->Ds_Perfil ?>
                                                 </option>
                                                 <?php
                                                 }

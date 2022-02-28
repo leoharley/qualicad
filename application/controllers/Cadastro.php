@@ -904,6 +904,7 @@ function cadastroUsuarioEmpresa()
             }
             $data['infoUsuarioEmpresa'] = $this->CadastroModel->carregaInfoUsuarioEmpresa($IdUsuEmp);
             $data['infoEmpresas'] = $this->CadastroModel->carregaEmpresas();
+            $data['infoPerfis'] = $this->CadastroModel->carregaPerfis();
             $this->global['pageTitle'] = 'QUALICAD : Editar Usuários/Empresas';      
             $this->loadViews("qualicad/cadastro/c_cadastroUsuarioEmpresa", $this->global, $data, NULL);
         }
@@ -932,9 +933,10 @@ function editaUsuarioEmpresa()
         { */
 
             $Id_Empresa = $this->input->post('Id_Empresa');
+            $Id_CdPerfil = $this->input->post('Id_CdPerfil');
             $TabUsuario_Id_Usuario = $this->input->post('TabUsuario_Id_Usuario');
  
-            $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$Id_Empresa, 'AtualizadoPor'=>$this->vendorId);
+            $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$Id_Empresa, 'TbPerfil_Id_CdPerfil'=>$Id_CdPerfil, 'AtualizadoPor'=>$this->vendorId);
             
             $resultado = $this->CadastroModel->editaUsuarioEmpresa($infoUsuarioEmpresa, $IdUsuEmp);
             

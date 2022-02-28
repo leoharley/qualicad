@@ -367,6 +367,15 @@ function carregaEmpresas()
     return $query->result();
 }
 
+function carregaPerfis()
+{
+    $this->db->select('Perfis.Id_CdPerfil, Perfis.Ds_Perfil');
+    $this->db->from('TbPerfil as Perfis');
+    $query = $this->db->get();
+    
+    return $query->result();
+}
+
 // FIM DAS CONSULTAS NA TELA DE USUÁRIO/EMPRESA
 
     /**
