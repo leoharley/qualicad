@@ -57,11 +57,11 @@
 
         <form action="<?php echo base_url(); ?>loginMe" method="post">
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" value="<?php $this->session->userdata('email')?>" name="email" disabled />
+            <input type="email" class="form-control" value="<?php echo $this->session->userdata('email')?>" name="email" disabled />
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Senha" name="password" required />
+            <input type="password" class="form-control" value="<?php echo $this->session->userdata('password')?>" name="password" disabled />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="form-group" style="<?php ($this->session->userdata('isLoggedIn'))?'':'display:none';?>">
