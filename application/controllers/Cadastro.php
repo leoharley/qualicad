@@ -867,15 +867,94 @@ function editaPermissao()
 }
 // FIM DAS FUNÇÕES DA TELA DE PERMISSAO
 
+// INICIO DAS FUNÇÕES DA TELA DE USUÁRIO/EMPRESA
 
-    function cadastroUsuarioEmpresa()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
+function cadastroUsuarioEmpresa()
+{
+        $tpTela = $this->uri->segment(2);
 
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Usuário/Empresa/Permissão';
+        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
-        $this->loadViews("qualicad/cadastro/cadastroUsuarioEmpresa", $this->global, $data, NULL);
-    }
+        if ($tpTela == 'listar') {
 
+            $searchText = $this->security->xss_clean($this->input->post('searchText'));
+            $data['searchText'] = $searchText;
+            
+            $this->load->library('pagination');
+            
+            $count = $this->CadastroModel->userListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "cadastroUsuarioEmpresa/listar", $count, 10 );
+            
+            $data['registrosUsuarioEmpresa'] = $this->CadastroModel->listaUsuarioEmpresa($searchText, $returns["page"], $returns["segment"]);
+            
+            $process = 'Listar usuários/empresas';
+            $processFunction = 'Cadastro/cadastroUsuarioEmpresa';
+            $this->logrecord($process,$processFunction);
+
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Usuários/Empresas';
+            
+            $this->loadViews("qualicad/cadastro/l_cadastroUsuarioEmpresa", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'editar') {
+            $IdUsuEmp = $this->uri->segment(3);
+            if($IdUsuEmp == null)
+            {
+                redirect('cadastroUsuarioEmpresa/listar');
+            }
+            $data['infoUsuarioEmpresa'] = $this->CadastroModel->carregaInfoUsuarioEmpresa($IdUsuEmp);
+            $this->global['pageTitle'] = 'QUALICAD : Editar Usuários/Empresas';      
+            $this->loadViews("qualicad/cadastro/c_cadastroUsuarioEmpresa", $this->global, $data, NULL);
+        }
+}
+
+function editaUsuarioEmpresa()
+{
+        $this->load->library('form_validation');
+        
+        $IdUsuEmp = $this->input->post('IdUsuEmp');
+
+        //VALIDAÇÃO
+        
+     /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+        $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+        $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+        $this->form_validation->set_rules('role','Role','trim|required|numeric');
+        $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+        
+        if($this->form_validation->run() == FALSE)
+        { 
+            $this->editOld($userId);
+        }
+        else
+        { */
+
+            $TbEmpresa_Id_Empresa = $this->input->post('TbEmpresa_Id_Empresa');
+            $TabUsuario_Id_Usuario = $this->input->post('TabUsuario_Id_Usuario');  
+ 
+            $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$TbEmpresa_Id_Empresa, 'TabUsuario_Id_Usuario'=>$TabUsuario_Id_Usuario,
+                                    'AtualizadoPor'=>$this->vendorId);
+            
+            $resultado = $this->CadastroModel->editaUsuarioEmpresa($infoUsuarioEmpresa, $IdUsuEmp);
+            
+            if($resultado == true)
+            {
+                $process = 'Usuário/Empresa atualizado';
+                $processFunction = 'Cadastro/editaUsuarioEmpresa';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Usuário/Empresa atualizados com sucesso');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na atualização de Usuário/Empresa');
+            }
+            
+            redirect('cadastroUsuarioEmpresa/listar');
+       // }
+}
+// FIM DAS FUNÇÕES DA TELA DE USUÁRIO/EMPRESA
+   
 
 }

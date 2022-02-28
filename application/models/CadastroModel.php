@@ -317,7 +317,48 @@ function carregaInfoPermissao($IdPermissao)
     
     return $query->result();
 }
-// FIM DAS CONSULTAS NA TELA DE TELAS
+// FIM DAS CONSULTAS NA TELA DE PERMISSAO
+
+// INICIO DAS CONSULTAS NA TELA DE USUÁRIO/EMPRESA
+function listaUsuarioEmpresa($searchText = '', $page, $segment)
+{
+    $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
+    $this->db->from('TbUsuEmp as UsuEmp');
+    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','inner');
+    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','inner');
+    if(!empty($searchText)) {
+        $likeCriteria = "(Usuario.Nome_Usuario  LIKE '%".$searchText."%'
+                        OR  Empresa.Nome_Empresa  LIKE '%".$searchText."%')";
+        $this->db->where($likeCriteria);
+    }
+    $this->db->limit($page, $segment);
+    $query = $this->db->get();
+    
+    $result = $query->result();        
+    return $result;
+}
+
+function editaUsuarioEmpresa($infoUsuarioEmpresa, $IdUsuEmp)
+{
+    $this->db->where('Id_UsuEmp', $IdUsuEmp);
+    $this->db->update('TbUsuEmp', $infoUsuarioEmpresa);
+    
+    return TRUE;
+}
+
+function carregaInfoUsuarioEmpresa($IdUsuEmp)
+{
+    $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
+    $this->db->from('TbUsuEmp as UsuEmp');
+    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','inner');
+    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','inner');
+    $this->db->where('Id_UsuEmp', $IdUsuEmp);
+    $query = $this->db->get();
+    
+    return $query->result();
+}
+// FIM DAS CONSULTAS NA TELA DE USUÁRIO/EMPRESA
+
     /**
      * This function is used to get the user roles information
      * @return array $result : This is result of the query
