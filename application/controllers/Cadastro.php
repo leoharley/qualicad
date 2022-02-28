@@ -889,14 +889,4 @@ function editaPermissao()
     }
 
 
-    function cadastroPermissao()
-    {
-        $data['perfis'] = $this->user_model->carregaPerfisUsuarios();
-
-        $this->global['pageTitle'] = 'QUALICAD : Cadastro de Permissões';
-
-        $this->loadViews("qualicad/cadastro/cadastroPermissao", $this->global, $data, NULL);
-    }
-
-
 }
