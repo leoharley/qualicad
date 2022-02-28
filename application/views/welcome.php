@@ -23,7 +23,7 @@
     <div class="login-logo">
       <a href="#">
 			<b>QUALICAD</b>
-        <br>PAINEL ADMIN MODELO<?php echo $this->session->userdata('email')?></a>
+        <br>PAINEL ADMIN MODELO</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -61,7 +61,7 @@
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" value="<?php echo $this->session->userdata('password')?>" name="password" disabled />
+            <input type="password" class="form-control" value="<?php echo $this->session->userdata('email')?>" name="password" disabled />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="form-group" style="<?php ($this->session->userdata('isLoggedIn'))?'':'display:none';?>">
