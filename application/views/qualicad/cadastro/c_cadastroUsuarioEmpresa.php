@@ -46,7 +46,7 @@ if(!empty($infoUsuarioEmpresa))
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>editaUsuarioEmpresa" method="post" role="form">
+                    <form role="form" id="addUser" action="<?php echo base_url() ?>adicionaUsuarioEmpresa" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
