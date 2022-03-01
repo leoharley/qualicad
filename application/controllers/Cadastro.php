@@ -273,7 +273,7 @@ class Cadastro extends BaseController
 
                 $returns = $this->paginationCompress ( "cadastroEmpresa/listar", $count, 10 );
                 
-                $data['registrosEmpresas'] = $this->CadastroModel->listaEmpresas($searchText, $returns["page"], $returns["segment"]);
+                $data['registrosEmpresas'] = $this->CadastroModel->listaEmpresas($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar empresas';
                 $processFunction = 'Cadastro/cadastroEmpresa';
