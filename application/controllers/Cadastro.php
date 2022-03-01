@@ -112,6 +112,8 @@ class Cadastro extends BaseController
                 $tpativo = $this->input->post('Tp_Ativo');
             //    $roleId = $this->input->post('role');
 
+                if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) !== null) {
+
                 //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
                 if ($tpativo == 'S') 
                 { 
@@ -141,6 +143,10 @@ class Cadastro extends BaseController
                 {
                     $this->session->set_flashdata('error', 'Falha na criação do usuário');
                 }
+
+            } else {
+                    $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+            }
                 
                 redirect('cadastroUsuario/listar');
 

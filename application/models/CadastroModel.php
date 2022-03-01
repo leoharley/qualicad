@@ -103,6 +103,17 @@ class CadastroModel extends CI_Model
         return $query->result();
     }
 
+    function consultaUsuarioExistente($CpfUsuario, $Email)
+    {
+        $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
+        $this->db->from('TabUsuario');
+        $this->db->where('Cpf_Usuario', $CpfUsuario);
+        $this->db->where('Email', $Email);
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
+
     function carregaEmpresasPerfilUsuario($IdUsuario)
     {
     $this->db->select('Empresa.Id_Empresa, Empresa.Nome_Empresa, UsuEmp.TbEmpresa_Id_Empresa,
