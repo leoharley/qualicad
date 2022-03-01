@@ -123,9 +123,8 @@ class Login extends BaseController
                         if ($data->TbPerfil_Id_CdPerfil != NULL && $data->TbEmpresa_Id_Empresa != NULL) $associadoEmpresaPerfil = TRUE;
                     }
                     
-                    if ($res->Admin == 'S') { 
-                        $role = 0; 
-                        $roleText = 'Admin'; }
+                    $role = 0; 
+                    $roleText = 'Admin';
 
                   /*  else 
                     { 
@@ -138,8 +137,8 @@ class Login extends BaseController
                    
                     $sessionArray = array('userId'=>$res->Id_Usuario,
                                             'email'=>$res->Email,               
-                                        //    'role'=>$role,
-                                        //    'roleText'=>$roleText,
+                                            'role'=>$role,
+                                            'roleText'=>$roleText,
                                             'name'=>$res->Nome_Usuario,
                                         //    'lastLogin'=> $lastLogin->createdDtm,
                                             'isAdmin'=>$res->Admin,
@@ -200,12 +199,13 @@ class Login extends BaseController
 
         $sessionArray = array('idEmpresa'=>$IdEmpresa,'nomeEmpresa'=>$NomeEmpresa);
 
+        if ($this->session->userdata ('isAdmin') != 'S') {
         foreach ($this->CadastroModel->carregaPerfilUsuario($IdEmpresa, $this->vendorId) as $data){
             $role = ($data->TbPerfil_Id_CdPerfil);
             $roleText = ($data->Ds_Perfil);
         }
-
         $sessionArray = array('role'=>$role,'roleText'=>$roleText);
+        }
 
         $this->session->set_userdata($sessionArray);
 
