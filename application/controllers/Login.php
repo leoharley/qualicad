@@ -201,10 +201,8 @@ class Login extends BaseController
 
         $this->session->set_userdata($sessionArray);
 
-        var_dump($this->session->userdata('userId'));exit;
-
         if ($this->session->userdata ('isAdmin') != 'S') {
-        foreach ($this->CadastroModel->carregaPerfilUsuario($IdEmpresa, $this->vendorId) as $data){
+        foreach ($this->CadastroModel->carregaPerfilUsuario($IdEmpresa, $this->session->userdata('userId')) as $data){
             $role = ($data->TbPerfil_Id_CdPerfil);
             $roleText = ($data->Ds_Perfil);
         }
