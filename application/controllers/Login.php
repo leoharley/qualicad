@@ -164,7 +164,7 @@ class Login extends BaseController
         }
         else
         {
-            $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario(28);;
+            $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('Id_Usuario'));;
             $this->load->view('welcome',$data);
         }
     }
