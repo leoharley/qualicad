@@ -44,7 +44,7 @@ class CadastroModel extends CI_Model
                             OR  Usuarios.Cpf_Usuario  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-        $this->db->where('Usuarios.Deletado', 'N');
+        $this->db->where('Usuarios.Deletado !=', 'S');
         $this->db->where('Usuarios.Admin', 'N');
         $this->db->limit($page, $segment);
         $query = $this->db->get();
@@ -105,8 +105,8 @@ class CadastroModel extends CI_Model
 {
     $this->db->select('Empresa.Id_Empresa, Empresa.Nome_Empresa, Perfil.Ds_Perfil');
     $this->db->from('TbUsuEmp as UsuEmp');
-    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Deletado = "N" AND Empresa.Tp_Ativo = "S"','inner');
-    $this->db->join('TbPerfil as Perfil', 'Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfil.Deletado = "N" AND Perfil.Tp_Ativo = "S"','inner');
+    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Deletado != "S" AND Empresa.Tp_Ativo = "S"','inner');
+    $this->db->join('TbPerfil as Perfil', 'Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfil.Deletado != "S" AND Perfil.Tp_Ativo = "S"','inner');
     $this->db->where('TabUsuario_Id_Usuario ', $IdUsuario);
     $query = $this->db->get();
     
@@ -127,7 +127,7 @@ function listaEmpresas($searchText = '', $page, $segment)
                         OR  Empresas.CNPJ  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
-    $this->db->where('Empresas.Deletado', 'N');
+    $this->db->where('Empresas.Deletado !=', 'S');
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -186,7 +186,7 @@ function listaPerfis($searchText = '', $page, $segment)
         $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
-    $this->db->where('Perfis.Deletado', 'N');
+    $this->db->where('Perfis.Deletado !=', 'S');
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -258,7 +258,7 @@ function listaTelas($searchText = '', $page, $segment)
 {
     $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.Ds_Tela, Telas.Tp_Ativo');
     $this->db->from('TabTela as Telas');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil AND Perfis.Deletado = "N" AND Perfis.Tp_Ativo = "S"','inner');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil AND Perfis.Deletado != "S" AND Perfis.Tp_Ativo = "S"','inner');
     if(!empty($searchText)) {
         $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
@@ -282,7 +282,7 @@ function carregaInfoTelas($IdTelas)
 {
     $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.Ds_Tela, Telas.Tp_Ativo');
     $this->db->from('TabTela as Telas');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil AND Perfis.Deletado = "N" AND Perfis.Tp_Ativo = "S"','inner');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Telas.TbPerfil_Id_CdPerfil AND Perfis.Deletado != "S" AND Perfis.Tp_Ativo = "S"','inner');
     $this->db->where('Id_Tela', $IdTelas);
     $query = $this->db->get();
     
@@ -324,7 +324,7 @@ function carregaInfoPermissao($IdPermissao)
     Permissao.Inserir, Permissao.Excluir, Permissao.Consultar, Permissao.Imprimir');
     $this->db->from('TbPermissao as Permissao');
     $this->db->join('TabTela as Telas', 'Telas.Id_Tela = Permissao.TabTela_Id_Tela AND Telas.Tp_Ativo = "S"','inner');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Permissao.TbPerfil_Id_CdPerfil AND Perfis.Deletado = "N" AND Perfis.Tp_Ativo = "S"','inner');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = Permissao.TbPerfil_Id_CdPerfil AND Perfis.Deletado != "S" AND Perfis.Tp_Ativo = "S"','inner');
     $this->db->where('Id_Permissao', $IdPermissao);
     $query = $this->db->get();
     
@@ -337,9 +337,9 @@ function listaUsuarioEmpresa($searchText = '', $page, $segment)
 {
     $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa, Perfis.Ds_Perfil');
     $this->db->from('TbUsuEmp as UsuEmp');
-    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','left');
-    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','left');
-    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfis.Tp_Ativo = "S" AND Perfis.Deletado = "N"','left');
+    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado != "S"','left');
+    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado != "S"','left');
+    $this->db->join('TbPerfil as Perfis', 'Perfis.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfis.Tp_Ativo = "S" AND Perfis.Deletado != "S"','left');
     if(!empty($searchText)) {
         $likeCriteria = "(Usuario.Nome_Usuario  LIKE '%".$searchText."%'
                         OR  Empresa.Nome_Empresa  LIKE '%".$searchText."%'
@@ -361,7 +361,7 @@ function verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario)
         $this->db->from('TbUsuEmp as UsuEmp');
         $this->db->where('TbEmpresa_Id_Empresa', $Id_Empresa);
         $this->db->where('TabUsuario_Id_Usuario', $Id_Usuario);
-        $this->db->where('UsuEmp.Deletado', 'N');
+        $this->db->where('UsuEmp.Deletado !=', 'S');
         $query = $this->db->get();
         
         return $query->result();
@@ -400,10 +400,10 @@ function carregaInfoUsuarioEmpresa($IdUsuEmp)
 {
     $this->db->select('UsuEmp.Id_UsuEmp, UsuEmp.TbEmpresa_Id_Empresa, UsuEmp.TbPerfil_Id_CdPerfil, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
     $this->db->from('TbUsuEmp as UsuEmp');
-    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','left');
-    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','left');
+    $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado != "S"','left');
+    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado != "S"','left');
     $this->db->where('Id_UsuEmp', $IdUsuEmp);
-    $this->db->where('UsuEmp.Deletado', 'N');
+    $this->db->where('UsuEmp.Deletado !=', 'S');
     $query = $this->db->get();
     
     return $query->result();
@@ -414,7 +414,7 @@ function carregaInfoUsuarioCriados($CriadoPor)
         $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
         $this->db->from('TabUsuario');
         $this->db->where('CriadoPor', $CriadoPor);
-        $this->db->where('Deletado', 'N');
+        $this->db->where('Deletado !=', 'S');
         $this->db->where('Tp_Ativo', 'S');
         $query = $this->db->get();
         
@@ -426,7 +426,7 @@ function carregaEmpresasCriadas($CriadoPor)
     $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa');
     $this->db->from('TbEmpresa as Empresas');
     $this->db->where('CriadoPor', $CriadoPor);
-    $this->db->where('Deletado', 'N');
+    $this->db->where('Deletado !=', 'S');
     $this->db->where('Tp_Ativo', 'S');
     $query = $this->db->get();
     
@@ -437,7 +437,7 @@ function carregaEmpresas()
 {
     $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa');
     $this->db->from('TbEmpresa as Empresas');
-    $this->db->where('Perfis.Deletado', 'N');
+    $this->db->where('Perfis.Deletado !=', 'S');
     $this->db->where('Perfis.Tp_Ativo', 'S');
     $query = $this->db->get();
     
@@ -448,7 +448,7 @@ function carregaPerfis()
 {
     $this->db->select('Perfis.Id_CdPerfil, Perfis.Ds_Perfil');
     $this->db->from('TbPerfil as Perfis');
-    $this->db->where('Perfis.Deletado', 'N');
+    $this->db->where('Perfis.Deletado !=', 'S');
     $this->db->where('Perfis.Tp_Ativo', 'S');
     $query = $this->db->get();
     
