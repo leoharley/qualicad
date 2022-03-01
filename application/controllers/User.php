@@ -19,6 +19,14 @@ class User extends BaseController
         parent::__construct();
         $this->load->model('user_model');
         $this->isLoggedIn();
+
+        if (null !== $this->session->userdata('idEmpresa')) {
+            redirect('/dashboard');
+        } 
+        else
+        {
+            $this->load->view('login');
+        }
     }
     
     /**
