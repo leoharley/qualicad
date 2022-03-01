@@ -74,7 +74,7 @@ class Login extends BaseController
         }
         else
         {
-            if (isset($this->session->userdata('idEmpresa')) {
+            if (isset($this->session->userdata('idEmpresa'))) {
                 redirect('/dashboard');
             } 
             else
