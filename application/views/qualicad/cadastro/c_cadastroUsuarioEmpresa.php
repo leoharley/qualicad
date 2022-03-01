@@ -48,12 +48,25 @@ if(!empty($infoUsuarioEmpresa))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addUser" action="<?php echo base_url() ?>editaUsuarioEmpresa" method="post" role="form">
                         <div class="box-body">
-                            <div class="row">
+                            <div class="row">infoUsuarioCriados
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="Nome_Usuario">Usuário</label>
-                                        <input type="text" class="form-control required" value="<?php echo $Nome_Usuario ; ?>" id="Nome_Usuario" name="Nome_Usuario" maxlength="128" disabled>
-                                        <input type="hidden" value="<?php echo $Id_UsuEmp; ?>" name="Id_UsuEmp" id="Id_UsuEmp" />
+                                        <label for="Id_Usuario">Usuário</label>
+                                        <select class="form-control required" id="Id_Usuario" name="Id_Usuario">
+                                            <?php
+                                            if(!empty($infoUsuarioCriados))
+                                            {
+                                                foreach ($infoUsuarioCriados as $usuario)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $usuario->Id_Usuario ?>">
+                                                    <?php echo $usuario->Nome_Usuario ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

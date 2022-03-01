@@ -373,6 +373,16 @@ function carregaInfoUsuarioEmpresa($IdUsuEmp)
     return $query->result();
 }
 
+function carregaInfoUsuarioCriados($CriadorPor)
+{
+    $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
+        $this->db->from('TabUsuario');
+        $this->db->where('CriadorPor', $CriadorPor);
+        $query = $this->db->get();
+        
+        return $query->result();
+}
+
 function carregaEmpresas()
 {
     $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa');

@@ -905,7 +905,8 @@ function cadastroUsuarioEmpresa()
             {
                 redirect('cadastroUsuarioEmpresa/listar');
             }
-            $data['infoUsuarioEmpresa'] = $this->CadastroModel->carregaInfoUsuarioEmpresa($IdUsuEmp);
+           // $data['infoUsuarioEmpresa'] = $this->CadastroModel->carregaInfoUsuarioEmpresa($IdUsuEmp);
+            $data['infoUsuarioCriados'] = $this->CadastroModel->carregaInfoUsuarioCriados($this->session->userdata('userId'));
             $data['infoEmpresas'] = $this->CadastroModel->carregaEmpresas();
             $data['infoPerfis'] = $this->CadastroModel->carregaPerfis();
             $this->global['pageTitle'] = 'QUALICAD : Editar Usuários/Empresas';      
