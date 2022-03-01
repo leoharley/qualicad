@@ -496,7 +496,7 @@ class Cadastro extends BaseController
 
                 $returns = $this->paginationCompress ( "cadastroPerfil/listar", $count, 10 );
                 
-                $data['registrosPerfis'] = $this->CadastroModel->listaPerfis($searchText, $returns["page"], $returns["segment"]);
+                $data['registrosPerfis'] = $this->CadastroModel->listaPerfis($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar perfis';
                 $processFunction = 'Cadastro/cadastroPerfil';
@@ -900,7 +900,7 @@ function cadastroUsuarioEmpresa()
            // $data['infoUsuarioEmpresa'] = $this->CadastroModel->carregaInfoUsuarioEmpresa($IdUsuEmp);
             $data['infoUsuarioCriados'] = $this->CadastroModel->carregaInfoUsuarioCriados($this->session->userdata('userId'));
             $data['infoEmpresasCriadas'] = $this->CadastroModel->carregaEmpresasCriadas($this->session->userdata('userId'));
-            $data['infoPerfis'] = $this->CadastroModel->carregaPerfis();
+            $data['infoPerfis'] = $this->CadastroModel->carregaPerfisCriados($this->session->userdata('userId'));
             $this->global['pageTitle'] = 'QUALICAD : Editar Usuários/Empresas';      
             $this->loadViews("qualicad/cadastro/c_cadastroUsuarioEmpresa", $this->global, $data, NULL);
         }

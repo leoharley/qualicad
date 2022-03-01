@@ -192,7 +192,7 @@ function carregaInfoEmpresa($IdEmpresa)
 // FIM DAS CONSULTAS NA TELA DE EMPRESA
 
 // INICIO DAS CONSULTAS NA TELA DE PERFIL
-function listaPerfis($searchText = '', $page, $segment)
+function listaPerfis($idUser, $searchText = '', $page, $segment)
 {
     $this->db->select('Perfis.Id_CdPerfil, Perfis.Ds_Perfil, Perfis.CriadoPor, Perfis.AtualizadoPor, Perfis.Dt_Atualizacao, Perfis.Dt_Ativo, 
     Perfis.Dt_Inativo, Perfis.Tp_Ativo');
@@ -203,6 +203,7 @@ function listaPerfis($searchText = '', $page, $segment)
         $this->db->where($likeCriteria);
     }
     $this->db->where('Perfis.Deletado !=', 'S');
+    $this->db->where('Perfis.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -462,12 +463,13 @@ function carregaEmpresas()
     return $query->result();
 }
 
-function carregaPerfis()
+function carregaPerfisCriados($CriadoPor)
 {
     $this->db->select('Perfis.Id_CdPerfil, Perfis.Ds_Perfil');
     $this->db->from('TbPerfil as Perfis');
     $this->db->where('Perfis.Deletado !=', 'S');
     $this->db->where('Perfis.Tp_Ativo', 'S');
+    $this->db->where('Perfis.CriadoPor', $CriadoPor);
     $query = $this->db->get();
     
     return $query->result();
