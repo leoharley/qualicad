@@ -109,8 +109,12 @@ class Login extends BaseController
                     $process = 'Autenticação';
                     $processFunction = 'Login/loginMe';
 
+
+
                     if ($res->Admin == 'S') { $role = 0; $roleText = 'Admin'; } else { $role = $res->Id_CdPerfil; $roleText = $res->Ds_Perfil; }
 
+                    if ($role != null) {
+                   
                     $sessionArray = array('userId'=>$res->Id_Usuario,
                                             'email'=>$res->Email,               
                                             'role'=>$role,
@@ -132,6 +136,13 @@ class Login extends BaseController
                 
                     redirect('/welcome');
 //                    $this->load->view('welcome');
+
+                                } else {
+                                    $this->session->set_flashdata('error', 'Usuário não associado a empresa e/ou perfil');
+                                    redirect('/login');
+                                }
+
+
                 }
             }
             else
