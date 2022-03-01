@@ -92,12 +92,12 @@
             </div>
             <!-- /.col -->
             <div class="col-xs-12">
-              <div class="col-xs-4">
+              <div class="col-xs-2">
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-8">
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Painel de Controle" />
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-2">
               </div>
             </div>
             <!-- /.col -->
