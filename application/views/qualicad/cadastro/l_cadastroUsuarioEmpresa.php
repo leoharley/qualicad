@@ -74,7 +74,7 @@
                               <i class="fa fa-pencil"></i>
                           </a> -->
                           <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaUsuarioEmpresa/'.$registro->Id_UsuEmp; ?>" title="Excluir">
-                              <i class="fa fa-trash"></i>
+                              <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
                     </tr>
