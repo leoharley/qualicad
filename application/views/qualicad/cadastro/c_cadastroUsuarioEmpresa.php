@@ -86,6 +86,8 @@ if(!empty($infoUsuarioEmpresa))
                                                 </option>
                                                 <?php
                                                 }
+                                            } else {
+                                                echo '<option value="0">VOCÊ NÃO CADASTROU EMPRESA</option>';
                                             }
                                             ?>
                                         </select>
