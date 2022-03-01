@@ -64,7 +64,7 @@
             <input type="password" class="form-control" value="password" name="password" disabled />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
-          <div class="form-group" style="<?php ($this->session->userdata('isLoggedIn'))?'':'display:none';?>">
+          <div class="form-group">
               <label for="Id_Empresa">Empresa</label>
               <select class="form-control required" id="Id_Empresa" name="Id_Empresa">
                   <?php
