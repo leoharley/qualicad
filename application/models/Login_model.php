@@ -17,6 +17,7 @@ class Login_model extends CI_Model
         $this->db->join('TbPerfil as Perfil','Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil','left');
         $this->db->where('Usuario.Email', $email);
         $this->db->where('Usuario.Tp_Ativo','S');
+        $this->db->where('Usuario.Deletado','N');
         $query = $this->db->get();
         
         $user = $query->result();
