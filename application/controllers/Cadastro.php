@@ -112,6 +112,8 @@ class Cadastro extends BaseController
                 $tpativo = $this->input->post('Tp_Ativo');
             //    $roleId = $this->input->post('role');
 
+                var_dump($this->CadastroModel->consultaUsuarioExistente($cpf,$email));exit;
+
                 if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) !== null) {
 
                 //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
