@@ -281,7 +281,7 @@ function listaTelas($idUser, $searchText = '', $page, $segment)
         $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
-    $this->db->where('Usuarios.CriadoPor', $idUser);
+    $this->db->where('Telas.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     $this->session->userdata('userId')
@@ -323,7 +323,7 @@ function listaPermissao($idUser, $searchText = '', $page, $segment)
                         OR  Telas.Ds_Tela  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
-    $this->db->where('Usuarios.CriadoPor', $idUser);
+    $this->db->where('Permissao.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
