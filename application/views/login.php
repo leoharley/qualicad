@@ -85,7 +85,8 @@
             <!-- /.col -->
           </div>
         </form>
-
+        
+        <br>
         <a href="<?php echo base_url() ?>forgotPassword">Esqueci a senha</a>
         <br>
 
