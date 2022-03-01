@@ -39,7 +39,7 @@ class User extends BaseController
             redirect('loadChangePass');
         }
 
-        $this->loadViews("dashboard", $this->global, $data , NULL);
+        $this->loadViews("dshboard", $this->global, $data , NULL);
     }
 
     /**
