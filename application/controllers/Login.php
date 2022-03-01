@@ -133,7 +133,7 @@ class Login extends BaseController
             }
             else
             {
-                $this->session->set_flashdata('error', 'Email adresi veya şifre yanlış');
+                $this->session->set_flashdata('error', 'O endereço de e-mail ou a senha estão incorretos');
                 
                 redirect('/login');
             }
