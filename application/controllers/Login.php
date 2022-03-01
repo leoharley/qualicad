@@ -176,6 +176,8 @@ class Login extends BaseController
         $sessionArray = array('idEmpresa'=>$IdEmpresa,'nomeEmpresa'=>$NomeEmpresa);
         $this->session->set_userdata($sessionArray);
 
+        var_dump($sessionArray);exit;
+
         redirect('/login');
     }
 
