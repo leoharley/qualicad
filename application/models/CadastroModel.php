@@ -356,7 +356,7 @@ function listaUsuarioEmpresa($searchText = '', $page, $segment)
 function verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario)
     {
 
-        $this->db->select('UsuEmp.Id_UsuEmp, UsuEmp.TbEmpresa_Id_Empresa, UsuEmp.TbPerfil_Id_CdPerfil, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
+        $this->db->select('UsuEmp.Id_UsuEmp, UsuEmp.TbEmpresa_Id_Empresa, UsuEmp.TabUsuario_Id_Usuario, UsuEmp.TbPerfil_Id_CdPerfil');
         $this->db->from('TbUsuEmp as UsuEmp');
         $this->db->where('TbEmpresa_Id_Empresa', $Id_Empresa);
         $this->db->where('TabUsuario_Id_Usuario', $Id_Usuario);
