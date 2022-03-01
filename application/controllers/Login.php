@@ -109,6 +109,8 @@ class Login extends BaseController
                     $process = 'Autenticação';
                     $processFunction = 'Login/loginMe';
 
+                    var_dump($res->Admin);exit;
+
                     if ($res->Admin == 'S') { $role = 0; $roleText = 'Admin'; } else { $role = $res->Id_CdPerfil; $roleText = $res->Ds_Perfil; }
 
                     $sessionArray = array('userId'=>$res->Id_Usuario,
