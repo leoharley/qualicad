@@ -103,8 +103,8 @@ class CadastroModel extends CI_Model
 
     function carregaEmpresasPerfilUsuario($IdUsuario)
 {
-    $this->db->select('Empresa.Id_Empresa, UsuEmp.Id_CdPerfil, UsuEmp.TbEmpresa_Id_Empresa, Nome_Empresa, 
-                        UsuEmp.Id_CdPerfil, Perfil.Ds_Perfil');
+    $this->db->select('Empresa.Id_Empresa, Empresa.Nome_Empresa, UsuEmp.TbEmpresa_Id_Empresa,
+                        UsuEmp.TbPerfil_Id_CdPerfil, Perfil.Ds_Perfil');
     $this->db->from('TbUsuEmp as UsuEmp');
     $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Deletado != "S" AND Empresa.Tp_Ativo = "S"','inner');
     $this->db->join('TbPerfil as Perfil', 'Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfil.Deletado != "S" AND Perfil.Tp_Ativo = "S"','inner');
