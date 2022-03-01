@@ -383,6 +383,16 @@ function carregaInfoUsuarioCriados($CriadoPor)
         return $query->result();
 }
 
+function carregaEmpresasCriadas($CriadoPor)
+{
+    $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa');
+    $this->db->from('TbEmpresa as Empresas');
+    $this->db->where('CriadoPor', $CriadoPor);
+    $query = $this->db->get();
+    
+    return $query->result();
+}
+
 function carregaEmpresas()
 {
     $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa');

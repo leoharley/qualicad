@@ -354,7 +354,7 @@ class Cadastro extends BaseController
                 $infoEmpresa = array('Nome_Empresa'=> $Nome_Empresa, 'CNPJ'=>$CNPJ, 'Email_Empresa'=>$Email_Empresa,
                                     'Cd_EmpresaERP'=>$Cd_EmpresaERP, 'End_Empresa'=>$End_Empresa, 'Nome_Contato'=>$Nome_Contato,
                                     'Telefone'=>$Telefone, 'Dt_Valida_Contrato'=>$Dt_Valida_Contrato, 'Tp_Ativo'=>$Tp_Ativo,
-                                    'Dt_Ativo'=>$Dt_Ativo);
+                                    'CriadoPor'=>$this->vendorId,'Dt_Ativo'=>$Dt_Ativo);
                                     
                 $result = $this->CadastroModel->adicionaEmpresa($infoEmpresa);
                 
@@ -907,7 +907,7 @@ function cadastroUsuarioEmpresa()
             }
            // $data['infoUsuarioEmpresa'] = $this->CadastroModel->carregaInfoUsuarioEmpresa($IdUsuEmp);
             $data['infoUsuarioCriados'] = $this->CadastroModel->carregaInfoUsuarioCriados($this->session->userdata('userId'));
-            $data['infoEmpresas'] = $this->CadastroModel->carregaEmpresas();
+            $data['infoEmpresasCriadas'] = $this->CadastroModel->carregaEmpresasCriadas($this->session->userdata('userId'));
             $data['infoPerfis'] = $this->CadastroModel->carregaPerfis();
             $this->global['pageTitle'] = 'QUALICAD : Editar Usuários/Empresas';      
             $this->loadViews("qualicad/cadastro/c_cadastroUsuarioEmpresa", $this->global, $data, NULL);
