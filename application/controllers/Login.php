@@ -169,6 +169,25 @@ class Login extends BaseController
         }
     }
 
+    public function escolheEmpresa()
+    {
+
+        $IdEmpresa = $this->input->post('Id_Empresa');
+        var_dump($IdEmpresa);exit;
+
+        $isLoggedIn = $this->session->userdata('isLoggedIn');
+        
+        if(!isset($isLoggedIn) || $isLoggedIn != TRUE)
+        {
+            redirect('/login');
+        }
+        else
+        {
+            $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId'));;
+            $this->load->view('welcome',$data);
+        }
+    }
+
     /**
      * This function used to load forgot password view
      */

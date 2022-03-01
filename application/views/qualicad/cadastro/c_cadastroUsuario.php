@@ -134,9 +134,6 @@ if(!empty($infoUsuario))
                             cpf: 'valid' //valida tanto Formatação como os Digitos
                                     //caso não queira validar a formatação use => cpf: 'valid'
                                     //caso só queira validar a formatação use => cpf: 'format'
-                        },
-                        'empresa.cnpj': {
-                            cnpj: 'valid' //valida tanto Formatação como os Digitos
                         }
                     }
                 });
