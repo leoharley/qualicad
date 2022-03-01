@@ -95,7 +95,7 @@
               <div class="col-xs-2">
               </div>
               <div class="col-xs-8">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Painel de Controle" />
+                <input type="submit" class="btn btn-primary btn-block btn-flat" value="Painel de Controle" />
               </div>
               <div class="col-xs-2">
               </div>

@@ -73,8 +73,14 @@
               </div>  -->
             </div>
             <!-- /.col -->
-            <div class="col-xs-4">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Entrar" />
+            <div class="col-xs-12">
+              <div class="col-xs-2">
+              </div>
+              <div class="col-xs-8">
+                <input type="submit" class="btn btn-primary btn-block btn-flat" value="Entrar" />
+              </div>
+              <div class="col-xs-2">
+              </div>
             </div>
             <!-- /.col -->
           </div>
