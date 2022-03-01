@@ -692,7 +692,7 @@ class Cadastro extends BaseController
                 
                 $count = $this->CadastroModel->userListingCount($searchText);
 
-                $returns = $this->paginationCompress ( "cadastroTelas/listar", $count, 10 );
+                $returns = $this->paginationCompress ( "cadastroTelas/listar", $count, 50 );
                 
                 $data['registrosTelas'] = $this->CadastroModel->listaTelas($searchText, $returns["page"], $returns["segment"]);
                 
