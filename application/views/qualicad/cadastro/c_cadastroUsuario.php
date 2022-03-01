@@ -127,7 +127,7 @@ if(!empty($infoUsuario))
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
 <script type="text/javascript">
             $(function () {
-                $('#f-exemplo').validate({
+                $('#addUser').validate({
                 //    debug: true, //retira essa linha, para o form voltar a funcionar
                     rules: {
                         'Cpf_Usuario': {
