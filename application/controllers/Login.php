@@ -117,14 +117,13 @@ class Login extends BaseController
 
                     $empresasPerfilUsuario = $this->CadastroModel->carregaEmpresasPerfilUsuario($res->Id_Usuario);
 
-                    $usuarioAssociadoEmpresaPerfil = FALSE;
+                    $associadoEmpresaPerfil = FALSE;
 
                     foreach ($empresasPerfilUsuario as $data){
-                        var_dump($data->TbPerfil_Id_CdPerfil);
-                        var_dump($data->TbEmpresa_Id_Empresa);
                         if ($data->TbPerfil_Id_CdPerfil != NULL && $data->TbEmpresa_Id_Empresa != NULL) $usuarioAssociadoEmpresaPerfil = TRUE;
                     }
                     
+                    var_dump($associadoEmpresaPerfil);
                     exit;
 
                     if ($res->Admin == 'S') { 
@@ -138,7 +137,7 @@ class Login extends BaseController
                         $idempresa = $empresasPerfilUsuario['TbEmpresa_Id_Empresa'];
                      } */
 
-                    if ($usuarioAssociadoEmpresaPerfil || $res->Admin == 'S') {
+                    if ($associadoEmpresaPerfil || $res->Admin == 'S') {
                    
                     $sessionArray = array('userId'=>$res->Id_Usuario,
                                             'email'=>$res->Email,               
