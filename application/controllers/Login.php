@@ -172,11 +172,11 @@ class Login extends BaseController
     public function escolheEmpresa()
     {
         $IdEmpresa = $this->input->post('Id_Empresa');
-        $NomeEmpresa = $this->CadastroModel->carregaInfoEmpresa($IdEmpresa)['Nome_Empresa'];
+        $NomeEmpresa = $this->CadastroModel->carregaInfoEmpresa($IdEmpresa);
         $sessionArray = array('idEmpresa'=>$IdEmpresa,'nomeEmpresa'=>$NomeEmpresa);
         $this->session->set_userdata($sessionArray);
 
-        var_dump($sessionArray);exit;
+        var_dump($NomeEmpresa);exit;
 
         redirect('/login');
     }
