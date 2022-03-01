@@ -55,7 +55,7 @@
         </div>
         <?php } ?>
 
-        <form action="<?php echo base_url(); ?>escolheEmpresa" method="post">
+        <form action="<?php echo base_url(); ?>loginMe" method="post">
           <div class="form-group has-feedback">
             <input type="email" class="form-control" value="<?php echo $this->session->userdata('email')?>" name="email" disabled />
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
