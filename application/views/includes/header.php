@@ -89,14 +89,12 @@
                     <?php echo $name; ?>
                     <small>
                       <?php echo $role_text; ?>
+                      <?php echo $this->session->userdata('nomeEmpresa');?>
                     </small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                <div class="pull-left">
-                  <?php echo $this->session->userdata('nomeEmpresa');?>
-                </div>
                 <!--  <div class="pull-left">
                     <a href="<?php // echo base_url(); ?>userEdit" class="btn btn-default btn-flat">
                       <i class="fa fa-key"></i> Meus dados </a>
