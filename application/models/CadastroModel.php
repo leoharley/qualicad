@@ -107,8 +107,9 @@ class CadastroModel extends CI_Model
     {
         $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
         $this->db->from('TabUsuario');
-        $this->db->where('Cpf_Usuario', $CpfUsuario);
-        $this->db->where('Email', $Email);
+        $campos = "(Cpf_Usuario = '.$CpfUsuario.'
+                    OR Email = '.$Email.')";
+        $this->db->where($campos);
         $query = $this->db->get();
         
         return $query->result();
