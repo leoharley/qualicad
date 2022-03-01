@@ -1009,6 +1009,33 @@ function editaUsuarioEmpresa()
             redirect('cadastroUsuarioEmpresa/listar');
        // }
 }
+
+function apagaUsuarioEmpresa()
+    {
+            $IdUsuEmp = $this->uri->segment(2);
+
+            $infoUsuEmp = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->CadastroModel->apagaUsuarioEmpresa($infoUsuEmp, $IdUsuEmp);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                 $process = 'Exclusão de usuário/empresa';
+                 $processFunction = 'Cadastro/apagaUsuarioEmpresa';
+                 $this->logrecord($process,$processFunction);
+
+                 $this->session->set_flashdata('success', 'Usuário/Empresa deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o usuário/empresa');
+                }
+                redirect('cadastroUsuarioEmpresa/listar');
+    }
+
 // FIM DAS FUNÇÕES DA TELA DE USUÁRIO/EMPRESA
    
 

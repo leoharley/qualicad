@@ -386,6 +386,14 @@ function editaUsuarioEmpresa($infoUsuarioEmpresa, $IdUsuEmp)
     return TRUE;
 }
 
+function apagaUsuarioEmpresa($infoUsuEmp, $IdUsuEmp)
+{
+    $this->db->where('Id_UsuEmp ', $IdUsuEmp);
+    $this->db->update('TbUsuEmp', $infoUsuEmp);
+    
+    return $this->db->affected_rows();
+}
+
 function carregaInfoUsuarioEmpresa($IdUsuEmp)
 {
     $this->db->select('UsuEmp.Id_UsuEmp, UsuEmp.TbEmpresa_Id_Empresa, UsuEmp.TbPerfil_Id_CdPerfil, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
