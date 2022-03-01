@@ -151,8 +151,6 @@ class User extends BaseController
     function loadChangePass()
     {
         $this->global['pageTitle'] = 'QUALICAD : Alterar Senha';
-
-        var_dump($this->global);exit;
         
         $this->loadViews("changePassword", $this->global, NULL, NULL);
     }
