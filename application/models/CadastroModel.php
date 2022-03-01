@@ -47,6 +47,7 @@ class CadastroModel extends CI_Model
         $this->db->where('Usuarios.Deletado !=', 'S');
         $this->db->where('Usuarios.Admin', 'N');
         $this->db->where('Usuarios.Id_Usuario !=', $idUser);
+        $this->db->where('Usuarios.CriadoPor', $idUser);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
@@ -271,7 +272,7 @@ function carregaInfoPerfil($IdPerfil)
 
 
 // INICIO DAS CONSULTAS NA TELA DE TELAS
-function listaTelas($searchText = '', $page, $segment)
+function listaTelas($idUser, $searchText = '', $page, $segment)
 {
     $this->db->select('Telas.Id_Tela, Perfis.Ds_Perfil, Telas.Ds_Tela, Telas.Tp_Ativo');
     $this->db->from('TabTela as Telas');
@@ -280,8 +281,10 @@ function listaTelas($searchText = '', $page, $segment)
         $likeCriteria = "(Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
+    $this->db->where('Usuarios.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
+    $this->session->userdata('userId')
     
     $result = $query->result();        
     return $result;
@@ -308,7 +311,7 @@ function carregaInfoTelas($IdTelas)
 // FIM DAS CONSULTAS NA TELA DE TELAS
 
 // INICIO DAS CONSULTAS NA TELA DE PERMISSOES
-function listaPermissao($searchText = '', $page, $segment)
+function listaPermissao($idUser, $searchText = '', $page, $segment)
 {
     $this->db->select('Permissao.Id_Permissao, Perfis.Ds_Perfil, Telas.Ds_Tela, Permissao.Atualizar,
     Permissao.Inserir, Permissao.Excluir, Permissao.Consultar, Permissao.Imprimir');
@@ -320,6 +323,7 @@ function listaPermissao($searchText = '', $page, $segment)
                         OR  Telas.Ds_Tela  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
+    $this->db->where('Usuarios.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     

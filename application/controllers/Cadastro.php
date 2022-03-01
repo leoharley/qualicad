@@ -691,7 +691,7 @@ class Cadastro extends BaseController
 
                 $returns = $this->paginationCompress ( "cadastroTelas/listar", $count, 50 );
                 
-                $data['registrosTelas'] = $this->CadastroModel->listaTelas($searchText, $returns["page"], $returns["segment"]);
+                $data['registrosTelas'] = $this->CadastroModel->listaTelas($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar telas';
                 $processFunction = 'Cadastro/cadastroTelas';
@@ -794,7 +794,7 @@ function cadastroPermissao()
 
             $returns = $this->paginationCompress ( "cadastroPermissao/listar", $count, 10 );
             
-            $data['registrosPermissao'] = $this->CadastroModel->listaPermissao($searchText, $returns["page"], $returns["segment"]);
+            $data['registrosPermissao'] = $this->CadastroModel->listaPermissao($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
             
             $process = 'Listar telas';
             $processFunction = 'Cadastro/cadastroPermissao';
