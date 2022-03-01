@@ -45,7 +45,7 @@ $(document).ready(function(){
        {
            if(value == 0) { return false; }
           else { return true; }
-       },"This field is required.");
+       },"Campo obrigatório.");
        
        
        jQuery.validator.addMethod("greaterThan", function(value, element)
