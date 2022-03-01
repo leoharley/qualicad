@@ -47,7 +47,6 @@ class CadastroModel extends CI_Model
         $this->db->where('Usuarios.Deletado !=', 'S');
         $this->db->where('Usuarios.Admin', 'N');
         $this->db->where('Usuarios.Id_Usuario !=', $idUser);
-        $this->session->userdata('userId')
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
