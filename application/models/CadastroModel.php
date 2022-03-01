@@ -346,6 +346,7 @@ function listaUsuarioEmpresa($searchText = '', $page, $segment)
                         OR  Perfis.Ds_Perfil  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
+    $this->db->where('UsuEmp.Deletado', 'N');
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -360,6 +361,7 @@ function verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario)
         $this->db->from('TbUsuEmp as UsuEmp');
         $this->db->where('TbEmpresa_Id_Empresa', $Id_Empresa);
         $this->db->where('TabUsuario_Id_Usuario', $Id_Usuario);
+        $this->db->where('UsuEmp.Deletado', 'N');
         $query = $this->db->get();
         
         return $query->result();
@@ -401,6 +403,7 @@ function carregaInfoUsuarioEmpresa($IdUsuEmp)
     $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado = "N"','left');
     $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado = "N"','left');
     $this->db->where('Id_UsuEmp', $IdUsuEmp);
+    $this->db->where('UsuEmp.Deletado', 'N');
     $query = $this->db->get();
     
     return $query->result();
