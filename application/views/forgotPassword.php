@@ -22,12 +22,12 @@
     <div class="login-box">
         <div class="login-logo">
             <a href="#">
-                <b>BSEU</b>
-                <br>Yönetim Paneli</a>
+                <b>QUALICAD</b>
+                <br>PAINEL ADMIN MODELO</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Şifremi Unuttum</p>
+            <p class="login-box-msg">Esqueci a minha senha</p>
             <?php $this->load->helper('form'); ?>
             <div class="row">
                 <div class="col-md-12">
@@ -97,12 +97,12 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-xs-4">
-                            <input type="submit" class="btn btn-primary btn-block btn-flat" value="Gönder" />
+                            <input type="submit" class="btn btn-primary btn-block btn-flat" value="Enviar" />
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
-                <a href="<?php echo base_url() ?>">Giriş Yap</a>
+                <a href="<?php echo base_url() ?>">Login</a>
                 <br>
         </div>
         <!-- /.login-box-body -->

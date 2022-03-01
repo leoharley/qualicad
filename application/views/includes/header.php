@@ -94,10 +94,10 @@
                 </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                  <div class="pull-left">
+                <!--  <div class="pull-left">
                     <a href="<?php echo base_url(); ?>userEdit" class="btn btn-default btn-flat">
                       <i class="fa fa-key"></i> Meus dados </a>
-                  </div>
+                  </div> -->
                   <div class="pull-right">
                     <a href="<?php echo base_url(); ?>logout" class="btn btn-default btn-flat">
                       <i class="fa fa-sign-out"></i> Sair</a>
