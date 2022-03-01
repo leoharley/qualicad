@@ -33,7 +33,7 @@ class CadastroModel extends CI_Model
      */
 
 // INICIO DAS CONSULTAS NA TELA DE USUÁRIO
-    function listaUsuarios($searchText = '', $page, $segment)
+    function listaUsuarios($idUser, $searchText = '', $page, $segment)
     {
         $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email');
         $this->db->from('TabUsuario as Usuarios');
@@ -46,6 +46,8 @@ class CadastroModel extends CI_Model
         }
         $this->db->where('Usuarios.Deletado !=', 'S');
         $this->db->where('Usuarios.Admin', 'N');
+        $this->db->where('Usuarios.Id_Usuario !=', $idUser);
+        $this->session->userdata('userId')
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
@@ -129,7 +131,7 @@ class CadastroModel extends CI_Model
 // FIM DAS CONSULTAS NA TELA DE USUÁRIO
     
 // INICIO DAS CONSULTAS NA TELA DE EMPRESA
-function listaEmpresas($searchText = '', $page, $segment)
+function listaEmpresas($idUser, $searchText = '', $page, $segment)
 {
     $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa, Empresas.CNPJ, Empresas.Cd_EmpresaERP, Empresas.End_Empresa, Empresas.Nome_Contato, 
     Empresas.Telefone, Empresas.Email_Empresa, Empresas.Dt_Valida_Contrato, Empresas.Tp_Ativo, Empresas.Dt_Ativo, Empresas.Dt_Inativo');
@@ -142,6 +144,7 @@ function listaEmpresas($searchText = '', $page, $segment)
         $this->db->where($likeCriteria);
     }
     $this->db->where('Empresas.Deletado !=', 'S');
+    $this->db->where('Empresas.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -347,7 +350,7 @@ function carregaInfoPermissao($IdPermissao)
 // FIM DAS CONSULTAS NA TELA DE PERMISSAO
 
 // INICIO DAS CONSULTAS NA TELA DE USUÁRIO/EMPRESA
-function listaUsuarioEmpresa($searchText = '', $page, $segment)
+function listaUsuarioEmpresa($idUser, $searchText = '', $page, $segment)
 {
     $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa, Perfis.Ds_Perfil');
     $this->db->from('TbUsuEmp as UsuEmp');
@@ -361,6 +364,7 @@ function listaUsuarioEmpresa($searchText = '', $page, $segment)
         $this->db->where($likeCriteria);
     }
     $this->db->where('UsuEmp.Deletado', 'N');
+    $this->db->where('UsuEmp.TabUsuario_Id_Usuario !=', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -430,6 +434,7 @@ function carregaInfoUsuarioCriados($CriadoPor)
         $this->db->where('CriadoPor', $CriadoPor);
         $this->db->where('Deletado !=', 'S');
         $this->db->where('Tp_Ativo', 'S');
+        $this->db->where('Id_Usuario !=', $CriadoPor);
         $query = $this->db->get();
         
         return $query->result();
