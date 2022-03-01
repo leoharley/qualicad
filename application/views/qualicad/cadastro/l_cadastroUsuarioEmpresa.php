@@ -9,7 +9,7 @@
   <section class="content">
     <div class="col-xs-12">
       <div class="text-right">
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>cadastroUsuarioEmpresa/editar">
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>cadastroUsuarioEmpresa/adicionar">
           <i class="fa fa-plus"></i> Associar Usuário/Empresa</a>
       </div>
       <div class="box">
@@ -47,7 +47,6 @@
                     <th>Usuário</th>
                     <th>Empresa</th>
                     <th>Perfil</th>
-                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>  
@@ -67,14 +66,14 @@
                       <td>
                         <?php echo $registro->Ds_Perfil ?>
                       </td>
-                      <td class="text-center">
-                        <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
+                    <!--  <td class="text-center">
+                          <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
-                          </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroUsuarioEmpresa/editar/'.$registro->Id_UsuEmp; ?>" title="Editar">
+                          </a>
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroUsuarioEmpresa/deletar/'.$registro->Id_UsuEmp; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                      </td>
+                      </td> -->
                     </tr>
                     <?php
                           }

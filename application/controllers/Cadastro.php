@@ -899,12 +899,7 @@ function cadastroUsuarioEmpresa()
             
             $this->loadViews("qualicad/cadastro/l_cadastroUsuarioEmpresa", $this->global, $data, NULL);
         }
-        else if ($tpTela == 'editar') {
-            $IdUsuEmp = $this->uri->segment(3);
-            if($IdUsuEmp == null)
-            {
-                redirect('cadastroUsuarioEmpresa/listar');
-            }
+        else if ($tpTela == 'adicionar') {
            // $data['infoUsuarioEmpresa'] = $this->CadastroModel->carregaInfoUsuarioEmpresa($IdUsuEmp);
             $data['infoUsuarioCriados'] = $this->CadastroModel->carregaInfoUsuarioCriados($this->session->userdata('userId'));
             $data['infoEmpresasCriadas'] = $this->CadastroModel->carregaEmpresasCriadas($this->session->userdata('userId'));
