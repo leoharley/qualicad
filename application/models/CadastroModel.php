@@ -45,6 +45,7 @@ class CadastroModel extends CI_Model
             $this->db->where($likeCriteria);
         }
         $this->db->where('Usuarios.Deletado', 'N');
+        $this->db->where('Usuarios.Admin', 'N');
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
