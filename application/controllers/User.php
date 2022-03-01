@@ -19,14 +19,6 @@ class User extends BaseController
         parent::__construct();
         $this->load->model('user_model');
         $this->isLoggedIn();
-
-        if (null !== $this->session->userdata('idEmpresa')) {
-            redirect('/dashboard');
-        } 
-        else
-        {
-            $this->load->view('login');
-        }
     }
     
     /**
@@ -34,20 +26,26 @@ class User extends BaseController
      */
     public function index()
     {
-        $this->global['pageTitle'] = 'QUALICAD : Página inicial';
+        if (null !== $this->session->userdata('idEmpresa')) {
+            $this->global['pageTitle'] = 'QUALICAD : Página inicial';
 
-        $data['tasksCount'] = $this->user_model->tasksCount();
-        $data['finishedTasksCount'] = $this->user_model->finishedTasksCount();
-        $data['logsCount'] = $this->user_model->logsCount();
-        $data['usersCount'] = $this->user_model->usersCount();
+            $data['tasksCount'] = $this->user_model->tasksCount();
+            $data['finishedTasksCount'] = $this->user_model->finishedTasksCount();
+            $data['logsCount'] = $this->user_model->logsCount();
+            $data['usersCount'] = $this->user_model->usersCount();
 
-        if ($this->getUserStatus() == TRUE)
+            if ($this->getUserStatus() == TRUE)
+            {
+                $this->session->set_flashdata('error', 'Por favor, altere sua senha na primeira utilização.');
+                redirect('loadChangePass');
+            }
+
+            $this->loadViews("dashboard", $this->global, $data , NULL);
+        } 
+        else
         {
-            $this->session->set_flashdata('error', 'Por favor, altere sua senha na primeira utilização.');
-            redirect('loadChangePass');
-        }
-
-        $this->loadViews("dashboard", $this->global, $data , NULL);
+            $this->load->view('login');
+        }   
     }
 
     /**
