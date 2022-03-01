@@ -152,7 +152,7 @@ class User extends BaseController
     {
         $this->global['pageTitle'] = 'QUALICAD : Alterar Senha';
         
-        $this->loadViews("changeassword", $this->global, NULL, NULL);
+        $this->loadViews("changePassword", $this->global, NULL, NULL);
     }
     
     
