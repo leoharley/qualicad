@@ -89,6 +89,7 @@
                     <?php echo $name; ?>
                     <small>
                       <?php echo $role_text; ?>
+                      <br/>
                       <?php echo $this->session->userdata('nomeEmpresa');?>
                     </small>
                   </p>
