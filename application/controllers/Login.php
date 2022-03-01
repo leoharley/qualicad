@@ -117,9 +117,17 @@ class Login extends BaseController
 
 
 
-                    if ($res->Admin == 'S') { $role = 0; $roleText = 'Admin'; } else { $role = $res->Id_CdPerfil; $roleText = $res->Ds_Perfil; }
+                    if ($res->Admin == 'S') { 
+                        $role = 0; 
+                        $roleText = 'Admin'; } 
+                    else 
+                    { 
+                        $role = $res->Id_CdPerfil; 
+                        $roleText = $res->Ds_Perfil;
+                        $idempresa = $res->TbEmpresa_Id_Empresa;
+                     }
 
-                    if ($role != NULL||$res->Admin == 'S') {
+                    if (($role != NULL && $idempresa != NULL) || $res->Admin == 'S') {
                    
                     $sessionArray = array('userId'=>$res->Id_Usuario,
                                             'email'=>$res->Email,               
@@ -145,7 +153,9 @@ class Login extends BaseController
 //                    $this->load->view('welcome');
 
                                 } else {
-                                    $this->session->set_flashdata('error', 'Usuário não associado a empresa e/ou perfil');
+                                    if ($role == NULL) $this->session->set_flashdata('error', 'Usuário não associado a um perfil');
+                                    if ($idempresa == NULL) $this->session->set_flashdata('error', 'Usuário não associado a uma empresa');
+                                    if ($role == NULL && $idempresa == NULL) $this->session->set_flashdata('error', 'Usuário não associado a perfil/empresa');
                                     redirect('/login');
                                 }
 

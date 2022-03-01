@@ -11,7 +11,7 @@ class Login_model extends CI_Model
     function loginMe($email, $password)
     {
         $this->db->select('Usuario.Id_Usuario, Usuario.Nome_Usuario, Usuario.Cpf_Usuario, Usuario.Email,
-        Usuario.Senha, Usuario.Admin, Perfil.Id_CdPerfil, Perfil.Ds_Perfil, Usuario.Tp_Ativo');
+        Usuario.Senha, Usuario.Admin, Perfil.Id_CdPerfil, Perfil.Ds_Perfil, UsuEmp.TbEmpresa_Id_Empresa, Usuario.Tp_Ativo');
         $this->db->from('TabUsuario as Usuario');
         $this->db->join('TbUsuEmp as UsuEmp','UsuEmp.TabUsuario_Id_Usuario = Usuario.Id_Usuario','left');
         $this->db->join('TbPerfil as Perfil','Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil','left');
