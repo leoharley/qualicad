@@ -128,8 +128,8 @@
 
             <?php
             // Rol definetion in application/config/constants.php
-            if($role == ROLE_ADMIN)
-            {
+            // if($role == ROLE_ADMIN)
+           //  {
             ?>
             <hr>
                 <li class="treeview">
@@ -310,7 +310,9 @@
 
 
                 <?php
-            }
+
+          //  }
+
             ?>
         </ul>
       </section>
