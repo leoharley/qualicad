@@ -128,7 +128,7 @@ if(!empty($infoUsuario))
 <script type="text/javascript">
             $(function () {
                 $('#addUser').validate({
-                //    debug: true, //retira essa linha, para o form voltar a funcionar
+                    debug: true, //retira essa linha, para o form voltar a funcionar
                     rules: {
                         'Cpf_Usuario': {
                             cpf: 'valid' //valida tanto Formatação como os Digitos
