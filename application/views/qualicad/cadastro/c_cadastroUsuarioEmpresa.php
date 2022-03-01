@@ -48,7 +48,7 @@ if(!empty($infoUsuarioEmpresa))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addUser" action="<?php echo base_url() ?>editaUsuarioEmpresa" method="post" role="form">
                         <div class="box-body">
-                            <div class="row">infoUsuarioCriados
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Id_Usuario">Usuário</label>
@@ -64,6 +64,8 @@ if(!empty($infoUsuarioEmpresa))
                                                 </option>
                                                 <?php
                                                 }
+                                            } else {
+                                                echo '<option value="0">VOCÊ NÃO CADASTROU USUÁRIO</option>';
                                             }
                                             ?>
                                         </select>
