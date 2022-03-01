@@ -153,7 +153,7 @@ class Login extends BaseController
 //                    $this->load->view('welcome');
 
                                 } else {
-                                    var_dump($role);exit;
+                                    var_dump($idempresa);exit;
                                     if ($role == NULL) $this->session->set_flashdata('error', 'Usuário não associado a um perfil');
                                     if ($idempresa == NULL) $this->session->set_flashdata('error', 'Usuário não associado a uma empresa');
                                     if ($role == NULL && $idempresa == NULL) $this->session->set_flashdata('error', 'Usuário não associado a perfil/empresa');
