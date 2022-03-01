@@ -119,7 +119,7 @@ class User extends BaseController
             
                 if(empty($resultPas))
                 {
-                $this->session->set_flashdata('nomatch', 'Eski şifreniz doğru değil');
+                $this->session->set_flashdata('nomatch', 'Sua senha antiga não está correta');
                 redirect('userEdit');
                 }
                 else
@@ -186,7 +186,7 @@ class User extends BaseController
             
             if(empty($resultPas))
             {
-                $this->session->set_flashdata('nomatch', 'Eski şifreniz doğru değil');
+                $this->session->set_flashdata('nomatch', 'Sua senha antiga não está correta');
                 redirect('loadChangePass');
             }
             else
@@ -198,14 +198,14 @@ class User extends BaseController
                 
                 if($result > 0) {
 
-                    $process = 'Şifre Değiştirme';
+                    $process = 'Mudar senha';
                     $processFunction = 'User/changePassword';
                     $this->logrecord($process,$processFunction);
 
-                     $this->session->set_flashdata('success', 'Şifre değiştirme başarılı');
+                     $this->session->set_flashdata('success', 'Alteração de senha bem-sucedida');
                      }
                 else {
-                     $this->session->set_flashdata('error', 'Şifre değiştirme başarısız'); 
+                     $this->session->set_flashdata('error', 'Falha na mudança de senha'); 
                     }
                 
                 redirect('loadChangePass');
