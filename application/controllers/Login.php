@@ -211,6 +211,8 @@ class Login extends BaseController
 
         $this->session->set_userdata($sessionArray);
 
+        var_dump($this->session->userdata('role'));exit;
+
         redirect('/login');
     }
 
