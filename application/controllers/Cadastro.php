@@ -97,13 +97,13 @@ class Cadastro extends BaseController
 
         //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
             
-            if($this->form_validation->run() == FALSE)
+        /*    if($this->form_validation->run() == FALSE)
             {
 
                 redirect('cadastroUsuario/cadastrar');
             }
             else
-        {
+        { */
 
                 $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
                 $cpf = $this->input->post('Cpf_Usuario');
@@ -144,7 +144,7 @@ class Cadastro extends BaseController
                 
                 redirect('cadastroUsuario/listar');
 
-            }
+        //    }
     }
 
 
