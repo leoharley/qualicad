@@ -106,13 +106,15 @@ class Login extends BaseController
                 {
                 //    $lastLogin = $this->login_model->lastLoginInfo($res->userId);
                     
-                    $process = 'Giriş';
+                    $process = 'Autenticação';
                     $processFunction = 'Login/loginMe';
+
+                    if ($res->Admin == 'S') { $role = 0; $roleText = 'Admin'; } else { $role = $res->Id_CdPerfil; $roleText = $res->Ds_Perfil; }
 
                     $sessionArray = array('userId'=>$res->Id_Usuario,
                                             'email'=>$res->Email,               
-                                            'role'=>$res->Id_CdPerfil,
-                                            'roleText'=>$res->Ds_Perfil,
+                                            'role'=>$res->$role,
+                                            'roleText'=>$res->$roleText,
                                             'name'=>$res->Nome_Usuario,
                                         //    'lastLogin'=> $lastLogin->createdDtm,
                                             'status'=> $res->Tp_Ativo,
