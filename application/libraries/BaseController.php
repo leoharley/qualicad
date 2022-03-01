@@ -88,7 +88,7 @@ class BaseController extends CI_Controller {
             $processFunction = 'Admin/accesslogincontrol';
             $this->logrecord($process,$processFunction);
 
-            redirect(noaccess);
+        //    redirect(noaccess);
     }
 	
 	/**
