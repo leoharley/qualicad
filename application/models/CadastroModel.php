@@ -284,7 +284,6 @@ function listaTelas($idUser, $searchText = '', $page, $segment)
     $this->db->where('Telas.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
-    $this->session->userdata('userId')
     
     $result = $query->result();        
     return $result;
