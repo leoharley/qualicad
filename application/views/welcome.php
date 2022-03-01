@@ -91,15 +91,18 @@
               </div>  -->
             </div>
             <!-- /.col -->
-            <div class="col-xs-4">
+            <div class="col-xs-12">
+              <div class="col-xs-4">
+              </div>
+              <div class="col-xs-4">
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Painel de Controle" />
+              </div>
+              <div class="col-xs-4">
+              </div>
             </div>
             <!-- /.col -->
           </div>
         </form>
-
-        <a href="<?php echo base_url() ?>forgotPassword">Esqueci a senha</a>
-        <br>
 
     </div>
     <!-- /.login-box-body -->
