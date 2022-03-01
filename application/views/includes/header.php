@@ -128,7 +128,7 @@
 
             <?php
             // Rol definetion in application/config/constants.php
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
+            if($role == ROLE_ADMIN)
             {
             ?>
             <hr>
