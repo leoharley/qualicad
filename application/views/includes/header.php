@@ -90,7 +90,7 @@
                     <small>
                       <?php echo $role_text; ?>
                       <br/>
-                      <?php echo $this->session->userdata('nomeEmpresa');?>
+                      <?php echo $nomeEmpresa;?>
                     </small>
                   </p>
                 </li>
