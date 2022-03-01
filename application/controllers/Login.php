@@ -113,9 +113,7 @@ class Login extends BaseController
 
                     if ($res->Admin == 'S') { $role = 0; $roleText = 'Admin'; } else { $role = $res->Id_CdPerfil; $roleText = $res->Ds_Perfil; }
 
-                    var_dump($role);exit;
-
-                    if ($role != null) {
+                    if ($role != NULL) {
                    
                     $sessionArray = array('userId'=>$res->Id_Usuario,
                                             'email'=>$res->Email,               
