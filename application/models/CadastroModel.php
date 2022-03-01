@@ -102,7 +102,7 @@ class CadastroModel extends CI_Model
     }
 
     function carregaEmpresasPerfilUsuario($IdUsuario)
-{
+    {
     $this->db->select('Empresa.Id_Empresa, Empresa.Nome_Empresa, UsuEmp.TbEmpresa_Id_Empresa,
                         UsuEmp.TbPerfil_Id_CdPerfil, Perfil.Ds_Perfil');
     $this->db->from('TbUsuEmp as UsuEmp');
@@ -112,7 +112,20 @@ class CadastroModel extends CI_Model
     $query = $this->db->get();
     
     return $query->result();
-}
+    }
+
+    function carregaPerfilUsuario($IdEmpresa, $idUsuario)
+    {
+    $this->db->select('UsuEmp.TbPerfil_Id_CdPerfil, Perfil.Ds_Perfil');
+    $this->db->from('TbUsuEmp as UsuEmp');
+    $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Deletado != "S" AND Empresa.Tp_Ativo = "S"','inner');
+    $this->db->join('TbPerfil as Perfil', 'Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfil.Deletado != "S" AND Perfil.Tp_Ativo = "S"','inner');
+    $this->db->where('TbEmpresa_Id_Empresa ', $IdEmpresa);
+    $this->db->where('TabUsuario_Id_Usuario ', $IdUsuario);
+    $query = $this->db->get();
+    
+    return $query->result();
+    }
 // FIM DAS CONSULTAS NA TELA DE USUÁRIO
     
 // INICIO DAS CONSULTAS NA TELA DE EMPRESA
