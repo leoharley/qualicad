@@ -119,7 +119,7 @@ class Login extends BaseController
 
                     $usuarioAssociadoEmpresaPerfil = FALSE;
 
-                    var_dump($empresasPerfilUsuario);exit;
+                    var_dump($res->Id_Usuario);exit;
 
                     foreach ($empresasPerfilUsuario as $data){
                         var_dump($data->Id_CdPerfil);
