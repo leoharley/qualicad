@@ -171,9 +171,11 @@ class Login extends BaseController
 
     public function escolheEmpresa()
     {
+/*        $sessionArray = array('Id'=>$res->Id_Usuario,
 
         $IdEmpresa = $this->input->post('Id_Empresa');
-        var_dump($IdEmpresa);exit;
+
+        $this->session->set_userdata($sessionArray); */
 
         $isLoggedIn = $this->session->userdata('isLoggedIn');
         
