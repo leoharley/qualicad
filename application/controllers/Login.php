@@ -120,7 +120,7 @@ class Login extends BaseController
                     $associadoEmpresaPerfil = FALSE;
 
                     foreach ($empresasPerfilUsuario as $data){
-                        if ($data->TbPerfil_Id_CdPerfil != NULL && $data->TbEmpresa_Id_Empresa != NULL) $usuarioAssociadoEmpresaPerfil = TRUE;
+                        if ($data->TbPerfil_Id_CdPerfil != NULL && $data->TbEmpresa_Id_Empresa != NULL) $associadoEmpresaPerfil = TRUE;
                     }
                     
                     var_dump($associadoEmpresaPerfil);
