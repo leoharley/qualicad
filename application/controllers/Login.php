@@ -171,23 +171,12 @@ class Login extends BaseController
 
     public function escolheEmpresa()
     {
-/*        $sessionArray = array('Id'=>$res->Id_Usuario,
-
         $IdEmpresa = $this->input->post('Id_Empresa');
+        $NomeEmpresa = $this->CadastroModel->carregaInfoEmpresa($IdEmpresa)['Nome_Empresa'];
+        $sessionArray = array('idEmpresa'=>$IdEmpresa,'nomeEmpresa'=>$NomeEmpresa);
+        $this->session->set_userdata($sessionArray);
 
-        $this->session->set_userdata($sessionArray); */
-
-        $isLoggedIn = $this->session->userdata('isLoggedIn');
-        
-        if(!isset($isLoggedIn) || $isLoggedIn != TRUE)
-        {
-            redirect('/login');
-        }
-        else
-        {
-            $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId'));;
-            $this->load->view('welcome',$data);
-        }
+        redirect('/login');
     }
 
     /**
