@@ -87,9 +87,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 /**** USER DEFINED CONSTANTS **********/
 
-define('ROLE_ADMIN',                            '1');
-define('ROLE_MANAGER',                         	'2');
-define('ROLE_EMPLOYEE',                         '3');
+define('ROLE_ADMIN',                            '0');
 
 define('SEGMENT',								2);
 
