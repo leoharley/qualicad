@@ -403,6 +403,8 @@ function carregaInfoUsuarioCriados($CriadoPor)
         $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
         $this->db->from('TabUsuario');
         $this->db->where('CriadoPor', $CriadoPor);
+        $this->db->where('Deletado', 'N');
+        $this->db->where('Tp_Ativo', 'S');
         $query = $this->db->get();
         
         return $query->result();
@@ -413,6 +415,8 @@ function carregaEmpresasCriadas($CriadoPor)
     $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa');
     $this->db->from('TbEmpresa as Empresas');
     $this->db->where('CriadoPor', $CriadoPor);
+    $this->db->where('Deletado', 'N');
+    $this->db->where('Tp_Ativo', 'S');
     $query = $this->db->get();
     
     return $query->result();
@@ -422,6 +426,8 @@ function carregaEmpresas()
 {
     $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa');
     $this->db->from('TbEmpresa as Empresas');
+    $this->db->where('Perfis.Deletado', 'N');
+    $this->db->where('Perfis.Tp_Ativo', 'S');
     $query = $this->db->get();
     
     return $query->result();
