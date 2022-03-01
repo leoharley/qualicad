@@ -105,7 +105,7 @@ class Login extends BaseController
             $password = $this->input->post('password');
             
             $result = $this->login_model->loginMe($email, $password);
-            
+
             if(count($result) > 0)
             {
                 foreach ($result as $res)
@@ -115,16 +115,16 @@ class Login extends BaseController
                     $process = 'Autenticação';
                     $processFunction = 'Login/loginMe';
 
-
+                    $empresasPerfilUsuario = $this->CadastroModel->carregaEmpresasPerfilUsuario($res->Id_Usuario);
 
                     if ($res->Admin == 'S') { 
                         $role = 0; 
-                        $roleText = 'Admin'; } 
+                        $roleText = 'Admin'; }
                     else 
                     { 
-                        $role = $res->Id_CdPerfil; 
-                        $roleText = $res->Ds_Perfil;
-                        $idempresa = $res->TbEmpresa_Id_Empresa;
+                        $role = $empresasPerfilUsuario['Id_CdPerfil']; 
+                        $roleText = $empresasPerfilUsuario['Ds_Perfil'];
+                        $idempresa = $empresasPerfilUsuario['TbEmpresa_Id_Empresa'];
                      }
 
                     if (($role != NULL && $idempresa != NULL) || $res->Admin == 'S') {
