@@ -10,17 +10,19 @@ class Login_model extends CI_Model
      */
     function loginMe($email, $password)
     {
-        $this->db->select('BaseTbl.userId, BaseTbl.email, BaseTbl.password, BaseTbl.name,BaseTbl.status,BaseTbl.roleId, Roles.role');
-        $this->db->from('tbl_users as BaseTbl');
-        $this->db->join('tbl_roles as Roles','Roles.roleId = BaseTbl.roleId');
-        $this->db->where('BaseTbl.email', $email);
-        $this->db->where('BaseTbl.isDeleted', 0);
+        $this->db->select('Usuario.Id_Usuario, Usuario.Nome_Usuario, Usuario.Cpf_Usuario, Usuario.Email,
+        Usuario.Senha, Usuario.Admin, Perfil.Id_CdPerfil, Perfil.Ds_Perfil');
+        $this->db->from('TabUsuario as Usuario');
+        $this->db->join('TbUsuEmp as UsuEmp','UsuEmp.TabUsuario_Id_Usuario = Usuario.Id_Usuario','left');
+        $this->db->join('TbPerfil as Perfil','Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil','left');
+        $this->db->where('Usuario.Email', $email);
+        $this->db->where('Usuario.Tp_Ativo','S');
         $query = $this->db->get();
         
         $user = $query->result();
         
         if(!empty($user)){
-            if(verifyHashedPassword($password, $user[0]->password)){
+            if(verifyHashedPassword($password, $user[0]->Senha)){
                 return $user;
             } else {
                 return array();

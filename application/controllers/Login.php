@@ -104,18 +104,18 @@ class Login extends BaseController
             {
                 foreach ($result as $res)
                 {
-                    $lastLogin = $this->login_model->lastLoginInfo($res->userId);
+                //    $lastLogin = $this->login_model->lastLoginInfo($res->userId);
                     
                     $process = 'Giriş';
                     $processFunction = 'Login/loginMe';
 
-                    $sessionArray = array('userId'=>$res->userId,
-                                            'email'=>$res->email,               
-                                            'role'=>$res->roleId,
-                                            'roleText'=>$res->role,
-                                            'name'=>$res->name,
-                                            'lastLogin'=> $lastLogin->createdDtm,
-                                            'status'=> $res->status,
+                    $sessionArray = array('userId'=>$res->Id_Usuario,
+                                            'email'=>$res->Email,               
+                                            'role'=>$res->Id_CdPerfil,
+                                            'roleText'=>$res->Ds_Perfil,
+                                            'name'=>$res->Nome_Usuario,
+                                        //    'lastLogin'=> $lastLogin->createdDtm,
+                                            'status'=> $res->Tp_Ativo,
                                             'isLoggedIn' => TRUE
                                     );
 
