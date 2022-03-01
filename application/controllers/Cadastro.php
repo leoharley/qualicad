@@ -964,7 +964,7 @@ function adicionaUsuarioEmpresa()
             }
         } else {
                 $this->session->set_flashdata('error', 'Usuário já associado a essa empresa');
-                redirect('cadastroUsuarioEmpresa/editar');
+                redirect('cadastroUsuarioEmpresa/editar/12');
         }
             
             redirect('cadastroUsuarioEmpresa/listar');
