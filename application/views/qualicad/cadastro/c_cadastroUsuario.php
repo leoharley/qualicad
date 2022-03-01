@@ -74,7 +74,7 @@ if(!empty($infoUsuario))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Email">Email</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Email') : $Email; ?>" id="Email" name="Email" maxlength="128">
+                                        <input type="text" class="form-control email required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Email') : $Email; ?>" id="Email" name="Email" maxlength="128">
                                     </div>
                                 </div>
 
