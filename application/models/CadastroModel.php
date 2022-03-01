@@ -62,7 +62,7 @@ class CadastroModel extends CI_Model
         
         $this->db->trans_complete();
 
-        $infoUsuEmp = array('TabUsuario_Id_Usuario'=> $insert_id, 'CriadoPor'=>$infoUsuario['CriadoPor'],
+    /*    $infoUsuEmp = array('TabUsuario_Id_Usuario'=> $insert_id, 'CriadoPor'=>$infoUsuario['CriadoPor'],
         'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
 
         $this->db->trans_start();
@@ -70,7 +70,7 @@ class CadastroModel extends CI_Model
         
         $insert_id_UsuEmp = $this->db->insert_id();
         
-        $this->db->trans_complete();
+        $this->db->trans_complete(); */
         
         return $insert_id;
     }
@@ -352,6 +352,31 @@ function listaUsuarioEmpresa($searchText = '', $page, $segment)
     $result = $query->result();        
     return $result;
 }
+
+function verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario)
+    {
+
+        $this->db->select('UsuEmp.Id_UsuEmp, UsuEmp.TbEmpresa_Id_Empresa, UsuEmp.TbPerfil_Id_CdPerfil, Usuario.Nome_Usuario, Empresa.Nome_Empresa');
+        $this->db->from('TbUsuEmp as UsuEmp');
+        $this->db->where('TbEmpresa_Id_Empresa', $Id_Empresa);
+        $this->db->where('TabUsuario_Id_Usuario', $Id_Usuario);
+        $query = $this->db->get();
+        
+        return $query->result();
+
+    }
+
+function adicionaUsuarioEmpresa($infoUsuarioEmpresa)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbUsuEmp', $infoUsuarioEmpresa);
+        
+        $insert_id = $this->db->insert_id();
+        
+        $this->db->trans_complete();
+        
+        return $insert_id;
+    }
 
 function editaUsuarioEmpresa($infoUsuarioEmpresa, $IdUsuEmp)
 {

@@ -914,6 +914,61 @@ function cadastroUsuarioEmpresa()
         }
 }
 
+function adicionaUsuarioEmpresa()
+{
+        $this->load->library('form_validation');
+        
+        $IdUsuEmp = $this->input->post('Id_UsuEmp');
+
+        //VALIDAÇÃO
+        
+     /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+        $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+        $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+        $this->form_validation->set_rules('role','Role','trim|required|numeric');
+        $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+        
+        if($this->form_validation->run() == FALSE)
+        { 
+            $this->editOld($userId);
+        }
+        else
+        { */
+
+            $Id_Empresa = $this->input->post('Id_Empresa');
+            $Id_CdPerfil = $this->input->post('Id_CdPerfil');
+            $Id_Usuario = $this->input->post('Id_Usuario');
+ 
+            $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$Id_Empresa, 'TabUsuario_Id_Usuario'=>$Id_Usuario, 'TbPerfil_Id_CdPerfil'=>$Id_CdPerfil, 'AtualizadoPor'=>$this->vendorId);
+
+            $resultado = $this->CadastroModel->verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario);
+
+            if ($resultado != NULL) {
+            
+            $resultado = $this->CadastroModel->adicionaUsuarioEmpresa($infoUsuarioEmpresa);
+            
+            if($resultado == true)
+            {
+                $process = 'Usuário/Empresa atualizado';
+                $processFunction = 'Cadastro/editaUsuarioEmpresa';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Usuário/Empresa atualizados com sucesso');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na atualização de Usuário/Empresa');
+            }
+        } else {
+                $this->session->set_flashdata('error', 'Usuário já associado a essa empresa');
+                redirect('cadastroUsuarioEmpresa/editar');
+        }
+            
+            redirect('cadastroUsuarioEmpresa/listar');
+       // }
+}
+
 function editaUsuarioEmpresa()
 {
         $this->load->library('form_validation');
