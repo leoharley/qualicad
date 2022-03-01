@@ -124,7 +124,9 @@ class Cadastro extends BaseController
                     $dtativo = null;
                 }
                 
-                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>getHashedPassword($senha),
+                //'Senha'=>getHashedPassword($senha)
+
+                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha,
                                     'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                                     'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
                                     
@@ -201,7 +203,8 @@ class Cadastro extends BaseController
                 }
                 else
                 {
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>getHashedPassword($senha),
+                    //'Senha'=>getHashedPassword($senha)
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha,
                                 'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                                 'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
                 }
