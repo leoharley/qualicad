@@ -117,17 +117,25 @@ class Login extends BaseController
 
                     $empresasPerfilUsuario = $this->CadastroModel->carregaEmpresasPerfilUsuario($res->Id_Usuario);
 
+                    $usuarioAssociadoEmpresaPerfil = FALSE;
+
+                    foreach ($empresasPerfilUsuario as $data){
+                        if ($data->Id_CdPerfil != NULL && $data->TbEmpresa_Id_Empresa != NULL) $usuarioAssociadoEmpresaPerfil = TRUE;
+                    }
+
+
                     if ($res->Admin == 'S') { 
                         $role = 0; 
                         $roleText = 'Admin'; }
-                    else 
+
+                  /*  else 
                     { 
                         $role = $empresasPerfilUsuario['Id_CdPerfil']; 
                         $roleText = $empresasPerfilUsuario['Ds_Perfil'];
                         $idempresa = $empresasPerfilUsuario['TbEmpresa_Id_Empresa'];
-                     }
+                     } */
 
-                    if (($role != NULL && $idempresa != NULL) || $res->Admin == 'S') {
+                    if ($usuarioAssociadoEmpresaPerfil || $res->Admin == 'S') {
                    
                     $sessionArray = array('userId'=>$res->Id_Usuario,
                                             'email'=>$res->Email,               
@@ -153,10 +161,7 @@ class Login extends BaseController
 //                    $this->load->view('welcome');
 
                                 } else {
-                                    var_dump($idempresa);exit;
-                                    if ($role == NULL) $this->session->set_flashdata('error', 'Usuário não associado a um perfil');
-                                    if ($idempresa == NULL) $this->session->set_flashdata('error', 'Usuário não associado a uma empresa');
-                                    if ($role == NULL && $idempresa == NULL) $this->session->set_flashdata('error', 'Usuário não associado a perfil/empresa');
+                                    $this->session->set_flashdata('error', 'Usuário não associado a perfil/empresa');
                                     redirect('/login');
                                 }
 
