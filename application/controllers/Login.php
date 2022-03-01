@@ -172,8 +172,6 @@ class Login extends BaseController
     public function escolheEmpresa()
     {
         $IdEmpresa = $this->input->post('Id_Empresa');
-        $NomeEmpresa = $this->CadastroModel->carregaInfoEmpresa($IdEmpresa)[0]('Nome_Empresa');
-
         foreach ($this->CadastroModel->carregaInfoEmpresa($IdEmpresa) as $data){
             $NomeEmpresa = ($data->Nome_Empresa);
         }
