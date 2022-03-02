@@ -294,7 +294,7 @@ class Login extends BaseController
 
                     //Server settings
                     $mail->isSMTP();
-                    $mail->SMTPDebug = 1;
+                    $mail->SMTPDebug = 0;
                     $mail->Host = 'smtp.hostinger.com';
                     $mail->Port = 587;
                     $mail->SMTPAuth = true;
