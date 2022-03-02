@@ -955,6 +955,10 @@ function adicionaUsuarioEmpresa()
                 $infoUsuario = array('Admin'=>'S');
                 $resultado2 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
             }
+            else {
+                $infoUsuario = array('Admin'=>'N');
+                $resultado4 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
+            }
             
             if($resultado == true && $resultado2 == true)
             {
@@ -979,6 +983,9 @@ function adicionaUsuarioEmpresa()
             if ($Id_CdPerfil == '99')
             { 
                 $infoUsuario = array('Admin'=>'S');
+                $resultado4 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
+            } else {
+                $infoUsuario = array('Admin'=>'N');
                 $resultado4 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
             }
 
