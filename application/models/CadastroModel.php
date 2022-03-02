@@ -101,7 +101,7 @@ class CadastroModel extends CI_Model
 
     function carregaInfoUsuario($IdUsuario)
     {
-        $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
+        $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Admin, Tp_Ativo');
         $this->db->from('TabUsuario');
         $this->db->where('Id_Usuario', $IdUsuario);
         $query = $this->db->get();
