@@ -110,6 +110,7 @@ class Cadastro extends BaseController
                 $email = $this->security->xss_clean($this->input->post('Email'));
                 $senha = $this->input->post('Senha');
                 $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
             //    $roleId = $this->input->post('role');
 
                 if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
@@ -125,7 +126,7 @@ class Cadastro extends BaseController
                 
                 //'Senha'=>getHashedPassword($senha)
 
-                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha,
+                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
                                     'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                                     'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
                                     
@@ -181,6 +182,7 @@ class Cadastro extends BaseController
                 $email = $this->security->xss_clean($this->input->post('Email'));
                 $senha = $this->input->post('Senha');
                 $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
 
                 foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
                     $tpativoatual = ($data->Tp_Ativo);
@@ -200,14 +202,14 @@ class Cadastro extends BaseController
                 
                 if(empty($senha))
                 {
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email,
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
                                         'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                                         'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
                 }
                 else
                 {
                     //'Senha'=>getHashedPassword($senha)
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha,
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
                                 'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                                 'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
                 }

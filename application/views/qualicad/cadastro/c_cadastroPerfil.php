@@ -52,18 +52,6 @@ if(!empty($infoPerfil))
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                    <div class="checkbox icheck">
-                                        <label>
-                                        <input type="checkbox" name="Admin" id="Admin"> Perfil administrador?
-                                        </label>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label for="Tp_Ativo">Perfil ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
@@ -72,15 +60,7 @@ if(!empty($infoPerfil))
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="checkbox icheck">
-                                <label>
-                                <input type="checkbox"> Remember Me
-                                </label>
-                            </div>
-
-
+                            
                         </div>
                         <!-- /.box-body -->
 

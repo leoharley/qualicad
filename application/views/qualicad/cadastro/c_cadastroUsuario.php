@@ -102,7 +102,20 @@ if(!empty($infoUsuario))
                                         <input type="password" class="form-control <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'required' : '' ; ?> equalTo" id="resenha" name="resenha" maxlength="20">
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>   
+                            
+                            <div class="row">         
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Admin">Usuário administrador?</label>
+                                        <select class="form-control required" id="Admin" name="Admin">
+                                            <option value="S">Sim</option>
+                                            <option value="N" selected>Não</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <!-- /.box-body -->
 
