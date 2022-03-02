@@ -63,7 +63,7 @@ if(!empty($infoUsuario))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Cpf_Usuario">CPF</label>
-                                        <input type="text" class="form-control required cpf_usuario" id="Cpf_Usuario" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cpf_Usuario') : $Cpf_Usuario; ?>" name="Cpf_Usuario"
+                                        <input data-inputmask="'mask': '99-9999999'" type="text" class="form-control required cpf_usuario" id="Cpf_Usuario" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cpf_Usuario') : $Cpf_Usuario; ?>" name="Cpf_Usuario"
                                             maxlength="11">
                                     </div>
                                 </div>
@@ -125,3 +125,8 @@ if(!empty($infoUsuario))
 </div>
 <script type="text/javascript" src="https://gist.githubusercontent.com/marcelloinfoweb/02d0026969f59f27e30a70caeaa4c137/raw/ccaa88089ad97ca89ff5f50ca40bbff09fb8eac9/cpfCnpj.validate.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $(":input").inputmask();
+});
+</script>
