@@ -285,7 +285,7 @@ class Login extends BaseController
                     if(!empty($userInfo)){
                         $data1["name"] = $userInfo[0]->Nome_Usuario;
                         $data1["email"] = $userInfo[0]->Email;
-                        $data1["message"] = "Redefinir sua senha";
+                        $data1["message"] = "Foi solicitado o envio do link abaixo:";
                     }
 
                     $tmp["data"] = $data1;
@@ -302,7 +302,7 @@ class Login extends BaseController
                     $mail->Password = '%Qualicad123';
                     $mail->setFrom('contato@hellou.com.br', 'Qualicad (Contato)');
                     $mail->addAddress($data1["email"], $data1["name"]);
-                    $mail->Subject = 'Testing PHPMailer';
+                    $mail->Subject = 'Redefinir senha';
                     // $mail->msgHTML(file_get_contents('message.html'), __DIR__);
                     $mail->Body = $this->load->view('email/resetPassword', $tmp, TRUE);
                     $mail->isHTML(true);
