@@ -47,6 +47,7 @@
                     <th>Usuário</th>
                     <th>Empresa</th>
                     <th>Perfil</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>  
