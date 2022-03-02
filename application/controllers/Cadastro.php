@@ -957,7 +957,7 @@ function adicionaUsuarioEmpresa()
             }
             else {
                 $infoUsuario = array('Admin'=>'N');
-                $resultado4 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
+                $resultado2 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
             }
             
             if($resultado == true && $resultado2 == true)
