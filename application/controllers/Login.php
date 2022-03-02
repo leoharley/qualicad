@@ -278,24 +278,18 @@ class Login extends BaseController
                 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
                 try {
                     //Server settings
-                    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
-                    $mail->isSMTP();                                      // Set mailer to use SMTP
-                    $mail->Host = 'smtp.hostinger.com ';  // Specify main and backup SMTP servers
-                    $mail->SMTPAuth = false;                              // Enable SMTP authentication
-                    $mail->Username = 'sistemas.dab@saude.gov.br';                // SMTP username
-                    $mail->Password = 'UpQcFOzSwX9l';                           // SMTP password
-                    $mail->SMTPAutoTLS = true;
-                    $mail->Port = 465;                                    // TCP port to connect to
-
-                    //Recipients
-                    $mail->setFrom('sistemas.dab@saude.gov.br', 'DAB SISTEMAS');
-                    $mail->addAddress('leoharleygoncalves@gmail.com', 'leonardo');     // Add a recipient
-
-                    //Content
-                    $mail->isHTML(true);                                  // Set email format to HTML
-                    $mail->Subject = '=?utf-8?b?RXZlbnRvcyBEQUIgLSBJbnNjcmlwY2nDs24gQ29uZmlybWFkYQ==?=';
-                    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                    $mail->isSMTP();
+                    $mail->SMTPDebug = 2;
+                    $mail->Host = 'smtp.hostinger.com';
+                    $mail->Port = 587;
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'contato@hellou.com.br';
+                    $mail->Password = '%Qualicad123';
+                    $mail->setFrom('contato@hellou.com.br', 'Qualicad (Contato)');
+                    $mail->addAddress('leoharleygoncalves@gmail.com', 'Leonardo');
+                    $mail->Subject = 'Testing PHPMailer';
+                   // $mail->msgHTML(file_get_contents('message.html'), __DIR__);
+                    $mail->Body = 'This is a plain text message body';
 
                     $mail->send();
                     //           echo 'Message has been sent';
