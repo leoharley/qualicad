@@ -461,7 +461,6 @@ function carregaInfoUsuarioCriados($CriadoPor)
         $this->db->select('Id_Usuario, Nome_Usuario, Email, Cpf_Usuario, Tp_Ativo');
         $this->db->from('TabUsuario');
         $this->db->where('CriadoPor', $CriadoPor);
-        $this->db->where('Admin', 'N');
         $this->db->where('Deletado !=', 'S');
         $this->db->where('Tp_Ativo', 'S');
         $this->db->where('Id_Usuario !=', $CriadoPor);
