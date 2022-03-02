@@ -152,8 +152,11 @@ class Login extends BaseController
                     
                     $this->logrecord($process,$processFunction);
 
-                    if ($res->Admin == 'S') { redirect('/dashboard'); } else { redirect('/welcome'); }
-                //    redirect('/dashboard');
+                //    if ($res->Admin == 'S') { redirect('/dashboard'); } else { redirect('/welcome'); }
+
+                redirect('/welcome');
+                
+                    //    redirect('/dashboard');
                 
                     redirect('/welcome');
 //                    $this->load->view('welcome');
