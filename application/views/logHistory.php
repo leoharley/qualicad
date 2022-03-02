@@ -2,8 +2,8 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-users"></i> Log Geçmişi
-      <small>Kullanıcıların Log Geçmişi</small>
+      <i class="fa fa-users"></i> Histórico de Registros
+      <small>Log de ação dos usuários</small>
     </h1>
   </section>
   <section class="content">
@@ -11,7 +11,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title"> Log tablosu boyutunuz:
+            <h3 class="box-title"> Tamanho da sua tabela de log:
               <?php
                   if(isset($dbinfo->total_size))
                   {
@@ -25,7 +25,7 @@
                   ?>
                 MB</h3>
             <div class="pull-right">
-              <a class="btn btn-danger" href="<?php echo base_url(); ?>backupLogTable">Yedekle ve Sil</a>
+              <a class="btn btn-danger" href="<?php echo base_url(); ?>backupLogTable">Fazer backup e excluir</a>
             </div>
             <div class="box-tools">
             </div>
@@ -58,16 +58,16 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Kullanıcı Adı</th>
-                      <th>İşlem</th>
-                      <th>İşlem Fonksiyon</th>
-                      <th>Kullanıcı Rol ID</th>
-                      <th>Kullanıcı Rol</th>
-                      <th>Kullanıcı IP</th>
-                      <th>Tarayıcı</th>
-                      <th>Tarayıcı Tüm Bilgiler</th>
-                      <th>Platform</th>
-                      <th>Tarih ve Zaman</th>
+                      <th>Nome de usuário</th>
+                      <th>Operação</th>
+                      <th>Função de operação</th>
+                      <th>ID da função do usuário</th>
+                      <th>Função do usuário</th>
+                      <th>IP do usuário</th>
+                      <th>Navegador</th>
+                      <th>Todas as informações do navegador</th>
+                      <th>Plataforma</th>
+                      <th>Data e hora</th>
                     </tr>
                   </thead>
                   <tbody>
