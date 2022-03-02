@@ -130,14 +130,14 @@ if(!function_exists('resetPasswordEmail'))
         
     //    $CI = setProtocol(); 
 
-        $this->load->config('email');
+     /*   $this->load->config('email');
         $this->load->library('email');    
         
         $this->email->from(EMAIL_FROM, FROM_NAME);
         $this->email->subject("Reset Password");
         $this->email->message($CI->load->view('email/resetPassword', $data, TRUE));
         $this->email->to($detail["email"]);
-        $status = $this->email->send();
+        $status = $this->email->send(); */
         
       /*  $CI->email->from(EMAIL_FROM, FROM_NAME);
         $CI->email->subject("Reset Password");
