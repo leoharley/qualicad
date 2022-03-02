@@ -53,7 +53,7 @@
             <h3>
               <?php if(isset($usersCount)) { echo $usersCount; } else { echo '0'; } ?>
             </h3>
-            <p>Usuários cadastrados</p>
+            <p>Usuários</p>
           </div>
           <div class="icon">
             <i class="ion ion-person"></i>
@@ -71,7 +71,7 @@
             <h3>
               <?php if(isset($empresasCount)) { echo $empresasCount; } else { echo '0'; } ?>
             </h3>
-            <p>Empresas cadastradas</p>
+            <p>Empresas</p>
           </div>
           <div class="icon">
             <i class="ion ion-person"></i>
@@ -90,7 +90,7 @@
             <h3>
               <?php if(isset($logsCount)) { echo $logsCount; } else { echo '0'; } ?>
             </h3>
-            <p>Log</p>
+            <p>Logs</p>
           </div>
           <div class="icon">
             <i class="fa fa-archive"></i>
