@@ -938,16 +938,8 @@ function adicionaUsuarioEmpresa()
 
             $Id_Empresa = $this->input->post('Id_Empresa');
             $Id_Usuario = $this->input->post('Id_Usuario');
+            $Id_CdPerfil = $this->input->post('Id_CdPerfil');
 
-            if ($this->input->post('Id_CdPerfil') == '99') 
-            {
-                $Id_CdPerfil = NULL;
-            }
-            else
-            {
-                $Id_CdPerfil = $this->input->post('Id_CdPerfil');
-            }
- 
             $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$Id_Empresa, 'TabUsuario_Id_Usuario'=>$Id_Usuario, 'CriadoPor'=>$this->vendorId, 'TbPerfil_Id_CdPerfil'=>$Id_CdPerfil, 'AtualizadoPor'=>$this->vendorId);
 
             $resultado = $this->CadastroModel->verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario);
@@ -957,7 +949,7 @@ function adicionaUsuarioEmpresa()
             if (empty($resultado)) {
             
             $resultado = $this->CadastroModel->adicionaUsuarioEmpresa($infoUsuarioEmpresa);
-            if ($this->input->post('Id_CdPerfil') == '99')
+            if ($Id_CdPerfil == '99')
             { 
                 $infoUsuario = array('Admin'=>'S');
                 $resultado2 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
