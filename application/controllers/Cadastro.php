@@ -975,7 +975,14 @@ function adicionaUsuarioEmpresa()
             if (!empty($IdUsuEmp)) {
                 $resultado3 = $this->CadastroModel->editaUsuarioEmpresa($infoUsuarioEmpresa,$IdUsuEmp);
             }
-                if ($resultado3) {
+
+            if ($Id_CdPerfil == '99')
+            { 
+                $infoUsuario = array('Admin'=>'S');
+                $resultado4 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
+            }
+
+                if ($resultado3 && $resultado4) {
                     $this->session->set_flashdata('success', 'Usuário/Empresa atualizados com sucesso');
                 } else {
                     $this->session->set_flashdata('error', 'Usuário já associado a essa empresa');
