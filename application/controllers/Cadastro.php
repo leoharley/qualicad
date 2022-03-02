@@ -1055,8 +1055,11 @@ function apagaUsuarioEmpresa()
             $infoUsuEmp = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
             $resultado = $this->CadastroModel->apagaUsuarioEmpresa($infoUsuEmp, $IdUsuEmp);
+
+            $infoUsuario = array('Admin'=>'N');
+            $resultado2 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
             
-            if ($resultado > 0) {
+            if ($resultado > 0 && $resultado2) {
                 // echo(json_encode(array('status'=>TRUE)));
 
                  $process = 'Exclusão de usuário/empresa';
