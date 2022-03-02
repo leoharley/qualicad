@@ -109,8 +109,8 @@ if(!empty($infoUsuario))
                                     <div class="form-group">
                                         <label for="Admin">Usuário administrador?</label>
                                         <select class="form-control required" id="Admin" name="Admin">
-                                            <option value="S">Sim</option>
-                                            <option value="N" selected>Não</option>
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Admin == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Admin == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
                                 </div>

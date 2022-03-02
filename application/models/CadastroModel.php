@@ -35,7 +35,7 @@ class CadastroModel extends CI_Model
 // INICIO DAS CONSULTAS NA TELA DE USUÁRIO
     function listaUsuarios($idUser, $searchText = '', $page, $segment)
     {
-        $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email');
+        $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Admin, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email');
         $this->db->from('TabUsuario as Usuarios');
    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
