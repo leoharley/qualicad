@@ -22,12 +22,12 @@
   <div class="login-box">
     <div class="login-logo">
       <a href="#">
-        <b>BSEU</b>
-        <br>Yönetim Paneli</a>
+        <b>QUALICAD</b>
+        <br>PAINEL ADMIN MODELO</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">Şifre Sıfırlama</p>
+      <p class="login-box-msg">Redefinição de senha</p>
       <?php $this->load->helper('form'); ?>
       <div class="row">
         <div class="col-md-12">
@@ -55,11 +55,11 @@
           </div>
           <hr>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Şifre" name="password" required />
+            <input type="password" class="form-control" placeholder="Nova senha" name="password" required />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Şifreni Doğrula" name="cpassword" required />
+            <input type="password" class="form-control" placeholder="Repita a senha" name="cpassword" required />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -72,7 +72,7 @@
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Gönder" />
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Salvar" />
             </div>
             <!-- /.col -->
           </div>

@@ -396,17 +396,17 @@ class Login extends BaseController
             {               
                 $this->login_model->createPasswordUser($email, $password);
                 
-                $process = 'Şifre Sıfırlama';
+                $process = 'Redefinição de senha';
                 $processFunction = 'Login/createPasswordUser';
                 $this->logrecord($process,$processFunction);
 
                 $status = 'success';
-                $message = 'Şifre başarıyla değiştirildi';
+                $message = 'Senha alterada com sucesso';
             }
             else
             {
                 $status = 'error';
-                $message = 'Şifre değiştirilemedi';
+                $message = 'Não foi possível alterar a senha';
             }
             
             setFlashData($status, $message);

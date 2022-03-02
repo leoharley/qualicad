@@ -106,9 +106,11 @@ class Login_model extends CI_Model
     // This function used to create new password by reset link
     function createPasswordUser($email, $password)
     {
-        $this->db->where('email', $email);
-        $this->db->where('isDeleted', 0);
-        $this->db->update('tbl_users', array('password'=>getHashedPassword($password)));
+        $this->db->where('Email', $email);
+        $this->db->where('Tp_Ativo','S');
+        $this->db->where('Deletado','N');
+        $this->db->update('TabUsuario', array('Senha'=>$password));
+    //    $this->db->update('TabUsuario', array('Senha'=>getHashedPassword($password)));
         $this->db->delete('tbl_reset_password', array('email'=>$email));
     }
 
