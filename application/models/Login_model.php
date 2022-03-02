@@ -99,14 +99,16 @@ class Login_model extends CI_Model
 
         $query = $this->db->get('TabUsuario');
 
+        $query = $this->db->get();
+        var_dump($query->num_rows);exit;
+
         if ($query->num_rows() > 0){
             return true;
         } else {
             return false;
         }
 
-        $query = $this->db->get();
-        var_dump($query->num_rows);exit;
+
         return $query->num_rows;
     }
 
