@@ -280,11 +280,11 @@ class Login extends BaseController
                 if($save)
                 {
                     $data1['reset_link'] = base_url() . "resetPasswordConfirmUser/" . $data['activation_id'] . "/" . $encoded_email;
-                    $userInfo = $this->login_model->getCustomerInfoByEmail($email);
+                    $userInfo = $this->CadastroModel->carregaInfoUsuarioPorEmail($email);
 
                     if(!empty($userInfo)){
-                        $data1["name"] = $userInfo[0]->name;
-                        $data1["email"] = $userInfo[0]->email;
+                        $data1["name"] = $userInfo[0]->Nome_Usuario;
+                        $data1["email"] = $userInfo[0]->Email;
                         $data1["message"] = "Redefinir sua senha";
                     }
 
