@@ -154,7 +154,11 @@ class Login extends BaseController
 
                 //    if ($res->Admin == 'S') { redirect('/dashboard'); } else { redirect('/welcome'); }
 
-                redirect('/welcome');
+                if (empty($this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId'))) {
+                    redirect('/dashboard');
+                } else {
+                    redirect('/welcome');
+                }
                 
                     //    redirect('/dashboard');
                 
@@ -188,7 +192,7 @@ class Login extends BaseController
         }
         else
         {
-            $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId'));;
+            $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId'));
             $this->load->view('welcome',$data);
         }
     }
