@@ -271,33 +271,33 @@ class Login extends BaseController
                     if(!empty($userInfo)){
                         $data1["name"] = $userInfo[0]->name;
                         $data1["email"] = $userInfo[0]->email;
-                        $data1["message"] = "Şifrenizi Sıfırlayın";
+                        $data1["message"] = "Redefinir sua senha";
                     }
 
                     $sendStatus = resetPasswordEmail($data1);
 
-                    $process = 'Şifre Sıfırlama İsteği';
+                    $process = 'Solicitação de redefinição de senha';
                     $processFunction = 'Login/resetPasswordUser';
                     $this->logrecord($process,$processFunction);
 
                     if($sendStatus){
                         $status = "send";
-                        setFlashData($status, "Şifre sıfırlama linkiniz başarıyla gönderildi, mailinizi kontrol ediniz.");
+                        setFlashData($status, "Seu link de redefinição de senha foi enviado com sucesso, verifique seu e-mail.");
                     } else {
                         $status = "notsend";
-                        setFlashData($status, "Email gönderme işlemi başarısız, tekrar deneyin.");
+                        setFlashData($status, "Falha no envio de e-mail, tente novamente.");
                     }
                 }
                 else
                 {
                     $status = 'unable';
-                    setFlashData($status, "Bilgilerinizi gönderirken bir hata oluştu, tekrar deneyin.");
+                    setFlashData($status, "Ocorreu um erro ao enviar suas informações, tente novamente.");
                 }
             }
             else
             {
                 $status = 'invalid';
-                setFlashData($status, "Email adresiniz sistemde kayıtlı değil.");
+                setFlashData($status, "Seu endereço de e-mail não está registrado no sistema.");
             }
             redirect('/forgotPassword');
         }

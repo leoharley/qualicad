@@ -41,10 +41,11 @@ class Login_model extends CI_Model
      */
     function checkEmailExist($email)
     {
-        $this->db->select('userId');
-        $this->db->where('email', $email);
-        $this->db->where('isDeleted', 0);
-        $query = $this->db->get('tbl_users');
+        $this->db->select('Id_Usuario');
+        $this->db->where('Email', $email);
+        $this->db->where('Tp_Ativo','S');
+        $this->db->where('Deletado','N');
+        $query = $this->db->get('TabUsuario');
 
         if ($query->num_rows() > 0){
             return true;
