@@ -74,7 +74,7 @@ class Login extends BaseController
         }
         else
         {
-            if (null !== $this->session->userdata('idEmpresa')) {
+            if (null !== $this->session->userdata('idEmpresa') || $this->session->userdata('isAdmin') == 'S') {
                 redirect('/dashboard');
             } 
             else

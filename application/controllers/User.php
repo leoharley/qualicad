@@ -26,8 +26,6 @@ class User extends BaseController
      */
     public function index()
     {
-
-        var_dump($this->session->userdata('isAdmin'));exit;
         if ($this->session->userdata('idEmpresa') !== null || $this->session->userdata('isAdmin') == 'S') {
             $this->global['pageTitle'] = 'QUALICAD : Página inicial';
 
