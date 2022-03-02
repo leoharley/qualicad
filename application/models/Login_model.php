@@ -94,7 +94,7 @@ class Login_model extends CI_Model
      */
     function checkActivationDetails($email, $activation_id)
     {
-        $this->db->select('id');
+        $this->db->select('id, email, activation_id');
         $this->db->from('tbl_reset_password');
         $this->db->where('email', 'leoharleygoncalves@gmail.com');
         $this->db->where('activation_id', 'bEfsK4tn7qFZpAV');
