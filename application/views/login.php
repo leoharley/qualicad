@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>QUALICAD | Modelo de painel</title>
+  <title>QUALICAD | Login</title>
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"
@@ -85,7 +85,7 @@
             <!-- /.col -->
           </div>
         </form>
-        
+
         <br>
         <a href="<?php echo base_url() ?>forgotPassword">Esqueci a senha</a>
         <br>
