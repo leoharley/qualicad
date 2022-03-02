@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Yönetim Paneli
+      QUALICAD : Painel de controle
     </h1>
   </section>
 
@@ -15,12 +15,12 @@
             <h3>
               <?php if(isset($tasksCount)) { echo $tasksCount; } else { echo '0'; } ?>
             </h3>
-            <p>Görevler</p>
+            <p>Tarefas</p>
           </div>
           <div class="icon">
             <i class="fa fa-tasks"></i>
           </div>
-          <a href="<?php echo base_url(); ?><?php  if($role != ROLE_EMPLOYEE) {echo 'tasks';}else{echo 'etasks';} ?>" class="small-box-footer">Tümünü gör
+          <a href="<?php echo base_url(); ?><?php  //if($role != ROLE_EMPLOYEE) {echo 'tasks';}else{echo 'etasks';} ?>" class="small-box-footer">Ver todos
             <i class="fa fa-arrow-circle-right"></i>
           </a>
         </div>
