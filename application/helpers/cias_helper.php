@@ -126,15 +126,17 @@ if(!function_exists('resetPasswordEmail'))
     {
         $data["data"] = $detail;
 
+        $ci = get_instance();
+
         $from_email = "email@example.com";
         $to_email = 'leoharleygoncalves@gmail.com';
         //Load email library
-        $this->load->library('email');
-        $this->email->from($from_email, 'Identification');
-        $this->email->to($to_email);
-        $this->email->subject('Send Email Codeigniter');
-        $this->email->message('The email send using codeigniter library');
-        $this->email->send();
+        $ci->load->library('email');
+        $ci->email->from($from_email, 'Identification');
+        $ci->email->to($to_email);
+        $ci->email->subject('Send Email Codeigniter');
+        $ci->email->message('The email send using codeigniter library');
+        $ci->email->send();
 
         // pre($detail);
         // die;
