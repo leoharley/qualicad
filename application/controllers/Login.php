@@ -355,8 +355,7 @@ class Login extends BaseController
         $data['email'] = $email;
         $data['activation_code'] = $activation_id;
 
-        var_dump($email);
-        var_dump($activation_id);exit;
+        var_dump($is_correct);exit;
         
         if ($is_correct == 1)
         {
