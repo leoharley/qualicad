@@ -71,7 +71,7 @@ class BaseController extends CI_Controller {
 	function getUserStatus() {
 		$this->datas();
 		$status = $this->user_model->getUserStatus($this->vendorId);
-		if($status->Status == 1)
+		if($status->Status != 1)
 		{
 			return true;
 		}else {
