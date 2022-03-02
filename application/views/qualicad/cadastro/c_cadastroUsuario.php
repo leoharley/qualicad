@@ -125,17 +125,3 @@ if(!empty($infoUsuario))
 </div>
 <script type="text/javascript" src="https://gist.githubusercontent.com/marcelloinfoweb/02d0026969f59f27e30a70caeaa4c137/raw/ccaa88089ad97ca89ff5f50ca40bbff09fb8eac9/cpfCnpj.validate.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
-<script type="text/javascript">
-            $(function () {
-                $('#addUser').validate({
-                    debug: true, //retira essa linha, para o form voltar a funcionar
-                    rules: {
-                        'Cpf_Usuario': {
-                            cpf: 'valid' //valida tanto Formatação como os Digitos
-                                    //caso não queira validar a formatação use => cpf: 'valid'
-                                    //caso só queira validar a formatação use => cpf: 'format'
-                        }
-                    }
-                });
-            });
-</script>
