@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Painel de gerenciamento
+      Painel de Gerenciamento
     </h1>
   </section>
 
