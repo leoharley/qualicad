@@ -261,10 +261,8 @@ class Login extends BaseController
                 $data['agent'] = getBrowserAgent();
                 $data['client_ip'] = $this->input->ip_address();
                 
-                $this->load->library('phpmailer_lib');
-                $objMail = $this->phpmailer_lib->load();
-
-                $mail = $this->phpmailer_lib->load();
+                $this->load->library('Phpmailer_lib');
+                $mail = $this->Phpmailer_lib->load();
 
                 // SMTP configuration
                 $mail->isSMTP();
