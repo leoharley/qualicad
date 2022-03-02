@@ -21,7 +21,7 @@ $(document).ready(function(){
 			resenha : {required : true, equalTo: "#password"},
 			mobile : { required : true, digits : true },
 			role : { required : true, selected : true},
-			CNPJ: {cpf: true, required: true}
+			CNPJ: {cnpj: true, required: true}
 		},
 		messages:{
 			fname :{ required : "Campo obrigatório" },
@@ -30,7 +30,7 @@ $(document).ready(function(){
 			resenha : {required : "Campo obrigatório", equalTo: "Senha não é igual" },
 			mobile : { required : "Campo obrigatório", digits : "Please enter numbers only" },
 			role : { required : "Campo obrigatório", selected : "Please select atleast one option" },
-			Cpf_Usuario: { cpf: 'CPF inválido'}			
+			CNPJ: { cnpj: 'CNPJ inválido'}			
 		}
 	});
 });

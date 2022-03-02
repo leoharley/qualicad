@@ -72,7 +72,7 @@ if(!empty($infoEmpresa))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="CNPJ">CNPJ</label>
-                                        <input type="text" class="form-control required CNPJ" id="CNPJ" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ') : $CNPJ ; ?>" name="CNPJ"
+                                        <input type="text" data-inputmask="'mask': '99.999.999/9999-99'" class="form-control required CNPJ" id="CNPJ" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ') : $CNPJ ; ?>" name="CNPJ"
                                             maxlength="13">
                                     </div>
                                 </div>
@@ -155,3 +155,8 @@ if(!empty($infoEmpresa))
     </section>
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addEmpresa.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $(":input").inputmask();
+});
+</script>
