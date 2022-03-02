@@ -280,12 +280,12 @@ class Login extends BaseController
                     //Server settings
                     $mail->SMTPDebug = 2;                                 // Enable verbose debug output
                     $mail->isSMTP();                                      // Set mailer to use SMTP
-                    $mail->Host = 'smtpaplicacao.dasdas.com';  // Specify main and backup SMTP servers
-                    $mail->SMTPAuth = true;                              // Enable SMTP authentication
+                    $mail->Host = 'smtp.hostinger.com ';  // Specify main and backup SMTP servers
+                    $mail->SMTPAuth = false;                              // Enable SMTP authentication
                     $mail->Username = 'sistemas.dab@saude.gov.br';                // SMTP username
                     $mail->Password = 'UpQcFOzSwX9l';                           // SMTP password
                     $mail->SMTPAutoTLS = true;
-                    $mail->Port = 25;                                    // TCP port to connect to
+                    $mail->Port = 465;                                    // TCP port to connect to
 
                     //Recipients
                     $mail->setFrom('sistemas.dab@saude.gov.br', 'DAB SISTEMAS');
