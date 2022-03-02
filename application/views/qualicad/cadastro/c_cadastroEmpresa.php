@@ -89,7 +89,7 @@ if(!empty($infoEmpresa))
                                     <div class="form-group">
                                         <label for="End_Empresa">Endereço</label>
                                         <input type="text" class="form-control required End_Empresa" id="End_Empresa" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('End_Empresa') : $End_Empresa ; ?>" name="End_Empresa"
-                                            maxlength="13">
+                                            maxlength="100">
                                     </div>
                                 </div>
                             </div>
