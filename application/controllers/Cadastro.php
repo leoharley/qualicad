@@ -976,8 +976,7 @@ function adicionaUsuarioEmpresa()
                 $resultado3 = $this->CadastroModel->editaUsuarioEmpresa($infoUsuarioEmpresa,$IdUsuEmp);
             }
                 if ($resultado3) {
-                    $this->session->set_flashdata('error', 'Usuário/Empresa atualizados com sucesso');
-                    redirect('cadastroUsuarioEmpresa/adicionar');
+                    $this->session->set_flashdata('success', 'Usuário/Empresa atualizados com sucesso');
                 } else {
                     $this->session->set_flashdata('error', 'Usuário já associado a essa empresa');
                     redirect('cadastroUsuarioEmpresa/adicionar');
