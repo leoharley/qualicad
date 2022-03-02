@@ -448,11 +448,14 @@ class User_model extends CI_Model
      * This function is used to get the users count
      * @return array $result : This is result
      */
-    function usersCount()
+    function usersCount($userId)
     {
         $this->db->select('*');
-        $this->db->from('tbl_users as BaseTbl');
-        $this->db->where('isDeleted', 0);
+        $this->db->from('TabUsuario as Usuarios');
+        $this->db->where('Usuarios.Deletado !=', 'S');
+        $this->db->where('Usuarios.Admin', 'N');
+        $this->db->where('Usuarios.Id_Usuario !=', $idUser);
+        $this->db->where('Usuarios.CriadoPor', $idUser);
         $query = $this->db->get();
         return $query->num_rows();
     }
