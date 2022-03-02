@@ -274,7 +274,9 @@ class Login extends BaseController
                         $data1["message"] = "Redefinir sua senha";
                     }
 
-                    $sendStatus = resetPasswordEmail($data1);
+                //    $sendStatus = resetPasswordEmail($data1);
+
+                $sendStatus = TRUE;
 
                     $process = 'Solicitação de redefinição de senha';
                     $processFunction = 'Login/resetPasswordUser';
