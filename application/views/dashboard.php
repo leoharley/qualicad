@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      QUALICAD : Painel de controle
+      Painel de gerenciamento
     </h1>
   </section>
 
