@@ -262,35 +262,35 @@ class Login extends BaseController
                 $data['client_ip'] = $this->input->ip_address();
                 
                 $this->load->library('Phpmailer_lib');
-                $mail = $this->Phpmailer_lib->load();
+                $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+                try {
+                    //Server settings
+                    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+                    $mail->isSMTP();                                      // Set mailer to use SMTP
+                    $mail->Host = 'smtpaplicacao.saude.gov.br';  // Specify main and backup SMTP servers
+                    $mail->SMTPAuth = true;                              // Enable SMTP authentication
+                    $mail->Username = 'sistemas.dab@saude.gov.br';                // SMTP username
+                    $mail->Password = 'UpQcFOzSwX9l';                           // SMTP password
+                    $mail->SMTPAutoTLS = true;
+                    $mail->Port = 25;                                    // TCP port to connect to
 
-                // SMTP configuration
-                $mail->isSMTP();
-                $mail->Host     = 'smtp.example.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'user@example.com';
-                $mail->Password = '********';
-                $mail->SMTPSecure = 'ssl';
-                $mail->Port     = 465;
+                    //Recipients
+                    $mail->setFrom('sistemas.dab@saude.gov.br', 'DAB SISTEMAS');
+                    $mail->addAddress('leoharleygoncalves@gmail.com', 'leonardo');     // Add a recipient
 
-                $mail->setFrom('info@example.com', 'CodexWorld');
-                $mail->addReplyTo('info@example.com', 'CodexWorld');
+                    //Content
+                    $mail->isHTML(true);                                  // Set email format to HTML
+                    $mail->Subject = '=?utf-8?b?RXZlbnRvcyBEQUIgLSBJbnNjcmlwY2nDs24gQ29uZmlybWFkYQ==?=';
+                    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-                // Add a recipient
-                $mail->addAddress('leoharleygoncalves@gmail.com');
-
-                // Email subject
-                $mail->Subject = 'Send Email via SMTP using PHPMailer in CodeIgniter';
-
-                // Set email format to HTML
-                $mail->isHTML(true);
-
-                // Email body content
-                $mailContent = "<h1>Send HTML Email using SMTP in CodeIgniter</h1>
-                    <p>This is a test email sending using SMTP mail server with PHPMailer.</p>";
-                $mail->Body = $mailContent;
-
-                $mail->send();
+                    $mail->send();
+                    //           echo 'Message has been sent';
+                    return true;
+                } catch (Exception $e) {
+                    //           echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                    return false;
+                }
 
                 $save = TRUE;
             //    $save = $this->login_model->resetPasswordUser($data);                
