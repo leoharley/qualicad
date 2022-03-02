@@ -105,7 +105,7 @@ if(!empty($infoEmpresa))
                                     <div class="form-group">
                                         <label for="Telefone">Telefone</label>
                                         <input type="text" data-inputmask="'mask': '(99)99999-9999'"class="form-control required Telefone" id="Telefone" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Telefone') : $Telefone ; ?>" name="Telefone"
-                                            maxlength="11">
+                                            maxlength="15">
                                     </div>
                                 </div>
                             </div>
