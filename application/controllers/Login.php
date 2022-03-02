@@ -261,7 +261,7 @@ class Login extends BaseController
                 $data['agent'] = getBrowserAgent();
                 $data['client_ip'] = $this->input->ip_address();
                 
-                $this->load->library('Phpmailer_lib');
+                $this->load->library('MY_Phpmailer_lib');
                 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
                 try {
                     //Server settings
