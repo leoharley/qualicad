@@ -128,15 +128,15 @@ if(!function_exists('resetPasswordEmail'))
         // pre($detail);
         // die;
         
-        $CI = setProtocol();      
+     /*   $CI = setProtocol();      
         
         $CI->email->from(EMAIL_FROM, FROM_NAME);
         $CI->email->subject("Reset Password");
         $CI->email->message($CI->load->view('email/resetPassword', $data, TRUE));
         $CI->email->to($detail["email"]);
-        $status = $CI->email->send();
+        $status = $CI->email->send(); */
         
-        return $status;
+        return TRUE;
     }
 }
 
