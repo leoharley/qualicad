@@ -4,6 +4,7 @@ $Id_Usuario = '';
 $Nome_Usuario = '';
 $Email = '';
 $Cpf_Usuario = '';
+$Admin = '';
 $Tp_Ativo = '';
 
 if ($this->uri->segment(2) == 'editar') {
@@ -15,6 +16,7 @@ if(!empty($infoUsuario))
         $Nome_Usuario = $r->Nome_Usuario;
         $Email = $r->Email;
         $Cpf_Usuario = $r->Cpf_Usuario;
+        $Admin = = $r->Admin;
         $Tp_Ativo = $r->Tp_Ativo;
     }
 }
