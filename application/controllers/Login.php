@@ -305,7 +305,7 @@ class Login extends BaseController
                     $mail->Subject = 'Testing PHPMailer';
                     // $mail->msgHTML(file_get_contents('message.html'), __DIR__);
                     $mail->Body = $this->load->view('email/resetPassword', $tmp, TRUE);
-                    $mail->IsHTML = true;
+                    $mail->isHTML(true);
 
                     $sendStatus = $mail->send();
 
