@@ -24,12 +24,12 @@ $(document).ready(function(){
 			Cpf_Usuario: {cpf: true, required: true}
 		},
 		messages:{
-			fname :{ required : "This field is required" },
-			email : { required : "This field is required", email : "Please enter valid email address", remote : "Email already taken" },
-			Senha : { required : "This field is required" },
-			resenha : {required : "This field is required", equalTo: "Please enter same password" },
-			mobile : { required : "This field is required", digits : "Please enter numbers only" },
-			role : { required : "This field is required", selected : "Please select atleast one option" },
+			fname :{ required : "Campo obrigatório" },
+			email : { required : "Campo obrigatório", email : "Please enter valid email address", remote : "Email already taken" },
+			Senha : { required : "Campo obrigatório" },
+			resenha : {required : "Campo obrigatório", equalTo: "Senha não é igual" },
+			mobile : { required : "Campo obrigatório", digits : "Please enter numbers only" },
+			role : { required : "Campo obrigatório", selected : "Please select atleast one option" },
 			Cpf_Usuario: { cpf: 'CPF inválido'}			
 		}
 	});
