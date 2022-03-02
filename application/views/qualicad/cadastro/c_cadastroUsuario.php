@@ -16,7 +16,7 @@ if(!empty($infoUsuario))
         $Nome_Usuario = $r->Nome_Usuario;
         $Email = $r->Email;
         $Cpf_Usuario = $r->Cpf_Usuario;
-        $Admin = = $r->Admin;
+        $Admin = $r->Admin;
         $Tp_Ativo = $r->Tp_Ativo;
     }
 }
