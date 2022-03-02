@@ -161,7 +161,7 @@ class User_model extends CI_Model
         $user = $query->result();
 
         if(!empty($user)){
-            if($oldPassword, $user[0]->password){
+            if($oldPassword == $user[0]->password){
                 return $user;
             } else {
                 return array();
