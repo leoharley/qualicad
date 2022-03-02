@@ -453,7 +453,6 @@ class User_model extends CI_Model
         $this->db->select('*');
         $this->db->from('TabUsuario as Usuarios');
         $this->db->where('Usuarios.Deletado !=', 'S');
-        $this->db->where('Usuarios.Admin', 'N');
         $this->db->where('Usuarios.Id_Usuario !=', $userId);
         $this->db->where('Usuarios.CriadoPor', $userId);
         $query = $this->db->get();
