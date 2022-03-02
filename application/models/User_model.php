@@ -161,7 +161,7 @@ class User_model extends CI_Model
         $user = $query->result();
 
         if(!empty($user)){
-            if($oldPassword == $user[0]->password){
+            if($oldPassword == $user[0]->Senha){
                 return $user;
             } else {
                 return array();
@@ -179,7 +179,7 @@ class User_model extends CI_Model
     function changePassword($userId, $userInfo)
     {
         $this->db->where('Id_Usuario', $userId);
-        $this->db->where('Tp_Ativo', 'S')        
+        $this->db->where('Tp_Ativo', 'S');        
         $this->db->where('Deletado', 'N');
         $this->db->update('TabUsuario', $userInfo);
         
