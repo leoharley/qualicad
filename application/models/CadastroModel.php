@@ -90,6 +90,14 @@ class CadastroModel extends CI_Model
         return TRUE;
     }
 
+    function setaUsuarioAdm($IdUsuario, $infoUsuario)
+    {
+        $this->db->where('Id_Usuario', $IdUsuario);
+        $this->db->update('TabUsuario', $infoUsuario);
+        
+        return TRUE;
+    }
+    
     function apagaUsuario($infoUsuario, $IdUsuario)
     {
         $this->db->where('Id_Usuario', $IdUsuario);

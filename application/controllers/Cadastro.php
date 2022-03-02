@@ -949,8 +949,13 @@ function adicionaUsuarioEmpresa()
             if (empty($resultado)) {
             
             $resultado = $this->CadastroModel->adicionaUsuarioEmpresa($infoUsuarioEmpresa);
+            if ($Id_CdPerfil == '99') 
+            { 
+                $infoUsuario = array('Admin'=>'S');
+                $resultado2 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
+            }
             
-            if($resultado == true)
+            if($resultado == true && $resultado2 == true)
             {
                 $process = 'Usuário/Empresa atualizado';
                 $processFunction = 'Cadastro/editaUsuarioEmpresa';

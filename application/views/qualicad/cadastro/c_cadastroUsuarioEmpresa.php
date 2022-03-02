@@ -126,6 +126,7 @@ if(!empty($infoUsuarioEmpresa))
                                     <div class="form-group">
                                         <label for="Id_CdPerfil">Perfil</label>
                                         <select class="form-control required" id="Id_CdPerfil" name="Id_CdPerfil">
+                                            <option value="99">Administrador</option>
                                             <?php
                                             if(!empty($infoPerfis))
                                             {
