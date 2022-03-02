@@ -33,14 +33,14 @@
             <h3>
               <?php if(isset($finishedTasksCount)) { echo $finishedTasksCount; } else { echo '0'; } ?>
             </h3>
-            <p>Bitirilmiş Görevler</p>
+            <p>QUALICAD : Painel de controle</p>
           </div>
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="<?php echo base_url(); ?><?php  if($role != ROLE_EMPLOYEE) {echo 'tasks';}else{echo 'etasks';} ?>" class="small-box-footer">Daha fazla bilgi
+        <!--  <a href="<?php echo base_url(); ?><?php  //if($role != ROLE_EMPLOYEE) {echo 'tasks';}else{echo 'etasks';} ?>" class="small-box-footer">Daha fazla bilgi
             <i class="fa fa-arrow-circle-right"></i>
-          </a>
+          </a> -->
         </div>
       </div>
       <!-- ./col -->
@@ -51,12 +51,12 @@
             <h3>
               <?php if(isset($usersCount)) { echo $usersCount; } else { echo '0'; } ?>
             </h3>
-            <p>Kullanıcı</p>
+            <p>Do utilizador</p>
           </div>
           <div class="icon">
             <i class="ion ion-person"></i>
           </div>
-          <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Daha fazla bilgi
+          <a href="<?php echo base_url(); ?>cadastroUsuario/listar" class="small-box-footer">Mais Informações
             <i class="fa fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -74,7 +74,7 @@
           <div class="icon">
             <i class="fa fa-archive"></i>
           </div>
-          <a href="<?php echo base_url(); ?>log-history" class="small-box-footer">Daha fazla bilgi
+          <a href="<?php echo base_url(); ?>log-history" class="small-box-footer">Mais Informações
             <i class="fa fa-arrow-circle-right"></i>
           </a>
         </div>
