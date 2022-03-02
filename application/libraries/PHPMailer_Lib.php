@@ -3,7 +3,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class PHPMailer_Lib
+class Phpmailer_Lib
 {
 public function __construct(){
     log_message('Debug', 'PHPMailer class is loaded.');
