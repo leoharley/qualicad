@@ -96,8 +96,8 @@ class Login_model extends CI_Model
     {
         $this->db->select('id');
         $this->db->from('tbl_reset_password');
-        $this->db->where('email', $email);
-        $this->db->where('activation_id', $activation_id);
+        $this->db->where('email', 'leoharleygoncalves@gmail.com');
+        $this->db->where('activation_id', 'bEfsK4tn7qFZpAV');
         $query = $this->db->get();
         var_dump($query->num_rows);exit;
         return $query->num_rows;
