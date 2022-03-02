@@ -111,7 +111,7 @@ class User extends BaseController
             if(empty($password))
             {
             $userInfo = array('email'=>$email,'name'=>$name,
-                            'mobile'=>$mobile, 'status'=>1, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
+                            'mobile'=>$mobile, 'Status'=>1, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
             }
             else
             {
@@ -125,7 +125,7 @@ class User extends BaseController
                 else
                 {
                 $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password),
-                    'name'=>ucwords($name), 'mobile'=>$mobile,'status'=>1, 'updatedBy'=>$this->vendorId, 
+                    'name'=>ucwords($name), 'mobile'=>$mobile,'Status'=>1, 'updatedBy'=>$this->vendorId, 
                     'updatedDtm'=>date('Y-m-d H:i:s'));
                 }
             }
@@ -191,7 +191,7 @@ class User extends BaseController
             }
             else
             {
-                $usersData = array('Senha'=>$newPassword, 'AtualizadoPor'=>$this->vendorId,
+                $usersData = array('Senha'=>$newPassword, 'Status' => 1, 'AtualizadoPor'=>$this->vendorId,
                                 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
                 
                 $result = $this->user_model->changePassword($this->vendorId, $usersData);
