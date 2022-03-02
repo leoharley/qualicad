@@ -99,7 +99,7 @@ class Login_model extends CI_Model
         $this->db->where('email', $email);
         $this->db->where('activation_id', $activation_id);
         $query = $this->db->get();
-        var_dump($email);var_dump($activation_id);exit;
+        var_dump($query->num_rows);exit;
         return $query->num_rows;
     }
 
