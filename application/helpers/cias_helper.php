@@ -127,6 +127,7 @@ if(!function_exists('resetPasswordEmail'))
         $data["data"] = $detail;
 
         $ci = get_instance();
+        $ci->load->library('email');
 
         $from_email = "email@example.com";
         $to_email = 'leoharleygoncalves@gmail.com';
