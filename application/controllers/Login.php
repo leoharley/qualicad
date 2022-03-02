@@ -261,18 +261,38 @@ class Login extends BaseController
                 $data['agent'] = getBrowserAgent();
                 $data['client_ip'] = $this->input->ip_address();
                 
-                $this->load->library("phpmailer_library");
-                $objMail = $this->phpmailer_library->load();
+                $this->load->library('phpmailer_lib');
+                $objMail = $this->phpmailer_lib->load();
 
-                $from_email = "email@example.com";
-                $to_email = 'leoharleygoncalves@gmail.com';
-                //Load email library
-                $objMail->load->library('email');
-                $objMail->email->from($from_email, 'Identification');
-                $objMail->email->to($to_email);
-                $objMail->email->subject('Send Email Codeigniter');
-                $objMail->email->message('The email send using codeigniter library');
-                $objMail->email->send();
+                $mail = $this->phpmailer_lib->load();
+
+                // SMTP configuration
+                $mail->isSMTP();
+                $mail->Host     = 'smtp.example.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'user@example.com';
+                $mail->Password = '********';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port     = 465;
+
+                $mail->setFrom('info@example.com', 'CodexWorld');
+                $mail->addReplyTo('info@example.com', 'CodexWorld');
+
+                // Add a recipient
+                $mail->addAddress('leoharleygoncalves@gmail.com');
+
+                // Email subject
+                $mail->Subject = 'Send Email via SMTP using PHPMailer in CodeIgniter';
+
+                // Set email format to HTML
+                $mail->isHTML(true);
+
+                // Email body content
+                $mailContent = "<h1>Send HTML Email using SMTP in CodeIgniter</h1>
+                    <p>This is a test email sending using SMTP mail server with PHPMailer.</p>";
+                $mail->Body = $mailContent;
+
+                $mail->send();
 
                 $save = TRUE;
             //    $save = $this->login_model->resetPasswordUser($data);                
@@ -288,7 +308,8 @@ class Login extends BaseController
                         $data1["message"] = "Redefinir sua senha";
                     }
 
-                    $sendStatus = resetPasswordEmail($data1);
+                //    $sendStatus = resetPasswordEmail($data1);
+                    $sendStatus = TRUE;
 
                     $process = 'Solicitação de redefinição de senha';
                     $processFunction = 'Login/resetPasswordUser';
