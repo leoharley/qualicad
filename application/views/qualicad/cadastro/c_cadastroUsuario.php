@@ -64,7 +64,7 @@ if(!empty($infoUsuario))
                                     <div class="form-group">
                                         <label for="Cpf_Usuario">CPF</label>
                                         <input data-inputmask="'mask': '999.999.999-99'" type="text" class="form-control required cpf_usuario" id="Cpf_Usuario" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cpf_Usuario') : $Cpf_Usuario; ?>" name="Cpf_Usuario"
-                                            maxlength="13">
+                                            maxlength="14">
                                     </div>
                                 </div>
 
