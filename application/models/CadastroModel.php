@@ -380,7 +380,7 @@ function carregaInfoPermissao($IdPermissao)
 // INICIO DAS CONSULTAS NA TELA DE USUÁRIO/EMPRESA
 function listaUsuarioEmpresa($idUser, $searchText = '', $page, $segment)
 {
-    $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Nome_Usuario, Empresa.Nome_Empresa, Perfis.Ds_Perfil');
+    $this->db->select('UsuEmp.Id_UsuEmp, Usuario.Id_Usuario, Usuario.Nome_Usuario, Empresa.Nome_Empresa, Perfis.Ds_Perfil');
     $this->db->from('TbUsuEmp as UsuEmp');
     $this->db->join('TabUsuario as Usuario', 'Usuario.Id_Usuario = UsuEmp.TabUsuario_Id_Usuario AND Usuario.Tp_Ativo = "S" AND Usuario.Deletado != "S"','left');
     $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Tp_Ativo = "S" AND Empresa.Deletado != "S"','left');

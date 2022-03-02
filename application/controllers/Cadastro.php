@@ -1051,13 +1051,14 @@ function editaUsuarioEmpresa()
 function apagaUsuarioEmpresa()
     {
             $IdUsuEmp = $this->uri->segment(2);
+            $IdUsuario = $this->uri->segment(3);
 
             $infoUsuEmp = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
             $resultado = $this->CadastroModel->apagaUsuarioEmpresa($infoUsuEmp, $IdUsuEmp);
 
             $infoUsuario = array('Admin'=>'N');
-            $resultado2 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
+            $resultado2 = $this->CadastroModel->setaUsuarioAdm($IdUsuario,$infoUsuario);
             
             if ($resultado > 0 && $resultado2) {
                 // echo(json_encode(array('status'=>TRUE)));

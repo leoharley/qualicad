@@ -59,7 +59,7 @@ $route['editaPermissao'] = "cadastro/editaPermissao";
 /*********** ROUTES PARA AÇÕES DA TELA USUÁRIO/EMPRESA *******************/
 $route['adicionaUsuarioEmpresa'] = "cadastro/adicionaUsuarioEmpresa";
 $route['editaUsuarioEmpresa'] = "cadastro/editaUsuarioEmpresa";
-$route['apagaUsuarioEmpresa/:any'] = "cadastro/apagaUsuarioEmpresa/$1";
+$route['apagaUsuarioEmpresa/:any/:any'] = "cadastro/apagaUsuarioEmpresa/$1/$2";
 
 
 /*********** ROUTES DO PRINCIPAL *******************/

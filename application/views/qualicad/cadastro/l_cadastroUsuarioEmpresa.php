@@ -74,7 +74,7 @@
                           <a class="btn btn-sm btn-info" href="<?php //echo base_url().'cadastroUsuarioEmpresa/deletar/'.$registro->Id_UsuEmp; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaUsuarioEmpresa/'.$registro->Id_UsuEmp; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaUsuarioEmpresa/'.$registro->Id_UsuEmp.'/'.$registro->Id_Usuario; ?>" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
