@@ -154,6 +154,8 @@ class Login extends BaseController
 
                 //    if ($res->Admin == 'S') { redirect('/dashboard'); } else { redirect('/welcome'); }
 
+                var_dump($this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId')));exit;                            
+
                 if (empty($this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId')))) 
                 {
                     redirect('/dashboard');
