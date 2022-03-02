@@ -973,7 +973,7 @@ function adicionaUsuarioEmpresa()
                 $IdUsuEmp = ($data->Id_UsuEmp);
             }
             if (!empty($IdUsuEmp)) {
-                $resultado3 = $this->CadastroModel->editaUsuarioEmpresa($IdUsuEmp);
+                $resultado3 = $this->CadastroModel->editaUsuarioEmpresa($infoUsuarioEmpresa,$IdUsuEmp);
             }
                 if ($resultado3) {
                     $this->session->set_flashdata('error', 'Usuário/Empresa atualizados com sucesso');
