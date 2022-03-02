@@ -73,7 +73,7 @@ if(!empty($infoEmpresa))
                                     <div class="form-group">
                                         <label for="CNPJ">CNPJ</label>
                                         <input type="text" data-inputmask="'mask': '99.999.999/9999-99'" class="form-control required CNPJ" id="CNPJ" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ') : $CNPJ ; ?>" name="CNPJ"
-                                            maxlength="13">
+                                            maxlength="18">
                                     </div>
                                 </div>
                             </div>
