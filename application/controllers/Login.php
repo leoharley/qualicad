@@ -262,7 +262,7 @@ class Login extends BaseController
                 $data['client_ip'] = $this->input->ip_address();
                 
                 $this->load->library('MY_Phpmailer_lib');
-                $mail = new MY_Phpmailer_lib(true);                              // Passing `true` enables exceptions
+                $mail = new MY_Phpmailer_lib(true);                             // Passing `true` enables exceptions
                 try {
                     //Server settings
                     $mail->SMTPDebug = 2;                                 // Enable verbose debug output
