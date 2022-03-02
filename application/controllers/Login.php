@@ -280,7 +280,7 @@ class Login extends BaseController
                     //Server settings
                     $mail->SMTPDebug = 2;                                 // Enable verbose debug output
                     $mail->isSMTP();                                      // Set mailer to use SMTP
-                    $mail->Host = 'smtpaplicacao.saude.gov.br';  // Specify main and backup SMTP servers
+                    $mail->Host = 'smtpaplicacao.dasdas.com';  // Specify main and backup SMTP servers
                     $mail->SMTPAuth = true;                              // Enable SMTP authentication
                     $mail->Username = 'sistemas.dab@saude.gov.br';                // SMTP username
                     $mail->Password = 'UpQcFOzSwX9l';                           // SMTP password
