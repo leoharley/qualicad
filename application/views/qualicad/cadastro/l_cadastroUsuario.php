@@ -49,6 +49,7 @@
                     <th>CPF</th>
                     <th>E-mail</th>
                     <th>Usuário ativo?</th>
+                    <th>Admin?</th>
                     <th>Data ativo</th>
                     <th>Data inativo</th>
                     <th>Ações</th>
@@ -76,6 +77,9 @@
                       </td>
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
+                      </td>
+                      <td>
+                        <?php echo ($registro->Admin == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
                       <td>
                         <?php echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
