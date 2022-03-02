@@ -460,6 +460,16 @@ class User_model extends CI_Model
         return $query->num_rows();
     }
 
+    function empresasCount($userId)
+    {
+        $this->db->select('*');
+        $this->db->from('TbEmpresa as Empresas');
+        $this->db->where('Empresas.Deletado !=', 'S');
+        $this->db->where('Empresas.CriadoPor', $userId);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
     function getUserStatus($userId)
     {
         $this->db->select('Usuarios.Status');

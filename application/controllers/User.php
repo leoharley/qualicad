@@ -33,6 +33,7 @@ class User extends BaseController
             $data['finishedTasksCount'] = $this->user_model->finishedTasksCount();
             $data['logsCount'] = $this->user_model->logsCount();
             $data['usersCount'] = $this->user_model->usersCount($this->session->userdata('userId'));
+            $data['empresasCount'] = $this->user_model->empresasCount($this->session->userdata('userId'));
 
             if ($this->getUserStatus() == TRUE)
             {
