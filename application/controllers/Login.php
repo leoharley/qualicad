@@ -261,7 +261,21 @@ class Login extends BaseController
                 $data['agent'] = getBrowserAgent();
                 $data['client_ip'] = $this->input->ip_address();
                 
-                $save = $this->login_model->resetPasswordUser($data);                
+                $this->load->library("phpmailer_library");
+                $objMail = $this->phpmailer_library->load();
+
+                $from_email = "email@example.com";
+                $to_email = 'leoharleygoncalves@gmail.com';
+                //Load email library
+                $objMail->load->library('email');
+                $objMail->email->from($from_email, 'Identification');
+                $objMail->email->to($to_email);
+                $objMail->email->subject('Send Email Codeigniter');
+                $objMail->email->message('The email send using codeigniter library');
+                $objMail->email->send();
+
+                $save = TRUE;
+            //    $save = $this->login_model->resetPasswordUser($data);                
                 
                 if($save)
                 {
