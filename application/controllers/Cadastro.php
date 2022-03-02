@@ -949,6 +949,7 @@ function adicionaUsuarioEmpresa()
             if (empty($resultado)) {
             
             $resultado = $this->CadastroModel->adicionaUsuarioEmpresa($infoUsuarioEmpresa);
+
             if ($Id_CdPerfil == '99')
             { 
                 $infoUsuario = array('Admin'=>'S');
@@ -968,8 +969,19 @@ function adicionaUsuarioEmpresa()
                 $this->session->set_flashdata('error', 'Falha na atualização de Usuário/Empresa');
             }
         } else {
-                $this->session->set_flashdata('error', 'Usuário já associado a essa empresa');
-                redirect('cadastroUsuarioEmpresa/adicionar');
+            foreach ($resultado as $data){
+                $IdUsuEmp = ($data->Id_UsuEmp);
+            }
+            if (!empty($IdUsuEmp)) {
+                $resultado3 = $this->CadastroModel->editaUsuarioEmpresa($IdUsuEmp);
+            }
+                if ($resultado3) {
+                    $this->session->set_flashdata('error', 'Usuário/Empresa atualizados com sucesso');
+                    redirect('cadastroUsuarioEmpresa/adicionar');
+                } else {
+                    $this->session->set_flashdata('error', 'Usuário já associado a essa empresa');
+                    redirect('cadastroUsuarioEmpresa/adicionar');
+                }      
         }
             
             redirect('cadastroUsuarioEmpresa/listar');
