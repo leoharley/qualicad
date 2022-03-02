@@ -63,7 +63,7 @@ if(!empty($infoUsuario))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Cpf_Usuario">CPF</label>
-                                        <input data-inputmask="'mask': '99-9999999'" type="text" class="form-control required cpf_usuario" id="Cpf_Usuario" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cpf_Usuario') : $Cpf_Usuario; ?>" name="Cpf_Usuario"
+                                        <input data-inputmask="'mask': '999.999.999-99'" type="text" class="form-control required cpf_usuario" id="Cpf_Usuario" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cpf_Usuario') : $Cpf_Usuario; ?>" name="Cpf_Usuario"
                                             maxlength="11">
                                     </div>
                                 </div>
