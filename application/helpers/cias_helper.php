@@ -128,16 +128,18 @@ if(!function_exists('resetPasswordEmail'))
         // pre($detail);
         // die;
         
-    //    $CI = setProtocol(); 
+    //    $CI = setProtocol();
+    
+        $CI = get_instance();
 
-        $this->load->config('email');
-        $this->load->library('email');    
+        $CI->load->config('email');
+        $CI->load->library('email');    
         
-        $this->email->from(EMAIL_FROM, FROM_NAME);
-        $this->email->subject("Reset Password");
-        $this->email->message($CI->load->view('email/resetPassword', $data, TRUE));
-        $this->email->to($detail["email"]);
-        $status = $this->email->send();
+        $CI->email->from(EMAIL_FROM, FROM_NAME);
+        $CI->email->subject("Reset Password");
+        $CI->email->message($CI->load->view('email/resetPassword', $data, TRUE));
+        $CI->email->to($detail["email"]);
+        $status = $CI->email->send();
         
       /*  $CI->email->from(EMAIL_FROM, FROM_NAME);
         $CI->email->subject("Reset Password");
