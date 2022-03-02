@@ -104,18 +104,6 @@ if(!empty($infoUsuario))
                                         <input type="password" class="form-control <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'required' : '' ; ?> equalTo" id="resenha" name="resenha" maxlength="20">
                                     </div>
                                 </div>
-                            </div>   
-                            
-                            <div class="row">         
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Admin">Usuário administrador?</label>
-                                        <select class="form-control required" id="Admin" name="Admin">
-                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Admin == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
-                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Admin == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>
