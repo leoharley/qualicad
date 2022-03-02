@@ -153,10 +153,11 @@ class User_model extends CI_Model
     function matchOldPassword($userId, $oldPassword)
     {
         $this->db->select('Id_Usuario, Senha');
+        $this->db->from('TabUsuario');
         $this->db->where('Id_Usuario', $userId);
         $this->db->where('Tp_Ativo', 'S')        
         $this->db->where('Deletado', 'N');
-        $query = $this->db->get('TabUsuario');
+        $query = $this->db->get();
         
         $user = $query->result();
 
