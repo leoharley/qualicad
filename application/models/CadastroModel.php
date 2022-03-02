@@ -379,6 +379,7 @@ function listaUsuarioEmpresa($idUser, $searchText = '', $page, $segment)
         $this->db->where($likeCriteria);
     }
     $this->db->where('UsuEmp.Deletado', 'N');
+    $this->db->where('UsuEmp.CriadoPor', $idUser);
     $this->db->where('UsuEmp.TabUsuario_Id_Usuario !=', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();

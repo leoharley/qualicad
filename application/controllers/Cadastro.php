@@ -938,7 +938,7 @@ function adicionaUsuarioEmpresa()
             $Id_CdPerfil = $this->input->post('Id_CdPerfil');
             $Id_Usuario = $this->input->post('Id_Usuario');
  
-            $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$Id_Empresa, 'TabUsuario_Id_Usuario'=>$Id_Usuario, 'TbPerfil_Id_CdPerfil'=>$Id_CdPerfil, 'AtualizadoPor'=>$this->vendorId);
+            $infoUsuarioEmpresa = array('TbEmpresa_Id_Empresa'=>$Id_Empresa, 'TabUsuario_Id_Usuario'=>$Id_Usuario, 'CriadoPor'=>$this->vendorId, 'TbPerfil_Id_CdPerfil'=>$Id_CdPerfil, 'AtualizadoPor'=>$this->vendorId);
 
             $resultado = $this->CadastroModel->verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario);
 

@@ -154,4 +154,4 @@ if(!empty($infoEmpresa))
         </div>
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addEmpresa.js" type="text/javascript"></script>
