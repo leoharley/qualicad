@@ -94,8 +94,16 @@ class Login_model extends CI_Model
      */
     function checkActivationDetails($email, $activation_id)
     {
-        $this->db->select('*');
-        $this->db->from('TabUsuario');
+        $this->db->select('Id_Usuario');
+        $this->db->where('Email', $email);
+
+        $query = $this->db->get('TabUsuario');
+
+        if ($query->num_rows() > 0){
+            return true;
+        } else {
+            return false;
+        }
 
         $query = $this->db->get();
         var_dump($query->num_rows);exit;
