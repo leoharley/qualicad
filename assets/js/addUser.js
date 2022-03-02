@@ -18,7 +18,7 @@ $(document).ready(function(){
 			fname :{ required : true },
 			email : { required : true, email : true, remote : { url : baseURL + "checkEmailExists", type :"post"} },
 			Senha : { required : true },
-			resenha : {required : true, equalTo: "#password"},
+			resenha : {required : true, equalTo: "#Senha"},
 			mobile : { required : true, digits : true },
 			role : { required : true, selected : true},
 			Cpf_Usuario: {cpf: true, required: true}
