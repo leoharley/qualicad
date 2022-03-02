@@ -272,9 +272,10 @@ class Login extends BaseController
                 $data['createdDtm'] = date('Y-m-d H:i:s');
                 $data['agent'] = getBrowserAgent();
                 $data['client_ip'] = $this->input->ip_address();
-                
-                $this->load->library('MY_Phpmailer_lib');
-                $mail = new MY_Phpmailer_lib(true);                             // Passing `true` enables exceptions
+
+                $this->load->library('MY_PHPMailer');
+
+                $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
                 try {
                     //Server settings
                     $mail->SMTPDebug = 2;                                 // Enable verbose debug output
