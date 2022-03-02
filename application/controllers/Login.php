@@ -16,6 +16,7 @@ class Login extends BaseController
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('email');
         $this->load->model('login_model');
         $this->load->model('CadastroModel');
     }
