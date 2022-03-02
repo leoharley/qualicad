@@ -275,32 +275,7 @@ class Login extends BaseController
 
                 $this->load->library('MY_PHPMailer');
 
-                $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-                try {
-                    //Server settings
-                    $mail->isSMTP();
-                    $mail->SMTPDebug = 2;
-                    $mail->Host = 'smtp.hostinger.com';
-                    $mail->Port = 587;
-                    $mail->SMTPAuth = true;
-                    $mail->Username = 'contato@hellou.com.br';
-                    $mail->Password = '%Qualicad123';
-                    $mail->setFrom('contato@hellou.com.br', 'Qualicad (Contato)');
-                    $mail->addAddress('leoharleygoncalves@gmail.com', 'Leonardo');
-                    $mail->Subject = 'Testing PHPMailer';
-                   // $mail->msgHTML(file_get_contents('message.html'), __DIR__);
-                    $mail->Body = 'This is a plain text message body';
-
-                    $mail->send();
-                    //           echo 'Message has been sent';
-                    return true;
-                } catch (Exception $e) {
-                    //           echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-                    return false;
-                }
-
-                $save = TRUE;
-            //    $save = $this->login_model->resetPasswordUser($data);                
+                $save = $this->login_model->resetPasswordUser($data);
                 
                 if($save)
                 {
@@ -313,8 +288,28 @@ class Login extends BaseController
                         $data1["message"] = "Redefinir sua senha";
                     }
 
+                    $tmp["data"] = $data1;
+
+                    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+
+                    //Server settings
+                    $mail->isSMTP();
+                    $mail->SMTPDebug = 1;
+                    $mail->Host = 'smtp.hostinger.com';
+                    $mail->Port = 587;
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'contato@hellou.com.br';
+                    $mail->Password = '%Qualicad123';
+                    $mail->setFrom('contato@hellou.com.br', 'Qualicad (Contato)');
+                    $mail->addAddress('leoharleygoncalves@gmail.com', 'Leonardo');
+                    $mail->Subject = 'Testing PHPMailer';
+                    // $mail->msgHTML(file_get_contents('message.html'), __DIR__);
+                    $mail->Body = $this->load->view('email/resetPassword', $tmp, TRUE);
+
+                    $sendStatus = $mail->send();
+
                 //    $sendStatus = resetPasswordEmail($data1);
-                    $sendStatus = TRUE;
+                //    $sendStatus = TRUE;
 
                     $process = 'Solicitação de redefinição de senha';
                     $processFunction = 'Login/resetPasswordUser';
