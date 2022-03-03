@@ -14,7 +14,9 @@ class PrincipalModel extends CI_Model
                             OR  Convenio.CNPJ_Convenio  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-
+        $this->db->where('Convenio.Deletado !=', 'S');
+        $this->db->where('Convenio.Tp_Ativo', 'S');
+        $this->db->where('Convenio.CriadoPor', $id);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
