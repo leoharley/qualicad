@@ -78,8 +78,30 @@ $route['principalRegra/:any'] = "principal/principalRegra/$1";
 $route['principalIndice/:any/:any'] = "principal/principalIndice/$1/$2";
 $route['principalIndice/:any'] = "principal/principalIndice/$1";
 
+/*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
+$route['adicionaConvenio'] = "cadastro/adicionaConvenio";
+$route['editaConvenio'] = "cadastro/editaConvenio";
+$route['apagaConvenio/:any'] = "cadastro/apagaConvenio/$1";
 
+/*********** ROUTES PARA AÇÕES DA TELA PLANO *******************/
+$route['adicionaPlano'] = "cadastro/adicionaPlano";
+$route['editaPlano'] = "cadastro/editaPlano";
+$route['apagaPlano/:any'] = "cadastro/apagaPlano/$1";
 
+/*********** ROUTES PARA AÇÕES DA TELA FATURAMENTO *******************/
+$route['adicionaFaturamento'] = "cadastro/adicionaFaturamento";
+$route['editaFaturamento'] = "cadastro/editaFaturamento";
+$route['apagaFaturamento/:any'] = "cadastro/apagaFaturamento/$1";
+
+/*********** ROUTES PARA AÇÕES DA TELA REGRA *******************/
+$route['adicionaRegra'] = "cadastro/adicionaRegra";
+$route['editaRegra'] = "cadastro/editaRegra";
+$route['apagaRegra/:any'] = "cadastro/apagaRegra/$1";
+
+/*********** ROUTES PARA AÇÕES DA TELA ÍNDICE *******************/
+$route['adicionaIndice'] = "cadastro/adicionaIndice";
+$route['editaIndice'] = "cadastro/editaIndice";
+$route['apagaIndice/:any'] = "cadastro/apagaIndice/$1";
 
 
 $route['principalFaturamentoItem'] = "principal/principalFaturamentoItem";
