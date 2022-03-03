@@ -93,7 +93,7 @@
                       <br/>
                       <?php echo $nomeEmpresa;?>
                       <br/>
-                      <?php //echo $IdUsuEmp;?>
+                      <?php echo $this->session->userdata('IdEmpresa');?>
                     </small>
                   </p>
                 </li>

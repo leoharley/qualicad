@@ -179,7 +179,7 @@ class BaseController extends CI_Controller {
 		$this->role = $this->session->userdata ( 'role' );
 		$this->email = $this->session->userdata ( 'email' );
 		$this->vendorId = $this->session->userdata ( 'userId' );
-		$this->idEmpresa = $this->session->userdata ( 'idEmpresa' );
+		$this->idEmpresa = $this->session->userdata ( 'IdEmpresa' );
 		$this->nomeEmpresa = $this->session->userdata ( 'nomeEmpresa' );
 		$this->name = $this->session->userdata ( 'name' );
 		$this->IdUsuEmp = $this->session->userdata ( 'IdUsuEmp' );
@@ -190,7 +190,7 @@ class BaseController extends CI_Controller {
 		
 		$this->global ['name'] = $this->name;
 		$this->global ['email'] = $this->email;
-		$this->global ['nomeEmpresa'] = $this->nomeEmpresa;
+        $this->global ['idempresa'] = $this->idEmpresa;
 		$this->global ['role'] = $this->role;
 		$this->global ['role_text'] = $this->roleText;
 		$this->global ['IdUsuEmp'] = $this->IdUsuEmp;
