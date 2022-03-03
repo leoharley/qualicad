@@ -66,7 +66,7 @@ if(!empty($infoPlano))
                                                 foreach ($infoConvenio as $convenio)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $convenio->Id_Convenio ?>">
+                                                <option value="<?php echo $convenio->Id_Convenio ?>" <?php if ($this->uri->segment(2) == 'editar' && $convenio->Id_Convenio == $TbConvenio_Id_Convenio) { echo 'selected'; } ?>>
                                                     <?php echo $convenio->Ds_Convenio ?>
                                                 </option>
                                                 <?php
@@ -87,7 +87,7 @@ if(!empty($infoPlano))
                                                 foreach ($infoIndice as $indice)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $indice->Id_Indice ?>">
+                                                <option value="<?php echo $indice->Id_Indice ?>" <?php if ($this->uri->segment(2) == 'editar' && $indice->Id_Indice == $TbIndice_Id_Indice) { echo 'selected'; } ?>>
                                                     <?php echo $indice->Ds_indice ?>
                                                 </option>
                                                 <?php
@@ -109,7 +109,7 @@ if(!empty($infoPlano))
                                                 foreach ($infoRegra as $regra)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $regra->Id_Regra ?>">
+                                                <option value="<?php echo $regra->Id_Regra ?>" <?php if ($this->uri->segment(2) == 'editar' && $regra->Id_Regra == $TbRegra_Id_Regra) { echo 'selected'; } ?>>
                                                     <?php echo $regra->Ds_Regra ?>
                                                 </option>
                                                 <?php
