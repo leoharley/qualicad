@@ -67,7 +67,7 @@ if(!empty($infoConvenio))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="CNPJ_Convenio">CNPJ</label>
-                                        <input type="text" data-inputmask="'mask': '99.999.999/9999-99'" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ_Convenio') : $CNPJ_Convenio ; ?>" id="CNPJ_Convenio" name="CNPJ_Convenio" maxlength="128">
+                                        <input type="text" data-inputmask="'mask': '99.999.999/9999-99'" class="form-control required cnpj" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ_Convenio') : $CNPJ_Convenio ; ?>" id="CNPJ_Convenio" name="CNPJ_Convenio" maxlength="128">
                                     </div>
                                 </div>
                             </div>
