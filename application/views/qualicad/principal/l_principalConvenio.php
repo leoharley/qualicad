@@ -76,7 +76,7 @@
                         <?php echo $registro->Cd_ConvenioERP ?>
                       </td>
                       <td>
-                        <?php echo $registro->Tp_Convenio ?>
+                            <?php if ($registro->Tp_Convenio == '1') { echo 'Convênio'; } else if ($registro->Tp_Convenio == '2') { echo 'Filantrópico'; } else if ($registro->Tp_Convenio == '3') { echo 'Particular'; } ?>
                       </td>
                         <td>
                             <?php echo $registro->Tp_Ativo ?>

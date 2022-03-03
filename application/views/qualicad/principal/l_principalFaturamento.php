@@ -66,7 +66,7 @@
                         <?php echo $registro->Ds_Faturamento ?>
                       </td>
                       <td>
-                        <?php echo $registro->Tp_Faturamento ?>
+                        <?php if ($registro->Tp_Faturamento == '1') { echo 'Reais'; } else if ($registro->Tp_Faturamento == '2') { echo 'CH'; } else if ($registro->Tp_Faturamento == '3') { echo 'CBHPM'; } ?>
                       </td>
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
