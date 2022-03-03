@@ -143,6 +143,7 @@ if(!empty($infoIndice))
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
 <script>
     $(document).ready(function(){
+    $(":input").inputmask();
     $("#Vl_Indice").inputmask('decimal', {
                 'alias': 'numeric',
                 'groupSeparator': ',',
