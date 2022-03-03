@@ -135,6 +135,7 @@
            //  {
             ?>
             <hr>
+            <div <?php (if $this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
             <h4 style="margin-left:18px!important;color:white"><b> CADASTRO </b></h4>
                 <li class="treeview">
                   <a href="<?php echo base_url(); ?>cadastroUsuario/listar">
@@ -172,7 +173,8 @@
                         <span>Usuário/Empresa</span>
                     </a>
                 </li>    
-
+              </div>
+              
                 <hr>
 
                 <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4>
