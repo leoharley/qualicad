@@ -8,7 +8,7 @@ class PrincipalModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
-        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','left');
    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(Convenio.Ds_Convenio  LIKE '%".$searchText."%'
@@ -17,7 +17,7 @@ class PrincipalModel extends CI_Model
         }
         $this->db->where('Convenio.Deletado !=', 'S');
         $this->db->where('Convenio.Tp_Ativo', 'S');
-    //    $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
