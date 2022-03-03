@@ -134,46 +134,46 @@
             // if($role == ROLE_ADMIN)
            //  {
             ?>
-            <hr <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
-            <h4 style="margin-left:18px!important;color:white;<?php if ($this->session->userdata('isAdmin') == 'S') { echo 'display:none'; } ?>"><b> CADASTRO </b></h4>
-                <li class="treeview" <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
+            <hr <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
+            <h4 style="margin-left:18px!important;color:white;<?php if ($this->session->userdata('isAdmin') != 'S') { echo 'display:none'; } ?>"><b> CADASTRO </b></h4>
+                <li class="treeview" <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
                   <a href="<?php echo base_url(); ?>cadastroUsuario/listar">
                     <i class="fa fa-th"></i>
                     <span>Usuário</span>
                   </a>
                 </li>
-                <li class="treeview" <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
+                <li class="treeview" <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
                   <a href="<?php echo base_url(); ?>cadastroEmpresa/listar">
                     <i class="fa fa-th"></i>
                     <span>Empresa</span>
                   </a>
                 </li>
-                <li class="treeview" <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
+                <li class="treeview" <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
                     <a href="<?php echo base_url(); ?>cadastroPerfil/listar">
                         <i class="fa fa-th"></i>
                         <span>Perfil</span>
                     </a>
                 </li>
-                <li class="treeview" <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
+                <li class="treeview" <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
                     <a href="<?php echo base_url(); ?>cadastroTelas/listar">
                         <i class="fa fa-th"></i>
                         <span>Telas</span>
                     </a>
                 </li>
-                <li class="treeview" <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
+                <li class="treeview" <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
                     <a href="<?php echo base_url(); ?>cadastroPermissao/listar">
                         <i class="fa fa-th"></i>
                         <span>Permissão</span>
                     </a>
                 </li>
-                <li class="treeview" <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
+                <li class="treeview" <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
                     <a href="<?php echo base_url(); ?>cadastroUsuarioEmpresa/listar">
                         <i class="fa fa-th"></i>
                         <span>Usuário/Empresa</span>
                     </a>
                 </li>    
 
-                <hr <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
+                <hr <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
 
                 <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4>
                 <li class="treeview">
