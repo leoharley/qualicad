@@ -92,8 +92,6 @@
                       <?php echo $role_text; ?>
                       <br/>
                       <?php echo $nomeEmpresa;?>
-                      <br/>
-                      <?php echo $this->session->userdata('IdEmpresa');?>
                     </small>
                   </p>
                 </li>
