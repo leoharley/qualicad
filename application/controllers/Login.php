@@ -217,8 +217,9 @@ class Login extends BaseController
         foreach ($this->CadastroModel->carregaPerfilUsuario($IdEmpresa, $this->session->userdata('userId')) as $data){
             $role = ($data->TbPerfil_Id_CdPerfil);
             $roleText = ($data->Ds_Perfil);
+            $IdUsuEmp = ($data->Id_UsuEmp);
         }
-        $sessionArray = array('role'=>$role,'roleText'=>$roleText);
+        $sessionArray = array('role'=>$role,'roleText'=>$roleText,'IdUsuEmp'=>$IdUsuEmp);
         }
 
         $this->session->set_userdata($sessionArray);

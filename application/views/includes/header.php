@@ -50,7 +50,7 @@
       <a href="<?php echo base_url(); ?>" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">
-          <b>BSE</b>U</span>
+          <b>QLC</b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
           <b>QUALI</b>CAD</span>
@@ -92,6 +92,8 @@
                       <?php echo $role_text; ?>
                       <br/>
                       <?php echo $nomeEmpresa;?>
+                      <br/>
+                      <?php echo $IdUsuEmp;?>
                     </small>
                   </p>
                 </li>
