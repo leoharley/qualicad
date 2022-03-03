@@ -73,7 +73,7 @@ if(!empty($infoConvenio))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Cd_ConvenioERP">Código ERP</label>
-                                        <input type="text" class="form-control required" id="Cd_ConvenioERP" value="<?php echo set_value('Cd_ConvenioERP'); ?>" name="Cd_ConvenioERP"
+                                        <input type="text" class="form-control required" id="Cd_ConvenioERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_ConvenioERP') : $Cd_ConvenioERP ; ?>" name="Cd_ConvenioERP"
                                             maxlength="13">
                                     </div>
                                 </div>
@@ -92,13 +92,13 @@ if(!empty($infoConvenio))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Dt_InicioConvenio">Data de ínicio</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_InicioConvenio'); ?>" id="Dt_InicioConvenio" name="Dt_InicioConvenio">
+                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_InicioConvenio') : $Dt_InicioConvenio ; ?>" id="Dt_InicioConvenio" name="Dt_InicioConvenio">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Dt_VigenciaConvenio">Data da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_VigenciaConvenio'); ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
+                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
                                     </div>
                                 </div>
                             </div>
