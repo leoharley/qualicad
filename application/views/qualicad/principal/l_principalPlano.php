@@ -82,7 +82,7 @@
                         <?php echo $registro->Cd_PlanoERP ?>
                       </td>
                       <td>
-                        <?php echo $registro->Tp_AcomodacaoPadrao ?>
+                        <?php if ($registro->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($registro->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>
                       </td>
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
