@@ -143,7 +143,7 @@ class CadastroModel extends CI_Model
     $this->db->join('TbPerfil as Perfil', 'Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfil.Deletado != "S" AND Perfil.Tp_Ativo = "S"','inner');
     $this->db->where('UsuEmp.TabUsuario_Id_Usuario', $IdUsuario);
     $this->db->where('UsuEmp.Deletado', 'N');
-    $this->db->where('UsuEmp.TbPerfil_Id_CdPerfil !=', '99');
+//    $this->db->where('UsuEmp.TbPerfil_Id_CdPerfil !=', '99');
 
     $query = $this->db->get();
     
