@@ -90,7 +90,7 @@ class PrincipalModel extends CI_Model
 // FIM DAS CONSULTAS NA TELA DE CONVENIO
 
     // INICIO DAS CONSULTAS NA TELA DE PLANO
-    function listaPlano($idUsuEmp, $searchText = '', $page, $segment)
+    function listaPlano($IdEmpresa, $searchText = '', $page, $segment)
     {
         $this->db->select('*');
         $this->db->from('TbPlano as Plano');
@@ -106,9 +106,6 @@ class PrincipalModel extends CI_Model
 
         $this->db->where('Plano.Deletado !=', 'S');
         $this->db->where('Plano.Tp_Ativo', 'S');
-        $this->db->where('Convenio.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
-        $this->db->where('Indice.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
-        $this->db->where('Regra.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
         $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
