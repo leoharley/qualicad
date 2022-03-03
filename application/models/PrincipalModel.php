@@ -77,54 +77,78 @@ class PrincipalModel extends CI_Model
 
 // FIM DAS CONSULTAS NA TELA DE CONVENIO
 
-// INICIO DAS CONSULTAS NA TELA DE PLANO
-function listaPlano($id, $searchText = '', $page, $segment)
-{
-    $this->db->select('*');
-    $this->db->from('TbPlano as Plano');
-//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
-    if(!empty($searchText)) {
-        $likeCriteria = "(Plano.Ds_Plano LIKE '%".$searchText."%')";
-        $this->db->where($likeCriteria);
+    // INICIO DAS CONSULTAS NA TELA DE PLANO
+    function listaPlano($id, $idUsuEmp, $searchText = '', $page, $segment)
+    {
+        $this->db->select('*');
+        $this->db->from('TbPlano as Plano');
+        $this->db->join('TbConvenio as Convenio', 'Convenio.Id_Convenio = Plano.TbConvenio_Id_Convenio AND Convenio.Deletado != "S" AND Convenio.Tp_Ativo = "S"','inner');
+    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+        if(!empty($searchText)) {
+            $likeCriteria = "(Plano.Ds_Plano LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
+
+        $this->db->where('Plano.Deletado !=', 'S');
+        $this->db->where('Plano.Tp_Ativo', 'S');
+        $this->db->where('Plano.CriadoPor', $id);
+        $this->db->where('Convenio.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
+        $this->db->limit($page, $segment);
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
     }
 
-    $this->db->where('Plano.Deletado !=', 'S');
-    $this->db->where('Plano.Tp_Ativo', 'S');
-    $this->db->where('Plano.CriadoPor', $id);
-    $this->db->limit($page, $segment);
-    $query = $this->db->get();
-    
-    $result = $query->result();        
-    return $result;
-}
+    function adicionaPlano($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbPlano', $info);
 
-function adicionaPlano($info)
-{
-    $this->db->trans_start();
-    $this->db->insert('TabUsuario', $infoUsuario);
-    
-    $insert_id = $this->db->insert_id();
-    
-    $this->db->trans_complete();
-    
-    return $insert_id;
-}
+        $insert_id = $this->db->insert_id();
 
-function editaPlano($info, $id)
-{
-    $this->db->where('Id_Usuario', $IdUsuario);
-    $this->db->update('TabUsuario', $infoUsuario);
-    
-    return TRUE;
-}
+        $this->db->trans_complete();
 
-function apagaPlano($info, $id)
-{
-    $this->db->where('Id_Usuario', $IdUsuario);
-    $this->db->update('TabUsuario', $infoUsuario);
-    
-    return $this->db->affected_rows();
-}
+        return $insert_id;
+    }
+
+    function editaPlano($info, $id)
+    {
+        $this->db->where('Id_Plano', $id);
+        $this->db->update('TbPlano', $info);
+
+        return TRUE;
+    }
+
+    function apagaPlano($info, $id)
+    {
+        $this->db->where('Id_Plano', $id);
+        $this->db->update('TbPlano', $info);
+
+        return $this->db->affected_rows();
+    }
+
+/*    function consultaPlanoExistente($CNPJ_Convenio, $IdUsuEmp)
+    {
+        $this->db->select('Id_Convenio');
+        $this->db->from('TbConvenio');
+        $campos = "(CNPJ_Convenio = '".$CNPJ_Convenio."'
+                    AND TbUsuEmp_Id_UsuEmp  = '".$IdUsuEmp."')";
+        $this->db->where($campos);
+        $query = $this->db->get();
+
+        return $query->result();
+    } */
+
+    function carregaInfoPlano($Id)
+    {
+        $this->db->select('*');
+        $this->db->from('TbPlano');
+        $this->db->where('Id_Plano', $Id);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
 // FIM DAS CONSULTAS NA TELA DE PLANO
 
 // INICIO DAS CONSULTAS NA TELA DE FATURAMENTO
@@ -132,6 +156,7 @@ function listaFaturamento($id, $searchText = '', $page, $segment)
 {
     $this->db->select('*');
     $this->db->from('TbFaturamento as Faturamento');
+    $this->db->join('TbConvenio as Convenio', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Deletado != "S" AND Empresa.Tp_Ativo = "S"','inner');
 //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
     if(!empty($searchText)) {
         $likeCriteria = "(Faturamento.Ds_Faturamento  LIKE '%".$searchText."%')";

@@ -74,6 +74,7 @@ if(!empty($infoPlano))
                                             }
                                             ?>
                                         </select>
+                                        <input type="hidden" value="<?php echo $Id_Plano; ?>" name="Id_Plano" id="Id_Plano" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">

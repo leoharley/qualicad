@@ -276,7 +276,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "principalPlano/listar", $count, 10 );
                 
-                $data['registrosPlanos'] = $this->PrincipalModel->listaPlano($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosPlanos'] = $this->PrincipalModel->listaPlano($this->session->userdata('userId'), $this->session->userdata('IdUsuEmp'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar planos';
                 $processFunction = 'Principal/principalPlano';
@@ -324,17 +324,18 @@ class Principal extends BaseController
                 else
             { */
 
-            $Ds_Plano = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-            $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-            $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-            $Tp_Convenio = $this->input->post('Tp_Convenio');
-            $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-            $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+            $Ds_Plano = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Plano'))));
+            $TbConvenio_Id_Convenio = $this->input->post('TbConvenio_Id_Convenio');
+            $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
+            $TbRegra_Id_Regra  = $this->input->post('TbRegra_Id_Regra');
+            $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
+            $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');
 
-            if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
+            //VERIFICAÇÃO DE DUPLICIDADE
+    //        if ($this->PrincipalModel->consultaPlanoExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
 
                 //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
                 if ($Tp_Ativo == 'S')
@@ -347,140 +348,127 @@ class Principal extends BaseController
 
                 //'Senha'=>getHashedPassword($senha)
 
-                $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio,
-                    'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-                    'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                $infoPlano = array('TbConvenio_Id_Convenio'=>$TbConvenio_Id_Convenio, 'TbIndice_Id_Indice'=> $TbIndice_Id_Indice, 'TbRegra_Id_Regra'=> $TbRegra_Id_Regra,
+                    'Cd_PlanoERP'=>$Cd_PlanoERP, 'Tp_AcomodacaoPadrao'=>$Tp_AcomodacaoPadrao, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-                $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+                $result = $this->PrincipalModel->adicionaPlano($infoPlano);
 
                 if($result > 0)
                 {
-                    $process = 'Adicionar convênio';
-                    $processFunction = 'Principal/adicionaConvenio';
+                    $process = 'Adicionar plano';
+                    $processFunction = 'Principal/adicionaPlano';
                     $this->logrecord($process,$processFunction);
 
-                    $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+                    $this->session->set_flashdata('success', 'Plano criado com sucesso');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na criação do convênio');
+                    $this->session->set_flashdata('error', 'Falha na criação do plano');
                 }
 
-            } else {
-                $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
-            }
+          //  } else {
+            //    $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+          //  }
 
-            redirect('principalConvenio/listar');
-
-            //    }
+            redirect('principalPlano/listar');
     }
 
 
     function editaPlano()
     {
             $this->load->library('form_validation');
-            
-            $IdUsuario = $this->input->post('Id_Usuario');
+
+            $IdPlano = $this->input->post('Id_Plano');
 
             //VALIDAÇÃO
-            
-        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
-            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
-            
-            if($this->form_validation->run() == FALSE)
-            { 
-                $this->editOld($userId);
+
+            /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+               $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+               $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+               $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+               $this->form_validation->set_rules('role','Role','trim|required|numeric');
+               $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+               if($this->form_validation->run() == FALSE)
+               {
+                   $this->editOld($userId);
+               }
+               else
+               { */
+
+            $Ds_Plano = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Plano'))));
+            $TbConvenio_Id_Convenio = $this->input->post('TbConvenio_Id_Convenio');
+            $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
+            $TbRegra_Id_Regra  = $this->input->post('TbRegra_Id_Regra');
+            $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
+            $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            foreach ($this->PrincipalModel->carregaInfoPlano($IdPlano) as $data){
+                $Tp_Ativo_Atual = ($data->Tp_Ativo);
+            }
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+                $Dt_Inativo = null;
+            } else if ($Tp_Ativo == 'N')
+            {
+                $Dt_Ativo = null;
+                $Dt_Inativo = date('Y-m-d H:i:s');
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+            $infoPlano = array('TbConvenio_Id_Convenio'=>$TbConvenio_Id_Convenio, 'TbIndice_Id_Indice'=> $TbIndice_Id_Indice, 'TbRegra_Id_Regra'=> $TbRegra_Id_Regra,
+                'Cd_PlanoERP'=>$Cd_PlanoERP, 'Tp_AcomodacaoPadrao'=>$Tp_AcomodacaoPadrao, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+            $resultado = $this->PrincipalModel->editaPlano($infoPlano,$IdPlano);
+
+            if($resultado == true)
+            {
+                $process = 'Plano atualizado';
+                $processFunction = 'Principal/editaPlano';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Plano atualizado com sucesso');
             }
             else
-            { */
+            {
+                $this->session->set_flashdata('error', 'Falha na atualização do plano');
+            }
 
-                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                $cpf = $this->input->post('Cpf_Usuario');
-                $email = $this->security->xss_clean($this->input->post('Email'));
-                $senha = $this->input->post('Senha');
-                $tpativo = $this->input->post('Tp_Ativo');
-                $admin = $this->input->post('Admin');
-
-                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
-                    $tpativoatual = ($data->Tp_Ativo);
-                }
-
-                if ($tpativoatual == 'N' && $tpativo == 'S')
-                {
-                    $dtativo = date('Y-m-d H:i:s');
-                    $dtinativo = null;
-                } else if ($tpativo == 'N')
-                {
-                    $dtativo = null;
-                    $dtinativo = date('Y-m-d H:i:s');
-                }
-                
-                $infoUsuario = array();
-                
-                if(empty($senha))
-                {
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
-                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                else
-                {
-                    //'Senha'=>getHashedPassword($senha)
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                
-                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
-                
-                if($resultado == true)
-                {
-                    $process = 'Usuário atualizado';
-                    $processFunction = 'Cadastro/editaUsuario';
-                    $this->logrecord($process,$processFunction);
-
-                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
-                }
-                else
-                {
-                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
-                }
-                
-                redirect('cadastroUsuario/listar');
-        // }
+            redirect('principalPlano/listar');
+            // }
     }
 
     function apagaPlano()
     {
-            $IdUsuario = $this->uri->segment(2);
+            $IdPlano = $this->uri->segment(2);
 
-            $infoUsuario = array();
-
-            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoPlano = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
-            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            $resultado = $this->PrincipalModel->apagaPlano($infoPlano, $IdPlano);
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
 
-                $process = 'Exclusão de usuário';
-                $processFunction = 'Cadastro/apagaUsuario';
+                $process = 'Exclusão de plano';
+                $processFunction = 'Cadastro/apagaPlano';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+                $this->session->set_flashdata('success', 'Plano deletado com sucesso');
 
                 }
                 else 
                 { 
                     //echo(json_encode(array('status'=>FALSE))); 
-                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                    $this->session->set_flashdata('error', 'Falha em excluir o plano');
                 }
-                redirect('cadastroUsuario/listar');
+                redirect('principalPlano/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE PLANO
 
@@ -503,7 +491,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "principalFaturamento/listar", $count, 10 );
                 
-                $data['registrosFaturamento'] = $this->PrincipalModel->listaFaturamento($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosFaturamento'] = $this->PrincipalModel->listaFaturamento($this->session->userdata('userId'), $this->session->userdata('IdUsuEmp'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar faturamentos';
                 $processFunction = 'Principal/principalFaturamento';
@@ -727,7 +715,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
                 
-                $data['registrosRegras'] = $this->PrincipalModel->listaRegra($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosRegras'] = $this->PrincipalModel->listaRegra($this->session->userdata('userId'), $this->session->userdata('IdUsuEmp'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar regras';
                 $processFunction = 'Principal/principalRegra';
@@ -951,7 +939,7 @@ class Principal extends BaseController
     
                     $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
                     
-                    $data['registrosIndices'] = $this->PrincipalModel->listaIndice($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                    $data['registrosIndices'] = $this->PrincipalModel->listaIndice($this->session->userdata('userId'), $this->session->userdata('IdUsuEmp'), $searchText, $returns["page"], $returns["segment"]);
                     
                     $process = 'Listar índices';
                     $processFunction = 'Principal/principalIndice';
