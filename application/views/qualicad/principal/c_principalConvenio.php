@@ -1,3 +1,35 @@
+<?php
+
+$Id_Convenio = '';
+$TbUsuEmp_Id_UsuEmp = '';
+$Ds_Convenio = '';
+$CNPJ_Convenio = '';
+$Cd_ConvenioERP = '';
+$Tp_Convenio = '';
+$Dt_InicioConvenio = '';
+$Dt_VigenciaConvenio = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoConvenio))
+{
+    foreach ($infoConvenio as $r)
+    {
+        $Id_Convenio = $r->Id_Convenio;
+        $TbUsuEmp_Id_UsuEmp = $r->TbUsuEmp_Id_UsuEmp;
+        $Ds_Convenio = $r->Ds_Convenio;
+        $CNPJ_Convenio = $r->CNPJ_Convenio;
+        $Cd_ConvenioERP = $r->Cd_ConvenioERP;
+        $Tp_Convenio = $r->Tp_Convenio;
+        $Dt_InicioConvenio = $r->Dt_InicioConvenio;
+        $Dt_VigenciaConvenio = $r->Dt_VigenciaConvenio;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">

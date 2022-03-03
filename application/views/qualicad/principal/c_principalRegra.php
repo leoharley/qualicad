@@ -1,3 +1,25 @@
+<?php
+
+$Id_Regra = '';
+$TbUsuEmp_Id_UsuEmp = '';
+$Ds_Regra = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoRegra))
+{
+    foreach ($infoRegra as $r)
+    {
+        $Id_Regra = $r->Id_Regra;
+        $TbUsuEmp_Id_UsuEmp = $r->TbUsuEmp_Id_UsuEmp;
+        $Ds_Regra = $r->Ds_Regra;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">

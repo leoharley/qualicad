@@ -1,3 +1,37 @@
+<?php
+
+$Id_Indice = '';
+$TbUsuEmp_Id_UsuEmp = '';
+$Ds_indice = '';
+$Dt_IniVigencia = '';
+$Dt_FimVigencia = '';
+$Vl_Indice = '';
+$Vl_M2Filme = '';
+$Vl_Honorário = '';
+$Vl_UCO = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoIndice))
+{
+    foreach ($infoIndice as $r)
+    {
+        $Id_Indice = $r->Id_Indice;
+        $TbUsuEmp_Id_UsuEmp = $r->TbUsuEmp_Id_UsuEmp;
+        $Ds_indice = $r->Ds_indice;
+        $Dt_IniVigencia = $r->Dt_IniVigencia;
+        $Dt_FimVigencia = $r->Dt_FimVigencia;
+        $Vl_Indice = $r->Vl_Indice;
+        $Vl_M2Filme = $r->Vl_M2Filme;
+        $Vl_Honorário = $r->Vl_Honorário;
+        $Vl_UCO = $r->Vl_UCO;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">

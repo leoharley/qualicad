@@ -1,3 +1,33 @@
+<?php
+
+$Id_Plano = '';
+$TbConvenio_Id_Convenio = '';
+$TbIndice_Id_Indice = '';
+$TbRegra_Id_Regra = '';
+$Ds_Plano = '';
+$Cd_PlanoERP = '';
+$Tp_AcomodacaoPadrao = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoPlano))
+{
+    foreach ($infoPlano as $r)
+    {
+        $Id_Plano = $r->Id_Plano;
+        $TbConvenio_Id_Convenio = $r->TbConvenio_Id_Convenio;
+        $TbIndice_Id_Indice = $r->TbIndice_Id_Indice;
+        $TbRegra_Id_Regra = $r->TbRegra_Id_Regra;
+        $Ds_Plano = $r->Ds_Plano;
+        $Cd_PlanoERP = $r->Cd_PlanoERP;
+        $Tp_AcomodacaoPadrao = $r->Tp_AcomodacaoPadrao;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
