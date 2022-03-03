@@ -56,7 +56,7 @@ class PrincipalModel extends CI_Model
     {
         $this->db->select('Id_Convenio');
         $this->db->from('TbConvenio');
-        $campos = "((CNPJ_Convenio = '".$CNPJ_Convenio."'
+        $campos = "(CNPJ_Convenio = '".$CNPJ_Convenio."'
                     AND TbUsuEmp_Id_UsuEmp  = '".$IdUsuEmp."')";
         $this->db->where($campos);
         $query = $this->db->get();
