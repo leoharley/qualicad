@@ -523,179 +523,163 @@ class Principal extends BaseController
     function adicionaFaturamento() 
     {
             $this->load->library('form_validation');
-            
+
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
             $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
             $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
             $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
             $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
 
-        //VALIDAÇÃO
+            //VALIDAÇÃO
 
-        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
-            
-        /*    if($this->form_validation->run() == FALSE)
-            {
+            //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
 
-                redirect('cadastroUsuario/cadastrar');
-            }
-            else
-        { */
-
-                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                $cpf = $this->input->post('Cpf_Usuario');
-                $email = $this->security->xss_clean($this->input->post('Email'));
-                $senha = $this->input->post('Senha');
-                $tpativo = $this->input->post('Tp_Ativo');
-                $admin = $this->input->post('Admin');
-            //    $roleId = $this->input->post('role');
-
-                if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
-
-                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
-                if ($tpativo == 'S') 
-                { 
-                    $dtativo = date('Y-m-d H:i:s');
-                } else
+            /*    if($this->form_validation->run() == FALSE)
                 {
-                    $dtativo = null;
-                }
-                
-                //'Senha'=>getHashedPassword($senha)
 
-                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
-                                    
-                $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
-                
-                if($result > 0)
-                {
-                    $process = 'Adicionar usuário';
-                    $processFunction = 'Cadastro/adicionaUsuario';
-                    $this->logrecord($process,$processFunction);
-
-                    $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                    redirect('cadastroUsuario/cadastrar');
                 }
                 else
-                {
-                    $this->session->set_flashdata('error', 'Falha na criação do usuário');
-                }
+            { */
 
-            } else {
-                    $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+            $Ds_Faturamento = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Faturamento'))));
+            $Tp_Faturamento = $this->input->post('Tp_Faturamento');
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            //    $roleId = $this->input->post('role');
+
+            //           if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
             }
-                
-                redirect('cadastroUsuario/listar');
 
-        //    }
+            //'Senha'=>getHashedPassword($senha)
+
+            $infoFaturamento = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Faturamento'=> $Ds_Faturamento, 'Tp_Faturamento'=> $Tp_Faturamento,
+                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+            $result = $this->PrincipalModel->adicionaFaturamento($infoFaturamento);
+
+            if($result > 0)
+            {
+                $process = 'Adicionar faturamento';
+                $processFunction = 'Principal/adicionaFaturamento';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Faturamento criado com sucesso');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na criação do faturamento');
+            }
+
+            //          } else {
+            //             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+            //         }
+
+            redirect('principalFaturamento/listar');
+
+            //    }
     }
 
 
     function editaFaturamento()
     {
             $this->load->library('form_validation');
-            
-            $IdUsuario = $this->input->post('Id_Usuario');
+
+            $IdFaturamento = $this->input->post('Id_Faturamento');
 
             //VALIDAÇÃO
-            
-        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
-            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
-            
-            if($this->form_validation->run() == FALSE)
-            { 
-                $this->editOld($userId);
+
+            /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+                $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+                $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+                $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+                $this->form_validation->set_rules('role','Role','trim|required|numeric');
+                $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+                if($this->form_validation->run() == FALSE)
+                {
+                    $this->editOld($userId);
+                }
+                else
+                { */
+
+            $Ds_Faturamento = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Faturamento'))));
+            $Tp_Faturamento = $this->input->post('Tp_Faturamento');
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            foreach ($this->PrincipalModel->carregaInfoFaturamento($IdFaturamento) as $data){
+                $tpativoatual = ($data->Tp_Ativo);
+            }
+
+            if ($tpativoatual == 'N' && $Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+                $Dt_Inativo = null;
+            } else if ($Tp_Ativo == 'N')
+            {
+                $Dt_Ativo = null;
+                $Dt_Inativo = date('Y-m-d H:i:s');
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+            $infoFaturamento = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Faturamento'=> $Ds_Faturamento, 'Tp_Faturamento'=> $Tp_Faturamento, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+            $resultado = $this->PrincipalModel->editaFaturamento($infoFaturamento, $IdFaturamento);
+
+            if($resultado == true)
+            {
+                $process = 'Faturamento atualizado';
+                $processFunction = 'Principal/editaFaturamento';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Faturamento atualizado com sucesso');
             }
             else
-            { */
+            {
+                $this->session->set_flashdata('error', 'Falha na atualização do faturamento');
+            }
 
-                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                $cpf = $this->input->post('Cpf_Usuario');
-                $email = $this->security->xss_clean($this->input->post('Email'));
-                $senha = $this->input->post('Senha');
-                $tpativo = $this->input->post('Tp_Ativo');
-                $admin = $this->input->post('Admin');
-
-                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
-                    $tpativoatual = ($data->Tp_Ativo);
-                }
-
-                if ($tpativoatual == 'N' && $tpativo == 'S')
-                {
-                    $dtativo = date('Y-m-d H:i:s');
-                    $dtinativo = null;
-                } else if ($tpativo == 'N')
-                {
-                    $dtativo = null;
-                    $dtinativo = date('Y-m-d H:i:s');
-                }
-                
-                $infoUsuario = array();
-                
-                if(empty($senha))
-                {
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
-                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                else
-                {
-                    //'Senha'=>getHashedPassword($senha)
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                
-                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
-                
-                if($resultado == true)
-                {
-                    $process = 'Usuário atualizado';
-                    $processFunction = 'Cadastro/editaUsuario';
-                    $this->logrecord($process,$processFunction);
-
-                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
-                }
-                else
-                {
-                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
-                }
-                
-                redirect('cadastroUsuario/listar');
-        // }
+            redirect('principalFaturamento/listar');
+            // }
     }
 
     function apagaFaturamento()
     {
-            $IdUsuario = $this->uri->segment(2);
+            $IdFaturamento = $this->uri->segment(2);
 
-            $infoUsuario = array();
-
-            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoFaturamento = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
-            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            $resultado = $this->PrincipalModel->apagaFaturamento($infoFaturamento, $IdFaturamento);
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
 
-                $process = 'Exclusão de usuário';
-                $processFunction = 'Cadastro/apagaUsuario';
+                $process = 'Exclusão de faturamento';
+                $processFunction = 'Principal/apagaFaturamento';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+                $this->session->set_flashdata('success', 'Faturamento deletado com sucesso');
 
                 }
                 else 
                 { 
                     //echo(json_encode(array('status'=>FALSE))); 
-                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                    $this->session->set_flashdata('error', 'Falha em excluir o faturamento');
                 }
-                redirect('cadastroUsuario/listar');
+                redirect('principalFaturamento/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE FATURAMENTO
 
@@ -747,70 +731,67 @@ class Principal extends BaseController
     function adicionaRegra() 
     {
             $this->load->library('form_validation');
-            
+
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
             $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
             $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
             $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
             $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
 
-        //VALIDAÇÃO
+            //VALIDAÇÃO
 
-        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
-            
-        /*    if($this->form_validation->run() == FALSE)
-            {
+            //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
 
-                redirect('cadastroUsuario/cadastrar');
-            }
-            else
-        { */
-
-                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                $cpf = $this->input->post('Cpf_Usuario');
-                $email = $this->security->xss_clean($this->input->post('Email'));
-                $senha = $this->input->post('Senha');
-                $tpativo = $this->input->post('Tp_Ativo');
-                $admin = $this->input->post('Admin');
-            //    $roleId = $this->input->post('role');
-
-                if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
-
-                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
-                if ($tpativo == 'S') 
-                { 
-                    $dtativo = date('Y-m-d H:i:s');
-                } else
+            /*    if($this->form_validation->run() == FALSE)
                 {
-                    $dtativo = null;
-                }
-                
-                //'Senha'=>getHashedPassword($senha)
 
-                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
-                                    
-                $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
-                
-                if($result > 0)
-                {
-                    $process = 'Adicionar usuário';
-                    $processFunction = 'Cadastro/adicionaUsuario';
-                    $this->logrecord($process,$processFunction);
-
-                    $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                    redirect('cadastroUsuario/cadastrar');
                 }
                 else
-                {
-                    $this->session->set_flashdata('error', 'Falha na criação do usuário');
-                }
+            { */
 
-            } else {
-                    $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+            $Ds_Regra = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Regra'))));
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            //    $roleId = $this->input->post('role');
+
+            //           if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
             }
-                
-                redirect('cadastroUsuario/listar');
+
+            //'Senha'=>getHashedPassword($senha)
+
+            $infoRegra = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Regra'=> $Ds_Regra, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+            $result = $this->PrincipalModel->adicionaRegra($infoRegra);
+
+            if($result > 0)
+            {
+                $process = 'Adicionar regra';
+                $processFunction = 'Principal/adicionaRegra';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Regra criada com sucesso');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na criação da regra');
+            }
+
+            //          } else {
+            //             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+            //         }
+
+            redirect('principalRegra/listar');
 
         //    }
     }
@@ -819,107 +800,91 @@ class Principal extends BaseController
     function editaRegra()
     {
             $this->load->library('form_validation');
-            
-            $IdUsuario = $this->input->post('Id_Usuario');
+
+            $IdRegra = $this->input->post('Id_Regra');
 
             //VALIDAÇÃO
-            
-        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
-            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
-            
-            if($this->form_validation->run() == FALSE)
-            { 
-                $this->editOld($userId);
+
+            /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+                $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+                $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+                $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+                $this->form_validation->set_rules('role','Role','trim|required|numeric');
+                $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+                if($this->form_validation->run() == FALSE)
+                {
+                    $this->editOld($userId);
+                }
+                else
+                { */
+
+            $Ds_Regra = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Regra'))));
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            foreach ($this->PrincipalModel->carregaInfoRegra($IdRegra) as $data){
+                $tpativoatual = ($data->Tp_Ativo);
+            }
+
+            if ($tpativoatual == 'N' && $Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+                $Dt_Inativo = null;
+            } else if ($Tp_Ativo == 'N')
+            {
+                $Dt_Ativo = null;
+                $Dt_Inativo = date('Y-m-d H:i:s');
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+            $infoRegra = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Regra'=> $Ds_indice, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+            $resultado = $this->PrincipalModel->editaRegra($infoRegra, $IdRegra);
+
+            if($resultado == true)
+            {
+                $process = 'Regra atualizado';
+                $processFunction = 'Principal/editaRegra';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Regra atualizada com sucesso');
             }
             else
-            { */
+            {
+                $this->session->set_flashdata('error', 'Falha na atualização da regra');
+            }
 
-                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                $cpf = $this->input->post('Cpf_Usuario');
-                $email = $this->security->xss_clean($this->input->post('Email'));
-                $senha = $this->input->post('Senha');
-                $tpativo = $this->input->post('Tp_Ativo');
-                $admin = $this->input->post('Admin');
-
-                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
-                    $tpativoatual = ($data->Tp_Ativo);
-                }
-
-                if ($tpativoatual == 'N' && $tpativo == 'S')
-                {
-                    $dtativo = date('Y-m-d H:i:s');
-                    $dtinativo = null;
-                } else if ($tpativo == 'N')
-                {
-                    $dtativo = null;
-                    $dtinativo = date('Y-m-d H:i:s');
-                }
-                
-                $infoUsuario = array();
-                
-                if(empty($senha))
-                {
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
-                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                else
-                {
-                    //'Senha'=>getHashedPassword($senha)
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                
-                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
-                
-                if($resultado == true)
-                {
-                    $process = 'Usuário atualizado';
-                    $processFunction = 'Cadastro/editaUsuario';
-                    $this->logrecord($process,$processFunction);
-
-                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
-                }
-                else
-                {
-                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
-                }
-                
-                redirect('cadastroUsuario/listar');
+            redirect('principalRegra/listar');
         // }
     }
 
     function apagaRegra()
     {
-            $IdUsuario = $this->uri->segment(2);
+            $IdRegra = $this->uri->segment(2);
 
-            $infoUsuario = array();
-
-            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoRegra = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
-            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            $resultado = $this->PrincipalModel->apagaRegra($infoRegra, $IdRegra);
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
 
-                $process = 'Exclusão de usuário';
-                $processFunction = 'Cadastro/apagaUsuario';
+                $process = 'Exclusão de regra';
+                $processFunction = 'Principal/apagaRegra';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+                $this->session->set_flashdata('success', 'Regra deletada com sucesso');
 
                 }
                 else 
                 { 
                     //echo(json_encode(array('status'=>FALSE))); 
-                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                    $this->session->set_flashdata('error', 'Falha em excluir a regra');
                 }
-                redirect('cadastroUsuario/listar');
+                redirect('principalRegra/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE REGRA
 
@@ -968,74 +933,79 @@ class Principal extends BaseController
                 }
         }
     
-        function adicionaIndice() 
+        function adicionaIndice()
         {
-                $this->load->library('form_validation');
-                
-                $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
-                $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
-                $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
-                $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
-                $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
-    
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+            $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
             //VALIDAÇÃO
-    
+
             //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
-                
+
             /*    if($this->form_validation->run() == FALSE)
                 {
-    
+
                     redirect('cadastroUsuario/cadastrar');
                 }
                 else
             { */
-    
-                    $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                    $cpf = $this->input->post('Cpf_Usuario');
-                    $email = $this->security->xss_clean($this->input->post('Email'));
-                    $senha = $this->input->post('Senha');
-                    $tpativo = $this->input->post('Tp_Ativo');
-                    $admin = $this->input->post('Admin');
-                //    $roleId = $this->input->post('role');
-    
-                    if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
-    
-                    //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
-                    if ($tpativo == 'S') 
-                    { 
-                        $dtativo = date('Y-m-d H:i:s');
-                    } else
-                    {
-                        $dtativo = null;
-                    }
-                    
-                    //'Senha'=>getHashedPassword($senha)
-    
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
-                                        
-                    $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
-                    
-                    if($result > 0)
-                    {
-                        $process = 'Adicionar usuário';
-                        $processFunction = 'Cadastro/adicionaUsuario';
-                        $this->logrecord($process,$processFunction);
-    
-                        $this->session->set_flashdata('success', 'Usuário criado com sucesso');
-                    }
-                    else
-                    {
-                        $this->session->set_flashdata('error', 'Falha na criação do usuário');
-                    }
-    
-                } else {
-                        $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+
+            $Ds_indice = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_indice'))));
+            $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+            $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+            $Vl_Indice = $this->input->post('Vl_Indice');
+            $Vl_M2Filme = $this->input->post('Vl_M2Filme');
+            $Vl_Honorário = $this->input->post('Vl_Honorário');
+            $Vl_UCO = $this->input->post('Vl_UCO');
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            //    $roleId = $this->input->post('role');
+
+ //           if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $Dt_Ativo = null;
                 }
-                    
-                    redirect('cadastroUsuario/listar');
-    
+
+                //'Senha'=>getHashedPassword($senha)
+
+                $infoIndice = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                    'Ds_indice'=> $Ds_indice, 'Dt_IniVigencia'=> $Dt_IniVigencia,
+                    'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice, 'Vl_M2Filme'=>$Vl_M2Filme,
+                    'Vl_Honorário'=>$Vl_Honorário, 'Vl_UCO'=>$Vl_UCO, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+                $result = $this->PrincipalModel->adicionaIndice($infoIndice);
+
+                if($result > 0)
+                {
+                    $process = 'Adicionar índice';
+                    $processFunction = 'Principal/adicionaIndice';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Índice criado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do índice');
+                }
+
+  //          } else {
+   //             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+   //         }
+
+            redirect('principalIndice/listar');
+
             //    }
         }
     
@@ -1044,7 +1014,7 @@ class Principal extends BaseController
         {
                 $this->load->library('form_validation');
                 
-                $IdUsuario = $this->input->post('Id_Usuario');
+                $IdIndice = $this->input->post('Id_Indice');
     
                 //VALIDAÇÃO
                 
@@ -1061,89 +1031,81 @@ class Principal extends BaseController
                 }
                 else
                 { */
+
+                    $Ds_indice = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_indice'))));
+                    $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+                    $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+                    $Vl_Indice = $this->input->post('Vl_Indice');
+                    $Vl_M2Filme = $this->input->post('Vl_M2Filme');
+                    $Vl_Honorário = $this->input->post('Vl_Honorário');
+                    $Vl_UCO = $this->input->post('Vl_UCO');
+                    $Tp_Ativo = $this->input->post('Tp_Ativo');
     
-                    $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                    $cpf = $this->input->post('Cpf_Usuario');
-                    $email = $this->security->xss_clean($this->input->post('Email'));
-                    $senha = $this->input->post('Senha');
-                    $tpativo = $this->input->post('Tp_Ativo');
-                    $admin = $this->input->post('Admin');
-    
-                    foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                    foreach ($this->CadastroModel->carregaInfoIndice($IdIndice) as $data){
                         $tpativoatual = ($data->Tp_Ativo);
                     }
     
-                    if ($tpativoatual == 'N' && $tpativo == 'S')
+                    if ($tpativoatual == 'N' && $Tp_Ativo == 'S')
                     {
-                        $dtativo = date('Y-m-d H:i:s');
-                        $dtinativo = null;
-                    } else if ($tpativo == 'N')
+                        $Dt_Ativo = date('Y-m-d H:i:s');
+                        $Dt_Inativo = null;
+                    } else if ($Tp_Ativo == 'N')
                     {
-                        $dtativo = null;
-                        $dtinativo = date('Y-m-d H:i:s');
+                        $Dt_Ativo = null;
+                        $Dt_Inativo = date('Y-m-d H:i:s');
                     }
+
+                    //'Senha'=>getHashedPassword($senha)
+                    $infoIndice = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                        'Ds_indice'=> $Ds_indice, 'Dt_IniVigencia'=> $Dt_IniVigencia,
+                        'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice, 'Vl_M2Filme'=>$Vl_M2Filme,
+                        'Vl_Honorário'=>$Vl_Honorário, 'Vl_UCO'=>$Vl_UCO, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                        'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
                     
-                    $infoUsuario = array();
-                    
-                    if(empty($senha))
-                    {
-                        $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
-                                            'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                            'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                    }
-                    else
-                    {
-                        //'Senha'=>getHashedPassword($senha)
-                        $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                    }
-                    
-                    $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+                    $resultado = $this->PrincipalModel->editaIndice($infoIndice, $IdIndice);
                     
                     if($resultado == true)
                     {
-                        $process = 'Usuário atualizado';
-                        $processFunction = 'Cadastro/editaUsuario';
+                        $process = 'Índice atualizado';
+                        $processFunction = 'Cadastro/editaIndice';
                         $this->logrecord($process,$processFunction);
     
-                        $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                        $this->session->set_flashdata('success', 'Índice atualizado com sucesso');
                     }
                     else
                     {
-                        $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                        $this->session->set_flashdata('error', 'Falha na atualização do índice');
                     }
                     
-                    redirect('cadastroUsuario/listar');
+                    redirect('principalIndice/listar');
             // }
         }
     
         function apagaIndice()
         {
-                $IdUsuario = $this->uri->segment(2);
-    
-                $infoUsuario = array();
-    
-                $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+                $IdIndice = $this->uri->segment(2);
+
+                $infoIndice = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
                 
-                $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+                $resultado = $this->PrincipalModel->apagaIndice($infoIndice, $IdIndice);
                 
                 if ($resultado > 0) {
                     // echo(json_encode(array('status'=>TRUE)));
     
-                    $process = 'Exclusão de usuário';
-                    $processFunction = 'Cadastro/apagaUsuario';
+                    $process = 'Exclusão de índice';
+                    $processFunction = 'Cadastro/apagaIndice';
                     $this->logrecord($process,$processFunction);
     
-                    $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+                    $this->session->set_flashdata('success', 'Índice deletado com sucesso');
     
                     }
                     else 
                     { 
                         //echo(json_encode(array('status'=>FALSE))); 
-                        $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                        $this->session->set_flashdata('error', 'Falha em excluir o índice');
                     }
-                    redirect('cadastroUsuario/listar');
+                    redirect('principalIndice/listar');
         }
         // FIM DAS FUNÇÕES DA TELA DE INDICE
 
