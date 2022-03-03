@@ -63,7 +63,7 @@ $route['apagaUsuarioEmpresa/:any/:any'] = "cadastro/apagaUsuarioEmpresa/$1/$2";
 
 
 /*********** ROUTES DO PRINCIPAL *******************/
-$route['principalConvenio/:any/:any'] = "cadastro/principalConvenio/$1/$2";
+$route['principalConvenio/:any/:any'] = "principal/principalConvenio/$1/$2";
 $route['principalConvenio/:any'] = "principal/principalConvenio/$1";
 
 $route['principalPlano/:any/:any'] = "principal/principalPlano/$1/$2";
