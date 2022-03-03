@@ -48,12 +48,6 @@ class CadastroModel extends CI_Model
         $this->db->where('Usuarios.Id_Usuario !=', $idUser);
         $this->db->where('Usuarios.CriadoPor', $idUser);
 
-        $campos = "((Usuarios.Admin = 'S'
-        AND Usuarios.CriadoPor = '".$idUser."'))
-        OR
-        (Usuarios.Admin = 'N')";
-        $this->db->where($campos);
-
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
