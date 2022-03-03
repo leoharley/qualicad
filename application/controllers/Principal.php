@@ -289,6 +289,8 @@ class Principal extends BaseController
             }
             else if ($tpTela == 'cadastrar') {
                 $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegrasEmpresa($this->session->userdata('IdEmpresa'));
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Plano';
                 $this->loadViews("qualicad/principal/c_principalPlano", $this->global, $data, NULL); 
             }

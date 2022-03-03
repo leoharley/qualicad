@@ -139,6 +139,16 @@ class PrincipalModel extends CI_Model
         return $this->db->affected_rows();
     }
 
+    function carregaInfoPlanosEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbPlano as Plano');
+        $this->db->where('Plano.TbEmpresa_Id_Empresa', $idEmpresa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 /*    function consultaPlanoExistente($CNPJ_Convenio, $IdUsuEmp)
     {
         $this->db->select('Id_Convenio');
@@ -279,6 +289,16 @@ function carregaInfoRegra($Id)
 
     return $query->result();
 }
+
+function carregaInfoRegrasEmpresa($idEmpresa)
+{
+    $this->db->select('*');
+    $this->db->from('TbRegra as Regra');
+    $this->db->where('Regra.TbEmpresa_Id_Empresa', $idEmpresa);
+    $query = $this->db->get();
+
+    return $query->result();
+}
 // FIM DAS CONSULTAS NA TELA DE REGRA
 
 // INICIO DAS CONSULTAS NA TELA DE INDICE
@@ -333,6 +353,16 @@ function carregaInfoIndice($Id)
     $this->db->select('*');
     $this->db->from('TbIndice');
     $this->db->where('Id_Indice', $Id);
+    $query = $this->db->get();
+
+    return $query->result();
+}
+
+function carregaInfoIndicesEmpresa($idEmpresa)
+{
+    $this->db->select('*');
+    $this->db->from('TbIndice as Indice');
+    $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
     $query = $this->db->get();
 
     return $query->result();
