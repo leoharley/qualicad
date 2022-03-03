@@ -9,7 +9,7 @@
   <section class="content">
     <div class="col-xs-12">
       <div class="text-right">
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>cadastroUsuario/cadastrar">
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>principalPlano/cadastrar">
           <i class="fa fa-plus"></i> Adicionar plano</a>
       </div>
       <div class="box">
