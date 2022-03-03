@@ -4,7 +4,7 @@ class PrincipalModel extends CI_Model
 {
     
 // INICIO DAS CONSULTAS NA TELA DE CONVENIO
-    function listaConvenio($id, $idUsuEmp, $searchText = '', $page, $segment)
+    function listaConvenio($idUsuEmp, $searchText = '', $page, $segment)
     {
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
@@ -16,7 +16,6 @@ class PrincipalModel extends CI_Model
         }
         $this->db->where('Convenio.Deletado !=', 'S');
         $this->db->where('Convenio.Tp_Ativo', 'S');
-        $this->db->where('Convenio.CriadoPor', $id);
         $this->db->where('Convenio.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
@@ -75,10 +74,20 @@ class PrincipalModel extends CI_Model
         return $query->result();
     }
 
+    function carregaInfoConveniosEmpresa($idUsuEmp)
+    {
+        $this->db->select('*');
+        $this->db->from('TbConvenio');
+        $this->db->where('Id_Convenio', $idUsuEmp);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 // FIM DAS CONSULTAS NA TELA DE CONVENIO
 
     // INICIO DAS CONSULTAS NA TELA DE PLANO
-    function listaPlano($id, $idUsuEmp, $searchText = '', $page, $segment)
+    function listaPlano($idUsuEmp, $searchText = '', $page, $segment)
     {
         $this->db->select('*');
         $this->db->from('TbPlano as Plano');
@@ -93,7 +102,6 @@ class PrincipalModel extends CI_Model
 
         $this->db->where('Plano.Deletado !=', 'S');
         $this->db->where('Plano.Tp_Ativo', 'S');
-        $this->db->where('Plano.CriadoPor', $id);
         $this->db->where('Convenio.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
         $this->db->where('Indice.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
         $this->db->where('Regra.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
