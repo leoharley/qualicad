@@ -59,9 +59,9 @@ if(!empty($infoFaturamento))
                                     <div class="form-group">
                                         <label for="Tp_Faturamento">Tipo de faturamento</label>
                                         <select class="form-control required" id="Tp_Faturamento" name="Tp_Faturamento">
-                                            <option value="1">Reais</option>
-                                            <option value="2">CH</option>
-                                            <option value="3">CBHPM</option>
+                                            <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '1') { echo 'selected'; } ?>>Reais</option>
+                                            <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '2') { echo 'selected'; } ?>>CH</option>
+                                            <option value="3" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '3') { echo 'selected'; } ?>>CBHPM</option>
                                         </select>
                                     </div>
                                 </div>
