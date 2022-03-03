@@ -91,7 +91,7 @@
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroConvenio/editar/'.$registro->Id_Convenio; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalConvenio/editar/'.$registro->Id_Convenio; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
                           <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaConvenio/'.$registro->Id_Convenio; ?>" title="Excluir">
