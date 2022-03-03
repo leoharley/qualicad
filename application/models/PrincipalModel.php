@@ -165,20 +165,20 @@ class PrincipalModel extends CI_Model
 // FIM DAS CONSULTAS NA TELA DE PLANO
 
 // INICIO DAS CONSULTAS NA TELA DE FATURAMENTO
-function listaFaturamento($id, $searchText = '', $page, $segment)
+function listaFaturamento($IdEmpresa, $searchText = '', $page, $segment)
 {
     $this->db->select('*');
     $this->db->from('TbFaturamento as Faturamento');
-    $this->db->join('TbConvenio as Convenio', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Deletado != "S" AND Empresa.Tp_Ativo = "S"','inner');
+//    $this->db->join('TbConvenio as Convenio', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Deletado != "S" AND Empresa.Tp_Ativo = "S"','inner');
 //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
     if(!empty($searchText)) {
         $likeCriteria = "(Faturamento.Ds_Faturamento  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
-    
+
     $this->db->where('Faturamento.Deletado !=', 'S');
     $this->db->where('Faturamento.Tp_Ativo', 'S');
-    $this->db->where('Faturamento.CriadoPor', $id);
+    $this->db->where('Faturamento.TbEmpresa_Id_Empresa', $IdEmpresa);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -216,7 +216,7 @@ function apagaFaturamento($info, $id)
 // FIM DAS CONSULTAS NA TELA DE FATURAMENTO
 
 // INICIO DAS CONSULTAS NA TELA DE REGRA
-function listaRegra($id, $searchText = '', $page, $segment)
+function listaRegra($IdEmpresa, $searchText = '', $page, $segment)
 {
     $this->db->select('*');
     $this->db->from('TbRegra as Regra');
@@ -228,7 +228,7 @@ function listaRegra($id, $searchText = '', $page, $segment)
 
     $this->db->where('Regra.Deletado !=', 'S');
     $this->db->where('Regra.Tp_Ativo', 'S');
-    $this->db->where('Regra.CriadoPor', $id);
+    $this->db->where('Regra.TbEmpresa_Id_Empresa', $IdEmpresa);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -239,7 +239,7 @@ function listaRegra($id, $searchText = '', $page, $segment)
 function adicionaRegra($info)
 {
     $this->db->trans_start();
-    $this->db->insert('TabUsuario', $infoUsuario);
+    $this->db->insert('TbRegra', $info);
     
     $insert_id = $this->db->insert_id();
     
@@ -250,23 +250,23 @@ function adicionaRegra($info)
 
 function editaRegra($info, $id)
 {
-    $this->db->where('Id_Usuario', $IdUsuario);
-    $this->db->update('TabUsuario', $infoUsuario);
+    $this->db->where('Id_Regra', $id);
+    $this->db->update('TbRegra', $info);
     
     return TRUE;
 }
 
 function apagaRegra($info, $id)
 {
-    $this->db->where('Id_Usuario', $IdUsuario);
-    $this->db->update('TabUsuario', $infoUsuario);
+    $this->db->where('Id_Regra', $id);
+    $this->db->update('TbRegra', $info);
     
     return $this->db->affected_rows();
 }
 // FIM DAS CONSULTAS NA TELA DE REGRA
 
 // INICIO DAS CONSULTAS NA TELA DE INDICE
-function listaIndice($id, $searchText = '', $page, $segment)
+function listaIndice($IdEmpresa, $searchText = '', $page, $segment)
 {
     $this->db->select('*');
     $this->db->from('TbIndice as Indice');
@@ -275,10 +275,9 @@ function listaIndice($id, $searchText = '', $page, $segment)
         $likeCriteria = "(Indice.Ds_Indice LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
-
     $this->db->where('Indice.Deletado !=', 'S');
     $this->db->where('Indice.Tp_Ativo', 'S');
-    $this->db->where('Indice.CriadoPor', $id);
+    $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
@@ -289,7 +288,7 @@ function listaIndice($id, $searchText = '', $page, $segment)
 function adicionaIndice($info)
 {
     $this->db->trans_start();
-    $this->db->insert('TabUsuario', $infoUsuario);
+    $this->db->insert('TbIndice', $info);
     
     $insert_id = $this->db->insert_id();
     
@@ -300,16 +299,16 @@ function adicionaIndice($info)
 
 function editaIndice($info, $id)
 {
-    $this->db->where('Id_Usuario', $IdUsuario);
-    $this->db->update('TabUsuario', $infoUsuario);
+    $this->db->where('Id_Indice', $id);
+    $this->db->update('TbIndice', $info);
     
     return TRUE;
 }
 
 function apagaIndice($info, $id)
 {
-    $this->db->where('Id_Usuario', $IdUsuario);
-    $this->db->update('TabUsuario', $infoUsuario);
+    $this->db->where('Id_Indice', $id);
+    $this->db->update('TbIndice', $info);
     
     return $this->db->affected_rows();
 }
