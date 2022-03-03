@@ -4,10 +4,11 @@ class PrincipalModel extends CI_Model
 {
     
 // INICIO DAS CONSULTAS NA TELA DE CONVENIO
-    function listaConvenio($idUsuEmp, $searchText = '', $page, $segment)
+    function listaConvenio($IdEmpresa, $searchText = '', $page, $segment)
     {
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(Convenio.Ds_Convenio  LIKE '%".$searchText."%'
@@ -16,7 +17,7 @@ class PrincipalModel extends CI_Model
         }
         $this->db->where('Convenio.Deletado !=', 'S');
         $this->db->where('Convenio.Tp_Ativo', 'S');
-        $this->db->where('Convenio.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
+        $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
@@ -94,6 +95,7 @@ class PrincipalModel extends CI_Model
         $this->db->join('TbConvenio as Convenio', 'Convenio.Id_Convenio = Plano.TbConvenio_Id_Convenio AND Convenio.Deletado != "S" AND Convenio.Tp_Ativo = "S"','inner');
         $this->db->join('TbIndice as Indice', 'Indice.Id_Indice = Plano.TbIndice_Id_Indice AND Indice.Deletado != "S" AND Indice.Tp_Ativo = "S"','inner');
         $this->db->join('TbRegra as Regra', 'Regra.Id_Regra = Plano.TbRegra_Id_Regra AND Regra.Deletado != "S" AND Regra.Tp_Ativo = "S"','inner');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
     //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(Plano.Ds_Plano LIKE '%".$searchText."%')";
@@ -105,6 +107,7 @@ class PrincipalModel extends CI_Model
         $this->db->where('Convenio.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
         $this->db->where('Indice.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
         $this->db->where('Regra.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
+        $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
 

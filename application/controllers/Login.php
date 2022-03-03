@@ -218,8 +218,9 @@ class Login extends BaseController
             $role = ($data->TbPerfil_Id_CdPerfil);
             $roleText = ($data->Ds_Perfil);
             $IdUsuEmp = ($data->Id_UsuEmp);
+            $IdEmpresa = ($data->TbEmpresa_Id_Empresa);
         }
-        $sessionArray = array('role'=>$role,'roleText'=>$roleText,'IdUsuEmp'=>$IdUsuEmp);
+        $sessionArray = array('role'=>$role,'roleText'=>$roleText,'IdUsuEmp'=>$IdUsuEmp, 'IdEmpresa'=>$IdEmpresa);
       //  }
 
         $this->session->set_userdata($sessionArray);
