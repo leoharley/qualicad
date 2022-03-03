@@ -58,7 +58,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
                 
-                $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('userId'), $this->session->userdata('IdUsuEmp'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar convênios';
                 $processFunction = 'Principal/principalConvenio';

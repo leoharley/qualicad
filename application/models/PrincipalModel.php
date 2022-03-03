@@ -4,7 +4,7 @@ class PrincipalModel extends CI_Model
 {
     
 // INICIO DAS CONSULTAS NA TELA DE CONVENIO
-    function listaConvenio($id, $searchText = '', $page, $segment)
+    function listaConvenio($id, $idUsuEmp, $searchText = '', $page, $segment)
     {
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
@@ -17,6 +17,7 @@ class PrincipalModel extends CI_Model
         $this->db->where('Convenio.Deletado !=', 'S');
         $this->db->where('Convenio.Tp_Ativo', 'S');
         $this->db->where('Convenio.CriadoPor', $id);
+        $this->db->where('Convenio.TbUsuEmp_Id_UsuEmp', $idUsuEmp);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
