@@ -71,7 +71,7 @@
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroRegra/editar/'.$registro->Id_Regra; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalRegra/editar/'.$registro->Id_Regra; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
                           <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaRegra/'.$registro->Id_Regra; ?> "title="Excluir">
