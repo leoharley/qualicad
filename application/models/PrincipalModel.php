@@ -8,7 +8,7 @@ class PrincipalModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
-        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','left');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(Convenio.Ds_Convenio  LIKE '%".$searchText."%'
