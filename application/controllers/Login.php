@@ -123,8 +123,8 @@ class Login extends BaseController
                         if ($data->TbPerfil_Id_CdPerfil != NULL && $data->TbEmpresa_Id_Empresa != NULL) $associadoEmpresaPerfil = TRUE;
                     }
                     
-                    $role = 0; 
-                    $roleText = 'Admin';
+                //    $role = 0; 
+                //    $roleText = 'Admin';
 
                   /*  else 
                     { 
