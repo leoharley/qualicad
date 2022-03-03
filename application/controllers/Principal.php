@@ -298,7 +298,7 @@ class Principal extends BaseController
                     redirect('principalPlano/listar');
                 }
                 $data['infoPlano'] = $this->PrincipalModel->carregaInfoPlano($IdPlano);
-                $data['$infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));
                 $this->global['pageTitle'] = 'QUALICAD : Editar plano';      
                 $this->loadViews("qualicad/principal/c_principalPlano", $this->global, $data, NULL);
             }
