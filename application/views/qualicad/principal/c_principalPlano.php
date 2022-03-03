@@ -58,8 +58,8 @@ if(!empty($infoPlano))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="Id_Convenio">Convênio</label>
-                                        <select class="form-control required" id="Id_Convenio" name="Id_Convenio">
+                                        <label for="TbConvenio_Id_Convenio">Convênio</label>
+                                        <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio">
                                             <?php
                                             if(!empty($infoConvenio))
                                             {
@@ -79,8 +79,8 @@ if(!empty($infoPlano))
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="Id_Indice">Índice</label>
-                                        <select class="form-control required" id="Id_Indice" name="Id_Indice">
+                                        <label for="TbIndice_Id_Indice">Índice</label>
+                                        <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
                                             <?php
                                             if(!empty($infoIndice))
                                             {
@@ -101,8 +101,8 @@ if(!empty($infoPlano))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="Id_Regra">Regra</label>
-                                        <select class="form-control required" id="Id_Regra" name="Id_Regra">
+                                        <label for="TbRegra_Id_Regra">Regra</label>
+                                        <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
                                             <?php
                                             if(!empty($infoRegra))
                                             {
