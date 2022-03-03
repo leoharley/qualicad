@@ -16,7 +16,6 @@ class PrincipalModel extends CI_Model
             $this->db->where($likeCriteria);
         }
         $this->db->where('Convenio.Deletado !=', 'S');
-        $this->db->where('Convenio.Tp_Ativo', 'S');
         $this->db->where('Convenio.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
@@ -104,7 +103,6 @@ class PrincipalModel extends CI_Model
         }
 
         $this->db->where('Plano.Deletado !=', 'S');
-        $this->db->where('Plano.Tp_Ativo', 'S');
         $this->db->where('Plano.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
@@ -177,7 +175,6 @@ function listaFaturamento($IdEmpresa, $searchText = '', $page, $segment)
     }
 
     $this->db->where('Faturamento.Deletado !=', 'S');
-    $this->db->where('Faturamento.Tp_Ativo', 'S');
     $this->db->where('Faturamento.TbEmpresa_Id_Empresa', $IdEmpresa);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
@@ -227,7 +224,6 @@ function listaRegra($IdEmpresa, $searchText = '', $page, $segment)
     }
 
     $this->db->where('Regra.Deletado !=', 'S');
-    $this->db->where('Regra.Tp_Ativo', 'S');
     $this->db->where('Regra.TbEmpresa_Id_Empresa', $IdEmpresa);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
@@ -276,7 +272,6 @@ function listaIndice($IdEmpresa, $searchText = '', $page, $segment)
         $this->db->where($likeCriteria);
     }
     $this->db->where('Indice.Deletado !=', 'S');
-    $this->db->where('Indice.Tp_Ativo', 'S');
     $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
