@@ -1041,7 +1041,7 @@ class Principal extends BaseController
                     $Vl_UCO = $this->input->post('Vl_UCO');
                     $Tp_Ativo = $this->input->post('Tp_Ativo');
     
-                    foreach ($this->CadastroModel->carregaInfoIndice($IdIndice) as $data){
+                    foreach ($this->PrincipalModel->carregaInfoIndice($IdIndice) as $data){
                         $tpativoatual = ($data->Tp_Ativo);
                     }
     
