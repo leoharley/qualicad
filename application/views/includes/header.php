@@ -94,6 +94,7 @@
                       <?php echo $nomeEmpresa;?>
                       <br/>
                       <?php echo $IdUsuEmp;?>
+                      <?php echo $this->session->userdata('userId');?>
                     </small>
                   </p>
                 </li>
