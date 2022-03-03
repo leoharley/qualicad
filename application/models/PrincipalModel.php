@@ -17,7 +17,7 @@ class PrincipalModel extends CI_Model
         }
         $this->db->where('Convenio.Deletado !=', 'S');
         $this->db->where('Convenio.Tp_Ativo', 'S');
-        $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('Convenio.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
@@ -80,8 +80,7 @@ class PrincipalModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
-        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
-        $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('Convenio.TbEmpresa_Id_Empresa', $idEmpresa);
         $query = $this->db->get();
 
         return $query->result();
@@ -106,7 +105,7 @@ class PrincipalModel extends CI_Model
 
         $this->db->where('Plano.Deletado !=', 'S');
         $this->db->where('Plano.Tp_Ativo', 'S');
-        $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('Plano.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
 
