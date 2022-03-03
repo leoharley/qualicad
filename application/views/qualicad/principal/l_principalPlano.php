@@ -45,7 +45,9 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Nome</th>
+                    <th>Plano (descrição)</th>
+                    <th>Convênio (descrição)</th>
+                    <th>Índice (descrição)</th>
                     <th>Código ERP</th>
                     <th>Tipo acomodação padrão</th>
                     <th>Plano ativo?</th>
@@ -54,44 +56,41 @@
                 </thead>
                 <tbody>
                   <?php
-                      if(!empty($registrosUsuarios))
+                      if(!empty($registrosPlanos))
                       {
-                          foreach($registrosUsuarios as $registro)
+                          foreach($registrosPlanos as $registro)
                           {
                       ?>
                     <tr>
                       <td>
-                        <?php echo $registro->Id_Usuario ?>
+                        <?php echo $registro->Id_Plano ?>
                       </td>
                       <td>
-                        <?php echo $registro->Nome_Usuario ?>
+                        <?php echo $registro->Ds_Plano ?>
                       </td>
                       <td>
-                        <?php echo $registro->Cpf_Usuario ?>
+                        <?php echo $registro->Ds_Convenio ?>
                       </td>
                       <td>
-                        <?php echo $registro->Email ?>
+                        <?php echo $registro->Ds_Indice ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Cd_PlanoERP ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Tp_AcomodacaoPadrao ?>
                       </td>
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
-                      </td>
-                      <td>
-                        <?php echo ($registro->Admin == 'S') ? 'Sim' : 'Não'; ?>
-                      </td>
-                      <td>
-                        <?php echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
-                      </td>
-                      <td>
-                        <?php echo ($registro->Dt_Inativo != null) ? date("d/m/Y", strtotime($registro->Dt_Inativo)) : ''; ?>
                       </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroUsuario/editar/'.$registro->Id_Usuario; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalPlano/editar/'.$registro->Id_Plano; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaUsuario/'.$registro->Id_Usuario; ?>" data-userid="<?php echo $registro->Id_Usuario; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaPlano/'.$registro->Id_Plano; ?>" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
