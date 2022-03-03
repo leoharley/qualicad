@@ -26,8 +26,8 @@ if(!empty($infoFaturamento))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Faturamento
-            <small>Associar / Adicionar</small>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Faturamento' : 'Editar Faturamento' ; ?>
+            <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
@@ -47,40 +47,34 @@ if(!empty($infoFaturamento))
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addFaturamento" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaFaturamento' : base_url().'editaFaturamento'; ?>" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="nomeempresa">Empresa associada</label>
-                                        <select class="form-control required" id="nomeempresa" name="nomeempresa">
-                                            <option value="1">EMPRESA_1</option>
-											<option value="2">EMPRESA_2</option>
-                                        </select>
+                                        <label for="Ds_Faturamento">Faturamento (descrição)</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Faturamento') : $Ds_Faturamento ; ?>" id="Ds_Faturamento" name="Ds_Faturamento" maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsfaturamento">Descrição</label>
-                                        <input type="text" class="form-control required email" id="dsfaturamento" value="<?php echo set_value('dsfaturamento'); ?>" name="dsfaturamento"
-                                            maxlength="128">
+                                        <label for="Tp_Faturamento">Tipo de faturamento</label>
+                                        <select class="form-control required" id="Tp_Faturamento" name="Tp_Faturamento">
+                                            <option value="1">Reais</option>
+                                            <option value="2">CH</option>
+                                            <option value="3">CBHPM</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="tpfaturamento">Tipo</label>
-                                        <select class="form-control required" id="tpfaturamento" name="tpfaturamento">
-                                            <option value="1">TIPO_FATURAMENTO_1</option>
-											<option value="2">TIPO_FATURAMENTO_2</option>
+                                        <label for="Tp_Ativo">Faturamento ativo?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="dtcriacao">Data de criação</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtcriacao'); ?>" id="dtcriacao" name="dtcriacao">
                                     </div>
                                 </div>
                             </div>

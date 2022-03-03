@@ -36,8 +36,8 @@ if(!empty($infoIndice))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Índice
-            <small>Associar / Adicionar</small>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Índice' : 'Editar Índice' ; ?>
+            <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
@@ -57,52 +57,48 @@ if(!empty($infoIndice))
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addIndice" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaIndice' : base_url().'editaIndice'; ?>" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="nomeempresa">Empresa associada</label>
-                                        <select class="form-control required" id="nomeempresa" name="nomeempresa">
-                                            <option value="1">EMPRESA_1</option>
-											<option value="2">EMPRESA_2</option>
-                                        </select>
+                                        <label for="Ds_indice">Índice (descrição)</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_indice') : $Ds_indice ; ?>" id="Ds_indice" name="Ds_indice" maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsindice">Descrição</label>
-                                        <input type="text" class="form-control required email" id="dsindice" value="<?php echo set_value('dsindice'); ?>" name="dsindice"
-                                            maxlength="128">
+                                        <label for="Dt_IniVigencia">Data de início da vigência</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtinivigencia">Data de início da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtinivigencia'); ?>" id="dtinivigencia" name="dtinivigencia">
+                                        <label for="Dt_FimVigencia">Data de fim da vigência</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtfimvigencia">Data de fim da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtfimvigencia'); ?>" id="dtfimvigencia" name="dtfimvigencia">
+                                        <label for="Vl_Indice">Valor índice</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('Vl_Indice'); ?>" id="Vl_Indice" name="Vl_Indice">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="vlindice">Valor do índice</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vlindice'); ?>" id="vlindice" name="vlindice"
+                                        <label for="Vl_M2Filme">Valor M2 Filme</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('Vl_M2Filme'); ?>" id="Vl_M2Filme" name="Vl_M2Filme"
                                         maxlength="11">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="vlm2filme">Valor m2 filme</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vlm2filme'); ?>" id="vlm2filme" name="vlm2filme"
+                                        <label for="Vl_Honorário">Valor honorário</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('Vl_Honorário'); ?>" id="Vl_Honorário" name="Vl_Honorário"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -110,8 +106,8 @@ if(!empty($infoIndice))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="vlhonorario">Valor honorário</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vlhonorario'); ?>" id="vlhonorario" name="vlhonorario"
+                                        <label for="Vl_UCO">Valor UCO</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('Vl_UCO'); ?>" id="Vl_UCO" name="Vl_UCO"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -126,8 +122,11 @@ if(!empty($infoIndice))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtcriacao">Data de criação</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtcriacao'); ?>" id="dtcriacao" name="dtcriacao">
+                                        <label for="Tp_Ativo">Índice ativo?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

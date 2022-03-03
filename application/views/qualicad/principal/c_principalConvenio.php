@@ -33,10 +33,10 @@ if(!empty($infoConvenio))
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
-            <i class="fa fa-users"></i> Cadastrar Convênio
-            <small>Associar / Adicionar</small>
-        </h1>
+    <h1>
+        <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Convênio' : 'Editar Convênio' ; ?>
+        <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
+    </h1>
     </section>
 
     <section class="content">
@@ -55,70 +55,63 @@ if(!empty($infoConvenio))
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addConvenio" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaConvenio' : base_url().'editaConvenio'; ?>" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="nomeempresa">Empresa associada</label>
-                                        <select class="form-control required" id="nomeempresa" name="nomeempresa">
-                                            <option value="1">EMPRESA_1</option>
-											<option value="2">EMPRESA_2</option>
-                                        </select>
+                                        <label for="Ds_Convenio">Convênio (descrição)</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Convenio') : $Ds_Convenio ; ?>" id="Ds_Convenio" name="Ds_Convenio" maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsconvenio">Descrição</label>
-                                        <input type="text" class="form-control required email" id="dsconvenio" value="<?php echo set_value('dsconvenio'); ?>" name="dsconvenio"
-                                            maxlength="128">
+                                        <label for="CNPJ_Convenio">CNPJ</label>
+                                        <input type="text" data-inputmask="'mask': '99.999.999/9999-99'" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ_Convenio') : $CNPJ_Convenio ; ?>" id="CNPJ_Convenio" name="CNPJ_Convenio" maxlength="128">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="cnpjconvenio">CNPJ</label>
-                                        <input type="text" class="form-control required email" id="cnpjconvenio" value="<?php echo set_value('cnpjconvenio'); ?>" name="cnpjconvenio"
+                                        <label for="Cd_ConvenioERP">Código ERP</label>
+                                        <input type="text" class="form-control required" id="Cd_ConvenioERP" value="<?php echo set_value('Cd_ConvenioERP'); ?>" name="Cd_ConvenioERP"
                                             maxlength="13">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="cdconvenioerp">Código</label>
-                                        <input type="text" class="form-control required email" id="cdconvenioerp" value="<?php echo set_value('cdconvenioerp'); ?>" name="cdconvenioerp"
-                                            maxlength="11">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="tpconvenio">Tipo</label>
-                                        <select class="form-control required" id="tpconvenio" name="tpconvenio">
-                                            <option value="1">TIPO_CONVENIO_1</option>
-											<option value="2">TIPO_CONVENIO_2</option>
+                                        <label for="Tp_Convenio">Tipo</label>
+                                        <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio">
+                                            <option value="1">Convênio</option>
+                                            <option value="2">Filantrópico</option>
+                                            <option value="3">Particular</option>
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtinicioconvenio">Data de ínicio</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtinicioconvenio'); ?>" id="dtinicioconvenio" name="dtinicioconvenio">
+                                        <label for="Dt_InicioConvenio">Data de ínicio</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_InicioConvenio'); ?>" id="Dt_InicioConvenio" name="Dt_InicioConvenio">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Dt_VigenciaConvenio">Data da vigência</label>
+                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_VigenciaConvenio'); ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtvigenciaconvenio">Data de vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtvigenciaconvenio'); ?>" id="dtvigenciaconvenio" name="dtvigenciaconvenio">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="dtcriacao">Data de criação</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtcriacao'); ?>" id="dtcriacao" name="dtcriacao">
+                                        <label for="Tp_Ativo">Convênio ativo?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +119,7 @@ if(!empty($infoConvenio))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input id="teste" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Salvar" />
+                            <input type="submit" class="btn btn-primary" value="Salvar" />
                             <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
@@ -141,34 +134,11 @@ if(!empty($infoConvenio))
             </div>
         </div>
 
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="width:100%!important">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            </div>
-        </div>
-        </div>
-
-
     </section>
 </div>
+<script src="<?php echo base_url(); ?>assets/js/addEmpresa.js" type="text/javascript"></script>
 <script>
-    $('#exampleModal').on('click', function(e) {
-        e.preventDefault();
-        var url = "<?php echo base_url(); ?>principalPlanoModal";
-        $(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="'+url+'"></iframe>');
-    });
+$(document).ready(function(){
+    $(":input").inputmask();
+});
 </script>
-<script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>

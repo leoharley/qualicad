@@ -32,8 +32,8 @@ if(!empty($infoPlano))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Plano
-            <small>Associar / Adicionar</small>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Plano' : 'Editar Plano' ; ?>
+            <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
@@ -53,24 +53,46 @@ if(!empty($infoPlano))
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addPlano" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaPlano' : base_url().'editaPlano'; ?>" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsconvenio">Convênio associado</label>
-                                        <select class="form-control required" id="dsconvenio" name="dsconvenio">
-                                            <option value="1">CONVENIO_1</option>
-											<option value="2">CONVENIO_2</option>
+                                        <label for="Id_Convenio">Convênio</label>
+                                        <select class="form-control required" id="Id_Convenio" name="Id_Convenio">
+                                            <?php
+                                            if(!empty($infoConvenio))
+                                            {
+                                                foreach ($infoConvenio as $convenio)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $convenio->Id_Convenio ?>">
+                                                    <?php echo $convenio->Ds_Convenio ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsindice">Índice associado</label>
-                                        <select class="form-control required" id="dsindice" name="dsindice">
-                                            <option value="1">INDICE_1</option>
-											<option value="2">INDICE_2</option>
+                                        <label for="Id_Indice">Índice</label>
+                                        <select class="form-control required" id="Id_Indice" name="Id_Indice">
+                                            <?php
+                                            if(!empty($infoIndice))
+                                            {
+                                                foreach ($infoIndice as $indice)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $indice->Id_Indice ?>">
+                                                    <?php echo $indice->Ds_indice ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -78,17 +100,28 @@ if(!empty($infoPlano))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsregra">Regra associada</label>
-                                        <select class="form-control required" id="dsregra" name="dsregra">
-                                            <option value="1">REGRA_1</option>
-											<option value="2">REGRA_2</option>
+                                        <label for="Id_Regra">Regra</label>
+                                        <select class="form-control required" id="Id_Regra" name="Id_Regra">
+                                            <?php
+                                            if(!empty($infoRegra))
+                                            {
+                                                foreach ($infoRegra as $regra)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $regra->Id_Regra ?>">
+                                                    <?php echo $regra->Ds_Regra ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsplano">Descrição</label>
-                                        <input type="text" class="form-control required" id="dsplano" value="<?php echo set_value('dsplano'); ?>" name="dsplano"
+                                        <label for="Ds_Plano">Descrição do plano</label>
+                                        <input type="text" class="form-control required" id="Ds_Plano" value="<?php echo set_value('Ds_Plano'); ?>" name="Ds_Plano"
                                             maxlength="128">
                                     </div>
                                 </div>
@@ -96,17 +129,17 @@ if(!empty($infoPlano))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="cdplanoerp">Código</label>
-                                        <input type="text" class="form-control required" id="cdplanoerp" value="<?php echo set_value('cdplanoerp'); ?>" name="cdplanoerp"
+                                        <label for="Cd_PlanoERP">Código ERP</label>
+                                        <input type="text" class="form-control required" id="Cd_PlanoERP" value="<?php echo set_value('Cd_PlanoERP'); ?>" name="Cd_PlanoERP"
                                             maxlength="11">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="tpacomodacaopadrao">Tipo de acomodação padrão</label>
-                                        <select class="form-control required" id="tpacomodacaopadrao" name="tpacomodacaopadrao">
-                                            <option value="1">ACOMODACAO_1</option>
-											<option value="2">ACOMODACAO_2</option>
+                                        <label for="Tp_AcomodacaoPadrao">Tipo de acomodação padrão</label>
+                                        <select class="form-control required" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
+                                            <option value="1">Enfermaria</option>
+                                            <option value="2">Apartamento</option>
                                         </select>
                                     </div>
                                 </div>
@@ -114,22 +147,11 @@ if(!empty($infoPlano))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtativo">Data de atividade</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtativo'); ?>" id="dtativo" name="dtativo">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="dtinativo">Data de inatividade</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtinativo'); ?>" id="dtinativo" name="dtinativo">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="dtcriacao">Data de criação</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtcriacao'); ?>" id="dtcriacao" name="dtcriacao">
+                                        <label for="Tp_Ativo">Plano ativo?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
