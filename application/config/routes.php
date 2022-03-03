@@ -79,29 +79,29 @@ $route['principalIndice/:any/:any'] = "principal/principalIndice/$1/$2";
 $route['principalIndice/:any'] = "principal/principalIndice/$1";
 
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
-$route['adicionaConvenio'] = "cadastro/adicionaConvenio";
-$route['editaConvenio'] = "cadastro/editaConvenio";
-$route['apagaConvenio/:any'] = "cadastro/apagaConvenio/$1";
+$route['adicionaConvenio'] = "principal/adicionaConvenio";
+$route['editaConvenio'] = "principal/editaConvenio";
+$route['apagaConvenio/:any'] = "principal/apagaConvenio/$1";
 
 /*********** ROUTES PARA AÇÕES DA TELA PLANO *******************/
-$route['adicionaPlano'] = "cadastro/adicionaPlano";
-$route['editaPlano'] = "cadastro/editaPlano";
-$route['apagaPlano/:any'] = "cadastro/apagaPlano/$1";
+$route['adicionaPlano'] = "principal/adicionaPlano";
+$route['editaPlano'] = "principal/editaPlano";
+$route['apagaPlano/:any'] = "principal/apagaPlano/$1";
 
 /*********** ROUTES PARA AÇÕES DA TELA FATURAMENTO *******************/
-$route['adicionaFaturamento'] = "cadastro/adicionaFaturamento";
-$route['editaFaturamento'] = "cadastro/editaFaturamento";
-$route['apagaFaturamento/:any'] = "cadastro/apagaFaturamento/$1";
+$route['adicionaFaturamento'] = "principal/adicionaFaturamento";
+$route['editaFaturamento'] = "principal/editaFaturamento";
+$route['apagaFaturamento/:any'] = "principal/apagaFaturamento/$1";
 
 /*********** ROUTES PARA AÇÕES DA TELA REGRA *******************/
-$route['adicionaRegra'] = "cadastro/adicionaRegra";
-$route['editaRegra'] = "cadastro/editaRegra";
-$route['apagaRegra/:any'] = "cadastro/apagaRegra/$1";
+$route['adicionaRegra'] = "principal/adicionaRegra";
+$route['editaRegra'] = "principal/editaRegra";
+$route['apagaRegra/:any'] = "principal/apagaRegra/$1";
 
 /*********** ROUTES PARA AÇÕES DA TELA ÍNDICE *******************/
-$route['adicionaIndice'] = "cadastro/adicionaIndice";
-$route['editaIndice'] = "cadastro/editaIndice";
-$route['apagaIndice/:any'] = "cadastro/apagaIndice/$1";
+$route['adicionaIndice'] = "principal/adicionaIndice";
+$route['editaIndice'] = "principal/editaIndice";
+$route['apagaIndice/:any'] = "principal/apagaIndice/$1";
 
 
 $route['principalFaturamentoItem'] = "principal/principalFaturamentoItem";
