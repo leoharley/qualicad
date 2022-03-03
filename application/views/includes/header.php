@@ -135,6 +135,7 @@
            //  {
             ?>
             <hr>
+            <h3> CADASTRO </h3>
                 <li class="treeview">
                   <a href="<?php echo base_url(); ?>cadastroUsuario/listar">
                     <i class="fa fa-th"></i>
