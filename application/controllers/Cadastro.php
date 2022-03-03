@@ -110,7 +110,7 @@ class Cadastro extends BaseController
                 $email = $this->security->xss_clean($this->input->post('Email'));
                 $senha = $this->input->post('Senha');
                 $tpativo = $this->input->post('Tp_Ativo');
-                $admin = $this->input->post('Admin');
+                $admin = 'N';
             //    $roleId = $this->input->post('role');
 
                 if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
