@@ -37,23 +37,1125 @@ class Principal extends BaseController
         }
     }
 
+    // INICIO DAS FUNÇÕES DA TELA DE CONVENIO
+
     function principalConvenio()
     {
-            $data['roles'] = $this->user_model->getUserRoles();
+            $tpTela = $this->uri->segment(2);
 
-            $this->global['pageTitle'] = 'QUALICAD : Convênio';
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
-            $this->loadViews("qualicad/principal/principalConvenio", $this->global, $data, NULL);
+            if ($tpTela == 'listar') {
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+                
+                $data['registrosConvenios'] = $this->PrincipalModel->listaConvenios($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar convênios';
+                $processFunction = 'Principal/principalConvenio';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+                
+                $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'cadastrar') {
+                $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
+                $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL); 
+            }
+            else if ($tpTela == 'editar') {
+                $IdConvenio = $this->uri->segment(3);
+                if($IdConvenio == null)
+                {
+                    redirect('principalConvenio/listar');
+                }
+                $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
+                $this->global['pageTitle'] = 'QUALICAD : Editar convênio';      
+                $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            }
     }
+
+    function adicionaConvenio() 
+    {
+            $this->load->library('form_validation');
+            
+            $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+            $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+            
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
+            //    $roleId = $this->input->post('role');
+
+                if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
+
+                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($tpativo == 'S') 
+                { 
+                    $dtativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $dtativo = null;
+                }
+                
+                //'Senha'=>getHashedPassword($senha)
+
+                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                                    
+                $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
+                
+                if($result > 0)
+                {
+                    $process = 'Adicionar usuário';
+                    $processFunction = 'Cadastro/adicionaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do usuário');
+                }
+
+            } else {
+                    $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+            }
+                
+                redirect('cadastroUsuario/listar');
+
+        //    }
+    }
+
+
+    function editaConvenio()
+    {
+            $this->load->library('form_validation');
+            
+            $IdUsuario = $this->input->post('Id_Usuario');
+
+            //VALIDAÇÃO
+            
+         /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+            $this->form_validation->set_rules('role','Role','trim|required|numeric');
+            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+            
+            if($this->form_validation->run() == FALSE)
+            { 
+                $this->editOld($userId);
+            }
+            else
+            { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
+
+                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                    $tpativoatual = ($data->Tp_Ativo);
+                }
+
+                if ($tpativoatual == 'N' && $tpativo == 'S')
+                {
+                    $dtativo = date('Y-m-d H:i:s');
+                    $dtinativo = null;
+                } else if ($tpativo == 'N')
+                {
+                    $dtativo = null;
+                    $dtinativo = date('Y-m-d H:i:s');
+                }
+                
+                $infoUsuario = array();
+                
+                if(empty($senha))
+                {
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
+                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                else
+                {
+                    //'Senha'=>getHashedPassword($senha)
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                
+                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+                
+                if($resultado == true)
+                {
+                    $process = 'Usuário atualizado';
+                    $processFunction = 'Cadastro/editaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                }
+                
+                redirect('cadastroUsuario/listar');
+           // }
+    }
+
+    function apagaUsuario()
+    {
+            $IdUsuario = $this->uri->segment(2);
+
+            $infoUsuario = array();
+
+            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                 $process = 'Exclusão de usuário';
+                 $processFunction = 'Cadastro/apagaUsuario';
+                 $this->logrecord($process,$processFunction);
+
+                 $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                }
+                redirect('cadastroUsuario/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE CONVENIO
+
+    // INICIO DAS FUNÇÕES DA TELA DE PLANO
 
     function principalPlano()
     {
-        $data['roles'] = $this->user_model->getUserRoles();
+            $tpTela = $this->uri->segment(2);
 
-        $this->global['pageTitle'] = 'QUALICAD : Plano';
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
-        $this->loadViews("qualicad/principal/principalPlano", $this->global, $data, NULL);
+            if ($tpTela == 'listar') {
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "principalPlano/listar", $count, 10 );
+                
+                $data['registrosPlanos'] = $this->principalPlano->listaPlanos($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar planos';
+                $processFunction = 'Principal/principalPlano';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Plano';
+                
+                $this->loadViews("qualicad/principal/l_principalPlano", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'cadastrar') {
+                $this->global['pageTitle'] = 'QUALICAD : Cadastro de Plano';
+                $this->loadViews("qualicad/principal/c_principalPlano", $this->global, $data, NULL); 
+            }
+            else if ($tpTela == 'editar') {
+                $IdPlano = $this->uri->segment(3);
+                if($IdPlano == null)
+                {
+                    redirect('principalPlano/listar');
+                }
+                $data['infoPlano'] = $this->principalPlano->carregaInfoPlano($IdPlano);
+                $this->global['pageTitle'] = 'QUALICAD : Editar plano';      
+                $this->loadViews("qualicad/principal/c_principalPlano", $this->global, $data, NULL);
+            }
     }
+
+    function adicionaPlano() 
+    {
+            $this->load->library('form_validation');
+            
+            $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+            $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+            
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
+            //    $roleId = $this->input->post('role');
+
+                if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
+
+                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($tpativo == 'S') 
+                { 
+                    $dtativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $dtativo = null;
+                }
+                
+                //'Senha'=>getHashedPassword($senha)
+
+                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                                    
+                $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
+                
+                if($result > 0)
+                {
+                    $process = 'Adicionar usuário';
+                    $processFunction = 'Cadastro/adicionaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do usuário');
+                }
+
+            } else {
+                    $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+            }
+                
+                redirect('cadastroUsuario/listar');
+
+        //    }
+    }
+
+
+    function editaPlano()
+    {
+            $this->load->library('form_validation');
+            
+            $IdUsuario = $this->input->post('Id_Usuario');
+
+            //VALIDAÇÃO
+            
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+            $this->form_validation->set_rules('role','Role','trim|required|numeric');
+            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+            
+            if($this->form_validation->run() == FALSE)
+            { 
+                $this->editOld($userId);
+            }
+            else
+            { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
+
+                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                    $tpativoatual = ($data->Tp_Ativo);
+                }
+
+                if ($tpativoatual == 'N' && $tpativo == 'S')
+                {
+                    $dtativo = date('Y-m-d H:i:s');
+                    $dtinativo = null;
+                } else if ($tpativo == 'N')
+                {
+                    $dtativo = null;
+                    $dtinativo = date('Y-m-d H:i:s');
+                }
+                
+                $infoUsuario = array();
+                
+                if(empty($senha))
+                {
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
+                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                else
+                {
+                    //'Senha'=>getHashedPassword($senha)
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                
+                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+                
+                if($resultado == true)
+                {
+                    $process = 'Usuário atualizado';
+                    $processFunction = 'Cadastro/editaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                }
+                
+                redirect('cadastroUsuario/listar');
+        // }
+    }
+
+    function apagaPlano()
+    {
+            $IdUsuario = $this->uri->segment(2);
+
+            $infoUsuario = array();
+
+            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                $process = 'Exclusão de usuário';
+                $processFunction = 'Cadastro/apagaUsuario';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                }
+                redirect('cadastroUsuario/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE PLANO
+
+    // INICIO DAS FUNÇÕES DA TELA DE FATURAMENTO
+
+    function principalFaturamento()
+    {
+            $tpTela = $this->uri->segment(2);
+
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+            if ($tpTela == 'listar') {
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "principalFaturamento/listar", $count, 10 );
+                
+                $data['registrosFaturamento'] = $this->PrincipalModel->listaFaturamentos($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar faturamentos';
+                $processFunction = 'Principal/principalFaturamento';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Faturamento';
+                
+                $this->loadViews("qualicad/principal/l_principalFaturamento", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'cadastrar') {
+                $this->global['pageTitle'] = 'QUALICAD : Cadastro de Faturamento';
+                $this->loadViews("qualicad/principal/c_principalFaturamento", $this->global, $data, NULL); 
+            }
+            else if ($tpTela == 'editar') {
+                $IdFaturamento = $this->uri->segment(3);
+                if($IdFaturamento == null)
+                {
+                    redirect('principalFaturamento/listar');
+                }
+                $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamento($IdFaturamento);
+                $this->global['pageTitle'] = 'QUALICAD : Editar faturamento';      
+                $this->loadViews("qualicad/principal/c_principalFaturamento", $this->global, $data, NULL);
+            }
+    }
+
+    function adicionaFaturamento() 
+    {
+            $this->load->library('form_validation');
+            
+            $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+            $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+            
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
+            //    $roleId = $this->input->post('role');
+
+                if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
+
+                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($tpativo == 'S') 
+                { 
+                    $dtativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $dtativo = null;
+                }
+                
+                //'Senha'=>getHashedPassword($senha)
+
+                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                                    
+                $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
+                
+                if($result > 0)
+                {
+                    $process = 'Adicionar usuário';
+                    $processFunction = 'Cadastro/adicionaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do usuário');
+                }
+
+            } else {
+                    $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+            }
+                
+                redirect('cadastroUsuario/listar');
+
+        //    }
+    }
+
+
+    function editaFaturamento()
+    {
+            $this->load->library('form_validation');
+            
+            $IdUsuario = $this->input->post('Id_Usuario');
+
+            //VALIDAÇÃO
+            
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+            $this->form_validation->set_rules('role','Role','trim|required|numeric');
+            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+            
+            if($this->form_validation->run() == FALSE)
+            { 
+                $this->editOld($userId);
+            }
+            else
+            { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
+
+                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                    $tpativoatual = ($data->Tp_Ativo);
+                }
+
+                if ($tpativoatual == 'N' && $tpativo == 'S')
+                {
+                    $dtativo = date('Y-m-d H:i:s');
+                    $dtinativo = null;
+                } else if ($tpativo == 'N')
+                {
+                    $dtativo = null;
+                    $dtinativo = date('Y-m-d H:i:s');
+                }
+                
+                $infoUsuario = array();
+                
+                if(empty($senha))
+                {
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
+                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                else
+                {
+                    //'Senha'=>getHashedPassword($senha)
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                
+                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+                
+                if($resultado == true)
+                {
+                    $process = 'Usuário atualizado';
+                    $processFunction = 'Cadastro/editaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                }
+                
+                redirect('cadastroUsuario/listar');
+        // }
+    }
+
+    function apagaFaturamento()
+    {
+            $IdUsuario = $this->uri->segment(2);
+
+            $infoUsuario = array();
+
+            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                $process = 'Exclusão de usuário';
+                $processFunction = 'Cadastro/apagaUsuario';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                }
+                redirect('cadastroUsuario/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE FATURAMENTO
+
+    // INICIO DAS FUNÇÕES DA TELA DE REGRA
+
+    function principalRegra()
+    {
+            $tpTela = $this->uri->segment(2);
+
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+            if ($tpTela == 'listar') {
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
+                
+                $data['registrosRegras'] = $this->PrincipalModel->listaRegras($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar regras';
+                $processFunction = 'Principal/principalRegra';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Regra';
+                
+                $this->loadViews("qualicad/principal/l_principalRegra", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'cadastrar') {
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Regra';
+                $this->loadViews("qualicad/principal/c_principalRegra", $this->global, $data, NULL); 
+            }
+            else if ($tpTela == 'editar') {
+                $IdRegra = $this->uri->segment(3);
+                if($IdRegra == null)
+                {
+                    redirect('principalRegra/listar');
+                }
+                $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegra($IdRegra);
+                $this->global['pageTitle'] = 'QUALICAD : Editar regra';      
+                $this->loadViews("qualicad/principal/c_principalRegra", $this->global, $data, NULL);
+            }
+    }
+
+    function adicionaRegra() 
+    {
+            $this->load->library('form_validation');
+            
+            $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+            $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+            $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+            
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
+            //    $roleId = $this->input->post('role');
+
+                if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
+
+                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($tpativo == 'S') 
+                { 
+                    $dtativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $dtativo = null;
+                }
+                
+                //'Senha'=>getHashedPassword($senha)
+
+                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                                    
+                $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
+                
+                if($result > 0)
+                {
+                    $process = 'Adicionar usuário';
+                    $processFunction = 'Cadastro/adicionaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do usuário');
+                }
+
+            } else {
+                    $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+            }
+                
+                redirect('cadastroUsuario/listar');
+
+        //    }
+    }
+
+
+    function editaRegra()
+    {
+            $this->load->library('form_validation');
+            
+            $IdUsuario = $this->input->post('Id_Usuario');
+
+            //VALIDAÇÃO
+            
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+            $this->form_validation->set_rules('role','Role','trim|required|numeric');
+            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+            
+            if($this->form_validation->run() == FALSE)
+            { 
+                $this->editOld($userId);
+            }
+            else
+            { */
+
+                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                $cpf = $this->input->post('Cpf_Usuario');
+                $email = $this->security->xss_clean($this->input->post('Email'));
+                $senha = $this->input->post('Senha');
+                $tpativo = $this->input->post('Tp_Ativo');
+                $admin = $this->input->post('Admin');
+
+                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                    $tpativoatual = ($data->Tp_Ativo);
+                }
+
+                if ($tpativoatual == 'N' && $tpativo == 'S')
+                {
+                    $dtativo = date('Y-m-d H:i:s');
+                    $dtinativo = null;
+                } else if ($tpativo == 'N')
+                {
+                    $dtativo = null;
+                    $dtinativo = date('Y-m-d H:i:s');
+                }
+                
+                $infoUsuario = array();
+                
+                if(empty($senha))
+                {
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
+                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                else
+                {
+                    //'Senha'=>getHashedPassword($senha)
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                }
+                
+                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+                
+                if($resultado == true)
+                {
+                    $process = 'Usuário atualizado';
+                    $processFunction = 'Cadastro/editaUsuario';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                }
+                
+                redirect('cadastroUsuario/listar');
+        // }
+    }
+
+    function apagaRegra()
+    {
+            $IdUsuario = $this->uri->segment(2);
+
+            $infoUsuario = array();
+
+            $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                $process = 'Exclusão de usuário';
+                $processFunction = 'Cadastro/apagaUsuario';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                }
+                redirect('cadastroUsuario/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE REGRA
+
+        // INICIO DAS FUNÇÕES DA TELA DE INDICE
+
+        function principalIndice()
+        {
+                $tpTela = $this->uri->segment(2);
+    
+                $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+    
+                if ($tpTela == 'listar') {
+    
+                    $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                    $data['searchText'] = $searchText;
+                    
+                    $this->load->library('pagination');
+                    
+                    $count = $this->CadastroModel->userListingCount($searchText);
+    
+                    $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
+                    
+                    $data['registrosIndices'] = $this->PrincipalModel->listaIndices($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                    
+                    $process = 'Listar índices';
+                    $processFunction = 'Principal/principalIndice';
+                    $this->logrecord($process,$processFunction);
+    
+                    $this->global['pageTitle'] = 'QUALICAD : Lista de Índice';
+                    
+                    $this->loadViews("qualicad/principal/l_principalIndice", $this->global, $data, NULL);
+                }
+                else if ($tpTela == 'cadastrar') {
+                    $this->global['pageTitle'] = 'QUALICAD : Cadastro de Índice';
+                    $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL); 
+                }
+                else if ($tpTela == 'editar') {
+                    $IdIndice = $this->uri->segment(3);
+                    if($IdIndice == null)
+                    {
+                        redirect('principalIndice/listar');
+                    }
+                    $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndice($IdIndice);
+                    $this->global['pageTitle'] = 'QUALICAD : Editar Índice';
+                    $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL);
+                }
+        }
+    
+        function adicionaIndice() 
+        {
+                $this->load->library('form_validation');
+                
+                $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+                $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+                $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+                $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+                $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+    
+            //VALIDAÇÃO
+    
+            //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+                
+            /*    if($this->form_validation->run() == FALSE)
+                {
+    
+                    redirect('cadastroUsuario/cadastrar');
+                }
+                else
+            { */
+    
+                    $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                    $cpf = $this->input->post('Cpf_Usuario');
+                    $email = $this->security->xss_clean($this->input->post('Email'));
+                    $senha = $this->input->post('Senha');
+                    $tpativo = $this->input->post('Tp_Ativo');
+                    $admin = $this->input->post('Admin');
+                //    $roleId = $this->input->post('role');
+    
+                    if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
+    
+                    //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                    if ($tpativo == 'S') 
+                    { 
+                        $dtativo = date('Y-m-d H:i:s');
+                    } else
+                    {
+                        $dtativo = null;
+                    }
+                    
+                    //'Senha'=>getHashedPassword($senha)
+    
+                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                                        
+                    $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
+                    
+                    if($result > 0)
+                    {
+                        $process = 'Adicionar usuário';
+                        $processFunction = 'Cadastro/adicionaUsuario';
+                        $this->logrecord($process,$processFunction);
+    
+                        $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                    }
+                    else
+                    {
+                        $this->session->set_flashdata('error', 'Falha na criação do usuário');
+                    }
+    
+                } else {
+                        $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+                }
+                    
+                    redirect('cadastroUsuario/listar');
+    
+            //    }
+        }
+    
+    
+        function editaIndice()
+        {
+                $this->load->library('form_validation');
+                
+                $IdUsuario = $this->input->post('Id_Usuario');
+    
+                //VALIDAÇÃO
+                
+            /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+                $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+                $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+                $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+                $this->form_validation->set_rules('role','Role','trim|required|numeric');
+                $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+                
+                if($this->form_validation->run() == FALSE)
+                { 
+                    $this->editOld($userId);
+                }
+                else
+                { */
+    
+                    $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
+                    $cpf = $this->input->post('Cpf_Usuario');
+                    $email = $this->security->xss_clean($this->input->post('Email'));
+                    $senha = $this->input->post('Senha');
+                    $tpativo = $this->input->post('Tp_Ativo');
+                    $admin = $this->input->post('Admin');
+    
+                    foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
+                        $tpativoatual = ($data->Tp_Ativo);
+                    }
+    
+                    if ($tpativoatual == 'N' && $tpativo == 'S')
+                    {
+                        $dtativo = date('Y-m-d H:i:s');
+                        $dtinativo = null;
+                    } else if ($tpativo == 'N')
+                    {
+                        $dtativo = null;
+                        $dtinativo = date('Y-m-d H:i:s');
+                    }
+                    
+                    $infoUsuario = array();
+                    
+                    if(empty($senha))
+                    {
+                        $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
+                                            'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                            'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                    }
+                    else
+                    {
+                        //'Senha'=>getHashedPassword($senha)
+                        $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
+                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
+                    }
+                    
+                    $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+                    
+                    if($resultado == true)
+                    {
+                        $process = 'Usuário atualizado';
+                        $processFunction = 'Cadastro/editaUsuario';
+                        $this->logrecord($process,$processFunction);
+    
+                        $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                    }
+                    else
+                    {
+                        $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                    }
+                    
+                    redirect('cadastroUsuario/listar');
+            // }
+        }
+    
+        function apagaIndice()
+        {
+                $IdUsuario = $this->uri->segment(2);
+    
+                $infoUsuario = array();
+    
+                $infoUsuario = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+                
+                $resultado = $this->CadastroModel->apagaUsuario($infoUsuario, $IdUsuario);
+                
+                if ($resultado > 0) {
+                    // echo(json_encode(array('status'=>TRUE)));
+    
+                    $process = 'Exclusão de usuário';
+                    $processFunction = 'Cadastro/apagaUsuario';
+                    $this->logrecord($process,$processFunction);
+    
+                    $this->session->set_flashdata('success', 'Usuário deletado com sucesso');
+    
+                    }
+                    else 
+                    { 
+                        //echo(json_encode(array('status'=>FALSE))); 
+                        $this->session->set_flashdata('error', 'Falha em excluir o usuário');
+                    }
+                    redirect('cadastroUsuario/listar');
+        }
+        // FIM DAS FUNÇÕES DA TELA DE INDICE
 
     function principalPlanoModal()
     {
@@ -62,15 +1164,6 @@ class Principal extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Plano';
 
         $this->loadViewsModal("qualicad/principal/principalPlano", $this->global, $data, NULL);
-    }
-
-    function principalFaturamento()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Faturamento';
-
-        $this->loadViews("qualicad/principal/principalFaturamento", $this->global, $data, NULL);
     }
 
     function principalFaturamentoItem()
@@ -82,15 +1175,6 @@ class Principal extends BaseController
         $this->loadViews("qualicad/principal/principalFaturamentoItem", $this->global, $data, NULL);
     }
 
-    function principalRegra()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Regra';
-
-        $this->loadViews("qualicad/principal/principalRegra", $this->global, $data, NULL);
-    }
-
     function principalRegraGrupoPro()
     {
         $data['roles'] = $this->user_model->getUserRoles();
@@ -98,15 +1182,6 @@ class Principal extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Regra Grupo Pro';
 
         $this->loadViews("qualicad/principal/principalRegraGrupoPro", $this->global, $data, NULL);
-    }
-
-    function principalIndice()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Índice';
-
-        $this->loadViews("qualicad/principal/principalIndice", $this->global, $data, NULL);
     }
 
     function principalIndiceGrupoPro()

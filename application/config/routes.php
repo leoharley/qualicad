@@ -63,13 +63,27 @@ $route['apagaUsuarioEmpresa/:any/:any'] = "cadastro/apagaUsuarioEmpresa/$1/$2";
 
 
 /*********** ROUTES DO PRINCIPAL *******************/
-$route['principalConvenio'] = "principal/principalConvenio";
-$route['principalPlano'] = "principal/principalPlano";
-$route['principalFaturamento'] = "principal/principalFaturamento";
+$route['principalConvenio/:any/:any'] = "cadastro/principalConvenio/$1/$2";
+$route['principalConvenio/:any'] = "principal/principalConvenio/$1";
+
+$route['principalPlano/:any/:any'] = "principal/principalPlano/$1/$2";
+$route['principalPlano/:any'] = "principal/principalPlano/$1";
+
+$route['principalFaturamento/:any/:any'] = "principal/principalFaturamento/$1/$2";
+$route['principalFaturamento/:any'] = "principal/principalFaturamento/$1";
+
+$route['principalRegra/:any/:any'] = "principal/principalRegra/$1/$2";
+$route['principalRegra/:any'] = "principal/principalRegra/$1";
+
+$route['principalIndice/:any/:any'] = "principal/principalIndice/$1/$2";
+$route['principalIndice/:any'] = "principal/principalIndice/$1";
+
+
+
+
+
 $route['principalFaturamentoItem'] = "principal/principalFaturamentoItem";
-$route['principalRegra'] = "principal/principalRegra";
 $route['principalRegraGrupoPro'] = "principal/principalRegraGrupoPro";
-$route['principalIndice'] = "principal/principalIndice";
 $route['principalIndiceGrupoPro'] = "principal/principalIndiceGrupoPro";
 $route['principalProibicao'] = "principal/principalProibicao";
 $route['principalRegraProibicao'] = "principal/principalRegraProibicao";
