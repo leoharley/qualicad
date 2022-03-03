@@ -134,9 +134,8 @@
             // if($role == ROLE_ADMIN)
            //  {
             ?>
-            <hr>
-            <div <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
-            <h4 style="margin-left:18px!important;color:white"><b> CADASTRO </b></h4>
+            <hr <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>>
+            <h4 style="margin-left:18px!important;color:white" <?php if ($this->session->userdata('isAdmin') == 'S') { echo 'style=display:none'; } ?>><b> CADASTRO </b></h4>
                 <li class="treeview">
                   <a href="<?php echo base_url(); ?>cadastroUsuario/listar">
                     <i class="fa fa-th"></i>
@@ -173,7 +172,6 @@
                         <span>Usuário/Empresa</span>
                     </a>
                 </li>    
-              </div>
 
                 <hr>
 
