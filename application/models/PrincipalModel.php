@@ -6,24 +6,17 @@ class PrincipalModel extends CI_Model
 // INICIO DAS CONSULTAS NA TELA DE CONVENIO
     function listaConvenio($id, $searchText = '', $page, $segment)
     {
-        $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Admin, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email');
-        $this->db->from('TabUsuario as Usuarios');
+        $this->db->select('*');
+        $this->db->from('TbConvenio as Convenio');
    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
-            $likeCriteria = "(Usuarios.Email  LIKE '%".$searchText."%'
-                            OR  Usuarios.Nome_Usuario  LIKE '%".$searchText."%'
-                            OR  Usuarios.Cpf_Usuario  LIKE '%".$searchText."%')";
+            $likeCriteria = "(Convenio.Ds_Convenio  LIKE '%".$searchText."%'
+                            OR  Convenio.CNPJ_Convenio  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-        $campos = "((Usuarios.Admin = 'S'
-                    AND Usuarios.CriadoPor = '".$idUser."'))
-                    OR
-                    (Usuarios.Admin = 'N')";
-        $this->db->where($campos);
-
-        $this->db->where('Usuarios.Deletado !=', 'S');
-        $this->db->where('Usuarios.Id_Usuario !=', $idUser);
-        $this->db->where('Usuarios.CriadoPor', $idUser);
+        $this->db->where('Convenio.Deletado !=', 'S');
+        $this->db->where('Convenio.Tp_Ativo', 'S');
+        $this->db->where('Convenio.CriadoPor', $id);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
