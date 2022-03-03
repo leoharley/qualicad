@@ -27,7 +27,7 @@ class PrincipalModel extends CI_Model
     function adicionaConvenio($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TabUsuario', $infoUsuario);
+        $this->db->insert('TbConvenio', $info);
         
         $insert_id = $this->db->insert_id();
         
@@ -38,19 +38,42 @@ class PrincipalModel extends CI_Model
 
     function editaConvenio($info, $id)
     {
-        $this->db->where('Id_Usuario', $IdUsuario);
-        $this->db->update('TabUsuario', $infoUsuario);
+        $this->db->where('Id_Convenio', $id);
+        $this->db->update('TbConvenio', $info);
         
         return TRUE;
     }
 
     function apagaConvenio($info, $id)
     {
-        $this->db->where('Id_Usuario', $IdUsuario);
-        $this->db->update('TabUsuario', $infoUsuario);
+        $this->db->where('Id_Convenio', $id);
+        $this->db->update('TbConvenio', $info);
         
         return $this->db->affected_rows();
     }
+
+    function consultaConvenioExistente($CNPJ_Convenio, $IdUsuEmp)
+    {
+        $this->db->select('Id_Convenio');
+        $this->db->from('TbConvenio');
+        $campos = "((CNPJ_Convenio = '".$CNPJ_Convenio."'
+                    AND TbUsuEmp_Id_UsuEmp  = '".$IdUsuEmp."')";
+        $this->db->where($campos);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function carregaInfoConvenio($IdConvenio)
+    {
+        $this->db->select('Id_Convenio, Tp_Ativo');
+        $this->db->from('TbConvenio');
+        $this->db->where('Id_Convenio', $IdConvenio);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 // FIM DAS CONSULTAS NA TELA DE CONVENIO
 
 // INICIO DAS CONSULTAS NA TELA DE PLANO

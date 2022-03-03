@@ -87,7 +87,7 @@ class Principal extends BaseController
     function adicionaConvenio() 
     {
             $this->load->library('form_validation');
-            
+
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
             $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
             $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
@@ -106,51 +106,54 @@ class Principal extends BaseController
             else
         { */
 
-                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                $cpf = $this->input->post('Cpf_Usuario');
-                $email = $this->security->xss_clean($this->input->post('Email'));
-                $senha = $this->input->post('Senha');
-                $tpativo = $this->input->post('Tp_Ativo');
-                $admin = $this->input->post('Admin');
+                $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+                $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+                $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+                $Tp_Convenio = $this->input->post('Tp_Convenio');
+                $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+                $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+                $Tp_Ativo = $this->input->post('Tp_Ativo');
+
             //    $roleId = $this->input->post('role');
 
-                if ($this->CadastroModel->consultaUsuarioExistente($cpf,$email) == null) {
+                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
 
-                //SE O USUÁRIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
-                if ($tpativo == 'S') 
-                { 
-                    $dtativo = date('Y-m-d H:i:s');
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
                 } else
                 {
-                    $dtativo = null;
+                    $Dt_Ativo = null;
                 }
-                
-                //'Senha'=>getHashedPassword($senha)
 
-                $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                    'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                    'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo);
+                    //'Senha'=>getHashedPassword($senha)
+
+                $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio,
+                                    'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+                                    'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
                                     
-                $result = $this->CadastroModel->adicionaUsuario($infoUsuario);
+                $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
                 
                 if($result > 0)
                 {
-                    $process = 'Adicionar usuário';
-                    $processFunction = 'Cadastro/adicionaUsuario';
+                    $process = 'Adicionar convênio';
+                    $processFunction = 'Principal/adicionaConvenio';
                     $this->logrecord($process,$processFunction);
 
-                    $this->session->set_flashdata('success', 'Usuário criado com sucesso');
+                    $this->session->set_flashdata('success', 'Convênio criado com sucesso');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na criação do usuário');
+                    $this->session->set_flashdata('error', 'Falha na criação do convênio');
                 }
 
             } else {
-                    $this->session->set_flashdata('error', 'CPF ou Email já foram cadastrados!');
+                    $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             }
                 
-                redirect('cadastroUsuario/listar');
+                redirect('principalConvenio/listar');
 
         //    }
     }
@@ -159,8 +162,8 @@ class Principal extends BaseController
     function editaConvenio()
     {
             $this->load->library('form_validation');
-            
-            $IdUsuario = $this->input->post('Id_Usuario');
+
+            $IdConvenio = $this->input->post('Id_Convenio');
 
             //VALIDAÇÃO
             
@@ -178,59 +181,52 @@ class Principal extends BaseController
             else
             { */
 
-                $nome = ucwords(strtolower($this->security->xss_clean($this->input->post('Nome_Usuario'))));
-                $cpf = $this->input->post('Cpf_Usuario');
-                $email = $this->security->xss_clean($this->input->post('Email'));
-                $senha = $this->input->post('Senha');
-                $tpativo = $this->input->post('Tp_Ativo');
-                $admin = $this->input->post('Admin');
+                $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+                $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+                $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+                $Tp_Convenio = $this->input->post('Tp_Convenio');
+                $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+                $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+                $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-                foreach ($this->CadastroModel->carregaInfoUsuario($IdUsuario) as $data){
-                    $tpativoatual = ($data->Tp_Ativo);
+                foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+                    $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
 
-                if ($tpativoatual == 'N' && $tpativo == 'S')
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
                 {
-                    $dtativo = date('Y-m-d H:i:s');
-                    $dtinativo = null;
-                } else if ($tpativo == 'N')
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                    $Dt_Inativo = null;
+                } else if ($Tp_Ativo == 'N')
                 {
-                    $dtativo = null;
-                    $dtinativo = date('Y-m-d H:i:s');
+                    $Dt_Ativo = null;
+                    $Dt_Inativo = date('Y-m-d H:i:s');
                 }
-                
-                $infoUsuario = array();
-                
-                if(empty($senha))
-                {
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Admin'=>$admin,
-                                        'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                        'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                else
-                {
-                    //'Senha'=>getHashedPassword($senha)
-                    $infoUsuario = array('Nome_Usuario'=> $nome, 'Email'=>$email, 'Senha'=>$senha, 'Admin'=>$admin,
-                                'Cpf_Usuario'=>$cpf, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                'Tp_Ativo'=>$tpativo, 'Dt_Ativo'=>$dtativo, 'Dt_Inativo'=>$dtinativo);
-                }
-                
-                $resultado = $this->CadastroModel->editaUsuario($infoUsuario, $IdUsuario);
+
+                //'Senha'=>getHashedPassword($senha)
+                $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio,
+                    'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+                    'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+                $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
                 
                 if($resultado == true)
                 {
-                    $process = 'Usuário atualizado';
-                    $processFunction = 'Cadastro/editaUsuario';
+                    $process = 'Convênio atualizado';
+                    $processFunction = 'Principal/editaConvenio';
                     $this->logrecord($process,$processFunction);
 
-                    $this->session->set_flashdata('success', 'Usuário atualizado com sucesso');
+                    $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na atualização do usuário');
+                    $this->session->set_flashdata('error', 'Falha na atualização do convênio');
                 }
                 
-                redirect('cadastroUsuario/listar');
+                redirect('principalConvenio/listar');
            // }
     }
 
