@@ -116,7 +116,7 @@ class Principal extends BaseController
 
             //    $roleId = $this->input->post('role');
 
-                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
+                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
                 //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
                 if ($Tp_Ativo == 'S')

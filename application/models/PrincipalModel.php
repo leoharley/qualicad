@@ -53,12 +53,13 @@ class PrincipalModel extends CI_Model
         return $this->db->affected_rows();
     }
 
-    function consultaConvenioExistente($CNPJ_Convenio, $IdUsuEmp)
+    function consultaConvenioExistente($CNPJ_Convenio, $IdEmpresa)
     {
-        $this->db->select('Id_Convenio');
-        $this->db->from('TbConvenio');
-        $campos = "(CNPJ_Convenio = '".$CNPJ_Convenio."'
-                    AND TbUsuEmp_Id_UsuEmp  = '".$IdUsuEmp."')";
+        $this->db->select('Convenio.Id_Convenio');
+        $this->db->from('TbConvenio as Convenio');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
+        $campos = "(Convenio.CNPJ_Convenio = '".$CNPJ_Convenio."'
+                    AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."')";
         $this->db->where($campos);
         $query = $this->db->get();
 
@@ -75,11 +76,12 @@ class PrincipalModel extends CI_Model
         return $query->result();
     }
 
-    function carregaInfoConveniosEmpresa($idUsuEmp)
+    function carregaInfoConveniosEmpresa($idEmpresa)
     {
         $this->db->select('*');
-        $this->db->from('TbConvenio');
-        $this->db->where('Id_Convenio', $idUsuEmp);
+        $this->db->from('TbConvenio as Convenio');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
+        $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $idEmpresa);
         $query = $this->db->get();
 
         return $query->result();
