@@ -312,6 +312,16 @@ function apagaIndice($info, $id)
     
     return $this->db->affected_rows();
 }
+
+function carregaInfoIndice($Id)
+{
+    $this->db->select('*');
+    $this->db->from('TbIndice');
+    $this->db->where('Id_Indice', $Id);
+    $query = $this->db->get();
+
+    return $query->result();
+}
 // FIM DAS CONSULTAS NA TELA DE INDICE
 
 }
