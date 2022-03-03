@@ -838,7 +838,7 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
             $infoRegra = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                'Ds_Regra'=> $Ds_indice, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Ds_Regra'=> $Ds_Regra, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
 
 
