@@ -18,6 +18,8 @@ class Principal extends BaseController
         parent::__construct();
         $this->load->model('login_model');
         $this->load->model('user_model');
+        $this->load->model('CadastroModel');
+        $this->load->model('PrincipalModel');
         // Datas -> libraries ->BaseController / This function used load user sessions
         $this->datas();
         // isLoggedIn / Login control function /  This function used login control
