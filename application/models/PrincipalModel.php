@@ -78,7 +78,6 @@ class PrincipalModel extends CI_Model
 
     function carregaInfoConveniosEmpresa($idEmpresa)
     {
-        var_dump($idEmpresa);exit;
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
         $this->db->where('Convenio.TbEmpresa_Id_Empresa', $idEmpresa);
