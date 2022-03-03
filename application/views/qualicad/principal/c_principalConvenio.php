@@ -136,7 +136,7 @@ if(!empty($infoConvenio))
 
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addEmpresa.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addConvenio.js" type="text/javascript"></script>
 <script>
 $(document).ready(function(){
     $(":input").inputmask();
