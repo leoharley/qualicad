@@ -34,7 +34,7 @@ if(!empty($infoConvenio))
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1>
-        <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Caastrar Convênio' : 'Editar Convênio' ; ?>
+        <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Convênio' : 'Editar Convênio' ; ?>
         <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
     </h1>
     </section>
