@@ -50,6 +50,7 @@ if(!empty($infoRegra))
                                     <div class="form-group">
                                         <label for="Ds_Regra">Regra (descrição)</label>
                                         <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Regra') : $Ds_Regra ; ?>" id="Ds_Regra" name="Ds_Regra" maxlength="128">
+                                        <input type="hidden" value="<?php echo $Id_Regra; ?>" name="Id_Regra" id="Id_Regra" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">

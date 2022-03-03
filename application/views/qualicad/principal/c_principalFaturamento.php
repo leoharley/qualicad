@@ -52,6 +52,7 @@ if(!empty($infoFaturamento))
                                     <div class="form-group">
                                         <label for="Ds_Faturamento">Faturamento (descrição)</label>
                                         <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Faturamento') : $Ds_Faturamento ; ?>" id="Ds_Faturamento" name="Ds_Faturamento" maxlength="128">
+                                        <input type="hidden" value="<?php echo $Id_Faturamento; ?>" name="Id_Faturamento" id="Id_Faturamento" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
