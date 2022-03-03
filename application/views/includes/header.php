@@ -135,7 +135,7 @@
            //  {
             ?>
             <hr>
-            <h4 style="margin-left:20px!important;color:white"> CADASTRO </h4>
+            <h4 style="margin-left:18px!important;color:white"><b> CADASTRO </b></h4>
                 <li class="treeview">
                   <a href="<?php echo base_url(); ?>cadastroUsuario/listar">
                     <i class="fa fa-th"></i>
@@ -174,6 +174,8 @@
                 </li>    
 
                 <hr>
+
+                <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4>
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalConvenio/listar">
                         <i class="fa fa-th"></i>
