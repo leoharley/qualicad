@@ -90,7 +90,7 @@ class PrincipalModel extends CI_Model
     // INICIO DAS CONSULTAS NA TELA DE PLANO
     function listaPlano($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('*');
+        $this->db->select('Plano.Id_Plano, Plano.Ds_Plano, Convenio.Ds_Convenio, Indice.Ds_Indice, Regra.Ds_Regra, Plano.Cd_PlanoERP, Plano.Tp_AcomodacaoPadrao, Plano.Tp_Ativo');
         $this->db->from('TbPlano as Plano');
         $this->db->join('TbConvenio as Convenio', 'Convenio.Id_Convenio = Plano.TbConvenio_Id_Convenio AND Convenio.Deletado != "S" AND Convenio.Tp_Ativo = "S"','inner');
         $this->db->join('TbIndice as Indice', 'Indice.Id_Indice = Plano.TbIndice_Id_Indice AND Indice.Deletado != "S" AND Indice.Tp_Ativo = "S"','inner');

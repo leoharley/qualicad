@@ -354,7 +354,7 @@ class Principal extends BaseController
                 //'Senha'=>getHashedPassword($senha)
 
                 $infoPlano = array('TbConvenio_Id_Convenio'=>$TbConvenio_Id_Convenio,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                    'TbIndice_Id_Indice'=> $TbIndice_Id_Indice, 'TbRegra_Id_Regra'=> $TbRegra_Id_Regra, 'Cd_PlanoERP'=>$Cd_PlanoERP,
+                    'Ds_Plano'=>$Ds_Plano, 'TbIndice_Id_Indice'=> $TbIndice_Id_Indice, 'TbRegra_Id_Regra'=> $TbRegra_Id_Regra, 'Cd_PlanoERP'=>$Cd_PlanoERP,
                     'Tp_AcomodacaoPadrao'=>$Tp_AcomodacaoPadrao, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 

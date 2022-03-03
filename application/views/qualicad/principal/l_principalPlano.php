@@ -48,6 +48,7 @@
                     <th>Plano (descrição)</th>
                     <th>Convênio (descrição)</th>
                     <th>Índice (descrição)</th>
+                      <th>Regra (descrição)</th>
                     <th>Código ERP</th>
                     <th>Tipo acomodação padrão</th>
                     <th>Plano ativo?</th>
@@ -74,6 +75,9 @@
                       <td>
                         <?php echo $registro->Ds_Indice ?>
                       </td>
+                    <td>
+                        <?php echo $registro->Ds_Regra ?>
+                    </td>
                       <td>
                         <?php echo $registro->Cd_PlanoERP ?>
                       </td>
