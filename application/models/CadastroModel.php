@@ -156,9 +156,9 @@ class CadastroModel extends CI_Model
     $this->db->from('TbUsuEmp as UsuEmp');
     $this->db->join('TbEmpresa as Empresa', 'Empresa.Id_Empresa = UsuEmp.TbEmpresa_Id_Empresa AND Empresa.Deletado != "S" AND Empresa.Tp_Ativo = "S"','inner');
     $this->db->join('TbPerfil as Perfil', 'Perfil.Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil AND Perfil.Deletado != "S" AND Perfil.Tp_Ativo = "S"','inner');
-    $this->db->where('TbEmpresa_Id_Empresa', $IdEmpresa);
-    $this->db->where('TabUsuario_Id_Usuario', $IdUsuario);
-    $this->db->where('Deletado', 'N');
+    $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $IdEmpresa);
+    $this->db->where('UsuEmp.TabUsuario_Id_Usuario', $IdUsuario);
+    $this->db->where('UsuEmp.Deletado', 'N');
     $query = $this->db->get();
     
     return $query->result();
