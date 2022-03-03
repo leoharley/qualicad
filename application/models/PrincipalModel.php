@@ -186,7 +186,7 @@ function listaFaturamento($IdEmpresa, $searchText = '', $page, $segment)
 function adicionaFaturamento($info)
 {
     $this->db->trans_start();
-    $this->db->insert('TabUsuario', $infoUsuario);
+    $this->db->insert('TbFaturamento', $info);
     
     $insert_id = $this->db->insert_id();
     
@@ -197,18 +197,28 @@ function adicionaFaturamento($info)
 
 function editaFaturamento($info, $id)
 {
-    $this->db->where('Id_Usuario', $IdUsuario);
-    $this->db->update('TabUsuario', $infoUsuario);
+    $this->db->where('Id_Faturamento', $id);
+    $this->db->update('TbFaturamento', $info);
     
     return TRUE;
 }
 
 function apagaFaturamento($info, $id)
 {
-    $this->db->where('Id_Usuario', $IdUsuario);
-    $this->db->update('TabUsuario', $infoUsuario);
+    $this->db->where('Id_Faturamento', $id);
+    $this->db->update('TbFaturamento', $info);
     
     return $this->db->affected_rows();
+}
+
+function carregaInfoFaturamento($Id)
+{
+    $this->db->select('*');
+    $this->db->from('TbFaturamento');
+    $this->db->where('Id_Faturamento', $Id);
+    $query = $this->db->get();
+
+    return $query->result();
 }
 // FIM DAS CONSULTAS NA TELA DE FATURAMENTO
 
@@ -258,6 +268,16 @@ function apagaRegra($info, $id)
     $this->db->update('TbRegra', $info);
     
     return $this->db->affected_rows();
+}
+
+function carregaInfoRegra($Id)
+{
+    $this->db->select('*');
+    $this->db->from('TbRegra');
+    $this->db->where('Id_Regra', $Id);
+    $query = $this->db->get();
+
+    return $query->result();
 }
 // FIM DAS CONSULTAS NA TELA DE REGRA
 
