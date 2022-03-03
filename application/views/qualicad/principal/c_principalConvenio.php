@@ -1,7 +1,6 @@
 <?php
 
 $Id_Convenio = '';
-$TbUsuEmp_Id_UsuEmp = '';
 $Ds_Convenio = '';
 $CNPJ_Convenio = '';
 $Cd_ConvenioERP = '';
@@ -16,7 +15,6 @@ if(!empty($infoConvenio))
     foreach ($infoConvenio as $r)
     {
         $Id_Convenio = $r->Id_Convenio;
-        $TbUsuEmp_Id_UsuEmp = $r->TbUsuEmp_Id_UsuEmp;
         $Ds_Convenio = $r->Ds_Convenio;
         $CNPJ_Convenio = $r->CNPJ_Convenio;
         $Cd_ConvenioERP = $r->Cd_ConvenioERP;

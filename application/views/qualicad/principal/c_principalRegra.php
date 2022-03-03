@@ -1,7 +1,6 @@
 <?php
 
 $Id_Regra = '';
-$TbUsuEmp_Id_UsuEmp = '';
 $Ds_Regra = '';
 $Tp_Ativo = '';
 
@@ -11,7 +10,6 @@ if(!empty($infoRegra))
     foreach ($infoRegra as $r)
     {
         $Id_Regra = $r->Id_Regra;
-        $TbUsuEmp_Id_UsuEmp = $r->TbUsuEmp_Id_UsuEmp;
         $Ds_Regra = $r->Ds_Regra;
         $Tp_Ativo = $r->Tp_Ativo;
     }

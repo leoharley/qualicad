@@ -1,7 +1,6 @@
 <?php
 
 $Id_Indice = '';
-$TbUsuEmp_Id_UsuEmp = '';
 $Ds_indice = '';
 $Dt_IniVigencia = '';
 $Dt_FimVigencia = '';
@@ -17,7 +16,6 @@ if(!empty($infoIndice))
     foreach ($infoIndice as $r)
     {
         $Id_Indice = $r->Id_Indice;
-        $TbUsuEmp_Id_UsuEmp = $r->TbUsuEmp_Id_UsuEmp;
         $Ds_indice = $r->Ds_indice;
         $Dt_IniVigencia = $r->Dt_IniVigencia;
         $Dt_FimVigencia = $r->Dt_FimVigencia;

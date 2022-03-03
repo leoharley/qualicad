@@ -1,7 +1,6 @@
 <?php
 
 $Id_Faturamento = '';
-$TbUsuEmp_Id_UsuEmp = '';
 $Ds_Faturamento = '';
 $Tp_Faturamento = '';
 $Tp_Ativo = '';
@@ -12,7 +11,6 @@ if(!empty($infoFaturamento))
     foreach ($infoFaturamento as $r)
     {
         $Id_Faturamento = $r->Id_Faturamento;
-        $TbUsuEmp_Id_UsuEmp = $r->TbUsuEmp_Id_UsuEmp;
         $Ds_Faturamento = $r->Ds_Faturamento;
         $Tp_Faturamento = $r->Tp_Faturamento;
         $Tp_Ativo = $r->Tp_Ativo;
