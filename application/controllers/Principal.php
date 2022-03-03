@@ -282,7 +282,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "principalPlano/listar", $count, 10 );
                 
-                $data['registrosPlanos'] = $this->principalPlano->listaPlano($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosPlanos'] = $this->PrincipalPlano->listaPlano($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar planos';
                 $processFunction = 'Principal/principalPlano';
@@ -302,7 +302,7 @@ class Principal extends BaseController
                 {
                     redirect('principalPlano/listar');
                 }
-                $data['infoPlano'] = $this->principalPlano->carregaInfoPlano($IdPlano);
+                $data['infoPlano'] = $this->PrincipalPlano->carregaInfoPlano($IdPlano);
                 $this->global['pageTitle'] = 'QUALICAD : Editar plano';      
                 $this->loadViews("qualicad/principal/c_principalPlano", $this->global, $data, NULL);
             }
