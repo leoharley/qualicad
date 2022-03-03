@@ -81,8 +81,8 @@ if(!empty($infoIndice))
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="Vl_Indice">Valor índice</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
+                                        <label for="Vl_Indice">Valor índice (R$)</label>
+                                        <input type="text" data-inputmask="'mask': '#.##0,00'" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
                                     </div>
                                 </div>
                             </div>
@@ -141,3 +141,8 @@ if(!empty($infoIndice))
     </section>
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $(":input").inputmask();
+});
+</script>
