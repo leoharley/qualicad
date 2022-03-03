@@ -62,12 +62,13 @@ if(!empty($infoIndice))
                                     <div class="form-group">
                                         <label for="Ds_indice">Índice (descrição)</label>
                                         <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_indice') : $Ds_indice ; ?>" id="Ds_indice" name="Ds_indice" maxlength="128">
+                                        <input type="hidden" value="<?php echo $Id_Indice; ?>" name="Id_Indice" id="Id_Indice" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Dt_IniVigencia">Data de início da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
+                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                     </div>
                                 </div>
                             </div>
@@ -75,13 +76,13 @@ if(!empty($infoIndice))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Dt_FimVigencia">Data de fim da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
+                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_Indice">Valor índice</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('Vl_Indice'); ?>" id="Vl_Indice" name="Vl_Indice">
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
                                     </div>
                                 </div>
                             </div>
@@ -89,14 +90,14 @@ if(!empty($infoIndice))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_M2Filme">Valor M2 Filme</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('Vl_M2Filme'); ?>" id="Vl_M2Filme" name="Vl_M2Filme"
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_M2Filme') : $Vl_M2Filme ; ?>" id="Vl_M2Filme" name="Vl_M2Filme"
                                         maxlength="11">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_Honorário">Valor honorário</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('Vl_Honorário'); ?>" id="Vl_Honorário" name="Vl_Honorário"
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorário') : $Vl_Honorário ; ?>" id="Vl_Honorário" name="Vl_Honorário"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -105,25 +106,16 @@ if(!empty($infoIndice))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_UCO">Valor UCO</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('Vl_UCO'); ?>" id="Vl_UCO" name="Vl_UCO"
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_UCO') : $Vl_UCO ; ?>" id="Vl_UCO" name="Vl_UCO"
                                         maxlength="11">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="vluco">Valor UCO</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vluco'); ?>" id="vluco" name="vluco"
-                                        maxlength="11">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Índice ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
-											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
                                 </div>
