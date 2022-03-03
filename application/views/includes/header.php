@@ -182,6 +182,18 @@
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="<?php echo base_url(); ?>principalIndice/listar">
+                        <i class="fa fa-th"></i>
+                        <span>Índice</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>principalRegra/listar">
+                        <i class="fa fa-th"></i>
+                        <span>Regra</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalPlano/listar">
                         <i class="fa fa-th"></i>
                         <span>Plano</span>
@@ -200,21 +212,9 @@
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalRegra/listar">
-                        <i class="fa fa-th"></i>
-                        <span>Regra</span>
-                    </a>
-                </li>
-                <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalRegraGrupoPro/listar">
                         <i class="fa fa-th"></i>
                         <span>RegraGrupoPro</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalIndice/listar">
-                        <i class="fa fa-th"></i>
-                        <span>Índice</span>
                     </a>
                 </li>
                 <li class="treeview">
