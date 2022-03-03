@@ -122,7 +122,7 @@ if(!empty($infoPlano))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Ds_Plano">Descrição do plano</label>
-                                        <input type="text" class="form-control required" id="Ds_Plano" value="<?php echo set_value('Ds_Plano'); ?>" name="Ds_Plano"
+                                        <input type="text" class="form-control required" id="Ds_Plano" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Plano') : $Ds_Plano ; ?>" name="Ds_Plano"
                                             maxlength="128">
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@ if(!empty($infoPlano))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Cd_PlanoERP">Código ERP</label>
-                                        <input type="text" class="form-control required" id="Cd_PlanoERP" value="<?php echo set_value('Cd_PlanoERP'); ?>" name="Cd_PlanoERP"
+                                        <input type="text" class="form-control required" id="Cd_PlanoERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_PlanoERP') : $Cd_PlanoERP ; ?>" name="Cd_PlanoERP"
                                             maxlength="11">
                                     </div>
                                 </div>
@@ -139,8 +139,8 @@ if(!empty($infoPlano))
                                     <div class="form-group">
                                         <label for="Tp_AcomodacaoPadrao">Tipo de acomodação padrão</label>
                                         <select class="form-control required" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
-                                            <option value="1">Enfermaria</option>
-                                            <option value="2">Apartamento</option>
+                                            <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '1') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Enfermaria</option>
+                                            <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '2') { echo 'selected'; } ?>>Apartamento</option>
                                         </select>
                                     </div>
                                 </div>
