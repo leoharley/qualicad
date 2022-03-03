@@ -58,7 +58,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
                 
-                $data['registrosConvenios'] = $this->PrincipalModel->listaConvenios($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar convênios';
                 $processFunction = 'Principal/principalConvenio';
@@ -282,7 +282,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "principalPlano/listar", $count, 10 );
                 
-                $data['registrosPlanos'] = $this->principalPlano->listaPlanos($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosPlanos'] = $this->principalPlano->listaPlano($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar planos';
                 $processFunction = 'Principal/principalPlano';
@@ -506,7 +506,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "principalFaturamento/listar", $count, 10 );
                 
-                $data['registrosFaturamento'] = $this->PrincipalModel->listaFaturamentos($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosFaturamento'] = $this->PrincipalModel->listaFaturamento($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar faturamentos';
                 $processFunction = 'Principal/principalFaturamento';
@@ -730,7 +730,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
                 
-                $data['registrosRegras'] = $this->PrincipalModel->listaRegras($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosRegras'] = $this->PrincipalModel->listaRegra($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar regras';
                 $processFunction = 'Principal/principalRegra';
@@ -954,7 +954,7 @@ class Principal extends BaseController
     
                     $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
                     
-                    $data['registrosIndices'] = $this->PrincipalModel->listaIndices($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
+                    $data['registrosIndices'] = $this->PrincipalModel->listaIndice($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
                     
                     $process = 'Listar índices';
                     $processFunction = 'Principal/principalIndice';
