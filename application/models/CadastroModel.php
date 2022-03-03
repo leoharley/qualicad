@@ -44,11 +44,16 @@ class CadastroModel extends CI_Model
                             OR  Usuarios.Cpf_Usuario  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-
-
         $this->db->where('Usuarios.Deletado !=', 'S');
         $this->db->where('Usuarios.Id_Usuario !=', $idUser);
         $this->db->where('Usuarios.CriadoPor', $idUser);
+
+        $campos = "((Usuarios.Admin = 'S'
+        AND Usuarios.CriadoPor = '".$idUser."'))
+        OR
+        (Usuarios.Admin = 'N')";
+        $this->db->where($campos);
+
         $this->db->limit($page, $segment);
         $query = $this->db->get();
         
