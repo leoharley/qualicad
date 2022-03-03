@@ -499,7 +499,7 @@ class Principal extends BaseController
 
                 $returns = $this->paginationCompress ( "principalFaturamento/listar", $count, 10 );
                 
-                $data['registrosFaturamento'] = $this->PrincipalModel->listaFaturamento($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+                $data['registrosFaturamentos'] = $this->PrincipalModel->listaFaturamento($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
                 
                 $process = 'Listar faturamentos';
                 $processFunction = 'Principal/principalFaturamento';
