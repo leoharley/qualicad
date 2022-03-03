@@ -6,6 +6,8 @@ class PrincipalModel extends CI_Model
 // INICIO DAS CONSULTAS NA TELA DE CONVENIO
     function listaConvenio($IdEmpresa, $searchText = '', $page, $segment)
     {
+
+        var_dump($IdEmpresa);exit;
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
         $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
