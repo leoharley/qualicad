@@ -144,18 +144,20 @@ class Principal extends BaseController
                     $this->logrecord($process,$processFunction);
 
                     $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+                    redirect('principalPlano/cadastrar');
                 }
                 else
                 {
                     $this->session->set_flashdata('error', 'Falha na criação do convênio');
+                    redirect('principalConvenio/listar');
                 }
 
             } else {
                     $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+                    redirect('principalConvenio/listar');
             }
                 
-                  redirect('principalConvenio/listar');
-            //    redirect('principalPlano/cadastrar');
+                redirect('principalConvenio/listar');
 
         //    }
     }
