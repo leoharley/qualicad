@@ -154,8 +154,8 @@ class Principal extends BaseController
                     $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             }
                 
-           //    redirect('principalConvenio/listar');
-                redirect('principalPlano/cadastrar');
+                  redirect('principalConvenio/listar');
+            //    redirect('principalPlano/cadastrar');
 
         //    }
     }
