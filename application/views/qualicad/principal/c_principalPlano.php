@@ -161,6 +161,8 @@ if(!empty($infoPlano))
 
                         <div class="box-footer">
                             <input type="submit" class="btn btn-primary" value="Salvar" />
+                            <input type="submit" class="btn btn-primary" value="Cadastrar Convênio" />
+                            <a class="btn btn-primary" href="<?php echo base_url().'principalConvenio/cadastrar' ?>principalPlano/cadastrar">Cadastrar Convênio</a>
                             <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
