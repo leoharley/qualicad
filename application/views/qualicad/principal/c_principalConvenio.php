@@ -118,7 +118,7 @@ if(!empty($infoConvenio))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Salvar" />
+                            <input type="submit" class="btn btn-primary" value="Salvar e Cadastrar Plano" />
                             <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
