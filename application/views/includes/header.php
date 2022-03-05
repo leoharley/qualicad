@@ -30,7 +30,7 @@
       width: 70vw!important;
     }
     li a:hover {
-      color: #909090 !important;
+      color: #000 !important;
       background-color: #C0C0C0 !important;
     }
   </style>
