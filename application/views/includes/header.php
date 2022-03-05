@@ -29,7 +29,7 @@
     .box {
       width: 70vw!important;
     }
-    .treeview2:hover {
+    li:hover {
       background-color: yellow !important;
     }
   </style>
