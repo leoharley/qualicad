@@ -145,7 +145,7 @@ span:after {
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                        <span style="float:right"><input type="submit" class="btn btn-primary" value="Salvar e Cadastrar regra"/></span>
+                        <span><input type="submit" class="btn btn-primary" value="Salvar e Cadastrar regra"/></span>
                         <!--    <input type="reset" class="btn btn-default" value="Limpar" /> -->
                         </div>
                     </form>
