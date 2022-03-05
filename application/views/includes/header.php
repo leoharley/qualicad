@@ -29,44 +29,52 @@
     .box {
       width: 70vw!important;
     }
-    .treeview {
-    position:relative;
-    display: block;
-    overflow: auto;
-    border: none;
-    /*! margin-left: just for testing */
-    }
-    .treeview > div {
-        display:block;
-        position:absolute;
-        min-width:100%;
-    }
-    .treeview * {
-        white-space: nowrap;
-    }
-    .treeview ul {
-        margin:0;
-        list-style-type: none;
-        padding-left: 20px;
-    }
-    .treeview li > div {
-        position:relative;
-        margin-left:-100000px;
-        padding-left:100000px;
-        border: 1px solid transparent;
-        display:block;
-    }
-    .treeview li div:hover {
-        background-color: #FFFF;
-        color: #fff;
-    }
-    .treeview li.collapsed > ul {
-        display:none;
-    }
+    .navbar
+{
+    margin-bottom:51px;
+}
 
-    .treeview li.expanded > ul {
-        display:inherit;
+.navbar-right .dropdown-menu {
+    right: 0;
+    left: auto;
+    top: 60px;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #4f82e9;
+  background-color: transparent; }
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #4f82e9;
+  background-color: transparent; }
+
+#offcanvas .navbar-nav > li:last-child > a {
+  border-bottom-color: transparent !important; }
+
+@media (min-width: 768px) {
+  .navbar-toggle {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .navbar-collapse
+    {
+        background-color:#FA0;
     }
+}
+
+.navbar-toggle {
+  position:relative;
+  float: right;
+  padding: 5px 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent !important;
+  border-radius: 2px !important;
+}
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
