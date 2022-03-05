@@ -30,6 +30,27 @@ if(!empty($infoIndice))
 
 ?>
 
+<style>
+input[type="submit"] {
+margin: 10px;
+padding-right: 30px;
+}
+
+span {
+    position: relative;
+}
+
+span:after {
+    font-family: FontAwesome;
+    content: "\f004"; /* Value may need to be changed in newer version of font awesome*/
+    font-size: 13px;
+    position: absolute;
+    right: 20px;
+    top: 1px;
+    pointer-events: none;
+}
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -124,7 +145,7 @@ if(!empty($infoIndice))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Salvar e Cadastrar regra \uf011" style="float:right"/>
+                        <span><input type="submit" class="btn btn-primary" value="Salvar e Cadastrar regra" style="float:right"/></span>
                         <!--    <input type="reset" class="btn btn-default" value="Limpar" /> -->
                         </div>
                     </form>
