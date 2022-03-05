@@ -943,9 +943,6 @@ class Principal extends BaseController
     
         function adicionaIndice()
         {
-
-            var_dump ( array_key_exists('le4o',$this->input->post()));exit;
-
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
@@ -1005,6 +1002,14 @@ class Principal extends BaseController
                     $this->logrecord($process,$processFunction);
 
                     $this->session->set_flashdata('success', 'Índice criado com sucesso');
+
+                    if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                        redirect('principalIndice/cadastrar'); 
+                    }
+                    else if (array_key_exists('salvarAvancar',$this->input->post())) {
+                        redirect('principalRegra/cadastrar');
+                    }
+
                 }
                 else
                 {

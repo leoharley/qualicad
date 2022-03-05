@@ -58,7 +58,27 @@ if(!empty($infoIndice))
             <div class="col-md-8">
                 <!-- general form elements -->
 
-
+                <?php
+                    $this->load->helper('form');
+                    $error = $this->session->flashdata('error');
+                    if($error)
+                    {
+                ?>
+                <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <?php echo $this->session->flashdata('error'); ?>
+                </div>
+                <?php } ?>
+                <?php  
+                        $success = $this->session->flashdata('success');
+                        if($success)
+                        {
+                    ?>
+                <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <?php echo $this->session->flashdata('success'); ?>
+                </div>
+                <?php } ?>
 
                 <div class="box box-primary">
                     <div class="box-header">
@@ -136,7 +156,8 @@ if(!empty($infoIndice))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary arrow-pointer-right" value="Salvar e Cadastrar Regra" name="leo"/>
+                        <input type="submit" class="btn btn-primary arrow-pointer-right" value="Salvar e Cadastrar Novamente" name="salvarMesmaTela"/>
+                            <input type="submit" class="btn btn-primary arrow-pointer-right" value="Salvar e Cadastrar Regra" name="salvarAvancar"/>
                         <!--    <input type="reset" class="btn btn-default" value="Limpar" /> -->
                         </div>
                     </form>
