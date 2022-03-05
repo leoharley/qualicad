@@ -29,6 +29,46 @@
     .box {
       width: 70vw!important;
     }
+    .treeview {
+    position:relative;
+    display: block;
+    overflow: auto;
+    border: 1px solid #8B9097;
+    background-color: #fff;
+    margin-left:200px;
+    /*! margin-left: just for testing */
+    }
+    .treeview > div {
+        display:block;
+        position:absolute;
+        min-width:100%;
+    }
+    .treeview * {
+        white-space: nowrap;
+    }
+    .treeview ul {
+        margin:0;
+        list-style-type: none;
+        padding-left: 20px;
+    }
+    .treeview li > div {
+        position:relative;
+        margin-left:-100000px;
+        padding-left:100000px;
+        border: 1px solid transparent;
+        display:block;
+    }
+    .treeview li div:hover {
+        background-color: #FFFF;
+        color: #fff;
+    }
+    .treeview li.collapsed > ul {
+        display:none;
+    }
+
+    .treeview li.expanded > ul {
+        display:inherit;
+    }
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
