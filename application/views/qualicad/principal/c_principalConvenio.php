@@ -44,7 +44,27 @@ if(!empty($infoConvenio))
             <div class="col-md-8">
                 <!-- general form elements -->
 
-
+                <?php
+                    $this->load->helper('form');
+                    $error = $this->session->flashdata('error');
+                    if($error)
+                    {
+                ?>
+                <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <?php echo $this->session->flashdata('error'); ?>
+                </div>
+                <?php } ?>
+                <?php  
+                        $success = $this->session->flashdata('success');
+                        if($success)
+                        {
+                    ?>
+                <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <?php echo $this->session->flashdata('success'); ?>
+                </div>
+                <?php } ?>
 
                 <div class="box box-primary">
                     <div class="box-header">
@@ -118,8 +138,10 @@ if(!empty($infoConvenio))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Salvar e Cadastrar Plano" />
-                            <input type="reset" class="btn btn-default" value="Limpar" />
+                            <input type="submit" class="btn btn-primary" value="Salvar e ir para lista" name="salvarIrLista"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro convênio" name="salvarMesmaTela"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar plano" name="salvarAvancar" style="margin-left:30px;"/>
+                        <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
                 </div>

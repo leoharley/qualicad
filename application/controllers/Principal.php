@@ -144,7 +144,16 @@ class Principal extends BaseController
                     $this->logrecord($process,$processFunction);
 
                     $this->session->set_flashdata('success', 'Convênio criado com sucesso');
-                    redirect('principalPlano/cadastrar');
+
+                    if (array_key_exists('salvarIrLista',$this->input->post())) {
+                        redirect('principalConvenio/listar'); 
+                    }
+                    else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                        redirect('principalConvenio/cadastrar'); 
+                    }
+                    else if (array_key_exists('salvarAvancar',$this->input->post())) {
+                        redirect('principalPlano/cadastrar');
+                    }
                 }
                 else
                 {
@@ -372,6 +381,17 @@ class Principal extends BaseController
                     $this->logrecord($process,$processFunction);
 
                     $this->session->set_flashdata('success', 'Plano criado com sucesso');
+
+                    if (array_key_exists('salvarIrLista',$this->input->post())) {
+                        redirect('principalPlano/listar'); 
+                    }
+                    else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                        redirect('principalPlano/cadastrar'); 
+                    }
+                    else if (array_key_exists('salvarRetroceder',$this->input->post())) {
+                        redirect('principalConvenio/cadastrar');
+                    }
+
                 }
                 else
                 {
@@ -789,6 +809,14 @@ class Principal extends BaseController
                 $this->logrecord($process,$processFunction);
 
                 $this->session->set_flashdata('success', 'Regra criada com sucesso');
+
+                if (array_key_exists('salvarIrLista',$this->input->post())) {
+                    redirect('principalRegra/listar'); 
+                }
+                else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                    redirect('principalRegra/cadastrar');
+                }
+
             }
             else
             {
@@ -1003,11 +1031,11 @@ class Principal extends BaseController
 
                     $this->session->set_flashdata('success', 'Índice criado com sucesso');
 
-                    if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                        redirect('principalIndice/cadastrar'); 
+                    if (array_key_exists('salvarIrLista',$this->input->post())) {
+                        redirect('principalIndice/listar'); 
                     }
-                    else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                        redirect('principalRegra/cadastrar');
+                    else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                        redirect('principalIndice/cadastrar');
                     }
 
                 }
