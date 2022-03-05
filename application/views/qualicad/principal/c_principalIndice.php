@@ -43,11 +43,12 @@ span {
 span:after {
     font-family: FontAwesome;
     content: "\f0a9"; /* Value may need to be changed in newer version of font awesome*/
-    font-size: 13px;
+    font-size: 16px;
     position: absolute;
     right: 20px;
     top: 1px;
     pointer-events: none;
+    color: white;
 }
 </style>
 
