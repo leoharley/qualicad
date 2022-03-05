@@ -29,14 +29,7 @@
     .box {
       width: 70vw!important;
     }
-    .treeview {
-    position:relative;
-    display: block;
-    overflow: auto;
-    border: none;
-    margin-left:200px;
-    /*! margin-left: just for testing */
-    }
+
     .treeview > div {
         display:block;
         position:absolute;
