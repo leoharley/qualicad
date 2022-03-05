@@ -33,7 +33,6 @@ if(!empty($infoIndice))
 <style>
 .arrow-pointer-right {
   border: none;
-  padding: 12px 48px 12px 24px;
   border-radius: 4px;
   color: #fff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7.41' height='12' viewBox='0 0 7.41 12'%3E%3Cpath d='M10,6,8.59,7.41,13.17,12,8.59,16.59,10,18l6-6Z' transform='translate(-8.59 -6)' fill='%23fff'/%3E%3C/svg%3E");
@@ -157,7 +156,7 @@ if(!empty($infoIndice))
 
                         <div class="box-footer">
                         <input type="submit" class="btn btn-primary" value="Salvar e Cadastrar Outro Índice" name="salvarMesmaTela"/>
-                        <input type="submit" class="btn btn-primary" value="Salvar e Cadastrar Regra" name="salvarAvancar"/>
+                        <input type="submit" class="btn btn-primary arrow-pointer-right" value="Salvar e Cadastrar Regra" name="salvarAvancar"/>
                         <input type="reset" class="btn btn-default" value="Limpar" />
                         </div>
                     </form>
