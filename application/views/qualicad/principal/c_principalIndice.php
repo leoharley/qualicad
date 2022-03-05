@@ -137,7 +137,7 @@ if(!empty($infoIndice))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary arrow-pointer" value="Salvar e Cadastrar regra"/>
+                            <input type="submit" class="btn btn-primary arrow-pointer-right" value="Salvar e Cadastrar regra"/>
                         <!--    <input type="reset" class="btn btn-default" value="Limpar" /> -->
                         </div>
                     </form>
