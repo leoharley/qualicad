@@ -978,6 +978,11 @@ class Principal extends BaseController
     
         function adicionaIndice()
         {
+
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalIndice/listar'); 
+            }  
+            
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
