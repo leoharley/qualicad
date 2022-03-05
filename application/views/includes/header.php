@@ -29,7 +29,7 @@
     .box {
       width: 70vw!important;
     }
-    li:hover {
+    li a:hover {
       background-color: yellow !important;
     }
   </style>
