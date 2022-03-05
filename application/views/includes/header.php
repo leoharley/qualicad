@@ -185,81 +185,81 @@
 
               <!--  <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4> -->
 
-                <li class="treeview" data-toggle="collapse" data-target="#test2" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                <li class="treeview" data-toggle="collapse" data-target="#principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     
                     <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4>
 
-                    <ul class="nav nav-list collapse" style="margin-top:10px" id="test2">
+                    <ul class="nav nav-list collapse" style="margin-top:10px" id="principal">
 
                   <li class="treeview2">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
-                          <i class="fa fa-th" style="margin-right:10px!important"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Índice</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalRegra/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Regra</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalConvenio/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Convênio</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalPlano/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Plano</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalFaturamento/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Faturamento</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalFaturamentoItem/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Faturamento Item</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalRegraGrupoPro/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>RegraGrupoPro</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndiceGrupoPro/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>ÍndiceGrupoPro</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalProibicao/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Proibição</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalRegraProibicao/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>RegraProibição</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalFracaoSimproBra/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>FraçãoSimproBra</span>
                       </a>
                   </li>
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalUnidade/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Unidade</span>
                       </a>
                   </li>
