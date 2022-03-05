@@ -146,7 +146,7 @@ if(!empty($infoIndice))
                         <div class="box-footer">
                             <input type="submit" class="btn btn-primary" value="Ir para lista (CTRL+L)" name="IrLista" id="IrLista"/>
                             <input type="submit" class="btn btn-primary" value="Salvar e ir para lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:15px;"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro índice (CTRL+I)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro índice (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                     <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
@@ -163,11 +163,10 @@ if(!empty($infoIndice))
     </section>
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/shortcut.js"></script>
 <script>
-$(document).ready(function(){
-    $(":input").inputmask();
-});
+    $(document).ready(function(){
+        $(":input").inputmask();
+    });
 
     shortcut.add("ctrl+l", function() {
         document.getElementById('IrLista').click();
@@ -175,8 +174,7 @@ $(document).ready(function(){
     shortcut.add("ctrl+s", function() {
         document.getElementById('salvarIrLista').click();
     });
-    shortcut.add("ctrl+i", function() {
+    shortcut.add("ctrl+a", function() {
         document.getElementById('salvarMesmaTela').click();
     }); 
-
 </script>

@@ -138,10 +138,10 @@ if(!empty($infoConvenio))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Ir para lista" name="IrLista"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e ir para lista" name="salvarIrLista" style="margin-left:15px;"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro convênio" name="salvarMesmaTela"  style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar plano" name="salvarAvancar" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <input type="submit" class="btn btn-primary" value="Ir para lista (CTRL+L)" name="IrLista" id="IrLista"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e ir para lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:15px;"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro convênio (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar plano (CTRL+P)" name="salvarAvancar" id="salvarAvancar" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                         <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
@@ -160,7 +160,19 @@ if(!empty($infoConvenio))
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addConvenio.js" type="text/javascript"></script>
 <script>
-$(document).ready(function(){
-    $(":input").inputmask();
-});
+    $(document).ready(function(){
+        $(":input").inputmask();
+    });
+    shortcut.add("ctrl+l", function() {
+    document.getElementById('IrLista').click();
+    });   
+    shortcut.add("ctrl+s", function() {
+        document.getElementById('salvarIrLista').click();
+    });
+    shortcut.add("ctrl+a", function() {
+        document.getElementById('salvarMesmaTela').click();
+    });
+    shortcut.add("ctrl+p", function() {
+        document.getElementById('salvarAvancar').click();
+    });
 </script>
