@@ -42,7 +42,7 @@ span {
 
 span:after {
     font-family: FontAwesome;
-    content: "\f004"; /* Value may need to be changed in newer version of font awesome*/
+    content: "&#xf011;"; /* Value may need to be changed in newer version of font awesome*/
     font-size: 13px;
     position: absolute;
     right: 20px;
@@ -145,7 +145,7 @@ span:after {
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                        <span><input type="submit" class="btn btn-primary" value="Salvar e Cadastrar regra"/></span>
+                        <span style="float:right"><input type="submit" class="btn btn-primary" value="Salvar e Cadastrar regra"/></span>
                         <!--    <input type="reset" class="btn btn-default" value="Limpar" /> -->
                         </div>
                     </form>
