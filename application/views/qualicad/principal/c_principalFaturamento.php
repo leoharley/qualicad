@@ -101,9 +101,9 @@ if(!empty($infoFaturamento))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Ir para lista (CTRL+L)" name="IrLista" id="IrLista"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e ir para lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:15px;"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro faturamento (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:30px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <input type="submit" class="btn btn-primary" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
+                            <input type="submit" class="btn btn-primary" value="Salva e lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:15px;"/>
+                            <input type="submit" class="btn btn-primary" value="Salva e cadastra novamente (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:30px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                             <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
