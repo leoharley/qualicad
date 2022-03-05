@@ -30,6 +30,9 @@
       width: 70vw!important;
     }
 
+    .treeview {
+        color:black;
+    }
     .treeview > div {
         display:block;
         position:absolute;
@@ -51,7 +54,7 @@
         display:block;
     }
     .treeview li div:hover {
-        background-color: #FFFF;
+        background-color: #A0A0A0;
         color: #fff;
     }
     .treeview li.collapsed > ul {
