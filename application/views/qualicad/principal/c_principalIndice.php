@@ -162,7 +162,7 @@ if(!empty($infoIndice))
         </div>
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addIndice.js" type="text/javascript"></script>
 <script>
     $(document).ready(function(){
         $(":input").inputmask();
