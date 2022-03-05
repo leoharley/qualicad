@@ -29,52 +29,9 @@
     .box {
       width: 70vw!important;
     }
-    .navbar
-{
-    margin-bottom:51px;
-}
-
-.navbar-right .dropdown-menu {
-    right: 0;
-    left: auto;
-    top: 60px;
-}
-
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #4f82e9;
-  background-color: transparent; }
-
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #4f82e9;
-  background-color: transparent; }
-
-#offcanvas .navbar-nav > li:last-child > a {
-  border-bottom-color: transparent !important; }
-
-@media (min-width: 768px) {
-  .navbar-toggle {
-    display: none;
-  }
-}
-@media (max-width: 767px) {
-  .navbar-collapse
-    {
-        background-color:#FA0;
+    .treeview2:hover {
+      background-color: yellow !important;
     }
-}
-
-.navbar-toggle {
-  position:relative;
-  float: right;
-  padding: 5px 5px;
-  margin-top: 5px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  background-color: transparent;
-  background-image: none;
-  border: 1px solid transparent !important;
-  border-radius: 2px !important;
-}
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
@@ -233,7 +190,7 @@
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="test2">
 
-                  <li class="treeview">
+                  <li class="treeview2">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
                           <i class="fa fa-th" style="margin-right:50px!important"></i>
                           <span>Índice</span>
