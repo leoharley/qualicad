@@ -26,6 +26,9 @@
       color: red;
       font-weight: normal;
     }
+    .box {
+      width: 70vw!important;
+    }
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
