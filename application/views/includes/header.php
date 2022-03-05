@@ -182,10 +182,10 @@
               <!--  <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4> -->
 
                 <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;cursor: pointer!important;">
-                    <i class="fa fa-th" style="margin-left:18px;color:white"></i>
+                    
                     <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4>
 
-                    <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
+                    <ul class="nav nav-list collapse" style="margin-top:10px" id="test2">
 
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
