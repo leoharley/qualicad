@@ -32,31 +32,14 @@ if(!empty($infoIndice))
 
 <style>
 .arrow-pointer {
-  width: 250px;
-  height: 50px;
-  background: #32557f;
-  position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: 0; width: 0; height: 0;
-    border-left: 25px solid #7eb4e2;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    right: -25px;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 25px solid #32557f;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-  }
+  border: none;
+  background-color: orange;
+  padding: 12px 48px 12px 24px;
+  border-radius: 4px;
+  color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7.41' height='12' viewBox='0 0 7.41 12'%3E%3Cpath d='M10,6,8.59,7.41,13.17,12,8.59,16.59,10,18l6-6Z' transform='translate(-8.59 -6)' fill='%23fff'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 24px center;
 }
 </style>
 
