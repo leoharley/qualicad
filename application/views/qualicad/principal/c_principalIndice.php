@@ -31,24 +31,32 @@ if(!empty($infoIndice))
 ?>
 
 <style>
-input[type="submit"] {
-margin: 10px;
-padding-right: 30px;
-}
+.arrow-pointer {
+  width: 250px;
+  height: 50px;
+  background: #32557f;
+  position: relative;
 
-span {
-    position: relative;
-}
-
-span:after {
-    font-family: FontAwesome;
-    content: "\f101"; /* Value may need to be changed in newer version of font awesome*/
-    font-size: 16px;
+  &:after {
+    content: '';
     position: absolute;
-    right: 20px;
-    top: 1px;
-    pointer-events: none;
-    color: white;
+    left: 0; bottom: 0; width: 0; height: 0;
+    border-left: 25px solid #7eb4e2;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: -25px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 25px solid #32557f;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+  }
 }
 </style>
 
@@ -146,7 +154,7 @@ span:after {
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                        <span><input type="submit" class="btn btn-primary" value="Salvar e Cadastrar regra"/></span>
+                            <input type="submit" class="btn btn-primary arrow-pointer" value="Salvar e Cadastrar regra" style="float:right"/>
                         <!--    <input type="reset" class="btn btn-default" value="Limpar" /> -->
                         </div>
                     </form>
