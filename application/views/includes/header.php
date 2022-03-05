@@ -181,7 +181,7 @@
 
               <!--  <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4> -->
 
-                <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                <li class="treeview" data-toggle="collapse" data-target="#test2" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     
                     <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4>
 
