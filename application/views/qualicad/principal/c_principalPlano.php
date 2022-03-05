@@ -180,10 +180,20 @@ if(!empty($infoPlano))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Ir para lista (CTRL+L)" name="IrLista" id="IrLista"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e ir para lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:15px;"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro plano (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar convênio (CTRL+C)" name="salvarRetroceder" id="salvarRetroceder" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input type="submit" class="btn btn-primary" value="Ir para lista (CTRL+L)" name="IrLista" id="IrLista"/>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" class="btn btn-primary" value="Salvar e ir para lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista"/>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro plano (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" class="btn btn-primary" value="Salvar e cadastrar convênio (CTRL+C)" name="salvarRetroceder" id="salvarRetroceder" style="<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            </div>
+                        </div>    
                         <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
