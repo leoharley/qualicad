@@ -33,8 +33,7 @@
     position:relative;
     display: block;
     overflow: auto;
-    border: 1px solid #8B9097;
-    background-color: #fff;
+    border: none;
     margin-left:200px;
     /*! margin-left: just for testing */
     }
