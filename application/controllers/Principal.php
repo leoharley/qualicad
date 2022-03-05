@@ -943,6 +943,9 @@ class Principal extends BaseController
     
         function adicionaIndice()
         {
+
+            var_dump ($this->input->post());exit;
+            
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
