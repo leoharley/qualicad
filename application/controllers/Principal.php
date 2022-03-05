@@ -944,7 +944,7 @@ class Principal extends BaseController
         function adicionaIndice()
         {
 
-            var_dump (exists($this->input->post('Leof')));exit;
+            var_dump ($this->input->post('Leof'));exit;
 
             $this->load->library('form_validation');
 
