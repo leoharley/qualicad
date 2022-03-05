@@ -30,8 +30,8 @@
       width: 70vw!important;
     }
     li a:hover {
-      color: black !important;
-      background-color: #D0D0D0 !important;
+      color: white !important;
+      background-color: #2098D1 !important;
     }
   </style>
   <!-- jQuery 2.1.4 -->
