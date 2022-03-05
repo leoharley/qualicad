@@ -42,7 +42,7 @@ span {
 
 span:after {
     font-family: FontAwesome;
-    content: "\f330"; /* Value may need to be changed in newer version of font awesome*/
+    content: "\f356"; /* Value may need to be changed in newer version of font awesome*/
     font-size: 16px;
     position: absolute;
     right: 20px;
