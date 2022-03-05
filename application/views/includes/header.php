@@ -31,7 +31,7 @@
     }
     li a:hover {
       color: black !important;
-      background-color: #A0A0A0 !important;
+      background-color: #D0D0D0 !important;
     }
   </style>
   <!-- jQuery 2.1.4 -->
