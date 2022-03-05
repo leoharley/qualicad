@@ -31,9 +31,9 @@ if(!empty($infoIndice))
 ?>
 
 <style>
-.arrow-pointer {
+.arrow-pointer-right {
   border: none;
-  background-color: orange;
+  float:right;
   padding: 12px 48px 12px 24px;
   border-radius: 4px;
   color: #fff;
