@@ -105,7 +105,7 @@ if(!empty($infoRegra))
         </div>
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addRegra.js" type="text/javascript"></script>
 
 <script>
     shortcut.add("ctrl+l", function() {
