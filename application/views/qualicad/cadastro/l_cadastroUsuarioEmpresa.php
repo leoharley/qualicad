@@ -8,10 +8,11 @@
   </section>
   <section class="content">
     <div class="col-xs-12">
-      <div class="text-right">
+      <div class="text-left">
         <a class="btn btn-primary" href="<?php echo base_url(); ?>cadastroUsuarioEmpresa/adicionar">
           <i class="fa fa-plus"></i> Associar Usuário/Empresa</a>
       </div>
+      <br/>
       <div class="box">
         <div class="box-header">
           <div class="box-tools">
