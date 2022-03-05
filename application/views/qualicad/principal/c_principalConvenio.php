@@ -139,7 +139,7 @@ if(!empty($infoConvenio))
 
                         <div class="box-footer">
                             <input type="submit" class="btn btn-primary" value="Salvar e ir para lista" name="salvarIrLista"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro convênio" name="salvarMesmaTela"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro convênio" name="salvarMesmaTela"  style="margin-left:30px"/>
                             <input type="submit" class="btn btn-primary" value="Salvar e cadastrar plano" name="salvarAvancar" style="margin-left:30px;"/>
                         <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>

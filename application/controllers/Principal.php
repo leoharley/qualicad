@@ -603,6 +603,13 @@ class Principal extends BaseController
                 $this->logrecord($process,$processFunction);
 
                 $this->session->set_flashdata('success', 'Faturamento criado com sucesso');
+                        
+                if (array_key_exists('salvarIrLista',$this->input->post())) {
+                    redirect('principalFaturamento/listar'); 
+                }
+                else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                    redirect('principalFaturamento/cadastrar');
+                }
             }
             else
             {

@@ -101,8 +101,9 @@ if(!empty($infoFaturamento))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Salvar" />
-                            <input type="reset" class="btn btn-default" value="Limpar" />
+                            <input type="submit" class="btn btn-primary" value="Salvar e ir para lista" name="salvarIrLista"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro faturamento" name="salvarMesmaTela" style="margin-left:30px"/>
+                            <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
                 </div>
