@@ -145,8 +145,8 @@ if(!empty($infoIndice))
 
                         <div class="box-footer">
                             <input type="submit" class="btn btn-primary" value="Lista" name="IrLista"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar" name="salvarIrLista" style="margin-left:30px;"/>
-                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro índice" name="salvarMesmaTela" style="margin-left:30px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar" name="salvarIrLista" style="margin-left:15px;"/>
+                            <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro índice" name="salvarMesmaTela" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                     <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
