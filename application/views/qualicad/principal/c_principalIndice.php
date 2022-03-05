@@ -33,7 +33,6 @@ if(!empty($infoIndice))
 <style>
 .arrow-pointer-right {
   border: none;
-  float:right;
   padding: 12px 48px 12px 24px;
   border-radius: 4px;
   color: #fff;
@@ -137,7 +136,7 @@ if(!empty($infoIndice))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary arrow-pointer-right" value="Salvar e Cadastrar regra"/>
+                            <input type="submit" class="btn btn-primary arrow-pointer-right" value="Salvar e Cadastrar Regra"/>
                         <!--    <input type="reset" class="btn btn-default" value="Limpar" /> -->
                         </div>
                     </form>
