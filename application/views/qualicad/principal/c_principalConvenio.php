@@ -138,7 +138,7 @@ if(!empty($infoConvenio))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Ir para Lista" name="IrLista"/>
+                            <input type="submit" class="btn btn-primary" value="Ir para lista" name="IrLista"/>
                             <input type="submit" class="btn btn-primary" value="Salvar e ir para lista" name="salvarIrLista" style="margin-left:15px;"/>
                             <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro convênio" name="salvarMesmaTela"  style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                             <input type="submit" class="btn btn-primary" value="Salvar e cadastrar plano" name="salvarAvancar" style="margin-left:15px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
