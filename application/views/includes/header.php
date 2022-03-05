@@ -29,9 +29,12 @@
     .box {
       width: 70vw!important;
     }
-
     .treeview {
-        color:black;
+    position:relative;
+    display: block;
+    overflow: auto;
+    border: none;
+    /*! margin-left: just for testing */
     }
     .treeview > div {
         display:block;
@@ -54,7 +57,7 @@
         display:block;
     }
     .treeview li div:hover {
-        background-color: #A0A0A0 !important;
+        background-color: #FFFF;
         color: #fff;
     }
     .treeview li.collapsed > ul {
