@@ -54,7 +54,7 @@
         display:block;
     }
     .treeview li div:hover {
-        background-color: #A0A0A0;
+        background-color: #A0A0A0 !important;
         color: #fff;
     }
     .treeview li.collapsed > ul {
