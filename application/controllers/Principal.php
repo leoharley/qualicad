@@ -86,6 +86,10 @@ class Principal extends BaseController
 
     function adicionaConvenio() 
     {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalConvenio/listar'); 
+            } 
+
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
@@ -174,6 +178,10 @@ class Principal extends BaseController
 
     function editaConvenio()
     {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalConvenio/listar'); 
+            } 
+
             $this->load->library('form_validation');
 
             $IdConvenio = $this->input->post('Id_Convenio');
@@ -323,6 +331,10 @@ class Principal extends BaseController
 
     function adicionaPlano() 
     {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalPlano/listar'); 
+            } 
+
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
@@ -408,6 +420,10 @@ class Principal extends BaseController
 
     function editaPlano()
     {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalPlano/listar'); 
+            } 
+
             $this->load->library('form_validation');
 
             $IdPlano = $this->input->post('Id_Plano');
@@ -550,6 +566,10 @@ class Principal extends BaseController
 
     function adicionaFaturamento() 
     {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalFaturamento/listar'); 
+            } 
+
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
@@ -628,6 +648,10 @@ class Principal extends BaseController
 
     function editaFaturamento()
     {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalFaturamento/listar'); 
+            } 
+            
             $this->load->library('form_validation');
 
             $IdFaturamento = $this->input->post('Id_Faturamento');
@@ -765,6 +789,10 @@ class Principal extends BaseController
 
     function adicionaRegra() 
     {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalRegra/listar'); 
+            }  
+
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
@@ -842,6 +870,10 @@ class Principal extends BaseController
 
     function editaRegra()
     {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('principalRegra/listar'); 
+            }  
+
             $this->load->library('form_validation');
 
             $IdRegra = $this->input->post('Id_Regra');
