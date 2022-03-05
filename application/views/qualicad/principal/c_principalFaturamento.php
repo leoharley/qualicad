@@ -101,7 +101,7 @@ if(!empty($infoFaturamento))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
+                            <input type="button" class="btn btn-primary" onclick="window.location='<?php echo base_url(); ?>principalFaturamento/listar';" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
                             <input type="submit" class="btn btn-primary" value="Salva e lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:5px;"/>
                             <input type="submit" class="btn btn-primary" value="Salva e cadastra novamente (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                             <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
@@ -119,7 +119,7 @@ if(!empty($infoFaturamento))
         </div>
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addFaturamento.js" type="text/javascript"></script>
 <script>
     shortcut.add("ctrl+l", function() {
     document.getElementById('IrLista').click();
