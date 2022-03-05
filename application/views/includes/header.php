@@ -189,7 +189,7 @@
 
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
-                          <i class="fa fa-th"></i>
+                          <i class="fa fa-th" style="margin-right:50px!important"></i>
                           <span>Índice</span>
                       </a>
                   </li>
