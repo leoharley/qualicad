@@ -158,15 +158,15 @@ class Principal extends BaseController
                 else
                 {
                     $this->session->set_flashdata('error', 'Falha na criação do convênio');
-                    redirect('principalConvenio/listar');
+                    redirect('principalConvenio/cadastrar');
                 }
 
             } else {
                     $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
-                    redirect('principalConvenio/listar');
+                    redirect('principalConvenio/cadastrar');
             }
                 
-                redirect('principalConvenio/listar');
+                redirect('principalConvenio/cadastrar');
 
         //    }
     }
@@ -402,7 +402,7 @@ class Principal extends BaseController
             //    $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
           //  }
 
-            redirect('principalPlano/listar');
+            redirect('principalPlano/cadastrar');
     }
 
 
@@ -620,7 +620,7 @@ class Principal extends BaseController
             //             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             //         }
 
-            redirect('principalFaturamento/listar');
+            redirect('principalFaturamento/cadastrar');
 
             //    }
     }
@@ -834,7 +834,7 @@ class Principal extends BaseController
             //             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             //         }
 
-            redirect('principalRegra/listar');
+            redirect('principalRegra/cadastrar');
 
         //    }
     }
@@ -1055,7 +1055,7 @@ class Principal extends BaseController
    //             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
    //         }
 
-            redirect('principalIndice/listar');
+            redirect('principalIndice/cadastrar');
 
             //    }
         }
