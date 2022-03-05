@@ -177,12 +177,6 @@
 
                 <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>principalConvenio/listar">
-                        <i class="fa fa-th"></i>
-                        <span>Convênio</span>
-                    </a>
-                </li>
-                <li class="treeview">
                     <a href="<?php echo base_url(); ?>principalIndice/listar">
                         <i class="fa fa-th"></i>
                         <span>Índice</span>
@@ -192,6 +186,12 @@
                     <a href="<?php echo base_url(); ?>principalRegra/listar">
                         <i class="fa fa-th"></i>
                         <span>Regra</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="<?php echo base_url(); ?>principalConvenio/listar">
+                        <i class="fa fa-th"></i>
+                        <span>Convênio</span>
                     </a>
                 </li>
                 <li class="treeview">
