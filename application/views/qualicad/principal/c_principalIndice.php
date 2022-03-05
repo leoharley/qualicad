@@ -30,17 +30,6 @@ if(!empty($infoIndice))
 
 ?>
 
-<style>
-.arrow-pointer-right {
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7.41' height='12' viewBox='0 0 7.41 12'%3E%3Cpath d='M10,6,8.59,7.41,13.17,12,8.59,16.59,10,18l6-6Z' transform='translate(-8.59 -6)' fill='%23fff'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 24px center;
-}
-</style>
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -156,7 +145,7 @@ if(!empty($infoIndice))
 
                         <div class="box-footer">
                         <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro índice" name="salvarMesmaTela"/>
-                        <input type="submit" class="btn btn-primary" value="Salvar e cadastrar regra" name="salvarAvancar" style="float:right"/>
+                        <input type="submit" class="btn btn-primary" value="Salvar e cadastrar regra" name="salvarAvancar" style="margin-left:30px;"/>
                     <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
