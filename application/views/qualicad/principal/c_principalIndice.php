@@ -155,9 +155,9 @@ if(!empty($infoIndice))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                        <input type="submit" class="btn btn-primary" value="Salvar e Cadastrar Outro Índice" name="salvarMesmaTela"/>
-                        <input type="submit" class="btn btn-primary" value="Salvar e Cadastrar Regra" name="salvarAvancar"/>
-                        <input type="reset" class="btn btn-info" value="Limpar Campos" />
+                        <input type="submit" class="btn btn-primary" value="Salvar e cadastrar outro índice" name="salvarMesmaTela"/>
+                        <input type="submit" class="btn btn-primary" value="Salvar e cadastrar regra" name="salvarAvancar" style="float:right"/>
+                    <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
                 </div>
