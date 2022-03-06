@@ -299,11 +299,11 @@
 
                 <hr>
 
-                <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                <li class="treeview" data-toggle="collapse" aria-expanded="true" aria-controls="categories-collapsed2" data-target="#test" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
                     <span style="margin-left:5px;color:white">Importação</span>
 
-                    <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
+                    <ul class="nav nav-list collapse" id="categories-collapsed2" style="margin-top:10px" id="test">
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
