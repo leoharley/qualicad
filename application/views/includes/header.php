@@ -194,8 +194,8 @@
 
               <!--  <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4> -->
 
-              <div id="myGroup">
-                <li class="treeview" data-toggle="collapse" data-target="#principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
+              <div id="myGroup" id="accordion" role="tablist" aria-multiselectable="true">
+                <li class="treeview" data-toggle="collapse" data-parent="#accordion" data-target="#principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     
                     <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  PRINCIPAL</b></h4>
 
@@ -352,11 +352,3 @@
       </section>
       <!-- /.sidebar -->
     </aside>
-
-
-    <script>
-      var $myGroup = $('#myGroup');
-      $myGroup.on('show.bs.collapse','.collapse', function() {
-      $myGroup.find('.collapse.show').collapse('hide');
-      });
-      </script>
