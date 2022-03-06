@@ -213,11 +213,11 @@
               <!--  <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4> -->
 
               <div id="viewCustomFilters2" class="view-custom-filters">
-                <li class="treeview" data-toggle="collapse" data-target="#principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                <li class="treeview" data-toggle="collapse" aria-expanded="true" aria-controls="brands-collapsed2" data-target="#principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     
                     <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  PRINCIPAL</b></h4>
 
-                    <ul class="nav nav-list collapse" style="margin-top:10px" data-parent="#viewCustomFilters2" id="principal">
+                    <ul class="nav nav-list collapse" id="brands-collapsed2" style="margin-top:10px" data-parent="#viewCustomFilters2" id="principal">
 
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
