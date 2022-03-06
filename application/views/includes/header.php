@@ -143,7 +143,13 @@
            //  {
             ?>
             <hr <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
-            <h4 style="margin-left:18px!important;color:white;<?php if ($this->session->userdata('isAdmin') != 'S') { echo 'display:none'; } ?>"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  CADASTRO </b></h4>
+
+            <li class="treeview" data-toggle="collapse" data-target="#cadastro" style="margin-bottom: 10px!important;cursor: pointer!important;<?php if ($this->session->userdata('isAdmin') != 'S') { echo 'display:none'; } ?>">
+                    
+                    <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  PRINCIPAL</b></h4>
+
+                    <ul class="nav nav-list collapse" style="margin-top:10px" id="cadastro">
+
                 <li class="treeview" <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
                   <a href="<?php echo base_url(); ?>cadastroUsuario/listar">
                     <i class="fa fa-th"></i>
@@ -179,7 +185,10 @@
                         <i class="fa fa-th"></i>
                         <span>Usuário/Empresa</span>
                     </a>
-                </li>    
+                </li>
+                
+                </ul>
+                </li>
 
                 <hr <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
 
@@ -191,7 +200,7 @@
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="principal">
 
-                  <li class="treeview2">
+                  <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Índice</span>
