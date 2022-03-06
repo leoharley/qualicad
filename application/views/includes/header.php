@@ -36,46 +36,6 @@
     .content-wrapper {
       min-height: 800px !important;
     }
-
-    .accordion .card-header:after {
-  font-family: 'FontAwesome';
-  content: "\f068";
-  float: right;
-}
-
-.accordion .card-header.collapsed:after {
-  content: "\f067";
-}
-
-.accordion {
-  margin-bottom: 20px;
-}
-
-.custom-repo li {
-  display: inline-flex;
-  width: 150px;
-  position: relative
-}
-
-.custom-repo li:after {
-  content: '';
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: #000;
-  border-radius: 50%;
-  top: 7px;
-  left: -15px;
-}
-
-.annual-repo li {
-  width: 200px;
-}
-
-.card-header {
-  background-color: #a9d3fd;
-  border-bottom: 1px solid #bbddff;
-}
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
@@ -237,11 +197,11 @@
 
               <!--  <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4> -->
 
-                <li class="treeview" data-toggle="collapse" id="teste" data-target="#principal" aria-expanded="false" aria-controls="principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                <li class="treeview" data-toggle="collapse" data-target="#principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     
                     <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  PRINCIPAL</b></h4>
-                </li>
-                <ul class="nav nav-list collapse" style="margin-top:10px" data-parent="#teste" id="principal">
+
+                    <ul class="nav nav-list collapse" style="margin-top:10px" id="principal">
 
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
@@ -317,7 +277,7 @@
                   </li>
 
                   </ul>
-
+                </li>
 
                 <hr>
 
@@ -383,7 +343,7 @@
                     </a>
                 </li>
 
-<?php
+                <?php
 
           //  }
 
