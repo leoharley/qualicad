@@ -34,7 +34,7 @@
       background-color: #C0C0C0 !important;
     }
     .content-wrapper {
-      min-height: 800px;
+      min-height: 800px !important;
     }
   </style>
   <!-- jQuery 2.1.4 -->
