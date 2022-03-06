@@ -383,48 +383,7 @@
                     </a>
                 </li>
 
-
-                <div class="accordion-custom">
-  <div id="accordion" class="accordion">
-    <div class="card mb-0">
-      <!-- 1 -->
-      <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
-        <a class="card-title">
-          Corporate Governance
-        </a>
-      </div>
-      <div id="collapseOne" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-          <ul class="custom-repo">
-            <li><a href="#" target="_blank" class="report">June - 2019</a></li>
-            <li><a href="#">March - 2019</a></li>
-            <li><a href="#" target="_blank" class="report">Dec - 2018</a></li>
-          </ul>
-        </div>
-      </div>
-      
-       <!-- 2 -->
-      <div class="card-header collapsed" data-toggle="collapse" href="#collapseTwo">
-        <a class="card-title">
-          Corporate
-        </a>
-      </div>
-      <div id="collapseTwo" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-          <ul class="custom-repo">
-            <li><a href="#" target="_blank" class="report">June - 2019</a></li>
-            <li><a href="#">March - 2019</a></li>
-            <li><a href="#" target="_blank" class="report">Dec - 2018</a></li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-                <?php
+<?php
 
           //  }
 
