@@ -158,11 +158,13 @@
             ?>
             <hr <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
 
+            <div id="viewCustomFilters2" class="view-custom-filters">
+
             <li class="treeview" data-toggle="collapse" data-target="#cadastro" style="margin-bottom: 10px!important;cursor: pointer!important;<?php if ($this->session->userdata('isAdmin') != 'S') { echo 'display:none'; } ?>">
                     
                     <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  CADASTRO</b></h4>
 
-                    <ul class="nav nav-list collapse" style="margin-top:10px" id="cadastro">
+                    <ul class="nav nav-list collapse" style="margin-top:10px" data-parent="#viewCustomFilters2" id="cadastro">
 
                 <li class="treeview" <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
                   <a href="<?php echo base_url(); ?>cadastroUsuario/listar">
@@ -204,15 +206,18 @@
                 </ul>
                 </li>
 
+           </div>
+
                 <hr <?php if ($this->session->userdata('isAdmin') != 'S') { echo 'style=display:none'; } ?>>
 
               <!--  <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4> -->
 
+              <div id="viewCustomFilters" class="view-custom-filters">
                 <li class="treeview" data-toggle="collapse" data-target="#principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     
                     <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  PRINCIPAL</b></h4>
 
-                    <ul class="nav nav-list collapse" style="margin-top:10px" id="principal">
+                    <ul class="nav nav-list collapse" style="margin-top:10px" data-parent="#viewCustomFilters" id="principal">
 
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
@@ -289,6 +294,8 @@
 
                   </ul>
                 </li>
+
+           </div>
 
                 <hr>
 
