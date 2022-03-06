@@ -33,6 +33,20 @@
       color: #000 !important;
       background-color: #C0C0C0 !important;
     }
+
+    .view-custom-filters {
+  display: flex;
+}
+
+.view-collapse-button {
+  background: lightgrey;
+  width: 150px;
+  height: 50px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
@@ -339,6 +353,59 @@
                         <span>Relatórios</span>
                     </a>
                 </li>
+
+
+                <div id="viewCustomFilters" class="view-custom-filters">
+  <div class="view-collapse-wrap">
+    <div class="view-collapse-button" role="button" data-toggle="collapse" data-target="#categories-collapsed" aria-expanded="true" aria-controls="categories-collapsed">
+      Categories
+    </div>
+    <div class="view-collapse-content collapse" id="categories-collapsed" data-parent="#viewCustomFilters">
+      <ul>
+        <li>
+          <strong>All</strong>
+        </li>
+        <li>
+          <a href="#">Link 1</a>
+        </li>
+        <li>
+          <a href="#">Link 2</a>
+        </li>
+        <li>
+          <a href="#">Link 3</a>
+        </li>
+        <li>
+          <a href="#">Link 4</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="view-collapse-wrap">
+    <div class="view-collapse-button" role="button" data-toggle="collapse" data-target="#brands-collapsed" aria-expanded="true" aria-controls="brands-collapsed">
+      Brands
+    </div>
+    <div class="view-collapse-content collapse" id="brands-collapsed" data-parent="#viewCustomFilters">
+      <ul>
+        <li>
+          <strong>All</strong>
+        </li>
+        <li>
+          <a href="#">Link 5</a>
+        </li>
+        <li>
+          <a href="#">Link 6</a>
+        </li>
+        <li>
+          <a href="#">Link 7</a>
+        </li>
+        <li>
+          <a href="#">Link 8</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 
 
                 <?php
