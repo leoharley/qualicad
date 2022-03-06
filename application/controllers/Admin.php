@@ -241,11 +241,11 @@ class Admin extends BaseController
             }
             $data['userRecords'] = $this->user_model->logHistory($userId);
 
-            $process = 'Log Görüntüleme';
+            $process = 'Visualização de registros';
             $processFunction = 'Admin/logHistory';
             $this->logrecord($process,$processFunction);
 
-            $this->global['pageTitle'] = 'BSEU : Kullanıcı Giriş Geçmişi';
+        $this->global['pageTitle'] = 'QUALICAD : Histórico de ações do usuário';
             
             $this->loadViews("logHistory", $this->global, $data, NULL);
     }
