@@ -260,11 +260,11 @@ class Admin extends BaseController
             $data["userInfo"] = $this->user_model->getUserInfoById($userId);
             $data['userRecords'] = $this->user_model->logHistory($userId);
             
-            $process = 'Tekil Log Görüntüleme';
+            $process = 'Visualização de registro único';
             $processFunction = 'Admin/logHistorysingle';
             $this->logrecord($process,$processFunction);
 
-            $this->global['pageTitle'] = 'BSEU : Kullanıcı Giriş Geçmişi';
+            $this->global['pageTitle'] = 'QUALICAD : Histórico de ações do usuário';
             
             $this->loadViews("logHistorysingle", $this->global, $data, NULL);      
     }
@@ -315,11 +315,11 @@ class Admin extends BaseController
             }
             $data['userRecords'] = $this->user_model->logHistoryBackup();
 
-            $process = 'Yedek Log Görüntüleme';
+            $process = 'Visualização de registro de backup';
             $processFunction = 'Admin/logHistoryBackup';
             $this->logrecord($process,$processFunction);
 
-            $this->global['pageTitle'] = 'BSEU : Kullanıcı Yedek Giriş Geçmişi';
+            $this->global['pageTitle'] = 'QUALICAD : Backup do histórico de ações do usuário';
             
             $this->loadViews("logHistoryBackup", $this->global, $data, NULL);
     }
