@@ -36,6 +36,46 @@
     .content-wrapper {
       min-height: 800px !important;
     }
+
+    .accordion .card-header:after {
+  font-family: 'FontAwesome';
+  content: "\f068";
+  float: right;
+}
+
+.accordion .card-header.collapsed:after {
+  content: "\f067";
+}
+
+.accordion {
+  margin-bottom: 20px;
+}
+
+.custom-repo li {
+  display: inline-flex;
+  width: 150px;
+  position: relative
+}
+
+.custom-repo li:after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #000;
+  border-radius: 50%;
+  top: 7px;
+  left: -15px;
+}
+
+.annual-repo li {
+  width: 200px;
+}
+
+.card-header {
+  background-color: #a9d3fd;
+  border-bottom: 1px solid #bbddff;
+}
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
@@ -344,48 +384,41 @@
                 </li>
 
 
-                <div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Grupo de itens colapsável #1
-        </button>
-      </h5>
-    </div>
+                <div class="accordion-custom">
+  <div id="accordion" class="accordion">
+    <div class="card mb-0">
+      <!-- 1 -->
+      <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+        <a class="card-title">
+          Corporate Governance
+        </a>
+      </div>
+      <div id="collapseOne" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          <ul class="custom-repo">
+            <li><a href="#" target="_blank" class="report">June - 2019</a></li>
+            <li><a href="#">March - 2019</a></li>
+            <li><a href="#" target="_blank" class="report">Dec - 2018</a></li>
+          </ul>
+        </div>
+      </div>
+      
+       <!-- 2 -->
+      <div class="card-header collapsed" data-toggle="collapse" href="#collapseTwo">
+        <a class="card-title">
+          Corporate
+        </a>
+      </div>
+      <div id="collapseTwo" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          <ul class="custom-repo">
+            <li><a href="#" target="_blank" class="report">June - 2019</a></li>
+            <li><a href="#">March - 2019</a></li>
+            <li><a href="#" target="_blank" class="report">Dec - 2018</a></li>
+          </ul>
+        </div>
+      </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non alemanha 0 x 2 coreia do sul cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Grupo de itens colapsável #2
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Grupo de itens colapsável #3
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
     </div>
   </div>
 </div>
