@@ -287,6 +287,8 @@
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
                         <li class="treeview" style="margin-left:22px;">
+
+                        <input type="button" class="btn btn-default" value="Limpar" />
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Produção</span>
