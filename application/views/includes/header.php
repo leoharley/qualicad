@@ -285,7 +285,7 @@
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
                     <span style="margin-left:5px;color:white">Importação</span>
 
-                    <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
+                    <ul class="collapse" style="margin-top:10px" id="test">
                     <button class="btn btn-default" value="Limpar">teste</button>
                         <li class="treeview" style="margin-left:22px;">                       
                             <a href="<?php echo base_url(); ?>">
