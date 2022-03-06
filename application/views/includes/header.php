@@ -241,7 +241,7 @@
                     
                     <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  PRINCIPAL</b></h4>
                 </li>
-                <ul class="nav nav-list collapse" style="margin-top:10px" data-parent="#teste" id="principal">
+                <ul class="nav nav-list" style="margin-top:10px" data-parent="#teste" id="principal">
 
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
