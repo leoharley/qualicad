@@ -286,7 +286,7 @@
                     <span style="margin-left:5px;color:white">Importação</span>
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
-                    <input type="button" class="btn btn-default" value="Limpar" />
+                    <button class="btn btn-default" value="Limpar" />
                         <li class="treeview" style="margin-left:22px;">                       
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
