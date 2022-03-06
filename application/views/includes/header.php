@@ -132,7 +132,7 @@
           <li class="header">
           </li>
           <li class="treeview">
-            <a href="<?php echo base_url(); ?>dashboard">
+            <a href="<?php echo base_url(); ?>changePassword">
               <i class="fa fa-dashboard"></i>
               <span>Alterar a senha</span>
               </i>
