@@ -22,8 +22,7 @@
     <div class="login-box">
         <div class="login-logo">
             <a href="#">
-                <b>QUALICAD</b>
-                <br>PAINEL ADMIN MODELO</a>
+                <b>Sistema - Qualidade no Cadastro (Convênio)</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
