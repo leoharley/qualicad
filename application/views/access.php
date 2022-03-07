@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <br/><br/>
-                <img src="https://cdn1.iconfinder.com/data/icons/jetflat-multimedia-vol-4/90/0042_099_lock_access_denied_blocked-512.png"/>
+                <img src="https://cdn1.iconfinder.com/data/icons/jetflat-multimedia-vol-4/90/0042_099_lock_access_denied_blocked-512.png" width="60%"/>
                 <br/>
                 <h2 style="color:red">O ACESSO A ESTA PÁGINA NÃO ESTÁ AUTORIZADO!</h2>
             </div>
