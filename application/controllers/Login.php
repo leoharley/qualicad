@@ -134,6 +134,8 @@ class Login extends BaseController
                         }
                     }
 
+                    var_dump($sessionArray);exit;
+
                     $this->session->set_userdata($sessionArray);
                     
                 //    $role = 0; 
