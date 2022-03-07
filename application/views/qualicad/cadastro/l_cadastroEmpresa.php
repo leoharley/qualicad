@@ -54,8 +54,8 @@
                     <th>Telefone</th>
                     <th>Email</th>
                     <th>Val. contrato</th>
-                    <th>Data ativa</th>
-                    <th>Data inativa</th>
+                  <!--  <th>Data ativa</th>
+                    <th>Data inativa</th> -->
                     <th>Empresa ativa?</th>
                     <th>Ações</th>
                   </tr>
@@ -95,12 +95,12 @@
                       <td>
                         <?php echo $registro->Dt_Valida_Contrato ?>
                       </td>
-                      <td>
-                        <?php echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
+                    <!--  <td>
+                        <?php // echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
                       </td>
                       <td>
-                        <?php echo ($registro->Dt_Inativo != null) ? date("d/m/Y", strtotime($registro->Dt_Inativo)) : ''; ?>
-                      </td>
+                        <?php // echo ($registro->Dt_Inativo != null) ? date("d/m/Y", strtotime($registro->Dt_Inativo)) : ''; ?>
+                      </td> -->
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
