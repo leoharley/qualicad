@@ -1,8 +1,8 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Erişim Reddedildi
-            <small>Bu sayfaya giriş yetkiniz yok.</small>
+            Acesso negado
+            <small>Você não está autorizado à acessar essa página.</small>
         </h1>
     </section>
     <section class="content">
