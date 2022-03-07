@@ -123,20 +123,9 @@ class Login extends BaseController
                         if ($data->TbPerfil_Id_CdPerfil != NULL && $data->TbEmpresa_Id_Empresa != NULL) 
                         {
                             $associadoEmpresaPerfil = TRUE;
-                            if ($data->TbPerfil_Id_CdPerfil == '99') 
-                            {
-                                $sessionArray = array('isAdmin'=>'S');
-                            }
-                            else
-                            {
-                                $sessionArray = array('isAdmin'=>'N');
-                            }
                         }
                     }
 
-                    var_dump($sessionArray);exit;
-
-                    $this->session->set_userdata($sessionArray);
                     
                 //    $role = 0; 
                 //    $roleText = 'Admin';
@@ -234,8 +223,17 @@ class Login extends BaseController
             $roleText = ($data->Ds_Perfil);
             $IdUsuEmp = ($data->Id_UsuEmp);
             $IdEmpresa = ($data->TbEmpresa_Id_Empresa);
+            if ($data->TbPerfil_Id_CdPerfil == '99') 
+            {
+                $isAdmin = 'S';
+            }
+            else
+            {
+                $isAdmin = 'N';
+            }
         }
-        $sessionArray = array('role'=>$role,'roleText'=>$roleText,'IdUsuEmp'=>$IdUsuEmp, 'IdEmpresa'=>$IdEmpresa);
+        
+        $sessionArray = array('role'=>$role,'roleText'=>$roleText,'IdUsuEmp'=>$IdUsuEmp, 'IdEmpresa'=>$IdEmpresa, 'isAdmin'=>$isAdmin);
       //  }
 
         $this->session->set_userdata($sessionArray);
