@@ -8,7 +8,7 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <img src="https://silicophilic.com/wp-content/uploads/2019/08/Access_Denied.png" alt="Access Denied Image" />
+                <h2 style="color:red">O ACESSO A ESTÁ PÁGINA NÃO É PERMITIDO</h2>
             </div>
         </div>
     </section>
