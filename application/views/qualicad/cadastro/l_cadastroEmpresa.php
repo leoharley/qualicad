@@ -93,7 +93,7 @@
                         <?php echo $registro->Email_Empresa ?>
                       </td>
                       <td>
-                        <?php echo $registro->Dt_Valida_Contrato ?>
+                        <?php echo date("d/m/Y", strtotime($registro->Dt_Valida_Contrato)) ?>
                       </td>
                     <!--  <td>
                         <?php // echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
