@@ -51,8 +51,8 @@
                     <th>E-mail</th>
                     <th>Usuário ativo?</th>
                   <!--  <th>Admin?</th> -->
-                    <th>Data ativo</th>
-                    <th>Data inativo</th>
+                  <!--  <th>Data ativo</th>
+                    <th>Data inativo</th> -->
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -82,12 +82,12 @@
                     <!--  <td>
                         <?php //echo ($registro->Admin == 'S') ? 'Sim' : 'Não'; ?>
                       </td> -->
-                      <td>
-                        <?php echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
+                  <!--    <td>
+                        <?php //echo ($registro->Dt_Ativo != null) ? date("d/m/Y", strtotime($registro->Dt_Ativo)) : ''; ?>
                       </td>
                       <td>
-                        <?php echo ($registro->Dt_Inativo != null) ? date("d/m/Y", strtotime($registro->Dt_Inativo)) : ''; ?>
-                      </td>
+                        <?php //echo ($registro->Dt_Inativo != null) ? date("d/m/Y", strtotime($registro->Dt_Inativo)) : ''; ?>
+                      </td> -->
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
