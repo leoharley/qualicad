@@ -126,7 +126,7 @@ if(!empty($infoUsuario))
         </div>
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/<?php ($this->uri->segment(2) == 'cadastrar') ?'addUser.js':'addUserEditar.js';?>" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/<?php echo ($this->uri->segment(2) == 'cadastrar') ?'addUser.js':'addUserEditar.js';?>" type="text/javascript"></script>
 <script>
 $(document).ready(function(){
     $(":input").inputmask();
