@@ -8,7 +8,7 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <img src="<?php echo base_url() ?>assets/images/access.png" alt="Access Denied Image" />
+                <img src="https://silicophilic.com/wp-content/uploads/2019/08/Access_Denied.png" alt="Access Denied Image" />
             </div>
         </div>
     </section>
