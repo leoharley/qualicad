@@ -8,7 +8,8 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <h2 style="color:red">O ACESSO A ESTÁ PÁGINA NÃO É PERMITIDO</h2>
+                <br/><br/><br/>
+                <h2 style="color:red"><b>O ACESSO A ESTÁ PÁGINA NÃO É PERMITIDO</b></h2>
             </div>
         </div>
     </section>
