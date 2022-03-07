@@ -7,8 +7,10 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <br/><br/><br/>
-                <h2 style="color:red">O ACESSO A ESTÁ PÁGINA NÃO É PERMITIDO!</h2>
+                <br/><br/>
+                <img src="https://cdn1.iconfinder.com/data/icons/jetflat-multimedia-vol-4/90/0042_099_lock_access_denied_blocked-512.png"/>
+                <br/>
+                <h2 style="color:red">O ACESSO A ESTA PÁGINA NÃO ESTÁ AUTORIZADO!</h2>
             </div>
         </div>
     </section>
