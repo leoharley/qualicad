@@ -53,7 +53,7 @@ class Login extends BaseController
      */
     public function noaccess() {
         
-        $this->global['pageTitle'] = 'BSEU : Erişim Reddedildi';
+        $this->global['pageTitle'] = 'QUALICAD : Acesso negado';
         $this->datas();
 
         $this->load->view ( 'includes/header', $this->global );
