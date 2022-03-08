@@ -20,6 +20,7 @@ class Principal extends BaseController
         $this->load->model('user_model');
         $this->load->model('CadastroModel');
         $this->load->model('PrincipalModel');
+        $this->load->model('PermissaoModel');
         // Datas -> libraries ->BaseController / This function used load user sessions
         $this->datas();
         // isLoggedIn / Login control function /  This function used login control
@@ -651,7 +652,7 @@ class Principal extends BaseController
             if (array_key_exists('IrLista',$this->input->post())) {
                 redirect('principalFaturamento/listar'); 
             } 
-            
+
             $this->load->library('form_validation');
 
             $IdFaturamento = $this->input->post('Id_Faturamento');
@@ -972,6 +973,11 @@ class Principal extends BaseController
                 $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
     
                 if ($tpTela == 'listar') {
+
+                    if (($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndice'))[0]->Tp_Ativo == 'N')
+                    {
+                        redirect('noaccess');
+                    }
     
                     $searchText = $this->security->xss_clean($this->input->post('searchText'));
                     $data['searchText'] = $searchText;
