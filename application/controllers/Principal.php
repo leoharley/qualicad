@@ -50,6 +50,12 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
+                if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+                    !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+                    {
+                        redirect('telaNaoAutorizada');
+                    }
+
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
                 
@@ -70,10 +76,22 @@ class Principal extends BaseController
                 $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
             }
             else if ($tpTela == 'cadastrar') {
+
+                if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
                 $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
+
+                if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $IdConvenio = $this->uri->segment(3);
                 if($IdConvenio == null)
                 {
@@ -254,6 +272,12 @@ class Principal extends BaseController
 
     function apagaConvenio()
     {
+
+            if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+                {
+                    redirect('acaoNaoAutorizada');
+                }
+
             $IdConvenio = $this->uri->segment(2);
 
             $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
@@ -289,6 +313,12 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
+                if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaPlano') ||
+                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaPlano'))
+                {
+                    redirect('telaNaoAutorizada');
+                }
+
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
                 
@@ -309,6 +339,12 @@ class Principal extends BaseController
                 $this->loadViews("qualicad/principal/l_principalPlano", $this->global, $data, NULL);
             }
             else if ($tpTela == 'cadastrar') {
+
+                if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaPlano'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));
                 $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
                 $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegrasEmpresa($this->session->userdata('IdEmpresa'));
@@ -316,6 +352,12 @@ class Principal extends BaseController
                 $this->loadViews("qualicad/principal/c_principalPlano", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
+
+                if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaPlano'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $IdPlano = $this->uri->segment(3);
                 if($IdPlano == null)
                 {
@@ -495,6 +537,11 @@ class Principal extends BaseController
 
     function apagaPlano()
     {
+            if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaPlano'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
             $IdPlano = $this->uri->segment(2);
 
             $infoPlano = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
@@ -530,6 +577,12 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
+                if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaFaturamento') ||
+                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaFaturamento'))
+                {
+                    redirect('telaNaoAutorizada');
+                }
+
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
                 
@@ -550,10 +603,22 @@ class Principal extends BaseController
                 $this->loadViews("qualicad/principal/l_principalFaturamento", $this->global, $data, NULL);
             }
             else if ($tpTela == 'cadastrar') {
+
+                if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaFaturamento'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Faturamento';
                 $this->loadViews("qualicad/principal/c_principalFaturamento", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
+
+                if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaFaturamento'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $IdFaturamento = $this->uri->segment(3);
                 if($IdFaturamento == null)
                 {
@@ -718,6 +783,11 @@ class Principal extends BaseController
 
     function apagaFaturamento()
     {
+            if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaFaturamento'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
             $IdFaturamento = $this->uri->segment(2);
 
             $infoFaturamento = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
@@ -753,6 +823,12 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
+                if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaRegra') ||
+                    !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaRegra'))
+                    {
+                        redirect('telaNaoAutorizada');
+                    }
+
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
                 
@@ -773,10 +849,22 @@ class Principal extends BaseController
                 $this->loadViews("qualicad/principal/l_principalRegra", $this->global, $data, NULL);
             }
             else if ($tpTela == 'cadastrar') {
+
+                if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaRegra'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $this->global['pageTitle'] = 'QUALICAD : Lista de Regra';
                 $this->loadViews("qualicad/principal/c_principalRegra", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
+
+                if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaRegra'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $IdRegra = $this->uri->segment(3);
                 if($IdRegra == null)
                 {
@@ -939,6 +1027,11 @@ class Principal extends BaseController
 
     function apagaRegra()
     {
+            if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegra'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
             $IdRegra = $this->uri->segment(2);
 
             $infoRegra = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
@@ -1196,7 +1289,6 @@ class Principal extends BaseController
     
         function apagaIndice()
         {
-
                 if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaIndice'))
                     {
                         redirect('acaoNaoAutorizada');
