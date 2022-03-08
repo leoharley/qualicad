@@ -976,7 +976,7 @@ class Principal extends BaseController
 
                     if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndice'))
                     {
-                        redirect('noaccess');
+                        redirect('telaProibida');
                     }
     
                     $searchText = $this->security->xss_clean($this->input->post('searchText'));
