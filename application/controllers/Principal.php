@@ -999,6 +999,12 @@ class Principal extends BaseController
                     $this->loadViews("qualicad/principal/l_principalIndice", $this->global, $data, NULL);
                 }
                 else if ($tpTela == 'cadastrar') {
+
+                    if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaIndice'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                     $this->global['pageTitle'] = 'QUALICAD : Cadastro de Índice';
                     $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL); 
                 }
