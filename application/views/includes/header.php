@@ -103,7 +103,6 @@
                       <?php echo $role_text; ?>
                       <br/>
                       <?php echo $nomeEmpresa;?>
-                      <?php echo $IdUsuEmp; ?>
                     </small>
                   </p>
                 </li>
