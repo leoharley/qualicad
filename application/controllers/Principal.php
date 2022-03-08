@@ -974,7 +974,7 @@ class Principal extends BaseController
     
                 if ($tpTela == 'listar') {
 
-                    if (($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndice'))[0]->Tp_Ativo == 'N')
+                    if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndice'))
                     {
                         redirect('noaccess');
                     }
