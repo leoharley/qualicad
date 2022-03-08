@@ -117,7 +117,7 @@ $route['principalPlanoModal'] = "principal/principalPlanoModal";
 
 /*********** ADMIN CONTROLLER ROUTES *******************/
 $route['noaccess'] = 'login/noaccess';
-$route['telaProibida'] = 'login/telaProibida';
+$route['telaNaoAutorizada'] = 'login/telaNaoAutorizada';
 $route['userListing'] = 'admin/userListing';
 $route['userListing/(:num)'] = "admin/userListing/$1";
 $route['addNew'] = "admin/addNew";

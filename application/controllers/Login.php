@@ -61,13 +61,13 @@ class Login extends BaseController
 		$this->load->view ( 'includes/footer' );
     }
 
-    public function telaProibida() {
+    public function telaNaoAutorizada() {
         
         $this->global['pageTitle'] = 'QUALICAD : Acesso negado';
         $this->datas();
 
         $this->load->view ( 'includes/header', $this->global );
-		$this->load->view ( 'telaProibida' );
+		$this->load->view ( 'telaNaoAutorizada' );
 		$this->load->view ( 'includes/footer' );
     }
 
