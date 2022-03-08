@@ -1009,6 +1009,12 @@ class Principal extends BaseController
                     $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL); 
                 }
                 else if ($tpTela == 'editar') {
+
+                    if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaIndice'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                     $IdIndice = $this->uri->segment(3);
                     if($IdIndice == null)
                     {
@@ -1189,6 +1195,12 @@ class Principal extends BaseController
     
         function apagaIndice()
         {
+
+                if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaIndice'))
+                    {
+                        redirect('acaoNaoAutorizada');
+                    }
+
                 $IdIndice = $this->uri->segment(2);
 
                 $infoIndice = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));

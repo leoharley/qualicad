@@ -17,6 +17,21 @@ class PermissaoModel extends CI_Model
         return $query->result();
     }
 
+    function permissaoAcaoAtualizar($IdUsuEmp, $dsTela)
+    {
+        $this->db->select('*');    
+        $this->db->from('TbPermissao as Permissao'); 
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.TbPerfil_Id_CdPerfil  = Permissao.TbPerfil_Id_CdPerfil','left');
+        $this->db->join('TabTela as Tela', 'Tela.TbPerfil_Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil','left');
+        $this->db->where('UsuEmp.Id_UsuEmp', $IdUsuEmp);
+        $this->db->where('Tela.Ds_Tela', $dsTela);
+        $this->db->where('Tela.Tp_Ativo', 'S');
+        $this->db->where('Permissao.Atualizar', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function permissaoAcaoInserir($IdUsuEmp, $dsTela)
     {
         $this->db->select('*');    
@@ -27,6 +42,51 @@ class PermissaoModel extends CI_Model
         $this->db->where('Tela.Ds_Tela', $dsTela);
         $this->db->where('Tela.Tp_Ativo', 'S');
         $this->db->where('Permissao.Inserir', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function permissaoAcaoExcluir($IdUsuEmp, $dsTela)
+    {
+        $this->db->select('*');    
+        $this->db->from('TbPermissao as Permissao'); 
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.TbPerfil_Id_CdPerfil  = Permissao.TbPerfil_Id_CdPerfil','left');
+        $this->db->join('TabTela as Tela', 'Tela.TbPerfil_Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil','left');
+        $this->db->where('UsuEmp.Id_UsuEmp', $IdUsuEmp);
+        $this->db->where('Tela.Ds_Tela', $dsTela);
+        $this->db->where('Tela.Tp_Ativo', 'S');
+        $this->db->where('Permissao.Excluir', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function permissaoAcaoConsultar($IdUsuEmp, $dsTela)
+    {
+        $this->db->select('*');    
+        $this->db->from('TbPermissao as Permissao'); 
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.TbPerfil_Id_CdPerfil  = Permissao.TbPerfil_Id_CdPerfil','left');
+        $this->db->join('TabTela as Tela', 'Tela.TbPerfil_Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil','left');
+        $this->db->where('UsuEmp.Id_UsuEmp', $IdUsuEmp);
+        $this->db->where('Tela.Ds_Tela', $dsTela);
+        $this->db->where('Tela.Tp_Ativo', 'S');
+        $this->db->where('Permissao.Consultar', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function permissaoAcaoImprimir($IdUsuEmp, $dsTela)
+    {
+        $this->db->select('*');    
+        $this->db->from('TbPermissao as Permissao'); 
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.TbPerfil_Id_CdPerfil  = Permissao.TbPerfil_Id_CdPerfil','left');
+        $this->db->join('TabTela as Tela', 'Tela.TbPerfil_Id_CdPerfil = UsuEmp.TbPerfil_Id_CdPerfil','left');
+        $this->db->where('UsuEmp.Id_UsuEmp', $IdUsuEmp);
+        $this->db->where('Tela.Ds_Tela', $dsTela);
+        $this->db->where('Tela.Tp_Ativo', 'S');
+        $this->db->where('Permissao.Imprimir', 'S');
         $query = $this->db->get();
 
         return $query->result();
