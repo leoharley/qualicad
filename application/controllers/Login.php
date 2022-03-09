@@ -135,8 +135,6 @@ class Login extends BaseController
                     $process = 'Autenticação';
                     $processFunction = 'Login/loginMe';
 
-                    var_dump($res->Admin);exit;
-
                     $empresasPerfilUsuario = $this->CadastroModel->carregaEmpresasPerfilUsuario($res->Id_Usuario);
 
                     $associadoEmpresaPerfil = FALSE;
