@@ -26,8 +26,7 @@ class User extends BaseController
      */
     public function index()
     {
-        if ($this->session->userdata('idEmpresa') !== null || $this->session->userdata('isAdmin') == 'S'
-            || $this->session->userdata('email') == 'admin@admin.com') {
+        if ($this->session->userdata('idEmpresa') !== null || $this->session->userdata('isAdmin') == 'S') {
             $this->global['pageTitle'] = 'QUALICAD : Página inicial';
 
             $data['tasksCount'] = $this->user_model->tasksCount();

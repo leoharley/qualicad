@@ -178,8 +178,11 @@ class Login extends BaseController
 
                 //    if ($res->Admin == 'S') { redirect('/dashboard'); } else { redirect('/welcome'); }
 
-                if (empty($this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId')))) 
+                //EXCEÇÃO DE NÃO PRECISAR ESTAR ASSOCIADO A UMA EMPRESA SE FOR O SUPERADMIN  
+                if ($this->session->userdata('email') == 'admin@admin.com')
                 {
+                    $sessionArray = array('isAdmin'=>'S');
+                    $this->session->set_userdata($sessionArray);
                     redirect('/dashboard');
                 } else {
                     redirect('/welcome');
