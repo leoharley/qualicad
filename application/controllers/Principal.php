@@ -1319,6 +1319,1324 @@ class Principal extends BaseController
         }
         // FIM DAS FUNÇÕES DA TELA DE INDICE
 
+    // INICIO DAS FUNÇÕES DA TELA DE INDICE GRUPO PRO
+
+    function principalIndiceGrupoPro()
+    {
+        $tpTela = $this->uri->segment(2);
+
+        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+        if ($tpTela == 'listar') {
+
+            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndiceGrupoPro') ||
+                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaIndiceGrupoPro'))
+            {
+                redirect('telaNaoAutorizada');
+            }
+
+            $searchText = $this->security->xss_clean($this->input->post('searchText'));
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->CadastroModel->userListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "principalIndiceGrupoPro/listar", $count, 10 );
+
+            $data['registrosIndiceGrupoPro'] = $this->PrincipalModel->listaIndiceGrupoPro($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+
+            $process = 'Listar convênios';
+            $processFunction = 'Principal/principalConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+
+            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'cadastrar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'editar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $IdConvenio = $this->uri->segment(3);
+            if($IdConvenio == null)
+            {
+                redirect('principalConvenio/listar');
+            }
+            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
+            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+    }
+
+    function adicionaIndiceGrupoPro()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+        $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        //    $roleId = $this->input->post('role');
+
+        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+
+            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+
+            if($result > 0)
+            {
+                $process = 'Adicionar convênio';
+                $processFunction = 'Principal/adicionaConvenio';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+
+                if (array_key_exists('salvarIrLista',$this->input->post())) {
+                    redirect('principalConvenio/listar');
+                }
+                else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                    redirect('principalConvenio/cadastrar');
+                }
+                else if (array_key_exists('salvarAvancar',$this->input->post())) {
+                    redirect('principalPlano/cadastrar');
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na criação do convênio');
+                redirect('principalConvenio/cadastrar');
+            }
+
+        } else {
+            $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+            redirect('principalConvenio/cadastrar');
+        }
+
+        redirect('principalConvenio/cadastrar');
+
+        //    }
+    }
+
+
+    function editaIndiceGrupoPro()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $IdConvenio = $this->input->post('Id_Convenio');
+
+        //VALIDAÇÃO
+
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+           $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+           $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+           $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+           $this->form_validation->set_rules('role','Role','trim|required|numeric');
+           $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+           if($this->form_validation->run() == FALSE)
+           {
+               $this->editOld($userId);
+           }
+           else
+           { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+            $Tp_Ativo_Atual = ($data->Tp_Ativo);
+        }
+
+        //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+        if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+        {
+            $Dt_Ativo = date('Y-m-d H:i:s');
+            $Dt_Inativo = null;
+        } else if ($Tp_Ativo == 'N')
+        {
+            $Dt_Ativo = null;
+            $Dt_Inativo = date('Y-m-d H:i:s');
+        }
+
+        //'Senha'=>getHashedPassword($senha)
+        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+
+        if($resultado == true)
+        {
+            $process = 'Convênio atualizado';
+            $processFunction = 'Principal/editaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+        }
+
+        redirect('principalConvenio/listar');
+        // }
+    }
+
+    function apagaIndiceGrupoPro()
+    {
+
+        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        {
+            redirect('acaoNaoAutorizada');
+        }
+
+        $IdConvenio = $this->uri->segment(2);
+
+        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de convênio';
+            $processFunction = 'Principal/apagaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+        }
+        redirect('principalConvenio/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE INDICE GRUPO PRO
+
+    // INICIO DAS FUNÇÕES DA TELA DE REGRA PROIBIÇÃO
+
+    function principalRegraProibicao()
+    {
+        $tpTela = $this->uri->segment(2);
+
+        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+        if ($tpTela == 'listar') {
+
+            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('telaNaoAutorizada');
+            }
+
+            $searchText = $this->security->xss_clean($this->input->post('searchText'));
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->CadastroModel->userListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+
+            $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+
+            $process = 'Listar convênios';
+            $processFunction = 'Principal/principalConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+
+            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'cadastrar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'editar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $IdConvenio = $this->uri->segment(3);
+            if($IdConvenio == null)
+            {
+                redirect('principalConvenio/listar');
+            }
+            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
+            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+    }
+
+    function adicionaRegraProibicao()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+        $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        //    $roleId = $this->input->post('role');
+
+        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+
+            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+
+            if($result > 0)
+            {
+                $process = 'Adicionar convênio';
+                $processFunction = 'Principal/adicionaConvenio';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+
+                if (array_key_exists('salvarIrLista',$this->input->post())) {
+                    redirect('principalConvenio/listar');
+                }
+                else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                    redirect('principalConvenio/cadastrar');
+                }
+                else if (array_key_exists('salvarAvancar',$this->input->post())) {
+                    redirect('principalPlano/cadastrar');
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na criação do convênio');
+                redirect('principalConvenio/cadastrar');
+            }
+
+        } else {
+            $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+            redirect('principalConvenio/cadastrar');
+        }
+
+        redirect('principalConvenio/cadastrar');
+
+        //    }
+    }
+
+
+    function editaRegraProibicao()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $IdConvenio = $this->input->post('Id_Convenio');
+
+        //VALIDAÇÃO
+
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+           $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+           $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+           $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+           $this->form_validation->set_rules('role','Role','trim|required|numeric');
+           $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+           if($this->form_validation->run() == FALSE)
+           {
+               $this->editOld($userId);
+           }
+           else
+           { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+            $Tp_Ativo_Atual = ($data->Tp_Ativo);
+        }
+
+        //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+        if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+        {
+            $Dt_Ativo = date('Y-m-d H:i:s');
+            $Dt_Inativo = null;
+        } else if ($Tp_Ativo == 'N')
+        {
+            $Dt_Ativo = null;
+            $Dt_Inativo = date('Y-m-d H:i:s');
+        }
+
+        //'Senha'=>getHashedPassword($senha)
+        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+
+        if($resultado == true)
+        {
+            $process = 'Convênio atualizado';
+            $processFunction = 'Principal/editaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+        }
+
+        redirect('principalConvenio/listar');
+        // }
+    }
+
+    function apagaRegraProibicao()
+    {
+
+        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        {
+            redirect('acaoNaoAutorizada');
+        }
+
+        $IdConvenio = $this->uri->segment(2);
+
+        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de convênio';
+            $processFunction = 'Principal/apagaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+        }
+        redirect('principalConvenio/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE REGRA PROIBIÇÃO
+
+    // INICIO DAS FUNÇÕES DA TELA DE FRAÇÃO SIMPRO BRA
+
+    function principalFracaoSimproBra()
+    {
+        $tpTela = $this->uri->segment(2);
+
+        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+        if ($tpTela == 'listar') {
+
+            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('telaNaoAutorizada');
+            }
+
+            $searchText = $this->security->xss_clean($this->input->post('searchText'));
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->CadastroModel->userListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+
+            $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+
+            $process = 'Listar convênios';
+            $processFunction = 'Principal/principalConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+
+            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'cadastrar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'editar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $IdConvenio = $this->uri->segment(3);
+            if($IdConvenio == null)
+            {
+                redirect('principalConvenio/listar');
+            }
+            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
+            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+    }
+
+    function adicionaFracaoSimproBra()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+        $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        //    $roleId = $this->input->post('role');
+
+        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+
+            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+
+            if($result > 0)
+            {
+                $process = 'Adicionar convênio';
+                $processFunction = 'Principal/adicionaConvenio';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+
+                if (array_key_exists('salvarIrLista',$this->input->post())) {
+                    redirect('principalConvenio/listar');
+                }
+                else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                    redirect('principalConvenio/cadastrar');
+                }
+                else if (array_key_exists('salvarAvancar',$this->input->post())) {
+                    redirect('principalPlano/cadastrar');
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na criação do convênio');
+                redirect('principalConvenio/cadastrar');
+            }
+
+        } else {
+            $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+            redirect('principalConvenio/cadastrar');
+        }
+
+        redirect('principalConvenio/cadastrar');
+
+        //    }
+    }
+
+
+    function editaFracaoSimproBra()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $IdConvenio = $this->input->post('Id_Convenio');
+
+        //VALIDAÇÃO
+
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+           $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+           $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+           $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+           $this->form_validation->set_rules('role','Role','trim|required|numeric');
+           $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+           if($this->form_validation->run() == FALSE)
+           {
+               $this->editOld($userId);
+           }
+           else
+           { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+            $Tp_Ativo_Atual = ($data->Tp_Ativo);
+        }
+
+        //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+        if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+        {
+            $Dt_Ativo = date('Y-m-d H:i:s');
+            $Dt_Inativo = null;
+        } else if ($Tp_Ativo == 'N')
+        {
+            $Dt_Ativo = null;
+            $Dt_Inativo = date('Y-m-d H:i:s');
+        }
+
+        //'Senha'=>getHashedPassword($senha)
+        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+
+        if($resultado == true)
+        {
+            $process = 'Convênio atualizado';
+            $processFunction = 'Principal/editaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+        }
+
+        redirect('principalConvenio/listar');
+        // }
+    }
+
+    function apagaFracaoSimproBra()
+    {
+
+        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        {
+            redirect('acaoNaoAutorizada');
+        }
+
+        $IdConvenio = $this->uri->segment(2);
+
+        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de convênio';
+            $processFunction = 'Principal/apagaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+        }
+        redirect('principalConvenio/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE FRAÇÃO SIMPRO BRA
+
+
+    // INICIO DAS FUNÇÕES DA TELA DE FATURAMENTO ITEM
+
+    function principalFaturamentoItem()
+    {
+        $tpTela = $this->uri->segment(2);
+
+        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+        if ($tpTela == 'listar') {
+
+            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('telaNaoAutorizada');
+            }
+
+            $searchText = $this->security->xss_clean($this->input->post('searchText'));
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->CadastroModel->userListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+
+            $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+
+            $process = 'Listar convênios';
+            $processFunction = 'Principal/principalConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+
+            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'cadastrar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'editar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $IdConvenio = $this->uri->segment(3);
+            if($IdConvenio == null)
+            {
+                redirect('principalConvenio/listar');
+            }
+            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
+            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+    }
+
+    function adicionaFaturamentoItem()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+        $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        //    $roleId = $this->input->post('role');
+
+        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+
+            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+
+            if($result > 0)
+            {
+                $process = 'Adicionar convênio';
+                $processFunction = 'Principal/adicionaConvenio';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+
+                if (array_key_exists('salvarIrLista',$this->input->post())) {
+                    redirect('principalConvenio/listar');
+                }
+                else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                    redirect('principalConvenio/cadastrar');
+                }
+                else if (array_key_exists('salvarAvancar',$this->input->post())) {
+                    redirect('principalPlano/cadastrar');
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na criação do convênio');
+                redirect('principalConvenio/cadastrar');
+            }
+
+        } else {
+            $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+            redirect('principalConvenio/cadastrar');
+        }
+
+        redirect('principalConvenio/cadastrar');
+
+        //    }
+    }
+
+
+    function editaFaturamentoItem()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $IdConvenio = $this->input->post('Id_Convenio');
+
+        //VALIDAÇÃO
+
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+           $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+           $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+           $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+           $this->form_validation->set_rules('role','Role','trim|required|numeric');
+           $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+           if($this->form_validation->run() == FALSE)
+           {
+               $this->editOld($userId);
+           }
+           else
+           { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+            $Tp_Ativo_Atual = ($data->Tp_Ativo);
+        }
+
+        //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+        if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+        {
+            $Dt_Ativo = date('Y-m-d H:i:s');
+            $Dt_Inativo = null;
+        } else if ($Tp_Ativo == 'N')
+        {
+            $Dt_Ativo = null;
+            $Dt_Inativo = date('Y-m-d H:i:s');
+        }
+
+        //'Senha'=>getHashedPassword($senha)
+        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+
+        if($resultado == true)
+        {
+            $process = 'Convênio atualizado';
+            $processFunction = 'Principal/editaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+        }
+
+        redirect('principalConvenio/listar');
+        // }
+    }
+
+    function apagaFaturamentoItem()
+    {
+
+        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        {
+            redirect('acaoNaoAutorizada');
+        }
+
+        $IdConvenio = $this->uri->segment(2);
+
+        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de convênio';
+            $processFunction = 'Principal/apagaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+        }
+        redirect('principalConvenio/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE FATURAMENTO ITEM
+
+
+    // INICIO DAS FUNÇÕES DA TELA DE UNIDADE
+
+    function principalUnidade()
+    {
+        $tpTela = $this->uri->segment(2);
+
+        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+        if ($tpTela == 'listar') {
+
+            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('telaNaoAutorizada');
+            }
+
+            $searchText = $this->security->xss_clean($this->input->post('searchText'));
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->CadastroModel->userListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+
+            $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+
+            $process = 'Listar convênios';
+            $processFunction = 'Principal/principalConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+
+            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'cadastrar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'editar') {
+
+            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $IdConvenio = $this->uri->segment(3);
+            if($IdConvenio == null)
+            {
+                redirect('principalConvenio/listar');
+            }
+            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
+            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
+            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+        }
+    }
+
+    function adicionaUnidade()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+        $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        //    $roleId = $this->input->post('role');
+
+        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+
+            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+
+            if($result > 0)
+            {
+                $process = 'Adicionar convênio';
+                $processFunction = 'Principal/adicionaConvenio';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+
+                if (array_key_exists('salvarIrLista',$this->input->post())) {
+                    redirect('principalConvenio/listar');
+                }
+                else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                    redirect('principalConvenio/cadastrar');
+                }
+                else if (array_key_exists('salvarAvancar',$this->input->post())) {
+                    redirect('principalPlano/cadastrar');
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na criação do convênio');
+                redirect('principalConvenio/cadastrar');
+            }
+
+        } else {
+            $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+            redirect('principalConvenio/cadastrar');
+        }
+
+        redirect('principalConvenio/cadastrar');
+
+        //    }
+    }
+
+
+    function editaUnidade()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalConvenio/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $IdConvenio = $this->input->post('Id_Convenio');
+
+        //VALIDAÇÃO
+
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+           $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+           $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+           $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+           $this->form_validation->set_rules('role','Role','trim|required|numeric');
+           $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+           if($this->form_validation->run() == FALSE)
+           {
+               $this->editOld($userId);
+           }
+           else
+           { */
+
+        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
+        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
+        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
+        $Tp_Convenio = $this->input->post('Tp_Convenio');
+        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
+        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+            $Tp_Ativo_Atual = ($data->Tp_Ativo);
+        }
+
+        //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+        if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+        {
+            $Dt_Ativo = date('Y-m-d H:i:s');
+            $Dt_Inativo = null;
+        } else if ($Tp_Ativo == 'N')
+        {
+            $Dt_Ativo = null;
+            $Dt_Inativo = date('Y-m-d H:i:s');
+        }
+
+        //'Senha'=>getHashedPassword($senha)
+        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+
+
+        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+
+        if($resultado == true)
+        {
+            $process = 'Convênio atualizado';
+            $processFunction = 'Principal/editaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+        }
+
+        redirect('principalConvenio/listar');
+        // }
+    }
+
+    function apagaUnidade()
+    {
+
+        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        {
+            redirect('acaoNaoAutorizada');
+        }
+
+        $IdConvenio = $this->uri->segment(2);
+
+        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de convênio';
+            $processFunction = 'Principal/apagaConvenio';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+        }
+        redirect('principalConvenio/listar');
+    }
+    // FIM DAS FUNÇÕES DA TELA DE UNIDADE
+
+
     function principalPlanoModal()
     {
         $data['roles'] = $this->user_model->getUserRoles();
@@ -1326,15 +2644,6 @@ class Principal extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Plano';
 
         $this->loadViewsModal("qualicad/principal/principalPlano", $this->global, $data, NULL);
-    }
-
-    function principalFaturamentoItem()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Faturamento Item';
-
-        $this->loadViews("qualicad/principal/principalFaturamentoItem", $this->global, $data, NULL);
     }
 
     function principalRegraGrupoPro()
@@ -1346,14 +2655,6 @@ class Principal extends BaseController
         $this->loadViews("qualicad/principal/principalRegraGrupoPro", $this->global, $data, NULL);
     }
 
-    function principalIndiceGrupoPro()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Índice Grupo Pro';
-
-        $this->loadViews("qualicad/principal/principalIndiceGrupoPro", $this->global, $data, NULL);
-    }
 
     function principalProibicao()
     {
@@ -1362,33 +2663,6 @@ class Principal extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Proibição';
 
         $this->loadViews("qualicad/principal/principalProibicao", $this->global, $data, NULL);
-    }
-
-    function principalRegraProibicao()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Regra Proibição';
-
-        $this->loadViews("qualicad/principal/principalRegraProibicao", $this->global, $data, NULL);
-    }
-
-    function principalFracaoSimproBra()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Fração Simpro Bra';
-
-        $this->loadViews("qualicad/principal/principalFracaoSimproBra", $this->global, $data, NULL);
-    }
-
-    function principalUnidade()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Unidade';
-
-        $this->loadViews("qualicad/principal/principalUnidade", $this->global, $data, NULL);
     }
 
 

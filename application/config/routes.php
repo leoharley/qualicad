@@ -78,6 +78,21 @@ $route['principalRegra/:any'] = "principal/principalRegra/$1";
 $route['principalIndice/:any/:any'] = "principal/principalIndice/$1/$2";
 $route['principalIndice/:any'] = "principal/principalIndice/$1";
 
+$route['principalIndiceGrupoPro/:any/:any'] = "principal/principalIndiceGrupoPro/$1/$2";
+$route['principalIndiceGrupoPro/:any'] = "principal/principalIndiceGrupoPro/$1";
+
+$route['principalRegraProibicao/:any/:any'] = "principal/principalRegraProibicao/$1/$2";
+$route['principalRegraProibicao/:any'] = "principal/principalRegraProibicao/$1";
+
+$route['principalFracaoSimproBra/:any/:any'] = "principal/principalFracaoSimproBra/$1/$2";
+$route['principalFracaoSimproBra/:any'] = "principal/principalFracaoSimproBra/$1";
+
+$route['principalFaturamentoItem/:any/:any'] = "principal/principalFaturamentoItem/$1/$2";
+$route['principalFaturamentoItem/:any'] = "principal/principalFaturamentoItem/$1";
+
+$route['principalUnidade/:any/:any'] = "principal/principalUnidade/$1/$2";
+$route['principalUnidade/:any'] = "principal/principalUnidade/$1";
+
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";
 $route['editaConvenio'] = "principal/editaConvenio";
@@ -103,14 +118,34 @@ $route['adicionaIndice'] = "principal/adicionaIndice";
 $route['editaIndice'] = "principal/editaIndice";
 $route['apagaIndice/:any'] = "principal/apagaIndice/$1";
 
+/*********** ROUTES PARA AÇÕES DA TELA ÍNDICE GRUPO PRO *******************/
+$route['adicionaIndiceGrupoPro'] = "principal/adicionaIndiceGrupoPro";
+$route['editaIndiceGrupoPro'] = "principal/editaIndiceGrupoPro";
+$route['apagaIndiceGrupoPro/:any'] = "principal/apagaIndiceGrupoPro/$1";
 
-$route['principalFaturamentoItem'] = "principal/principalFaturamentoItem";
+/*********** ROUTES PARA AÇÕES DA TELA DE REGRA PROIBIÇÃO *******************/
+$route['adicionaRegraProibicao'] = "principal/adicionaRegraProibicao";
+$route['editaRegraProibicao'] = "principal/editaRegraProibicao";
+$route['apagaRegraProibicao/:any'] = "principal/apagaRegraProibicao/$1";
+
+/*********** ROUTES PARA AÇÕES DA TELA DE FRAÇÃO SIMPRO BRA *******************/
+$route['adicionaFracaoSimproBra'] = "principal/adicionaFracaoSimproBra";
+$route['editaFracaoSimproBra'] = "principal/editaFracaoSimproBra";
+$route['apagaFracaoSimproBra/:any'] = "principal/apagaFracaoSimproBra/$1";
+
+/*********** ROUTES PARA AÇÕES DA TELA DE FATURAMENTO ITEM *******************/
+$route['adicionaFaturamentoItem'] = "principal/adicionaFaturamentoItem";
+$route['editaFaturamentoItem'] = "principal/editaFaturamentoItem";
+$route['apagaFaturamentoItem/:any'] = "principal/apagaFaturamentoItem/$1";
+
+/*********** ROUTES PARA AÇÕES DA TELA DE UNIDADE *******************/
+$route['adicionaUnidade'] = "principal/adicionaUnidade";
+$route['editaUnidade'] = "principal/editaUnidade";
+$route['apagaUnidade/:any'] = "principal/apagaUnidade/$1";
+
+
 $route['principalRegraGrupoPro'] = "principal/principalRegraGrupoPro";
-$route['principalIndiceGrupoPro'] = "principal/principalIndiceGrupoPro";
 $route['principalProibicao'] = "principal/principalProibicao";
-$route['principalRegraProibicao'] = "principal/principalRegraProibicao";
-$route['principalFracaoSimproBra'] = "principal/principalFracaoSimproBra";
-$route['principalUnidade'] = "principal/principalUnidade";
 
 $route['principalPlanoModal'] = "principal/principalPlanoModal";
 
