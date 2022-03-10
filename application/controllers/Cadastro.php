@@ -947,6 +947,8 @@ function adicionaUsuarioEmpresa()
             $resultado = $this->CadastroModel->verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario);
 
             $perfilInfo = $this->CadastroModel->carregaInfoPerfil($Id_CdPerfil);
+
+            if (empty($resultado)) {
             
             $resultado = $this->CadastroModel->adicionaUsuarioEmpresa($infoUsuarioEmpresa);
 
