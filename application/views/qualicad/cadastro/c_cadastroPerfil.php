@@ -3,6 +3,7 @@
 $Id_CdPerfil  = '';
 $Ds_Perfil = '';
 $Tp_Ativo = '';
+$PerfilAdmin = '';
 
 if ($this->uri->segment(2) == 'editar') {
 if(!empty($infoPerfil))
@@ -12,6 +13,7 @@ if(!empty($infoPerfil))
         $Id_CdPerfil = $r->Id_CdPerfil;
         $Ds_Perfil = $r->Ds_Perfil;
         $Tp_Ativo = $r->Tp_Ativo;
+        $PerfilAdmin = $r->PerfilAdmin;
     }
 }
 }
@@ -60,6 +62,19 @@ if(!empty($infoPerfil))
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="PerfilAdmin">Perfil Admin?</label>
+                                        <select class="form-control required" id="PerfilAdmin" name="PerfilAdmin">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $PerfilAdmin == 'S') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $PerfilAdmin == 'N') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Não</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             
                         </div>
                         <!-- /.box-body -->

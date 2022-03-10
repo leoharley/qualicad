@@ -295,7 +295,7 @@ function apagaPerfil($infoPerfil, $IdPerfil)
 
 function carregaInfoPerfil($IdPerfil)
 {
-    $this->db->select('Id_CdPerfil , Ds_Perfil, CriadoPor, AtualizadoPor, Dt_Atualizacao, Dt_Ativo,
+    $this->db->select('Id_CdPerfil, Ds_Perfil, PerfilAdmin, PerfilAdmin, CriadoPor, AtualizadoPor, Dt_Atualizacao, Dt_Ativo,
     Dt_Inativo, Tp_Ativo');
     $this->db->from('TbPerfil');
     $this->db->where('Id_CdPerfil', $IdPerfil);

@@ -554,6 +554,7 @@ class Cadastro extends BaseController
                 $Id_CdPerfil = $this->input->post('Id_CdPerfil');
                 $Ds_Perfil = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Perfil'))));
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
+                $PerfilAdmin = $this->input->post('PerfilAdmin');
 
             //    $roleId = $this->input->post('role');
 
@@ -567,7 +568,7 @@ class Cadastro extends BaseController
                 }
                 
                 $infoPerfil = array('Id_CdPerfil'=>$Id_CdPerfil, 'Ds_Perfil'=> $Ds_Perfil, 'CriadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
-                                    'Tp_Ativo'=>$Tp_Ativo);
+                                    'PerfilAdmin'=>$PerfilAdmin, 'Tp_Ativo'=>$Tp_Ativo);
                                     
                 $resultado = $this->CadastroModel->adicionaPerfil($infoPerfil);
                 
@@ -613,6 +614,7 @@ class Cadastro extends BaseController
             { */
 
                 $Ds_Perfil = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Perfil'))));
+                $PerfilAdmin = $this->input->post('PerfilAdmin');
                 $Tp_Ativo = $this->input->post('Tp_Ativo');  
 
                 foreach ($this->CadastroModel->carregaInfoPerfil($IdPerfil) as $data){
@@ -630,7 +632,7 @@ class Cadastro extends BaseController
                 }                
                 
                 $infoPerfil = array('Ds_Perfil'=> $Ds_Perfil, 'AtualizadoPor'=>$this->vendorId, 'Dt_Ativo'=>$Dt_Ativo,
-                                    'Dt_Inativo'=>$Dt_Inativo,'Tp_Ativo'=>$Tp_Ativo);
+                                    'PerfilAdmin'=>$PerfilAdmin, 'Dt_Inativo'=>$Dt_Inativo,'Tp_Ativo'=>$Tp_Ativo);
                 
                 
                 $resultado = $this->CadastroModel->editaPerfil($infoPerfil, $IdPerfil);
@@ -944,13 +946,11 @@ function adicionaUsuarioEmpresa()
 
             $resultado = $this->CadastroModel->verificaUsuarioEmpresa($Id_Empresa,$Id_Usuario);
 
-        //    var_dump($resultado);exit;
-
-            if (empty($resultado)) {
+            $perfilInfo = $this->CadastroModel->carregaInfoPerfil($Id_CdPerfil);
             
             $resultado = $this->CadastroModel->adicionaUsuarioEmpresa($infoUsuarioEmpresa);
 
-            if ($Id_CdPerfil == '99')
+            if ($perfilInfo[0]->PerfilAdmin == 'S')
             { 
                 $infoUsuario = array('Admin'=>'S');
                 $resultado2 = $this->CadastroModel->setaUsuarioAdm($Id_Usuario,$infoUsuario);
