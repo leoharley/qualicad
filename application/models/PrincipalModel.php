@@ -437,6 +437,75 @@ function carregaInfoIndicesEmpresa($idEmpresa)
     }
 // FIM DAS CONSULTAS NA TELA DE INDICE GRUPO PRO
 
+// INICIO DAS CONSULTAS NA TELA DE REGRA PROIBIÇÃO
+function listaRegraProibicao($IdEmpresa, $searchText = '', $page, $segment)
+{
+    $this->db->select('*');
+    $this->db->from('TbIndice as Indice');
+//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+    if(!empty($searchText)) {
+        $likeCriteria = "(Indice.Ds_Indice LIKE '%".$searchText."%')";
+        $this->db->where($likeCriteria);
+    }
+    $this->db->where('Indice.Deletado !=', 'S');
+    $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
+    $this->db->limit($page, $segment);
+    $query = $this->db->get();
+
+    $result = $query->result();
+    return $result;
+}
+
+function adicionaRegraProibicao($info)
+{
+    $this->db->trans_start();
+    $this->db->insert('TbIndice', $info);
+
+    $insert_id = $this->db->insert_id();
+
+    $this->db->trans_complete();
+
+    return $insert_id;
+}
+
+function editaRegraProibicao($info, $id)
+{
+    $this->db->where('Id_Indice', $id);
+    $this->db->update('TbIndice', $info);
+
+    return TRUE;
+}
+
+function apagaRegraProibicao($info, $id)
+{
+    $this->db->where('Id_Indice', $id);
+    $this->db->update('TbIndice', $info);
+
+    return $this->db->affected_rows();
+}
+
+function carregaInfoRegraProibicao($Id)
+{
+    $this->db->select('*');
+    $this->db->from('TbIndice');
+    $this->db->where('Id_Indice', $Id);
+    $query = $this->db->get();
+
+    return $query->result();
+}
+
+function carregaInfoRegraProibicaoEmpresa($idEmpresa)
+{
+    $this->db->select('*');
+    $this->db->from('TbIndice as Indice');
+    $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
+    $query = $this->db->get();
+
+    return $query->result();
+}
+// FIM DAS CONSULTAS NA TELA DE REGRA PROIBIÇÃO
+
+
 // INICIO DAS CONSULTAS NA TELA DE PROIBIÇÃO
     function listaProibicao($IdEmpresa, $searchText = '', $page, $segment)
     {
