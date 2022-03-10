@@ -157,8 +157,6 @@ class Login extends BaseController
                         $idempresa = $empresasPerfilUsuario['TbEmpresa_Id_Empresa'];
                      } */
 
-                     var_dump($res->Admin);exit;
-
                     if ($associadoEmpresaPerfil || $res->Admin == 'S') {
                    
                     $sessionArray = array('userId'=>$res->Id_Usuario,
@@ -248,14 +246,6 @@ class Login extends BaseController
             $roleText = ($data->Ds_Perfil);
             $IdUsuEmp = ($data->Id_UsuEmp);
             $IdEmpresa = ($data->TbEmpresa_Id_Empresa);
-            if ($data->TbPerfil_Id_CdPerfil == '99') 
-            {
-                $isAdmin = 'S';
-            }
-            else
-            {
-                $isAdmin = 'N';
-            }
         }
         
         $sessionArray = array('role'=>$role,'roleText'=>$roleText,'IdUsuEmp'=>$IdUsuEmp, 'IdEmpresa'=>$IdEmpresa, 'isAdmin'=>$isAdmin);
