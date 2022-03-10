@@ -82,10 +82,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="tpmatmed">Tipo MatMed</label>
-                                        <select class="form-control required" id="tpmatmed" name="tpmatmed">
-                                            <option value="1">MATMED_1</option>
-											<option value="2">MATMED_2</option>
+                                        <label for="Tp_MatMed">Tipo MatMed</label>
+                                        <select class="form-control required" id="Tp_MatMed" name="Tp_MatMed">
+                                            <option value="MED" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MED') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>MED</option>
+                                            <option value="MAT" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MAT') { echo 'selected'; } ?>>MAT</option>
+                                            <option value="SOL" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'SOL') { echo 'selected'; } ?>>SOL</option>
                                         </select>
                                     </div>
                                 </div>

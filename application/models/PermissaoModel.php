@@ -14,7 +14,8 @@ class PermissaoModel extends CI_Model
         $this->db->where('Tela.Tp_Ativo', 'S');
         $query = $this->db->get();
 
-        return $query->result();
+        //return $query->result();
+        return TRUE;
     }
 
     function permissaoAcaoAtualizar($IdUsuEmp, $dsTela)
@@ -30,7 +31,8 @@ class PermissaoModel extends CI_Model
         $this->db->where('Permissao.Atualizar', 'S');
         $query = $this->db->get();
 
-        return $query->result();
+    //    return $query->result();
+        return TRUE;
     }
 
     function permissaoAcaoInserir($IdUsuEmp, $dsTela)
@@ -46,7 +48,8 @@ class PermissaoModel extends CI_Model
         $this->db->where('Permissao.Inserir', 'S');
         $query = $this->db->get();
 
-        return $query->result();
+    //    return $query->result();
+        return TRUE;
     }
 
     function permissaoAcaoExcluir($IdUsuEmp, $dsTela)
@@ -62,7 +65,8 @@ class PermissaoModel extends CI_Model
         $this->db->where('Permissao.Excluir', 'S');
         $query = $this->db->get();
 
-        return $query->result();
+    //    return $query->result();
+        return TRUE;
     }
 
     function permissaoAcaoConsultar($IdUsuEmp, $dsTela)
@@ -78,7 +82,8 @@ class PermissaoModel extends CI_Model
         $this->db->where('Permissao.Consultar', 'S');
         $query = $this->db->get();
 
-        return $query->result();
+    //    return $query->result();
+        return TRUE;
     }
 
     function permissaoAcaoImprimir($IdUsuEmp, $dsTela)
@@ -94,7 +99,8 @@ class PermissaoModel extends CI_Model
         $this->db->where('Permissao.Imprimir', 'S');
         $query = $this->db->get();
 
-        return $query->result();
+        //return $query->result();
+        return TRUE;
     }
 
 }

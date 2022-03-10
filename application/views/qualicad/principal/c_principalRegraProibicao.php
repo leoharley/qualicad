@@ -1,9 +1,42 @@
+<?php
+
+$Id_RegraProibicao = '';
+$TbFaturamento_Id_Faturamento = '';
+$TbGrupoPro_CodGrupo  = '';
+$TbPlano_Id_Plano  = '';
+
+$Ds_RegraProibicao = '';
+$Tp_RegraProibicao = '';
+$Tp_Atendimento = '';
+$Vl_RegraProibicao = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoRegraProibicao))
+{
+    foreach ($infoRegraProibicao as $r)
+    {
+        $Id_RegraProibicao = $r->Id_RegraProibicao;
+        $TbFaturamento_Id_Faturamento = $r->TbFaturamento_Id_Faturamento;
+        $TbGrupoPro_CodGrupo = $r->TbGrupoPro_CodGrupo;
+        $TbPlano_Id_Plano = $r->TbPlano_Id_Plano;
+        $Ds_RegraProibicao = $r->Ds_RegraProibicao;
+        $Tp_RegraProibicao = $r->Tp_RegraProibicao;
+        $Tp_Atendimento = $r->Tp_Atendimento;
+        $Vl_RegraProibicao = $r->Vl_RegraProibicao;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Regra Proibição
-            <small>Associar / Adicionar</small>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Regra Proibição' : 'Editar Regra Proibição' ; ?>
+            <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
@@ -23,24 +56,46 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addRegraProibicao" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaRegraProibicao' : base_url().'editaRegraProibicao'; ?>" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsfaturamento">Faturamento associado</label>
-                                        <select class="form-control required" id="dsfaturamento" name="dsfaturamento">
-                                            <option value="1">FATURAMENTO_1</option>
-											<option value="2">FATURAMENTO_2</option>
+                                        <label for="TbFaturamento_Id_Faturamento">Faturamento associado</label>
+                                        <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            <?php
+                                            if(!empty($infoFaturamento))
+                                            {
+                                                foreach ($infoFaturamento as $faturamento)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
+                                                    <?php echo $faturamento->Ds_Faturamento ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsgrupropro">Grupro pro associado</label>
-                                        <select class="form-control required" id="dsgrupropro" name="dsgrupropro">
-                                            <option value="1">GRUPO_PRO_1</option>
-											<option value="2">GRUPO_PRO_2</option>
+                                        <label for="TbGrupoPro_CodGrupo">Grupo Pro associado</label>
+                                        <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
+                                            <?php
+                                            if(!empty($infoGrupoPro))
+                                            {
+                                                foreach ($infoGrupoPro as $grupoPro)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
+                                                    <?php echo $grupoPro->Ds_GrupoPro ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -48,17 +103,28 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsplano">Plano associado</label>
-                                        <select class="form-control required" id="dsplano" name="dsplano">
-                                            <option value="1">PLANO_1</option>
-											<option value="2">PLANO_2</option>
+                                        <label for="TbPlano_Id_Plano">Plano associado</label>
+                                        <select class="form-control required" id="TbPlano_Id_Plano" name="TbPlano_Id_Plano">
+                                            <?php
+                                            if(!empty($infoPlano))
+                                            {
+                                                foreach ($infoPlano as $plano)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $plano->Id_Plano ?>" <?php if ($this->uri->segment(2) == 'editar' && $plano->Id_Plano == $TbPlano_Id_Plano) { echo 'selected'; } ?>>
+                                                    <?php echo $plano->Ds_Plano ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsregraproibicao">Descrição</label>
-                                        <input type="text" class="form-control required email" id="dsregraproibicao" value="<?php echo set_value('dsregraproibicao'); ?>" name="dsregraproibicao"
+                                        <label for="Ds_RegraProibicao">Descrição</label>
+                                        <input type="text" class="form-control required email" id="Ds_RegraProibicao" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_RegraProibicao') : $Ds_RegraProibicao ; ?>" name="Ds_RegraProibicao"
                                             maxlength="128">
                                     </div>
                                 </div>
@@ -66,19 +132,22 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="tpregraproibicao">Tipo de regra de proibição</label>
-                                        <select class="form-control required" id="tpregraproibicao" name="tpregraproibicao">
-                                            <option value="1">TIPO_REGRA_PROIBICAO_1</option>
-											<option value="2">TIPO_REGRA_PROIBICAO_2</option>
+                                        <label for="Tp_RegraProibicao">Tipo de regra de proibição</label>
+                                        <select class="form-control required" id="Tp_RegraProibicao" name="Tp_RegraProibicao">
+                                            <option value="AG" <?php if ($this->uri->segment(2) == 'editar' && $Tp_RegraProibicao == 'AG') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>AG</option>
+                                            <option value="FC" <?php if ($this->uri->segment(2) == 'editar' && $Tp_RegraProibicao == 'FC') { echo 'selected'; } ?>>FC</option>
+                                            <option value="NA" <?php if ($this->uri->segment(2) == 'editar' && $Tp_RegraProibicao == 'NA') { echo 'selected'; } ?>>NA</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="tpatendimento">Tipo de atendimento</label>
-                                        <select class="form-control required" id="tpatendimento" name="tpatendimento">
-                                            <option value="1">TIPO_ATENDIMENTO_1</option>
-											<option value="2">TIPO_ATENDIMENTO_2</option>
+                                        <label for="Tp_Atendimento">Tipo de atendimento</label>
+                                        <select class="form-control required" id="Tp_Atendimento" name="Tp_Atendimento">
+                                            <option value="T" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'T') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>T</option>
+                                            <option value="U" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'U') { echo 'selected'; } ?>>U</option>
+                                            <option value="I" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'I') { echo 'selected'; } ?>>NA</option>
+                                            <option value="A" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'A') { echo 'selected'; } ?>>NA</option>
                                         </select>
                                     </div>
                                 </div>
