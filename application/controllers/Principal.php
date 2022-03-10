@@ -1607,17 +1607,17 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalRegraProibicao/listar", $count, 10 );
 
-            $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+            $data['registrosRegraProibicao'] = $this->PrincipalModel->listaRegraProibicao($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
-            $process = 'Listar convênios';
-            $processFunction = 'Principal/principalConvenio';
+            $process = 'Listar regra proibição';
+            $processFunction = 'Principal/principalRegraProibicao';
             $this->logrecord($process,$processFunction);
 
-            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Regra Proibição';
 
-            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+            $this->loadViews("qualicad/principal/l_principalRegraProibicao", $this->global, $data, NULL);
         }
         else if ($tpTela == 'cadastrar') {
 
@@ -1626,8 +1626,8 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Regra Proibição';
+            $this->loadViews("qualicad/principal/c_principalRegraProibicao", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
@@ -1636,14 +1636,14 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $IdConvenio = $this->uri->segment(3);
-            if($IdConvenio == null)
+            $IdRegraProibicao = $this->uri->segment(3);
+            if($IdRegraProibicao == null)
             {
-                redirect('principalConvenio/listar');
+                redirect('principalRegraProibicao/listar');
             }
-            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
-            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $data['infoRegraProibicao'] = $this->PrincipalModel->carregaInfoRegraProibicao($IdRegraProibicao);
+            $this->global['pageTitle'] = 'QUALICAD : Editar Regra Proibição';
+            $this->loadViews("qualicad/principal/c_principalRegraProibicao", $this->global, $data, NULL);
         }
     }
 
@@ -1870,17 +1870,17 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalFracaoSimproBra/listar", $count, 10 );
 
-            $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+            $data['registrosFracaoSimproBra'] = $this->PrincipalModel->listaFracaoSimproBra($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
-            $process = 'Listar convênios';
-            $processFunction = 'Principal/principalConvenio';
+            $process = 'Listar fração simpro BRA';
+            $processFunction = 'Principal/principalFracaoSimproBra';
             $this->logrecord($process,$processFunction);
 
-            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Fração Simpro BRA';
 
-            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+            $this->loadViews("qualicad/principal/l_principalFracaoSimproBra", $this->global, $data, NULL);
         }
         else if ($tpTela == 'cadastrar') {
 
@@ -1889,8 +1889,8 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Fração Simpro BRA';
+            $this->loadViews("qualicad/principal/c_principalFracaoSimproBra", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
@@ -1899,14 +1899,14 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $IdConvenio = $this->uri->segment(3);
-            if($IdConvenio == null)
+            $IdFracaoSimproBra = $this->uri->segment(3);
+            if($IdFracaoSimproBra == null)
             {
-                redirect('principalConvenio/listar');
+                redirect('principalFracaoSimproBra/listar');
             }
-            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
-            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $data['infoFracaoSimproBra'] = $this->PrincipalModel->carregaInfoFracaoSimproBra($IdFracaoSimproBra);
+            $this->global['pageTitle'] = 'QUALICAD : Editar Fração Simpro BRA';
+            $this->loadViews("qualicad/principal/c_principalFracaoSimproBra", $this->global, $data, NULL);
         }
     }
 
@@ -2134,17 +2134,17 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalFaturamentoItem/listar", $count, 10 );
 
-            $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+            $data['registrosFaturamentoItem'] = $this->PrincipalModel->listaFaturamentoItem($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
-            $process = 'Listar convênios';
-            $processFunction = 'Principal/principalConvenio';
+            $process = 'Listar faturamento item';
+            $processFunction = 'Principal/principalFaturamentoItem';
             $this->logrecord($process,$processFunction);
 
-            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Faturamento Item';
 
-            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+            $this->loadViews("qualicad/principal/l_principalFaturamentoItem", $this->global, $data, NULL);
         }
         else if ($tpTela == 'cadastrar') {
 
@@ -2153,8 +2153,8 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Faturamento Item';
+            $this->loadViews("qualicad/principal/c_principalFaturamentoItem", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
@@ -2163,14 +2163,14 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $IdConvenio = $this->uri->segment(3);
-            if($IdConvenio == null)
+            $IdFaturamentoItem = $this->uri->segment(3);
+            if($IdFaturamentoItem == null)
             {
-                redirect('principalConvenio/listar');
+                redirect('principalFaturamentoItem/listar');
             }
-            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
-            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $data['infoFaturamentoItem'] = $this->PrincipalModel->carregaInfoFaturamentoItem($IdFaturamentoItem);
+            $this->global['pageTitle'] = 'QUALICAD : Editar Faturamento Item';
+            $this->loadViews("qualicad/principal/c_principalFaturamentoItem", $this->global, $data, NULL);
         }
     }
 
@@ -2398,17 +2398,17 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalUnidade/listar", $count, 10 );
 
-            $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+            $data['registrosUnidade'] = $this->PrincipalModel->listaUnidade($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
-            $process = 'Listar convênios';
-            $processFunction = 'Principal/principalConvenio';
+            $process = 'Listar unidade';
+            $processFunction = 'Principal/principalUnidade';
             $this->logrecord($process,$processFunction);
 
-            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Unidade';
 
-            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+            $this->loadViews("qualicad/principal/l_principalUnidade", $this->global, $data, NULL);
         }
         else if ($tpTela == 'cadastrar') {
 
@@ -2417,8 +2417,8 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Unidade';
+            $this->loadViews("qualicad/principal/c_principalUnidade", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
@@ -2427,14 +2427,14 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $IdConvenio = $this->uri->segment(3);
-            if($IdConvenio == null)
+            $IdUnidade = $this->uri->segment(3);
+            if($IdUnidade == null)
             {
-                redirect('principalConvenio/listar');
+                redirect('principalUnidade/listar');
             }
-            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
-            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $data['infoUnidade'] = $this->PrincipalModel->carregaInfoUnidade($IdUnidade);
+            $this->global['pageTitle'] = 'QUALICAD : Editar Unidade';
+            $this->loadViews("qualicad/principal/c_principalUnidade", $this->global, $data, NULL);
         }
     }
 
@@ -2639,15 +2639,6 @@ class Principal extends BaseController
     // FIM DAS FUNÇÕES DA TELA DE UNIDADE
 
 
-    function principalPlanoModal()
-    {
-        $data['roles'] = $this->user_model->getUserRoles();
-
-        $this->global['pageTitle'] = 'QUALICAD : Plano';
-
-        $this->loadViewsModal("qualicad/principal/principalPlano", $this->global, $data, NULL);
-    }
-
     function principalRegraGrupoPro()
     {
         $data['roles'] = $this->user_model->getUserRoles();
@@ -2665,6 +2656,16 @@ class Principal extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Proibição';
 
         $this->loadViews("qualicad/principal/principalProibicao", $this->global, $data, NULL);
+    }
+
+
+    function principalPlanoModal()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Plano';
+
+        $this->loadViewsModal("qualicad/principal/principalPlano", $this->global, $data, NULL);
     }
 
 
