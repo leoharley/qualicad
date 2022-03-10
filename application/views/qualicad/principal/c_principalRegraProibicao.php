@@ -77,6 +77,7 @@ if(!empty($infoRegraProibicao))
                                             }
                                             ?>
                                         </select>
+                                        <input type="hidden" value="<?php echo $Id_RegraProibicao; ?>" name="Id_RegraProibicao" id="Id_RegraProibicao" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -155,9 +156,18 @@ if(!empty($infoRegraProibicao))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="vlregraproibicao">Valor da regra de proibição</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vlregraproibicao'); ?>" id="vlregraproibicao" name="vlregraproibicao"
+                                        <label for="Vl_RegraProibicao">Valor da regra de proibição</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_RegraProibicao') : $Vl_RegraProibicao ; ?>" id="Vl_RegraProibicao" name="Vl_RegraProibicao"
                                         maxlength="11">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Tp_Ativo">Regra ativa?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
