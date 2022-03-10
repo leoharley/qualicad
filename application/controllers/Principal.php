@@ -1331,11 +1331,11 @@ class Principal extends BaseController
 
         if ($tpTela == 'listar') {
 
-            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndiceGrupoPro') ||
+        /*    if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndiceGrupoPro') ||
                 !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaIndiceGrupoPro'))
             {
                 redirect('telaNaoAutorizada');
-            }
+            } */
 
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
@@ -1358,20 +1358,20 @@ class Principal extends BaseController
         }
         else if ($tpTela == 'cadastrar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
             $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $IdConvenio = $this->uri->segment(3);
             if($IdConvenio == null)
@@ -1554,10 +1554,10 @@ class Principal extends BaseController
     function apagaIndiceGrupoPro()
     {
 
-        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+    /*    if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
         {
             redirect('acaoNaoAutorizada');
-        }
+        } */
 
         $IdConvenio = $this->uri->segment(2);
 
@@ -1594,11 +1594,11 @@ class Principal extends BaseController
 
         if ($tpTela == 'listar') {
 
-            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+        /*    if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
                 !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('telaNaoAutorizada');
-            }
+            } */
 
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
@@ -1621,20 +1621,20 @@ class Principal extends BaseController
         }
         else if ($tpTela == 'cadastrar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
             $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $IdConvenio = $this->uri->segment(3);
             if($IdConvenio == null)
@@ -1817,10 +1817,10 @@ class Principal extends BaseController
     function apagaRegraProibicao()
     {
 
-        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+    /*    if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
         {
             redirect('acaoNaoAutorizada');
-        }
+        } */
 
         $IdConvenio = $this->uri->segment(2);
 
@@ -1857,11 +1857,11 @@ class Principal extends BaseController
 
         if ($tpTela == 'listar') {
 
-            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+        /*    if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
                 !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('telaNaoAutorizada');
-            }
+            } */
 
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
@@ -1884,20 +1884,20 @@ class Principal extends BaseController
         }
         else if ($tpTela == 'cadastrar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+       /*    if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
             $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $IdConvenio = $this->uri->segment(3);
             if($IdConvenio == null)
@@ -2080,10 +2080,10 @@ class Principal extends BaseController
     function apagaFracaoSimproBra()
     {
 
-        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+    /*    if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
         {
             redirect('acaoNaoAutorizada');
-        }
+        } */
 
         $IdConvenio = $this->uri->segment(2);
 
@@ -2121,11 +2121,11 @@ class Principal extends BaseController
 
         if ($tpTela == 'listar') {
 
-            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+        /*    if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
                 !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('telaNaoAutorizada');
-            }
+            } */
 
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
@@ -2148,20 +2148,20 @@ class Principal extends BaseController
         }
         else if ($tpTela == 'cadastrar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
             $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $IdConvenio = $this->uri->segment(3);
             if($IdConvenio == null)
@@ -2344,10 +2344,10 @@ class Principal extends BaseController
     function apagaFaturamentoItem()
     {
 
-        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+    /*    if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
         {
             redirect('acaoNaoAutorizada');
-        }
+        } */
 
         $IdConvenio = $this->uri->segment(2);
 
@@ -2385,11 +2385,11 @@ class Principal extends BaseController
 
         if ($tpTela == 'listar') {
 
-            if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
+        /*    if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') ||
                 !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('telaNaoAutorizada');
-            }
+            } */
 
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
@@ -2412,20 +2412,20 @@ class Principal extends BaseController
         }
         else if ($tpTela == 'cadastrar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
             $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
-            if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        /*    if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
             {
                 redirect('acaoNaoAutorizada');
-            }
+            } */
 
             $IdConvenio = $this->uri->segment(3);
             if($IdConvenio == null)
@@ -2608,10 +2608,10 @@ class Principal extends BaseController
     function apagaUnidade()
     {
 
-        if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+    /*    if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
         {
             redirect('acaoNaoAutorizada');
-        }
+        } */
 
         $IdConvenio = $this->uri->segment(2);
 
