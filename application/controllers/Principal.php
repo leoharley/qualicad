@@ -50,6 +50,7 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
+                var_dump($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio'));exit;
                 if (($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')) != '' &&
                     ($this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')) != '' &&
                     $this->session->userdata('email') != 'admin@admin.com')
