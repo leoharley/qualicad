@@ -52,8 +52,8 @@ class Principal extends BaseController
 
                 var_dump($this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'));exit;
 
-                if ((!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio') &&
-                    !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')) &&
+                if (!empty($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')) &&
+                    !empty($this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')) &&
                     !$this->session->userdata('email') == 'admin@admin.com')
                     {
                         redirect('telaNaoAutorizada');
