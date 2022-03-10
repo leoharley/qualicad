@@ -1,9 +1,46 @@
+<?php
+
+$Id_FracaoSimproBra = '';
+$TbProFat_Cd_ProFat = '';
+$TbFaturamento_Id_Faturamento  = '';
+$TbTUSS_Id_Tuss  = '';
+
+$Ds_FracaoSimproBra = '';
+$Ds_Laboratorio = '';
+$Ds_Apresentacao = '';
+$Tp_MatMed = '';
+$Vl_FatorDivisao = '';
+$Qt_Prod = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoFracaoSimproBra))
+{
+    foreach ($infoFracaoSimproBra as $r)
+    {
+        $Id_FracaoSimproBra = $r->Id_FracaoSimproBra;
+        $TbProFat_Cd_ProFat = $r->TbProFat_Cd_ProFat;
+        $TbFaturamento_Id_Faturamento = $r->TbFaturamento_Id_Faturamento;
+        $TbTUSS_Id_Tuss = $r->TbTUSS_Id_Tuss;
+        $Ds_FracaoSimproBra = $r->Ds_FracaoSimproBra;
+        $Ds_Laboratorio = $r->Ds_Laboratorio;
+        $Ds_Apresentacao = $r->Ds_Apresentacao;
+        $Tp_MatMed = $r->Tp_MatMed;
+        $Vl_FatorDivisao = $r->Vl_FatorDivisao;
+        $Qt_Prod = $r->Qt_Prod;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Fração Simpro Bra
-            <small>Associar / Adicionar</small>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Fração Simpro Bra' : 'Editar Fração Simpro Bra' ; ?>
+            <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
@@ -23,24 +60,47 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addFracaoSimproBra" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaFracaoSimproBra' : base_url().'editaFracaoSimproBra'; ?>" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsprofat">ProFat associada</label>
-                                        <select class="form-control required" id="dsprofat" name="dsprofat">
-                                            <option value="1">PROFAT_1</option>
-											<option value="2">PROFAT_2</option>
+                                        <label for="TbProFat_Cd_ProFat">ProFat associado</label>
+                                        <select class="form-control required" id="TbProFat_Cd_ProFat" name="TbProFat_Cd_ProFat">
+                                            <?php
+                                            if(!empty($infoProFat))
+                                            {
+                                                foreach ($infoProFat as $proFat)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $proFat->Cd_ProFat ?>" <?php if ($this->uri->segment(2) == 'editar' && $proFat->Cd_ProFat == $TbProFat_Cd_ProFat) { echo 'selected'; } ?>>
+                                                    <?php echo $proFat->Ds_ProFat ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
+                                        <input type="hidden" value="<?php echo $Id_FracaoSimproBra; ?>" name="Id_FracaoSimproBra" id="Id_FracaoSimproBra" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsfaturamento">Faturamento associado</label>
-                                        <select class="form-control required" id="dsfaturamento" name="dsfaturamento">
-                                            <option value="1">FATURAMENTO_1</option>
-											<option value="2">FATURAMENTO_2</option>
+                                        <label for="TbFaturamento_Id_Faturamento">Faturamento associado</label>
+                                        <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            <?php
+                                            if(!empty($infoFaturamento))
+                                            {
+                                                foreach ($infoFaturamento as $faturamento)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento  == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
+                                                    <?php echo $faturamento->Ds_Faturamento ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -48,17 +108,28 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dstuss">TUSS associada</label>
-                                        <select class="form-control required" id="dstuss" name="dstuss">
-                                            <option value="1">TUSS_1</option>
-											<option value="2">TUSS_1</option>
+                                        <label for="TbTUSS_Id_Tuss">TUSS associada</label>
+                                        <select class="form-control required" id="TbTUSS_Id_Tuss" name="TbTUSS_Id_Tuss">
+                                            <?php
+                                            if(!empty($infoTUSS))
+                                            {
+                                                foreach ($infoTUSS as $tuss)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $tuss->Id_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Id_Tuss == $TbTUSS_Id_Tuss) { echo 'selected'; } ?>>
+                                                    <?php echo $tuss->Ds_Tuss ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsfracaosimprobra">Descrição fração simpro bra</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('dsfracaosimprobra'); ?>" id="dsfracaosimprobra" name="dsfracaosimprobra"
+                                        <label for="Ds_FracaoSimproBra">Descrição fração simpro bra</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FracaoSimproBra') : $Ds_FracaoSimproBra ; ?>" id="Ds_FracaoSimproBra" name="Ds_FracaoSimproBra"
                                         maxlength="128">
                                     </div>
                                 </div>
@@ -66,15 +137,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dslaboratorio">Descrição laboratório</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('dslaboratorio'); ?>" id="dslaboratorio" name="dslaboratorio"
+                                        <label for="Ds_Laboratorio">Descrição laboratório</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Laboratorio') : $Ds_Laboratorio ; ?>" id="Ds_Laboratorio" name="Ds_Laboratorio"
                                         maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsapresentacao">Descrição apresentação</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('dsapresentacao'); ?>" id="dsapresentacao" name="dsapresentacao"
+                                        <label for="Ds_Apresentacao">Descrição apresentação</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Apresentacao') : $Ds_Apresentacao ; ?>" id="Ds_Apresentacao" name="Ds_Apresentacao"
                                         maxlength="128">
                                     </div>
                                 </div>
@@ -92,8 +163,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="vlfatordivisao">Valor do fator de divisão</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vlfatordivisao'); ?>" id="vlfatordivisao" name="vlfatordivisao"
+                                        <label for="Vl_FatorDivisao">Valor do fator de divisão</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_FatorDivisao') : $Vl_FatorDivisao ; ?>" id="Vl_FatorDivisao" name="Vl_FatorDivisao"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -101,8 +172,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="qtprod">Quantidade de produção</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('qtprod'); ?>" id="qtprod" name="qtprod"
+                                        <label for="Qt_Prod">Quantidade de produção</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Qt_Prod') : $Qt_Prod ; ?>" id="Qt_Prod" name="Qt_Prod"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -127,4 +198,4 @@
         </div>
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addFracaoSimproBra.js" type="text/javascript"></script>
