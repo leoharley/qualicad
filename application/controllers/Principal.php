@@ -52,7 +52,7 @@ class Principal extends BaseController
 
                 if (($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')) != '' &&
                     ($this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')) != '' &&
-                    !$this->session->userdata('email') == 'admin@admin.com')
+                    $this->session->userdata('email') != 'admin@admin.com')
                     {
                         redirect('telaNaoAutorizada');
                     }
