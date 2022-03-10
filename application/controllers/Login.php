@@ -165,7 +165,7 @@ class Login extends BaseController
                                             'roleText'=>$roleText,
                                             'name'=>$res->Nome_Usuario,
                                         //    'lastLogin'=> $lastLogin->createdDtm,
-                                        //    'isAdmin'=>$res->Admin,
+                                            'isAdmin'=>$res->Admin,
                                             'status'=> $res->Tp_Ativo,
                                             'isLoggedIn' => TRUE
                                     );
