@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-users"></i> Listar Convênios
+      <i class="fa fa-users"></i> Listar Índice por Grupo de Procedimento
       <small>Listar</small>
     </h1>
   </section>
@@ -10,7 +10,7 @@
     <div class="col-xs-12">
       <div class="text-left">
         <a class="btn btn-primary" href="<?php echo base_url(); ?>principalConvenio/cadastrar">
-          <i class="fa fa-plus"></i> Adicionar convênio</a>
+          <i class="fa fa-plus"></i> Adicionar índice por grupo de procedimento</a>
       </div>
       <br/>
       <div class="box">
@@ -46,56 +46,60 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Convênio (descrição)</th>
-                    <th>CNPJ</th>
-                    <th>Código ERP</th>
-                    <th>Tipo</th>
-                    <th>Convênio ativo?</th>
+                    <th>Índice</th>
+                    <th>Grupo de procedimento (descrição)</th>
                     <th>Data de início</th>
-                    <th>Data de vigência</th>
+                    <th>Data de final</th>
+                    <th>Valor índice</th>
+                    <th>Valor M2 Filme</th>
+                    <th>Honorário</th>
+                    <th>UCO</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                      if(!empty($registrosConvenios))
+                      if(!empty($registrosIndiceGrupoPro))
                       {
-                          foreach($registrosConvenios as $registro)
+                          foreach($registrosIndiceGrupoPro as $registro)
                           {
                       ?>
                     <tr>
                       <td>
-                        <?php echo $registro->Id_Convenio ?>
+                        <?php echo $registro->Id_IndiceGrupo ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_Convenio ?>
+                        <?php echo $registro->Ds_indice ?>
                       </td>
                       <td>
-                        <?php echo $registro->CNPJ_Convenio ?>
+                        <?php echo $registro->Ds_GrupoPro ?>
                       </td>
                       <td>
-                        <?php echo $registro->Cd_ConvenioERP ?>
+                        <?php echo ($registro->Dt_IniVigencia != null) ? date("d/m/Y", strtotime($registro->Dt_IniVigencia)) : ''; ?>
                       </td>
                       <td>
-                            <?php if ($registro->Tp_Convenio == '1') { echo 'Convênio'; } else if ($registro->Tp_Convenio == '2') { echo 'Filantrópico'; } else if ($registro->Tp_Convenio == '3') { echo 'Particular'; } ?>
+                        <?php echo ($registro->Dt_FimVigencia != null) ? date("d/m/Y", strtotime($registro->Dt_FimVigencia)) : ''; ?>
                       </td>
-                        <td>
-                            <?php echo $registro->Tp_Ativo ?>
-                        </td>
-                        <td>
-                            <?php echo ($registro->Dt_InicioConvenio != null) ? date("d/m/Y", strtotime($registro->Dt_InicioConvenio)) : ''; ?>
-                        </td>
-                        <td>
-                            <?php echo ($registro->Dt_VigenciaConvenio != null) ? date("d/m/Y", strtotime($registro->Dt_VigenciaConvenio)) : ''; ?>
-                        </td>
+                      <td>
+                        <?php echo $registro->Vl_Indice ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Vl_M2Filme ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Vl_Honorario ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Vl_UCO ?>
+                      </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalConvenio/editar/'.$registro->Id_Convenio; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalIndiceGrupoPro/editar/'.$registro->Id_IndiceGrupo; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaConvenio/'.$registro->Id_Convenio; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaIndiceGrupoPro/'.$registro->Id_IndiceGrupo; ?>" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
