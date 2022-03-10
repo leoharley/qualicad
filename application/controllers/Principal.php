@@ -49,9 +49,7 @@ class Principal extends BaseController
             $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
             if ($tpTela == 'listar') {
-
-                var_dump($this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'));exit;
-
+                
                 if (!empty($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')) &&
                     !empty($this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')) &&
                     !$this->session->userdata('email') == 'admin@admin.com')
