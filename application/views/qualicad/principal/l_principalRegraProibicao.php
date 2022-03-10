@@ -2,15 +2,15 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-users"></i> Listar Convênios
+      <i class="fa fa-users"></i> Listar Regra de Proibição
       <small>Listar</small>
     </h1>
   </section>
   <section class="content">
     <div class="col-xs-12">
       <div class="text-left">
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>principalConvenio/cadastrar">
-          <i class="fa fa-plus"></i> Adicionar convênio</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>principalRegraProibicao/cadastrar">
+          <i class="fa fa-plus"></i> Adicionar regra de proibição</a>
       </div>
       <br/>
       <div class="box">
@@ -46,56 +46,60 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Convênio (descrição)</th>
-                    <th>CNPJ</th>
-                    <th>Código ERP</th>
-                    <th>Tipo</th>
-                    <th>Convênio ativo?</th>
-                    <th>Data de início</th>
-                    <th>Data de vigência</th>
+                    <th>Faturamento (descrição)</th>
+                    <th>Grupo Pro (descrição)</th>
+                    <th>Plano (descrição)</th>
+                    <th>Regra de proibição (descrição)</th>
+                    <th>Tipo da regra</th>
+                    <th>Tipo de atendimento</th>
+                    <th>Valor</th>
+                    <th>Regra ativa?</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                      if(!empty($registrosConvenios))
+                      if(!empty($registrosRegraProibicao))
                       {
-                          foreach($registrosConvenios as $registro)
+                          foreach($registrosRegraProibicao as $registro)
                           {
                       ?>
                     <tr>
                       <td>
-                        <?php echo $registro->Id_Convenio ?>
+                        <?php echo $registro->Id_RegraProibicao ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_Convenio ?>
+                        <?php echo $registro->Ds_Faturamento ?>
                       </td>
                       <td>
-                        <?php echo $registro->CNPJ_Convenio ?>
+                        <?php echo $registro->Ds_GrupoPro ?>
                       </td>
                       <td>
-                        <?php echo $registro->Cd_ConvenioERP ?>
+                        <?php echo $registro->Ds_Plano ?>
                       </td>
                       <td>
-                            <?php if ($registro->Tp_Convenio == '1') { echo 'Convênio'; } else if ($registro->Tp_Convenio == '2') { echo 'Filantrópico'; } else if ($registro->Tp_Convenio == '3') { echo 'Particular'; } ?>
+                        <?php echo $registro->Ds_RegraProibicao ?>
                       </td>
-                        <td>
-                            <?php echo $registro->Tp_Ativo ?>
-                        </td>
-                        <td>
-                            <?php echo ($registro->Dt_InicioConvenio != null) ? date("d/m/Y", strtotime($registro->Dt_InicioConvenio)) : ''; ?>
-                        </td>
-                        <td>
-                            <?php echo ($registro->Dt_VigenciaConvenio != null) ? date("d/m/Y", strtotime($registro->Dt_VigenciaConvenio)) : ''; ?>
-                        </td>
+                      <td>
+                        <?php echo $registro->Tp_RegraProibicao ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Tp_Atendimento ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Vl_RegraProibicao ?>
+                      </td>
+                      <td>
+                        <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
+                      </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalConvenio/editar/'.$registro->Id_Convenio; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalRegraProibicao/editar/'.$registro->Id_RegraProibicao ; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaConvenio/'.$registro->Id_Convenio; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaRegraProibicao/'.$registro->Id_RegraProibicao; ?>" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>

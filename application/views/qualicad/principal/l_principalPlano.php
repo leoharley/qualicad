@@ -49,7 +49,7 @@
                     <th>Plano (descrição)</th>
                     <th>Convênio (descrição)</th>
                     <th>Índice (descrição)</th>
-                      <th>Regra (descrição)</th>
+                    <th>Regra (descrição)</th>
                     <th>Código ERP</th>
                     <th>Tipo acomodação padrão</th>
                     <th>Plano ativo?</th>
