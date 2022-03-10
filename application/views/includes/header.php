@@ -234,27 +234,9 @@
                       </a>
                   </li>
                   <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalFaturamentoItem/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Faturamento Item</span>
-                      </a>
-                  </li>
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalRegraGrupoPro/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>RegraGrupoPro</span>
-                      </a>
-                  </li>
-                  <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalIndiceGrupoPro/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>ÍndiceGrupoPro</span>
-                      </a>
-                  </li>
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalProibicao/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Proibição</span>
                       </a>
                   </li>
                   <li class="treeview">
@@ -270,12 +252,30 @@
                       </a>
                   </li>
                   <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalFaturamentoItem/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Faturamento Item</span>
+                      </a>
+                  </li>
+                  <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalUnidade/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Unidade</span>
                       </a>
                   </li>
 
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalRegraGrupoPro/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>RegraGrupoPro</span>
+                      </a>
+                  </li>
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalProibicao/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Proibição</span>
+                      </a>
+                  </li>
                   </ul>
                 </li>
 
