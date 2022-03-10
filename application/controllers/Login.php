@@ -126,8 +126,6 @@ class Login extends BaseController
             
             $result = $this->login_model->loginMe($email, $password);
 
-            var_dump($result);exit;
-
             if(count($result) > 0)
             {
                 foreach ($result as $res)
@@ -158,6 +156,8 @@ class Login extends BaseController
                         $roleText = $empresasPerfilUsuario['Ds_Perfil'];
                         $idempresa = $empresasPerfilUsuario['TbEmpresa_Id_Empresa'];
                      } */
+
+                     var_dump($res->Admin);exit;
 
                     if ($associadoEmpresaPerfil || $res->Admin == 'S') {
                    
