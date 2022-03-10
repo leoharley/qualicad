@@ -126,6 +126,8 @@ class Login extends BaseController
             
             $result = $this->login_model->loginMe($email, $password);
 
+            var_dump($result);exit;
+
             if(count($result) > 0)
             {
                 foreach ($result as $res)
