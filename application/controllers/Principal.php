@@ -1348,13 +1348,13 @@ class Principal extends BaseController
 
             $data['registrosIndiceGrupoPro'] = $this->PrincipalModel->listaIndiceGrupoPro($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
-            $process = 'Listar convênios';
-            $processFunction = 'Principal/principalConvenio';
+            $process = 'Listar índice por grupo de procedimento';
+            $processFunction = 'Principal/principalIndiceGrupoPro';
             $this->logrecord($process,$processFunction);
 
-            $this->global['pageTitle'] = 'QUALICAD : Lista de Convênio';
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Índice por Grupo de Procedimento';
 
-            $this->loadViews("qualicad/principal/l_principalConvenio", $this->global, $data, NULL);
+            $this->loadViews("qualicad/principal/l_principalIndiceGrupoPro", $this->global, $data, NULL);
         }
         else if ($tpTela == 'cadastrar') {
 
@@ -1363,8 +1363,8 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de Índice por Grupo de Procedimento';
+            $this->loadViews("qualicad/principal/c_principalIndiceGrupoPro", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
@@ -1373,14 +1373,14 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
 
-            $IdConvenio = $this->uri->segment(3);
-            if($IdConvenio == null)
+            $IdIndiceGrupo = $this->uri->segment(3);
+            if($IdIndiceGrupo == null)
             {
-                redirect('principalConvenio/listar');
+                redirect('principalIndiceGrupoPro/listar');
             }
-            $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
-            $this->global['pageTitle'] = 'QUALICAD : Editar convênio';
-            $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
+            $data['infoIndiceGrupo'] = $this->PrincipalModel->carregaInfoIndiceGrupoPro($IdIndiceGrupo);
+            $this->global['pageTitle'] = 'QUALICAD : Editar Índice por Grupo de Procedimento';
+            $this->loadViews("qualicad/principal/c_principalIndiceGrupoPro", $this->global, $data, NULL);
         }
     }
 
