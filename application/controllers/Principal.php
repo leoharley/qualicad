@@ -1381,7 +1381,7 @@ class Principal extends BaseController
             }
             $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
             $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
-            $data['infoIndiceGrupo'] = $this->PrincipalModel->carregaInfoIndiceGrupoPro($IdIndiceGrupo);
+            $data['infoIndiceGrupoPro'] = $this->PrincipalModel->carregaInfoIndiceGrupoPro($IdIndiceGrupo);
             $this->global['pageTitle'] = 'QUALICAD : Editar Índice por Grupo de Procedimento';
             $this->loadViews("qualicad/principal/c_principalIndiceGrupoPro", $this->global, $data, NULL);
         }
