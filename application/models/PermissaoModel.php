@@ -79,8 +79,6 @@ class PermissaoModel extends CI_Model
         $this->db->where('Tela.Tp_Ativo', 'S');
         $query = $this->db->get();
 
-        if ($this->session->userdata('email') == 'admin@admin.com') { echo $query->result(); }
-
         return $query->result();
     }
 

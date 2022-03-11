@@ -49,12 +49,11 @@ class Principal extends BaseController
             $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
             if ($tpTela == 'listar') {
-
-            //    var_dump($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio'));exit;
-                var_dump($this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio'));exit;
-                if (($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')) != '' &&
-                    ($this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')) != '' &&
-                    $this->session->userdata('email') != 'admin@admin.com')
+    
+                if (($this->session->userdata('email') != 'admin@admin.com')&&
+                    ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Tp_Ativo == 'S' ||
+                     $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Consultar == 'S')
+                ) 
                     {
                         redirect('telaNaoAutorizada');
                     }
