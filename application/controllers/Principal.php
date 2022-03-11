@@ -1040,10 +1040,10 @@ class Principal extends BaseController
     function apagaRegra()
     {
 
-            if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Excluir == 'N')
+    /*        if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Excluir == 'N')
                 {
                     redirect('acaoNaoAutorizada');
-                }
+                } */
 
             $IdRegra = $this->uri->segment(2);
 
