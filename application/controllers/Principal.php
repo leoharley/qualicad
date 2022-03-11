@@ -49,14 +49,15 @@ class Principal extends BaseController
             $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
             if ($tpTela == 'listar') {
-    
-                if (($this->session->userdata('email') != 'admin@admin.com')&&
-                    ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Tp_Ativo == 'S' &&
-                     $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Consultar == 'S')
-                ) 
-                    {
-                        redirect('telaNaoAutorizada');
-                    }
+
+                if ($this->session->userdata('email') != 'admin@admin.com')
+                {
+                    if ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Tp_Ativo == 'N' ||
+                        $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Consultar == 'N')
+                        {
+                            redirect('telaNaoAutorizada');
+                        }
+                }        
 
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
