@@ -1387,7 +1387,7 @@ class Principal extends BaseController
     function adicionaIndiceGrupoPro()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalIndiceGrupoPro/listar');
         }
 
         $this->load->library('form_validation');
@@ -1410,17 +1410,18 @@ class Principal extends BaseController
             else
         { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
+        $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
+        $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+        $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+        $Vl_Indice = $this->input->post('Vl_Indice');
+        $Vl_M2Filme = $this->input->post('Vl_M2Filme');
+        $Vl_Honorario = $this->input->post('Vl_Honorario');
+        $Vl_UCO = $this->input->post('Vl_UCO');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        //    $roleId = $this->input->post('role');
 
-        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+    //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
             //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
             if ($Tp_Ativo == 'S')
@@ -1433,44 +1434,44 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
 
-            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+            $infoIndiceGrupoPro = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'TbGrupoPro_CodGrupo'=> $TbGrupoPro_CodGrupo, 'TbIndice_Id_Indice'=> $TbIndice_Id_Indice,
+                'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice,
+                'Vl_M2Filme'=>$Vl_M2Filme,'Vl_Honorario'=>$Vl_Honorario, 'Vl_UCO'=>$Vl_UCO, 
+                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+            $result = $this->PrincipalModel->adicionaIndiceGrupoPro($infoIndiceGrupoPro);
 
             if($result > 0)
             {
-                $process = 'Adicionar convênio';
-                $processFunction = 'Principal/adicionaConvenio';
+                $process = 'Adicionar índice grupo pro';
+                $processFunction = 'Principal/adicionaIndiceGrupoPro';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+                $this->session->set_flashdata('success', 'Índice grupo pro criado com sucesso');
 
                 if (array_key_exists('salvarIrLista',$this->input->post())) {
-                    redirect('principalConvenio/listar');
+                    redirect('principalIndiceGrupoPro/listar');
                 }
                 else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                    redirect('principalConvenio/cadastrar');
+                    redirect('principalIndiceGrupoPro/cadastrar');
                 }
                 else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                    redirect('principalPlano/cadastrar');
+                    redirect('principalIndiceGrupoPro/cadastrar');
                 }
             }
             else
             {
-                $this->session->set_flashdata('error', 'Falha na criação do convênio');
-                redirect('principalConvenio/cadastrar');
+                $this->session->set_flashdata('error', 'Falha na criação do índice grupo pro');
+                redirect('principalIndiceGrupoPro/cadastrar');
             }
 
-        } else {
+    /*    } else {
             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             redirect('principalConvenio/cadastrar');
-        }
+        } */
 
-        redirect('principalConvenio/cadastrar');
+        redirect('principalIndiceGrupoPro/cadastrar');
 
         //    }
     }
@@ -1479,12 +1480,12 @@ class Principal extends BaseController
     function editaIndiceGrupoPro()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalIndiceGrupoPro/listar');
         }
 
         $this->load->library('form_validation');
 
-        $IdConvenio = $this->input->post('Id_Convenio');
+        $IdIndiceGrupoPro = $this->input->post('Id_IndiceGrupo');
 
         //VALIDAÇÃO
 
@@ -1502,15 +1503,17 @@ class Principal extends BaseController
            else
            { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
+        $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
+        $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+        $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+        $Vl_Indice = $this->input->post('Vl_Indice');
+        $Vl_M2Filme = $this->input->post('Vl_M2Filme');
+        $Vl_Honorario = $this->input->post('Vl_Honorario');
+        $Vl_UCO = $this->input->post('Vl_UCO');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+        foreach ($this->PrincipalModel->carregaInfoIndiceGrupoPro($IdIndiceGrupoPro) as $data){
             $Tp_Ativo_Atual = ($data->Tp_Ativo);
         }
 
@@ -1526,28 +1529,28 @@ class Principal extends BaseController
         }
 
         //'Senha'=>getHashedPassword($senha)
-        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+        $infoIndiceGrupoPro = array('TbGrupoPro_CodGrupo'=> $TbGrupoPro_CodGrupo, 'TbIndice_Id_Indice'=> $TbIndice_Id_Indice,
+                'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice,
+                'Vl_M2Filme'=>$Vl_M2Filme,'Vl_Honorario'=>$Vl_Honorario, 'Vl_UCO'=>$Vl_UCO, 
+                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo,
+                'Dt_Inativo'=>$Dt_Inativo);
 
-
-        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+        $resultado = $this->PrincipalModel->editaIndiceGrupoPro($infoIndiceGrupoPro,$IdIndiceGrupoPro);
 
         if($resultado == true)
         {
-            $process = 'Convênio atualizado';
-            $processFunction = 'Principal/editaConvenio';
+            $process = 'Índice Grupo Pro atualizado';
+            $processFunction = 'Principal/editaIndiceGrupoPro';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+            $this->session->set_flashdata('success', 'Índice Grupo Pro atualizado com sucesso');
         }
         else
         {
-            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+            $this->session->set_flashdata('error', 'Falha na atualização do Índice Grupo Pro');
         }
 
-        redirect('principalConvenio/listar');
+        redirect('principalIndiceGrupoPro/listar');
         // }
     }
 
@@ -1559,28 +1562,28 @@ class Principal extends BaseController
             redirect('acaoNaoAutorizada');
         } */
 
-        $IdConvenio = $this->uri->segment(2);
+        $IdIndiceGrupoPro = $this->uri->segment(2);
 
-        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+        $infoIndiceGrupoPro = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
 
-        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+        $resultado = $this->PrincipalModel->apagaIndiceGrupoPro($infoIndiceGrupoPro, $IdIndiceGrupoPro);
 
         if ($resultado > 0) {
             // echo(json_encode(array('status'=>TRUE)));
 
-            $process = 'Exclusão de convênio';
-            $processFunction = 'Principal/apagaConvenio';
+            $process = 'Exclusão de Índice Grupo Pro';
+            $processFunction = 'Principal/apagaIndiceGrupoPro';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+            $this->session->set_flashdata('success', 'Índice Grupo Pro deletado com sucesso');
 
         }
         else
         {
             //echo(json_encode(array('status'=>FALSE)));
-            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+            $this->session->set_flashdata('error', 'Falha em excluir o Índice Grupo Pro');
         }
-        redirect('principalConvenio/listar');
+        redirect('principalIndiceGrupoPro/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE INDICE GRUPO PRO
 
@@ -1650,7 +1653,7 @@ class Principal extends BaseController
     function adicionaRegraProibicao()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalRegraProibicao/listar');
         }
 
         $this->load->library('form_validation');
@@ -1673,17 +1676,17 @@ class Principal extends BaseController
             else
         { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+        $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
+        $TbPlano_Id_Plano = $this->input->post('TbPlano_Id_Plano');
+        $Ds_RegraProibicao = $this->input->post('Ds_RegraProibicao');
+        $Tp_RegraProibicao = $this->input->post('Tp_RegraProibicao');
+        $Tp_Atendimento = $this->input->post('Tp_Atendimento');
+        $Vl_RegraProibicao = $this->input->post('Vl_RegraProibicao');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        //    $roleId = $this->input->post('role');
 
-        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+    //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
             //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
             if ($Tp_Ativo == 'S')
@@ -1696,44 +1699,44 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
 
-            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+            $infoRegraProibicao = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento, 'TbGrupoPro_CodGrupo'=> $TbGrupoPro_CodGrupo,
+                'TbPlano_Id_Plano'=>$TbPlano_Id_Plano, 'Ds_RegraProibicao'=>$Ds_RegraProibicao, 'Tp_RegraProibicao'=>$Tp_RegraProibicao,
+                'Tp_Atendimento'=>$Tp_Atendimento,'Vl_RegraProibicao'=>$Vl_RegraProibicao,
+                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+            $result = $this->PrincipalModel->adicionaRegraProibicao($infoRegraProibicao);
 
             if($result > 0)
             {
-                $process = 'Adicionar convênio';
-                $processFunction = 'Principal/adicionaConvenio';
+                $process = 'Adicionar regra proibição';
+                $processFunction = 'Principal/adicionaRegraProibicao';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+                $this->session->set_flashdata('success', 'Regra proibição criada com sucesso');
 
                 if (array_key_exists('salvarIrLista',$this->input->post())) {
-                    redirect('principalConvenio/listar');
+                    redirect('principalRegraProibicao/listar');
                 }
                 else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                    redirect('principalConvenio/cadastrar');
+                    redirect('principalRegraProibicao/cadastrar');
                 }
                 else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                    redirect('principalPlano/cadastrar');
+                    redirect('principalRegraProibicao/cadastrar');
                 }
             }
             else
             {
-                $this->session->set_flashdata('error', 'Falha na criação do convênio');
-                redirect('principalConvenio/cadastrar');
+                $this->session->set_flashdata('error', 'Falha na criação da regra proibição');
+                redirect('principalRegraProibicao/cadastrar');
             }
 
-        } else {
+    /*    } else {
             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             redirect('principalConvenio/cadastrar');
-        }
+        } */
 
-        redirect('principalConvenio/cadastrar');
+        redirect('principalRegraProibicao/cadastrar');
 
         //    }
     }
@@ -1742,12 +1745,12 @@ class Principal extends BaseController
     function editaRegraProibicao()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalRegraProibicao/listar');
         }
 
         $this->load->library('form_validation');
 
-        $IdConvenio = $this->input->post('Id_Convenio');
+        $IdRegraProibicao = $this->input->post('Id_RegraProibicao');
 
         //VALIDAÇÃO
 
@@ -1765,15 +1768,16 @@ class Principal extends BaseController
            else
            { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+        $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
+        $TbPlano_Id_Plano = $this->input->post('TbPlano_Id_Plano');
+        $Ds_RegraProibicao = $this->input->post('Ds_RegraProibicao');
+        $Tp_RegraProibicao = $this->input->post('Tp_RegraProibicao');
+        $Tp_Atendimento = $this->input->post('Tp_Atendimento');
+        $Vl_RegraProibicao = $this->input->post('Vl_RegraProibicao');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+        foreach ($this->PrincipalModel->carregaInfoRegraProibicao($IdRegraProibicao) as $data){
             $Tp_Ativo_Atual = ($data->Tp_Ativo);
         }
 
@@ -1789,28 +1793,27 @@ class Principal extends BaseController
         }
 
         //'Senha'=>getHashedPassword($senha)
-        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+        $infoRegraProibicao = array('TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento, 'TbGrupoPro_CodGrupo'=> $TbGrupoPro_CodGrupo,
+                'TbPlano_Id_Plano'=>$TbPlano_Id_Plano, 'Ds_RegraProibicao'=>$Ds_RegraProibicao, 'Tp_RegraProibicao'=>$Tp_RegraProibicao,
+                'Tp_Atendimento'=>$Tp_Atendimento,'Vl_RegraProibicao'=>$Vl_RegraProibicao, 'Dt_Inativo'=>$Dt_Inativo,
+                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-
-        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+        $resultado = $this->PrincipalModel->editaRegraProibicao($infoRegraProibicao,$IdRegraProibicao);
 
         if($resultado == true)
         {
-            $process = 'Convênio atualizado';
-            $processFunction = 'Principal/editaConvenio';
+            $process = 'Regra proibição atualizado';
+            $processFunction = 'Principal/editaRegraProibicao';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+            $this->session->set_flashdata('success', 'Regra proibição atualizado com sucesso');
         }
         else
         {
-            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+            $this->session->set_flashdata('error', 'Falha na atualização da regra proibição');
         }
 
-        redirect('principalConvenio/listar');
+        redirect('principalRegraProibicao/listar');
         // }
     }
 
@@ -1822,28 +1825,28 @@ class Principal extends BaseController
             redirect('acaoNaoAutorizada');
         } */
 
-        $IdConvenio = $this->uri->segment(2);
+        $IdRegraProibicao = $this->uri->segment(2);
 
-        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+        $infoRegraProibicao = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
 
-        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+        $resultado = $this->PrincipalModel->apagaRegraProibicao($infoRegraProibicao, $IdRegraProibicao);
 
         if ($resultado > 0) {
             // echo(json_encode(array('status'=>TRUE)));
 
-            $process = 'Exclusão de convênio';
-            $processFunction = 'Principal/apagaConvenio';
+            $process = 'Exclusão da regra proibição';
+            $processFunction = 'Principal/apagaRegraProibicao';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+            $this->session->set_flashdata('success', 'Regra proibição deletada com sucesso');
 
         }
         else
         {
             //echo(json_encode(array('status'=>FALSE)));
-            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+            $this->session->set_flashdata('error', 'Falha em excluir a regra proibição');
         }
-        redirect('principalConvenio/listar');
+        redirect('principalRegraProibicao/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE REGRA PROIBIÇÃO
 
@@ -1913,7 +1916,7 @@ class Principal extends BaseController
     function adicionaFracaoSimproBra()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalFracaoSimproBra/listar');
         }
 
         $this->load->library('form_validation');
@@ -1936,17 +1939,19 @@ class Principal extends BaseController
             else
         { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $TbProFat_Cd_ProFat = $this->input->post('TbProFat_Cd_ProFat');
+        $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+        $TbTUSS_Id_Tuss = $this->input->post('TbTUSS_Id_Tuss');
+        $Ds_FracaoSimproBra = $this->input->post('Ds_FracaoSimproBra');
+        $Ds_Laboratorio = $this->input->post('Ds_Laboratorio');
+        $Ds_Apresentacao = $this->input->post('Ds_Apresentacao');
+        $Tp_MatMed = $this->input->post('Tp_MatMed');
+        $Vl_FatorDivisao = $this->input->post('Vl_FatorDivisao');
+        $Qt_Prod = $this->input->post('Qt_Prod');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        //    $roleId = $this->input->post('role');
 
-        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+    //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
             //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
             if ($Tp_Ativo == 'S')
@@ -1959,44 +1964,45 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
 
-            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+            $infoFracaoSimproBra = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'TbProFat_Cd_ProFat'=> $TbProFat_Cd_ProFat, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,
+                'TbTUSS_Id_Tuss'=>$TbTUSS_Id_Tuss, 'Ds_FracaoSimproBra'=>$Ds_FracaoSimproBra, 'Ds_Laboratorio'=>$Ds_Laboratorio,
+                'Ds_Apresentacao'=>$Ds_Apresentacao,'Tp_MatMed'=>$Tp_MatMed, 'Vl_FatorDivisao'=>$Vl_FatorDivisao,
+                'Qt_Prod'=>$Qt_Prod, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+            $result = $this->PrincipalModel->adicionaFracaoSimproBra($infoFracaoSimproBra);
 
             if($result > 0)
             {
-                $process = 'Adicionar convênio';
-                $processFunction = 'Principal/adicionaConvenio';
+                $process = 'Adicionar fração simpro bra';
+                $processFunction = 'Principal/adicionaFracaoSimproBra';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+                $this->session->set_flashdata('success', 'Fração simpro bra criada com sucesso');
 
                 if (array_key_exists('salvarIrLista',$this->input->post())) {
-                    redirect('principalConvenio/listar');
+                    redirect('principalFracaoSimproBra/listar');
                 }
                 else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                    redirect('principalConvenio/cadastrar');
+                    redirect('principalFracaoSimproBra/cadastrar');
                 }
                 else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                    redirect('principalPlano/cadastrar');
+                    redirect('principalFracaoSimproBra/cadastrar');
                 }
             }
             else
             {
-                $this->session->set_flashdata('error', 'Falha na criação do convênio');
-                redirect('principalConvenio/cadastrar');
+                $this->session->set_flashdata('error', 'Falha na criação da fração simpro bra');
+                redirect('principalFracaoSimproBra/cadastrar');
             }
 
-        } else {
+    /*    } else {
             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             redirect('principalConvenio/cadastrar');
-        }
+        } */
 
-        redirect('principalConvenio/cadastrar');
+        redirect('principalFracaoSimproBra/cadastrar');
 
         //    }
     }
@@ -2005,12 +2011,12 @@ class Principal extends BaseController
     function editaFracaoSimproBra()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalFracaoSimproBra/listar');
         }
 
         $this->load->library('form_validation');
 
-        $IdConvenio = $this->input->post('Id_Convenio');
+        $IdFracaoSimproBra = $this->input->post('IdFracaoSimproBra');
 
         //VALIDAÇÃO
 
@@ -2028,15 +2034,18 @@ class Principal extends BaseController
            else
            { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $TbProFat_Cd_ProFat = $this->input->post('TbProFat_Cd_ProFat');
+        $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+        $TbTUSS_Id_Tuss = $this->input->post('TbTUSS_Id_Tuss');
+        $Ds_FracaoSimproBra = $this->input->post('Ds_FracaoSimproBra');
+        $Ds_Laboratorio = $this->input->post('Ds_Laboratorio');
+        $Ds_Apresentacao = $this->input->post('Ds_Apresentacao');
+        $Tp_MatMed = $this->input->post('Tp_MatMed');
+        $Vl_FatorDivisao = $this->input->post('Vl_FatorDivisao');
+        $Qt_Prod = $this->input->post('Qt_Prod');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+        foreach ($this->PrincipalModel->carregaInfoFracaoSimproBra($IdFracaoSimproBra) as $data){
             $Tp_Ativo_Atual = ($data->Tp_Ativo);
         }
 
@@ -2052,28 +2061,28 @@ class Principal extends BaseController
         }
 
         //'Senha'=>getHashedPassword($senha)
-        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+        $infoFracaoSimproBra = array('TbProFat_Cd_ProFat'=> $TbProFat_Cd_ProFat, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,
+        'TbTUSS_Id_Tuss'=>$TbTUSS_Id_Tuss, 'Ds_FracaoSimproBra'=>$Ds_FracaoSimproBra, 'Ds_Laboratorio'=>$Ds_Laboratorio,
+        'Ds_Apresentacao'=>$Ds_Apresentacao,'Tp_MatMed'=>$Tp_MatMed, 'Vl_FatorDivisao'=>$Vl_FatorDivisao,
+        'Qt_Prod'=>$Qt_Prod, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+        'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
 
-
-        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+        $resultado = $this->PrincipalModel->editaConvenio($infoFracaoSimproBra,$IdFracaoSimproBra);
 
         if($resultado == true)
         {
-            $process = 'Convênio atualizado';
-            $processFunction = 'Principal/editaConvenio';
+            $process = 'Fração Simpro Bra atualizado';
+            $processFunction = 'Principal/editaFracaoSimproBra';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+            $this->session->set_flashdata('success', 'Fração Simpro Bra atualizada com sucesso');
         }
         else
         {
-            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+            $this->session->set_flashdata('error', 'Falha na atualização da Fração Simpro Bra');
         }
 
-        redirect('principalConvenio/listar');
+        redirect('principalFracaoSimproBra/listar');
         // }
     }
 
@@ -2085,28 +2094,28 @@ class Principal extends BaseController
             redirect('acaoNaoAutorizada');
         } */
 
-        $IdConvenio = $this->uri->segment(2);
+        $IdFracaoSimproBra = $this->uri->segment(2);
 
-        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+        $infoFracaoSimproBra = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
 
-        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+        $resultado = $this->PrincipalModel->apagaFracaoSimproBra($infoFracaoSimproBra, $IdFracaoSimproBra);
 
         if ($resultado > 0) {
             // echo(json_encode(array('status'=>TRUE)));
 
-            $process = 'Exclusão de convênio';
-            $processFunction = 'Principal/apagaConvenio';
+            $process = 'Exclusão de Fração Simpro Bra';
+            $processFunction = 'Principal/apagaFracaoSimproBra';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+            $this->session->set_flashdata('success', 'Fração Simpro Bra deletada com sucesso');
 
         }
         else
         {
             //echo(json_encode(array('status'=>FALSE)));
-            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+            $this->session->set_flashdata('error', 'Falha em excluir a Fração Simpro Bra');
         }
-        redirect('principalConvenio/listar');
+        redirect('principalFracaoSimproBra/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE FRAÇÃO SIMPRO BRA
 
@@ -2177,7 +2186,7 @@ class Principal extends BaseController
     function adicionaFaturamentoItem()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalFaturamentoItem/listar');
         }
 
         $this->load->library('form_validation');
@@ -2200,17 +2209,18 @@ class Principal extends BaseController
             else
         { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+        $Ds_FatItem = $this->input->post('Ds_FatItem');
+        $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+        $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+        $Vl_Honorário = $this->input->post('Vl_Honorário');
+        $Vl_Operacional = $this->input->post('Vl_Operacional');
+        $Vl_Total = $this->input->post('Vl_Total');
+        $Vl_Filme = $this->input->post('Vl_Filme');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        //    $roleId = $this->input->post('role');
 
-        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+    //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
             //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
             if ($Tp_Ativo == 'S')
@@ -2223,44 +2233,45 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
 
-            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+            $infoFaturamentoItem = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento, 'Ds_FatItem'=> $Ds_FatItem,
+                'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Honorário'=>$Vl_Honorário,
+                'Vl_Operacional'=>$Vl_Operacional,'Vl_Total'=>$Vl_Total, 'Vl_Filme'=>$Vl_Filme,
+                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+            $result = $this->PrincipalModel->adicionaFaturamentoItem($infoFaturamentoItem);
 
             if($result > 0)
             {
-                $process = 'Adicionar convênio';
-                $processFunction = 'Principal/adicionaConvenio';
+                $process = 'Adicionar faturamento item';
+                $processFunction = 'Principal/adicionaFaturamentoItem';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+                $this->session->set_flashdata('success', 'Faturamento item criado com sucesso');
 
                 if (array_key_exists('salvarIrLista',$this->input->post())) {
-                    redirect('principalConvenio/listar');
+                    redirect('principalFaturamentoItem/listar');
                 }
                 else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                    redirect('principalConvenio/cadastrar');
+                    redirect('principalFaturamentoItem/cadastrar');
                 }
                 else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                    redirect('principalPlano/cadastrar');
+                    redirect('principalFaturamentoItem/cadastrar');
                 }
             }
             else
             {
-                $this->session->set_flashdata('error', 'Falha na criação do convênio');
-                redirect('principalConvenio/cadastrar');
+                $this->session->set_flashdata('error', 'Falha na criação do faturamento item');
+                redirect('principalFaturamentoItem/cadastrar');
             }
 
-        } else {
+    /*    } else {
             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             redirect('principalConvenio/cadastrar');
-        }
+        } */
 
-        redirect('principalConvenio/cadastrar');
+        redirect('principalFaturamentoItem/cadastrar');
 
         //    }
     }
@@ -2269,12 +2280,12 @@ class Principal extends BaseController
     function editaFaturamentoItem()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalFaturamentoItem/listar');
         }
 
         $this->load->library('form_validation');
 
-        $IdConvenio = $this->input->post('Id_Convenio');
+        $IdFaturamentoItem = $this->input->post('Id_FatItem');
 
         //VALIDAÇÃO
 
@@ -2292,15 +2303,17 @@ class Principal extends BaseController
            else
            { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+        $Ds_FatItem = $this->input->post('Ds_FatItem');
+        $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+        $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+        $Vl_Honorário = $this->input->post('Vl_Honorário');
+        $Vl_Operacional = $this->input->post('Vl_Operacional');
+        $Vl_Total = $this->input->post('Vl_Total');
+        $Vl_Filme = $this->input->post('Vl_Filme');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+        foreach ($this->PrincipalModel->carregaInfoFaturamentoItem($IdFaturamentoItem) as $data){
             $Tp_Ativo_Atual = ($data->Tp_Ativo);
         }
 
@@ -2316,28 +2329,28 @@ class Principal extends BaseController
         }
 
         //'Senha'=>getHashedPassword($senha)
-        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+        $infoFaturamentoItem = array('TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento, 'Ds_FatItem'=> $Ds_FatItem,
+        'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Honorário'=>$Vl_Honorário,
+        'Vl_Operacional'=>$Vl_Operacional,'Vl_Total'=>$Vl_Total, 'Vl_Filme'=>$Vl_Filme,
+        'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+        'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
 
-
-        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+        $resultado = $this->PrincipalModel->editaFaturamentoItem($infoFaturamentoItem,$IdFaturamentoItem);
 
         if($resultado == true)
         {
-            $process = 'Convênio atualizado';
-            $processFunction = 'Principal/editaConvenio';
+            $process = 'Faturamento item atualizado';
+            $processFunction = 'Principal/editaFaturamentoItem';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+            $this->session->set_flashdata('success', 'Faturamento item atualizado com sucesso');
         }
         else
         {
-            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+            $this->session->set_flashdata('error', 'Falha na atualização do faturamento item');
         }
 
-        redirect('principalConvenio/listar');
+        redirect('principalFaturamentoItem/listar');
         // }
     }
 
@@ -2349,28 +2362,28 @@ class Principal extends BaseController
             redirect('acaoNaoAutorizada');
         } */
 
-        $IdConvenio = $this->uri->segment(2);
+        $IdFaturamentoItem = $this->uri->segment(2);
 
-        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+        $infoFaturamentoItem = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
 
-        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+        $resultado = $this->PrincipalModel->apagaFaturamentoItem($infoFaturamentoItem, $IdFaturamentoItem);
 
         if ($resultado > 0) {
             // echo(json_encode(array('status'=>TRUE)));
 
-            $process = 'Exclusão de convênio';
-            $processFunction = 'Principal/apagaConvenio';
+            $process = 'Exclusão de faturamento item';
+            $processFunction = 'Principal/apagaFaturamentoItem';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+            $this->session->set_flashdata('success', 'Faturamento item deletado com sucesso');
 
         }
         else
         {
             //echo(json_encode(array('status'=>FALSE)));
-            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+            $this->session->set_flashdata('error', 'Falha em excluir o faturamento item');
         }
-        redirect('principalConvenio/listar');
+        redirect('principalFaturamentoItem/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE FATURAMENTO ITEM
 
@@ -2441,7 +2454,7 @@ class Principal extends BaseController
     function adicionaUnidade()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalUnidade/listar');
         }
 
         $this->load->library('form_validation');
@@ -2464,17 +2477,10 @@ class Principal extends BaseController
             else
         { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Ds_Unidade = $this->input->post('Ds_Unidade');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        //    $roleId = $this->input->post('role');
-
-        if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+    //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
             //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
             if ($Tp_Ativo == 'S')
@@ -2487,44 +2493,42 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
 
-            $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-                'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-                'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+            $infoUnidade = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Ds_Unidade'=> $Ds_Unidade, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-            $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+            $result = $this->PrincipalModel->adicionaUnidade($infoUnidade);
 
             if($result > 0)
             {
-                $process = 'Adicionar convênio';
-                $processFunction = 'Principal/adicionaConvenio';
+                $process = 'Adicionar unidade';
+                $processFunction = 'Principal/adicionaUnidade';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Convênio criado com sucesso');
+                $this->session->set_flashdata('success', 'Unidade criada com sucesso');
 
                 if (array_key_exists('salvarIrLista',$this->input->post())) {
-                    redirect('principalConvenio/listar');
+                    redirect('principalUnidade/listar');
                 }
                 else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                    redirect('principalConvenio/cadastrar');
+                    redirect('principalUnidade/cadastrar');
                 }
                 else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                    redirect('principalPlano/cadastrar');
+                    redirect('principalUnidade/cadastrar');
                 }
             }
             else
             {
-                $this->session->set_flashdata('error', 'Falha na criação do convênio');
-                redirect('principalConvenio/cadastrar');
+                $this->session->set_flashdata('error', 'Falha na criação da unidade');
+                redirect('principalUnidade/cadastrar');
             }
 
-        } else {
+    /*    } else {
             $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
             redirect('principalConvenio/cadastrar');
-        }
+        } */
 
-        redirect('principalConvenio/cadastrar');
+        redirect('principalUnidade/cadastrar');
 
         //    }
     }
@@ -2533,12 +2537,12 @@ class Principal extends BaseController
     function editaUnidade()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalConvenio/listar');
+            redirect('principalUnidade/listar');
         }
 
         $this->load->library('form_validation');
 
-        $IdConvenio = $this->input->post('Id_Convenio');
+        $IdUnidade = $this->input->post('IdUnidade');
 
         //VALIDAÇÃO
 
@@ -2556,15 +2560,10 @@ class Principal extends BaseController
            else
            { */
 
-        $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-        $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-        $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-        $Tp_Convenio = $this->input->post('Tp_Convenio');
-        $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-        $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+        $Ds_Unidade = $this->input->post('Ds_Unidade');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-        foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+        foreach ($this->PrincipalModel->carregaInfoUnidade($IdUnidade) as $data){
             $Tp_Ativo_Atual = ($data->Tp_Ativo);
         }
 
@@ -2580,28 +2579,27 @@ class Principal extends BaseController
         }
 
         //'Senha'=>getHashedPassword($senha)
-        $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-            'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-            'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-            'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+        
+        $infoUnidade = array('Ds_Unidade'=> $Ds_Unidade, 'CriadoPor'=>$this->vendorId, 
+        'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 
+        'Dt_Inativo'=>$Dt_Inativo);
 
-
-        $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+        $resultado = $this->PrincipalModel->editaUnidade($infoUnidade,$IdUnidade);
 
         if($resultado == true)
         {
-            $process = 'Convênio atualizado';
-            $processFunction = 'Principal/editaConvenio';
+            $process = 'Unidade atualizada';
+            $processFunction = 'Principal/editaUnidade';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+            $this->session->set_flashdata('success', 'Unidade atualizada com sucesso');
         }
         else
         {
-            $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+            $this->session->set_flashdata('error', 'Falha na atualização da unidade');
         }
 
-        redirect('principalConvenio/listar');
+        redirect('principalUnidade/listar');
         // }
     }
 
@@ -2613,28 +2611,28 @@ class Principal extends BaseController
             redirect('acaoNaoAutorizada');
         } */
 
-        $IdConvenio = $this->uri->segment(2);
+        $IdUnidade = $this->uri->segment(2);
 
-        $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+        $infoUnidade = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
 
-        $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+        $resultado = $this->PrincipalModel->apagaUnidade($infoUnidade, $IdUnidade);
 
         if ($resultado > 0) {
             // echo(json_encode(array('status'=>TRUE)));
 
-            $process = 'Exclusão de convênio';
-            $processFunction = 'Principal/apagaConvenio';
+            $process = 'Exclusão de unidade';
+            $processFunction = 'Principal/apagaUnidade';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+            $this->session->set_flashdata('success', 'Unidade deletada com sucesso');
 
         }
         else
         {
             //echo(json_encode(array('status'=>FALSE)));
-            $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+            $this->session->set_flashdata('error', 'Falha em excluir a unidade');
         }
-        redirect('principalConvenio/listar');
+        redirect('principalUnidade/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE UNIDADE
 
