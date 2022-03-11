@@ -51,7 +51,7 @@ if(!empty($infoUnidade))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Ds_Unidade">Descrição</label>
-                                        <input type="text" class="form-control required email" id="Ds_Unidade" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Unidade') : $Ds_Unidade ; ?>" name="Ds_Unidade"
+                                        <input type="text" class="form-control required" id="Ds_Unidade" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Unidade') : $Ds_Unidade ; ?>" name="Ds_Unidade"
                                             maxlength="128">
                                         <input type="hidden" value="<?php echo $Id_Unidade; ?>" name="Id_Unidade" id="Id_Unidade" />
                                     </div>
