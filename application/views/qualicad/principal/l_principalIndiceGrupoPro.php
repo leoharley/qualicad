@@ -54,6 +54,7 @@
                     <th>Valor M2 Filme</th>
                     <th>Honorário</th>
                     <th>UCO</th>
+                    <th>Ativo?</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
