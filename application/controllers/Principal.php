@@ -1884,8 +1884,7 @@ class Principal extends BaseController
             $returns = $this->paginationCompress ( "principalFracaoSimproBra/listar", $count, 10 );
 
             $data['registrosFracaoSimproBra'] = $this->PrincipalModel->listaFracaoSimproBra($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
-
-            var_dump($data['registrosFracaoSimproBra']);exit;
+            
             $process = 'Listar fração simpro BRA';
             $processFunction = 'Principal/principalFracaoSimproBra';
             $this->logrecord($process,$processFunction);
