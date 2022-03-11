@@ -61,7 +61,7 @@ if(!empty($infoTelas))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="Tp_Ativo">Mostra tela neste perfil?</label>
+                                        <label for="Tp_Ativo">Configurar permissões neste perfil?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($Tp_Ativo == 'S') { echo 'selected'; } ?>>Sim</option>
                                             <option value="N" <?php if ($Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
