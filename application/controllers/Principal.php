@@ -80,20 +80,20 @@ class Principal extends BaseController
             }
             else if ($tpTela == 'cadastrar') {
 
-                if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
-                    {
-                        redirect('acaoNaoAutorizada');
-                    }
+                if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Inserir == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
                 $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
 
-                if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
-                    {
-                        redirect('acaoNaoAutorizada');
-                    }
+                if ($this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Atualizar == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
                 $IdConvenio = $this->uri->segment(3);
                 if($IdConvenio == null)
@@ -316,11 +316,14 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
-                if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaPlano') ||
-                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaPlano'))
-                {
-                    redirect('telaNaoAutorizada');
-                }
+                if ($this->session->userdata('email') != 'admin@admin.com')
+                    {
+                        if ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaPlano')[0]->Tp_Ativo == 'N' ||
+                            $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaPlano')[0]->Consultar == 'N')
+                            {
+                                redirect('telaNaoAutorizada');
+                            }
+                    }
 
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
@@ -343,10 +346,10 @@ class Principal extends BaseController
             }
             else if ($tpTela == 'cadastrar') {
 
-                if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaPlano'))
-                    {
-                        redirect('acaoNaoAutorizada');
-                    }
+                if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaPlano')[0]->Inserir == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
                 $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));
                 $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
@@ -356,10 +359,10 @@ class Principal extends BaseController
             }
             else if ($tpTela == 'editar') {
 
-                if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaPlano'))
-                    {
-                        redirect('acaoNaoAutorizada');
-                    }
+                if ($this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaPlano')[0]->Atualizar == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
                 $IdPlano = $this->uri->segment(3);
                 if($IdPlano == null)
@@ -580,11 +583,14 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
-                if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaFaturamento') ||
-                !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaFaturamento'))
-                {
-                    redirect('telaNaoAutorizada');
-                }
+                if ($this->session->userdata('email') != 'admin@admin.com')
+                    {
+                        if ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaFaturamento')[0]->Tp_Ativo == 'N' ||
+                            $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaFaturamento')[0]->Consultar == 'N')
+                            {
+                                redirect('telaNaoAutorizada');
+                            }
+                    }
 
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
@@ -607,20 +613,20 @@ class Principal extends BaseController
             }
             else if ($tpTela == 'cadastrar') {
 
-                if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaFaturamento'))
-                    {
-                        redirect('acaoNaoAutorizada');
-                    }
+                if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaFaturamento')[0]->Inserir == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Faturamento';
                 $this->loadViews("qualicad/principal/c_principalFaturamento", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
 
-                if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaFaturamento'))
-                    {
-                        redirect('acaoNaoAutorizada');
-                    }
+                if ($this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaFaturamento')[0]->Atualizar == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
                 $IdFaturamento = $this->uri->segment(3);
                 if($IdFaturamento == null)
@@ -826,11 +832,14 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
-                if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaRegra') ||
-                    !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaRegra'))
-                    {
-                        redirect('telaNaoAutorizada');
-                    }
+                if ($this->session->userdata('email') != 'admin@admin.com')
+                {
+                    if ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Tp_Ativo == 'N' ||
+                        $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Consultar == 'N')
+                        {
+                            redirect('telaNaoAutorizada');
+                        }
+                }
 
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
@@ -853,7 +862,7 @@ class Principal extends BaseController
             }
             else if ($tpTela == 'cadastrar') {
 
-                if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaRegra'))
+                if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Inserir == 'N')
                     {
                         redirect('acaoNaoAutorizada');
                     }
@@ -863,7 +872,7 @@ class Principal extends BaseController
             }
             else if ($tpTela == 'editar') {
 
-                if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaRegra'))
+                if ($this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Atualizar == 'N')
                     {
                         redirect('acaoNaoAutorizada');
                     }
@@ -1070,10 +1079,13 @@ class Principal extends BaseController
     
                 if ($tpTela == 'listar') {
 
-                    if (!$this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndice') ||
-                    !$this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaIndice'))
+                    if ($this->session->userdata('email') != 'admin@admin.com')
                     {
-                        redirect('telaNaoAutorizada');
+                        if ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaIndice')[0]->Tp_Ativo == 'N' ||
+                            $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaIndice')[0]->Consultar == 'N')
+                            {
+                                redirect('telaNaoAutorizada');
+                            }
                     }
     
                     $searchText = $this->security->xss_clean($this->input->post('searchText'));
@@ -1097,7 +1109,7 @@ class Principal extends BaseController
                 }
                 else if ($tpTela == 'cadastrar') {
 
-                    if (!$this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaIndice'))
+                    if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaIndice')[0]->Inserir == 'N')
                     {
                         redirect('acaoNaoAutorizada');
                     }
@@ -1107,7 +1119,7 @@ class Principal extends BaseController
                 }
                 else if ($tpTela == 'editar') {
 
-                    if (!$this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaIndice'))
+                    if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaIndice')[0]->Atualizar == 'N')
                     {
                         redirect('acaoNaoAutorizada');
                     }
