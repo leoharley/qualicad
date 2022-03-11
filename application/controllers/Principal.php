@@ -1362,7 +1362,8 @@ class Principal extends BaseController
             {
                 redirect('acaoNaoAutorizada');
             } */
-
+            $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Índice por Grupo de Procedimento';
             $this->loadViews("qualicad/principal/c_principalIndiceGrupoPro", $this->global, $data, NULL);
         }
@@ -1378,6 +1379,8 @@ class Principal extends BaseController
             {
                 redirect('principalIndiceGrupoPro/listar');
             }
+            $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
             $data['infoIndiceGrupo'] = $this->PrincipalModel->carregaInfoIndiceGrupoPro($IdIndiceGrupo);
             $this->global['pageTitle'] = 'QUALICAD : Editar Índice por Grupo de Procedimento';
             $this->loadViews("qualicad/principal/c_principalIndiceGrupoPro", $this->global, $data, NULL);

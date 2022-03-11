@@ -437,6 +437,17 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 
         return $query->result();
     }
+
+    function carregaInfoGrupoPro($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbGrupoPro as GrupoPro');
+        $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $idEmpresa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 // FIM DAS CONSULTAS NA TELA DE INDICE GRUPO PRO
 
 // INICIO DAS CONSULTAS NA TELA DE REGRA PROIBIÇÃO
