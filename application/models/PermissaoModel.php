@@ -13,8 +13,6 @@ class PermissaoModel extends CI_Model
         $this->db->where('Tela.Ds_Tela', $dsTela);
         $query = $this->db->get();
 
-        var_dump($query->result());exit;
-
         return $query->result();
     }
 
