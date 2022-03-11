@@ -98,7 +98,7 @@
                         <?php echo $registro->Qt_Prod ?>
                       </td>
                       <td>
-                        <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
+                        <?php echo $registro->Tp_Ativo ?>
                       </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
