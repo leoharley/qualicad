@@ -43,7 +43,7 @@
                   <tr>
                     <th>Perfil</th>
                     <th>Tela</th>
-                    <th>Mostra tela neste perfil?</th>
+                    <th>Configurar permissões neste perfil?</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
