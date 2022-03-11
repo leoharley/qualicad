@@ -51,7 +51,7 @@ class Principal extends BaseController
             if ($tpTela == 'listar') {
     
                 if (($this->session->userdata('email') != 'admin@admin.com')&&
-                    ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Tp_Ativo == 'S' ||
+                    ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Tp_Ativo == 'S' &&
                      $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Consultar == 'S')
                 ) 
                     {
