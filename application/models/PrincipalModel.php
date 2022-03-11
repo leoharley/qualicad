@@ -477,7 +477,7 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 // INICIO DAS CONSULTAS NA TELA DE REGRA PROIBIÇÃO
 function listaRegraProibicao($IdEmpresa, $searchText = '', $page, $segment)
 {
-    $this->db->select('*');
+    $this->db->select('RegraProibicao.*,Faturamento.Ds_Faturamento,GrupoPro.Ds_GrupoPro,Plano.Ds_Plano');
     $this->db->from('Tb_RegraProibicao as RegraProibicao');
     $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = RegraProibicao.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
     $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = RegraProibicao.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
