@@ -392,7 +392,7 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 // INICIO DAS CONSULTAS NA TELA DE INDICE GRUPO PRO
     function listaIndiceGrupoPro($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('*');
+        $this->db->select('IndiceGrupo.*,GrupoPro.Ds_GrupoPro');
         $this->db->from('TbIndiceGrupo as IndiceGrupo');
         $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = IndiceGrupo.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
         $this->db->join('TbIndice as Indice', 'Indice.Id_Indice = IndiceGrupo.TbIndice_Id_Indice AND Indice.Deletado != "S" AND Indice.Tp_Ativo = "S"','left');
