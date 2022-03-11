@@ -2080,7 +2080,7 @@ class Principal extends BaseController
         'Qt_Prod'=>$Qt_Prod, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
         'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
 
-        $resultado = $this->PrincipalModel->editaConvenio($infoFracaoSimproBra,$IdFracaoSimproBra);
+        $resultado = $this->PrincipalModel->editaFracaoSimproBra($infoFracaoSimproBra,$IdFracaoSimproBra);
 
         if($resultado == true)
         {
