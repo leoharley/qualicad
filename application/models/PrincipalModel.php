@@ -362,6 +362,8 @@ function carregaInfoIndicesEmpresa($idEmpresa)
     $this->db->select('*');
     $this->db->from('TbIndice as Indice');
     $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
+    $this->db->where('Indice.Deletado !=', 'S');
+    $this->db->where('Indice.Tp_Ativo', 'S');
     $query = $this->db->get();
 
     return $query->result();
