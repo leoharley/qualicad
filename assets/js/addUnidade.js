@@ -15,10 +15,7 @@ $(document).ready(function(){
 	var validator = addUnidadeForm.validate({
 		
 		rules:{
-			Ds_Faturamento: {cnpj: true, required: true}
-		},
-		messages:{
-			Ds_Faturamento: { cnpj: 'CNPJ inválido'}
+			Ds_Unidade: {required: true}
 		}
 	});
 });
