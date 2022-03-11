@@ -10,9 +10,9 @@
 
 $(document).ready(function(){
 	
-	var addFaturamentoForm = $("#addFaturamento");
+	var addFracaoSimproBraForm = $("#addFracaoSimproBra");
 	
-	var validator = addFaturamentoForm.validate({
+	var validator = addFracaoSimproBraForm.validate({
 		
 		rules:{
 			Ds_Faturamento: {cnpj: true, required: true}

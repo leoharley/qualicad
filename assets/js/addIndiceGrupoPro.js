@@ -10,9 +10,9 @@
 
 $(document).ready(function(){
 	
-	var addFaturamentoForm = $("#addFaturamento");
+	var addIndiceGrupoProForm = $("#addIndiceGrupoPro");
 	
-	var validator = addFaturamentoForm.validate({
+	var validator = addIndiceGrupoProForm.validate({
 		
 		rules:{
 			Ds_Faturamento: {cnpj: true, required: true}

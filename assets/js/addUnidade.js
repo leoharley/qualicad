@@ -10,9 +10,9 @@
 
 $(document).ready(function(){
 	
-	var addFaturamentoForm = $("#addFaturamento");
+	var addUnidadeForm = $("#addUnidade");
 	
-	var validator = addFaturamentoForm.validate({
+	var validator = addUnidadeForm.validate({
 		
 		rules:{
 			Ds_Faturamento: {cnpj: true, required: true}
