@@ -80,6 +80,8 @@ class PrincipalModel extends CI_Model
         $this->db->select('*');
         $this->db->from('TbConvenio as Convenio');
         $this->db->where('Convenio.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('Convenio.Deletado !=', 'S');
+        $this->db->where('Convenio.Tp_Ativo', 'S');
         $query = $this->db->get();
 
         return $query->result();
@@ -143,6 +145,8 @@ class PrincipalModel extends CI_Model
         $this->db->select('*');
         $this->db->from('TbPlano as Plano');
         $this->db->where('Plano.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('Plano.Deletado !=', 'S');
+        $this->db->where('Plano.Tp_Ativo', 'S');
         $query = $this->db->get();
 
         return $query->result();
@@ -294,6 +298,8 @@ function carregaInfoRegrasEmpresa($idEmpresa)
     $this->db->select('*');
     $this->db->from('TbRegra as Regra');
     $this->db->where('Regra.TbEmpresa_Id_Empresa', $idEmpresa);
+    $this->db->where('Regra.Deletado !=', 'S');
+    $this->db->where('Regra.Tp_Ativo', 'S');
     $query = $this->db->get();
 
     return $query->result();
@@ -435,6 +441,8 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         $this->db->select('*');
         $this->db->from('TbIndiceGrupo as IndiceGrupo');
         $this->db->where('IndiceGrupo.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('IndiceGrupo.Deletado !=', 'S');
+        $this->db->where('IndiceGrupo.Tp_Ativo', 'S');
         $query = $this->db->get();
 
         return $query->result();
@@ -517,6 +525,8 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
     $this->db->select('*');
     $this->db->from('Tb_RegraProibicao as RegraProibicao');
     $this->db->where('RegraProibicao.TbEmpresa_Id_Empresa', $idEmpresa);
+    $this->db->where('RegraProibicao.Deletado !=', 'S');
+    $this->db->where('RegraProibicao.Tp_Ativo', 'S');
     $query = $this->db->get();
 
     return $query->result();
@@ -590,6 +600,8 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         $this->db->select('*');
         $this->db->from('Tb_FracaoSimproBra as FracaoSimproBra');
         $this->db->where('FracaoSimproBra.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('FracaoSimproBra.Deletado !=', 'S');
+        $this->db->where('FracaoSimproBra.Tp_Ativo', 'S');
         $query = $this->db->get();
 
         return $query->result();
@@ -659,6 +671,8 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         $this->db->select('*');
         $this->db->from('TbFatItem as FaturamentoItem');
         $this->db->where('FaturamentoItem.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('FaturamentoItem.Deletado !=', 'S');
+        $this->db->where('FaturamentoItem.Tp_Ativo', 'S');
         $query = $this->db->get();
 
         return $query->result();
@@ -727,6 +741,8 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         $this->db->select('*');
         $this->db->from('Tb_Unidade as Unidade');
         $this->db->where('Unidade.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('Unidade.Deletado !=', 'S');
+        $this->db->where('Unidade.Tp_Ativo', 'S');
         $query = $this->db->get();
 
         return $query->result();
@@ -798,6 +814,8 @@ function carregaInfoProibicaoEmpresa($idEmpresa)
     $this->db->select('*');
     $this->db->from('TbIndice as Indice');
     $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
+    $this->db->where('Indice.Deletado !=', 'S');
+    $this->db->where('Indice.Tp_Ativo', 'S');
     $query = $this->db->get();
 
     return $query->result();
