@@ -177,6 +177,15 @@ if(!empty($infoFracaoSimproBra))
                                         maxlength="11">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Tp_Ativo">Índice ativo?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.box-body -->
