@@ -1899,7 +1899,9 @@ class Principal extends BaseController
             {
                 redirect('acaoNaoAutorizada');
             } */
-
+            $data['infoProFat'] = $this->PrincipalModel->carregaInfoProFatEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoTUSS'] = $this->PrincipalModel->carregaInfoTUSSEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Fração Simpro BRA';
             $this->loadViews("qualicad/principal/c_principalFracaoSimproBra", $this->global, $data, NULL);
         }
@@ -1915,6 +1917,9 @@ class Principal extends BaseController
             {
                 redirect('principalFracaoSimproBra/listar');
             }
+            $data['infoProFat'] = $this->PrincipalModel->carregaInfoProFatEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoTUSS'] = $this->PrincipalModel->carregaInfoTUSSEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
             $data['infoFracaoSimproBra'] = $this->PrincipalModel->carregaInfoFracaoSimproBra($IdFracaoSimproBra);
             $this->global['pageTitle'] = 'QUALICAD : Editar Fração Simpro BRA';
             $this->loadViews("qualicad/principal/c_principalFracaoSimproBra", $this->global, $data, NULL);

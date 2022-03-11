@@ -620,6 +620,30 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
 
         return $query->result();
     }
+
+    function carregaInfoProFatEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbProFat as ProFat');
+        $this->db->where('ProFat.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('ProFat.Deletado !=', 'S');
+        $this->db->where('ProFat.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function carregaInfoTUSSEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbTUSS as TUSS');
+        $this->db->where('TUSS.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('TUSS.Deletado !=', 'S');
+        $this->db->where('TUSS.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
 // FIM DAS CONSULTAS NA TELA DE FRAÇÃO SIMPRO BRA
 
 // INICIO DAS CONSULTAS NA TELA DE FATURAMENTO ITEM
