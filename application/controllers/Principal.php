@@ -2029,7 +2029,7 @@ class Principal extends BaseController
 
         $this->load->library('form_validation');
 
-        $IdFracaoSimproBra = $this->input->post('IdFracaoSimproBra');
+        $IdFracaoSimproBra = $this->input->post('Id_FracaoSimproBra');
 
         //VALIDAÇÃO
 
