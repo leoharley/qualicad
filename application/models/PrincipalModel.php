@@ -550,7 +550,8 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
 // INICIO DAS CONSULTAS NA TELA DE FRAÇÃO SIMPRO BRA
     function listaFracaoSimproBra($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('*');
+        $this->db->select('FracaoSimproBra.Id_FracaoSimproBra, FracaoSimproBra.TbProFat_Cd_ProFat, FracaoSimproBra.TbFaturamento_Id_Faturamento, FracaoSimproBra.TbTUSS_Id_Tuss, FracaoSimproBra.Ds_FracaoSimproBra, FracaoSimproBra.Ds_Laboratorio,
+        FracaoSimproBra.Ds_Apresentacao, FracaoSimproBra.Tp_MatMed, FracaoSimproBra.Vl_FatorDivisao, FracaoSimproBra.Qt_Prod, FracaoSimproBra.Tp_Ativo');
         $this->db->from('Tb_FracaoSimproBra as FracaoSimproBra');
         $this->db->join('TbProFat as ProFat', 'ProFat.Cd_ProFat = FracaoSimproBra.TbProFat_Cd_ProFat AND ProFat.Deletado != "S" AND ProFat.Tp_Ativo = "S"','left');
         $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = FracaoSimproBra.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
