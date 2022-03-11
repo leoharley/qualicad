@@ -552,7 +552,7 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
     {
         $this->db->select('*');
         $this->db->from('Tb_FracaoSimproBra as FracaoSimproBra');
-        $this->db->join('TbProFat_Cd_ProFat as ProFat', 'ProFat.Cd_ProFat = FracaoSimproBra.TbProFat_Cd_ProFat AND ProFat.Deletado != "S" AND ProFat.Tp_Ativo = "S"','left');
+        $this->db->join('TbProFat as ProFat', 'ProFat.Cd_ProFat = FracaoSimproBra.TbProFat_Cd_ProFat AND ProFat.Deletado != "S" AND ProFat.Tp_Ativo = "S"','left');
         $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = FracaoSimproBra.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
         $this->db->join('TbTUSS as TUSS', 'TUSS.Id_Tuss = FracaoSimproBra.TbTUSS_Id_Tuss AND TUSS.Deletado != "S" AND TUSS.Tp_Ativo = "S"','left');
 //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
