@@ -373,14 +373,16 @@ function carregaInfoIndicesEmpresa($idEmpresa)
     function listaIndiceGrupoPro($IdEmpresa, $searchText = '', $page, $segment)
     {
         $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
+        $this->db->from('TbIndiceGrupo as IndiceGrupo');
+        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = IndiceGrupo.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+        $this->db->join('TbIndice as Indice', 'Indice.Id_Indice = IndiceGrupo.TbIndice_Id_Indice AND Indice.Deletado != "S" AND Indice.Tp_Ativo = "S"','left');
 //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
-            $likeCriteria = "(Indice.Ds_Indice LIKE '%".$searchText."%')";
+            $likeCriteria = "(GrupoPro.Ds_GrupoPro LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-        $this->db->where('Indice.Deletado !=', 'S');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('IndiceGrupo.Deletado !=', 'S');
+        $this->db->where('IndiceGrupo.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->limit($page, $segment);
         $query = $this->db->get();
 
@@ -391,7 +393,7 @@ function carregaInfoIndicesEmpresa($idEmpresa)
     function adicionaIndiceGrupoPro($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbIndice', $info);
+        $this->db->insert('TbIndiceGrupo', $info);
 
         $insert_id = $this->db->insert_id();
 
@@ -402,16 +404,16 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 
     function editaIndiceGrupoPro($info, $id)
     {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
+        $this->db->where('Id_IndiceGrupo', $id);
+        $this->db->update('TbIndiceGrupo', $info);
 
         return TRUE;
     }
 
     function apagaIndiceGrupoPro($info, $id)
     {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
+        $this->db->where('Id_IndiceGrupo', $id);
+        $this->db->update('TbIndiceGrupo', $info);
 
         return $this->db->affected_rows();
     }
@@ -419,8 +421,8 @@ function carregaInfoIndicesEmpresa($idEmpresa)
     function carregaInfoIndiceGrupoPro($Id)
     {
         $this->db->select('*');
-        $this->db->from('TbIndice');
-        $this->db->where('Id_Indice', $Id);
+        $this->db->from('TbIndiceGrupo');
+        $this->db->where('Id_IndiceGrupo', $Id);
         $query = $this->db->get();
 
         return $query->result();
@@ -429,8 +431,8 @@ function carregaInfoIndicesEmpresa($idEmpresa)
     function carregaInfoIndiceGrupoProEmpresa($idEmpresa)
     {
         $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->from('TbIndiceGrupo as IndiceGrupo');
+        $this->db->where('IndiceGrupo.TbEmpresa_Id_Empresa', $idEmpresa);
         $query = $this->db->get();
 
         return $query->result();
@@ -439,6 +441,290 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 
 // INICIO DAS CONSULTAS NA TELA DE REGRA PROIBIÇÃO
 function listaRegraProibicao($IdEmpresa, $searchText = '', $page, $segment)
+{
+    $this->db->select('*');
+    $this->db->from('Tb_RegraProibicao as RegraProibicao');
+    $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = RegraProibicao.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
+    $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = RegraProibicao.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+    $this->db->join('TbPlano as Plano', 'Plano.Id_Plano = RegraProibicao.TbPlano_Id_Plano AND Plano.Deletado != "S" AND Plano.Tp_Ativo = "S"','left');
+//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+    if(!empty($searchText)) {
+        $likeCriteria = "(RegraProibicao.Ds_RegraProibicao LIKE '%".$searchText."%')";
+        $this->db->where($likeCriteria);
+    }
+    $this->db->where('RegraProibicao.Deletado !=', 'S');
+    $this->db->where('RegraProibicao.TbEmpresa_Id_Empresa', $IdEmpresa);
+    $this->db->limit($page, $segment);
+    $query = $this->db->get();
+
+    $result = $query->result();
+    return $result;
+}
+
+function adicionaRegraProibicao($info)
+{
+    $this->db->trans_start();
+    $this->db->insert('Tb_RegraProibicao', $info);
+
+    $insert_id = $this->db->insert_id();
+
+    $this->db->trans_complete();
+
+    return $insert_id;
+}
+
+function editaRegraProibicao($info, $id)
+{
+    $this->db->where('Id_RegraProibicao', $id);
+    $this->db->update('Tb_RegraProibicao', $info);
+
+    return TRUE;
+}
+
+function apagaRegraProibicao($info, $id)
+{
+    $this->db->where('Id_RegraProibicao', $id);
+    $this->db->update('Tb_RegraProibicao', $info);
+
+    return $this->db->affected_rows();
+}
+
+function carregaInfoRegraProibicao($Id)
+{
+    $this->db->select('*');
+    $this->db->from('Tb_RegraProibicao');
+    $this->db->where('Id_RegraProibicao', $Id);
+    $query = $this->db->get();
+
+    return $query->result();
+}
+
+function carregaInfoRegraProibicaoEmpresa($idEmpresa)
+{
+    $this->db->select('*');
+    $this->db->from('Tb_RegraProibicao as RegraProibicao');
+    $this->db->where('RegraProibicao.TbEmpresa_Id_Empresa', $idEmpresa);
+    $query = $this->db->get();
+
+    return $query->result();
+}
+// FIM DAS CONSULTAS NA TELA DE REGRA PROIBIÇÃO
+
+// INICIO DAS CONSULTAS NA TELA DE FRAÇÃO SIMPRO BRA
+    function listaFracaoSimproBra($IdEmpresa, $searchText = '', $page, $segment)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_FracaoSimproBra as FracaoSimproBra');
+        $this->db->join('TbProFat_Cd_ProFat as ProFat', 'ProFat.Cd_ProFat = FracaoSimproBra.TbProFat_Cd_ProFat AND ProFat.Deletado != "S" AND ProFat.Tp_Ativo = "S"','left');
+        $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = FracaoSimproBra.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
+        $this->db->join('TbTUSS as TUSS', 'TUSS.Id_Tuss = FracaoSimproBra.TbTUSS_Id_Tuss AND TUSS.Deletado != "S" AND TUSS.Tp_Ativo = "S"','left');
+//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+        if(!empty($searchText)) {
+            $likeCriteria = "(FracaoSimproBra.Ds_FracaoSimproBra LIKE '%".$searchText."%'
+                            OR FracaoSimproBra.Ds_Laboratorio LIKE '%".$searchText."%'
+                            OR FracaoSimproBra.Ds_Apresentacao LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
+        $this->db->where('FracaoSimproBra.Deletado !=', 'S');
+        $this->db->where('FracaoSimproBra.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->limit($page, $segment);
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
+    }
+
+    function adicionaFracaoSimproBra($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('Tb_FracaoSimproBra', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
+    function editaFracaoSimproBra($info, $id)
+    {
+        $this->db->where('Id_FracaoSimproBra ', $id);
+        $this->db->update('Tb_FracaoSimproBra', $info);
+
+        return TRUE;
+    }
+
+    function apagaFracaoSimproBra($info, $id)
+    {
+        $this->db->where('Id_FracaoSimproBra ', $id);
+        $this->db->update('Tb_FracaoSimproBra', $info);
+
+        return $this->db->affected_rows();
+    }
+
+    function carregaInfoFracaoSimproBra($Id)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_FracaoSimproBra');
+        $this->db->where('Id_FracaoSimproBra', $Id);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function carregaInfoFracaoSimproBraEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_FracaoSimproBra as FracaoSimproBra');
+        $this->db->where('FracaoSimproBra.TbEmpresa_Id_Empresa', $idEmpresa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+// FIM DAS CONSULTAS NA TELA DE FRAÇÃO SIMPRO BRA
+
+// INICIO DAS CONSULTAS NA TELA DE FATURAMENTO ITEM
+    function listaFaturamentoItem($IdEmpresa, $searchText = '', $page, $segment)
+    {
+        $this->db->select('*');
+        $this->db->from('TbFatItem as FaturamentoItem');
+        $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = FaturamentoItem.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
+//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+        if(!empty($searchText)) {
+            $likeCriteria = "(FaturamentoItem.Ds_FatItem LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
+        $this->db->where('FaturamentoItem.Deletado !=', 'S');
+        $this->db->where('FaturamentoItem.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->limit($page, $segment);
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
+    }
+
+    function adicionaFaturamentoItem($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbFatItem', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
+    function editaFaturamentoItem($info, $id)
+    {
+        $this->db->where('Id_FatItem', $id);
+        $this->db->update('TbFatItem', $info);
+
+        return TRUE;
+    }
+
+    function apagaFaturamentoItem($info, $id)
+    {
+        $this->db->where('Id_FatItem', $id);
+        $this->db->update('TbFatItem', $info);
+
+        return $this->db->affected_rows();
+    }
+
+    function carregaInfoFaturamentoItem($Id)
+    {
+        $this->db->select('*');
+        $this->db->from('TbFatItem');
+        $this->db->where('Id_FatItem', $Id);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function carregaInfoFaturamentoItemEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbFatItem as FaturamentoItem');
+        $this->db->where('FaturamentoItem.TbEmpresa_Id_Empresa', $idEmpresa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+// FIM DAS CONSULTAS NA TELA DE FATURAMENTO ITEM
+
+// INICIO DAS CONSULTAS NA TELA DE UNIDADE
+    function listaUnidade($IdEmpresa, $searchText = '', $page, $segment)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_Unidade as Unidade');
+//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+        if(!empty($searchText)) {
+            $likeCriteria = "(Unidade.Ds_Unidade LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
+        $this->db->where('Unidade.Deletado !=', 'S');
+        $this->db->where('Unidade.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->limit($page, $segment);
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
+    }
+
+    function adicionaUnidade($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('Tb_Unidade', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
+    function editaUnidade($info, $id)
+    {
+        $this->db->where('Id_Unidade', $id);
+        $this->db->update('Tb_Unidade', $info);
+
+        return TRUE;
+    }
+
+    function apagaUnidade($info, $id)
+    {
+        $this->db->where('Id_Unidade', $id);
+        $this->db->update('Tb_Unidade', $info);
+
+        return $this->db->affected_rows();
+    }
+
+    function carregaInfoUnidade($Id)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_Unidade');
+        $this->db->where('Id_Unidade', $Id);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function carregaInfoUnidadeEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_Unidade as Unidade');
+        $this->db->where('Unidade.TbEmpresa_Id_Empresa', $idEmpresa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+// FIM DAS CONSULTAS NA TELA DE UNIDADE
+
+
+
+
+// INICIO DAS CONSULTAS NA TELA DE PROIBIÇÃO
+function listaProibicao($IdEmpresa, $searchText = '', $page, $segment)
 {
     $this->db->select('*');
     $this->db->from('TbIndice as Indice');
@@ -456,7 +742,7 @@ function listaRegraProibicao($IdEmpresa, $searchText = '', $page, $segment)
     return $result;
 }
 
-function adicionaRegraProibicao($info)
+function adicionaProibicao($info)
 {
     $this->db->trans_start();
     $this->db->insert('TbIndice', $info);
@@ -468,7 +754,7 @@ function adicionaRegraProibicao($info)
     return $insert_id;
 }
 
-function editaRegraProibicao($info, $id)
+function editaProibicao($info, $id)
 {
     $this->db->where('Id_Indice', $id);
     $this->db->update('TbIndice', $info);
@@ -476,7 +762,7 @@ function editaRegraProibicao($info, $id)
     return TRUE;
 }
 
-function apagaRegraProibicao($info, $id)
+function apagaProibicao($info, $id)
 {
     $this->db->where('Id_Indice', $id);
     $this->db->update('TbIndice', $info);
@@ -484,7 +770,7 @@ function apagaRegraProibicao($info, $id)
     return $this->db->affected_rows();
 }
 
-function carregaInfoRegraProibicao($Id)
+function carregaInfoProibicao($Id)
 {
     $this->db->select('*');
     $this->db->from('TbIndice');
@@ -494,7 +780,7 @@ function carregaInfoRegraProibicao($Id)
     return $query->result();
 }
 
-function carregaInfoRegraProibicaoEmpresa($idEmpresa)
+function carregaInfoProibicaoEmpresa($idEmpresa)
 {
     $this->db->select('*');
     $this->db->from('TbIndice as Indice');
@@ -503,280 +789,7 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
 
     return $query->result();
 }
-// FIM DAS CONSULTAS NA TELA DE REGRA PROIBIÇÃO
-
-
-// INICIO DAS CONSULTAS NA TELA DE PROIBIÇÃO
-    function listaProibicao($IdEmpresa, $searchText = '', $page, $segment)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
-        if(!empty($searchText)) {
-            $likeCriteria = "(Indice.Ds_Indice LIKE '%".$searchText."%')";
-            $this->db->where($likeCriteria);
-        }
-        $this->db->where('Indice.Deletado !=', 'S');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
-        $this->db->limit($page, $segment);
-        $query = $this->db->get();
-
-        $result = $query->result();
-        return $result;
-    }
-
-    function adicionaProibicao($info)
-    {
-        $this->db->trans_start();
-        $this->db->insert('TbIndice', $info);
-
-        $insert_id = $this->db->insert_id();
-
-        $this->db->trans_complete();
-
-        return $insert_id;
-    }
-
-    function editaProibicao($info, $id)
-    {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
-
-        return TRUE;
-    }
-
-    function apagaProibicao($info, $id)
-    {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
-
-        return $this->db->affected_rows();
-    }
-
-    function carregaInfoProibicao($Id)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice');
-        $this->db->where('Id_Indice', $Id);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
-
-    function carregaInfoProibicaoEmpresa($idEmpresa)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
 // FIM DAS CONSULTAS NA TELA DE PROIBIÇÃO
-
-// INICIO DAS CONSULTAS NA TELA DE FRAÇÃO SIMPRO BRA
-    function listaFracaoSimproBra($IdEmpresa, $searchText = '', $page, $segment)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
-        if(!empty($searchText)) {
-            $likeCriteria = "(Indice.Ds_Indice LIKE '%".$searchText."%')";
-            $this->db->where($likeCriteria);
-        }
-        $this->db->where('Indice.Deletado !=', 'S');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
-        $this->db->limit($page, $segment);
-        $query = $this->db->get();
-
-        $result = $query->result();
-        return $result;
-    }
-
-    function adicionaFracaoSimproBra($info)
-    {
-        $this->db->trans_start();
-        $this->db->insert('TbIndice', $info);
-
-        $insert_id = $this->db->insert_id();
-
-        $this->db->trans_complete();
-
-        return $insert_id;
-    }
-
-    function editaFracaoSimproBra($info, $id)
-    {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
-
-        return TRUE;
-    }
-
-    function apagaFracaoSimproBra($info, $id)
-    {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
-
-        return $this->db->affected_rows();
-    }
-
-    function carregaInfoFracaoSimproBra($Id)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice');
-        $this->db->where('Id_Indice', $Id);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
-
-    function carregaInfoFracaoSimproBraEmpresa($idEmpresa)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
-// FIM DAS CONSULTAS NA TELA DE FRAÇÃO SIMPRO BRA
-
-// INICIO DAS CONSULTAS NA TELA DE FATURAMENTO ITEM
-    function listaFaturamentoItem($IdEmpresa, $searchText = '', $page, $segment)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
-        if(!empty($searchText)) {
-            $likeCriteria = "(Indice.Ds_Indice LIKE '%".$searchText."%')";
-            $this->db->where($likeCriteria);
-        }
-        $this->db->where('Indice.Deletado !=', 'S');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
-        $this->db->limit($page, $segment);
-        $query = $this->db->get();
-
-        $result = $query->result();
-        return $result;
-    }
-
-    function adicionaFaturamentoItem($info)
-    {
-        $this->db->trans_start();
-        $this->db->insert('TbIndice', $info);
-
-        $insert_id = $this->db->insert_id();
-
-        $this->db->trans_complete();
-
-        return $insert_id;
-    }
-
-    function editaFaturamentoItem($info, $id)
-    {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
-
-        return TRUE;
-    }
-
-    function apagaFaturamentoItem($info, $id)
-    {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
-
-        return $this->db->affected_rows();
-    }
-
-    function carregaInfoFaturamentoItem($Id)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice');
-        $this->db->where('Id_Indice', $Id);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
-
-    function carregaInfoFaturamentoItemEmpresa($idEmpresa)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
-// FIM DAS CONSULTAS NA TELA DE FATURAMENTO ITEM
-
-// INICIO DAS CONSULTAS NA TELA DE UNIDADE
-    function listaUnidade($IdEmpresa, $searchText = '', $page, $segment)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-//     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
-        if(!empty($searchText)) {
-            $likeCriteria = "(Indice.Ds_Indice LIKE '%".$searchText."%')";
-            $this->db->where($likeCriteria);
-        }
-        $this->db->where('Indice.Deletado !=', 'S');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
-        $this->db->limit($page, $segment);
-        $query = $this->db->get();
-
-        $result = $query->result();
-        return $result;
-    }
-
-    function adicionaUnidade($info)
-    {
-        $this->db->trans_start();
-        $this->db->insert('TbIndice', $info);
-
-        $insert_id = $this->db->insert_id();
-
-        $this->db->trans_complete();
-
-        return $insert_id;
-    }
-
-    function editaUnidade($info, $id)
-    {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
-
-        return TRUE;
-    }
-
-    function apagaUnidade($info, $id)
-    {
-        $this->db->where('Id_Indice', $id);
-        $this->db->update('TbIndice', $info);
-
-        return $this->db->affected_rows();
-    }
-
-    function carregaInfoUnidade($Id)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice');
-        $this->db->where('Id_Indice', $Id);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
-
-    function carregaInfoUnidadeEmpresa($idEmpresa)
-    {
-        $this->db->select('*');
-        $this->db->from('TbIndice as Indice');
-        $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
-// FIM DAS CONSULTAS NA TELA DE UNIDADE
 
 }
 
