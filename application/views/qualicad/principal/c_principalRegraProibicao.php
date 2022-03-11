@@ -167,8 +167,8 @@ if(!empty($infoRegraProibicao))
                                         <select class="form-control required" id="Tp_Atendimento" name="Tp_Atendimento">
                                             <option value="T" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'T') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>T</option>
                                             <option value="U" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'U') { echo 'selected'; } ?>>U</option>
-                                            <option value="I" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'I') { echo 'selected'; } ?>>NA</option>
-                                            <option value="A" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'A') { echo 'selected'; } ?>>NA</option>
+                                            <option value="I" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'I') { echo 'selected'; } ?>>I</option>
+                                            <option value="A" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'A') { echo 'selected'; } ?>>A</option>
                                         </select>
                                     </div>
                                 </div>
