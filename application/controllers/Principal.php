@@ -862,20 +862,20 @@ class Principal extends BaseController
             }
             else if ($tpTela == 'cadastrar') {
 
-                if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Inserir == 'N')
+            /*    if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Inserir == 'N')
                     {
                         redirect('acaoNaoAutorizada');
-                    }
+                    } */
 
                 $this->global['pageTitle'] = 'QUALICAD : Lista de Regra';
                 $this->loadViews("qualicad/principal/c_principalRegra", $this->global, $data, NULL); 
             }
             else if ($tpTela == 'editar') {
 
-                if ($this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Atualizar == 'N')
+            /*    if ($this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Atualizar == 'N')
                     {
                         redirect('acaoNaoAutorizada');
-                    }
+                    } */
 
                 $IdRegra = $this->uri->segment(3);
                 if($IdRegra == null)
