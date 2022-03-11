@@ -14,8 +14,7 @@ class PermissaoModel extends CI_Model
         $this->db->where('Tela.Tp_Ativo', 'S');
         $query = $this->db->get();
 
-        //return $query->result();
-        return TRUE;
+        return $query->result();
     }
 
     function permissaoAcaoAtualizar($IdUsuEmp, $dsTela)
