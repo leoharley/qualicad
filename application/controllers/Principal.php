@@ -2174,7 +2174,7 @@ class Principal extends BaseController
             {
                 redirect('acaoNaoAutorizada');
             } */
-
+            $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamento($IdFaturamento);
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Faturamento Item';
             $this->loadViews("qualicad/principal/c_principalFaturamentoItem", $this->global, $data, NULL);
         }
@@ -2190,6 +2190,7 @@ class Principal extends BaseController
             {
                 redirect('principalFaturamentoItem/listar');
             }
+            $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamento($IdFaturamento);
             $data['infoFaturamentoItem'] = $this->PrincipalModel->carregaInfoFaturamentoItem($IdFaturamentoItem);
             $this->global['pageTitle'] = 'QUALICAD : Editar Faturamento Item';
             $this->loadViews("qualicad/principal/c_principalFaturamentoItem", $this->global, $data, NULL);
@@ -2221,6 +2222,7 @@ class Principal extends BaseController
             }
             else
         { */
+
 
         $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
         $Ds_FatItem = $this->input->post('Ds_FatItem');
