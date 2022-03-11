@@ -832,14 +832,14 @@ class Principal extends BaseController
 
             if ($tpTela == 'listar') {
 
-                if ($this->session->userdata('email') != 'admin@admin.com')
+            /*    if ($this->session->userdata('email') != 'admin@admin.com')
                 {
                     if ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Tp_Ativo == 'N' ||
                         $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Consultar == 'N')
                         {
                             redirect('telaNaoAutorizada');
                         }
-                }
+                } */
 
                 $searchText = $this->security->xss_clean($this->input->post('searchText'));
                 $data['searchText'] = $searchText;
