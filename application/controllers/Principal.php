@@ -1120,7 +1120,7 @@ class Principal extends BaseController
                 }
                 else if ($tpTela == 'editar') {
 
-                    if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaIndice')[0]->Atualizar == 'N')
+                    if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaIndice')[0]->Inserir == 'N')
                     {
                         redirect('acaoNaoAutorizada');
                     }
