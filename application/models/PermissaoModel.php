@@ -12,8 +12,7 @@ class PermissaoModel extends CI_Model
         $this->db->where('UsuEmp.Deletado', 'N');
         $this->db->where('Tela.Ds_Tela', $dsTela);
         $query = $this->db->get();
-
-        var_dump($query->result());exit;
+        
         return $query->result();
     }
 
