@@ -1,9 +1,45 @@
+<?php
+
+$Id_FatItem = '';
+$TbFaturamento_Id_Faturamento  = '';
+
+$Ds_FatItem = '';
+$Dt_IniVigencia = '';
+$Dt_FimVigencia = '';
+$Vl_Honorário = '';
+$Vl_Operacional = '';
+$Vl_Total = '';
+$Vl_Filme = '';
+$Tp_Ativo = '';
+
+if ($this->uri->segment(2) == 'editar') {
+if(!empty($infoFaturamentoItem))
+{
+    foreach ($infoFaturamentoItem as $r)
+    {
+        $Id_FatItem = $r->Id_FatItem;
+        $TbFaturamento_Id_Faturamento = $r->TbFaturamento_Id_Faturamento;
+
+        $Ds_FatItem = $r->Ds_FatItem;
+        $Dt_IniVigencia = $r->Dt_IniVigencia;
+        $Dt_FimVigencia = $r->Dt_FimVigencia;
+        $Vl_Honorário = $r->Vl_Honorário;
+        $Vl_Operacional = $r->Vl_Operacional;
+        $Vl_Total = $r->Vl_Total;
+        $Vl_Filme = $r->Vl_Filme;
+        $Tp_Ativo = $r->Tp_Ativo;
+    }
+}
+}
+
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Cadastrar Item de Faturamento
-            <small>Associar / Adicionar</small>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Faturamento Item' : 'Editar Faturamento Item' ; ?>
+            <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
 
@@ -23,22 +59,34 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addUser" action="<?php echo base_url() ?>addNewUser" method="post" role="form">
+                    <form role="form" id="addFaturamentoItem" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaFaturamentoItem' : base_url().'editaFaturamentoItem'; ?>" method="post" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsfaturamento">Faturamento associado</label>
-                                        <select class="form-control required" id="dsfaturamento" name="dsfaturamento">
-                                            <option value="1">FATURAMENTO_1</option>
-											<option value="2">FATURAMENTO_2</option>
+                                        <label for="TbFaturamento_Id_Faturamento">Faturamento associado</label>
+                                        <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            <?php
+                                            if(!empty($infoFaturamento))
+                                            {
+                                                foreach ($infoFaturamento as $faturamento)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento  == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
+                                                    <?php echo $faturamento->Ds_Faturamento ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
+                                        <input type="hidden" value="<?php echo $Id_FatItem; ?>" name="Id_FatItem" id="Id_FatItem" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dsfatitem">Descrição</label>
-                                        <input type="text" class="form-control required email" id="dsfatitem" value="<?php echo set_value('dsfatitem'); ?>" name="dsfatitem"
+                                        <label for="Ds_FatItem">Descrição</label>
+                                        <input type="text" class="form-control required email" id="Ds_FatItem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FatItem') : $Ds_FatItem ; ?>" name="Ds_FatItem"
                                             maxlength="128">
                                     </div>
                                 </div>
@@ -46,45 +94,29 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtinivigencia">Data de início da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtinivigencia'); ?>" id="dtinivigencia" name="dtinivigencia">
+                                        <label for="Dt_IniVigencia">Data de início da vigência</label>
+                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtfimvigencia">Data de fim da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtfimvigencia'); ?>" id="dtfimvigencia" name="dtfimvigencia">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="vlhonorario">Valor do honorário</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vlhonorario'); ?>" id="vlhonorario" name="vlhonorario" 
-                                        maxlength="11">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="vloperacional">Valor operacional</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vloperacional'); ?>" id="vloperacional" name="vloperacional"
-                                        maxlength="11">
+                                        <label for="Dt_FimVigencia">Data de fim da vigência</label>
+                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="vltotal">Valor total</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vltotal'); ?>" id="vltotal" name="vltotal"
+                                        <label for="Vl_Honorário">Valor do honorário</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorário') : $Vl_Honorário ; ?>" id="Vl_Honorário" name="Vl_Honorário" 
                                         maxlength="11">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="vlfilme">Valor filme</label>
-                                        <input type="text" class="form-control required" value="<?php echo set_value('vlfilme'); ?>" id="vlfilme" name="vlfilme"
+                                        <label for="Vl_Operacional">Valor operacional</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Operacional') : $Vl_Operacional ; ?>" id="Vl_Operacional" name="Vl_Operacional"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -92,16 +124,26 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="dtcriacao">Data criação</label>
-                                        <input type="date" class="form-control required" value="<?php echo set_value('dtcriacao'); ?>" id="dtcriacao" name="dtcriacao">
+                                        <label for="Vl_Total">Valor total</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Total') : $Vl_Total ; ?>" id="Vl_Total" name="Vl_Total"
+                                        maxlength="11">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="tpativo">Ativo?</label>
-                                        <select class="form-control required" id="tpativo" name="tpativo">
-                                            <option value="1">SIM</option>
-											<option value="2">NÃO</option>
+                                        <label for="Vl_Filme">Valor filme</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Filme') : $Vl_Filme ; ?>" id="Vl_Filme" name="Vl_Filme"
+                                        maxlength="11">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Tp_Ativo">Faturamento Item ativo?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
                                     </div>
                                 </div>
@@ -126,4 +168,4 @@
         </div>
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addFaturamentoItem.js" type="text/javascript"></script>
