@@ -15,10 +15,7 @@ $(document).ready(function(){
 	var validator = addPlanoForm.validate({
 		
 		rules:{
-			Ds_Plano: {cnpj: true, required: true}
-		},
-		messages:{
-			Ds_Plano: { cnpj: 'CNPJ inválido'}
+			Ds_Plano: {required: true}
 		}
 	});
 });
