@@ -86,7 +86,7 @@ if(!empty($infoFaturamentoItem))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Ds_FatItem">Descrição</label>
-                                        <input type="text" class="form-control required email" id="Ds_FatItem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FatItem') : $Ds_FatItem ; ?>" name="Ds_FatItem"
+                                        <input type="text" class="form-control required" id="Ds_FatItem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FatItem') : $Ds_FatItem ; ?>" name="Ds_FatItem"
                                             maxlength="128">
                                     </div>
                                 </div>
