@@ -79,6 +79,8 @@ class PermissaoModel extends CI_Model
         $this->db->where('Tela.Tp_Ativo', 'S');
         $query = $this->db->get();
 
+        var_dump($query->result());exit;
+
         return $query->result();
     }
 
