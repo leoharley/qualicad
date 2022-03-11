@@ -650,7 +650,7 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
 // INICIO DAS CONSULTAS NA TELA DE FATURAMENTO ITEM
     function listaFaturamentoItem($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('*');
+        $this->db->select('FaturamentoItem.*');
         $this->db->from('TbFatItem as FaturamentoItem');
         $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = FaturamentoItem.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
 //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
