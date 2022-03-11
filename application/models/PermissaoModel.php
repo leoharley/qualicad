@@ -69,7 +69,7 @@ class PermissaoModel extends CI_Model
 
     function permissaoAcaoConsultar($IdUsuEmp, $dsTela)
     {
-        $this->db->select('*');    
+        $this->db->select('Permissao.Consultar');    
         $this->db->from('TbPermissao as Permissao'); 
         $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.TbPerfil_Id_CdPerfil = Permissao.TbPerfil_Id_CdPerfil','inner');
         $this->db->join('TabTela as Tela', 'Tela.TbPerfil_Id_CdPerfil = Permissao.TbPerfil_Id_CdPerfil and Tela.Id_Tela = Permissao.TabTela_Id_Tela','inner');
@@ -77,11 +77,9 @@ class PermissaoModel extends CI_Model
         $this->db->where('UsuEmp.Deletado', 'N');
         $this->db->where('Tela.Ds_Tela', $dsTela);
         $this->db->where('Tela.Tp_Ativo', 'S');
-        $this->db->where('Permissao.Consultar', 'S');
         $query = $this->db->get();
 
-    //    return $query->result();
-        return TRUE;
+        return $query->result();
     }
 
     function permissaoAcaoImprimir($IdUsuEmp, $dsTela)
