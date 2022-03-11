@@ -191,8 +191,10 @@ if(!empty($infoFracaoSimproBra))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Salvar" />
-                            <input type="reset" class="btn btn-default" value="Limpar" />
+                            <input type="button" class="btn btn-primary" onclick="window.location='<?php echo base_url(); ?>principalFracaoSimproBra/listar';" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
+                            <input type="submit" class="btn btn-primary" value="Salva e lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:5px;"/>
+                            <input type="submit" class="btn btn-primary" value="Salva e cadastra novamente (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
                 </div>
@@ -208,3 +210,14 @@ if(!empty($infoFracaoSimproBra))
     </section>
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addFracaoSimproBra.js" type="text/javascript"></script>
+<script>
+    shortcut.add("ctrl+l", function() {
+    document.getElementById('IrLista').click();
+    });
+    shortcut.add("ctrl+s", function() {
+        document.getElementById('salvarIrLista').click();
+    });
+    shortcut.add("ctrl+a", function() {
+        document.getElementById('salvarMesmaTela').click();
+    });
+</script>
