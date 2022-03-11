@@ -276,7 +276,7 @@ class Principal extends BaseController
     function apagaConvenio()
     {
 
-            if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+            if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Excluir == 'N')
                 {
                     redirect('acaoNaoAutorizada');
                 }
@@ -543,10 +543,10 @@ class Principal extends BaseController
 
     function apagaPlano()
     {
-            if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaPlano'))
-            {
-                redirect('acaoNaoAutorizada');
-            }
+            if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaPlano')[0]->Excluir == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
             $IdPlano = $this->uri->segment(2);
 
@@ -792,10 +792,10 @@ class Principal extends BaseController
 
     function apagaFaturamento()
     {
-            if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaFaturamento'))
-            {
-                redirect('acaoNaoAutorizada');
-            }
+            if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaFaturamento')[0]->Excluir == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
             $IdFaturamento = $this->uri->segment(2);
 
@@ -1039,10 +1039,11 @@ class Principal extends BaseController
 
     function apagaRegra()
     {
-            if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegra'))
-            {
-                redirect('acaoNaoAutorizada');
-            }
+
+            if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegra')[0]->Excluir == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
             $IdRegra = $this->uri->segment(2);
 
@@ -1304,10 +1305,10 @@ class Principal extends BaseController
     
         function apagaIndice()
         {
-                if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaIndice'))
-                    {
-                        redirect('acaoNaoAutorizada');
-                    }
+                if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaIndice')[0]->Excluir == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
 
                 $IdIndice = $this->uri->segment(2);
 
