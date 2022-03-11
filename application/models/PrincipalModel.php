@@ -233,6 +233,18 @@ function carregaInfoFaturamento($Id)
 
     return $query->result();
 }
+
+function carregaInfoFaturamentoEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbFaturamento as Faturamento');
+        $this->db->where('Faturamento.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('Faturamento.Deletado !=', 'S');
+        $this->db->where('Faturamento.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
 // FIM DAS CONSULTAS NA TELA DE FATURAMENTO
 
 // INICIO DAS CONSULTAS NA TELA DE REGRA

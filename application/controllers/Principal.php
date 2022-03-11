@@ -1631,7 +1631,7 @@ class Principal extends BaseController
             {
                 redirect('acaoNaoAutorizada');
             } */
-
+            $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Regra Proibição';
             $this->loadViews("qualicad/principal/c_principalRegraProibicao", $this->global, $data, NULL);
         }
@@ -1647,6 +1647,7 @@ class Principal extends BaseController
             {
                 redirect('principalRegraProibicao/listar');
             }
+            $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
             $data['infoRegraProibicao'] = $this->PrincipalModel->carregaInfoRegraProibicao($IdRegraProibicao);
             $this->global['pageTitle'] = 'QUALICAD : Editar Regra Proibição';
             $this->loadViews("qualicad/principal/c_principalRegraProibicao", $this->global, $data, NULL);
