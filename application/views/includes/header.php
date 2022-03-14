@@ -41,41 +41,27 @@
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/shortcut.js"></script>
+  <script src="https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js"></script>
   <script type="text/javascript">
     var baseURL = "<?php echo base_url(); ?>";
   </script>
 
 <script>
-$(function() {
-        const collapseExample = $("#cadastro");
-        collapseExample.on("shown.bs.collapse", function() {
-            localStorage.setItem("collapseExample", "show");
-        });
-        collapseExample.on("hidden.bs.collapse", function() {
-            localStorage.setItem("collapseExample", "hide");
-        });
-        const showExampleCollapse = localStorage.getItem("collapseExample");
-        if (showExampleCollapse === "show") {
-            collapseExample.collapse("show");
-        } else {
-            collapseExample.collapse("hide");
-        }
+$(document).ready(function() {
+    var last=$.cookie('activeAccordionGroup');
+    if (last!=null) {
+        //remove default collapse settings
+        $("#cadastro .collapse").removeClass('in');
+        //show the last visible group
+        $("#"+last).collapse("show");
+    }
+});
 
-        const collapseExample2 = $("#principal");
-        collapseExample2.on("shown.bs.collapse", function() {
-            localStorage.setItem("collapseExample2", "show");
-        });
-        collapseExample2.on("hidden.bs.collapse", function() {
-            localStorage.setItem("collapseExample2", "hide");
-        });
-        const showExampleCollapse2 = localStorage.getItem("collapseExample2");
-        if (showExampleCollapse2 === "show") {
-            collapseExample2.collapse("show");
-        } else {
-            collapseExample2.collapse("hide");
-        }
-
-      });
+//when a group is shown, save it as the active accordion group
+$("#cadastro").bind('shown', function() {
+    var active=$("#cadastro .in").attr('id');
+    $.cookie('activeAccordionGroup', active)
+});
 </script>
 
 
