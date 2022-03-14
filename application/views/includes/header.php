@@ -46,34 +46,20 @@
   </script>
 
 <script>
-    function getCollapsed() {
-        const state = localStorage.getItem('collapsed');
-        if(state === 'collapsed'){
-            return true;
-        }
-        return false;
-    }
-    function getStatus(){
-        const resultDiv = document.getElementById('result');
-        const isCollapsed = getCollapsed();
-        if(isCollapsed){
-            resultDiv.innerHTML = "<a href="<?php echo base_url(); ?>">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">GrupoPro</span>
-                            </a>";
-        }else{
-            resultDiv.innerHTML = "un-collapsed";
-        }
-    }
-    function toggleCollapse(){
-        const isCollapsed = getCollapsed();
-        if(isCollapsed){
-            localStorage.setItem('collapsed', 'un-collapsed');
-        }else{
-            localStorage.setItem('collapsed', 'collapsed');
-        }
-        getStatus();
-    }
+   $(document).ready(function() {
+  // Get saved data from sessionStorage
+  let selectedCollapse = sessionStorage.getItem('selectedCollapse');
+  if(selectedCollapse != null) {
+    $('.accordion .collapse').removeClass('show');
+    $(selectedCollapse).addClass('show');
+  }
+  //To set, which one will be opened
+  $('.accordion .btn-link').on('click', function(){ 
+    let target = $(this).data('target');
+    //Save data to sessionStorage
+    sessionStorage.setItem('selectedCollapse', target);
+  });
+});
     </script>
 
 
@@ -85,7 +71,7 @@
     <![endif]-->
 </head>
 
-<body class="skin-blue sidebar-mini" onload="getStatus()">
+<body class="skin-blue sidebar-mini">
   <div class="wrapper">
 
     <header class="main-header">
@@ -386,13 +372,7 @@
         <div>
         <button onclick="toggleCollapse()">Toggle Collapse</button>
         </div>
-        <div id="result">
-        <a href="<?php echo base_url(); ?>">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">GrupoPro</span>
-                            </a>
-
-        </div>
+        <div id="result"></div>
 
 
 
