@@ -363,7 +363,10 @@
 
             <div class="collapse" id="collapseExample" data-parent="#myGroup">
                 <div class="card card-body">
-                    Content 1 here 
+                  <a href="<?php echo base_url(); ?>">
+                      <i class="fa fa-upload"></i>
+                      <span style="margin-left:5px">ProFat</span>
+                  </a>
                 </div>
             </div>
             <div class="collapse" id="collapseExample2" data-parent="#myGroup">
