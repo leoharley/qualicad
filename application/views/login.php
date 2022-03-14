@@ -19,15 +19,15 @@
 </head>
 
 <body class="login-page" style="background-image: url ('<?php echo base_url(); ?>assets/images/bg.jpeg')">
-<img src="<?php echo base_url(); ?>assets/images/bg.jpeg" style="position:absolute;width:100%;height:100%;top:0;">
-  <div class="login-box" style="margin-left:65%">
+<img src="<?php echo base_url(); ?>assets/images/bg.jpeg" style="position:absolute;width:100%;height:100%;top:0;z-index: -1">
+  <div class="login-box" style="z-index:1;margin-left:65%">
     <div class="login-logo">
-      <a href="#">
-			<b>Sistema - Qualidade no Cadastro (Convênio)</b></a>
+    <!--  <a href="#">
+			<b>Sistema - Qualidade no Cadastro (Convênio)</b></a> -->
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">Login</p>
+     <!-- <p class="login-box-msg">Login</p> -->
       <?php $this->load->helper('form'); ?>
       <div class="row">
         <div class="col-md-12">
