@@ -383,7 +383,13 @@
         <div>
         <button onclick="toggleCollapse()">Toggle Collapse</button>
         </div>
-        <div id="result"></div>
+        <div id="result">
+        <a href="<?php echo base_url(); ?>">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">GrupoPro</span>
+                            </a>
+                            
+        </div>
 
 
 
