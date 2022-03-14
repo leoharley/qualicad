@@ -41,27 +41,29 @@
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/shortcut.js"></script>
-  <script src="https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js"></script>
   <script type="text/javascript">
     var baseURL = "<?php echo base_url(); ?>";
   </script>
 
 <script>
-$(document).ready(function() {
-    var last=$.cookie('activeAccordionGroup');
-    if (last!=null) {
-        //remove default collapse settings
-        $("#cadastro .collapse").removeClass('in');
-        //show the last visible group
-        $("#"+last).collapse("show");
-    }
-});
-
-//when a group is shown, save it as the active accordion group
-$("#cadastro").bind('shown', function() {
-    var active=$("#cadastro .in").attr('id');
-    $.cookie('activeAccordionGroup', active)
-});
+$(document).ready(function () {
+        //when a group is shown, save it as the active accordion group
+        $("#cadastro").on('shown.bs.collapse', function () {
+            var active = $("#cadastro .in").attr('id');
+            $.cookie('activeAccordionGroup', active);
+          //  alert(active);
+        });
+        $("#cadastro").on('hidden.bs.collapse', function () {
+            $.removeCookie('activeAccordionGroup');
+        });
+        var last = $.cookie('activeAccordionGroup');
+        if (last != null) {
+            //remove default collapse settings
+            $("#cadastro .panel-collapse").removeClass('in');
+            //show the account_last visible group
+            $("#" + last).addClass("in");
+        }
+    });
 </script>
 
 
