@@ -45,6 +45,35 @@
     var baseURL = "<?php echo base_url(); ?>";
   </script>
 
+<script>
+    function getCollapsed() {
+        const state = localStorage.getItem('collapsed');
+        if(state === 'collapsed'){
+            return true;
+        }
+        return false;
+    }
+    function getStatus(){
+        const resultDiv = document.getElementById('result');
+        const isCollapsed = getCollapsed();
+        if(isCollapsed){
+            resultDiv.innerHTML = "collapsed";
+        }else{
+            resultDiv.innerHTML = "un-collapsed";
+        }
+    }
+    function toggleCollapse(){
+        const isCollapsed = getCollapsed();
+        if(isCollapsed){
+            localStorage.setItem('collapsed', 'un-collapsed');
+        }else{
+            localStorage.setItem('collapsed', 'collapsed');
+        }
+        getStatus();
+    }
+    </script>
+    
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
