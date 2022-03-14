@@ -46,7 +46,38 @@
     var baseURL = "<?php echo base_url(); ?>";
   </script>
 
+<script>
+$(function() {
+        const collapseExample = $("#cadastro");
+        collapseExample.on("shown.bs.collapse", function() {
+            localStorage.setItem("collapseExample", "show");
+        });
+        collapseExample.on("hidden.bs.collapse", function() {
+            localStorage.setItem("collapseExample", "hide");
+        });
+        const showExampleCollapse = localStorage.getItem("collapseExample");
+        if (showExampleCollapse === "show") {
+            collapseExample.collapse("show");
+        } else {
+            collapseExample.collapse("hide");
+        }
 
+        const collapseExample2 = $("#principal");
+        collapseExample2.on("shown.bs.collapse", function() {
+            localStorage.setItem("collapseExample2", "show");
+        });
+        collapseExample2.on("hidden.bs.collapse", function() {
+            localStorage.setItem("collapseExample2", "hide");
+        });
+        const showExampleCollapse2 = localStorage.getItem("collapseExample2");
+        if (showExampleCollapse2 === "show") {
+            collapseExample2.collapse("show");
+        } else {
+            collapseExample2.collapse("hide");
+        }
+
+      });
+</script>
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -58,7 +89,7 @@
 </head>
 
 <body class="skin-blue sidebar-mini">
-  <div class="wrapper">c
+  <div class="wrapper">
 
     <header class="main-header">
       <!-- Logo -->
