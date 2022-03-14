@@ -47,43 +47,36 @@
 
 <script>
 $(function() {
-        // store a reference to the collapse div so that 
-        // we don't have to keep looking it up in the dom
         const collapseExample = $("#cadastro");
-
-        // register a callback function to the collapse div that
-        // will be called every time the collapse is opened.
         collapseExample.on("shown.bs.collapse", function() {
-            // since we know that that this function is called on
-            // open, we'll set the localStorage value to "show" 
             localStorage.setItem("collapseExample", "show");
         });
-
-        // register a callback function to the collapse div that
-        // will be called every time the collapse is closed.
         collapseExample.on("hidden.bs.collapse", function() {
-            // since we know that that this function is called on
-            // open, we'll set the localStorage value to "hide" 
             localStorage.setItem("collapseExample", "hide");
         });
-
-        // Since this function runs on page load (meaning only once), we can
-        // check the value of localStorage from here and then call the
-        // bootstrap collapse methods ourselves:
-
-        // Check the value of the localStorage item
         const showExampleCollapse = localStorage.getItem("collapseExample");
-
-        // Manipulate the collapse based on the value of the localStorage item.
-        // Note that the value is determined by lines 36 or 44. If you change those,
-        // then make sure to check that the comparison on the next line is still valid.
         if (showExampleCollapse === "show") {
             collapseExample.collapse("show");
         } else {
             collapseExample.collapse("hide");
         }
+
+        const collapseExample2 = $("#principal");
+        collapseExample2.on("shown.bs.collapse", function() {
+            localStorage.setItem("collapseExample2", "show");
+        });
+        collapseExample2.on("hidden.bs.collapse", function() {
+            localStorage.setItem("collapseExample2", "hide");
+        });
+        const showExampleCollapse2 = localStorage.getItem("collapseExample2");
+        if (showExampleCollapse2 === "show") {
+            collapseExample2.collapse("show");
+        } else {
+            collapseExample2.collapse("hide");
+        }
+
       });
-    </script>
+</script>
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
