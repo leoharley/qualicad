@@ -19,7 +19,7 @@
 </head>
 
 <body class="login-page" style="background-image: url ('<?php echo base_url(); ?>assets/images/bg.jpeg')">
-<img src="<?php echo base_url(); ?>assets/images/bg.jpeg">
+<img src="<?php echo base_url(); ?>assets/images/bg.jpeg" style="position:absolute;width:100%;height:100%;top:0;">
   <div class="login-box">
     <div class="login-logo">
       <a href="#">
