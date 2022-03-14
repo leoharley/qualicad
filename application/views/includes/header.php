@@ -203,7 +203,7 @@
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="principal">
 
-                  <li class="treeview">
+                  <li >
                       <a href="<?php echo base_url(); ?>principalIndice/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Índice</span>
