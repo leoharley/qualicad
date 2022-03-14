@@ -386,13 +386,6 @@ $(function() {
         </ul>
 
 
-        <div>
-        <button onclick="toggleCollapse()">Toggle Collapse</button>
-        </div>
-        <div id="result"></div>
-
-
-
       </section>
       <!-- /.sidebar -->
     </aside>
