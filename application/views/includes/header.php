@@ -46,21 +46,43 @@
   </script>
 
 <script>
-   var shown = []
+$(function() {
+        // store a reference to the collapse div so that 
+        // we don't have to keep looking it up in the dom
+        const collapseExample = $("#cadastro");
 
-// On collapse
-shown.remove($(this).attr('id'));
-localStorage.setItem('shown', shown);
+        // register a callback function to the collapse div that
+        // will be called every time the collapse is opened.
+        collapseExample.on("shown.bs.collapse", function() {
+            // since we know that that this function is called on
+            // open, we'll set the localStorage value to "show" 
+            localStorage.setItem("collapseExample", "show");
+        });
 
-// On open
-shown.push($(this).attr('id'));
-localStorage.setItem('shown', shown);
+        // register a callback function to the collapse div that
+        // will be called every time the collapse is closed.
+        collapseExample.on("hidden.bs.collapse", function() {
+            // since we know that that this function is called on
+            // open, we'll set the localStorage value to "hide" 
+            localStorage.setItem("collapseExample", "hide");
+        });
 
-// On page load
-var shown = localStorage.getItem('shown');
-for (var s in shown) {
-    $('#' + s).show(); // Or whatever API you use to un-collapse the div
-}
+        // Since this function runs on page load (meaning only once), we can
+        // check the value of localStorage from here and then call the
+        // bootstrap collapse methods ourselves:
+
+        // Check the value of the localStorage item
+        const showExampleCollapse = localStorage.getItem("collapseExample");
+
+        // Manipulate the collapse based on the value of the localStorage item.
+        // Note that the value is determined by lines 36 or 44. If you change those,
+        // then make sure to check that the comparison on the next line is still valid.
+        if (showExampleCollapse === "show") {
+            collapseExample.collapse("show");
+        } else {
+            collapseExample.collapse("hide");
+        }
+      });
     </script>
 
 
