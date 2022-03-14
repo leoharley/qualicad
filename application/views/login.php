@@ -18,7 +18,7 @@
     <![endif]-->
 </head>
 
-<body class="login-page">
+<body class="login-page" style="background-image: url ('<?php echo base_url(); ?>assets/images/bg.jpeg')">
   <div class="login-box">
     <div class="login-logo">
       <a href="#">
