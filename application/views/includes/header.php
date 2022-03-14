@@ -57,7 +57,10 @@
         const resultDiv = document.getElementById('result');
         const isCollapsed = getCollapsed();
         if(isCollapsed){
-            resultDiv.innerHTML = "collapsed";
+            resultDiv.innerHTML = "<a href="<?php echo base_url(); ?>">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">GrupoPro</span>
+                            </a>";
         }else{
             resultDiv.innerHTML = "un-collapsed";
         }
@@ -388,7 +391,7 @@
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">GrupoPro</span>
                             </a>
-                            
+
         </div>
 
 
