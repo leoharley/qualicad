@@ -349,6 +349,32 @@
 
             ?>
         </ul>
+
+
+        <div class="container" id="myGroup">
+            <p>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    content 1
+                </a>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                    Content 2
+                </button>
+            </p>
+
+            <div class="collapse" id="collapseExample" data-parent="#myGroup">
+                <div class="card card-body">
+                    Content 1 here 
+                </div>
+            </div>
+            <div class="collapse" id="collapseExample2" data-parent="#myGroup">
+                <div class="card card-body">
+                    Content 2 here 
+                </div>
+            </div>
+        </div>
+
+
+
       </section>
       <!-- /.sidebar -->
     </aside>
