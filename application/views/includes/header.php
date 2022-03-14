@@ -46,20 +46,21 @@
   </script>
 
 <script>
-   $(document).ready(function() {
-  // Get saved data from sessionStorage
-  let selectedCollapse = sessionStorage.getItem('selectedCollapse');
-  if(selectedCollapse != null) {
-    $('.accordion .collapse').removeClass('show');
-    $(selectedCollapse).addClass('show');
-  }
-  //To set, which one will be opened
-  $('.accordion .btn-link').on('click', function(){ 
-    let target = $(this).data('target');
-    //Save data to sessionStorage
-    sessionStorage.setItem('selectedCollapse', target);
-  });
-});
+   var shown = []
+
+// On collapse
+shown.remove($(this).attr('id'));
+localStorage.setItem('shown', shown);
+
+// On open
+shown.push($(this).attr('id'));
+localStorage.setItem('shown', shown);
+
+// On page load
+var shown = localStorage.getItem('shown');
+for (var s in shown) {
+    $('#' + s).show(); // Or whatever API you use to un-collapse the div
+}
     </script>
 
 
@@ -72,7 +73,7 @@
 </head>
 
 <body class="skin-blue sidebar-mini">
-  <div class="wrapper">
+  <div class="wrapper">c
 
     <header class="main-header">
       <!-- Logo -->
