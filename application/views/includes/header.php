@@ -72,7 +72,7 @@
         getStatus();
     }
     </script>
-    
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,7 +82,7 @@
     <![endif]-->
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-blue sidebar-mini" onload="getStatus()">
   <div class="wrapper">
 
     <header class="main-header">
@@ -380,30 +380,10 @@
         </ul>
 
 
-        <div class="container" id="myGroup">
-            <p>
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    content 1
-                </a>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-                    Content 2
-                </button>
-            </p>
-
-            <div class="collapse" id="collapseExample" data-parent="#myGroup">
-                <div class="card card-body">
-                  <a href="<?php echo base_url(); ?>">
-                      <i class="fa fa-upload"></i>
-                      <span style="margin-left:5px">ProFat</span>
-                  </a>
-                </div>
-            </div>
-            <div class="collapse" id="collapseExample2" data-parent="#myGroup">
-                <div class="card card-body">
-                    Content 2 here 
-                </div>
-            </div>
+        <div>
+        <button onclick="toggleCollapse()">Toggle Collapse</button>
         </div>
+        <div id="result"></div>
 
 
 
