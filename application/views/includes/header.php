@@ -238,60 +238,85 @@ $(function() {
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="principal">
 
-                  <li >
-                      <a href="<?php echo base_url(); ?>principalIndice/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Índice</span>
-                      </a>
-                  </li>
                   <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalRegra/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Regra</span>
-                      </a>
+                    <a href="<?php echo base_url(); ?>principalConvenio/listar">
+                        <i class="fa fa-th" style="margin-right:5px!important"></i>
+                        <span>Convênio</span>
+                    </a>
                   </li>
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalConvenio/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Convênio</span>
-                      </a>
-                  </li>
+
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalPlano/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Plano</span>
                       </a>
                   </li>
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalFaturamento/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Faturamento</span>
-                      </a>
-                  </li>
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalIndiceGrupoPro/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>ÍndiceGrupoPro</span>
-                      </a>
-                  </li>
+
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalRegraProibicao/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>RegraProibição</span>
                       </a>
                   </li>
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalFracaoSimproBra/listar">
+                  
+                  </ul>
+                  </li>
+
+                  <li class="treeview" data-toggle="collapse" data-target="#auxiliar" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                    
+                    <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  AUXILIAR</b></h4>
+
+                    <ul class="nav nav-list collapse" style="margin-top:10px" id="auxiliar">
+
+                  <li >
+                      <a href="<?php echo base_url(); ?>principalIndice/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>FraçãoSimproBra</span>
+                          <span>Índice</span>
                       </a>
                   </li>
+
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalIndiceGrupoPro/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Índice Grupo Pro</span>
+                      </a>
+                  </li>
+                  
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalRegra/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Regra</span>
+                      </a>
+                  </li>
+
+                  <li class="treeview">
+                      <a href="<?php //echo base_url(); ?>principalRegraGrupoPro/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>RegraGrupoPro</span>
+                      </a>
+                  </li>
+                   
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalFaturamento/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Faturamento</span>
+                      </a>
+                  </li>
+
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalFaturamentoItem/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Faturamento Item</span>
+                          <span>Item Faturamento</span>
                       </a>
                   </li>
+                  
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalFracaoSimproBra/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Fração Simpro Bra</span>
+                      </a>
+                  </li>
+                  
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalUnidade/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
@@ -299,12 +324,7 @@ $(function() {
                       </a>
                   </li>
 
-                <!--  <li class="treeview">
-                      <a href="<?php //echo base_url(); ?>principalRegraGrupoPro/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>RegraGrupoPro</span>
-                      </a>
-                  </li>
+                <!-- 
                   <li class="treeview">
                       <a href="<?php //echo base_url(); ?>principalProibicao/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
@@ -318,25 +338,14 @@ $(function() {
 
                 <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
-                    <span style="margin-left:5px;color:white">Importação</span>
+                    <span style="margin-left:5px;color:white">Importação (cargas)</span>
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
-                        <li class="treeview" style="margin-left:22px;">                       
+
+                       <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Produção</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Produto</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">GrupoFaturamento</span>
+                                <span style="margin-left:5px">GrupoPro</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">
@@ -351,16 +360,34 @@ $(function() {
                                 <span style="margin-left:5px">TUSS</span>
                             </a>
                         </li>
-                        <li class="treeview" style="margin-left:22px;">
+                        <li class="treeview" style="margin-left:22px;">                       
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">GrupoPro</span>
+                                <span style="margin-left:5px">RegraGruPro</span>
+                            </a>
+                        </li>
+                        <li class="treeview" style="margin-left:22px;">                       
+                            <a href="<?php echo base_url(); ?>">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">FracaoSimproBra</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>">
                                 <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">SimproBrasindice</span>
+                                <span style="margin-left:5px">Produto</span>
+                            </a>
+                        </li>
+                        <li class="treeview" style="margin-left:22px;">                       
+                            <a href="<?php echo base_url(); ?>">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Produção</span>
+                            </a>
+                        </li>
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Contrato</span>
                             </a>
                         </li>
                     </ul>
@@ -368,7 +395,7 @@ $(function() {
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>dadas">
                         <i class="fa fa-th"></i>
-                        <span>Exportação</span>
+                        <span>Exportação BI</span>
                     </a>
                 </li>
                 <li class="treeview">
