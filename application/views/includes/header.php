@@ -262,6 +262,8 @@ $(function() {
                   </ul>
                   </li>
 
+                  <hr>
+
                   <li class="treeview" data-toggle="collapse" data-target="#auxiliar" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     
                     <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  AUXILIAR</b></h4>
