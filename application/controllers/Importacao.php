@@ -75,8 +75,6 @@ class Importacao extends BaseController
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
 
-                    var_dump($csvData);exit;
-                    
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row){ $rowCount++;
