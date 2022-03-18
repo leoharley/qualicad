@@ -8,10 +8,7 @@
     </section>
 
     <section class="content">
-        <div class="text-left">
-            <a class="btn btn-primary" href="<?php echo base_url(); ?>cadastroPerfil/cadastrar">
-            <i class="fa fa-plus"></i> Adicionar perfil</a>
-        </div>
+
       
 <div class="container">
     <h2>Grupo Pro</h2>
