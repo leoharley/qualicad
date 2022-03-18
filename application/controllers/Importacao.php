@@ -49,7 +49,6 @@ class Importacao extends BaseController
 
         $data['infoGrupoPro'] = $this->ImportacaoModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
 
-        var_dump($data);exit;
         $this->loadViews("qualicad/importacao/importacaoGrupoPro", $this->global, $data, NULL);
     }
 
