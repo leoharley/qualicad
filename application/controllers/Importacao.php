@@ -125,17 +125,15 @@ class Importacao extends BaseController
                         
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Members imported successfully. Total Rows ('.$rowCount.') | Inserted ('.$insertCount.') | Updated ('.$updateCount.') | Not Inserted ('.$notAddCount.')';
+                        $successMsg = 'Tabela GrupoPro importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
                         
                         $this->session->set_flashdata('success', $successMsg);
-                    //    $this->session->set_userdata('success_msg', $successMsg);
                     }
                 }else{
-                //    $this->session->set_userdata('error_msg', 'Error on file upload, please try again.');
-                    $this->session->set_flashdata('error', 'Error on file upload, please try again.');
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
                 }
             }else{
-                $this->session->set_flashdata('error', 'Invalid file, please select only CSV file.');
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
             //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
             }
         }
@@ -154,11 +152,11 @@ class Importacao extends BaseController
             if(($ext == 'csv') && in_array($mime, $allowed_mime_types)){
                 return true;
             }else{
-                $this->form_validation->set_message('file_check', 'Please select only CSV file to upload.');
+                $this->form_validation->set_message('file_check', 'Favor selecione somente um arquivo CSV.');
                 return false;
             }
         }else{
-            $this->form_validation->set_message('file_check', 'Please select a CSV file to upload.');
+            $this->form_validation->set_message('file_check', 'Favor selecione somente um arquivo CSV.');
             return false;
         }
     }
