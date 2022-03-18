@@ -20,7 +20,7 @@
 
 <body class="login-page">
 <img src="<?php echo base_url(); ?>assets/images/bg.jpeg" style="position:absolute;width:100%;height:100%;top:0;z-index: -1">
-  <div class="login-box" style="z-index:1;margin-left:65%;margin-top:240px;">
+  <div class="login-box" style="z-index:1;margin-left:65%;margin-top:200px;">
     <div class="login-logo">
     <!--   <a href="#">
 			<b>Sistema - Qualidade no Cadastro (Convênio)</b></a> -->
