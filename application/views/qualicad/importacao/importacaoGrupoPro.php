@@ -42,7 +42,7 @@
             <form action="<?php echo base_url() ?>importaGrupoPro" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <br/>
-                <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORTAR">
+                <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
             </form>
         </div>
         
@@ -86,4 +86,16 @@ function formToggle(ID){
         element.style.display = "none";
     }
 }
+$(document).ready(function () {
+        $('#importSubmit').attr('disabled', true);
+        $('input:file').change(
+            function () {
+                if ($(this).val()) {
+                    $('#importSubmit').removeAttr('disabled');
+                }
+                else {
+                    $('#importSubmit').attr('disabled', true);
+                }
+            });
+    });
 </script>
