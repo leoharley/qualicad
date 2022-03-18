@@ -1,12 +1,14 @@
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      <i class="fa fa-users"></i> Listar Telas
-      <small>Listar</small>
-    </h1>
-  </section>
-  <section class="content">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-users"></i> Importa Grupo Pro
+            <small>Importação</small>
+        </h1>
+    </section>
+
+    <section class="content">
+
       
 <div class="container">
     <h2>Members List</h2>
@@ -65,6 +67,9 @@
             </tbody>
         </table>
     </div>
+</div>
+
+</section>
 </div>
 
 <script>

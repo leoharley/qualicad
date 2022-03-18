@@ -48,7 +48,7 @@ class Importacao extends BaseController
 
         $this->global['pageTitle'] = 'QUALICAD : Importação GrupoPro';
 
-        $this->loadViewsModal("qualicad/importacao/importacaoGrupoPro", $this->global, $data, NULL);
+        $this->loadViews("qualicad/importacao/importacaoGrupoPro", $this->global, $data, NULL);
     }
 
 
