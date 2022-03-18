@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>CodeIgniter CSV Import</title>
-	
-    <!-- Bootstrap library -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/bootstrap.min.css'); ?>">
-    
-    <!-- Stylesheet file -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
-</head>
-<body>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <i class="fa fa-users"></i> Listar Telas
+      <small>Listar</small>
+    </h1>
+  </section>
+  <section class="content">
+      
 <div class="container">
     <h2>Members List</h2>
 	
@@ -19,6 +16,7 @@
     <div class="col-xs-12">
         <div class="alert alert-success"><?php echo $success_msg; ?></div>
     </div>
+    <?php } ?>
     <?php if(!empty($error_msg)){ ?>
     <div class="col-xs-12">
         <div class="alert alert-danger"><?php echo $error_msg; ?></div>
@@ -79,5 +77,3 @@ function formToggle(ID){
     }
 }
 </script>
-</body>
-</html>
