@@ -40,9 +40,14 @@
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaGrupoPro" method="post" enctype="multipart/form-data">
-                <input type="file" name="file" />
-                <br/>
-                <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="file" name="file" />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
+                    </div>
+                </div>    
             </form>
         </div>
         
