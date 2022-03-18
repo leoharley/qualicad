@@ -58,7 +58,7 @@
             <tbody>
                 <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->CodGrupo ?></td>
+                    <td><?php echo $registro->CdGrupoPro ?></td>
                     <td><?php echo $registro->Ds_GrupoPro ?></td>
                     <td><?php echo $registro->Tp_GrupoPro ?></td>
                     <td><?php echo $registro->Dt_Criacao ?></td>
