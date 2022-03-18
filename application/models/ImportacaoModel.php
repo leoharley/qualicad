@@ -2,7 +2,7 @@
 
 class ImportacaoModel extends CI_Model
 {
-    
+
     function carregaInfoGrupoPro($idEmpresa)
     {
         $this->db->select('*');
@@ -13,6 +13,18 @@ class ImportacaoModel extends CI_Model
         $query = $this->db->get();
 
         return $query->result();
+    }
+
+    function adicionaGrupoPro($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbGrupoPro', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
     }
 
 }
