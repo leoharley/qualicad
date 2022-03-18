@@ -11,8 +11,6 @@
 
       
 <div class="container">
-    <h2>Grupo Pro</h2>
-	
     <?php
         $this->load->helper('form');
         $error = $this->session->flashdata('error');
