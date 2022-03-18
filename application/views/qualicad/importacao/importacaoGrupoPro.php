@@ -57,13 +57,13 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $row){ ?>
+                <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
                 <tr>
-                    <td><?php echo $row['CodGrupo']; ?></td>
-                    <td><?php echo $row['Ds_GrupoPro']; ?></td>
-                    <td><?php echo $row['Tp_GrupoPro']; ?></td>
-                    <td><?php echo $row['Dt_Criacao']; ?></td>
-                    <td><?php echo $row['Tp_Ativo']; ?></td>
+                    <td><?php echo $registro->CodGrupo ?></td>
+                    <td><?php echo $registro->Ds_GrupoPro ?></td>
+                    <td><?php echo $registro->Tp_GrupoPro ?></td>
+                    <td><?php echo $registro->Dt_Criacao ?></td>
+                    <td><?php echo $registro->Tp_Ativo ?></td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
