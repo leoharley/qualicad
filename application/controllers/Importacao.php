@@ -59,6 +59,8 @@ class Importacao extends BaseController
         // If import request is submitted
         if($this->input->post('importSubmit')){
             // Form field validation rules
+            $this->load->library('form_validation');
+            
             $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
             
             // Validate submitted form data
