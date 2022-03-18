@@ -60,7 +60,7 @@ class Importacao extends BaseController
         if($this->input->post('importSubmit')){
             // Form field validation rules
             $this->load->library('form_validation');
-            
+
             $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
             
             // Validate submitted form data
@@ -74,6 +74,8 @@ class Importacao extends BaseController
                     
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
+
+                    var_dump($csvData);exit;
                     
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
