@@ -93,6 +93,10 @@ $route['principalFaturamentoItem/:any'] = "principal/principalFaturamentoItem/$1
 $route['principalUnidade/:any/:any'] = "principal/principalUnidade/$1/$2";
 $route['principalUnidade/:any'] = "principal/principalUnidade/$1";
 
+/*********** ROUTES DA IMPORTAÇÃO *******************/
+$route['importacaoGrupoPro'] = "importacao/importacaoGrupoPro";
+
+
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";
 $route['editaConvenio'] = "principal/editaConvenio";
