@@ -18,8 +18,7 @@ class Importacao extends BaseController
         parent::__construct();
         $this->load->model('login_model');
         $this->load->model('user_model');
-        $this->load->model('CadastroModel');
-        $this->load->model('PrincipalModel');
+        $this->load->model('ImportacaoModel');
         $this->load->model('PermissaoModel');
         // Datas -> libraries ->BaseController / This function used load user sessions
         $this->datas();
@@ -47,6 +46,8 @@ class Importacao extends BaseController
         $data['roles'] = $this->user_model->getUserRoles();
 
         $this->global['pageTitle'] = 'QUALICAD : Importação GrupoPro';
+
+        $data['infoGrupoPro'] = $this->ImportacaoModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoGrupoPro", $this->global, $data, NULL);
     }

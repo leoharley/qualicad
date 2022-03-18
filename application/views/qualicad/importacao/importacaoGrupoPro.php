@@ -11,33 +11,37 @@
 
       
 <div class="container">
-    <h2>Members List</h2>
+    <h2>Grupo Pro</h2>
 	
-    <!-- Display status message -->
-    <?php if(!empty($success_msg)){ ?>
-    <div class="col-xs-12">
-        <div class="alert alert-success"><?php echo $success_msg; ?></div>
+    <?php
+        $this->load->helper('form');
+        $error = $this->session->flashdata('error');
+        if($error)
+        {
+    ?>
+    <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <?php echo $this->session->flashdata('error'); ?>
     </div>
     <?php } ?>
-    <?php if(!empty($error_msg)){ ?>
-    <div class="col-xs-12">
-        <div class="alert alert-danger"><?php echo $error_msg; ?></div>
+    <?php  
+            $success = $this->session->flashdata('success');
+            if($success)
+            {
+        ?>
+    <div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <?php echo $this->session->flashdata('success'); ?>
     </div>
     <?php } ?>
 	
     <div class="row">
-        <!-- Import link -->
-        <div class="col-md-12 head">
-            <div class="float-right">
-                <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importFrm');"><i class="plus"></i> Import</a>
-            </div>
-        </div>
 		
         <!-- File upload form -->
-        <div class="col-md-12" id="importFrm" style="display: none;">
+        <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url('members/import'); ?>" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
-                <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORT">
+                <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORTAR">
             </form>
         </div>
         
@@ -45,24 +49,24 @@
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>#ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Status</th>
+                    <th>CodGrupo</th>
+                    <th>Ds_GrupoPro</th>
+                    <th>Tp_GrupoPro</th>
+                    <th>Dt_Criacao</th>
+                    <th>Tp_Ativo</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($members)){ foreach($members as $row){ ?>
+                <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $row){ ?>
                 <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['phone']; ?></td>
-                    <td><?php echo $row['status']; ?></td>
+                    <td><?php echo $row['CodGrupo']; ?></td>
+                    <td><?php echo $row['Ds_GrupoPro']; ?></td>
+                    <td><?php echo $row['Tp_GrupoPro']; ?></td>
+                    <td><?php echo $row['Dt_Criacao']; ?></td>
+                    <td><?php echo $row['Tp_Ativo']; ?></td>
                 </tr>
                 <?php } }else{ ?>
-                <tr><td colspan="5">No member(s) found...</td></tr>
+                <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
                 <?php } ?>
             </tbody>
         </table>
