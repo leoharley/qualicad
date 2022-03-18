@@ -8,7 +8,10 @@
     </section>
 
     <section class="content">
-
+        <div class="text-left">
+            <a class="btn btn-primary" href="<?php echo base_url(); ?>cadastroPerfil/cadastrar">
+            <i class="fa fa-plus"></i> Adicionar perfil</a>
+        </div>
       
 <div class="container">
     <h2>Grupo Pro</h2>
@@ -40,14 +43,9 @@
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaGrupoPro" method="post" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="file" name="file" />
-                    </div>
-                    <div class="col-md-6">
-                        <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
-                    </div>
-                </div>    
+                <input type="file" name="file" />
+                <br/>
+                <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
             </form>
         </div>
         
