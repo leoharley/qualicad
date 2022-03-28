@@ -27,6 +27,30 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
+    function carregaInfoProFat($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbProFat as ProFat');
+        $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('GrupoPro.Deletado !=', 'S');
+        $this->db->where('GrupoPro.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function adicionaProFat($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbProFat', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
 }
 
   

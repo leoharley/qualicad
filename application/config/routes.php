@@ -97,6 +97,9 @@ $route['principalUnidade/:any'] = "principal/principalUnidade/$1";
 $route['importacaoGrupoPro'] = "importacao/importacaoGrupoPro";
 $route['importaGrupoPro'] = "importacao/importaGrupoPro";
 
+$route['importacaoProFat'] = "importacao/importacaoProFat";
+$route['importaProFat'] = "importacao/importaProFat";
+
 
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";

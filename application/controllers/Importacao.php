@@ -39,7 +39,7 @@ class Importacao extends BaseController
         }
     }
 
-    // INICIO DAS FUNÇÕES DA TELA DE CONVENIO
+    // IMPORTAÇÃO GRUPO PRO
 
     function importacaoGrupoPro()
     {
@@ -138,6 +138,108 @@ class Importacao extends BaseController
             }
         }
         redirect('importacaoGrupoPro');
+    }
+
+
+    // IMPORTAÇÃO PROFAT
+
+    function importacaoProFat()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação ProFat';
+
+        $data['infoProFat'] = $this->ImportacaoModel->carregaInfoProFat($this->session->userdata('IdEmpresa'));
+
+        $this->loadViews("qualicad/importacao/importacaoProFat", $this->global, $data, NULL);
+    }
+
+    public function importaProFat(){
+        $data = array();
+        $memData = array();
+        
+        // If import request is submitted
+        if($this->input->post('importSubmit')){
+            // Form field validation rules
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
+            
+            // Validate submitted form data
+            if($this->form_validation->run() == true){
+                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+                
+                // If file uploaded
+                if(is_uploaded_file($_FILES['file']['tmp_name'])){
+                    // Load CSV reader library
+                    $this->load->library('CSVReader');
+                    
+                    // Parse data from CSV file
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
+
+                    // Insert/update CSV data into database
+                    if(!empty($csvData)){
+                        foreach($csvData as $row){ $rowCount++;
+                            
+                            // Prepare data for DB insertion
+                            $memData = array(
+                                'CodProFat' => $row['CD_PRO_FAT'],
+                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                'Ds_ProFat' => $row['DS_PRO_FAT'],
+                                'Ds_Unidade' => $row['DS_UNIDADE'],
+                                'TbGrupoPro_CodGrupo' => $row['CD_GRU_PRO'],
+                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                'Tp_Ativo'=> 'S',    
+                            );
+
+                            $insert = $this->ImportacaoModel->adicionaProFat($memData);
+                                
+                                if($insert){
+                                    $insertCount++;
+                                }
+                            
+                            // Check whether email already exists in the database
+                        /*    $con = array(
+                                'where' => array(
+                                    'email' => $row['Email']
+                                ),
+                                'returnType' => 'count'
+                            );
+                            $prevCount = $this->member->getRows($con);
+                            
+                            if($prevCount > 0){
+                                // Update member data
+                                $condition = array('email' => $row['Email']);
+                                $update = $this->member->update($memData, $condition);
+                                
+                                if($update){
+                                    $updateCount++;
+                                }
+                            }else{
+                                // Insert member data
+                                $insert = $this->member->insert($memData);
+                                
+                                if($insert){
+                                    $insertCount++;
+                                }
+                            } */
+                        }
+                        
+                        // Status message with imported data count
+                        $notAddCount = ($rowCount - ($insertCount + $updateCount));
+                        $successMsg = 'Tabela ProFat importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        
+                        $this->session->set_flashdata('success', $successMsg);
+                    }
+                }else{
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
+            //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
+            }
+        }
+        redirect('importacaoProFat');
     }
     
     /*
