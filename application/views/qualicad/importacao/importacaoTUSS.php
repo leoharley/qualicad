@@ -48,10 +48,10 @@
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>CodGrupo</th>
-                    <th>Ds_GrupoPro</th>
-                    <th>Tp_GrupoPro</th>
-                    <th>Dt_Criacao</th>
+                    <th>cd_empresa</th>
+                    <th>cd_convenio</th>
+                    <th>CD_PRO_FAT</th>
+                    <th>DS_PRO_FAT</th>
                     <th>Tp_Ativo</th>
                 </tr>
             </thead>
