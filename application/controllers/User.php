@@ -219,7 +219,7 @@ class User extends BaseController
      */
     function pageNotFound()
     {
-        $this->global['pageTitle'] = 'BSEU : 404 - Página não encontrada';
+        $this->global['pageTitle'] = 'QUALICAD : 404 - Página não encontrada';
         
         $this->loadViews("404", $this->global, NULL, NULL);
     }
