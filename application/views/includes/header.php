@@ -351,43 +351,43 @@ $(function() {
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>">
+                            <a href="<?php echo base_url(); ?>importacaoProFat">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">ProFat</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>">
+                            <a href="<?php echo base_url(); ?>importacaoTUSS">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">TUSS</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">                       
-                            <a href="<?php echo base_url(); ?>">
+                            <a href="<?php echo base_url(); ?>importacaoRegraGruPro">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">RegraGruPro</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">                       
-                            <a href="<?php echo base_url(); ?>">
+                            <a href="<?php echo base_url(); ?>importacaoFracaoSimproBra">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">FracaoSimproBra</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>">
+                            <a href="<?php echo base_url(); ?>importacaoProduto">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Produto</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">                       
-                            <a href="<?php echo base_url(); ?>">
+                            <a href="<?php echo base_url(); ?>importacaoProducao">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Produção</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>">
+                            <a href="<?php echo base_url(); ?>importacaoContrato">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Contrato</span>
                             </a>
