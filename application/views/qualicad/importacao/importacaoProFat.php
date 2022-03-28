@@ -51,7 +51,7 @@
                     <th>CodProFat</th>
                     <th>Ds_ProFat</th>
                     <th>Ds_Unidade</th>
-                    <th>CdGrupoPro</th>
+                    <th>TbGrupoPro_CodGrupo</th>
                     <th>Tp_Ativo</th>
                 </tr>
             </thead>
@@ -61,7 +61,7 @@
                     <td><?php echo $registro->CodProFat ?></td>
                     <td><?php echo $registro->Ds_ProFat ?></td>
                     <td><?php echo $registro->Ds_Unidade ?></td>
-                    <td><?php echo $registro->CdGrupoPro ?></td>
+                    <td><?php echo $registro->TbGrupoPro_CodGrupo ?></td>
                     <td><?php echo $registro->Tp_Ativo ?></td>
                 </tr>
                 <?php } }else{ ?>
