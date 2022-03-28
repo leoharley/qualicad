@@ -31,9 +31,9 @@ class ImportacaoModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('TbProFat as ProFat');
-        $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $idEmpresa);
-        $this->db->where('GrupoPro.Deletado !=', 'S');
-        $this->db->where('GrupoPro.Tp_Ativo', 'S');
+        $this->db->where('ProFat.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('ProFat.Deletado !=', 'S');
+        $this->db->where('ProFat.Tp_Ativo', 'S');
         $query = $this->db->get();
 
         return $query->result();
