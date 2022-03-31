@@ -95,8 +95,6 @@ class Importacao extends BaseController
                                 'Tp_Ativo'=> 'S',
                             );
 
-                            var_dump($memData);exit;
-
                        /*     $memData = array(
                                 'CdGrupoPro' => $row['CD_GRU_PRO'],
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
@@ -139,6 +137,8 @@ class Importacao extends BaseController
                                 }
                             } */
                         }
+
+                        var_dump($memData);exit;
                         
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
