@@ -83,7 +83,7 @@ class Importacao extends BaseController
                             $rowCount++;
 
                             foreach ($key->attributes() as $subrow => $value) {
-                                var_dump($subrow);exit;
+                                echo "{$subrow}: {$value}\n"; exit;
                             }
 
                             foreach ($DePara as $rowDePara) {
