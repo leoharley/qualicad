@@ -79,11 +79,11 @@ class Importacao extends BaseController
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
-                        foreach($csvData as $row=>$key){
+                        foreach($csvData as $row){
                             $rowCount++;
 
                             
-                            var_dump($key[0]);exit;
+                            var_dump($row);exit;
 
 
                             foreach ($DePara as $rowDePara) {
