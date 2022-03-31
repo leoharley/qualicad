@@ -83,8 +83,11 @@ class Importacao extends BaseController
                             $rowCount++;
 
                             foreach ($DePara as $rowDePara) {
+
+                                $tmp1 = $rowDePara['No_CampoDestino'];
+                                $tmp2 = $rowDePara['No_CampoOrigem'];
                                 $memData = array(
-                                    $rowDePara['No_CampoDestino'] => $row[$rowDePara['No_CampoOrigem']]);
+                                    $tmp1 => $row[$tmp2]);
                             }
                             // Prepare data for DB insertion
                             $memData += array(
