@@ -83,7 +83,7 @@ class Importacao extends BaseController
                             $rowCount++;
 
                             
-                            var_dump($row);exit;
+                            var_dump($row[0]);exit;
 
 
                             foreach ($DePara as $rowDePara) {
