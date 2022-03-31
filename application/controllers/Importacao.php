@@ -86,7 +86,7 @@ class Importacao extends BaseController
                                 $destino = isset($this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino);
                                 if (isset($destino)) {
                                     $memData += array(
-                                        $destino => $row[$origem]
+                                        strval($destino) => $row[strval($origem)]
                                     );
                                 }     
                             }
