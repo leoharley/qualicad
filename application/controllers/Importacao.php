@@ -82,9 +82,10 @@ class Importacao extends BaseController
                         foreach($csvData as $row){
                             $rowCount++;
 
-                            foreach ($row as $subrow=>$key) {
-                            var_dump($subrow[$key]);exit;
-                            }
+                            $editcheck = explode('|', $row);
+
+                            var_dump($editcheck[0]);exit;
+
 
                             foreach ($DePara as $rowDePara) {
 
