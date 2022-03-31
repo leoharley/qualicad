@@ -83,8 +83,11 @@ class Importacao extends BaseController
                             $rowCount++;
 
                             foreach ($key as $subrow => $value) {
-                                echo "Origem:{$subrow}\n"; 
-                                echo "Destino:{$this->ImportacaoModel->consultaDePara('GrupoPro',$subrow,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino}";
+                                echo "Origem:{$subrow}\n";
+                                if (isset($this->ImportacaoModel->consultaDePara('GrupoPro',$subrow,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino)) {
+                                    echo "true";
+                                } else { echo "false"; }
+                                
                                 exit;
                             }
 
