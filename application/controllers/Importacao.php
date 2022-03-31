@@ -96,7 +96,7 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-                            echo $memData; exit;
+                            var_dump($memData); exit;
 
                       /*      foreach ($DePara as $rowDePara) {
 
