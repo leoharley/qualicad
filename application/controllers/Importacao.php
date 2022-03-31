@@ -91,6 +91,13 @@ class Importacao extends BaseController
                                     'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                     'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                     'Tp_Ativo'=> 'S');
+
+                               $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
+                                
+                                if($insert){
+                                    $insertCount++;
+                                }
+
                             }
                             // Prepare data for DB insertion
                         /*    $memData += array(
@@ -109,12 +116,7 @@ class Importacao extends BaseController
                                 'Tp_Ativo'=> 'S',    
                             ); */
 
-                            $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
-                                
-                                if($insert){
-                                    $insertCount++;
-                                }
-                            
+                 
                             // Check whether email already exists in the database
                         /*    $con = array(
                                 'where' => array(
