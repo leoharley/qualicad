@@ -82,15 +82,16 @@ class Importacao extends BaseController
                         foreach($csvData as $row){
                             $rowCount++;
 
-                            $memData = array(
-                                'CdGrupoPro' => $row['CD_GRU_PRO'],
-                                'Ds_GrupoPro' => $row['DS_GRU_PRO'],
-                                'Tp_GrupoPro' => $row['TP_GRU_PRO'],
-                                'Desc_Tp_GrupoPro' => $row['DESC_TP_GRU_PRO'],
-                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
-                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                                'Tp_Ativo'=> 'S',
-                            );
+                            foreach ($DePara as $rowDePara) {
+
+                                $tmp1 = $rowDePara->No_CampoDestino;
+                                $tmp2 = $rowDePara->No_CampoOrigem;
+                                $memData += array(
+                                    $tmp1 => $row[$tmp2],
+                                    'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                    'Tp_Ativo'=> 'S');
+                            }
                             // Prepare data for DB insertion
                         /*    $memData += array(
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
