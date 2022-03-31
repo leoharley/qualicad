@@ -82,6 +82,8 @@ class Importacao extends BaseController
                         foreach($csvData as $row){
                             $rowCount++;
 
+                            var_dump($row);exit;
+
                             foreach ($DePara as $rowDePara) {
 
                                 $tmp1 = $rowDePara->No_CampoDestino;
