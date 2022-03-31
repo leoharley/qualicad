@@ -87,14 +87,17 @@ class Importacao extends BaseController
                                 $tmp1 = $rowDePara->No_CampoDestino;
                                 $tmp2 = $rowDePara->No_CampoOrigem;
                                 $memData += array(
-                                    $tmp1 => $row[$tmp2]);
+                                    $tmp1 => $row[$tmp2],
+                                    'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                    'Tp_Ativo'=> 'S');
                             }
                             // Prepare data for DB insertion
-                            $memData += array(
+                        /*    $memData += array(
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S',
-                            );
+                            ); */
 
                        /*     $memData = array(
                                 'CdGrupoPro' => $row['CD_GRU_PRO'],
