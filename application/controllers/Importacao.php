@@ -55,7 +55,9 @@ class Importacao extends BaseController
     public function importaGrupoPro(){
         $data = array();
         $memData = array();
-        
+
+        $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
+
         // If import request is submitted
         if($this->input->post('importSubmit')){
             // Form field validation rules
@@ -77,10 +79,22 @@ class Importacao extends BaseController
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
-                        foreach($csvData as $row){ $rowCount++;
-                            
+                        foreach($csvData as $row){
+                            $rowCount++;
+
+                            foreach ($DePara as $rowDePara) {
+                                $memData = array(
+                                    $rowDePara['No_CampoDestino'] => $row[$rowDePara['No_CampoOrigem']]);
+                            }
                             // Prepare data for DB insertion
-                            $memData = array(
+                            $memData += array(
+                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                'Tp_Ativo'=> 'S',
+                            );
+
+                            var_dump($memData);exit;
+
+                       /*     $memData = array(
                                 'CdGrupoPro' => $row['CD_GRU_PRO'],
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'Ds_GrupoPro' => $row['DS_GRU_PRO'],
@@ -88,7 +102,7 @@ class Importacao extends BaseController
                                 'Desc_Tp_GrupoPro' => $row['DESC_TP_GRU_PRO'],
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S',    
-                            );
+                            ); */
 
                             $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
                                 

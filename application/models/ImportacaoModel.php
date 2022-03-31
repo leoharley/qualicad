@@ -51,6 +51,31 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
+    function carregaInfoDePara($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Rl_DeparaImportacao as DePara');
+        $this->db->where('ProFat.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('ProFat.Deletado !=', 'S');
+        $this->db->where('ProFat.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function consultaDePara($tpImportacao, $idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Rl_DeparaImportacao as DePara');
+        $this->db->where('DePara.Tp_Importacao', $tpImportacao);
+        $this->db->where('DePara.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('DePara.Deletado !=', 'S');
+        $this->db->where('DePara.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 }
 
   
