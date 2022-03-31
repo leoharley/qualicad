@@ -81,14 +81,12 @@ class Importacao extends BaseController
                     if(!empty($csvData)){
                         foreach($csvData as $row=>$key) {
                             $rowCount++;
-
-                            echo $key['DS_GRU_FAT'];
-                            
-                   /*         foreach ($key as $origem => $value) {
+                           
+                            foreach ($key as $origem => $value) {
                                 $destino = $this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino;
                                 if (isset($destino)) {
                                     $memData += array(
-                                        $destino => $row['CD_GRU_PRO']
+                                        $destino => $key['CD_GRU_PRO']
                                     );
                                 }     
                             }
@@ -98,7 +96,7 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-                            var_dump($memData); exit; */
+                            var_dump($memData); exit;
 
                       /*      foreach ($DePara as $rowDePara) {
 
@@ -164,7 +162,7 @@ class Importacao extends BaseController
                             } */
                         }
 
-                        exit;
+                        var_dump($memData);exit;
                         
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
