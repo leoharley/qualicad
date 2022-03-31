@@ -96,7 +96,13 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-                            var_dump($memData); exit;
+                            $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
+                            
+                            if($insert){
+                                $insertCount++;
+                            }
+
+                            exit;
 
                       /*      foreach ($DePara as $rowDePara) {
 
