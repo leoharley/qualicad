@@ -91,16 +91,17 @@ class Importacao extends BaseController
                             }
                             // Prepare data for DB insertion
                             $memData += array(
+                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S',
                             );
 
                        /*     $memData = array(
                                 'CdGrupoPro' => $row['CD_GRU_PRO'],
-                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'Ds_GrupoPro' => $row['DS_GRU_PRO'],
                                 'Tp_GrupoPro' => $row['TP_GRU_PRO'],
                                 'Desc_Tp_GrupoPro' => $row['DESC_TP_GRU_PRO'],
+                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S',    
                             ); */
