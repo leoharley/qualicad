@@ -86,7 +86,7 @@ class Importacao extends BaseController
 
                                 $tmp1 = $rowDePara->No_CampoDestino;
                                 $tmp2 = $rowDePara->No_CampoOrigem;
-                                $memData = array(
+                                $memData += array(
                                     $tmp1 => $row[$tmp2]);
                             }
                             // Prepare data for DB insertion
