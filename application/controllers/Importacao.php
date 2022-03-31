@@ -56,7 +56,7 @@ class Importacao extends BaseController
         $data = array();
         $memData = array();
 
-        $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
+    //    $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
 
         // If import request is submitted
         if($this->input->post('importSubmit')){
@@ -83,10 +83,12 @@ class Importacao extends BaseController
                             $rowCount++;
 
                             foreach ($key as $subrow => $value) {
-                                echo "{$subrow}: {$value}\n"; exit;
+                                echo "Origem:{$subrow}\n"; 
+                                echo "Destino:{$this->ImportacaoModel->consultaDePara('GrupoPro',$subrow,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino}";
+                                exit;
                             }
 
-                            foreach ($DePara as $rowDePara) {
+                      /*      foreach ($DePara as $rowDePara) {
 
                                 $tmp1 = $rowDePara->No_CampoDestino;
                                 $tmp2 = $rowDePara->No_CampoOrigem;
@@ -102,7 +104,9 @@ class Importacao extends BaseController
                                     $insertCount++;
                                 }
 
-                            }
+                            } */
+
+
                             // Prepare data for DB insertion
                         /*    $memData += array(
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),

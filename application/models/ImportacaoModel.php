@@ -63,11 +63,12 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function consultaDePara($tpImportacao, $idEmpresa)
+    function consultaDePara($tpImportacao, $noCampoOrigem, $idEmpresa)
     {
         $this->db->select('*');
         $this->db->from('Rl_DeparaImportacao as DePara');
         $this->db->where('DePara.Tp_Importacao', $tpImportacao);
+        $this->db->where('DePara.No_CampoOrigem', $noCampoOrigem);
         $this->db->where('DePara.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('DePara.Deletado !=', 'S');
         $this->db->where('DePara.Tp_Ativo', 'S');
