@@ -82,9 +82,11 @@ class Importacao extends BaseController
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
                             $rowCount++;
+
+                            $memData = null;
                             
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData = array(
+                                $memData += array(
                                     ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                 );
 
