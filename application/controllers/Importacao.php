@@ -98,7 +98,11 @@ class Importacao extends BaseController
                                     'Tp_Ativo'=> 'S');
                                    
 
-                                var_dump($memData);
+                                $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
+                            
+                                if($insert){
+                                    $insertCount++;
+                                }
                             
                            
                        /*     foreach ($key as $origem => $value) {
