@@ -51,6 +51,7 @@
                     <th>CodGrupo</th>
                     <th>Ds_GrupoPro</th>
                     <th>Tp_GrupoPro</th>
+                    <th>Desc_Tp_GrupoPro</th>
                     <th>Dt_Criacao</th>
                     <th>Tp_Ativo</th>
                 </tr>
@@ -61,6 +62,7 @@
                     <td><?php echo $registro->CdGrupoPro ?></td>
                     <td><?php echo $registro->Ds_GrupoPro ?></td>
                     <td><?php echo $registro->Tp_GrupoPro ?></td>
+                    <td><?php echo $registro->Desc_Tp_GrupoPro ?></td>
                     <td><?php echo $registro->Dt_Criacao ?></td>
                     <td><?php echo $registro->Tp_Ativo ?></td>
                 </tr>
