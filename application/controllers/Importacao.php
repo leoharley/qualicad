@@ -83,9 +83,9 @@ class Importacao extends BaseController
                         foreach($csvData as $row) {
                             $rowCount++;
 
-                        //    var_dump($key['CD_GRU_PRO']);
+                            var_dump($row['DS_GRU_PRO']);
                             
-                            for ($i=0;$i<count($dePara);$i++) {
+                       /*     for ($i=0;$i<count($dePara);$i++) {
                                 $memData += array(
                                     ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                 );
@@ -98,7 +98,7 @@ class Importacao extends BaseController
                                     'Tp_Ativo'=> 'S');
                                    
 
-                                var_dump($memData);
+                                var_dump($memData); */
                             
                            
                        /*     foreach ($key as $origem => $value) {
