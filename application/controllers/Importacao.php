@@ -79,10 +79,12 @@ class Importacao extends BaseController
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
+
+
                         foreach($csvData as $row=>$key) {
                             $rowCount++;
 
-                            var_dump($key);
+                            var_dump($key['CD_GRU_PRO']);
                            
                        /*     foreach ($key as $origem => $value) {
                                 if (isset($this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino)) {
