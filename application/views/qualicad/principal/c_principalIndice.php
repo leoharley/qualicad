@@ -246,7 +246,7 @@ if(!empty($infoIndice))
 <script>
     $(document).ready(function(){
         $(":input").inputmask();
-        $(".valor").inputmask('decimal', {
+        $("#Vl_Indice").inputmask('decimal', {
             'alias': 'numeric',
             'groupSeparator': ',',
             'autoGroup': true,
