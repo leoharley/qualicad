@@ -88,7 +88,7 @@ class Importacao extends BaseController
                             foreach ($dePara as $campos)
                             {
                                 $memData += array(
-                                    $dePara->No_CampoDestino => $row[$dePara->No_CampoOrigem]
+                                    $campos->No_CampoDestino => $row[$campos->No_CampoOrigem]
                                 );
 
                                 $memData += array(
