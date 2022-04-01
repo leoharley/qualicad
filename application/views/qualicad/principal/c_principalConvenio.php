@@ -122,9 +122,9 @@ if(!empty($infoConvenio))
                                         <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Convênio ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
@@ -134,6 +134,22 @@ if(!empty($infoConvenio))
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row border">
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="Tp_Ativo">Convênio ativo?</label>
+                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+
                         </div>
                         <!-- /.box-body -->
 
