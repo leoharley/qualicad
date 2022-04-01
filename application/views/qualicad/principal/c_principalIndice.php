@@ -246,14 +246,16 @@ if(!empty($infoIndice))
 <script>
     $(document).ready(function(){
         $(":input").inputmask();
-        $(".valor").inputmask( 'currency',{"autoUnmask": true,
-            radixPoint:",",
-            groupSeparator: ".",
-            allowMinus: false,
-            digits: 2,
-            digitsOptional: false,
-            rightAlign: true,
-            unmaskAsNumber: true
+        $(".valor").inputmask('decimal', {
+            'alias': 'numeric',
+            'groupSeparator': ',',
+            'autoGroup': true,
+            'digits': 2,
+            'radixPoint': ".",
+            'digitsOptional': false,
+            'allowMinus': false,
+            'prefix': 'R$ ',
+            'placeholder': ''
         });
     });
 
