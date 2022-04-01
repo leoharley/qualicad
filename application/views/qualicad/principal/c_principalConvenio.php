@@ -140,7 +140,7 @@ if(!empty($infoConvenio))
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="TbIndice_Id_Indice">Índice</label>
-                                        <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                                        <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
                                             <?php
                                             if(!empty($infoIndice))
                                             {
@@ -161,7 +161,7 @@ if(!empty($infoConvenio))
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="TbRegra_Id_Regra">Regra</label>
-                                        <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
+                                        <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
                                             <?php
                                             if(!empty($infoRegra))
                                             {
@@ -182,7 +182,7 @@ if(!empty($infoConvenio))
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Ds_Plano">Descrição do plano</label>
-                                        <input type="text" class="form-control required" id="Ds_Plano" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Plano') : $Ds_Plano ; ?>" name="Ds_Plano"
+                                        <input type="text" class="form-control" id="Ds_Plano" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Plano') : $Ds_Plano ; ?>" name="Ds_Plano"
                                                maxlength="128">
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@ if(!empty($infoConvenio))
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Cd_PlanoERP">Código ERP</label>
-                                        <input type="text" class="form-control required" id="Cd_PlanoERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_PlanoERP') : $Cd_PlanoERP ; ?>" name="Cd_PlanoERP"
+                                        <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_PlanoERP') : $Cd_PlanoERP ; ?>" name="Cd_PlanoERP"
                                                maxlength="11">
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@ if(!empty($infoConvenio))
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Tp_AcomodacaoPadrao">Tipo de acomodação padrão</label>
-                                        <select class="form-control required" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
+                                        <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
                                             <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '1') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Enfermaria</option>
                                             <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '2') { echo 'selected'; } ?>>Apartamento</option>
                                         </select>
@@ -208,7 +208,7 @@ if(!empty($infoConvenio))
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Plano ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                        <select class="form-control" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
                                             <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                         </select>
