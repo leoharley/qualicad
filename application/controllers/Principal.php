@@ -85,6 +85,9 @@ class Principal extends BaseController
                     redirect('acaoNaoAutorizada');
                 }
 
+                $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegrasEmpresa($this->session->userdata('IdEmpresa'));
+
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
                 $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL); 
             }
