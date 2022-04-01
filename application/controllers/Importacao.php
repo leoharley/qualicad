@@ -81,6 +81,8 @@ class Importacao extends BaseController
                     if(!empty($csvData)){
                         foreach($csvData as $row=>$key) {
                             $rowCount++;
+
+                            var_dump($key);exit;
                            
                             foreach ($key as $origem => $value) {
                                 if (isset($this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino)) {
