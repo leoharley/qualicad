@@ -86,7 +86,7 @@ class Importacao extends BaseController
                                 $destino = $this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino;
                                 if (isset($destino)) {
                                     $memData += array(
-                                        $destino => $row[$origem]
+                                        $destino => $key[$origem]
                                     );
                                 } 
                                 
@@ -94,6 +94,8 @@ class Importacao extends BaseController
                                     'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                     'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                     'Tp_Ativo'=> 'S');
+
+                                var_dump($memData);
     
                             }
 
@@ -102,8 +104,6 @@ class Importacao extends BaseController
                                 if($insert){
                                     $insertCount++;
                                 }    */
-
-                                var_dump($memData);
 
 
                       /*      foreach ($DePara as $rowDePara) {
