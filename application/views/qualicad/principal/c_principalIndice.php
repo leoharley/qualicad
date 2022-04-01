@@ -182,7 +182,7 @@ if(!empty($infoIndice))
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="Vl_Indice">Valor índice</label>
-                                            <input type="text" class="form-control valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
+                                            <input type="text" class="form-control" data-inputmask="'mask': '#.##0,00'" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -246,18 +246,6 @@ if(!empty($infoIndice))
 <script>
     $(document).ready(function(){
         $(":input").inputmask();
-        $(".valor").inputmask('decimal', {
-            radixPoint:",",
-            groupSeparator: ".",
-            autoGroup: true,
-            digits: 2,
-            digitsOptional: false,
-            placeholder: '0',
-            rightAlign: false,
-            onBeforeMask: function (value, opts) {
-                return value;
-            }
-        });
     });
 
     shortcut.add("ctrl+l", function() {
