@@ -78,15 +78,12 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
 
                     // Insert/update CSV data into database
-                    
+                    if(!empty($csvData)){
+                        foreach($csvData as $row=>$key) {
+                            $rowCount++;
                            
                             foreach ($key as $origem => $value) {
                                 $destino = $this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino;
-                                
-                                if(!empty($csvData)){
-                                    foreach($csvData as $row=>$key) {
-                                        $rowCount++;
-                                
                                 if (isset($destino)) {
                                     $memData += array(
                                         $destino => $key[$origem]
@@ -98,13 +95,15 @@ class Importacao extends BaseController
                                     'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                     'Tp_Ativo'=> 'S');
     
-                                $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
+                            }
+
+                    /*        $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
                                 
                                 if($insert){
                                     $insertCount++;
-                                }   
+                                }    */
 
-                            }
+                                var_dump($memData);
 
 
                       /*      foreach ($DePara as $rowDePara) {
@@ -170,7 +169,8 @@ class Importacao extends BaseController
                                 }
                             } */
                         }
-
+                        
+                        exit;
                         
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
