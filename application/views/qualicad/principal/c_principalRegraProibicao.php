@@ -90,7 +90,7 @@ if(!empty($infoRegraProibicao))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
-                                                    <?php echo $faturamento->Ds_Faturamento ?>
+                                                    <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -111,7 +111,7 @@ if(!empty($infoRegraProibicao))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
-                                                    <?php echo $grupoPro->Ds_GrupoPro ?>
+                                                    <?php echo $grupoPro->CodGrupo.' - '.$grupoPro->Ds_GrupoPro ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -133,7 +133,7 @@ if(!empty($infoRegraProibicao))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $plano->Id_Plano ?>" <?php if ($this->uri->segment(2) == 'editar' && $plano->Id_Plano == $TbPlano_Id_Plano) { echo 'selected'; } ?>>
-                                                    <?php echo $plano->Ds_Plano ?>
+                                                    <?php echo $plano->Id_Plano.' - '.$plano->Ds_Plano ?>
                                                 </option>
                                                 <?php
                                                 }

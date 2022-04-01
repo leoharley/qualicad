@@ -151,7 +151,7 @@ if(!empty($infoConvenio))
                                                 {
                                                     ?>
                                                     <option value="<?php echo $indice->Id_Indice ?>" <?php if ($this->uri->segment(2) == 'editar' && $indice->Id_Indice == $TbIndice_Id_Indice) { echo 'selected'; } ?>>
-                                                        <?php echo $indice->Ds_indice ?>
+                                                        <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
                                                     </option>
                                                     <?php
                                                 }

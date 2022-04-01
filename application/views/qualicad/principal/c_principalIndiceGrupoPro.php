@@ -91,7 +91,7 @@ if(!empty($infoIndiceGrupoPro))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $indice->Id_Indice ?>" <?php if ($this->uri->segment(2) == 'editar' && $indice->Id_Indice == $TbIndice_Id_Indice) { echo 'selected'; } ?>>
-                                                    <?php echo $indice->Ds_indice ?>
+                                                    <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -112,7 +112,7 @@ if(!empty($infoIndiceGrupoPro))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
-                                                    <?php echo $grupoPro->Ds_GrupoPro ?>
+                                                    <?php echo $grupoPro->CodGrupo.' - '.$grupoPro->Ds_GrupoPro ?>
                                                 </option>
                                                 <?php
                                                 }

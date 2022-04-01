@@ -93,7 +93,7 @@ if(!empty($infoFaturamentoItem))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento  == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
-                                                    <?php echo $faturamento->Ds_Faturamento ?>
+                                                    <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
                                                 </option>
                                                 <?php
                                                 }
