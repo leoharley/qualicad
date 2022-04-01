@@ -84,15 +84,22 @@ class Importacao extends BaseController
                            
                             foreach ($key as $origem => $value) {
                                 if (isset($this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino)) {
+                                foreach($csvData as $row) {
+
                                     $memData += array(
-                                        $this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino => $key[$origem]
+                                        $this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino => $row[$origem]
                                     );
+
+                                    $memData += array(
+                                        'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                        'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                        'Tp_Ativo'=> 'S');
+    
+
+                                }
                                 } 
                                 
-                                $memData += array(
-                                    'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
-                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                                    'Tp_Ativo'=> 'S');
+                              
 
                                 var_dump($memData);
     
