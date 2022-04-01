@@ -82,8 +82,6 @@ class Importacao extends BaseController
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
                             $rowCount++;
-
-                        //    var_dump($key['CD_GRU_PRO']);
                             
                             for ($i=0;$i<count($dePara);$i++) {
                                 $memData = array(
@@ -98,7 +96,11 @@ class Importacao extends BaseController
                                     'Tp_Ativo'=> 'S');
                                    
 
-                                var_dump($memData);
+                                $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
+                            
+                                if($insert){
+                                    $insertCount++;
+                                }
                             
                            
                        /*     foreach ($key as $origem => $value) {
