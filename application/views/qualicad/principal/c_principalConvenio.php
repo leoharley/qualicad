@@ -172,7 +172,7 @@ if(!empty($infoConvenio))
                                                 {
                                                     ?>
                                                     <option value="<?php echo $regra->Id_Regra ?>" <?php if ($this->uri->segment(2) == 'editar' && $regra->Id_Regra == $TbRegra_Id_Regra) { echo 'selected'; } ?>>
-                                                        <?php echo $regra->Ds_Regra ?>
+                                                        <?php echo $regra->Id_Regra.' - '.$regra->Ds_Regra ?>
                                                     </option>
                                                     <?php
                                                 }
