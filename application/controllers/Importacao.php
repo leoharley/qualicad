@@ -84,7 +84,7 @@ class Importacao extends BaseController
 
                             var_dump($key);exit;
                            
-                            foreach ($key as $origem => $value) {
+                       /*     foreach ($key as $origem => $value) {
                                 if (isset($this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino)) {
                                     $memData += array(
                                         $this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino => $key[$origem]
@@ -98,7 +98,7 @@ class Importacao extends BaseController
 
                                 var_dump($key);
     
-                            }
+                            } */
 
                     /*        $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
                                 
