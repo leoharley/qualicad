@@ -74,8 +74,8 @@ if(!empty($infoConvenio))
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addConvenio" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaConvenio' : base_url().'editaConvenio'; ?>" method="post" role="form">
-                        <div class="box-body">
-                            <div class="row" style="padding-left:1rem;padding-right:1rem">
+                        <div class="box-body" style="padding-left:1rem;padding-right:1rem">
+                            <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Ds_Convenio">Convênio (descrição)</label>
