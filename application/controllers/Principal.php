@@ -1163,7 +1163,7 @@ class Principal extends BaseController
                     }
 
                     $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
-                    
+
                     $this->global['pageTitle'] = 'QUALICAD : Cadastro de Índice';
                     $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL); 
                 }
