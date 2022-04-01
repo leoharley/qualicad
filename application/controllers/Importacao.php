@@ -94,7 +94,7 @@ class Importacao extends BaseController
                                     'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                     'Tp_Ativo'=> 'S');
 
-                                var_dump($row[$origem]);
+                                var_dump($key);
     
                             }
 
