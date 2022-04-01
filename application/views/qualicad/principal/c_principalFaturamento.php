@@ -67,7 +67,7 @@ if(!empty($infoFaturamento))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addFaturamento" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaFaturamento' : base_url().'editaFaturamento'; ?>" method="post" role="form">
                         <div class="box-body">
-                            <div class="row">
+                            <div class="row" style="padding-left:1rem;padding-right:1rem">
 
                                 <div class="col-md-2">
                                     <div class="form-group">
