@@ -102,6 +102,8 @@ if(!empty($infoFaturamento))
                             <div class="row" style="display: inline-block;width: 100%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;">
 
+                                <p><strong> Faturamento Item </strong></p>
+                                
                                 <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
