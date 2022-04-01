@@ -27,7 +27,7 @@
       font-weight: normal;
     }
     .box {
-      width: 70vw!important;
+      width: 85vw!important;
     }
     li a:hover {
       color: #000 !important;
