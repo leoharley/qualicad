@@ -102,8 +102,6 @@ class Importacao extends BaseController
                                 $insertCount++;
                             }
 
-                            exit;
-
                       /*      foreach ($DePara as $rowDePara) {
 
                                 $tmp1 = $rowDePara->No_CampoDestino;
@@ -168,7 +166,6 @@ class Importacao extends BaseController
                             } */
                         }
 
-                        var_dump($memData);exit;
                         
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
