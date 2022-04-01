@@ -194,14 +194,18 @@ class Principal extends BaseController
                 //'Senha'=>getHashedPassword($senha)
 
                 if ($Ds_Plano != '') {
+
                     $infoPlano = array('TbConvenio_Id_Convenio' => $TbConvenio_Id_Convenio, 'TbEmpresa_Id_Empresa' => $this->session->userdata('IdEmpresa'),
                         'Ds_Plano' => $Ds_Plano, 'TbIndice_Id_Indice' => $TbIndice_Id_Indice, 'TbRegra_Id_Regra' => $TbRegra_Id_Regra, 'Cd_PlanoERP' => $Cd_PlanoERP,
                         'Tp_AcomodacaoPadrao' => $Tp_AcomodacaoPadrao, 'CriadoPor' => $this->vendorId, 'AtualizadoPor' => $this->vendorId,
                         'Tp_Ativo' => $Tp_Ativo, 'Dt_Ativo' => $Dt_Ativo);
 
                     $resultPlano = $this->PrincipalModel->adicionaPlano($infoPlano);
+
                 } else {
+
                     $resultPlano = 1;
+
                 }
 
                 /*FIM ADICIONAR PLANO*/
