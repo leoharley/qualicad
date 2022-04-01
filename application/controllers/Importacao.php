@@ -84,6 +84,8 @@ class Importacao extends BaseController
                             $rowCount++;
 
                         //    var_dump($key['CD_GRU_PRO']);
+
+                        var_dump(count($dePara));exit;
                             
                             for ($i=0;$i<=count($dePara);$i++) {
                                 $memData += array(
