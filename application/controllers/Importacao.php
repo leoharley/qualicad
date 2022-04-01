@@ -88,19 +88,21 @@ class Importacao extends BaseController
                                     $memData += array(
                                         $destino => $key[$origem]
                                     );
-                                }     
+                                } 
+                                
+                                $memData += array(
+                                    'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                    'Tp_Ativo'=> 'S');
+    
+                                $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
+                                
+                                if($insert){
+                                    $insertCount++;
+                                }   
+
                             }
 
-                            $memData += array(
-                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
-                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                                'Tp_Ativo'=> 'S');
-
-                            $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
-                            
-                            if($insert){
-                                $insertCount++;
-                            }
 
                       /*      foreach ($DePara as $rowDePara) {
 
