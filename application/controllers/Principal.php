@@ -166,12 +166,11 @@ class Principal extends BaseController
                                     
                 $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
 
-                var_dump ($result); exit;
 
                 /*ADICIONAR PLANO*/
 
                 $Ds_Plano = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Plano'))));
-                $TbConvenio_Id_Convenio = $this->input->post('TbConvenio_Id_Convenio');
+                $TbConvenio_Id_Convenio = $result;
                 $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
                 $TbRegra_Id_Regra  = $this->input->post('TbRegra_Id_Regra');
                 $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
@@ -199,11 +198,11 @@ class Principal extends BaseController
                     'Tp_AcomodacaoPadrao'=>$Tp_AcomodacaoPadrao, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-                $result = $this->PrincipalModel->adicionaPlano($infoPlano);
+                $resultPlano = $this->PrincipalModel->adicionaPlano($infoPlano);
 
                 /*FIM ADICIONAR PLANO*/
                 
-                if($result > 0)
+                if(($result > 0) && ($resultPlano > 0))
                 {
                     $process = 'Adicionar convênio';
                     $processFunction = 'Principal/adicionaConvenio';
