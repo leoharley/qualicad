@@ -89,7 +89,7 @@ class Importacao extends BaseController
                             $dePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
                             foreach ($dePara as $campos)
                             {
-                                var_dump($campos);
+                                var_dump($campos->No_CampoDestino);
                             }
                            
                        /*     foreach ($key as $origem => $value) {
