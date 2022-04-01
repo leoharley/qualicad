@@ -246,16 +246,17 @@ if(!empty($infoIndice))
 <script>
     $(document).ready(function(){
         $(":input").inputmask();
-        $("#Vl_Indice").inputmask('decimal', {
-            'alias': 'numeric',
-            'groupSeparator': ',',
-            'autoGroup': true,
-            'digits': 2,
-            'radixPoint': ".",
-            'digitsOptional': false,
-            'allowMinus': false,
-            'prefix': 'R$ ',
-            'placeholder': ''
+        $(".valor").inputmask('decimal', {
+            radixPoint:",",
+            groupSeparator: ".",
+            autoGroup: true,
+            digits: 2,
+            digitsOptional: false,
+            placeholder: '0',
+            rightAlign: false,
+            onBeforeMask: function (value, opts) {
+                return value;
+            }
         });
     });
 
