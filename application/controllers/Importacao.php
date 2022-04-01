@@ -83,7 +83,7 @@ class Importacao extends BaseController
                         foreach($csvData as $row) {
                             $rowCount++;
 
-                            $memData = null;
+                            $memData = array();
                             
                             for ($i=0;$i<count($dePara);$i++) {
                                 $memData += array(
