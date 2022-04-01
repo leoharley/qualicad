@@ -191,9 +191,7 @@ class Importacao extends BaseController
                                 }
                             } */
                         }
-                        
-                        exit;
-                        
+                                                
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela GrupoPro importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
