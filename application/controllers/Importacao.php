@@ -85,19 +85,22 @@ class Importacao extends BaseController
                         //    var_dump($key['CD_GRU_PRO']);
 
                             $dePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
-                            foreach ($dePara as $campos)
-                            {
+                            
+                            for ($i=0;$i<=$dePara.lenght();$i++) {
                                 $memData += array(
-                                    $campos->No_CampoDestino => $row[$campos->No_CampoOrigem]
+                                    $dePara[$i]->No_CampoDestino => $row[$dePara[$i]->No_CampoOrigem]
                                 );
+
+                            }
 
                                 $memData += array(
                                     'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                     'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                     'Tp_Ativo'=> 'S');
+                                   
 
                                 var_dump($memData);
-                            }
+                            
                            
                        /*     foreach ($key as $origem => $value) {
                                 if (isset($this->ImportacaoModel->consultaDePara('GrupoPro',$origem,$this->session->userdata('IdEmpresa'))[0]->No_CampoDestino)) {
