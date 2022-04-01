@@ -64,16 +64,16 @@ if(!empty($infoRegra))
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addRegra" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaRegra' : base_url().'editaRegra'; ?>" method="post" role="form">
-                        <div class="box-body">
+                        <div class="box-body" style="padding-left:1rem;padding-right:1rem">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Ds_Regra">Regra (descrição)</label>
                                         <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Regra') : $Ds_Regra ; ?>" id="Ds_Regra" name="Ds_Regra" maxlength="128">
                                         <input type="hidden" value="<?php echo $Id_Regra; ?>" name="Id_Regra" id="Id_Regra" />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Regra ativa?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
@@ -83,6 +83,71 @@ if(!empty($infoRegra))
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row" style="display: inline-block;width: 100%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;">
+
+                                <h4><strong>Regra Grupo</strong></h4>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="dsgrupopro">Grupo pro associado</label>
+                                            <select class="form-control required" id="dsgrupopro" name="dsgrupopro">
+                                                <option value="1">GRUPO_PRO_1</option>
+                                                <option value="2">GRUPO_PRO_2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="dsregra">Regra associada</label>
+                                            <select class="form-control required" id="dsregra" name="dsregra">
+                                                <option value="1">REGRA_1</option>
+                                                <option value="2">REGRA_2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="dsfaturamento">Faturamento associado</label>
+                                            <select class="form-control required" id="dsfaturamento" name="dsfaturamento">
+                                                <option value="1">FATURAMENTO_1</option>
+                                                <option value="2">FATURAMENTO_2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="percpago">Percentual pago</label>
+                                            <input type="text" class="form-control required" value="<?php echo set_value('percpago'); ?>" id="percpago" name="percpago"
+                                                   maxlength="11">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="dtinivigencia">Data de início da vigência</label>
+                                            <input type="date" class="form-control required" value="<?php echo set_value('dtinivigencia'); ?>" id="dtinivigencia" name="dtinivigencia">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="dtfimvigencia">Data de fim da vigência</label>
+                                            <input type="date" class="form-control required" value="<?php echo set_value('dtfimvigencia'); ?>" id="dtfimvigencia" name="dtfimvigencia">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="dtcriacao">Data criação</label>
+                                            <input type="date" class="form-control required" value="<?php echo set_value('dtcriacao'); ?>" id="dtcriacao" name="dtcriacao">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                         <!-- /.box-body -->
 
