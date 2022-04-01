@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Importa Grupo Pro
+            <i class="fa fa-users"></i> Importa Produto
             <small>Importação</small>
         </h1>
     </section>
@@ -37,7 +37,7 @@
 		
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
-            <form action="<?php echo base_url() ?>importaGrupoPro" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>importaProduto" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
@@ -48,21 +48,33 @@
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>CodGrupo</th>
-                    <th>Ds_GrupoPro</th>
-                    <th>Tp_GrupoPro</th>
-                    <th>Dt_Criacao</th>
-                    <th>Tp_Ativo</th>
+                    <th>TbProFat_Cd_ProFat</th>
+                    <th>Tb_Unidade_Id_Unidade</th>
+                    <th>Cd_Produto</th>
+                    <th>Ds_Produto</th>
+                    <th>Ds_Especie</th>
+                    <th>Cd_ProdutoMestre</th>
+                    <th>SN_Mestre</th>
+                    <th>Vl_CustoMedio</th>
+                    <th>Vl_Fator</th>
+                    <th>Vl_FatorProFat</th>
+                    <th>Vl_CustoFinal</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
+                <?php if(!empty($infoProduto)){ foreach($infoProduto as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->CdGrupoPro ?></td>
-                    <td><?php echo $registro->Ds_GrupoPro ?></td>
-                    <td><?php echo $registro->Tp_GrupoPro ?></td>
-                    <td><?php echo $registro->Dt_Criacao ?></td>
-                    <td><?php echo $registro->Tp_Ativo ?></td>
+                    <td><?php echo $registro->TbProFat_Cd_ProFat ?></td>
+                    <td><?php echo $registro->Tb_Unidade_Id_Unidade ?></td>
+                    <td><?php echo $registro->Cd_Produto ?></td>
+                    <td><?php echo $registro->Ds_Produto ?></td>
+                    <td><?php echo $registro->Ds_Especie ?></td>
+                    <td><?php echo $registro->Cd_ProdutoMestre ?></td>
+                    <td><?php echo $registro->SN_Mestre ?></td>
+                    <td><?php echo $registro->Vl_CustoMedio ?></td>
+                    <td><?php echo $registro->Vl_Fator ?></td>
+                    <td><?php echo $registro->Vl_FatorProFat ?></td>
+                    <td><?php echo $registro->Vl_CustoFinal ?></td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
