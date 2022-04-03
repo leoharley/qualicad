@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Importa Grupo Pro
+            <i class="fa fa-users"></i> Importa TUSS
             <small>Importação</small>
         </h1>
     </section>
@@ -37,7 +37,7 @@
 		
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
-            <form action="<?php echo base_url() ?>importaGrupoPro" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>importaTUSS" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
@@ -48,21 +48,23 @@
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>cd_empresa</th>
-                    <th>cd_convenio</th>
-                    <th>CD_PRO_FAT</th>
-                    <th>DS_PRO_FAT</th>
-                    <th>Tp_Ativo</th>
+                    <th>TbProFat_Cd_ProFat</th>
+                    <th>TbConvenio_Id_Convenio</th>
+                    <th>Cd_Tuss</th>
+                    <th>Ds_Tuss</th>
+                    <th>Dt_IniVigencia</th>
+                    <th>Dt_FimVigencia</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
+                <?php if(!empty($infoTUSS)){ foreach($infoTUSS as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->CdGrupoPro ?></td>
-                    <td><?php echo $registro->Ds_GrupoPro ?></td>
-                    <td><?php echo $registro->Tp_GrupoPro ?></td>
-                    <td><?php echo $registro->Dt_Criacao ?></td>
-                    <td><?php echo $registro->Tp_Ativo ?></td>
+                    <td><?php echo $registro->TbProFat_Cd_ProFat ?></td>
+                    <td><?php echo $registro->TbConvenio_Id_Convenio ?></td>
+                    <td><?php echo $registro->Cd_Tuss ?></td>
+                    <td><?php echo $registro->Ds_Tuss ?></td>
+                    <td><?php echo $registro->Dt_IniVigencia ?></td>
+                    <td><?php echo $registro->Dt_FimVigencia ?></td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

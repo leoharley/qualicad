@@ -60,6 +60,7 @@ class PrincipalModel extends CI_Model
         $campos = "(Convenio.CNPJ_Convenio = '".$CNPJ_Convenio."'
                     AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."')";
         $this->db->where($campos);
+        $this->db->where('Convenio.Deletado !=', 'S');
         $query = $this->db->get();
 
         return $query->result();

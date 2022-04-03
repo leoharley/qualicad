@@ -27,7 +27,7 @@
       font-weight: normal;
     }
     .box {
-      width: 70vw!important;
+      width: 85vw!important;
     }
     li a:hover {
       color: #000 !important;
@@ -40,6 +40,7 @@
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="<?php echo base_url(); ?>assets/plugins/money-mask/jquery.maskMoney.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/shortcut.js"></script>
   <script src="https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js"></script>
   <script type="text/javascript">

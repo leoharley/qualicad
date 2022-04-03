@@ -91,7 +91,7 @@ if(!empty($infoIndiceGrupoPro))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $indice->Id_Indice ?>" <?php if ($this->uri->segment(2) == 'editar' && $indice->Id_Indice == $TbIndice_Id_Indice) { echo 'selected'; } ?>>
-                                                    <?php echo $indice->Ds_indice ?>
+                                                    <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -112,7 +112,7 @@ if(!empty($infoIndiceGrupoPro))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
-                                                    <?php echo $grupoPro->Ds_GrupoPro ?>
+                                                    <?php echo $grupoPro->CodGrupo.' - '.$grupoPro->Ds_GrupoPro ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -140,13 +140,13 @@ if(!empty($infoIndiceGrupoPro))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_Indice">Valor índice</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_M2Filme">Valor M2 Filme</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_M2Filme') : $Vl_M2Filme ; ?>" id="Vl_M2Filme" name="Vl_M2Filme"
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_M2Filme') : $Vl_M2Filme ; ?>" id="Vl_M2Filme" name="Vl_M2Filme"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -155,14 +155,14 @@ if(!empty($infoIndiceGrupoPro))
                             <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_Honorario">Valor honorário</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorario') : $Vl_Honorario ; ?>" id="Vl_Honorario" name="Vl_Honorario"
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorario') : $Vl_Honorario ; ?>" id="Vl_Honorario" name="Vl_Honorario"
                                         maxlength="11">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_UCO">Valor UCO</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_UCO') : $Vl_UCO ; ?>" id="Vl_UCO" name="Vl_UCO"
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_UCO') : $Vl_UCO ; ?>" id="Vl_UCO" name="Vl_UCO"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -202,6 +202,11 @@ if(!empty($infoIndiceGrupoPro))
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addIndiceGrupoPro.js" type="text/javascript"></script>
 <script>
+    $(document).ready(function(){
+        $(":input").inputmask();
+        $('.valor').maskMoney();
+    });
+
     shortcut.add("ctrl+l", function() {
     document.getElementById('IrLista').click();
     });

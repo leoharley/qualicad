@@ -85,6 +85,9 @@ class Principal extends BaseController
                     redirect('acaoNaoAutorizada');
                 }
 
+                $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegrasEmpresa($this->session->userdata('IdEmpresa'));
+
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Convênio';
                 $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL); 
             }
@@ -162,8 +165,52 @@ class Principal extends BaseController
                                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
                                     
                 $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+
+
+                /*ADICIONAR PLANO*/
+
+                $Ds_Plano = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Plano'))));
+                $TbConvenio_Id_Convenio = $result;
+                $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
+                $TbRegra_Id_Regra  = $this->input->post('TbRegra_Id_Regra');
+                $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
+                $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
+                $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+                //    $roleId = $this->input->post('role');
+
+                //VERIFICAÇÃO DE DUPLICIDADE
+                //        if ($this->PrincipalModel->consultaPlanoExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
+
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $Dt_Ativo = null;
+                }
+
+                //'Senha'=>getHashedPassword($senha)
+
+                if ($Ds_Plano != '') {
+
+                    $infoPlano = array('TbConvenio_Id_Convenio' => $TbConvenio_Id_Convenio, 'TbEmpresa_Id_Empresa' => $this->session->userdata('IdEmpresa'),
+                        'Ds_Plano' => $Ds_Plano, 'TbIndice_Id_Indice' => $TbIndice_Id_Indice, 'TbRegra_Id_Regra' => $TbRegra_Id_Regra, 'Cd_PlanoERP' => $Cd_PlanoERP,
+                        'Tp_AcomodacaoPadrao' => $Tp_AcomodacaoPadrao, 'CriadoPor' => $this->vendorId, 'AtualizadoPor' => $this->vendorId,
+                        'Tp_Ativo' => $Tp_Ativo, 'Dt_Ativo' => $Dt_Ativo);
+
+                    $resultPlano = $this->PrincipalModel->adicionaPlano($infoPlano);
+
+                } else {
+
+                    $resultPlano = 1;
+
+                }
+
+                /*FIM ADICIONAR PLANO*/
                 
-                if($result > 0)
+                if(($result > 0) && ($resultPlano > 0))
                 {
                     $process = 'Adicionar convênio';
                     $processFunction = 'Principal/adicionaConvenio';
@@ -1114,6 +1161,8 @@ class Principal extends BaseController
                     {
                         redirect('acaoNaoAutorizada');
                     }
+
+                    $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
 
                     $this->global['pageTitle'] = 'QUALICAD : Cadastro de Índice';
                     $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL); 

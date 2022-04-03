@@ -2,8 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Importa Grupo Pro
-            <small>Importação</small>
+            <i class="fa fa-users"></i> Importa Contrato
         </h1>
     </section>
 
@@ -37,7 +36,7 @@
 		
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
-            <form action="<?php echo base_url() ?>importaGrupoPro" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>importaContrato" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
@@ -48,21 +47,21 @@
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>CodGrupo</th>
-                    <th>Ds_GrupoPro</th>
-                    <th>Tp_GrupoPro</th>
-                    <th>Dt_Criacao</th>
-                    <th>Tp_Ativo</th>
+                    <th>??</th>
+                    <th>??</th>
+                    <th>??</th>
+                    <th>??</th>
+                    <th>??</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
+                <?php if(!empty($infoContrato)){ foreach($infoContrato as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->CdGrupoPro ?></td>
-                    <td><?php echo $registro->Ds_GrupoPro ?></td>
-                    <td><?php echo $registro->Tp_GrupoPro ?></td>
-                    <td><?php echo $registro->Dt_Criacao ?></td>
-                    <td><?php echo $registro->Tp_Ativo ?></td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

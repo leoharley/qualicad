@@ -93,7 +93,7 @@ if(!empty($infoFaturamentoItem))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento  == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
-                                                    <?php echo $faturamento->Ds_Faturamento ?>
+                                                    <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -129,14 +129,14 @@ if(!empty($infoFaturamentoItem))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_Honorário">Valor do honorário</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorário') : $Vl_Honorário ; ?>" id="Vl_Honorário" name="Vl_Honorário" 
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorário') : $Vl_Honorário ; ?>" id="Vl_Honorário" name="Vl_Honorário"
                                         maxlength="11">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_Operacional">Valor operacional</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Operacional') : $Vl_Operacional ; ?>" id="Vl_Operacional" name="Vl_Operacional"
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Operacional') : $Vl_Operacional ; ?>" id="Vl_Operacional" name="Vl_Operacional"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -145,14 +145,14 @@ if(!empty($infoFaturamentoItem))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_Total">Valor total</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Total') : $Vl_Total ; ?>" id="Vl_Total" name="Vl_Total"
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Total') : $Vl_Total ; ?>" id="Vl_Total" name="Vl_Total"
                                         maxlength="11">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_Filme">Valor filme</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Filme') : $Vl_Filme ; ?>" id="Vl_Filme" name="Vl_Filme"
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Filme') : $Vl_Filme ; ?>" id="Vl_Filme" name="Vl_Filme"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -192,6 +192,11 @@ if(!empty($infoFaturamentoItem))
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addFaturamentoItem.js" type="text/javascript"></script>
 <script>
+    $(document).ready(function(){
+        $(":input").inputmask();
+        $('.valor').maskMoney();
+    });
+
     shortcut.add("ctrl+l", function() {
     document.getElementById('IrLista').click();
     });

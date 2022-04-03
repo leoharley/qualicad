@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Importa Grupo Pro
+            <i class="fa fa-users"></i> Importa Produção
             <small>Importação</small>
         </h1>
     </section>
@@ -37,7 +37,7 @@
 		
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
-            <form action="<?php echo base_url() ?>importaGrupoPro" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>importaProducao" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
@@ -48,21 +48,29 @@
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>CodGrupo</th>
-                    <th>Ds_GrupoPro</th>
-                    <th>Tp_GrupoPro</th>
-                    <th>Dt_Criacao</th>
-                    <th>Tp_Ativo</th>
+                    <th>TbProFat_Cd_ProFat</th>
+                    <th>TbPlano_Id_Plano</th>
+                    <th>Num_Conta</th>
+                    <th>Num_Atendimento</th>
+                    <th>Dt_Lancamento</th>
+                    <th>Qt_Lancamento</th>
+                    <th>Vl_Conta</th>
+                    <th>Cd_Movimento</th>
+                    <th>Cd_ITMovimento</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
+                <?php if(!empty($infoProducao)){ foreach($infoProducao as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->CdGrupoPro ?></td>
-                    <td><?php echo $registro->Ds_GrupoPro ?></td>
-                    <td><?php echo $registro->Tp_GrupoPro ?></td>
-                    <td><?php echo $registro->Dt_Criacao ?></td>
-                    <td><?php echo $registro->Tp_Ativo ?></td>
+                    <td><?php echo $registro->TbProFat_Cd_ProFat ?></td>
+                    <td><?php echo $registro->TbPlano_Id_Plano ?></td>
+                    <td><?php echo $registro->Num_Conta ?></td>
+                    <td><?php echo $registro->Num_Atendimento ?></td>
+                    <td><?php echo $registro->Dt_Lancamento ?></td>
+                    <td><?php echo $registro->Qt_Lancamento ?></td>
+                    <td><?php echo $registro->Vl_Conta ?></td>
+                    <td><?php echo $registro->Cd_Movimento ?></td>
+                    <td><?php echo $registro->Cd_ITMovimento ?></td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

@@ -100,6 +100,24 @@ $route['importaGrupoPro'] = "importacao/importaGrupoPro";
 $route['importacaoProFat'] = "importacao/importacaoProFat";
 $route['importaProFat'] = "importacao/importaProFat";
 
+$route['importacaoTUSS'] = "importacao/importacaoTUSS";
+$route['importaTUSS'] = "importacao/importaTUSS";
+
+$route['importacaoRegraGruPro'] = "importacao/importacaoRegraGruPro";
+$route['importaRegraGruPro'] = "importacao/importaRegraGruPro";
+
+$route['importacaoFracaoSimproBra'] = "importacao/importacaoFracaoSimproBra";
+$route['importaFracaoSimproBra'] = "importacao/importaFracaoSimproBra";
+
+$route['importacaoProduto'] = "importacao/importacaoProduto";
+$route['importaProduto'] = "importacao/importaProduto";
+
+$route['importacaoProducao'] = "importacao/importacaoProducao";
+$route['importaProducao'] = "importacao/importaProducao";
+
+$route['importacaoContrato'] = "importacao/importacaoContrato";
+$route['importaContrato'] = "importacao/importaContrato";
+
 
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";

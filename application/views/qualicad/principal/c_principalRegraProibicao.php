@@ -90,7 +90,7 @@ if(!empty($infoRegraProibicao))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
-                                                    <?php echo $faturamento->Ds_Faturamento ?>
+                                                    <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -111,7 +111,7 @@ if(!empty($infoRegraProibicao))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
-                                                    <?php echo $grupoPro->Ds_GrupoPro ?>
+                                                    <?php echo $grupoPro->CodGrupo.' - '.$grupoPro->Ds_GrupoPro ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -133,7 +133,7 @@ if(!empty($infoRegraProibicao))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $plano->Id_Plano ?>" <?php if ($this->uri->segment(2) == 'editar' && $plano->Id_Plano == $TbPlano_Id_Plano) { echo 'selected'; } ?>>
-                                                    <?php echo $plano->Ds_Plano ?>
+                                                    <?php echo $plano->Id_Plano.' - '.$plano->Ds_Plano ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -177,7 +177,7 @@ if(!empty($infoRegraProibicao))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Vl_RegraProibicao">Valor da regra de proibição</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_RegraProibicao') : $Vl_RegraProibicao ; ?>" id="Vl_RegraProibicao" name="Vl_RegraProibicao"
+                                        <input type="text" class="form-control required valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_RegraProibicao') : $Vl_RegraProibicao ; ?>" id="Vl_RegraProibicao" name="Vl_RegraProibicao"
                                         maxlength="11">
                                     </div>
                                 </div>
@@ -215,6 +215,11 @@ if(!empty($infoRegraProibicao))
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
 <script>
+    $(document).ready(function(){
+        $(":input").inputmask();
+        $('.valor').maskMoney();
+    });
+
     shortcut.add("ctrl+l", function() {
     document.getElementById('IrLista').click();
     });

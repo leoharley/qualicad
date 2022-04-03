@@ -94,7 +94,7 @@ if(!empty($infoFracaoSimproBra))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $proFat->Cd_ProFat ?>" <?php if ($this->uri->segment(2) == 'editar' && $proFat->Cd_ProFat == $TbProFat_Cd_ProFat) { echo 'selected'; } ?>>
-                                                    <?php echo $proFat->Ds_ProFat ?>
+                                                    <?php echo $proFat->Cd_ProFat.' - '.$proFat->Ds_ProFat ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -115,7 +115,7 @@ if(!empty($infoFracaoSimproBra))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento  == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
-                                                    <?php echo $faturamento->Ds_Faturamento ?>
+                                                    <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
                                                 </option>
                                                 <?php
                                                 }
@@ -137,7 +137,7 @@ if(!empty($infoFracaoSimproBra))
                                                 {
                                                     ?>
                                                 <option value="<?php echo $tuss->Id_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Id_Tuss == $TbTUSS_Id_Tuss) { echo 'selected'; } ?>>
-                                                    <?php echo $tuss->Ds_Tuss ?>
+                                                    <?php echo $tuss->Id_Tuss.' - '.$tuss->Ds_Tuss ?>
                                                 </option>
                                                 <?php
                                                 }
