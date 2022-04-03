@@ -140,8 +140,9 @@ if(!empty($infoConvenio))
 
                                 <h4><strong>Plano</strong></h4>
 
-                                <div class="col-md-2">
                                 <input type="button" class="btn btn-primary" onClick="add()" value="+" name="add" id="add"/>
+
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="TbIndice_Id_Indice">Índice</label>
                                         <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
