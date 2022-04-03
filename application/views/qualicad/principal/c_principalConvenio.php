@@ -398,8 +398,9 @@ if(!empty($infoConvenio))
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addConvenio.js" type="text/javascript"></script>
 <script>
+    let i = 0;
+
     $(document).ready(function(){
-        var i = 0;
         $(":input").inputmask();
     });
     shortcut.add("ctrl+l", function() {
@@ -417,7 +418,7 @@ if(!empty($infoConvenio))
 
     function adicionar()
     {
-        i++;
+        i = i + 1;
         if (i == 1) $('#row1').css('display', 'inline');
         if (i == 2) $('#row2').css('display', 'inline');
     }
