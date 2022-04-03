@@ -158,6 +158,22 @@ if(!empty($infoConvenio))
                                             }
                                             ?>
                                         </select>
+                                        
+                                        <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                                            <?php
+                                            if(!empty($infoIndice))
+                                            {
+                                                foreach ($infoIndice as $indice)
+                                                {
+                                                    ?>
+                                                    <option value="<?php echo $indice->Id_Indice ?>" <?php if ($this->uri->segment(2) == 'editar' && $indice->Id_Indice == $TbIndice_Id_Indice) { echo 'selected'; } ?>>
+                                                        <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
+                                                    </option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
 
