@@ -115,6 +115,8 @@ class Principal extends BaseController
                 redirect('principalConvenio/listar'); 
             } 
 
+            
+
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');

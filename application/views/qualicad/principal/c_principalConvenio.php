@@ -158,22 +158,6 @@ if(!empty($infoConvenio))
                                             }
                                             ?>
                                         </select>
-                                        
-                                        <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
-                                            <?php
-                                            if(!empty($infoIndice))
-                                            {
-                                                foreach ($infoIndice as $indice)
-                                                {
-                                                    ?>
-                                                    <option value="<?php echo $indice->Id_Indice ?>" <?php if ($this->uri->segment(2) == 'editar' && $indice->Id_Indice == $TbIndice_Id_Indice) { echo 'selected'; } ?>>
-                                                        <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
-                                                    </option>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                        </select>
                                     </div>
                                 </div>
 
@@ -233,6 +217,82 @@ if(!empty($infoConvenio))
                                         </select>
                                     </div>
                                 </div>
+
+                                <div id="row1" style="visibility:hidden">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                                                <?php
+                                                if(!empty($infoIndice))
+                                                {
+                                                    foreach ($infoIndice as $indice)
+                                                    {
+                                                        ?>
+                                                        <option value="<?php echo $indice->Id_Indice ?>" <?php if ($this->uri->segment(2) == 'editar' && $indice->Id_Indice == $TbIndice_Id_Indice) { echo 'selected'; } ?>>
+                                                            <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
+                                                        </option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
+                                                <?php
+                                                if(!empty($infoRegra))
+                                                {
+                                                    foreach ($infoRegra as $regra)
+                                                    {
+                                                        ?>
+                                                        <option value="<?php echo $regra->Id_Regra ?>" <?php if ($this->uri->segment(2) == 'editar' && $regra->Id_Regra == $TbRegra_Id_Regra) { echo 'selected'; } ?>>
+                                                            <?php echo $regra->Id_Regra.' - '.$regra->Ds_Regra ?>
+                                                        </option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="Ds_Plano" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Plano') : $Ds_Plano ; ?>" name="Ds_Plano"
+                                                maxlength="128">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_PlanoERP') : $Cd_PlanoERP ; ?>" name="Cd_PlanoERP"
+                                                maxlength="11">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
+                                                <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '1') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Enfermaria</option>
+                                                <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '2') { echo 'selected'; } ?>>Apartamento</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <select class="form-control" id="Tp_Ativo" name="Tp_Ativo">
+                                                <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+                                                <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
 
                             </div>
 
