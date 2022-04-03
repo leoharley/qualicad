@@ -138,7 +138,7 @@ if(!empty($infoConvenio))
                             <div class="row" style="display: inline-block;width: 100%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;">
 
-                                <h4><strong>Plano</strong><input type="button" class="btn btn-primary" onclick="add()" value="+" name="add" id="add"/></h4>
+                                <h4><strong>Plano</strong><input type="button" class="btn btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
@@ -340,7 +340,7 @@ if(!empty($infoConvenio))
         document.getElementById('salvarAvancar').click();
     });
 
-    function add()
+    function adicionar()
     {
         $('#row1').css('display', 'inline');
     }
