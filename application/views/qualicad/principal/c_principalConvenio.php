@@ -339,4 +339,9 @@ if(!empty($infoConvenio))
     shortcut.add("ctrl+p", function() {
         document.getElementById('salvarAvancar').click();
     });
+
+    function add()
+    {
+        $('#row1').css('display', 'inline');
+    }
 </script>
