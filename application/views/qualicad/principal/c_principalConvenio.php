@@ -37,6 +37,26 @@ if(!empty($infoConvenio))
     table input:focus {outline:none!important;}
     table select {border:0!important;outline:0;}
     table select:focus {outline:none!important;}
+
+    .table thead {
+    position: sticky;
+    top: 0;
+    }
+
+    .table thead th {
+    border: 1px solid #e4eff8;
+    background: white;
+    cursor: pointer;
+    }
+
+    .table thead th.header-label {
+    cursor: pointer;
+    background: linear-gradient(0deg, #e4eff8, #4578a2 5%, #e4eff8 150%);
+    color: white;
+    border: 1px solid white;
+    }
+
+
 </style>
 
 <div class="content-wrapper">
@@ -152,26 +172,28 @@ if(!empty($infoConvenio))
                                 <h4><strong>Plano  </strong><input type="button" class="btn btn-sm btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
 
                                 <table style="width:100%;">
+                                    <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <td style="padding:10px">
+                                        <th class="header-label" style="padding:10px">
                                         Índice
-                                        </td>
-                                        <td style="padding:10px">
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Regra
-                                        </td>
-                                        <td style="padding:10px">
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Desc. do plano
-                                        </td>
-                                        <td style="padding:10px">
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Cod. ERP
-                                        </td>
-                                        <td style="padding:10px">
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Tp acomodação padrão
-                                        </td>
-                                        <td style="padding:10px">
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Plano ativo?
-                                        </td>
+                                        </th>
                                     </tr>
+                                </thead>
                                 <tr id="row0">
                                 <td>
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
