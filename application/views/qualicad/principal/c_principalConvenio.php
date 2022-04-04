@@ -30,7 +30,7 @@ if(!empty($infoConvenio))
 
 <style>
     table, th, td {
-    border: 1px solid #a0a0a0;
+    border: 1px solid #c0c0c0;
     border-collapse: collapse;
     }
 </style>
@@ -149,22 +149,22 @@ if(!empty($infoConvenio))
 
                                 <table style="width:100%;">
                                     <tr style="background-color:#e0e0e0">
-                                        <td style="padding:22px">
+                                        <td style="padding:10px">
                                         Índice
                                         </td>
-                                        <td>
+                                        <td style="padding:10px">
                                         Regra
                                         </td>
-                                        <td>
+                                        <td style="padding:10px">
                                         Desc. do plano
                                         </td>
-                                        <td>
+                                        <td style="padding:10px">
                                         Cod. ERP
                                         </td>
-                                        <td>
+                                        <td style="padding:10px">
                                         Tp acomodação padrão
                                         </td>
-                                        <td>
+                                        <td style="padding:10px">
                                         Plano ativo?
                                         </td>
                                     </tr>
