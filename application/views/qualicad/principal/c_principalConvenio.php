@@ -28,6 +28,13 @@ if(!empty($infoConvenio))
 
 ?>
 
+<style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -140,7 +147,7 @@ if(!empty($infoConvenio))
 
                                 <h4><strong>Plano</strong><input type="button" class="btn btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
 
-                                <table style="width:100%;border: 1px solid black;border-collapse: collapse;">
+                                <table style="width:100%;">
                                 <tr style="background-color:#e0e0e0">
                                     <td style="padding:12px">
                                     Índice
