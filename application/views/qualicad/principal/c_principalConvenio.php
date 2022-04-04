@@ -51,7 +51,7 @@ if(!empty($infoConvenio))
 
     table thead th.header-label {
     cursor: pointer;
-    background: linear-gradient(0deg, #3c8dbc, #4578a2 5%, #e4eff8 150%);
+    background: linear-gradient(0deg, #e4eff8, #4578a2 5%, #e4eff8 150%);
     color: white;
     border: 1px solid white;
     }
