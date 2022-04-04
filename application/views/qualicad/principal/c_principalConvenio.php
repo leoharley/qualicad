@@ -140,9 +140,9 @@ if(!empty($infoConvenio))
 
                                 <h4><strong>Plano</strong><input type="button" class="btn btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
 
-                                <table style="width:100%">
-                                <tr>
-                                    <td style="padding:10px">
+                                <table style="width:100%;border: 1px solid black;border-collapse: collapse;">
+                                <tr style="background-color:#b0b0b0">
+                                    <td style="padding:15px">
                                     Índice
                                     </td>
                                     <td>
