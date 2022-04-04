@@ -140,7 +140,7 @@ if(!empty($infoConvenio))
 
                                 <h4><strong>Plano</strong><input type="button" class="btn btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
 
-                                <table>
+                                <table style="width:100%">
                                 <tr>
                                     <td>
                                     Índice
@@ -236,7 +236,7 @@ if(!empty($infoConvenio))
                                             </td>
                                 </tr>
 
-                                <tr id="row1" style="display:none">
+                                <tr id="row1" style="width:100%;display:none">
                                 <td>
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -310,7 +310,7 @@ if(!empty($infoConvenio))
                                             </td>
                                 </tr>
 
-                                <tr id="row2" style="display:none">
+                                <tr id="row2" style="width:100%;display:none">
                                 <td>
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -384,7 +384,7 @@ if(!empty($infoConvenio))
                                             </td>
                                             </tr>
 
-                                <tr id="row3" style="display:none">
+                                <tr id="row3" style="width:100%;display:none">
                                 <td>
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -458,7 +458,7 @@ if(!empty($infoConvenio))
                                             </td>
                                 </tr>
 
-                                <tr id="row4" style="display:none">
+                                <tr id="row4" style="width:100%;display:none">
                                 <td>
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -532,7 +532,7 @@ if(!empty($infoConvenio))
                                             </td>
                                 </tr>
 
-                                <tr id="row5" style="display:none">
+                                <tr id="row5" style="width:100%;display:none">
                                 <td>
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
