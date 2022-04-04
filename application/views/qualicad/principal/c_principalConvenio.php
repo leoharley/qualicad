@@ -30,9 +30,8 @@ if(!empty($infoConvenio))
 
 <style>
     table, th, td {
-    border: 1px solid #e0e0e0;
+    border: 1px solid #a0a0a0;
     border-collapse: collapse;
-    padding:10px;
     }
 </style>
 
@@ -149,26 +148,26 @@ if(!empty($infoConvenio))
                                 <h4><strong>Plano</strong><input type="button" class="btn btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
 
                                 <table style="width:100%;">
-                                <tr style="background-color:#e0e0e0">
-                                    <td style="padding:12px">
-                                    Índice
-                                    </td>
-                                    <td>
-                                    Regra
-                                    </td>
-                                    <td>
-                                    Desc. do plano
-                                    </td>
-                                    <td>
-                                    Cod. ERP
-                                    </td>
-                                    <td>
-                                    Tp acomodação padrão
-                                    </td>
-                                    <td>
-                                    Plano ativo?
-                                    </td>
-                                </tr>
+                                    <tr style="background-color:#e0e0e0">
+                                        <td style="padding:22px">
+                                        Índice
+                                        </td>
+                                        <td>
+                                        Regra
+                                        </td>
+                                        <td>
+                                        Desc. do plano
+                                        </td>
+                                        <td>
+                                        Cod. ERP
+                                        </td>
+                                        <td>
+                                        Tp acomodação padrão
+                                        </td>
+                                        <td>
+                                        Plano ativo?
+                                        </td>
+                                    </tr>
                                 <tr id="row0">
                                 <td>
                                         <div class="form-group">
