@@ -228,7 +228,6 @@ if(!empty($infoConvenio))
 
                                             <td>
                                         <div class="form-group">
-                                            <label for="Tp_Ativo">Plano ativo?</label>
                                             <select class="form-control" id="Tp_Ativo" name="Tp_Ativo">
                                                 <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
                                                 <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
@@ -238,7 +237,7 @@ if(!empty($infoConvenio))
                                 </tr>
 
                                 <tr id="row1" style="display:none">
-                                    <div class="col-md-2">
+                                <td>
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
                                                 <?php
@@ -256,9 +255,9 @@ if(!empty($infoConvenio))
                                                 ?>
                                             </select>
                                         </div>
-                                    </div>
+                                            </td>
 
-                                    <div class="col-md-2">
+                                            <td>
                                         <div class="form-group">
                                             <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
                                                 <?php
@@ -276,39 +275,39 @@ if(!empty($infoConvenio))
                                                 ?>
                                             </select>
                                         </div>
-                                    </div>
+                                            </td>
 
-                                    <div class="col-md-2">
+                                            <td>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="Ds_Plano" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Plano') : $Ds_Plano ; ?>" name="Ds_Plano"
                                                 maxlength="128">
                                         </div>
-                                    </div>
+                                            </td>
 
-                                    <div class="col-md-2">
+                                            <td>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_PlanoERP') : $Cd_PlanoERP ; ?>" name="Cd_PlanoERP"
                                                 maxlength="11">
                                         </div>
-                                    </div>
+                                            </td>
 
-                                    <div class="col-md-2">
+                                            <td>
                                         <div class="form-group">
                                             <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
                                                 <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '1') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Enfermaria</option>
                                                 <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '2') { echo 'selected'; } ?>>Apartamento</option>
                                             </select>
                                         </div>
-                                    </div>
+                                            </td>
 
-                                    <div class="col-md-2">
+                                            <td>
                                         <div class="form-group">
                                             <select class="form-control" id="Tp_Ativo" name="Tp_Ativo">
                                                 <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
                                                 <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                             </select>
                                         </div>
-                                    </div>
+                                            </td>
                                 </tr>
 
                                 <tr id="row2" style="display:none">
