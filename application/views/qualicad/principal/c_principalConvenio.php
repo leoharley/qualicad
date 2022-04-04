@@ -33,6 +33,8 @@ if(!empty($infoConvenio))
     border: 1px solid #c0c0c0;
     border-collapse: collapse;
     }
+    input {border:0;outline:0;}
+    input:focus {outline:none!important;}
 </style>
 
 <div class="content-wrapper">
