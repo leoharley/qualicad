@@ -140,10 +140,31 @@ if(!empty($infoConvenio))
 
                                 <h4><strong>Plano</strong><input type="button" class="btn btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
 
-                                <div id="row0">
+                                <table>
+                                <tr>
+                                    <td>
+                                    Índice
+                                    </td>
+                                    <td>
+                                    Regra
+                                    </td>
+                                    <td>
+                                    Desc. do plano
+                                    </td>
+                                    <td>
+                                    Cod. ERP
+                                    </td>
+                                    <td>
+                                    Tp acomodação padrão
+                                    </td>
+                                    <td>
+                                    Plano ativo?
+                                    </td>
+                                </tr>
+                                <tr id="row0">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="TbIndice_Id_Indice">Índice</label>
+
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
                                                 <?php
                                                 if(!empty($infoIndice))
@@ -164,7 +185,6 @@ if(!empty($infoConvenio))
 
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="TbRegra_Id_Regra">Regra</label>
                                             <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
                                                 <?php
                                                 if(!empty($infoRegra))
@@ -185,7 +205,6 @@ if(!empty($infoConvenio))
 
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="Ds_Plano">Desc. do plano</label>
                                             <input type="text" class="form-control" id="Ds_Plano" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Plano') : $Ds_Plano ; ?>" name="Ds_Plano"
                                                 maxlength="128">
                                         </div>
@@ -193,7 +212,6 @@ if(!empty($infoConvenio))
 
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="Cd_PlanoERP">Cod. ERP</label>
                                             <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_PlanoERP') : $Cd_PlanoERP ; ?>" name="Cd_PlanoERP"
                                                 maxlength="11">
                                         </div>
@@ -201,7 +219,6 @@ if(!empty($infoConvenio))
 
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="Tp_AcomodacaoPadrao">Tp acomodação padrão</label>
                                             <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
                                                 <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '1') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Enfermaria</option>
                                                 <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '2') { echo 'selected'; } ?>>Apartamento</option>
@@ -218,9 +235,9 @@ if(!empty($infoConvenio))
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </tr>
 
-                                <div id="row1" style="display:none">
+                                <tr id="row1" style="display:none">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -292,9 +309,9 @@ if(!empty($infoConvenio))
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </tr>
 
-                                <div id="row2" style="display:none">
+                                <tr id="row2" style="display:none">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -366,9 +383,9 @@ if(!empty($infoConvenio))
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                            </tr>
 
-                                <div id="row3" style="display:none">
+                                <tr id="row3" style="display:none">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -440,9 +457,9 @@ if(!empty($infoConvenio))
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </tr>
 
-                                <div id="row4" style="display:none">
+                                <tr id="row4" style="display:none">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -514,9 +531,9 @@ if(!empty($infoConvenio))
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </tr>
 
-                                <div id="row5" style="display:none">
+                                <tr id="row5" style="display:none">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
@@ -588,8 +605,9 @@ if(!empty($infoConvenio))
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-
+                                </tr>
+                                
+                                </table>
                                 
 
                             </div>
