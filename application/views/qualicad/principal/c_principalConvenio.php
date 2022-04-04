@@ -660,13 +660,13 @@ if(!empty($infoConvenio))
     function adicionar()
     {
         i = i + 1;
-        if (i == 1) $('#row1').css('display', 'inline');
-        if (i == 2) $('#row2').css('display', 'inline');
-        if (i == 3) $('#row3').css('display', 'inline');
-        if (i == 4) $('#row4').css('display', 'inline');
-        if (i == 5) $('#row5').css('display', 'inline');
-        if (i == 6) $('#row6').css('display', 'inline');
-        if (i == 7) $('#row7').css('display', 'inline');
-        if (i == 8) $('#row8').css('display', 'inline');
+        if (i == 1) $('#row1').css('display', '');
+        if (i == 2) $('#row2').css('display', '');
+        if (i == 3) $('#row3').css('display', '');
+        if (i == 4) $('#row4').css('display', '');
+        if (i == 5) $('#row5').css('display', '');
+        if (i == 6) $('#row6').css('display', '');
+        if (i == 7) $('#row7').css('display', '');
+        if (i == 8) $('#row8').css('display', '');
     }
 </script>
