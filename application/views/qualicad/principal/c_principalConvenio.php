@@ -149,7 +149,7 @@ if(!empty($infoConvenio))
                             <div class="row" style="display: inline-block;width: 100%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;">
 
-                                <h4><strong>Plano</strong><input type="button" class="btn btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
+                                <h4><strong>Plano  </strong><input type="button" class="btn btn-sm btn-primary" onclick="adicionar()" value="+" name="add" id="add"/></h4>
 
                                 <table style="width:100%;">
                                     <tr style="background-color:#e0e0e0">
