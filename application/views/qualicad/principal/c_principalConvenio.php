@@ -33,10 +33,10 @@ if(!empty($infoConvenio))
     border: 1px solid #c0c0c0;
     border-collapse: collapse;
     }
-    .table input {border:0!important;outline:0;}
-    .table input:focus {outline:none!important;}
-    .table select {border:0!important;outline:0;}
-    .table select:focus {outline:none!important;}
+    table input {border:0!important;outline:0;}
+    table input:focus {outline:none!important;}
+    table select {border:0!important;outline:0;}
+    table select:focus {outline:none!important;}
 </style>
 
 <div class="content-wrapper">
