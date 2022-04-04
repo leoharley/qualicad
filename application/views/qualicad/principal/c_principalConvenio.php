@@ -142,7 +142,7 @@ if(!empty($infoConvenio))
 
                                 <table style="width:100%;border: 1px solid black;border-collapse: collapse;">
                                 <tr style="background-color:#b0b0b0">
-                                    <td style="padding:15px">
+                                    <td style="padding:12px">
                                     Índice
                                     </td>
                                     <td>
