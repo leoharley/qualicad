@@ -201,7 +201,7 @@ if(!empty($infoConvenio))
                                                 ?>
                                             </select>
                                         </div>
-                                            </tr>
+                                            </td>
 
                                             <td>
                                         <div class="form-group">
