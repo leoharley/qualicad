@@ -415,7 +415,7 @@ $(function() {
                     <li class="treeview">
                         <a href="'.base_url().'importacaoDePara/listar">
                             <i class="fa fa-th"></i>
-                            <span>Relatórios</span>
+                            <span>Configurar DePara</span>
                         </a>
                     </li>';
                   }
