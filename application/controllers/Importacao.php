@@ -771,6 +771,8 @@ class Importacao extends BaseController
                     redirect('importacaoDePara/listar');
                 }
                 $data['infoDePara'] = $this->ImportacaoModel->carregaInfoDePara($IdDePara);
+
+                var_dump($data);exit;
                 $this->global['pageTitle'] = 'QUALICAD : Editar DePara';      
                 $this->loadViews("qualicad/importacao/c_deParaImportacao", $this->global, $data, NULL);
             }
