@@ -207,20 +207,6 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
-/*    function consultaDePara($noImportacao, $noCampoOrigem, $idEmpresa)
-    {
-        $this->db->select('*');
-        $this->db->from('Rl_DeparaImportacao as DePara');
-        $this->db->where('DePara.No_Importacao', $noImportacao);
-        $this->db->where('DePara.No_CampoOrigem', $noCampoOrigem);
-        $this->db->where('DePara.TbEmpresa_Id_Empresa', $idEmpresa);
-        $this->db->where('DePara.Deletado !=', 'S');
-        $this->db->where('DePara.Tp_Ativo', 'S');
-        $query = $this->db->get();
-
-        return $query->result();
-    } */
-
     function consultaDePara($noImportacao, $idEmpresa)
     {
         $this->db->select('*');
@@ -229,6 +215,75 @@ class ImportacaoModel extends CI_Model
         $this->db->where('DePara.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('DePara.Deletado !=', 'S');
         $this->db->where('DePara.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function listaDePara($IdEmpresa, $searchText = '', $page, $segment)
+    {
+        $this->db->select('*');
+        $this->db->from('Rl_DeparaImportacao as DePara');
+    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+        if(!empty($searchText)) {
+            $likeCriteria = "(DePara.No_Importacao LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
+
+        $this->db->where('DePara.Deletado !=', 'S');
+        $this->db->where('DePara.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->limit($page, $segment);
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
+    }
+
+    function adicionaDePara($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('Rl_DeparaImportacao', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
+    function editaDePara($info, $id)
+    {
+        $this->db->where('Id_DeparaImportacao ', $id);
+        $this->db->update('Rl_DeparaImportacao', $info);
+
+        return TRUE;
+    }
+
+    function apagaDePara($info, $id)
+    {
+        $this->db->where('Id_DeparaImportacao', $id);
+        $this->db->update('Rl_DeparaImportacao', $info);
+
+        return $this->db->affected_rows();
+    }
+
+    function carregaInfoDeParaEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Rl_DeparaImportacao as DePara');
+        $this->db->where('DePara.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('DePara.Deletado !=', 'S');
+        $this->db->where('DePara.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function carregaInfoDeParaId($Id)
+    {
+        $this->db->select('*');
+        $this->db->from('Rl_DeparaImportacao');
+        $this->db->where('Id_DeparaImportacao', $Id);
         $query = $this->db->get();
 
         return $query->result();

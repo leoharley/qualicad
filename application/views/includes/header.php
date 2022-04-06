@@ -402,11 +402,24 @@ $(function() {
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>dasdas">
+                    <a href="<?php echo base_url(); ?>importacaoDePara">
                         <i class="fa fa-th"></i>
                         <span>Relatórios</span>
                     </a>
                 </li>
+
+                <?php
+                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                  {
+                    echo '
+                    <li class="treeview">
+                        <a href="'.base_url().'importacaoDePara/listar">
+                            <i class="fa fa-th"></i>
+                            <span>Relatórios</span>
+                        </a>
+                    </li>';
+                  }
+                ?>
 
                 <?php
 

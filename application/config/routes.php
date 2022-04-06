@@ -118,6 +118,13 @@ $route['importaProducao'] = "importacao/importaProducao";
 $route['importacaoContrato'] = "importacao/importacaoContrato";
 $route['importaContrato'] = "importacao/importaContrato";
 
+$route['importacaoDePara/:any/:any'] = "importacao/importacaoDePara/$1/$2";
+$route['importacaoDePara/:any'] = "importacao/importacaoDePara/$1";
+
+$route['adicionaDePara'] = "importacao/adicionaDePara";
+$route['editaDePara'] = "importacao/editaDePara";
+$route['apagaDePara/:any'] = "importacao/apagaDePara/$1";
+
 
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";

@@ -713,6 +713,221 @@ class Importacao extends BaseController
         }
         redirect('importacaoContrato');
     }
+
+
+    function importacaoDePara()
+    {
+            $tpTela = $this->uri->segment(2);
+
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+            if ($tpTela == 'listar') {
+
+                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                    {             
+                    redirect('telaNaoAutorizada');
+                    }
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "importacaoDePara/listar", $count, 10 );
+                
+                $data['registrosDePara'] = $this->ImportacaoModel->listaDePara($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar DePara';
+                $processFunction = 'Importacao/importacaoDePara';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Plano';
+                
+                $this->loadViews("qualicad/importacao/l_deParaImportacao", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'cadastrar') {
+
+                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                    {             
+                    redirect('telaNaoAutorizada');
+                    }
+
+                $this->global['pageTitle'] = 'QUALICAD : Cadastro de DePara';
+                $this->loadViews("qualicad/importacao/c_deParaImportacao", $this->global, $data, NULL); 
+            }
+            else if ($tpTela == 'editar') {
+
+                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                    {             
+                    redirect('telaNaoAutorizada');
+                    }
+
+                $IdDePara = $this->uri->segment(3);
+                if($IdDePara == null)
+                {
+                    redirect('importacaoDePara/listar');
+                }
+                $data['infoDePara'] = $this->ImportacaoModel->carregaInfoDePara($IdDePara);
+                $this->global['pageTitle'] = 'QUALICAD : Editar DePara';      
+                $this->loadViews("qualicad/importacao/c_deParaImportacao", $this->global, $data, NULL);
+            }
+    }
+
+    function adicionaDePara() 
+    {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('importacaoDePara/listar'); 
+            } 
+
+            $No_Importacao = ucwords(strtolower($this->security->xss_clean($this->input->post('No_Importacao'))));
+            $No_Tabela = $this->input->post('No_Tabela');
+            $No_CampoOrigem = $this->input->post('No_CampoOrigem');
+            $No_CampoDestino  = $this->input->post('No_CampoDestino');
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            //    $roleId = $this->input->post('role');
+
+            //VERIFICAÇÃO DE DUPLICIDADE
+    //        if ($this->PrincipalModel->consultaPlanoExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
+
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $Dt_Ativo = null;
+                }
+
+                //'Senha'=>getHashedPassword($senha)
+
+                $infoDePara = array('No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                    'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
+                    'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+                $result = $this->ImportacaoModel->adicionaDePara($infoDePara);
+
+                if($result > 0)
+                {
+                    $process = 'Adicionar DePara';
+                    $processFunction = 'Importacao/adicionaDePara';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'DePara criado com sucesso');
+
+                    if (array_key_exists('salvarIrLista',$this->input->post())) {
+                        redirect('importacaoDePara/listar'); 
+                    }
+                    else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                        redirect('importacaoDePara/cadastrar'); 
+                    }
+                    else if (array_key_exists('salvarRetroceder',$this->input->post())) {
+                        redirect('importacaoDePara/cadastrar');
+                    }
+
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do DePara');
+                }
+
+          //  } else {
+            //    $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+          //  }
+
+            redirect('importacaoDePara/cadastrar');
+    }
+
+
+    function editaDePara()
+    {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('importacaoDePara/listar'); 
+            } 
+
+            $this->load->library('form_validation');
+
+            $IdDePara = $this->input->post('Id_DeparaImportacao');
+
+            $No_Importacao = ucwords(strtolower($this->security->xss_clean($this->input->post('No_Importacao'))));
+            $No_Tabela = $this->input->post('No_Tabela');
+            $No_CampoOrigem = $this->input->post('No_CampoOrigem');
+            $No_CampoDestino  = $this->input->post('No_CampoDestino');
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            foreach ($this->ImportacaoModel->carregaInfoDePara($IdDePara) as $data){
+                $Tp_Ativo_Atual = ($data->Tp_Ativo);
+            }
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+                $Dt_Inativo = null;
+            } else if ($Tp_Ativo == 'N')
+            {
+                $Dt_Ativo = null;
+                $Dt_Inativo = date('Y-m-d H:i:s');
+            }
+
+            $infoDePara = array('No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
+                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+
+            $resultado = $this->ImportacaoModel->editaDePara($infoDePara,$IdDePara);
+
+            if($resultado == true)
+            {
+                $process = 'DePara atualizado';
+                $processFunction = 'Importacao/editaDePara';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'DePara atualizado com sucesso');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na atualização do DePara');
+            }
+
+            redirect('importacaoDePara/listar');
+            // }
+    }
+
+    function apagaDePara()
+    {
+            if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+            {             
+            redirect('telaNaoAutorizada');
+            }
+
+            $IdDePara = $this->uri->segment(2);
+
+            $infoDePara = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->ImportacaoModel->apagaDePara($infoDePara, $IdDePara);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                $process = 'Exclusão de DePara';
+                $processFunction = 'Importacao/apagaDePara';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'DePara deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o DePara');
+                }
+                redirect('importacaoDePara/listar');
+    }
     
     /*
      * Callback function to check file value and type during validation
