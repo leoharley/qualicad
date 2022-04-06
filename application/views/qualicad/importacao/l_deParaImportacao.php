@@ -2,15 +2,15 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-users"></i> Listar Planos
+      <i class="fa fa-users"></i> Listar DePara
       <small>Listar</small>
     </h1>
   </section>
   <section class="content">
     <div class="col-xs-12">
       <div class="text-left">
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>principalPlano/cadastrar">
-          <i class="fa fa-plus"></i> Adicionar plano</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>importacaoDePara/cadastrar">
+          <i class="fa fa-plus"></i> Adicionar DePara</a>
       </div>
       <br/>
       <div class="box">
