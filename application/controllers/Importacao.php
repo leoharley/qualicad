@@ -20,6 +20,7 @@ class Importacao extends BaseController
         $this->load->model('user_model');
         $this->load->model('ImportacaoModel');
         $this->load->model('PermissaoModel');
+        $this->load->model('CadastroModel');
         // Datas -> libraries ->BaseController / This function used load user sessions
         $this->datas();
         // isLoggedIn / Login control function /  This function used login control
