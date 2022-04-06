@@ -46,45 +46,37 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Plano (descrição)</th>
-                    <th>Convênio (descrição)</th>
-                    <th>Índice (descrição)</th>
-                    <th>Regra (descrição)</th>
-                    <th>Código ERP</th>
-                    <th>Tipo acomodação padrão</th>
-                    <th>Plano ativo?</th>
+                    <th>Importação</th>
+                    <th>Tabela</th>
+                    <th>Campo origem</th>
+                    <th>Campo destino</th>
+                    <th>DePara ativo?</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                      if(!empty($registrosPlanos))
+                      if(!empty($registrosDePara))
                       {
-                          foreach($registrosPlanos as $registro)
+                          foreach($registrosDePara as $registro)
                           {
                       ?>
                     <tr>
                       <td>
-                        <?php echo $registro->Id_Plano ?>
+                        <?php echo $registro->Id_DeparaImportacao ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_Plano ?>
+                        <?php echo $registro->No_Importacao ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_Convenio ?>
+                        <?php echo $registro->No_Tabela ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_Indice ?>
-                      </td>
-                    <td>
-                        <?php echo $registro->Ds_Regra ?>
-                    </td>
-                      <td>
-                        <?php echo $registro->Cd_PlanoERP ?>
+                        <?php echo $registro->No_CampoOrigem ?>
                       </td>
                       <td>
-                        <?php if ($registro->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($registro->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>
-                      </td>
+                          <?php echo $registro->No_CampoDestino ?>
+                      </td>                    
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
@@ -92,10 +84,10 @@
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalPlano/editar/'.$registro->Id_Plano; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'importacaoDePara/editar/'.$registro->Id_DeparaImportacao; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaPlano/'.$registro->Id_Plano; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaDePara/'.$registro->Id_DeparaImportacao; ?>" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
