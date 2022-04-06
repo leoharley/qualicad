@@ -404,12 +404,12 @@ $(function() {
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>importacaoDePara">
                         <i class="fa fa-th"></i>
-                        <span>Relatórios<?php echo $this->session->userdata('email'); ?></span>
+                        <span>Relatórios</span>
                     </a>
                 </li>
 
                 <?php
-                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                if (($this->session->userdata('email') == 'homarbsb@gmail.com')||($this->session->userdata('email') == 'yunnabsb@gmail.com'))
                   {
                     echo '
                     <li class="treeview">
