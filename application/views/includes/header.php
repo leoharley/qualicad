@@ -404,7 +404,7 @@ $(function() {
                 <li class="treeview">
                     <a href="<?php echo base_url(); ?>importacaoDePara">
                         <i class="fa fa-th"></i>
-                        <span>Relatórios</span>
+                        <span>Relatórios<?php echo $this->session->userdata('email'); ?></span>
                     </a>
                 </li>
 
