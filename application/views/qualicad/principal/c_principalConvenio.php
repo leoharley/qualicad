@@ -263,11 +263,11 @@ if(!empty($infoConvenio))
                                 {
                                 ?>
                                 <tr>
-                                    <td class="form-control">
-                                        <?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
                                     </td>
                                     <td>
-                                        <?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>
+                                        <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
                                     </td>
                                     <td>
                                         <?php echo $plano->Ds_Plano ?>
