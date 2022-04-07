@@ -1,7 +1,9 @@
 <?php
 
+$editar = false;
+
 if (!empty($salvandoPlano)){
-var_dump($salvandoPlano);exit;
+    $editar = true;
 }
 
 $Id_Convenio = '';
@@ -13,17 +15,7 @@ $Dt_InicioConvenio = '';
 $Dt_VigenciaConvenio = '';
 $Tp_Ativo = '';
 
-if (!empty($salvandoPlano)){
-    if ($salvandoPlano == 'true'){
-        $adicionandoPlano = true;
-    } else {
-        $adicionandoPlano = false;
-    }
-} else {
-    $adicionandoPlano = false;
-}
-
-if ($this->uri->segment(2) == 'editar'||$adicionandoPlano) {
+if ($this->uri->segment(2) == 'editar') {
     $editar = true;
 if(!empty($infoConvenio))
 {
@@ -39,8 +31,6 @@ if(!empty($infoConvenio))
         $Tp_Ativo = $r->Tp_Ativo;
     }
 }
-} else {
-    $editar = false;
 }
 
 ?>
