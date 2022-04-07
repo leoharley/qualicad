@@ -1,5 +1,7 @@
 <?php
 
+var_dump($salvandoPlano);exit;
+
 $Id_Convenio = '';
 $Ds_Convenio = '';
 $CNPJ_Convenio = '';
