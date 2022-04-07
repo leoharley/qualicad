@@ -129,7 +129,7 @@ if(!empty($infoConvenio))
                                             maxlength="13">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <div class="form-group">
                                         <label for="Tp_Convenio">Tipo</label>
                                         <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio">
@@ -153,8 +153,7 @@ if(!empty($infoConvenio))
                                         <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
                                     </div>
                                 </div>
-                            
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
