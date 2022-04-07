@@ -32,7 +32,7 @@ if(!empty($infoConvenio))
     }
 }
 }
-var_dump($Ds_Convenio);
+var_dump($infoConvenio);
 
 ?>
 
