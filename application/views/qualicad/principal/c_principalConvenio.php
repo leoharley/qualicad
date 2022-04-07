@@ -9,7 +9,17 @@ $Dt_InicioConvenio = '';
 $Dt_VigenciaConvenio = '';
 $Tp_Ativo = '';
 
-if ($this->uri->segment(2) == 'editar'||$salvandoPlano == 'true') {
+if (!empty($salvandoPlano)){
+    if ($salvandoPlano == 'true'){
+        $adicionandoPlano = true;
+    } else {
+        $adicionandoPlano = false;
+    }
+} else {
+    $adicionandoPlano = false;
+}
+
+if ($this->uri->segment(2) == 'editar'||$adicionandoPlano) {
     $editar = true;
 if(!empty($infoConvenio))
 {
