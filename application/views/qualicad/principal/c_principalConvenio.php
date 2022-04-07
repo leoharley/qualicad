@@ -1,11 +1,5 @@
 <?php
 
-$editar = false;
-
-if (!empty($salvandoPlano)){
-    $editar = true;
-}
-
 $Id_Convenio = '';
 $Ds_Convenio = '';
 $CNPJ_Convenio = '';
@@ -15,8 +9,7 @@ $Dt_InicioConvenio = '';
 $Dt_VigenciaConvenio = '';
 $Tp_Ativo = '';
 
-if ($this->uri->segment(2) == 'editar'||$editar) {
-    $editar = true;
+if ($this->uri->segment(2) == 'editar') {
 if(!empty($infoConvenio))
 {
     foreach ($infoConvenio as $r)
@@ -32,7 +25,6 @@ if(!empty($infoConvenio))
     }
 }
 }
-var_dump($infoConvenio);
 
 ?>
 
@@ -118,7 +110,7 @@ var_dump($infoConvenio);
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Ds_Convenio">Convênio(desc.)</label>
-                                        <input type="text" class="form-control required" value="<?php echo (!$editar) ? set_value('Ds_Convenio') : $Ds_Convenio ; ?>" id="Ds_Convenio" name="Ds_Convenio" maxlength="128">
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Convenio') : $Ds_Convenio ; ?>" id="Ds_Convenio" name="Ds_Convenio" maxlength="128">
                                         <input type="hidden" value="<?php echo $Id_Convenio; ?>" name="Id_Convenio" id="Id_Convenio" />
                                     </div>
                                 </div>
