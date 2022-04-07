@@ -33,7 +33,7 @@ if(!empty($infoConvenio))
 }
 }
 
-var_dump($Ds_Convenio);exit;
+var_dump($editar);
 
 ?>
 
