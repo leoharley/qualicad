@@ -157,6 +157,8 @@ class PrincipalModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('TbPlano as Plano');
+        $this->db->join('TbIndice as Indice', 'Indice.Id_Indice = Plano.TbIndice_Id_Indice AND Indice.Deletado != "S" AND Indice.Tp_Ativo = "S"','left');
+        $this->db->join('TbRegra as Regra', 'Regra.Id_Regra = Plano.TbRegra_Id_Regra AND Regra.Deletado != "S" AND Regra.Tp_Ativo = "S"','left');
         $this->db->where('Plano.TbConvenio_Id_Convenio', $idConvenio);
         $this->db->where('Plano.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('Plano.Deletado !=', 'S');

@@ -264,10 +264,10 @@ if(!empty($infoConvenio))
                                 ?>
                                 <tr>
                                     <td>
-                                        <?php echo $plano->TbIndice_Id_Indice ?>
+                                        <?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>
                                     </td>
                                     <td>
-                                        <?php echo $plano->TbRegra_Id_Regra ?>
+                                        <?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>
                                     </td>
                                     <td>
                                         <?php echo $plano->Ds_Plano ?>
