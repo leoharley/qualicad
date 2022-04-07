@@ -122,14 +122,14 @@ if(!empty($infoConvenio))
                                 </div>
                        <!--    </div> -->
                         <!--    <div class="row"> -->
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <div class="form-group">
                                         <label for="Cd_ConvenioERP">Cod. ERP</label>
                                         <input type="text" class="form-control required" id="Cd_ConvenioERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_ConvenioERP') : $Cd_ConvenioERP ; ?>" name="Cd_ConvenioERP"
                                             maxlength="13">
                                     </div>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Tp_Convenio">Tipo</label>
                                         <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio">
