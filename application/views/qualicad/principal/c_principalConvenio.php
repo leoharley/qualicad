@@ -3,7 +3,6 @@
 $editar = false;
 
 if (!empty($salvandoPlano)){
-    exit;
     $editar = true;
 }
 
@@ -33,6 +32,7 @@ if(!empty($infoConvenio))
     }
 }
 }
+var_dump($editar);exit;
 
 ?>
 
