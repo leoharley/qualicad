@@ -263,22 +263,22 @@ if(!empty($infoConvenio))
                                 {
                                 ?>
                                 <tr>
-                                    <td>
+                                    <td class="form-control">
                                         <?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>
                                     </td>
-                                    <td>
+                                    <td class="form-control">
                                         <?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>
                                     </td>
-                                    <td>
+                                    <td class="form-control">
                                         <?php echo $plano->Ds_Plano ?>
                                     </td>
-                                    <td>
+                                    <td class="form-control">
                                         <?php echo $plano->Cd_PlanoERP ?>
                                     </td>
-                                    <td>
+                                    <td class="form-control">
                                         <?php echo $plano->Tp_AcomodacaoPadrao ?>
                                     </td>
-                                    <td>
+                                    <td class="form-control">
                                         <?php echo $plano->Tp_Ativo ?>
                                     </td>
                                 </tr>
