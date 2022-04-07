@@ -15,7 +15,7 @@ $Dt_InicioConvenio = '';
 $Dt_VigenciaConvenio = '';
 $Tp_Ativo = '';
 
-if ($this->uri->segment(2) == 'editar') {
+if ($this->uri->segment(2) == 'editar'||$editar) {
     $editar = true;
 if(!empty($infoConvenio))
 {
