@@ -233,6 +233,7 @@ class Principal extends BaseController
                     else if (array_key_exists('salvarPlano',$this->input->post())) {
                         $data['salvandoPlano'] = "true";
                         $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($TbConvenio_Id_Convenio);
+                        var_dump ($data);exit;
                         $this->global['pageTitle'] = 'QUALICAD : Adicionar convênio';      
                         $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
                     }
