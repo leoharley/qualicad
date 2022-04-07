@@ -115,7 +115,7 @@ class Principal extends BaseController
                 redirect('principalConvenio/listar'); 
             } 
 
-            
+
 
             $this->load->library('form_validation');
 
@@ -220,6 +220,7 @@ class Principal extends BaseController
 
                     $this->session->set_flashdata('success', 'Convênio criado com sucesso');
 
+
                     if (array_key_exists('salvarIrLista',$this->input->post())) {
                         redirect('principalConvenio/listar'); 
                     }
@@ -229,6 +230,9 @@ class Principal extends BaseController
                     else if (array_key_exists('salvarAvancar',$this->input->post())) {
                         redirect('principalPlano/cadastrar');
                     }
+
+
+                    
                 }
                 else
                 {
