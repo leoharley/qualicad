@@ -104,9 +104,10 @@ class Principal extends BaseController
                     redirect('principalConvenio/listar');
                 }
                 $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
+                $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegrasEmpresa($this->session->userdata('IdEmpresa'));
+                
                 $data['infoPlano'] = $this->PrincipalModel->carregaInfoPlanosConvenio($IdConvenio,$this->session->userdata('IdEmpresa'));
-
-                var_dump($data['infoPlano']);exit;
 
                 $this->global['pageTitle'] = 'QUALICAD : Editar convênio';      
                 $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
