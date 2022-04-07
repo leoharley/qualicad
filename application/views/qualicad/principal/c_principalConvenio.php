@@ -1,6 +1,8 @@
 <?php
 
+if (!empty($salvandoPlano)){
 var_dump($salvandoPlano);exit;
+}
 
 $Id_Convenio = '';
 $Ds_Convenio = '';
