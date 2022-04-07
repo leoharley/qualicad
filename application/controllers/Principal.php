@@ -106,7 +106,7 @@ class Principal extends BaseController
                 $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($IdConvenio);
                 $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndicesEmpresa($this->session->userdata('IdEmpresa'));
                 $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegrasEmpresa($this->session->userdata('IdEmpresa'));
-                
+
                 $data['infoPlano'] = $this->PrincipalModel->carregaInfoPlanosConvenio($IdConvenio,$this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Editar convênio';      
