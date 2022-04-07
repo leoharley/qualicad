@@ -276,10 +276,10 @@ if(!empty($infoConvenio))
                                         <input type="text" class="form-control" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Tp_AcomodacaoPadrao ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php if ($plano->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($plano->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Tp_Ativo ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
                                     </td>
                                 </tr>
                                     <?php
