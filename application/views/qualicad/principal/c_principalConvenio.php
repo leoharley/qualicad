@@ -109,7 +109,7 @@ if(!empty($infoConvenio))
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Ds_Convenio">Convênio(desc)</label>
+                                        <label for="Ds_Convenio">Convênio(desc.)</label>
                                         <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Convenio') : $Ds_Convenio ; ?>" id="Ds_Convenio" name="Ds_Convenio" maxlength="128">
                                         <input type="hidden" value="<?php echo $Id_Convenio; ?>" name="Id_Convenio" id="Id_Convenio" />
                                     </div>
