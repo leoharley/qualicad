@@ -256,6 +256,37 @@ if(!empty($infoConvenio))
                                             </td>
                                 </tr>
 
+                                <?php
+                                if(!empty($infoPlano))
+                                {
+                                foreach ($infoPlano as $plano)
+                                {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $plano->TbIndice_Id_Indice ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $plano->TbRegra_Id_Regra ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $plano->Ds_Plano ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $plano->Cd_PlanoERP ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $plano->Tp_AcomodacaoPadrao ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $plano->Tp_Ativo ?>
+                                    </td>
+                                </tr>
+                                    <?php
+                                }
+                                }
+                                ?>
+
                                 </table>
                                 
 

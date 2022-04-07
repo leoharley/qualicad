@@ -153,6 +153,19 @@ class PrincipalModel extends CI_Model
         return $query->result();
     }
 
+    function carregaInfoPlanosConvenio($idConvenio, $idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbPlano as Plano');
+        $this->db->where('Plano.TbConvenio_Id_Convenio', $idConvenio);
+        $this->db->where('Plano.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('Plano.Deletado !=', 'S');
+        $this->db->where('Plano.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 /*    function consultaPlanoExistente($CNPJ_Convenio, $IdUsuEmp)
     {
         $this->db->select('Id_Convenio');
