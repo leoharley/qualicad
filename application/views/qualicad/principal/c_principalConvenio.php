@@ -168,7 +168,7 @@ if(!empty($infoConvenio))
                             background-color: #f5f5f5;">
 
                                 <h4><strong>Plano</strong>
-                                <input type="submit" class="btn btn-sm btn-primary" value="+" name="salvarPlano" id="salvarPlano" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                                <input type="submit" class="btn btn-sm btn-primary" value="+" name="salvarPlano" id="salvarPlano" style="margin-left:5px"/>
                                 </h4>
 
                                 <table style="width:100%;">
