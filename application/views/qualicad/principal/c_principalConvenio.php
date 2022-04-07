@@ -153,8 +153,7 @@ if(!empty($infoConvenio))
                                         <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Convênio ativo?</label>
