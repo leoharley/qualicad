@@ -109,7 +109,7 @@ if(!empty($infoConvenio))
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Ds_Convenio">Convênio (descrição)</label>
+                                        <label for="Ds_Convenio">Convênio(desc)</label>
                                         <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Convenio') : $Ds_Convenio ; ?>" id="Ds_Convenio" name="Ds_Convenio" maxlength="128">
                                         <input type="hidden" value="<?php echo $Id_Convenio; ?>" name="Id_Convenio" id="Id_Convenio" />
                                     </div>
@@ -124,7 +124,7 @@ if(!empty($infoConvenio))
                         <!--    <div class="row"> -->
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Cd_ConvenioERP">Código ERP</label>
+                                        <label for="Cd_ConvenioERP">Cod. ERP</label>
                                         <input type="text" class="form-control required" id="Cd_ConvenioERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_ConvenioERP') : $Cd_ConvenioERP ; ?>" name="Cd_ConvenioERP"
                                             maxlength="13">
                                     </div>
@@ -143,20 +143,20 @@ if(!empty($infoConvenio))
                         <!--    <div class="row"> -->
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Dt_InicioConvenio">Data de ínicio</label>
+                                        <label for="Dt_InicioConvenio">Ínicio</label>
                                         <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_InicioConvenio') : $Dt_InicioConvenio ; ?>" id="Dt_InicioConvenio" name="Dt_InicioConvenio">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Dt_VigenciaConvenio">Data da vigência</label>
+                                        <label for="Dt_VigenciaConvenio">Vigência</label>
                                         <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
                                     </div>
                                 </div>
                             
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Tp_Ativo">Convênio ativo?</label>
+                                        <label for="Tp_Ativo">Ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
 											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
