@@ -231,6 +231,7 @@ class Principal extends BaseController
                         redirect('principalPlano/cadastrar');
                     }
                     else if (array_key_exists('salvarPlano',$this->input->post())) {
+                        $data['salvandoPlano'] = "true";
                         $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($TbConvenio_Id_Convenio);
                         $this->global['pageTitle'] = 'QUALICAD : Adicionar convênio';      
                         $this->loadViews("qualicad/principal/c_principalConvenio", $this->global, $data, NULL);
