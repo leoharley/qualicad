@@ -270,16 +270,16 @@ if(!empty($infoConvenio))
                                         <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
                                     </td>
                                     <td>
-                                        <?php echo $plano->Ds_Plano ?>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Ds_Plano ?>" disabled>
                                     </td>
                                     <td>
-                                        <?php echo $plano->Cd_PlanoERP ?>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>
                                     </td>
                                     <td>
-                                        <?php echo $plano->Tp_AcomodacaoPadrao ?>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Tp_AcomodacaoPadrao ?>" disabled>
                                     </td>
                                     <td>
-                                        <?php echo $plano->Tp_Ativo ?>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Tp_Ativo ?>" disabled>
                                     </td>
                                 </tr>
                                     <?php
