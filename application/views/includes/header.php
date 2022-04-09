@@ -43,8 +43,8 @@
     width: 10.333333% !important;
     }
     .form-control[disabled] {
-      background-color: #a4a4a4;
-      color: white;
+      background-color: #cfcfcf;
+      color: #646464;
     }
   </style>
   <!-- jQuery 2.1.4 -->
