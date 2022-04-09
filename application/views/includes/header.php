@@ -36,6 +36,12 @@
     .content-wrapper {
       min-height: 800px !important;
     }
+    .col-md-2 {
+    width: 14.666667% !important;
+    }
+    .col-md-1 {
+    width: 10.333333% !important;
+    }
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
