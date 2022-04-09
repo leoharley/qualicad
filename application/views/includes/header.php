@@ -42,6 +42,10 @@
     .col-md-1 {
     width: 10.333333% !important;
     }
+    .form-control[disabled] {
+      background-color: #a4a4a4;
+      color: white;
+    }
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
