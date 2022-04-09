@@ -264,22 +264,22 @@ if(!empty($infoConvenio))
                                 ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
+                                        <input type="text" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
+                                        <input type="text" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Ds_Plano ?>" disabled>
+                                        <input type="text" value="<?php echo $plano->Ds_Plano ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>
+                                        <input type="text" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php if ($plano->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($plano->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>" disabled>
+                                        <input type="text" value="<?php if ($plano->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($plano->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo ($plano->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
+                                        <input type="text" value="<?php echo ($plano->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
                                     </td>
                                 </tr>
                                     <?php
