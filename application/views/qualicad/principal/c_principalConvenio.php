@@ -262,7 +262,7 @@ if(!empty($infoConvenio))
                                 foreach ($infoPlano as $plano)
                                 {
                                 ?>
-                                <tr style="background-color:#c0c0c0!important">
+                                <tr style="background-color:#c0c0c0">
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
                                     </td>
