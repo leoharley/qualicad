@@ -37,10 +37,10 @@
       min-height: 800px !important;
     }
     .col-md-2 {
-    width: 14.866667% !important;
+    width: 14.966667% !important;
     }
     .col-md-1 {
-    width: 10.533333% !important;
+    width: 10.333333% !important;
     }
     .form-control[disabled] {
       background-color: #cfcfcf;
