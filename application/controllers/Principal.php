@@ -223,20 +223,18 @@ class Principal extends BaseController
                     $processFunction = 'Principal/adicionaConvenio';
                     $this->logrecord($process,$processFunction);
 
+                    $this->session->set_flashdata('success', 'Convênio e plano criados com sucesso');
+
                     if (array_key_exists('salvarIrLista',$this->input->post())) {
-                        $this->session->set_flashdata('success', 'Convênio criado com sucesso');
                         redirect('principalConvenio/listar'); 
                     }
                     else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                        $this->session->set_flashdata('success', 'Convênio criado com sucesso');
                         redirect('principalConvenio/cadastrar'); 
                     }
                     else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                        $this->session->set_flashdata('success', 'Convênio criado com sucesso');
                         redirect('principalPlano/cadastrar');
                     }
                     else if (array_key_exists('salvarPlano',$this->input->post())) {
-                        $this->session->set_flashdata('success', 'Convênio e plano criados com sucesso');
                         redirect('principalConvenio/editar/'.$TbConvenio_Id_Convenio);
                     }
 
