@@ -37,7 +37,7 @@
       min-height: 800px !important;
     }
     .col-md-2 {
-    width: 14.966667% !important;
+    width: 15.166667% !important;
     }
     .col-md-1 {
     width: 10.333333% !important;
