@@ -875,6 +875,93 @@ function carregaInfoProibicaoEmpresa($idEmpresa)
 }
 // FIM DAS CONSULTAS NA TELA DE PROIBIÇÃO
 
+// INICIO DAS CONSULTAS NA TELA DE EXCEÇÃO VALORES
+function listaExcecaoValores($IdEmpresa, $searchText = '', $page, $segment)
+{
+    $this->db->select('*');
+    $this->db->from('TbExcValores as ExcValores');
+    $this->db->join('TbConvenio as Convenio', 'Convenio.Id_Convenio = ExcValores.CD_Convenio','left');
+    $this->db->join('TbTUSS as TUSS', 'TUSS.Id_Tuss = ExcValores.Cd_TUSS','left');
+    $this->db->join('TbProFat as ProFat', 'ProFat.Cd_ProFat = ExcValores.Cd_ProFat','left');
+    if(!empty($searchText)) {
+        $likeCriteria = "(ExcValores.Ds_ExcValores  LIKE '%".$searchText."%')";
+        $this->db->where($likeCriteria);
+    }
+    $this->db->where('ExcValores.Deletado !=', 'S');
+    $this->db->where('ExcValores.TbEmpresa_Id_Empresa', $IdEmpresa);
+    $this->db->limit($page, $segment);
+    $query = $this->db->get();
+    
+    $result = $query->result();        
+    return $result;
+}
+
+function adicionaExcecaoValores($info)
+{
+    $this->db->trans_start();
+    $this->db->insert('TbExcValores', $info);
+    
+    $insert_id = $this->db->insert_id();
+    
+    $this->db->trans_complete();
+    
+    return $insert_id;
+}
+
+function editaExcecaoValores($info, $id)
+{
+    $this->db->where('Id_ExcValores', $id);
+    $this->db->update('TbExcValores', $info);
+    
+    return TRUE;
+}
+
+function apagaExcecaoValores($info, $id)
+{
+    $this->db->where('Id_ExcValores', $id);
+    $this->db->update('TbExcValores', $info);
+    
+    return $this->db->affected_rows();
+}
+
+/*function consultaExcecaoValoresExistente($CNPJ_Convenio, $IdEmpresa)
+{
+    $this->db->select('Convenio.Id_Convenio');
+    $this->db->from('TbConvenio as Convenio');
+    $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
+    $campos = "(Convenio.CNPJ_Convenio = '".$CNPJ_Convenio."'
+                AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."')";
+    $this->db->where($campos);
+    $this->db->where('Convenio.Deletado !=', 'S');
+    $query = $this->db->get();
+
+    return $query->result();
+}*/
+
+function carregaInfoExcecaoValores($IdExcValores)
+{
+    $this->db->select('*');
+    $this->db->from('TbExcValores');
+    $this->db->where('Id_ExcValores', $IdExcValores);
+    $query = $this->db->get();
+
+    return $query->result();
+}
+
+function carregaInfoExcValoresEmpresa($idEmpresa)
+{
+    $this->db->select('*');
+    $this->db->from('TbExcValores as ExcValores');
+    $this->db->where('ExcValores.TbEmpresa_Id_Empresa', $idEmpresa);
+    $this->db->where('ExcValores.Deletado !=', 'S');
+    $this->db->where('ExcValores.Tp_Ativo', 'S');
+    $query = $this->db->get();
+
+    return $query->result();
+}
+
+// FIM DAS CONSULTAS NA TELA DE CONVENIO
+
 }
 
   
