@@ -141,7 +141,7 @@ class Principal extends BaseController
             }
             else
         { */
-
+                $CodConvenio = $this->input->post('CodConvenio');
                 $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
                 $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
                 $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
@@ -165,8 +165,8 @@ class Principal extends BaseController
 
                     //'Senha'=>getHashedPassword($senha)
 
-                $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                                    'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
+                $infoConvenio = array('CodConvenio'=>$CodConvenio,'TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 
+                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
                                     'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
                                     'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
@@ -283,6 +283,7 @@ class Principal extends BaseController
             else
             { */
 
+                $CodConvenio = $this->input->post('CodConvenio');
                 $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
                 $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
                 $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
@@ -307,8 +308,8 @@ class Principal extends BaseController
                 }
 
                 //'Senha'=>getHashedPassword($senha)
-                $infoConvenio = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-                    'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
+                $infoConvenio = array('CodConvenio'=>$CodConvenio,'TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 
+                    'CNPJ_Convenio'=> $CNPJ_Convenio,'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
                     'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
 

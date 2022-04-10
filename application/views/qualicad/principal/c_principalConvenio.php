@@ -1,5 +1,6 @@
 <?php
 
+$CodConvenio = '';
 $Id_Convenio = '';
 $Ds_Convenio = '';
 $CNPJ_Convenio = '';
@@ -14,6 +15,7 @@ if(!empty($infoConvenio))
 {
     foreach ($infoConvenio as $r)
     {
+        $CodConvenio = $r->CodConvenio;
         $Id_Convenio = $r->Id_Convenio;
         $Ds_Convenio = $r->Ds_Convenio;
         $CNPJ_Convenio = $r->CNPJ_Convenio;
@@ -107,6 +109,12 @@ if(!empty($infoConvenio))
                     <form role="form" id="addConvenio" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaConvenio' : base_url().'editaConvenio'; ?>" method="post" role="form">
                         <div class="box-body" style="padding-left:1rem;padding-right:1rem">
                             <div class="row">
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label for="CodConvenio">Cod. convênio</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CodConvenio') : $CodConvenio ; ?>" id="CodConvenio" name="CodConvenio">
+                                    </div>
+                                </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Ds_Convenio">Convênio(desc.)</label>
@@ -153,7 +161,9 @@ if(!empty($infoConvenio))
                                         <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
                                     </div>
                                 </div>
-                                <div class="col-md-1">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
