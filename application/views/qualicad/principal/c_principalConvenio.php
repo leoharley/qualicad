@@ -181,10 +181,13 @@ if(!empty($infoConvenio))
                                         Regra
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Desc. do plano
-                                        </th>
+                                        Cod. do plano
+                                        </th>                                        
                                         <th class="header-label" style="padding:10px">
                                         Cod. ERP
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Desc. do plano
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Tp acomodação padrão
@@ -232,13 +235,18 @@ if(!empty($infoConvenio))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control" id="Ds_Plano" value="<?php echo set_value('Ds_Plano') ; ?>" name="Ds_Plano"
-                                                maxlength="128">
+                                            <input type="text" class="form-control" id="CodPlano" value="<?php echo set_value('CodPlano') ; ?>" name="CodPlano"
+                                                maxlength="11">
                                             </td>
 
                                             <td>
                                             <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo set_value('Cd_PlanoERP') ; ?>" name="Cd_PlanoERP"
                                                 maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" id="Ds_Plano" value="<?php echo set_value('Ds_Plano') ; ?>" name="Ds_Plano"
+                                                maxlength="128">
                                             </td>
 
                                             <td>
@@ -270,10 +278,13 @@ if(!empty($infoConvenio))
                                         <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Ds_Plano ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $plano->CodPlano ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Ds_Plano ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php if ($plano->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($plano->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>" disabled>
