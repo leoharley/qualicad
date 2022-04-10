@@ -1,28 +1,28 @@
 <?php
 
-$CodConvenio = '';
-$Id_Convenio = '';
-$Ds_Convenio = '';
-$CNPJ_Convenio = '';
-$Cd_ConvenioERP = '';
-$Tp_Convenio = '';
-$Dt_InicioConvenio = '';
-$Dt_VigenciaConvenio = '';
+$Id_ExcValores = '';
+$CD_Convenio = '';
+$Cd_TUSS = '';
+$Cd_ProFat = '';
+$Ds_ExcValores = '';
+$ClasseEvento = '';
+$Tp_ExcValores = '';
+$Vl_ExcValores = '';
 $Tp_Ativo = '';
 
 if ($this->uri->segment(2) == 'editar') {
-if(!empty($infoConvenio))
+if(!empty($infoExcecaoValores))
 {
-    foreach ($infoConvenio as $r)
+    foreach ($infoExcecaoValores as $r)
     {
-        $CodConvenio = $r->CodConvenio;
-        $Id_Convenio = $r->Id_Convenio;
-        $Ds_Convenio = $r->Ds_Convenio;
-        $CNPJ_Convenio = $r->CNPJ_Convenio;
-        $Cd_ConvenioERP = $r->Cd_ConvenioERP;
-        $Tp_Convenio = $r->Tp_Convenio;
-        $Dt_InicioConvenio = $r->Dt_InicioConvenio;
-        $Dt_VigenciaConvenio = $r->Dt_VigenciaConvenio;
+        $Id_ExcValores = $r->Id_ExcValores;
+        $CD_Convenio = $r->CD_Convenio;
+        $Cd_TUSS = $r->Cd_TUSS;
+        $Cd_ProFat = $r->Cd_ProFat;
+        $Ds_ExcValores = $r->Ds_ExcValores;
+        $ClasseEvento = $r->ClasseEvento;
+        $Tp_ExcValores = $r->Tp_ExcValores;
+        $Vl_ExcValores = $r->Vl_ExcValores;
         $Tp_Ativo = $r->Tp_Ativo;
     }
 }
@@ -106,59 +106,99 @@ if(!empty($infoConvenio))
                     <!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addConvenio" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaConvenio' : base_url().'editaConvenio'; ?>" method="post" role="form">
+                    <form role="form" id="addExcecaoValores" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaExcecaoValores' : base_url().'editaExcecaoValores'; ?>" method="post" role="form">
                         <div class="box-body" style="padding-left:1rem;padding-right:1rem">
                             <div class="row">
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="CodConvenio">Código</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CodConvenio') : $CodConvenio ; ?>" id="CodConvenio" name="CodConvenio">
+                                        <label for="TbConvenio_Id_Convenio">Convênio</label>
+                                        <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio">
+                                            <?php
+                                            if(!empty($infoConvenio))
+                                            {
+                                                foreach ($infoConvenio as $convenio)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $convenio->Id_Convenio ?>" <?php if ($this->uri->segment(2) == 'editar' && $convenio->Id_Convenio == $TbConvenio_Id_Convenio) { echo 'selected'; } ?>>
+                                                    <?php echo $convenio->Id_Convenio.' - '.$convenio->Ds_Convenio ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                        <input type="hidden" value="<?php echo $Id_ExcValores; ?>" name="Id_ExcValores" id="Id_ExcValores" />
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Ds_Convenio">Convênio(desc.)</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Convenio') : $Ds_Convenio ; ?>" id="Ds_Convenio" name="Ds_Convenio" maxlength="128">
-                                        <input type="hidden" value="<?php echo $Id_Convenio; ?>" name="Id_Convenio" id="Id_Convenio" />
+                                        <label for="TbTUSS_Id_Tuss">TUSS associada</label>
+                                        <select class="form-control required" id="TbTUSS_Id_Tuss" name="TbTUSS_Id_Tuss">
+                                            <?php
+                                            if(!empty($infoTUSS))
+                                            {
+                                                foreach ($infoTUSS as $tuss)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $tuss->Id_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Id_Tuss == $TbTUSS_Id_Tuss) { echo 'selected'; } ?>>
+                                                    <?php echo $tuss->Id_Tuss.' - '.$tuss->Ds_Tuss ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="CNPJ_Convenio">CNPJ</label>
-                                        <input type="text" data-inputmask="'mask': '99.999.999/9999-99'" class="form-control required cnpj" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ_Convenio') : $CNPJ_Convenio ; ?>" id="CNPJ_Convenio" name="CNPJ_Convenio" maxlength="128">
+                                        <label for="TbProFat_Cd_ProFat">ProFat associado</label>
+                                        <select class="form-control required" id="TbProFat_Cd_ProFat" name="TbProFat_Cd_ProFat">
+                                            <?php
+                                            if(!empty($infoProFat))
+                                            {
+                                                foreach ($infoProFat as $proFat)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $proFat->Cd_ProFat ?>" <?php if ($this->uri->segment(2) == 'editar' && $proFat->Cd_ProFat == $TbProFat_Cd_ProFat) { echo 'selected'; } ?>>
+                                                    <?php echo $proFat->Cd_ProFat.' - '.$proFat->Ds_ProFat ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                        <input type="hidden" value="<?php echo $Id_FracaoSimproBra; ?>" name="Id_FracaoSimproBra" id="Id_FracaoSimproBra" />
                                     </div>
                                 </div>
                        <!--    </div> -->
                         <!--    <div class="row"> -->
                                 <div class="col-md-1">
                                     <div class="form-group">
-                                        <label for="Cd_ConvenioERP">Cod. ERP</label>
-                                        <input type="text" class="form-control required" id="Cd_ConvenioERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_ConvenioERP') : $Cd_ConvenioERP ; ?>" name="Cd_ConvenioERP"
+                                        <label for="Ds_ExcValores">Descrição</label>
+                                        <input type="text" class="form-control required" id="Ds_ExcValores" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_ExcValores') : $Ds_ExcValores ; ?>" name="Ds_ExcValores"
                                             maxlength="13">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <div class="form-group">
-                                        <label for="Tp_Convenio">Tipo</label>
-                                        <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio">
-                                            <option value="1">Convênio</option>
-                                            <option value="2">Filantrópico</option>
-                                            <option value="3">Particular</option>
-                                        </select>
+                                        <label for="ClasseEvento">Classe Evento</label>
+                                        <input type="text" class="form-control required" id="ClasseEvento" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('ClasseEvento') : $ClasseEvento ; ?>" name="ClasseEvento"
+                                            maxlength="13">
                                     </div>
                                 </div>
                         <!--    </div> -->
                         <!--    <div class="row"> -->
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Dt_InicioConvenio">Ínicio</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_InicioConvenio') : $Dt_InicioConvenio ; ?>" id="Dt_InicioConvenio" name="Dt_InicioConvenio">
+                                        <label for="Tp_ExcValores">Tipo</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Tp_ExcValores') : $Tp_ExcValores ; ?>" id="Tp_ExcValores" name="Tp_ExcValores">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Dt_VigenciaConvenio">Vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
+                                        <label for="Vl_ExcValores">Valor</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_ExcValores') : $Vl_ExcValores ; ?>" id="Vl_ExcValores" name="Vl_ExcValores">
                                     </div>
                                 </div>
                             </div>
@@ -173,150 +213,13 @@ if(!empty($infoConvenio))
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
-                            background-color: #f5f5f5;padding-bottom:2rem">
-
-                                <h4><strong>Plano</strong></h4>
-
-                                <table style="width:100%;">
-                                    <thead>
-                                    <tr style="background-color:#e0e0e0">
-                                        <th class="header-label" style="padding:10px">
-                                        Índice
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Regra
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Cod. do plano
-                                        </th>                                        
-                                        <th class="header-label" style="padding:10px">
-                                        Cod. ERP
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Desc. do plano
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Acomodação padrão
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Plano ativo?
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tr id="row0">
-                                            <td>
-                                                <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
-                                                    <?php
-                                                    if(!empty($infoIndice))
-                                                    {
-                                                        foreach ($infoIndice as $indice)
-                                                        {
-                                                            ?>
-                                                            <option value="<?php echo $indice->Id_Indice ?>">
-                                                                <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </td>
-
-                                            <td>
-                                            <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
-                                                <?php
-                                                if(!empty($infoRegra))
-                                                {
-                                                    foreach ($infoRegra as $regra)
-                                                    {
-                                                        ?>
-                                                        <option value="<?php echo $regra->Id_Regra ?>">
-                                                            <?php echo $regra->Id_Regra.' - '.$regra->Ds_Regra ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                            </td>
-
-                                            <td>
-                                            <input type="text" class="form-control" id="CodPlano" value="<?php echo set_value('CodPlano') ; ?>" name="CodPlano"
-                                                maxlength="11">
-                                            </td>
-
-                                            <td>
-                                            <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo set_value('Cd_PlanoERP') ; ?>" name="Cd_PlanoERP"
-                                                maxlength="11">
-                                            </td>
-
-                                            <td>
-                                            <input type="text" class="form-control" id="Ds_Plano" value="<?php echo set_value('Ds_Plano') ; ?>" name="Ds_Plano"
-                                                maxlength="128">
-                                            </td>
-
-                                            <td>
-                                            <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
-                                                <option value="1">Enfermaria</option>
-                                                <option value="2">Apartamento</option>
-                                            </select>
-                                            </td>
-
-                                            <td>
-                                            <select class="form-control" id="Tp_Ativo_Plano" name="Tp_Ativo_Plano">
-                                                <option value="S">Sim</option>
-                                                <option value="N">Não</option>
-                                            </select>
-                                            </td>
-                                </tr>
-
-                                <?php
-                                if(!empty($infoPlano))
-                                {
-                                foreach ($infoPlano as $plano)
-                                {
-                                ?>
-                                <tr style="background-color:#c0c0c0">
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->CodPlano ?>" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Ds_Plano ?>" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php if ($plano->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($plano->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo ($plano->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
-                                    </td>
-                                </tr>
-                                    <?php
-                                }
-                                }
-                                ?>
-
-                                </table>
-                            </div>
-
                         </div>
                         <!-- /.box-body -->
 
                         <div class="box-footer">
                             <input type="button" class="btn btn-primary" onclick="window.location='<?php echo base_url(); ?>principalConvenio/listar';" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
                             <input type="submit" class="btn btn-primary" value="Salva e lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:5px;"/>
-                            <input type="submit" class="btn btn-primary" value="Salva e cadastra outro convênio (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
-                            <input type="submit" class="btn btn-primary" value="Salva e adiciona outro plano (CTRL+P)" name="salvarPlano" id="salvarPlano" style="margin-left:5px;"/>
+                            <input type="submit" class="btn btn-primary" value="Salva e cadastra outra exceção (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                         <!--    <input type="submit" class="btn btn-primary" value="Salva e cadastra plano (CTRL+P)" name="salvarAvancar" id="salvarAvancar" style="margin-left:5px;<?php //if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/> -->
                         <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
