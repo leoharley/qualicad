@@ -93,6 +93,9 @@ $route['principalFaturamentoItem/:any'] = "principal/principalFaturamentoItem/$1
 $route['principalUnidade/:any/:any'] = "principal/principalUnidade/$1/$2";
 $route['principalUnidade/:any'] = "principal/principalUnidade/$1";
 
+$route['principalExcecaoValores/:any/:any'] = "principal/principalExcecaoValores/$1/$2";
+$route['principalExcecaoValores/:any'] = "principal/principalExcecaoValores/$1";
+
 /*********** ROUTES DA IMPORTAÇÃO *******************/
 $route['importacaoGrupoPro'] = "importacao/importacaoGrupoPro";
 $route['importaGrupoPro'] = "importacao/importaGrupoPro";

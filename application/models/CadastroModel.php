@@ -255,7 +255,7 @@ function adicionaPerfil($infoPerfil)
     $insert_id = $this->db->insert_id();
     $this->db->trans_complete();
 
-    $DsTelas = array('TelaConvenio','TelaPlano','TelaRegra','TelaIndice','TelaRegraFat','TelaUsuario','TelaFaturamento','TelaEmpresa','TelaIndiceGrupoPro','TelaRegraProibicao','TelaFracaoSimproBra','TelaFaturamentoItem','TelaUnidade');
+    $DsTelas = array('TelaConvenio','TelaPlano','TelaRegra','TelaIndice','TelaRegraFat','TelaUsuario','TelaFaturamento','TelaEmpresa','TelaIndiceGrupoPro','TelaRegraProibicao','TelaFracaoSimproBra','TelaFaturamentoItem','TelaUnidade','TelaExcecaoValores');
 
     foreach ($DsTelas as $data) {
         $infoTelas = array('TbPerfil_Id_CdPerfil'=> $insert_id, 'Ds_Tela'=>$data, 'CriadoPor'=>$infoPerfil['CriadoPor'],
