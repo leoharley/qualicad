@@ -163,7 +163,7 @@ if(!empty($infoConvenio))
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">Ativo?</label>
                                         <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
