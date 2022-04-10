@@ -162,7 +162,6 @@ class PrincipalModel extends CI_Model
         $this->db->where('Plano.TbConvenio_Id_Convenio', $idConvenio);
         $this->db->where('Plano.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('Plano.Deletado !=', 'S');
-        $this->db->where('Plano.Tp_Ativo', 'S');
         $query = $this->db->get();
 
         return $query->result();
