@@ -167,8 +167,7 @@ if(!empty($infoExcecaoValores))
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                        <input type="hidden" value="<?php echo $Id_FracaoSimproBra; ?>" name="Id_FracaoSimproBra" id="Id_FracaoSimproBra" />
+                                        </select>                                        
                                     </div>
                                 </div>
                        <!--    </div> -->
