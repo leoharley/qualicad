@@ -155,7 +155,7 @@ class PrincipalModel extends CI_Model
 
     function carregaInfoPlanosConvenio($idConvenio, $idEmpresa)
     {
-        $this->db->select('Plano.*');
+        $this->db->select('Indice.Ds_indice, Regra.Ds_Regra, Plano.*');
         $this->db->from('TbPlano as Plano');
         $this->db->join('TbIndice as Indice', 'Indice.Id_Indice = Plano.TbIndice_Id_Indice AND Indice.Deletado != "S" AND Indice.Tp_Ativo = "S"','left');
         $this->db->join('TbRegra as Regra', 'Regra.Id_Regra = Plano.TbRegra_Id_Regra AND Regra.Deletado != "S" AND Regra.Tp_Ativo = "S"','left');
