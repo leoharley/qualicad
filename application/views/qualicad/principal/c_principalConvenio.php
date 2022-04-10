@@ -190,7 +190,7 @@ if(!empty($infoConvenio))
                                         Desc. do plano
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Tp acomodação padrão
+                                        Acomodação padrão
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Plano ativo?
