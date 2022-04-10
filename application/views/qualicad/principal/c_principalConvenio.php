@@ -249,7 +249,7 @@ if(!empty($infoConvenio))
                                             </td>
 
                                             <td>
-                                            <select class="form-control" id="Tp_Ativo" name="Tp_Ativo">
+                                            <select class="form-control" id="Tp_Ativo_Plano" name="Tp_Ativo_Plano">
                                                 <option value="S">Sim</option>
                                                 <option value="N">Não</option>
                                             </select>
