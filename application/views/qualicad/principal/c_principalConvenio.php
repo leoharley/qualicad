@@ -177,9 +177,7 @@ if(!empty($infoConvenio))
                             <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;padding-bottom:2rem">
 
-                                <h4><strong>Plano</strong>
-                            <!--    <input type="submit" class="btn btn-sm btn-primary" value="Adicionar" name="salvarPlano" id="salvarPlano" style="margin-left:5px;<?php //if ($this->uri->segment(2) == 'cadastrar'){echo 'display:none';}?>"/> -->
-                                </h4>
+                                <h4><strong>Plano</strong></h4>
 
                                 <table style="width:100%;">
                                     <thead>
@@ -309,10 +307,7 @@ if(!empty($infoConvenio))
                                 ?>
 
                                 </table>
-                                
-
                             </div>
-
 
                         </div>
                         <!-- /.box-body -->
