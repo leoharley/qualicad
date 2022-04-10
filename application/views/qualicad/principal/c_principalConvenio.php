@@ -174,7 +174,7 @@ if(!empty($infoConvenio))
                                 </div>
                             </div>
 
-                            <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:3rem;
+                            <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;padding-bottom:2rem">
 
                                 <h4><strong>Plano</strong>
