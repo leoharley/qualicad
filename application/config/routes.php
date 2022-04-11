@@ -179,6 +179,10 @@ $route['adicionaUnidade'] = "principal/adicionaUnidade";
 $route['editaUnidade'] = "principal/editaUnidade";
 $route['apagaUnidade/:any'] = "principal/apagaUnidade/$1";
 
+/*********** ROUTES PARA AÇÕES DA TELA EXCEÇÃO VALORES *******************/
+$route['adicionaExcecaoValores'] = "principal/adicionaExcecaoValores";
+$route['editaExcecaoValores'] = "principal/editaExcecaoValores";
+$route['apagaExcecaoValores/:any'] = "principal/apagaExcecaoValores/$1";
 
 $route['principalRegraGrupoPro'] = "principal/principalRegraGrupoPro";
 $route['principalProibicao'] = "principal/principalProibicao";
