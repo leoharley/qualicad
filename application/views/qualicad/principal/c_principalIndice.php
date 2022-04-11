@@ -193,54 +193,36 @@ if(!empty($infoIndice))
                                             </td>
 
                                             <td>
-                                            <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
-                                                <?php
-                                                if(!empty($infoRegra))
-                                                {
-                                                    foreach ($infoRegra as $regra)
-                                                    {
-                                                        ?>
-                                                        <option value="<?php echo $regra->Id_Regra ?>">
-                                                            <?php echo $regra->Id_Regra.' - '.$regra->Ds_Regra ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
+                                            <input type="date" class="form-control" value="<?php echo set_value('Dt_IniVigencia_GrupoPro'); ?>" id="Dt_IniVigencia_GrupoPro" name="Dt_IniVigencia_GrupoPro">
                                             </td>
 
                                             <td>
-                                            <input type="date" class="form-control" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
+                                            <input type="date" class="form-control" value="<?php echo set_value('Dt_FimVigencia_GrupoPro'); ?>" id="Dt_FimVigencia_GrupoPro" name="Dt_FimVigencia_GrupoPro">
                                             </td>
 
                                             <td>
-                                            <input type="date" class="form-control" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Indice_GrupoPro'); ?>" id="Vl_Indice_GrupoPro" name="Vl_Indice_GrupoPro">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
-                                            </td>
-
-                                            <td>
-                                            <input type="text" class="form-control valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_M2Filme') : $Vl_M2Filme ; ?>" id="Vl_M2Filme" name="Vl_M2Filme"
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_M2Filme_GrupoPro'); ?>" id="Vl_M2Filme_GrupoPro" name="Vl_M2Filme_GrupoPro"
                                                    maxlength="11">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorario') : $Vl_Honorario ; ?>" id="Vl_Honorario" name="Vl_Honorario"
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Honorario_GrupoPro'); ?>" id="Vl_Honorario_GrupoPro" name="Vl_Honorario_GrupoPro"
                                                    maxlength="11">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_UCO') : $Vl_UCO ; ?>" id="Vl_UCO" name="Vl_UCO"
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_UCO_GrupoPro'); ?>" id="Vl_UCO_GrupoPro" name="Vl_UCO_GrupoPro"
                                                    maxlength="11">
                                             </td>
 
                                             <td>
-                                            <select class="form-control" id="Tp_Ativo" name="Tp_Ativo">
-                                                <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
-                                                <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                            <select class="form-control" id="Tp_Ativo_GrupoPro" name="Tp_Ativo_GrupoPro">
+                                                <option value="S">Sim</option>
+                                                <option value="N">Não</option>
                                             </select>
                                             </td>
                                 </tr>
