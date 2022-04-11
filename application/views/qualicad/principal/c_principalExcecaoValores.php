@@ -216,7 +216,7 @@ if(!empty($infoExcecaoValores))
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="button" class="btn btn-primary" onclick="window.location='<?php echo base_url(); ?>principalConvenio/listar';" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
+                            <input type="button" class="btn btn-primary" onclick="window.location='<?php echo base_url(); ?>principalExcecaoValores/listar';" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
                             <input type="submit" class="btn btn-primary" value="Salva e lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:5px;"/>
                             <input type="submit" class="btn btn-primary" value="Salva e cadastra outra exceção (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                         <!--    <input type="submit" class="btn btn-primary" value="Salva e cadastra plano (CTRL+P)" name="salvarAvancar" id="salvarAvancar" style="margin-left:5px;<?php //if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/> -->
@@ -237,7 +237,7 @@ if(!empty($infoExcecaoValores))
 
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addConvenio.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addExcecaoValores.js" type="text/javascript"></script>
 <script>
 
     $(document).ready(function(){
