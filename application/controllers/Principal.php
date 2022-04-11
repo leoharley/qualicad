@@ -2899,11 +2899,10 @@ class Principal extends BaseController
 
                     //'Senha'=>getHashedPassword($senha)
 
-                $infoExcecaoValores = array('CD_Convenio'=>$CD_Convenio,'TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 
-                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),'Cd_TUSS'=> $Cd_TUSS, 'Cd_ProFat'=> $Cd_ProFat,
-                                    'Ds_ExcValores'=>$Ds_ExcValores, 'ClasseEvento'=>$ClasseEvento, 'Tp_ExcValores'=>$Tp_ExcValores,
-                                    'Vl_ExcValores'=>$Vl_ExcValores, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+                $infoExcecaoValores = array('CD_Convenio'=>$CD_Convenio, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                    'Cd_TUSS'=> $Cd_TUSS, 'Cd_ProFat'=> $Cd_ProFat,'Ds_ExcValores'=>$Ds_ExcValores, 'ClasseEvento'=>$ClasseEvento, 
+                                    'Tp_ExcValores'=>$Tp_ExcValores,'Vl_ExcValores'=>$Vl_ExcValores, 'CriadoPor'=>$this->vendorId, 
+                                    'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
                                     
                 $result = $this->PrincipalModel->adicionaExcecaoValores($infoExcecaoValores);
 
@@ -2996,11 +2995,10 @@ class Principal extends BaseController
                     $Dt_Inativo = date('Y-m-d H:i:s');
                 }
 
-                $infoExcecaoValores = array('CD_Convenio'=>$CD_Convenio,'TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 
-                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),'Cd_TUSS'=> $Cd_TUSS, 'Cd_ProFat'=> $Cd_ProFat,
-                                    'Ds_ExcValores'=>$Ds_ExcValores, 'ClasseEvento'=>$ClasseEvento, 'Tp_ExcValores'=>$Tp_ExcValores,
-                                    'Vl_ExcValores'=>$Vl_ExcValores, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+                $infoExcecaoValores = array('CD_Convenio'=>$CD_Convenio,'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                    'Cd_TUSS'=> $Cd_TUSS, 'Cd_ProFat'=> $Cd_ProFat,'Ds_ExcValores'=>$Ds_ExcValores, 'ClasseEvento'=>$ClasseEvento, 
+                                    'Tp_ExcValores'=>$Tp_ExcValores,'Vl_ExcValores'=>$Vl_ExcValores, 'CriadoPor'=>$this->vendorId, 
+                                    'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
 
                 $resultado = $this->PrincipalModel->editaExcecaoValores($infoExcecaoValores,$IdExcecaoValores);
