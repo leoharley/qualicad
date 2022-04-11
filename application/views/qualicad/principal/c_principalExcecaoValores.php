@@ -127,7 +127,7 @@ if(!empty($infoExcecaoValores))
                                             }
                                             ?>
                                         </select>
-                                        <input type="hidden" value="<?php echo $Id_ExcValores; ?>" name="Id_ExcValores" id="Id_ExcValores" />
+                                        <input type="hidden" value="<?php echo $Id_ExcValores; ?>" name="IdExcecaoValores" id="IdExcecaoValores" />
                                     </div>
                                 </div>
                                 <div class="col-md-2">
