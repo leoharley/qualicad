@@ -197,7 +197,7 @@ if(!empty($infoExcecaoValores))
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Vl_ExcValores">Valor</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_ExcValores') : $Vl_ExcValores ; ?>" id="Vl_ExcValores" name="Vl_ExcValores">
+                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_ExcValores') : $Vl_ExcValores ; ?>" id="Vl_ExcValores" name="Vl_ExcValores">
                                     </div>
                                 </div>
                             </div>
@@ -242,6 +242,7 @@ if(!empty($infoExcecaoValores))
 
     $(document).ready(function(){
         $(":input").inputmask();
+        $('.valor').maskMoney();
     });
     shortcut.add("ctrl+l", function() {
     document.getElementById('IrLista').click();
