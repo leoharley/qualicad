@@ -2906,8 +2906,6 @@ class Principal extends BaseController
                                     
                 $result = $this->PrincipalModel->adicionaExcecaoValores($infoExcecaoValores);
 
-                var_dump($result);exit;
-
                 /*FIM ADICIONAR PLANO*/
                 
                 if(($result > 0))
