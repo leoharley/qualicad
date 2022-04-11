@@ -118,7 +118,7 @@ if(!empty($infoIndice))
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Dt_IniVigencia">Data de início da vigência</label>
+                                        <label for="Dt_IniVigencia">Início da vigência</label>
                                         <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@ if(!empty($infoIndice))
                         <!--    <div class="row"> -->
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Dt_FimVigencia">Data de fim da vigência</label>
+                                        <label for="Dt_FimVigencia">Fim da vigência</label>
                                         <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                     </div>
                                 </div>
