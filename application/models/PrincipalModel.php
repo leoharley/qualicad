@@ -878,7 +878,7 @@ function carregaInfoProibicaoEmpresa($idEmpresa)
 // INICIO DAS CONSULTAS NA TELA DE EXCEÇÃO VALORES
 function listaExcecaoValores($IdEmpresa, $searchText = '', $page, $segment)
 {
-    $this->db->select('*');
+    $this->db->select('ProFat.Ds_ProFat, TUSS.Ds_Tuss, Convenio.Ds_Convenio, ExcValores.*');
     $this->db->from('TbExcValores as ExcValores');
     $this->db->join('TbConvenio as Convenio', 'Convenio.Id_Convenio = ExcValores.CD_Convenio','left');
     $this->db->join('TbTUSS as TUSS', 'TUSS.Id_Tuss = ExcValores.Cd_TUSS','left');

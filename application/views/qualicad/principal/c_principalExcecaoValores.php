@@ -119,7 +119,7 @@ if(!empty($infoExcecaoValores))
                                                 foreach ($infoConvenio as $convenio)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $convenio->Id_Convenio ?>" <?php if ($this->uri->segment(2) == 'editar' && $convenio->Id_Convenio == $TbConvenio_Id_Convenio) { echo 'selected'; } ?>>
+                                                <option value="<?php echo $convenio->Id_Convenio ?>" <?php if ($this->uri->segment(2) == 'editar' && $convenio->Id_Convenio == $CD_Convenio) { echo 'selected'; } ?>>
                                                     <?php echo $convenio->Id_Convenio.' - '.$convenio->Ds_Convenio ?>
                                                 </option>
                                                 <?php
@@ -140,7 +140,7 @@ if(!empty($infoExcecaoValores))
                                                 foreach ($infoTUSS as $tuss)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $tuss->Id_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Id_Tuss == $TbTUSS_Id_Tuss) { echo 'selected'; } ?>>
+                                                <option value="<?php echo $tuss->Id_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Id_Tuss == $Cd_TUSS) { echo 'selected'; } ?>>
                                                     <?php echo $tuss->Id_Tuss.' - '.$tuss->Ds_Tuss ?>
                                                 </option>
                                                 <?php
@@ -160,7 +160,7 @@ if(!empty($infoExcecaoValores))
                                                 foreach ($infoProFat as $proFat)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $proFat->Cd_ProFat ?>" <?php if ($this->uri->segment(2) == 'editar' && $proFat->Cd_ProFat == $TbProFat_Cd_ProFat) { echo 'selected'; } ?>>
+                                                <option value="<?php echo $proFat->Cd_ProFat ?>" <?php if ($this->uri->segment(2) == 'editar' && $proFat->Cd_ProFat == $Cd_ProFat) { echo 'selected'; } ?>>
                                                     <?php echo $proFat->Cd_ProFat.' - '.$proFat->Ds_ProFat ?>
                                                 </option>
                                                 <?php

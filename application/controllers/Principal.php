@@ -2855,8 +2855,6 @@ class Principal extends BaseController
                 redirect('principalExcecaoValores/listar'); 
             } 
 
-
-
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
@@ -2876,18 +2874,19 @@ class Principal extends BaseController
             }
             else
         { */
-                $CodConvenio = $this->input->post('CodConvenio');
-                $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-                $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-                $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-                $Tp_Convenio = $this->input->post('Tp_Convenio');
-                $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-                $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+
+                $CD_Convenio = $this->input->post('CD_Convenio');
+                $Cd_TUSS = $this->input->post('Cd_TUSS');
+                $Cd_ProFat = $this->input->post('Cd_ProFat');
+                $Ds_ExcValores = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_ExcValores'))));
+                $ClasseEvento = $this->input->post('ClasseEvento');
+                $Tp_ExcValores = $this->input->post('Tp_ExcValores');
+                $Vl_ExcValores = $this->input->post('Vl_ExcValores');        
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');
 
-                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+            //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
                 //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
                 if ($Tp_Ativo == 'S')
@@ -2900,93 +2899,48 @@ class Principal extends BaseController
 
                     //'Senha'=>getHashedPassword($senha)
 
-                $infoConvenio = array('CodConvenio'=>$CodConvenio,'TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 
-                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),'Ds_Convenio'=> $Ds_Convenio, 'CNPJ_Convenio'=> $CNPJ_Convenio,
-                                    'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-                                    'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                $infoExcecaoValores = array('CD_Convenio'=>$CD_Convenio,'TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 
+                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),'Cd_TUSS'=> $Cd_TUSS, 'Cd_ProFat'=> $Cd_ProFat,
+                                    'Ds_ExcValores'=>$Ds_ExcValores, 'ClasseEvento'=>$ClasseEvento, 'Tp_ExcValores'=>$Tp_ExcValores,
+                                    'Vl_ExcValores'=>$Vl_ExcValores, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
                                     
-                $result = $this->PrincipalModel->adicionaConvenio($infoConvenio);
+                $result = $this->PrincipalModel->adicionaExcecaoValores($infoExcecaoValores);
 
-
-                /*ADICIONAR PLANO*/
-
-                $Ds_Plano = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Plano'))));
-                $TbConvenio_Id_Convenio = $result;
-                $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
-                $TbRegra_Id_Regra  = $this->input->post('TbRegra_Id_Regra');
-                $CodPlano = $this->input->post('CodPlano');
-                $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
-                $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
-                $Tp_Ativo = $this->input->post('Tp_Ativo_Plano');
-
-                //    $roleId = $this->input->post('role');
-
-                //VERIFICAÇÃO DE DUPLICIDADE
-                //        if ($this->PrincipalModel->consultaPlanoExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
-
-                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
-                if ($Tp_Ativo == 'S')
-                {
-                    $Dt_Ativo = date('Y-m-d H:i:s');
-                } else
-                {
-                    $Dt_Ativo = null;
-                }
-
-                //'Senha'=>getHashedPassword($senha)
-
-                if ($Ds_Plano != '') {
-
-                    $infoPlano = array('TbConvenio_Id_Convenio' => $TbConvenio_Id_Convenio, 'TbEmpresa_Id_Empresa' => $this->session->userdata('IdEmpresa'),
-                        'Ds_Plano' => $Ds_Plano, 'TbIndice_Id_Indice' => $TbIndice_Id_Indice, 'TbRegra_Id_Regra' => $TbRegra_Id_Regra, 'Cd_PlanoERP' => $Cd_PlanoERP,
-                        'Tp_AcomodacaoPadrao' => $Tp_AcomodacaoPadrao, 'CriadoPor' => $this->vendorId, 'AtualizadoPor' => $this->vendorId,
-                        'CodPlano' => $CodPlano, 'Tp_Ativo' => $Tp_Ativo, 'Dt_Ativo' => $Dt_Ativo);
-
-                    $resultPlano = $this->PrincipalModel->adicionaPlano($infoPlano);
-
-                } else {
-
-                    $resultPlano = 1;
-
-                }
 
                 /*FIM ADICIONAR PLANO*/
                 
-                if(($result > 0) && ($resultPlano > 0))
+                if(($result > 0))
                 {
-                    $process = 'Adicionar convênio';
-                    $processFunction = 'Principal/adicionaConvenio';
+                    $process = 'Adicionar exceção valores';
+                    $processFunction = 'Principal/adicionaExcecaoValores';
                     $this->logrecord($process,$processFunction);
 
-                    $this->session->set_flashdata('success', 'Convênio e plano criados com sucesso');
+                    $this->session->set_flashdata('success', 'Exceção valores criado com sucesso');
 
                     if (array_key_exists('salvarIrLista',$this->input->post())) {
-                        redirect('principalConvenio/listar'); 
+                        redirect('principalExcecaoValores/listar'); 
                     }
                     else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                        redirect('principalConvenio/cadastrar'); 
+                        redirect('principalExcecaoValores/cadastrar'); 
                     }
                     else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                        redirect('principalPlano/cadastrar');
-                    }
-                    else if (array_key_exists('salvarPlano',$this->input->post())) {
-                        redirect('principalConvenio/editar/'.$TbConvenio_Id_Convenio);
+                        redirect('principalExcecaoValores/cadastrar');
                     }
 
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na criação do convênio');
-                    redirect('principalConvenio/cadastrar');
+                    $this->session->set_flashdata('error', 'Falha na criação da exceção valores');
+                    redirect('principalExcecaoValores/cadastrar');
                 }
 
-            } else {
+        /*    } else {
                     $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
                     redirect('principalConvenio/cadastrar');
-            }
+            } */
                 
-                redirect('principalConvenio/cadastrar');
+                redirect('principalExcecaoValores/cadastrar');
 
         //    }
     }
@@ -3000,7 +2954,7 @@ class Principal extends BaseController
 
             $this->load->library('form_validation');
 
-            $IdConvenio = $this->input->post('Id_Convenio');
+            $IdExcecaoValores = $this->input->post('IdExcecaoValores');
 
             //VALIDAÇÃO
             
@@ -3018,16 +2972,16 @@ class Principal extends BaseController
             else
             { */
 
-                $CodConvenio = $this->input->post('CodConvenio');
-                $Ds_Convenio = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Convenio'))));
-                $CNPJ_Convenio = $this->input->post('CNPJ_Convenio');
-                $Cd_ConvenioERP = $this->input->post('Cd_ConvenioERP');
-                $Tp_Convenio = $this->input->post('Tp_Convenio');
-                $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
-                $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
+                $CD_Convenio = $this->input->post('CD_Convenio');
+                $Cd_TUSS = $this->input->post('Cd_TUSS');
+                $Cd_ProFat = $this->input->post('Cd_ProFat');
+                $Ds_ExcValores = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_ExcValores'))));
+                $ClasseEvento = $this->input->post('ClasseEvento');
+                $Tp_ExcValores = $this->input->post('Tp_ExcValores');
+                $Vl_ExcValores = $this->input->post('Vl_ExcValores');        
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-                foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+                foreach ($this->PrincipalModel->carregaInfoExcecaoValores($IdExcecaoValores) as $data){
                     $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
 
@@ -3042,110 +2996,67 @@ class Principal extends BaseController
                     $Dt_Inativo = date('Y-m-d H:i:s');
                 }
 
-                //'Senha'=>getHashedPassword($senha)
-                $infoConvenio = array('CodConvenio'=>$CodConvenio,'TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'Ds_Convenio'=> $Ds_Convenio, 
-                    'CNPJ_Convenio'=> $CNPJ_Convenio,'Cd_ConvenioERP'=>$Cd_ConvenioERP, 'Tp_Convenio'=>$Tp_Convenio, 'Dt_InicioConvenio'=>$Dt_InicioConvenio,
-                    'Dt_VigenciaConvenio'=>$Dt_VigenciaConvenio, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);
+                $infoExcecaoValores = array('CD_Convenio'=>$CD_Convenio,'TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 
+                                    'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),'Cd_TUSS'=> $Cd_TUSS, 'Cd_ProFat'=> $Cd_ProFat,
+                                    'Ds_ExcValores'=>$Ds_ExcValores, 'ClasseEvento'=>$ClasseEvento, 'Tp_ExcValores'=>$Tp_ExcValores,
+                                    'Vl_ExcValores'=>$Vl_ExcValores, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
 
-                $resultado = $this->PrincipalModel->editaConvenio($infoConvenio,$IdConvenio);
+                $resultado = $this->PrincipalModel->editaExcecaoValores($infoExcecaoValores,$IdExcecaoValores);
 
-
-                /*ADICIONAR PLANO*/
-
-                $Ds_Plano = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Plano'))));
-                $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
-                $TbRegra_Id_Regra  = $this->input->post('TbRegra_Id_Regra');
-                $CodPlano = $this->input->post('CodPlano');
-                $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
-                $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
-                $Tp_Ativo = $this->input->post('Tp_Ativo_Plano');
-
-                //    $roleId = $this->input->post('role');
-
-                //VERIFICAÇÃO DE DUPLICIDADE
-                //        if ($this->PrincipalModel->consultaPlanoExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
-
-                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
-                if ($Tp_Ativo == 'S')
+                if(($resultado == true))
                 {
-                    $Dt_Ativo = date('Y-m-d H:i:s');
-                } else
-                {
-                    $Dt_Ativo = null;
-                }
-
-                //'Senha'=>getHashedPassword($senha)
-
-                if ($Ds_Plano != '') {
-
-                    $infoPlano = array('TbConvenio_Id_Convenio' => $IdConvenio, 'TbEmpresa_Id_Empresa' => $this->session->userdata('IdEmpresa'),
-                        'Ds_Plano' => $Ds_Plano, 'TbIndice_Id_Indice' => $TbIndice_Id_Indice, 'TbRegra_Id_Regra' => $TbRegra_Id_Regra, 'Cd_PlanoERP' => $Cd_PlanoERP,
-                        'Tp_AcomodacaoPadrao' => $Tp_AcomodacaoPadrao, 'CriadoPor' => $this->vendorId, 'AtualizadoPor' => $this->vendorId,
-                        'CodPlano' => $CodPlano, 'Tp_Ativo' => $Tp_Ativo, 'Dt_Ativo' => $Dt_Ativo);
-
-                    $resultPlano = $this->PrincipalModel->adicionaPlano($infoPlano);
-
-                } else {
-
-                    $resultPlano = 1;
-
-                }
-
-                
-                if(($resultado == true)&&($resultPlano > 0))
-                {
-                    $process = 'Convênio atualizado';
-                    $processFunction = 'Principal/editaConvenio';
+                    $process = 'Exceção valores atualizado';
+                    $processFunction = 'Principal/editaExcecaoValores';
                     $this->logrecord($process,$processFunction);
 
                     if (array_key_exists('salvarPlano',$this->input->post())) {
-                    $this->session->set_flashdata('success', 'Plano adicionado com sucesso');
-                        redirect('principalConvenio/editar/'.$IdConvenio);
+                    $this->session->set_flashdata('success', 'Exceção valores adicionado com sucesso');
+                        redirect('principalExcecaoValores/editar/'.$IdConvenio);
                     }
 
-                    $this->session->set_flashdata('success', 'Convênio atualizado com sucesso');
+                    $this->session->set_flashdata('success', 'Exceção valores atualizado com sucesso');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Falha na atualização do convênio');
+                    $this->session->set_flashdata('error', 'Falha na atualização da Exceção valores');
                 }
                 
-                redirect('principalConvenio/listar');
+                redirect('principalExcecaoValores/listar');
            // }
     }
 
     function apagaExcecaoValores()
     {
 
-            if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio')[0]->Excluir == 'N')
+            if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaExcecaoValores')[0]->Excluir == 'N')
                 {
                     redirect('acaoNaoAutorizada');
                 }
 
-            $IdConvenio = $this->uri->segment(2);
+            $IdExcecaoValores = $this->uri->segment(2);
 
-            $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoExcecaoValores = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
-            $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+            $resultado = $this->PrincipalModel->apagaExcecaoValores($infoExcecaoValores, $IdExcecaoValores);
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
 
-                 $process = 'Exclusão de convênio';
-                 $processFunction = 'Principal/apagaConvenio';
+                 $process = 'Exclusão de exceção valores';
+                 $processFunction = 'Principal/apagaExcecaoValores';
                  $this->logrecord($process,$processFunction);
 
-                 $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+                 $this->session->set_flashdata('success', 'Exceção valores deletado com sucesso');
 
                 }
                 else 
                 { 
                     //echo(json_encode(array('status'=>FALSE))); 
-                    $this->session->set_flashdata('error', 'Falha em excluir o convênio');
+                    $this->session->set_flashdata('error', 'Falha em excluir exceção valores');
                 }
-                redirect('principalConvenio/listar');
+                redirect('principalExcecaoValores/listar');
     }
     // FIM DAS FUNÇÕES DA TELA DE CONVENIO
 

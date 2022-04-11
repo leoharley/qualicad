@@ -46,56 +46,60 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Convênio (descrição)</th>
-                    <th>CNPJ</th>
-                    <th>Código ERP</th>
+                    <th>Convênio</th>
+                    <th>TUSS</th>
+                    <th>ProFat</th>
+                    <th>Descrição</th>
+                    <th>Classe evento</th>
                     <th>Tipo</th>
-                    <th>Convênio ativo?</th>
-                    <th>Data de início</th>
-                    <th>Data de vigência</th>
-                    <th>Ações</th>
+                    <th>Valor</th>
+                    <th>Ativo?</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                      if(!empty($registrosConvenios))
+                      if(!empty($registroExcecaoValores))
                       {
-                          foreach($registrosConvenios as $registro)
+                          foreach($registroExcecaoValores as $registro)
                           {
                       ?>
                     <tr>
                       <td>
-                        <?php echo $registro->Id_Convenio ?>
+                        <?php echo $registro->Id_ExcValores ?>
                       </td>
                       <td>
                         <?php echo $registro->Ds_Convenio ?>
                       </td>
                       <td>
-                        <?php echo $registro->CNPJ_Convenio ?>
+                        <?php echo $registro->Ds_Tuss ?>
                       </td>
                       <td>
-                        <?php echo $registro->Cd_ConvenioERP ?>
+                        <?php echo $registro->Ds_ProFat ?>
                       </td>
                       <td>
-                            <?php if ($registro->Tp_Convenio == '1') { echo 'Convênio'; } else if ($registro->Tp_Convenio == '2') { echo 'Filantrópico'; } else if ($registro->Tp_Convenio == '3') { echo 'Particular'; } ?>
+                        <?php echo $registro->Ds_ExcValores ?>
                       </td>
-                        <td>
-                            <?php echo $registro->Tp_Ativo ?>
-                        </td>
-                        <td>
-                            <?php echo ($registro->Dt_InicioConvenio != null) ? date("d/m/Y", strtotime($registro->Dt_InicioConvenio)) : ''; ?>
-                        </td>
-                        <td>
-                            <?php echo ($registro->Dt_VigenciaConvenio != null) ? date("d/m/Y", strtotime($registro->Dt_VigenciaConvenio)) : ''; ?>
-                        </td>
+                      <td>
+                        <?php echo $registro->ClasseEvento ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Tp_ExcValores ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Vl_ExcValores ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Tp_Ativo ?>
+                      </td>
+                       
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalConvenio/editar/'.$registro->Id_Convenio; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalExcecaoValores/editar/'.$registro->Id_ExcValores; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaConvenio/'.$registro->Id_Convenio; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaExcecaoValores/'.$registro->Id_ExcValores; ?>" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
