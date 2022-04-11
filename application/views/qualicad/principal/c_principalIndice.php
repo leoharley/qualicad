@@ -154,7 +154,10 @@ if(!empty($infoIndice))
                                         Grupo associado
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Data de início da vigência
+                                        Início da vigência
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Fim da vigência
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Valor índice
