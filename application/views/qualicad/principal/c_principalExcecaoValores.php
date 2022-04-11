@@ -111,8 +111,8 @@ if(!empty($infoExcecaoValores))
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="TbConvenio_Id_Convenio">Convênio</label>
-                                        <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio">
+                                        <label for="CD_Convenio">Convênio</label>
+                                        <select class="form-control required" id="CD_Convenio" name="CD_Convenio">
                                             <?php
                                             if(!empty($infoConvenio))
                                             {
@@ -132,8 +132,8 @@ if(!empty($infoExcecaoValores))
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="TbTUSS_Id_Tuss">TUSS associada</label>
-                                        <select class="form-control required" id="TbTUSS_Id_Tuss" name="TbTUSS_Id_Tuss">
+                                        <label for="Cd_TUSS">TUSS associada</label>
+                                        <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS">
                                             <?php
                                             if(!empty($infoTUSS))
                                             {
@@ -152,8 +152,8 @@ if(!empty($infoExcecaoValores))
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="TbProFat_Cd_ProFat">ProFat associado</label>
-                                        <select class="form-control required" id="TbProFat_Cd_ProFat" name="TbProFat_Cd_ProFat">
+                                        <label for="Cd_ProFat">ProFat associado</label>
+                                        <select class="form-control required" id="Cd_ProFat" name="Cd_ProFat">
                                             <?php
                                             if(!empty($infoProFat))
                                             {
