@@ -303,7 +303,7 @@ $(function() {
                   </li>
 
                   <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalRegraGruPro/listar">
+                      <a href="<?php echo base_url(); ?>principalRegraGrupoPro/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>RegraGrupoPro</span>
                       </a>
