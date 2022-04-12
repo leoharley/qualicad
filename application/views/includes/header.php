@@ -410,6 +410,30 @@ $(function() {
                                 <span style="margin-left:5px">Contrato</span>
                             </a>
                         </li>
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoPorteMedico">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Valor porte médico</span>
+                            </a>
+                        </li>
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoExcecaoValores">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Exceção de valores</span>
+                            </a>
+                        </li>
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoSimpro">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Simpro</span>
+                            </a>
+                        </li>
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoBrasIndice">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Brasindice</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="treeview">
