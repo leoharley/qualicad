@@ -3086,17 +3086,17 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalRegraGrupoPro/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalRegraGruPro/listar", $count, 10 );
 
             $data['registroRegraGruPro'] = $this->PrincipalModel->listaRegraGruPro($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
             $process = 'Listar Regra GruPro';
-            $processFunction = 'Principal/principalRegraGrupoPro';
+            $processFunction = 'Principal/principalRegraGruPro';
             $this->logrecord($process,$processFunction);
 
             $this->global['pageTitle'] = 'QUALICAD : Lista de Regra GruPro';
 
-            $this->loadViews("qualicad/principal/l_principalRegraGrupoPro", $this->global, $data, NULL);
+            $this->loadViews("qualicad/principal/l_principalRegraGruPro", $this->global, $data, NULL);
         }
         else if ($tpTela == 'cadastrar') {
 
@@ -3110,7 +3110,7 @@ class Principal extends BaseController
             $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
 
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de RegraGruPro';
-            $this->loadViews("qualicad/principal/c_principalRegraGrupoPro", $this->global, $data, NULL);
+            $this->loadViews("qualicad/principal/c_principalRegraGruPro", $this->global, $data, NULL);
         }
         else if ($tpTela == 'editar') {
 
@@ -3122,7 +3122,7 @@ class Principal extends BaseController
             $IdRegraGruPro = $this->uri->segment(3);
             if($IdRegraGruPro == null)
             {
-                redirect('principalRegraGrupoPro/listar');
+                redirect('principalRegraGruPro/listar');
             }
             $data['infoRegraGruPro'] = $this->PrincipalModel->carregaInfoRegraGruPro($IdRegraGruPro);
             $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
@@ -3130,14 +3130,14 @@ class Principal extends BaseController
             $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
 
             $this->global['pageTitle'] = 'QUALICAD : Editar Regra GruPro';
-            $this->loadViews("qualicad/principal/c_principalRegraGrupoPro", $this->global, $data, NULL);
+            $this->loadViews("qualicad/principal/c_principalRegraGruPro", $this->global, $data, NULL);
         }
     }
 
     function adicionaRegraGruPro()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalRegraGrupoPro/listar');
+            redirect('principalRegraGruPro/listar');
         }
 
         $this->load->library('form_validation');
@@ -3201,20 +3201,20 @@ class Principal extends BaseController
             $this->session->set_flashdata('success', 'Regra GruPro criado com sucesso');
 
             if (array_key_exists('salvarIrLista',$this->input->post())) {
-                redirect('principalRegraGrupoPro/listar');
+                redirect('principalRegraGruPro/listar');
             }
             else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
-                redirect('principalRegraGrupoPro/cadastrar');
+                redirect('principalRegraGruPro/cadastrar');
             }
             else if (array_key_exists('salvarAvancar',$this->input->post())) {
-                redirect('principalRegraGrupoPro/cadastrar');
+                redirect('principalRegraGruPro/cadastrar');
             }
 
         }
         else
         {
             $this->session->set_flashdata('error', 'Falha na criação da Regra GruPro');
-            redirect('principalRegraGrupoPro/cadastrar');
+            redirect('principalRegraGruPro/cadastrar');
         }
 
         /*    } else {
@@ -3222,7 +3222,7 @@ class Principal extends BaseController
                     redirect('principalConvenio/cadastrar');
             } */
 
-        redirect('principalRegraGrupoPro/cadastrar');
+        redirect('principalRegraGruPro/cadastrar');
 
         //    }
     }
@@ -3231,7 +3231,7 @@ class Principal extends BaseController
     function editaRegraGruPro()
     {
         if (array_key_exists('IrLista',$this->input->post())) {
-            redirect('principalRegraGrupoPro/listar');
+            redirect('principalRegraGruPro/listar');
         }
 
         $this->load->library('form_validation');
@@ -3293,7 +3293,7 @@ class Principal extends BaseController
 
             if (array_key_exists('salvarPlano',$this->input->post())) {
                 $this->session->set_flashdata('success', 'Regra GruPro adicionado com sucesso');
-                redirect('principalRegraGrupoPro/editar/'.$IdRegraGruPro);
+                redirect('principalRegraGruPro/editar/'.$IdRegraGruPro);
             }
 
             $this->session->set_flashdata('success', 'Regra GruPro atualizado com sucesso');
@@ -3303,7 +3303,7 @@ class Principal extends BaseController
             $this->session->set_flashdata('error', 'Falha na atualização da Regra GruPro');
         }
 
-        redirect('principalRegraGrupoPro/listar');
+        redirect('principalRegraGruPro/listar');
         // }
     }
 
@@ -3336,7 +3336,7 @@ class Principal extends BaseController
             //echo(json_encode(array('status'=>FALSE)));
             $this->session->set_flashdata('error', 'Falha em excluir regra grupro');
         }
-        redirect('principalRegraGrupoPro/listar');
+        redirect('principalRegraGruPro/listar');
     }
     // FIM DAS FUNÇÕES DA REGRAGRUPRO
 
