@@ -109,9 +109,6 @@ if(!empty($infoRegra))
                                         Fim da vigência
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Data criação
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
                                         Ativo?
                                         </th>
                                     </tr>
