@@ -253,6 +253,7 @@ if(!empty($infoFaturamento))
                             <input type="button" class="btn btn-primary" onclick="window.location='<?php echo base_url(); ?>principalFaturamento/listar';" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
                             <input type="submit" class="btn btn-primary" value="Salva e lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:5px;"/>
                             <input type="submit" class="btn btn-primary" value="Salva e cadastra novamente (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <input type="submit" class="btn btn-primary" value="Salva e adiciona outro item (CTRL+P)" name="salvarFatItem" id="salvarFatItem" style="margin-left:5px;"/>
                             <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
@@ -283,5 +284,8 @@ if(!empty($infoFaturamento))
     });
     shortcut.add("ctrl+a", function() {
         document.getElementById('salvarMesmaTela').click();
+    });
+    shortcut.add("ctrl+p", function() {
+        document.getElementById('salvarFatItem').click();
     });
 </script>
