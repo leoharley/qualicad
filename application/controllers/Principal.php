@@ -1273,6 +1273,7 @@ class Principal extends BaseController
                 else
             { */
 
+            $CodIndice = $this->input->post('CodIndice');
             $Ds_indice = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_indice'))));
             $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
             $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
@@ -1298,7 +1299,7 @@ class Principal extends BaseController
                 //'Senha'=>getHashedPassword($senha)
 
                 $infoIndice = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                    'Ds_indice'=> $Ds_indice, 'Dt_IniVigencia'=> $Dt_IniVigencia,
+                    'CodIndice'=> $CodIndice, 'Ds_indice'=> $Ds_indice, 'Dt_IniVigencia'=> $Dt_IniVigencia,
                     'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice, 'Vl_M2Filme'=>$Vl_M2Filme,
                     'Vl_Honorário'=>$Vl_Honorário, 'Vl_UCO'=>$Vl_UCO, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
@@ -1363,6 +1364,7 @@ class Principal extends BaseController
                 else
                 { */
 
+                    $CodIndice = $this->input->post('CodIndice');
                     $Ds_indice = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_indice'))));
                     $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
                     $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
@@ -1388,7 +1390,7 @@ class Principal extends BaseController
 
                     //'Senha'=>getHashedPassword($senha)
                     $infoIndice = array('TbUsuEmp_Id_UsuEmp'=>$this->session->userdata('IdUsuEmp'), 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                        'Ds_indice'=> $Ds_indice, 'Dt_IniVigencia'=> $Dt_IniVigencia,
+                        'CodIndice'=> $CodIndice, 'Ds_indice'=> $Ds_indice, 'Dt_IniVigencia'=> $Dt_IniVigencia,
                         'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice, 'Vl_M2Filme'=>$Vl_M2Filme,
                         'Vl_Honorário'=>$Vl_Honorário, 'Vl_UCO'=>$Vl_UCO, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                         'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo, 'Dt_Inativo'=>$Dt_Inativo);

@@ -1,6 +1,7 @@
 <?php
 
 $Id_Indice = '';
+$CodIndice = '';
 $Ds_indice = '';
 $Dt_IniVigencia = '';
 $Dt_FimVigencia = '';
@@ -16,6 +17,7 @@ if(!empty($infoIndice))
     foreach ($infoIndice as $r)
     {
         $Id_Indice = $r->Id_Indice;
+        $CodIndice = $r->CodIndice;
         $Ds_indice = $r->Ds_indice;
         $Dt_IniVigencia = $r->Dt_IniVigencia;
         $Dt_FimVigencia = $r->Dt_FimVigencia;
@@ -109,6 +111,12 @@ if(!empty($infoIndice))
                     <form role="form" id="addIndice" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaIndice' : base_url().'editaIndice'; ?>" method="post" role="form">
                         <div class="box-body" style="padding-left:1rem;padding-right:1rem">
                             <div class="row">
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label for="CodIndice">Codigo</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CodIndice') : $Ds_indice ; ?>" id="CodIndice" name="CodIndice" maxlength="128">                                        
+                                    </div>
+                                </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="Ds_indice">Índice (descrição)</label>
