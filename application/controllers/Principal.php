@@ -366,7 +366,7 @@ class Principal extends BaseController
                     $this->logrecord($process,$processFunction);
 
                     if (array_key_exists('salvarPlano',$this->input->post())) {
-                    $this->session->set_flashdata('success', 'Plano adicionado com sucesso');
+                        $this->session->set_flashdata('success', 'Plano adicionado com sucesso');
                         redirect('principalConvenio/editar/'.$IdConvenio);
                     }
 
@@ -1053,25 +1053,63 @@ class Principal extends BaseController
 
             $result = $this->PrincipalModel->adicionaRegra($infoRegra);
 
-            if($result > 0)
+            $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
+            $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+            $Perc_Pago = $this->input->post('Perc_Pago');
+            $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+            $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+            $Tp_Ativo = $this->input->post('Tp_Ativo_RegraGruPro');
+
+            //    $roleId = $this->input->post('role');
+
+            //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+
+            if ($Perc_Pago != '') {
+                $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                    'TbRegra_Id_Regra'=> $result, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
+                    'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
+                    'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+                $result2 = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
+            } else {
+                $result2 = 1;
+            }
+
+
+
+            if(($result > 0)&&($result2 > 0))
             {
                 $process = 'Adicionar regra';
                 $processFunction = 'Principal/adicionaRegra';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Regra criada com sucesso');
+                $this->session->set_flashdata('success', 'Regra e regra grupo criados com sucesso');
 
                 if (array_key_exists('salvarIrLista',$this->input->post())) {
-                    redirect('principalRegra/listar'); 
+                    redirect('principalRegra/listar');
                 }
                 else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
                     redirect('principalRegra/cadastrar');
+                }
+                else if (array_key_exists('salvarRegraGruPro',$this->input->post())) {
+                    redirect('principalRegra/editar/'.$result);
                 }
 
             }
             else
             {
-                $this->session->set_flashdata('error', 'Falha na criação da regra');
+                $this->session->set_flashdata('error', 'Falha na criação da regra grupo');
             }
 
             //          } else {
@@ -1135,11 +1173,51 @@ class Principal extends BaseController
 
             $resultado = $this->PrincipalModel->editaRegra($infoRegra, $IdRegra);
 
-            if($resultado == true)
+
+            $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
+            $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+            $Perc_Pago = $this->input->post('Perc_Pago');
+            $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+            $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+            $Tp_Ativo = $this->input->post('Tp_Ativo_RegraGruPro');
+
+            //    $roleId = $this->input->post('role');
+
+            //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+            } else
+            {
+                $Dt_Ativo = null;
+            }
+
+            //'Senha'=>getHashedPassword($senha)
+
+            if ($Perc_Pago != '') {
+                $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                    'TbRegra_Id_Regra'=> $IdRegra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
+                    'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
+                    'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+                $result2 = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
+            } else {
+                $result2 = 1;
+            }
+
+
+            if(($resultado == true)&&($result2 > 0))
             {
                 $process = 'Regra atualizado';
                 $processFunction = 'Principal/editaRegra';
                 $this->logrecord($process,$processFunction);
+
+                if (array_key_exists('salvarRegraGruPro',$this->input->post())) {
+                    $this->session->set_flashdata('success', 'RegraGruPro adicionado com sucesso');
+                    redirect('principalRegra/editar/'.$IdRegra);
+                }
 
                 $this->session->set_flashdata('success', 'Regra atualizada com sucesso');
             }
