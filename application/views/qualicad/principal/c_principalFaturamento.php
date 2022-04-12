@@ -99,81 +99,139 @@ if(!empty($infoFaturamento))
                                 </div>
                             </div>
 
-                            <div class="row" style="display: inline-block;width: 100%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
-                            background-color: #f5f5f5;">
+                            <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
 
-                                <h4><strong>Faturamento Item </strong></h4>
+                                <h4><strong>Faturamento Item</strong></h4>
 
-                                <div class="row">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Ds_FatItem">Descrição</label>
-                                        <input type="text" class="form-control required" id="Ds_FatItem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FatItem') : $Ds_FatItem ; ?>" name="Ds_FatItem"
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Descrição
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Início da vigência
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Fim da vigência
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        Valor do honorário
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor operacional
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor total
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor filme
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td>
+                                                <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                                                    <?php
+                                                    if(!empty($infoIndice))
+                                                    {
+                                                        foreach ($infoIndice as $indice)
+                                                        {
+                                                            ?>
+                                                            <option value="<?php echo $indice->Id_Indice ?>">
+                                                                <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" id="Ds_FatItem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FatItem') : $Ds_FatItem ; ?>" name="Ds_FatItem"
                                                maxlength="128">
-                                    </div>
-                                </div>
+                                            </td>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Dt_IniVigencia">Data de início da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
-                                    </div>
-                                </div>
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
+                                            </td>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Dt_FimVigencia">Data de fim da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
-                                    </div>
-                                </div>
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
+                                            </td>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Vl_Honorário">Valor do honorário</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorário') : $Vl_Honorário ; ?>" id="Vl_Honorário" name="Vl_Honorário"
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorário') : $Vl_Honorário ; ?>" id="Vl_Honorário" name="Vl_Honorário"
                                                maxlength="11">
-                                    </div>
-                                </div>
+                                            </td>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Vl_Operacional">Valor operacional</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Operacional') : $Vl_Operacional ; ?>" id="Vl_Operacional" name="Vl_Operacional"
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Operacional') : $Vl_Operacional ; ?>" id="Vl_Operacional" name="Vl_Operacional"
                                                maxlength="11">
-                                    </div>
-                                </div>
+                                            </td>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Vl_Total">Valor total</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Total') : $Vl_Total ; ?>" id="Vl_Total" name="Vl_Total"
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Total') : $Vl_Total ; ?>" id="Vl_Total" name="Vl_Total"
                                                maxlength="11">
-                                    </div>
-                                </div>
+                                            </td>
 
-                                </div>
-
-                                <div class="row">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Vl_Filme">Valor filme</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Filme') : $Vl_Filme ; ?>" id="Vl_Filme" name="Vl_Filme"
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Filme') : $Vl_Filme ; ?>" id="Vl_Filme" name="Vl_Filme"
                                                maxlength="11">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">Faturamento Item ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
                                             <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                </div>
+                                            </select>
+                                            </td>
+                                </tr>
 
+                                <?php
+                                if(!empty($infoFatItem))
+                                {
+                                foreach ($infoFatItem as $fatitem)
+                                {
+                                ?>
+                                <tr style="background-color:#c0c0c0">
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Id_FatItem.' - '.$fatitem->Ds_FatItem ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Dt_IniVigencia ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Dt_FimVigencia ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Vl_Honorário ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Vl_Operacional ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Vl_Total ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Vl_Filme ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo ($fatitem->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
+                                    </td>
+                                </tr>
+                                    <?php
+                                }
+                                }
+                                ?>
+
+                                </table>
                             </div>
-
 
                         </div>
                         <!-- /.box-body -->

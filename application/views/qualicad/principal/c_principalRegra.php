@@ -84,6 +84,142 @@ if(!empty($infoRegra))
                                 </div>
                             </div>
 
+
+                            <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
+
+                                <h4><strong>Regra Grupo</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Grupo pro associado
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Faturamento associado
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        Percentual pago
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Início da vigência
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Fim da vigência
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Data criação
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td>
+                                                <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                                                    <?php
+                                                    if(!empty($infoGrupoPro))
+                                                    {
+                                                        foreach ($infoGrupoPro as $grupopro)
+                                                        {
+                                                            ?>
+                                                            <option value="<?php echo $grupopro->CodGrupo ?>">
+                                                                <?php echo $grupopro->CodGrupo .' - '.$grupopro->Ds_GrupoPro ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
+                                                <?php
+                                                if(!empty($infoRegra))
+                                                {
+                                                    foreach ($infoRegra as $regra)
+                                                    {
+                                                        ?>
+                                                        <option value="<?php echo $regra->Id_Regra ?>">
+                                                            <?php echo $regra->Id_Regra.' - '.$regra->Ds_Regra ?>
+                                                        </option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" id="CodPlano" value="<?php echo set_value('CodPlano') ; ?>" name="CodPlano"
+                                                maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo set_value('Cd_PlanoERP') ; ?>" name="Cd_PlanoERP"
+                                                maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" id="Ds_Plano" value="<?php echo set_value('Ds_Plano') ; ?>" name="Ds_Plano"
+                                                maxlength="128">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
+                                                <option value="1">Enfermaria</option>
+                                                <option value="2">Apartamento</option>
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control" id="Tp_Ativo_Plano" name="Tp_Ativo_Plano">
+                                                <option value="S">Sim</option>
+                                                <option value="N">Não</option>
+                                            </select>
+                                            </td>
+                                </tr>
+
+                                <?php
+                                if(!empty($infoPlano))
+                                {
+                                foreach ($infoPlano as $plano)
+                                {
+                                ?>
+                                <tr style="background-color:#c0c0c0">
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->CodPlano ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Ds_Plano ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php if ($plano->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($plano->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo ($plano->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
+                                    </td>
+                                </tr>
+                                    <?php
+                                }
+                                }
+                                ?>
+
+                                </table>
+                            </div>
+
                             <div class="row" style="display: inline-block;width: 100%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;">
 
