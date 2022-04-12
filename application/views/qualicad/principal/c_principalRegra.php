@@ -118,7 +118,7 @@ if(!empty($infoRegra))
                                 </thead>
                                 <tr id="row0">
                                             <td>
-                                                <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                                                <select class="form-control" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
                                                     <?php
                                                     if(!empty($infoGrupoPro))
                                                     {
@@ -136,15 +136,15 @@ if(!empty($infoRegra))
                                             </td>
 
                                             <td>
-                                            <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
+                                            <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
                                                 <?php
-                                                if(!empty($infoRegra))
+                                                if(!empty($infoFaturamento))
                                                 {
-                                                    foreach ($infoRegra as $regra)
+                                                    foreach ($infoFaturamento as $faturamento)
                                                     {
                                                         ?>
-                                                        <option value="<?php echo $regra->Id_Regra ?>">
-                                                            <?php echo $regra->Id_Regra.' - '.$regra->Ds_Regra ?>
+                                                        <option value="<?php echo $faturamento->Id_Faturamento ?>">
+                                                            <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
                                                         </option>
                                                         <?php
                                                     }
@@ -154,62 +154,51 @@ if(!empty($infoRegra))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control" id="CodPlano" value="<?php echo set_value('CodPlano') ; ?>" name="CodPlano"
-                                                maxlength="11">
+                                                <input type="text" class="form-control required" id="Perc_Pago" value="<?php echo set_value('Perc_Pago'); ?>" name="Perc_Pago"
+                                                       maxlength="13">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo set_value('Cd_PlanoERP') ; ?>" name="Cd_PlanoERP"
-                                                maxlength="11">
+                                                <input type="date" class="form-control required" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control" id="Ds_Plano" value="<?php echo set_value('Ds_Plano') ; ?>" name="Ds_Plano"
-                                                maxlength="128">
+                                                <input type="date" class="form-control required" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                             </td>
 
                                             <td>
-                                            <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
-                                                <option value="1">Enfermaria</option>
-                                                <option value="2">Apartamento</option>
-                                            </select>
+                                                <select class="form-control" id="Tp_Ativo_RegraGruPro" name="Tp_Ativo_RegraGruPro">
+                                                    <option value="S">Sim</option>
+                                                    <option value="N">Não</option>
+                                                </select>
                                             </td>
 
-                                            <td>
-                                            <select class="form-control" id="Tp_Ativo_Plano" name="Tp_Ativo_Plano">
-                                                <option value="S">Sim</option>
-                                                <option value="N">Não</option>
-                                            </select>
-                                            </td>
                                 </tr>
 
                                 <?php
-                                if(!empty($infoPlano))
+                                if(!empty($infoRegraGruPro))
                                 {
-                                foreach ($infoPlano as $plano)
+                                foreach ($infoRegraGruPro as $regragrupro)
                                 {
                                 ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->CodGrupo .' - '.$regragrupro->Ds_GrupoPro ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->Id_Faturamento .' - '.$regragrupro->Ds_Faturamento ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->CodPlano ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->Perc_Pago ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->Dt_IniVigencia ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Ds_Plano ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->Dt_FimVigencia ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php if ($plano->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($plano->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo ($plano->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo ($regragrupro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
                                     </td>
                                 </tr>
                                     <?php
@@ -218,70 +207,6 @@ if(!empty($infoRegra))
                                 ?>
 
                                 </table>
-                            </div>
-
-                            <div class="row" style="display: inline-block;width: 100%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
-                            background-color: #f5f5f5;">
-
-                                <h4><strong>Regra Grupo</strong></h4>
-
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="dsgrupopro">Grupo pro associado</label>
-                                            <select class="form-control required" id="dsgrupopro" name="dsgrupopro">
-                                                <option value="1">GRUPO_PRO_1</option>
-                                                <option value="2">GRUPO_PRO_2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="dsregra">Regra associada</label>
-                                            <select class="form-control required" id="dsregra" name="dsregra">
-                                                <option value="1">REGRA_1</option>
-                                                <option value="2">REGRA_2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="dsfaturamento">Faturamento associado</label>
-                                            <select class="form-control required" id="dsfaturamento" name="dsfaturamento">
-                                                <option value="1">FATURAMENTO_1</option>
-                                                <option value="2">FATURAMENTO_2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="percpago">Percentual pago</label>
-                                            <input type="text" class="form-control required" value="<?php echo set_value('percpago'); ?>" id="percpago" name="percpago"
-                                                   maxlength="11">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="dtinivigencia">Data de início da vigência</label>
-                                            <input type="date" class="form-control required" value="<?php echo set_value('dtinivigencia'); ?>" id="dtinivigencia" name="dtinivigencia">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="dtfimvigencia">Data de fim da vigência</label>
-                                            <input type="date" class="form-control required" value="<?php echo set_value('dtfimvigencia'); ?>" id="dtfimvigencia" name="dtfimvigencia">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="dtcriacao">Data criação</label>
-                                            <input type="date" class="form-control required" value="<?php echo set_value('dtcriacao'); ?>" id="dtcriacao" name="dtcriacao">
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
 
                         </div>
