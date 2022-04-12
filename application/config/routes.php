@@ -75,8 +75,8 @@ $route['principalFaturamento/:any'] = "principal/principalFaturamento/$1";
 $route['principalRegra/:any/:any'] = "principal/principalRegra/$1/$2";
 $route['principalRegra/:any'] = "principal/principalRegra/$1";
 
-$route['principalRegraGrupoPro/:any/:any'] = "principal/principalRegraGrupoPro/$1/$2";
-$route['principalRegraGrupoPro/:any'] = "principal/principalRegraGrupoPro/$1";
+$route['principalRegraGruPro/:any/:any'] = "principal/principalRegraGruPro/$1/$2";
+$route['principalRegraGruPro/:any'] = "principal/principalRegraGruPro/$1";
 
 $route['principalIndice/:any/:any'] = "principal/principalIndice/$1/$2";
 $route['principalIndice/:any'] = "principal/principalIndice/$1";
@@ -157,6 +157,11 @@ $route['apagaFaturamento/:any'] = "principal/apagaFaturamento/$1";
 $route['adicionaRegra'] = "principal/adicionaRegra";
 $route['editaRegra'] = "principal/editaRegra";
 $route['apagaRegra/:any'] = "principal/apagaRegra/$1";
+
+/*********** ROUTES PARA AÇÕES DA TELA REGRA GRUPOPRO*******************/
+$route['adicionaRegraGruPro'] = "principal/adicionaRegraGruPro";
+$route['editaRegraGruPro'] = "principal/editaRegraGruPro";
+$route['apagaRegraGruPro/:any'] = "principal/apagaRegraGruPro/$1";
 
 /*********** ROUTES PARA AÇÕES DA TELA ÍNDICE *******************/
 $route['adicionaIndice'] = "principal/adicionaIndice";

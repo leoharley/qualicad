@@ -3062,7 +3062,7 @@ class Principal extends BaseController
 
     // INICIO DAS FUNÇÕES DA TELA DE REGRA GRUPRO
 
-    function principalRegraGrupoPro()
+    function principalRegraGruPro()
     {
         $tpTela = $this->uri->segment(2);
 
