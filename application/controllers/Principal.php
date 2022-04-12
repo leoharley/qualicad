@@ -974,7 +974,7 @@ class Principal extends BaseController
                     {
                         redirect('acaoNaoAutorizada');
                     } */
-                $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoRegraGruProEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
                 $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Lista de Regra';
@@ -993,7 +993,7 @@ class Principal extends BaseController
                     redirect('principalRegra/listar');
                 }
                 $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegra($IdRegra);
-                $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoRegraGruProEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
                 $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Editar regra';      
