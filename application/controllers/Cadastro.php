@@ -802,7 +802,7 @@ function cadastroPermissao()
             
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "cadastroPermissao/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "cadastroPermissao/listar", $count, 100 );
             
             $data['registrosPermissao'] = $this->CadastroModel->listaPermissao($this->session->userdata('userId'), $searchText, $returns["page"], $returns["segment"]);
             
