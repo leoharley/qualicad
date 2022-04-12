@@ -84,6 +84,8 @@ if(!empty($infoDePara))
                                             <option value="Produto" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'Produto') { echo 'selected'; } ?>>Produto</option>
                                             <option value="Producao" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'Producao') { echo 'selected'; } ?>>Producao</option>
                                             <option value="Contrato" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'Contrato') { echo 'selected'; } ?>>Contrato</option>
+                                            <option value="PorteMedico" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'PorteMedico') { echo 'selected'; } ?>>PorteMedico</option>
+                                            <option value="ExcecaoValores" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'ExcecaoValores') { echo 'selected'; } ?>>ExcecaoValores</option>
                                         </select>
                                         <input type="hidden" value="<?php echo $Id_DeparaImportacao; ?>" name="Id_DeparaImportacao" id="Id_DeparaImportacao" />
                                     </div>
@@ -115,6 +117,8 @@ if(!empty($infoDePara))
                                             <option value="Tb_RegraGruPro" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'Tb_RegraGruPro') { echo 'selected'; } ?>>Tb_RegraGruPro</option>
                                             <option value="Tb_RegraProibicao" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'Tb_RegraProibicao') { echo 'selected'; } ?>>Tb_RegraProibicao</option>
                                             <option value="Tb_Unidade" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'Tb_Unidade') { echo 'selected'; } ?>>Tb_Unidade</option>
+                                            <option value="TbPorteMedico" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TbPorteMedico') { echo 'selected'; } ?>>TbPorteMedico</option>
+                                            <option value="TbExcValores" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TbExcValores') { echo 'selected'; } ?>>TbExcValores</option>
                                         </select>
                                     </div>
                                 </div>

@@ -842,6 +842,174 @@ class Importacao extends BaseController
             redirect('importacaoDePara/cadastrar');
     }
 
+    // IMPORTAÇÃO VALOR PORTE MÉDICO
+
+    function importacaoPorteMedico()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação Porte Médico';
+
+        $data['infoPorteMedico'] = $this->ImportacaoModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
+
+        $this->loadViews("qualicad/importacao/importacaoPorteMedico", $this->global, $data, NULL);
+    }
+
+    public function importaPorteMedico(){
+        $data = array();
+        $memData = array();
+
+        //    $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
+
+        // If import request is submitted
+        if($this->input->post('importSubmit')){
+            // Form field validation rules
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
+
+            // Validate submitted form data
+            if($this->form_validation->run() == true){
+                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+
+                // If file uploaded
+                if(is_uploaded_file($_FILES['file']['tmp_name'])){
+                    // Load CSV reader library
+                    $this->load->library('CSVReader');
+
+                    // Parse data from CSV file
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
+                    $dePara = $this->ImportacaoModel->consultaDePara('PorteMedico',$this->session->userdata('IdEmpresa'));
+
+                    // Insert/update CSV data into database
+                    if(!empty($csvData)){
+                        foreach($csvData as $row) {
+                            $rowCount++;
+
+                            $memData = array();
+
+                            for ($i=0;$i<count($dePara);$i++) {
+                                $memData += array(
+                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                );
+
+                            }
+
+                            $memData += array(
+                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                'Tp_Ativo'=> 'S');
+
+
+                            $insert = $this->ImportacaoModel->adicionaPorteMedico($memData);
+
+                            if($insert){
+                                $insertCount++;
+                            }
+
+                        }
+
+                        // Status message with imported data count
+                        $notAddCount = ($rowCount - ($insertCount + $updateCount));
+                        $successMsg = 'Tabela Porte Médico importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+
+                        $this->session->set_flashdata('success', $successMsg);
+                    }
+                }else{
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
+                //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
+            }
+        }
+        redirect('importacaoPorteMedico');
+    }
+
+
+    // IMPORTAÇÃO EXCEÇÃO VALORES
+
+    function importacaoExcecaoValores()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação Exceção Valores';
+
+        $data['infoExcecaoValores'] = $this->ImportacaoModel->carregaInfoExcecaoValores($this->session->userdata('IdEmpresa'));
+
+        $this->loadViews("qualicad/importacao/importacaoExcecaoValores", $this->global, $data, NULL);
+    }
+
+    public function importaExcecaoValores(){
+        $data = array();
+        $memData = array();
+
+        //    $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
+
+        // If import request is submitted
+        if($this->input->post('importSubmit')){
+            // Form field validation rules
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
+
+            // Validate submitted form data
+            if($this->form_validation->run() == true){
+                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+
+                // If file uploaded
+                if(is_uploaded_file($_FILES['file']['tmp_name'])){
+                    // Load CSV reader library
+                    $this->load->library('CSVReader');
+
+                    // Parse data from CSV file
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
+                    $dePara = $this->ImportacaoModel->consultaDePara('ExcecaoValores',$this->session->userdata('IdEmpresa'));
+
+                    // Insert/update CSV data into database
+                    if(!empty($csvData)){
+                        foreach($csvData as $row) {
+                            $rowCount++;
+
+                            $memData = array();
+
+                            for ($i=0;$i<count($dePara);$i++) {
+                                $memData += array(
+                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                );
+
+                            }
+
+                            $memData += array(
+                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                'Tp_Ativo'=> 'S');
+
+
+                            $insert = $this->ImportacaoModel->adicionaExcecaoValores($memData);
+
+                            if($insert){
+                                $insertCount++;
+                            }
+
+                        }
+
+                        // Status message with imported data count
+                        $notAddCount = ($rowCount - ($insertCount + $updateCount));
+                        $successMsg = 'Tabela Exceção Valores importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+
+                        $this->session->set_flashdata('success', $successMsg);
+                    }
+                }else{
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
+                //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
+            }
+        }
+        redirect('importacaoExcecaoValores');
+    }
 
     function editaDePara()
     {

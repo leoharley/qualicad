@@ -195,6 +195,54 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
+    function carregaInfoPorteMedico($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbPorteMedico as PorteMedico');
+        $this->db->where('PorteMedico.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('PorteMedico.Deletado !=', 'S');
+        $this->db->where('PorteMedico.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function adicionaPorteMedico($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbPorteMedico', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
+    function carregaInfoExcecaoValores($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbExcValores as ExcValores');
+        $this->db->where('ExcValores.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('ExcValores.Deletado !=', 'S');
+        $this->db->where('ExcValores.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function adicionaExcecaoValores($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbExcValores', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
     function carregaInfoDePara($idEmpresa)
     {
         $this->db->select('*');

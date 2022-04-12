@@ -121,6 +121,12 @@ $route['importaProducao'] = "importacao/importaProducao";
 $route['importacaoContrato'] = "importacao/importacaoContrato";
 $route['importaContrato'] = "importacao/importaContrato";
 
+$route['importacaoPorteMedico'] = "importacao/importacaoPorteMedico";
+$route['importaPorteMedico'] = "importacao/importaPorteMedico";
+
+$route['importacaoExcecaoValores'] = "importacao/importacaoExcecaoValores";
+$route['importaExcecaoValores'] = "importacao/importaExcecaoValores";
+
 $route['importacaoDePara/:any/:any'] = "importacao/importacaoDePara/$1/$2";
 $route['importacaoDePara/:any'] = "importacao/importacaoDePara/$1";
 
