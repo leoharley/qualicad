@@ -3236,7 +3236,7 @@ class Principal extends BaseController
 
         $this->load->library('form_validation');
 
-        $IdRegraGruPro = $this->input->post('IdRegraGruPro');
+        $IdRegraGruPro = $this->input->post('Id_RegraGruPro');
 
         //VALIDAÇÃO
 
