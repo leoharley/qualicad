@@ -960,7 +960,79 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
     return $query->result();
 }
 
-// FIM DAS CONSULTAS NA TELA DE CONVENIO
+// INICIO DAS CONSULTAS NA TELA DE REGRAGRUPRO
+    function listaRegraGruPro($IdEmpresa, $searchText = '', $page, $segment)
+    {
+        $this->db->select('GruPro.CodGrupo, GruPro.Ds_GrupoPro, Regra.Id_Regra, Regra.Ds_Regra, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
+        $this->db->from('Tb_RegraGruPro as RegraGruPro');
+        $this->db->join('TbGrupoPro as GruPro', 'GruPro.CodGrupo = RegraGruPro.TbGrupoPro_CodGrupo','left');
+        $this->db->join('TbRegra as Regra', 'Regra.Id_Regra = RegraGruPro.TbRegra_Id_Regra','left');
+        $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = RegraGruPro.TbFaturamento_Id_Faturamento','left');
+        if(!empty($searchText)) {
+            $likeCriteria = "(GruPro.Ds_GrupoPro  LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
+        $this->db->where('RegraGruPro.Deletado !=', 'S');
+        $this->db->where('RegraGruPro.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->limit($page, $segment);
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
+    }
+
+    function adicionaRegraGruPro($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('Tb_RegraGruPro', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
+    function editaRegraGruPro($info, $id)
+    {
+        $this->db->where('Id_RegraGruPro', $id);
+        $this->db->update('Tb_RegraGruPro', $info);
+
+        return TRUE;
+    }
+
+    function apagaRegraGruPro($info, $id)
+    {
+        $this->db->where('Id_RegraGruPro', $id);
+        $this->db->update('Tb_RegraGruPro', $info);
+
+        return $this->db->affected_rows();
+    }
+
+    function carregaInfoRegraGruPro($IdRegraGruPro)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_RegraGruPro');
+        $this->db->where('Id_RegraGruPro ', $IdRegraGruPro);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function carregaInfoRegraGruProEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_RegraGruPro as RegraGruPro');
+        $this->db->where('RegraGruPro.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('RegraGruPro.Deletado !=', 'S');
+        $this->db->where('RegraGruPro.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+
+// FIM DAS CONSULTAS NA TELA DE REGRAGRUPRO
 
 }
 

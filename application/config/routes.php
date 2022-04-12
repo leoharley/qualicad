@@ -75,6 +75,9 @@ $route['principalFaturamento/:any'] = "principal/principalFaturamento/$1";
 $route['principalRegra/:any/:any'] = "principal/principalRegra/$1/$2";
 $route['principalRegra/:any'] = "principal/principalRegra/$1";
 
+$route['principalRegraGruPro/:any/:any'] = "principal/principalRegraGruPro/$1/$2";
+$route['principalRegraGruPro/:any'] = "principal/principalRegraGruPro/$1";
+
 $route['principalIndice/:any/:any'] = "principal/principalIndice/$1/$2";
 $route['principalIndice/:any'] = "principal/principalIndice/$1";
 
@@ -190,7 +193,6 @@ $route['adicionaExcecaoValores'] = "principal/adicionaExcecaoValores";
 $route['editaExcecaoValores'] = "principal/editaExcecaoValores";
 $route['apagaExcecaoValores/:any'] = "principal/apagaExcecaoValores/$1";
 
-$route['principalRegraGrupoPro'] = "principal/principalRegraGrupoPro";
 $route['principalProibicao'] = "principal/principalProibicao";
 
 $route['principalPlanoModal'] = "principal/principalPlanoModal";

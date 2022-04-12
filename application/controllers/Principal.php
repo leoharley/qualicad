@@ -3059,14 +3059,286 @@ class Principal extends BaseController
     }
     // FIM DAS FUNÇÕES DA TELA DE CONVENIO
 
+
+    // INICIO DAS FUNÇÕES DA TELA DE REGRA GRUPRO
+
     function principalRegraGrupoPro()
     {
-        $data['roles'] = $this->user_model->getUserRoles();
+        $tpTela = $this->uri->segment(2);
 
-        $this->global['pageTitle'] = 'QUALICAD : Regra Grupo Pro';
+        $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
 
-        $this->loadViews("qualicad/principal/principalRegraGrupoPro", $this->global, $data, NULL);
+        if ($tpTela == 'listar') {
+
+            if ($this->session->userdata('email') != 'admin@admin.com')
+            {
+                if ($this->PermissaoModel->permissaoTela($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Tp_Ativo == 'N' ||
+                    $this->PermissaoModel->permissaoAcaoConsultar($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Consultar == 'N')
+                {
+                    redirect('telaNaoAutorizada');
+                }
+            }
+
+            $searchText = $this->security->xss_clean($this->input->post('searchText'));
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->CadastroModel->userListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "principalRegraGrupoPro/listar", $count, 10 );
+
+            $data['registroRegraGruPro'] = $this->PrincipalModel->listaRegraGruPro($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+
+            $process = 'Listar Regra GruPro';
+            $processFunction = 'Principal/principalRegraGrupoPro';
+            $this->logrecord($process,$processFunction);
+
+            $this->global['pageTitle'] = 'QUALICAD : Lista de Regra GruPro';
+
+            $this->loadViews("qualicad/principal/l_principalRegraGrupoPro", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'cadastrar') {
+
+            if ($this->PermissaoModel->permissaoAcaoInserir($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Inserir == 'N')
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
+            $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegrasEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
+
+            $this->global['pageTitle'] = 'QUALICAD : Cadastro de RegraGruPro';
+            $this->loadViews("qualicad/principal/c_principalRegraGrupoPro", $this->global, $data, NULL);
+        }
+        else if ($tpTela == 'editar') {
+
+            if ($this->PermissaoModel->permissaoAcaoAtualizar($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Atualizar == 'N')
+            {
+                redirect('acaoNaoAutorizada');
+            }
+
+            $IdRegraGruPro = $this->uri->segment(3);
+            if($IdRegraGruPro == null)
+            {
+                redirect('principalRegraGrupoPro/listar');
+            }
+            $data['infoRegraGruPro'] = $this->PrincipalModel->carregaInfoRegraGruPro($IdRegraGruPro);
+            $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
+            $data['infoRegra'] = $this->PrincipalModel->carregaInfoRegrasEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
+
+            $this->global['pageTitle'] = 'QUALICAD : Editar Regra GruPro';
+            $this->loadViews("qualicad/principal/c_principalRegraGrupoPro", $this->global, $data, NULL);
+        }
     }
+
+    function adicionaRegraGruPro()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalRegraGrupoPro/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('Nome_Usuario','Nome','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Cpf_Usuario','CPF','trim|required|max_length[128]');
+        $this->form_validation->set_rules('Email','Email','trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('Senha','Senha','required|max_length[20]');
+        $this->form_validation->set_rules('resenha','Confirme a senha','trim|required|matches[password]|max_length[20]');
+
+        //VALIDAÇÃO
+
+        //    $this->form_validation->set_rules('perfil','Role','trim|required|numeric');
+
+        /*    if($this->form_validation->run() == FALSE)
+            {
+
+                redirect('cadastroUsuario/cadastrar');
+            }
+            else
+        { */
+
+        $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
+        $TbRegra_Id_Regra = $this->input->post('TbRegra_Id_Regra');
+        $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+        $Perc_Pago = $this->input->post('Perc_Pago');
+        $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+        $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        //    $roleId = $this->input->post('role');
+
+        //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+        //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+        if ($Tp_Ativo == 'S')
+        {
+            $Dt_Ativo = date('Y-m-d H:i:s');
+        } else
+        {
+            $Dt_Ativo = null;
+        }
+
+        //'Senha'=>getHashedPassword($senha)
+
+        $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+            'TbRegra_Id_Regra'=> $TbRegra_Id_Regra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
+            'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
+            'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+        $result = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
+
+        /*FIM ADICIONAR PLANO*/
+
+        if(($result > 0))
+        {
+            $process = 'Adicionar RegraGruPro';
+            $processFunction = 'Principal/adicionaRegraGruPro';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Regra GruPro criado com sucesso');
+
+            if (array_key_exists('salvarIrLista',$this->input->post())) {
+                redirect('principalRegraGrupoPro/listar');
+            }
+            else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                redirect('principalRegraGrupoPro/cadastrar');
+            }
+            else if (array_key_exists('salvarAvancar',$this->input->post())) {
+                redirect('principalRegraGrupoPro/cadastrar');
+            }
+
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Falha na criação da Regra GruPro');
+            redirect('principalRegraGrupoPro/cadastrar');
+        }
+
+        /*    } else {
+                    $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+                    redirect('principalConvenio/cadastrar');
+            } */
+
+        redirect('principalRegraGrupoPro/cadastrar');
+
+        //    }
+    }
+
+
+    function editaRegraGruPro()
+    {
+        if (array_key_exists('IrLista',$this->input->post())) {
+            redirect('principalRegraGrupoPro/listar');
+        }
+
+        $this->load->library('form_validation');
+
+        $IdRegraGruPro = $this->input->post('IdRegraGruPro');
+
+        //VALIDAÇÃO
+
+        /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
+           $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
+           $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
+           $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
+           $this->form_validation->set_rules('role','Role','trim|required|numeric');
+           $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
+
+           if($this->form_validation->run() == FALSE)
+           {
+               $this->editOld($userId);
+           }
+           else
+           { */
+
+        $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
+        $TbRegra_Id_Regra = $this->input->post('TbRegra_Id_Regra');
+        $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
+        $Perc_Pago = $this->input->post('Perc_Pago');
+        $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+        $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+        $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+        foreach ($this->PrincipalModel->carregaInfoRegraGruPro($IdRegraGruPro) as $data){
+            $Tp_Ativo_Atual = ($data->Tp_Ativo);
+        }
+
+        //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+        if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+        {
+            $Dt_Ativo = date('Y-m-d H:i:s');
+            $Dt_Inativo = null;
+        } else if ($Tp_Ativo == 'N')
+        {
+            $Dt_Ativo = null;
+            $Dt_Inativo = date('Y-m-d H:i:s');
+        }
+
+        $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+            'TbRegra_Id_Regra'=> $TbRegra_Id_Regra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
+            'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
+            'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+
+        $resultado = $this->PrincipalModel->editaRegraGruPro($infoRegraGruPro,$IdRegraGruPro);
+
+        if(($resultado == true))
+        {
+            $process = 'Regra GruPro atualizado';
+            $processFunction = 'Principal/editaRegraGruPro';
+            $this->logrecord($process,$processFunction);
+
+            if (array_key_exists('salvarPlano',$this->input->post())) {
+                $this->session->set_flashdata('success', 'Regra GruPro adicionado com sucesso');
+                redirect('principalRegraGrupoPro/editar/'.$IdRegraGruPro);
+            }
+
+            $this->session->set_flashdata('success', 'Regra GruPro atualizado com sucesso');
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Falha na atualização da Regra GruPro');
+        }
+
+        redirect('principalRegraGrupoPro/listar');
+        // }
+    }
+
+    function apagaRegraGruPro()
+    {
+
+        if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Excluir == 'N')
+        {
+            redirect('acaoNaoAutorizada');
+        }
+
+        $IdRegraGruPro = $this->uri->segment(2);
+
+        $infoRegraGruPro = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $resultado = $this->PrincipalModel->apagaRegraGruPro($infoRegraGruPro, $IdRegraGruPro);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de regra grupro';
+            $processFunction = 'Principal/apagaRegraGruPro';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Regra GruPro deletada com sucesso');
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir regra grupro');
+        }
+        redirect('principalRegraGrupoPro/listar');
+    }
+    // FIM DAS FUNÇÕES DA REGRAGRUPRO
 
 
     function principalProibicao()
