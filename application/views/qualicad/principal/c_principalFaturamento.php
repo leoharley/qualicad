@@ -135,24 +135,6 @@ if(!empty($infoFaturamento))
                                 </thead>
                                 <tr id="row0">
                                             <td>
-                                                <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
-                                                    <?php
-                                                    if(!empty($infoIndice))
-                                                    {
-                                                        foreach ($infoIndice as $indice)
-                                                        {
-                                                            ?>
-                                                            <option value="<?php echo $indice->Id_Indice ?>">
-                                                                <?php echo $indice->Id_Indice.' - '.$indice->Ds_indice ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </td>
-
-                                            <td>
                                             <input type="text" class="form-control required" id="Ds_FatItem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FatItem') : $Ds_FatItem ; ?>" name="Ds_FatItem"
                                                maxlength="128">
                                             </td>
