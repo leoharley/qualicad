@@ -9,7 +9,7 @@
   <section class="content">
     <div class="col-xs-12">
       <div class="text-left">
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>principalRegraGruPro/cadastrar">
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>principalRegraGrupoPro/cadastrar">
           <i class="fa fa-plus"></i> Adicionar regra grupro</a>
       </div>
       <br/>
