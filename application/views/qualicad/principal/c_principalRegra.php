@@ -182,16 +182,16 @@ if(!empty($infoRegra))
                                             </td>
 
                                             <td>
-                                                <input type="text" class="form-control required" id="Perc_Pago" value="<?php echo set_value('Perc_Pago'); ?>" name="Perc_Pago"
+                                                <input type="text" class="form-control" id="Perc_Pago" value="<?php echo set_value('Perc_Pago'); ?>" name="Perc_Pago"
                                                        maxlength="13">
                                             </td>
 
                                             <td>
-                                                <input type="date" class="form-control required" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
+                                                <input type="date" class="form-control" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                             </td>
 
                                             <td>
-                                                <input type="date" class="form-control required" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
+                                                <input type="date" class="form-control" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                             </td>
 
                                             <td>
