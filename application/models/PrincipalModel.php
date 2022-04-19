@@ -1046,6 +1046,20 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
         return $query->result();
     }
 
+    function carregaInfoRegraGruProRegra($idRegra)
+    {
+        $this->db->select('GrupoPro.CodGrupo, GrupoPro.Ds_GrupoPro, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
+        $this->db->from('Tb_RegraGruPro as RegraGruPro');
+        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = RegraGruPro.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+        $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = RegraGruPro.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
+        $this->db->where('RegraGruPro.TbRegra_Id_Regra', $idRegra);
+        $this->db->where('RegraGruPro.Deletado !=', 'S');
+        $this->db->where('RegraGruPro.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 
 // FIM DAS CONSULTAS NA TELA DE REGRAGRUPRO
 
