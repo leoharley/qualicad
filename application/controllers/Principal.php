@@ -952,7 +952,7 @@ class Principal extends BaseController
                 
                 $count = $this->CadastroModel->userListingCount($searchText);
 
-                $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
+                $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 100 );
                 
                 $data['registrosRegras'] = $this->PrincipalModel->listaRegra($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
                 
