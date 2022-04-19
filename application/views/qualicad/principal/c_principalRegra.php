@@ -19,27 +19,27 @@ if(!empty($infoRegra))
 ?>
 
 <style>
-    table, th, td {
+    #table, th, td {
         border: 1px solid #c0c0c0;
         border-collapse: collapse;
     }
-    table input {border:0!important;outline:0;}
-    table input:focus {outline:none!important;}
-    table select {border:0!important;outline:0;}
-    table select:focus {outline:none!important;}
+    #table input {border:0!important;outline:0;}
+    #table input:focus {outline:none!important;}
+    #table select {border:0!important;outline:0;}
+    #table select:focus {outline:none!important;}
 
-    table thead {
+    #table thead {
         position: sticky;
         top: 0;
     }
 
-    table thead th {
+    #table thead th {
         border: 1px solid #e4eff8;
         background: white;
         cursor: pointer;
     }
 
-    table thead th.header-label {
+    #table thead th.header-label {
         cursor: pointer;
         background: linear-gradient(0deg, #3c8dbc, #4578a2 5%, #e4eff8 150%);
         color: white;
@@ -143,7 +143,7 @@ if(!empty($infoRegra))
 
                                 <h4><strong>Regra Grupo</strong></h4>
 
-                                <table style="width:100%;">
+                                <table id="table" style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
