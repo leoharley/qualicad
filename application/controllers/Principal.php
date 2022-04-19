@@ -3250,7 +3250,7 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalRegraGruPro/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalRegraGruPro/listar", $count, 100 );
 
             $data['registroRegraGruPro'] = $this->PrincipalModel->listaRegraGruPro($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
