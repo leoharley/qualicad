@@ -201,6 +201,9 @@ if(!empty($infoIndice))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Grupo associado
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -227,6 +230,10 @@ if(!empty($infoIndice))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo set_value('Id_IndiceGrupo'); ?>" id="Id_IndiceGrupo" name="Id_IndiceGrupo" disabled>
+                                            </td>
+
                                             <td>
                                                 <select class="form-control" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
                                                     <?php
@@ -287,6 +294,11 @@ if(!empty($infoIndice))
                                 {
                                 ?>
                                 <tr style="background-color:#c0c0c0">
+
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $indice->Id_IndiceGrupo ?>" disabled>
+                                    </td>
+
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $indice->TbGrupoPro_CodGrupo.' - '.$indice->Ds_GrupoPro ?>" disabled>
                                     </td>
