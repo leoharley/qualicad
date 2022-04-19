@@ -241,7 +241,7 @@ if(!empty($infoRegra))
                                 ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->Id_RegraGruPro ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->Id_RegraGruPro ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Id_Faturamento .' - '.$regragrupro->Ds_Faturamento ?>" disabled>
