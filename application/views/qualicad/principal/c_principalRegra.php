@@ -298,19 +298,8 @@ if(!empty($infoRegra))
 
 <script>
 $(document).ready(function(){
-
-        $(".valor").inputmask('decimal', {
-                'alias': 'numeric',
-                'groupSeparator': ',',
-                'autoGroup': true,
-                'digits': 2,
-                'radixPoint': ".",
-                'digitsOptional': false,
-                'allowMinus': false,
-                'prefix': 'R$ ',
-                'placeholder': ''
-    });
-
+        $(":input").inputmask();
+        $('.valor').maskMoney();
     });
 
     shortcut.add("ctrl+l", function() {
