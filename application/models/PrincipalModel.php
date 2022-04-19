@@ -465,7 +465,7 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 
     function carregaInfoIndiceGrupoProPorIndice($id, $idEmpresa)
     {
-        $this->db->select('GrupoPro.Ds_GrupoPro, Regra.Ds_Regra, IndiceGrupo.*');
+        $this->db->select('GrupoPro.Ds_GrupoPro, IndiceGrupo.*');
         $this->db->from('TbIndiceGrupo as IndiceGrupo');
         $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = IndiceGrupo.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
         $this->db->where('IndiceGrupo.TbIndice_Id_Indice', $id);
