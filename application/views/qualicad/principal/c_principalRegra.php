@@ -213,7 +213,7 @@ if(!empty($infoRegra))
                                             </td>
 
                                             <td>
-                                                <input type="text" class="form-control" id="Perc_Pago" value="<?php echo set_value('Perc_Pago'); ?>" name="Perc_Pago"
+                                                <input type="text" class="form-control valor" id="Perc_Pago" value="<?php echo set_value('Perc_Pago'); ?>" name="Perc_Pago"
                                                        maxlength="13">
                                             </td>
 
@@ -297,6 +297,11 @@ if(!empty($infoRegra))
 <script src="<?php echo base_url(); ?>assets/js/addRegra.js" type="text/javascript"></script>
 
 <script>
+$(document).ready(function(){
+        $(":input").inputmask();
+        $('.valor').maskMoney();
+    });
+
     shortcut.add("ctrl+l", function() {
     document.getElementById('IrLista').click();
     });   
