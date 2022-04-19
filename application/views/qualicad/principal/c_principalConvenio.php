@@ -117,7 +117,7 @@ if(!empty($infoConvenio))
                                 <table style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <th class="header-label" style="background:fff;padding:10px">
+                                        <th class="header-label" style="background:fff!important;padding:10px">
                                         Código
                                         </th>
                                         <th class="header-label" style="padding:10px">
