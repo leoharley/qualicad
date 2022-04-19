@@ -1401,7 +1401,7 @@ class Principal extends BaseController
                         redirect('principalIndice/cadastrar');
                     }
                     else if (array_key_exists('salvarIndiceGrupo',$this->input->post())) {
-                        redirect('principalIndice/editar/'.$TbConvenio_Id_Convenio);
+                        redirect('principalIndice/editar/'.$result);
                     }
 
                 }
