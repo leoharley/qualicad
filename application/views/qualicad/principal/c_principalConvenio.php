@@ -256,8 +256,8 @@ if(!empty($infoConvenio))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control" id="CodPlano" value="<?php echo set_value('CodPlano') ; ?>" name="CodPlano"
-                                                maxlength="11">
+                                            <input type="text" class="form-control" id="Id_Plano" value="<?php echo set_value('Id_Plano') ; ?>" name="Id_Plano"
+                                                maxlength="11" disabled>
                                             </td>
 
                                             <td>
@@ -299,7 +299,7 @@ if(!empty($infoConvenio))
                                         <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->CodPlano ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Id_Plano ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $plano->Cd_PlanoERP ?>" disabled>

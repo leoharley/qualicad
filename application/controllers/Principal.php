@@ -179,7 +179,6 @@ class Principal extends BaseController
                 $TbConvenio_Id_Convenio = $result;
                 $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
                 $TbRegra_Id_Regra  = $this->input->post('TbRegra_Id_Regra');
-                $CodPlano = $this->input->post('CodPlano');
                 $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
                 $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
                 $Tp_Ativo = $this->input->post('Tp_Ativo_Plano');
@@ -205,7 +204,7 @@ class Principal extends BaseController
                     $infoPlano = array('TbConvenio_Id_Convenio' => $TbConvenio_Id_Convenio, 'TbEmpresa_Id_Empresa' => $this->session->userdata('IdEmpresa'),
                         'Ds_Plano' => $Ds_Plano, 'TbIndice_Id_Indice' => $TbIndice_Id_Indice, 'TbRegra_Id_Regra' => $TbRegra_Id_Regra, 'Cd_PlanoERP' => $Cd_PlanoERP,
                         'Tp_AcomodacaoPadrao' => $Tp_AcomodacaoPadrao, 'CriadoPor' => $this->vendorId, 'AtualizadoPor' => $this->vendorId,
-                        'CodPlano' => $CodPlano, 'Tp_Ativo' => $Tp_Ativo, 'Dt_Ativo' => $Dt_Ativo);
+                        'Tp_Ativo' => $Tp_Ativo, 'Dt_Ativo' => $Dt_Ativo);
 
                     $resultPlano = $this->PrincipalModel->adicionaPlano($infoPlano);
 
@@ -320,7 +319,6 @@ class Principal extends BaseController
                 $Ds_Plano = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Plano'))));
                 $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
                 $TbRegra_Id_Regra  = $this->input->post('TbRegra_Id_Regra');
-                $CodPlano = $this->input->post('CodPlano');
                 $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
                 $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
                 $Tp_Ativo = $this->input->post('Tp_Ativo_Plano');
@@ -346,7 +344,7 @@ class Principal extends BaseController
                     $infoPlano = array('TbConvenio_Id_Convenio' => $IdConvenio, 'TbEmpresa_Id_Empresa' => $this->session->userdata('IdEmpresa'),
                         'Ds_Plano' => $Ds_Plano, 'TbIndice_Id_Indice' => $TbIndice_Id_Indice, 'TbRegra_Id_Regra' => $TbRegra_Id_Regra, 'Cd_PlanoERP' => $Cd_PlanoERP,
                         'Tp_AcomodacaoPadrao' => $Tp_AcomodacaoPadrao, 'CriadoPor' => $this->vendorId, 'AtualizadoPor' => $this->vendorId,
-                        'CodPlano' => $CodPlano, 'Tp_Ativo' => $Tp_Ativo, 'Dt_Ativo' => $Dt_Ativo);
+                        'Tp_Ativo' => $Tp_Ativo, 'Dt_Ativo' => $Dt_Ativo);
 
                     $resultPlano = $this->PrincipalModel->adicionaPlano($infoPlano);
 
