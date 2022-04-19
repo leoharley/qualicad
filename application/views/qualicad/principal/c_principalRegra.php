@@ -245,6 +245,9 @@ if(!empty($infoRegra))
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Id_RegraGruPro ?>" disabled>
                                     </td>
                                     <td>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->CodGrupo .' - '.$regragrupro->Ds_GrupoPro ?>" disabled>
+                                    </td>
+                                    <td>
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Id_Faturamento .' - '.$regragrupro->Ds_Faturamento ?>" disabled>
                                     </td>
                                     <td>
