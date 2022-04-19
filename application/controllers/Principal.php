@@ -1391,13 +1391,13 @@ class Principal extends BaseController
 
                 $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
                 $TbIndice_Id_Indice = $result;
-                $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
-                $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-                $Vl_Indice = $this->input->post('Vl_Indice');
-                $Vl_M2Filme = $this->input->post('Vl_M2Filme');
-                $Vl_Honorario = $this->input->post('Vl_Honorario');
-                $Vl_UCO = $this->input->post('Vl_UCO');
-                $Tp_Ativo = $this->input->post('Tp_Ativo');
+                $Dt_IniVigencia = $this->input->post('Dt_IniVigencia_GrupoPro');
+                $Dt_FimVigencia = $this->input->post('Dt_FimVigencia_GrupoPro');
+                $Vl_Indice = $this->input->post('Vl_Indice_GrupoPro');
+                $Vl_M2Filme = $this->input->post('Vl_M2Filme_GrupoPro');
+                $Vl_Honorario = $this->input->post('Vl_Honorario_GrupoPro');
+                $Vl_UCO = $this->input->post('Vl_UCO_GrupoPro');
+                $Tp_Ativo = $this->input->post('Tp_Ativo_GrupoPro');
 
 
         //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
@@ -1521,13 +1521,13 @@ class Principal extends BaseController
 
                     $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
                     $TbIndice_Id_Indice = $resultado;
-                    $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
-                    $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-                    $Vl_Indice = $this->input->post('Vl_Indice');
-                    $Vl_M2Filme = $this->input->post('Vl_M2Filme');
-                    $Vl_Honorario = $this->input->post('Vl_Honorario');
-                    $Vl_UCO = $this->input->post('Vl_UCO');
-                    $Tp_Ativo = $this->input->post('Tp_Ativo');
+                    $Dt_IniVigencia = $this->input->post('Dt_IniVigencia_GrupoPro');
+                    $Dt_FimVigencia = $this->input->post('Dt_FimVigencia_GrupoPro');
+                    $Vl_Indice = $this->input->post('Vl_Indice_GrupoPro');
+                    $Vl_M2Filme = $this->input->post('Vl_M2Filme_GrupoPro');
+                    $Vl_Honorario = $this->input->post('Vl_Honorario_GrupoPro');
+                    $Vl_UCO = $this->input->post('Vl_UCO_GrupoPro');
+                    $Tp_Ativo = $this->input->post('Tp_Ativo_GrupoPro');
 
 
             //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
