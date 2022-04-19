@@ -1520,7 +1520,7 @@ class Principal extends BaseController
                     $resultado = $this->PrincipalModel->editaIndice($infoIndice, $IdIndice);
 
                     $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
-                    $TbIndice_Id_Indice = $resultado;
+                    $TbIndice_Id_Indice = $IdIndice;
                     $Dt_IniVigencia = $this->input->post('Dt_IniVigencia_GrupoPro');
                     $Dt_FimVigencia = $this->input->post('Dt_FimVigencia_GrupoPro');
                     $Vl_Indice = $this->input->post('Vl_Indice_GrupoPro');
