@@ -1388,7 +1388,43 @@ class Principal extends BaseController
 
                 $result = $this->PrincipalModel->adicionaIndice($infoIndice);
 
-                if($result > 0)
+                $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
+                $TbIndice_Id_Indice = $result;
+                $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+                $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+                $Vl_Indice = $this->input->post('Vl_Indice');
+                $Vl_M2Filme = $this->input->post('Vl_M2Filme');
+                $Vl_Honorario = $this->input->post('Vl_Honorario');
+                $Vl_UCO = $this->input->post('Vl_UCO');
+                $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+
+        //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $Dt_Ativo = null;
+                }
+
+                //'Senha'=>getHashedPassword($senha)
+
+                if ($Vl_Indice != '') {
+                $infoIndiceGrupoPro = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                    'TbGrupoPro_CodGrupo'=> $TbGrupoPro_CodGrupo, 'TbIndice_Id_Indice'=> $TbIndice_Id_Indice,
+                    'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice,
+                    'Vl_M2Filme'=>$Vl_M2Filme,'Vl_Honorario'=>$Vl_Honorario, 'Vl_UCO'=>$Vl_UCO, 
+                    'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+                    $resultIndiceGrupoPro = $this->PrincipalModel->adicionaIndiceGrupoPro($infoIndiceGrupoPro);
+                } else {
+                    $resultIndiceGrupoPro = 1;
+                }
+
+                if(($result > 0) && ($resultIndiceGrupoPro > 0))
                 {
                     $process = 'Adicionar índice';
                     $processFunction = 'Principal/adicionaIndice';
@@ -1481,12 +1517,55 @@ class Principal extends BaseController
 
                     
                     $resultado = $this->PrincipalModel->editaIndice($infoIndice, $IdIndice);
+
+                    $TbGrupoPro_CodGrupo = $this->input->post('TbGrupoPro_CodGrupo');
+                    $TbIndice_Id_Indice = $resultado;
+                    $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+                    $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+                    $Vl_Indice = $this->input->post('Vl_Indice');
+                    $Vl_M2Filme = $this->input->post('Vl_M2Filme');
+                    $Vl_Honorario = $this->input->post('Vl_Honorario');
+                    $Vl_UCO = $this->input->post('Vl_UCO');
+                    $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+
+            //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+                    //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                    if ($Tp_Ativo == 'S')
+                    {
+                        $Dt_Ativo = date('Y-m-d H:i:s');
+                    } else
+                    {
+                        $Dt_Ativo = null;
+                    }
+
+                    //'Senha'=>getHashedPassword($senha)
+
+
+                    if ($Vl_Indice != '') {
+                        $infoIndiceGrupoPro = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                            'TbGrupoPro_CodGrupo'=> $TbGrupoPro_CodGrupo, 'TbIndice_Id_Indice'=> $TbIndice_Id_Indice,
+                            'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice,
+                            'Vl_M2Filme'=>$Vl_M2Filme,'Vl_Honorario'=>$Vl_Honorario, 'Vl_UCO'=>$Vl_UCO, 
+                            'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+        
+                            $resultIndiceGrupoPro = $this->PrincipalModel->adicionaIndiceGrupoPro($infoIndiceGrupoPro);
+                        } else {
+                            $resultIndiceGrupoPro = 1;
+                        }
+
                     
-                    if($resultado == true)
+                    if(($resultado == true) && ($resultIndiceGrupoPro > 0))
                     {
                         $process = 'Índice atualizado';
                         $processFunction = 'Cadastro/editaIndice';
                         $this->logrecord($process,$processFunction);
+
+                        if (array_key_exists('salvarIndiceGrupo',$this->input->post())) {
+                            $this->session->set_flashdata('success', 'Índice Grupo Pro adicionado com sucesso');
+                            redirect('principalIndice/editar/'.$IdIndice);
+                        }
     
                         $this->session->set_flashdata('success', 'Índice atualizado com sucesso');
                     }
