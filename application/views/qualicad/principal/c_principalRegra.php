@@ -147,6 +147,9 @@ if(!empty($infoRegra))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Grupo pro associado
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -167,6 +170,11 @@ if(!empty($infoRegra))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
+
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraGruPro') : $Id_Convenio ; ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
+                                            </td>
+
                                             <td>
                                                 <select class="form-control" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
                                                     <?php
@@ -233,7 +241,7 @@ if(!empty($infoRegra))
                                 ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $regragrupro->CodGrupo .' - '.$regragrupro->Ds_GrupoPro ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $plano->Id_RegraGruPro ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Id_Faturamento .' - '.$regragrupro->Ds_Faturamento ?>" disabled>
