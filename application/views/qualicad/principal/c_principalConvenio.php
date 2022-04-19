@@ -111,8 +111,8 @@ if(!empty($infoConvenio))
                             <div class="row">
                                 <div class="col-md-1">
                                     <div class="form-group">
-                                        <label for="CodConvenio">Código</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CodConvenio') : $CodConvenio ; ?>" id="CodConvenio" name="CodConvenio">
+                                        <label for="Id_Convenio">Código</label>
+                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Convenio') : $Id_Convenio ; ?>" id="Id_Convenio" name="Id_Convenio">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
