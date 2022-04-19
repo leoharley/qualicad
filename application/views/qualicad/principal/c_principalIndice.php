@@ -291,9 +291,6 @@ if(!empty($infoIndice))
                                         <input type="text" class="form-control" value="<?php echo $indice->TbGrupoPro_CodGrupo.' - '.$indice->Ds_GrupoPro ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $indice->TbIndice_Id_Indice.' - '.$indice->Ds_indice ?>" disabled>
-                                    </td>
-                                    <td>
                                         <input type="text" class="form-control" value="<?php echo $indice->Dt_IniVigencia ?>" disabled>
                                     </td>
                                     <td>
