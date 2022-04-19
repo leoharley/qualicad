@@ -463,12 +463,14 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         return $query->result();
     }
 
-    function carregaInfoIndiceGrupoProPorIndice($Id,$idEmpresa)
+    function carregaInfoIndiceGrupoProPorIndice($id, $idEmpresa)
     {
-        $this->db->select('*');
-        $this->db->from('TbIndiceGrupo');
-        $this->db->where('TbIndice_Id_Indice', $Id);
-        $this->db->where('TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->select('GrupoPro.Ds_GrupoPro, Regra.Ds_Regra, IndiceGrupo.*');
+        $this->db->from('TbIndiceGrupo as IndiceGrupo');
+        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = IndiceGrupo.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+        $this->db->where('IndiceGrupo.TbIndice_Id_Indice', $id);
+        $this->db->where('IndiceGrupo.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('IndiceGrupo.Deletado !=', 'S');
         $query = $this->db->get();
 
         return $query->result();
