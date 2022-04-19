@@ -108,70 +108,85 @@ if(!empty($infoConvenio))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addConvenio" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaConvenio' : base_url().'editaConvenio'; ?>" method="post" role="form">
                         <div class="box-body" style="padding-left:1rem;padding-right:1rem">
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <label for="Id_Convenio">Código</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Convenio') : $Id_Convenio ; ?>" id="Id_Convenio" name="Id_Convenio" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Ds_Convenio">Convênio(desc.)</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Convenio') : $Ds_Convenio ; ?>" id="Ds_Convenio" name="Ds_Convenio" maxlength="128">
-                                        <input type="hidden" value="<?php echo $Id_Convenio; ?>" name="Id_Convenio" id="Id_Convenio" />
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="CNPJ_Convenio">CNPJ</label>
-                                        <input type="text" data-inputmask="'mask': '99.999.999/9999-99'" class="form-control required cnpj" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ_Convenio') : $CNPJ_Convenio ; ?>" id="CNPJ_Convenio" name="CNPJ_Convenio" maxlength="128">
-                                    </div>
-                                </div>
-                       <!--    </div> -->
-                        <!--    <div class="row"> -->
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <label for="Cd_ConvenioERP">Cod. ERP</label>
-                                        <input type="text" class="form-control required" id="Cd_ConvenioERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_ConvenioERP') : $Cd_ConvenioERP ; ?>" name="Cd_ConvenioERP"
+                            
+                        <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
+
+                                <h4><strong>Convênio</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Convênio(desc.)
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        CNPJ
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        Cod. ERP
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Tipo
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ínicio
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Vigência
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Convenio') : $Id_Convenio ; ?>" id="Id_Convenio" name="Id_Convenio" disabled>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Convenio') : $Ds_Convenio ; ?>" id="Ds_Convenio" name="Ds_Convenio" maxlength="128">
+                                            <input type="hidden" value="<?php echo $Id_Convenio; ?>" name="Id_Convenio" id="Id_Convenio" /> 
+                                            </td>
+
+                                            <td>
+                                            <input type="text" data-inputmask="'mask': '99.999.999/9999-99'" class="form-control required cnpj" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('CNPJ_Convenio') : $CNPJ_Convenio ; ?>" id="CNPJ_Convenio" name="CNPJ_Convenio" maxlength="128">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" id="Cd_ConvenioERP" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_ConvenioERP') : $Cd_ConvenioERP ; ?>" name="Cd_ConvenioERP"
                                             maxlength="13">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Tp_Convenio">Tipo</label>
-                                        <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio">
                                             <option value="1">Convênio</option>
                                             <option value="2">Filantrópico</option>
                                             <option value="3">Particular</option>
-                                        </select>
-                                    </div>
-                                </div>
-                        <!--    </div> -->
-                        <!--    <div class="row"> -->
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Dt_InicioConvenio">Ínicio</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_InicioConvenio') : $Dt_InicioConvenio ; ?>" id="Dt_InicioConvenio" name="Dt_InicioConvenio">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Dt_VigenciaConvenio">Vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">Ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_InicioConvenio') : $Dt_InicioConvenio ; ?>" id="Dt_InicioConvenio" name="Dt_InicioConvenio">
+                                            </td>
+
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
 											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                            </select>
+                                            </td>
+                                </tr>
+
+                                </table>
                             </div>
 
                             <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
