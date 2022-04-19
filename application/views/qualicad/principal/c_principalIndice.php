@@ -290,11 +290,12 @@ if(!empty($infoIndice))
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $indice->TbGrupoPro_CodGrupo.' - '.$indice->Ds_GrupoPro ?>" disabled>
                                     </td>
+
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $indice->Dt_IniVigencia ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo date("d/m/Y", strtotime($indice->Dt_IniVigencia)) ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $indice->Dt_FimVigencia ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo date("d/m/Y", strtotime($indice->Dt_FimVigencia)) ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $indice->Vl_Indice ?>" disabled>
