@@ -1128,6 +1128,8 @@ class Principal extends BaseController
 
             $IdRegra = $this->input->post('Id_Regra');
 
+            var_dump($IdRegra);exit;
+
             //VALIDAÇÃO
 
             /*   $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]');
