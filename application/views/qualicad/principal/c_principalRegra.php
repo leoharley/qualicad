@@ -172,7 +172,7 @@ if(!empty($infoRegra))
                                 <tr id="row0">
 
                                             <td>
-                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraGruPro') : $Id_Convenio ; ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraGruPro') : $Id_RegraGruPro ; ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
                                             </td>
 
                                             <td>
