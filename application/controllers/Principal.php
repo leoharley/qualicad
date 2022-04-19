@@ -1285,7 +1285,7 @@ class Principal extends BaseController
                     
                     $count = $this->CadastroModel->userListingCount($searchText);
     
-                    $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 10 );
+                    $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 100 );
                     
                     $data['registrosIndices'] = $this->PrincipalModel->listaIndice($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
                     
@@ -1323,7 +1323,7 @@ class Principal extends BaseController
                     }
                     $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndice($IdIndice);
                     $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
-                    
+
                     $this->global['pageTitle'] = 'QUALICAD : Editar Índice';
                     $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL);
                 }
