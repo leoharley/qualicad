@@ -263,13 +263,6 @@ $(function() {
                       </a>
                   </li>
 
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalRegraProibicao/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>RegraProibição</span>
-                      </a>
-                  </li>
-                  
                   </ul>
                   </li>
 
@@ -306,6 +299,13 @@ $(function() {
                       <a href="<?php echo base_url(); ?>principalRegraGruPro/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>RegraGrupoPro</span>
+                      </a>
+                  </li>
+
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalRegraProibicao/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>RegraProibição</span>
                       </a>
                   </li>
                    
