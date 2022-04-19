@@ -1322,6 +1322,8 @@ class Principal extends BaseController
                         redirect('principalIndice/listar');
                     }
                     $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndice($IdIndice);
+                    $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
+                    
                     $this->global['pageTitle'] = 'QUALICAD : Editar Índice';
                     $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL);
                 }
