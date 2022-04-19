@@ -251,7 +251,7 @@ if(!empty($infoRegra))
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Id_Faturamento .' - '.$regragrupro->Ds_Faturamento ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control valor" value="<?php echo $regragrupro->Perc_Pago ?>" disabled>
+                                        <input type="text" id="perc" class="form-control valor" value="<?php echo $regragrupro->Perc_Pago ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Dt_IniVigencia ?>" disabled>
@@ -300,6 +300,7 @@ if(!empty($infoRegra))
 $(document).ready(function(){
         $(":input").inputmask();
         $('.valor').maskMoney();
+        document.getElementById("perc").focus();
     });
 
     shortcut.add("ctrl+l", function() {
