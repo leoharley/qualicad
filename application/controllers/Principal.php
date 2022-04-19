@@ -1400,6 +1400,9 @@ class Principal extends BaseController
                     else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
                         redirect('principalIndice/cadastrar');
                     }
+                    else if (array_key_exists('salvarIndiceGrupo',$this->input->post())) {
+                        redirect('principalIndice/editar/'.$TbConvenio_Id_Convenio);
+                    }
 
                 }
                 else
