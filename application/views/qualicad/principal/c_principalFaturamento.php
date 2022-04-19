@@ -98,36 +98,56 @@ if(!empty($infoFaturamento))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addFaturamento" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaFaturamento' : base_url().'editaFaturamento'; ?>" method="post" role="form">
                         <div class="box-body" style="padding-left:1rem;padding-right:1rem">
-                            <div class="row">
+                            
+                        
+                        <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Ds_Faturamento">Faturamento (descrição)</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Faturamento') : $Ds_Faturamento ; ?>" id="Ds_Faturamento" name="Ds_Faturamento" maxlength="128">
-                                        <input type="hidden" value="<?php echo $Id_Faturamento; ?>" name="Id_Faturamento" id="Id_Faturamento" />
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Tp_Faturamento">Tipo de faturamento</label>
-                                        <select class="form-control required" id="Tp_Faturamento" name="Tp_Faturamento">
-                                            <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '1') { echo 'selected'; } ?>>Reais</option>
-                                            <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '2') { echo 'selected'; } ?>>CH</option>
-                                            <option value="3" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '3') { echo 'selected'; } ?>>CBHPM</option>
-                                        </select>
-                                    </div>
-                                </div>
-                        <!--    </div> -->
-                        <!--    <div class="row"> -->
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">Faturamento ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
-                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
-											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <h4><strong>Faturamento</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Faturamento (descrição)
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Tipo de faturamento
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        Faturamento ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                    <td>
+                                    <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Faturamento') : $Id_Faturamento ; ?>" id="Id_Faturamento" name="Id_Faturamento" disabled>
+                                    </td>
+
+                                    <td>
+                                    <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Faturamento') : $Ds_Faturamento ; ?>" id="Ds_Faturamento" name="Ds_Faturamento" maxlength="128">
+                                    </td>
+
+                                    <td>
+                                    <select class="form-control required" id="Tp_Faturamento" name="Tp_Faturamento">
+                                    <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '1') { echo 'selected'; } ?>>Reais</option>
+                                    <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '2') { echo 'selected'; } ?>>CH</option>
+                                    <option value="3" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Faturamento == '3') { echo 'selected'; } ?>>CBHPM</option>
+                                    </select>
+                                    </td>
+
+                                    <td>
+                                    <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                    <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+                                    <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                    </select>
+                                    </td>
+                                </tr>
+
+                                </table>
                             </div>
 
                             <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
