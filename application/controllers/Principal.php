@@ -1323,6 +1323,7 @@ class Principal extends BaseController
                     }
                     $data['infoIndice'] = $this->PrincipalModel->carregaInfoIndice($IdIndice);
                     $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
+                    $data['infoIndiceGrupoPro'] = $this->PrincipalModel->carregaInfoIndiceGrupoProPorIndice($IdIndice,$this->session->userdata('IdEmpresa'));
 
                     $this->global['pageTitle'] = 'QUALICAD : Editar Índice';
                     $this->loadViews("qualicad/principal/c_principalIndice", $this->global, $data, NULL);

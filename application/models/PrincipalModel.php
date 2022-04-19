@@ -463,6 +463,17 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         return $query->result();
     }
 
+    function carregaInfoIndiceGrupoProPorIndice($Id,$idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbIndiceGrupo');
+        $this->db->where('TbIndice_Id_Indice', $Id);
+        $this->db->where('TbEmpresa_Id_Empresa', $idEmpresa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function carregaInfoIndiceGrupoProEmpresa($idEmpresa)
     {
         $this->db->select('*');
