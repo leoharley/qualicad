@@ -82,7 +82,7 @@
                 <?php if(!empty($infoFatItem)){ foreach($infoFatItem as $registro){ ?>
                 <tr>
                     <td><?php echo $registro->Id_FatItem ?></td>
-                    <td><?php echo $registro->Faturamento ?></td>
+                    <td><?php echo $registro->TbFaturamento_Id_Faturamento ?></td>
                     <td><?php echo $registro->Ds_FatItem ?></td>
                     <td><?php echo $registro->Vl_Honorário ?></td>
                     <td><?php echo $registro->Vl_Operacional ?></td>
