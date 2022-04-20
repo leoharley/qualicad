@@ -117,7 +117,7 @@ if(!empty($infoRegraProibicao))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                            <td style="width:10%!important">
+                                            <td style="width:5%!important">
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraProibicao') : $Id_RegraProibicao ; ?>" id="Id_RegraProibicao" name="Id_RegraProibicao" disabled>
                                             </td>
 
