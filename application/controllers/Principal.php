@@ -1164,7 +1164,6 @@ class Principal extends BaseController
 
 
             foreach ($carregaGrupoPro as $data){
-            {
                 if ($Perc_Pago != '') {
                 $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$data->CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                     'TbRegra_Id_Regra'=> $result, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
