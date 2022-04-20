@@ -34,7 +34,7 @@
     <?php } ?>
 	
     <div class="row">
-        
+
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaFatItem" method="post" enctype="multipart/form-data">

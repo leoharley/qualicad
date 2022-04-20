@@ -1,6 +1,7 @@
 <?php
 
 $Id_DeparaImportacao = '';
+$Ds_Layout = '';
 $No_Importacao = '';
 $No_Tabela = '';
 $No_CampoOrigem = '';
@@ -13,6 +14,7 @@ if(!empty($infoDePara))
     foreach ($infoDePara as $r)
     {
         $Id_DeparaImportacao = $r->Id_DeparaImportacao;
+        $Ds_Layout = $r->Ds_Layout;
         $No_Importacao = $r->No_Importacao;
         $No_Tabela = $r->No_Tabela;
         $No_CampoOrigem = $r->No_CampoOrigem;
