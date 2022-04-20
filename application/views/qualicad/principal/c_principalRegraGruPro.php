@@ -88,6 +88,9 @@ if ($this->uri->segment(2) == 'editar') {
                                         Código
                                         </th>
                                         <th class="header-label" style="padding:10px">
+                                        Tp Grupo Pro
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         GrupoPro
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -113,6 +116,13 @@ if ($this->uri->segment(2) == 'editar') {
                                 <tr id="row0">
                                             <td style="width:10%!important;">
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraGruPro') : $Id_RegraGruPro ; ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
+                                            </td>
+
+                                            <td>
+                                                <select class="form-control" id="Tp_GrupoPro" name="Tp_GrupoPro">
+                                                    <option value="MA">MA</option>
+                                                    <option value="ME">ME</option>
+                                                </select>
                                             </td>
 
                                             <td>
