@@ -231,7 +231,7 @@ if(!empty($infoIndice))
                                 </thead>
                                 <tr id="row0">
                                             <td>
-                                            <input type="text" class="form-control required" value="<?php echo set_value('Id_IndiceGrupo'); ?>" id="Id_IndiceGrupo" name="Id_IndiceGrupo" disabled>
+                                            <input type="text" class="form-control" value="<?php echo set_value('Id_IndiceGrupo'); ?>" id="Id_IndiceGrupo" name="Id_IndiceGrupo" disabled>
                                             </td>
 
                                             <td>

@@ -176,7 +176,7 @@ if(!empty($infoRegra))
                                 <tr id="row0">
 
                                             <td style="width:5%!important">
-                                            <input type="text" class="form-control required" value="<?php echo set_value('Id_RegraGruPro'); ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
+                                            <input type="text" class="form-control" value="<?php echo set_value('Id_RegraGruPro'); ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
                                             </td>
 
                                             <td>
