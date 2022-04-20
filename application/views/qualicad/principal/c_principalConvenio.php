@@ -313,7 +313,7 @@ if(!empty($infoConvenio))
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo ($plano->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
                                     </td>
-                                    <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalConvenio/editar/'.$registro->Id_Convenio; ?>" title="Editar">
+                                    <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalPlano/editar/'.$plano->Id_Plano; ?>" title="Editar">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     
