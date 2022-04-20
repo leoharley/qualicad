@@ -45,6 +45,7 @@
                         <option value="Bradesco">Bradesco</option>
                     </select>
                 </div>
+                <br/>
                 <div class="form-group">
                     <label for="TbFaturamento_Id_Faturamento">Faturamento associado</label>
                     <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
