@@ -748,7 +748,7 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
     {
         $this->db->select('GrupoPro.*');
         $this->db->from('TbGrupoPro as GrupoPro');
-        $this->db->where('GrupoPro.Tp_GrupoPro ', $tpGrupoPro);
+        $this->db->where('GrupoPro.Tp_GrupoPro', $tpGrupoPro);
         $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('GrupoPro.Deletado !=', 'S');
         $query = $this->db->get();
