@@ -112,7 +112,7 @@ if(!empty($infoPlano))
                                 </thead>
                                 <tr id="row0">
                                             <td>
-                                            <input type="text" class="form-control required" value="<?php echo set_value('Id_Plano'); ?>" id="Id_Plano" name="Id_Plano" disabled>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Plano') : $Id_Plano ; ?>" id="Id_Plano" name="Id_Plano" disabled>
                                             </td>
                                             <td>
                                                 <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio">
