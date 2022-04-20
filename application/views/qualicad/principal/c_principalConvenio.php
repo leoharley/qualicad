@@ -283,6 +283,9 @@ if(!empty($infoConvenio))
                                                 <option value="N">Não</option>
                                             </select>
                                             </td>
+                                            <td>
+                                            Ações
+                                            </td>
                                 </tr>
 
                                 <?php
