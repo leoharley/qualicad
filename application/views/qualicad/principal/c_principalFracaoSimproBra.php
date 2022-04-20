@@ -82,11 +82,58 @@ if(!empty($infoFracaoSimproBra))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addFracaoSimproBra" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaFracaoSimproBra' : base_url().'editaFracaoSimproBra'; ?>" method="post" role="form">
                         <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="TbProFat_Cd_ProFat">ProFat associado</label>
-                                        <select class="form-control required" id="TbProFat_Cd_ProFat" name="TbProFat_Cd_ProFat">
+
+
+                        <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
+
+                                <h4><strong>Fração Mat/Med</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        ProFat associado
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Faturamento associado
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        TUSS associada
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Descrição Fração Mat/Med
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Descrição laboratório
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Descrição apresentação
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Tipo MatMed
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor do fator de divisão
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Qtd. de produção
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_FracaoSimproBra') : $Id_FracaoSimproBra ; ?>" id="Id_FracaoSimproBra" name="Id_FracaoSimproBra" disabled>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="TbProFat_Cd_ProFat" name="TbProFat_Cd_ProFat">
                                             <?php
                                             if(!empty($infoProFat))
                                             {
@@ -100,14 +147,12 @@ if(!empty($infoFracaoSimproBra))
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                        <input type="hidden" value="<?php echo $Id_FracaoSimproBra; ?>" name="Id_FracaoSimproBra" id="Id_FracaoSimproBra" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="TbFaturamento_Id_Faturamento">Faturamento associado</label>
-                                        <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            </select>
+                                            <input type="hidden" value="<?php echo $Id_FracaoSimproBra; ?>" name="Id_FracaoSimproBra" id="Id_FracaoSimproBra" /> 
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
                                             <?php
                                             if(!empty($infoFaturamento))
                                             {
@@ -121,15 +166,11 @@ if(!empty($infoFracaoSimproBra))
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="TbTUSS_Id_Tuss">TUSS associada</label>
-                                        <select class="form-control required" id="TbTUSS_Id_Tuss" name="TbTUSS_Id_Tuss">
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="TbTUSS_Id_Tuss" name="TbTUSS_Id_Tuss">
                                             <?php
                                             if(!empty($infoTUSS))
                                             {
@@ -143,70 +184,53 @@ if(!empty($infoFracaoSimproBra))
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Ds_FracaoSimproBra">Descrição fração simpro bra</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FracaoSimproBra') : $Ds_FracaoSimproBra ; ?>" id="Ds_FracaoSimproBra" name="Ds_FracaoSimproBra"
-                                        maxlength="128">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Ds_Laboratorio">Descrição laboratório</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Laboratorio') : $Ds_Laboratorio ; ?>" id="Ds_Laboratorio" name="Ds_Laboratorio"
-                                        maxlength="128">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Ds_Apresentacao">Descrição apresentação</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Apresentacao') : $Ds_Apresentacao ; ?>" id="Ds_Apresentacao" name="Ds_Apresentacao"
-                                        maxlength="128">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Tp_MatMed">Tipo MatMed</label>
-                                        <select class="form-control required" id="Tp_MatMed" name="Tp_MatMed">
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FracaoSimproBra') : $Ds_FracaoSimproBra ; ?>" id="Ds_FracaoSimproBra" name="Ds_FracaoSimproBra"
+                                            maxlength="128">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Laboratorio') : $Ds_Laboratorio ; ?>" id="Ds_Laboratorio" name="Ds_Laboratorio"
+                                            maxlength="128">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Apresentacao') : $Ds_Apresentacao ; ?>" id="Ds_Apresentacao" name="Ds_Apresentacao"
+                                            maxlength="128">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_MatMed" name="Tp_MatMed">
                                             <option value="MED" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MED') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>MED</option>
                                             <option value="MAT" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MAT') { echo 'selected'; } ?>>MAT</option>
                                             <option value="SOL" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'SOL') { echo 'selected'; } ?>>SOL</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Vl_FatorDivisao">Valor do fator de divisão</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_FatorDivisao') : $Vl_FatorDivisao ; ?>" id="Vl_FatorDivisao" name="Vl_FatorDivisao"
-                                        maxlength="11">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Qt_Prod">Quantidade de produção</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Qt_Prod') : $Qt_Prod ; ?>" id="Qt_Prod" name="Qt_Prod"
-                                        maxlength="11">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">Índice ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            </select>
+                                            </td>
+                                            
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_FatorDivisao') : $Vl_FatorDivisao ; ?>" id="Vl_FatorDivisao" name="Vl_FatorDivisao"
+                                            maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Qt_Prod') : $Qt_Prod ; ?>" id="Qt_Prod" name="Qt_Prod"
+                                            maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
                                             <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                            </select>
+                                            </td>
+                                </tr>
+
+                                </table>
                             </div>
+
                         </div>
                         <!-- /.box-body -->
 
