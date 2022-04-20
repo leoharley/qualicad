@@ -159,6 +159,9 @@ if(!empty($infoFaturamento))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Descrição
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -185,6 +188,9 @@ if(!empty($infoFaturamento))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
+                                            <td>
+                                            <input type="text" class="form-control required" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
+                                            </td>
                                             <td>
                                             <input type="text" class="form-control required" id="Ds_FatItem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_FatItem') : $Ds_FatItem ; ?>" name="Ds_FatItem"
                                                maxlength="128">
