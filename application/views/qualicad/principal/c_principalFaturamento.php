@@ -129,6 +129,7 @@ if(!empty($infoFaturamento))
 
                                     <td>
                                     <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Faturamento') : $Ds_Faturamento ; ?>" id="Ds_Faturamento" name="Ds_Faturamento" maxlength="128">
+                                    <input type="hidden" value="<?php echo $Id_Faturamento; ?>" name="Id_Faturamento" id="Id_Faturamento" /> 
                                     </td>
 
                                     <td>
@@ -191,6 +192,7 @@ if(!empty($infoFaturamento))
                                             <td>
                                             <input type="text" class="form-control required" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
                                             </td>
+
                                             <td>
                                             <input type="text" class="form-control required" id="Ds_FatItem" value="<?php echo set_value('Ds_FatItem'); ?>" name="Ds_FatItem"
                                                maxlength="128">
@@ -226,8 +228,8 @@ if(!empty($infoFaturamento))
 
                                             <td>
                                             <select class="form-control required" id="Tp_Ativo_FatItem" name="Tp_Ativo_FatItem">
-                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo_FatItem == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
-                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo_FatItem == 'N') { echo 'selected'; } ?>>Não</option>
+                                            <option value="S">Sim</option>
+                                            <option value="N">Não</option>
                                             </select>
                                             </td>
                                 </tr>
@@ -240,7 +242,10 @@ if(!empty($infoFaturamento))
                                 ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
-                                    <input type="text" class="form-control" value="<?php echo $fatitem->Id_FatItem.' - '.$fatitem->Ds_FatItem ?>" disabled>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Id_FatItem ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Ds_FatItem ?>" disabled>
                                     </td>
                                     <td>
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Dt_IniVigencia ?>" disabled>
