@@ -184,6 +184,21 @@ if(!empty($infoFaturamento))
                                         Valor filme
                                         </th>
                                         <th class="header-label" style="padding:10px">
+                                        Cd_PorteMedico
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Cd_TUSS
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Cd_TISS
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Qt_Embalagem
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ds_Unidade
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Ativo?
                                         </th>
                                     </tr>
@@ -223,6 +238,31 @@ if(!empty($infoFaturamento))
 
                                             <td>
                                             <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Filme'); ?>" id="Vl_Filme" name="Vl_Filme"
+                                               maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Cd_PorteMedico'); ?>" id="Cd_PorteMedico" name="Cd_PorteMedico"
+                                               maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Cd_TUSS'); ?>" id="Cd_TUSS" name="Cd_TUSS"
+                                               maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Cd_TISS'); ?>" id="Cd_TISS" name="Cd_TISS"
+                                               maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Qt_Embalagem'); ?>" id="Qt_Embalagem" name="Qt_Embalagem"
+                                               maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Ds_Unidade'); ?>" id="Ds_Unidade" name="Ds_Unidade"
                                                maxlength="11">
                                             </td>
 
