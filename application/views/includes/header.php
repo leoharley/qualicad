@@ -326,7 +326,7 @@ $(function() {
                   <li class="treeview">
                       <a href="<?php echo base_url(); ?>principalFracaoSimproBra/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Fração Simpro Bra</span>
+                          <span>Fração Mat/Med</span>
                       </a>
                   </li>
                   
