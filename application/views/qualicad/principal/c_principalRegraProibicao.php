@@ -103,6 +103,9 @@ if(!empty($infoRegraProibicao))
                                         Descrição
                                         </th>
                                         <th class="header-label" style="padding:10px">
+                                        Tipo de regra de proibição
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Tipo de atendimento
                                         </th>
                                         <th class="header-label" style="padding:10px">
