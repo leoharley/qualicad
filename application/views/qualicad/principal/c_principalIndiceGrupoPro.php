@@ -79,11 +79,54 @@ if(!empty($infoIndiceGrupoPro))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addIndiceGrupoPro" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaIndiceGrupoPro' : base_url().'editaIndiceGrupoPro'; ?>" method="post" role="form">
                         <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="TbIndice_Id_Indice">Índice associado</label>
-                                        <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                            
+                            <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
+
+                                <h4><strong>Índice Grupo Pro</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Índice associado
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Grupo associado
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        Data de início da vigência
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Data de fim da vigência
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor índice
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor M2 Filme
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor honorário
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor UCO
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Índice por grupo ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_IndiceGrupo') : $Id_IndiceGrupo ; ?>" id="Id_IndiceGrupo" name="Id_IndiceGrupo" disabled>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
                                             <?php
                                             if(!empty($infoIndice))
                                             {
@@ -97,14 +140,12 @@ if(!empty($infoIndiceGrupoPro))
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                        <input type="hidden" value="<?php echo $Id_IndiceGrupo ; ?>" name="Id_IndiceGrupo" id="Id_IndiceGrupo" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="TbGrupoPro_CodGrupo">Grupo associado</label>
-                                        <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
+                                            </select>
+                                            <input type="hidden" value="<?php echo $Id_IndiceGrupo; ?>" name="Id_IndiceGrupo" id="Id_IndiceGrupo" /> 
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
                                             <?php
                                             if(!empty($infoGrupoPro))
                                             {
@@ -118,67 +159,51 @@ if(!empty($infoIndiceGrupoPro))
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Dt_IniVigencia">Data de início da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Dt_FimVigencia">Data de fim da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Vl_Indice">Valor índice</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Vl_M2Filme">Valor M2 Filme</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_M2Filme') : $Vl_M2Filme ; ?>" id="Vl_M2Filme" name="Vl_M2Filme"
-                                        maxlength="11">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                            <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Vl_Honorario">Valor honorário</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorario') : $Vl_Honorario ; ?>" id="Vl_Honorario" name="Vl_Honorario"
-                                        maxlength="11">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Vl_UCO">Valor UCO</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_UCO') : $Vl_UCO ; ?>" id="Vl_UCO" name="Vl_UCO"
-                                        maxlength="11">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">Índice por grupo ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
+                                            </td>
+
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Indice') : $Vl_Indice ; ?>" id="Vl_Indice" name="Vl_Indice">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_M2Filme') : $Vl_M2Filme ; ?>" id="Vl_M2Filme" name="Vl_M2Filme">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_M2Filme') : $Vl_M2Filme ; ?>" id="Vl_M2Filme" name="Vl_M2Filme">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorario') : $Vl_Honorario ; ?>" id="Vl_Honorario" name="Vl_Honorario"
+                                            maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_UCO') : $Vl_UCO ; ?>" id="Vl_UCO" name="Vl_UCO"
+                                            maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
                                             <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>  
-                        </div>
+                                            </select>
+                                            </td>
+                                </tr>
+
+                                </table>
+                            </div>
+                        
+
                         <!-- /.box-body -->
 
                         <div class="box-footer">
