@@ -262,6 +262,11 @@ if(!empty($infoRegra))
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo ($regragrupro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
                                     </td>
+                                    <td>
+                                    <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalRegraGruPro/editar/'.$regragrupro->Id_RegraGruPro; ?>" title="Editar">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    </td>
                                 </tr>
                                     <?php
                                 }
