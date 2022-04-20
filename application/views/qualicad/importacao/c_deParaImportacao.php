@@ -74,8 +74,18 @@ if(!empty($infoDePara))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="Ds_Layout">Layout de importação</label>
+                                        <select class="form-control required" id="Ds_Layout" name="Ds_Layout">
+                                            <option value="Assefaz" <?php if ($this->uri->segment(2) == 'editar' && $Ds_Layout == 'Assefaz') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Assefaz</option>
+                                            <option value="Bradesco" <?php if ($this->uri->segment(2) == 'editar' && $Ds_Layout == 'Bradesco') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Bradesco</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label for="No_Importacao">Nome importação</label>
                                         <select class="form-control required" id="No_Importacao" name="No_Importacao">
+                                            <option value="FatItem" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'FatItem') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>FatItem</option>
                                             <option value="GrupoPro" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'GrupoPro') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>GrupoPro</option>
                                             <option value="ProFat" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'ProFat') { echo 'selected'; } ?>>ProFat</option>
                                             <option value="TUSS" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'TUSS') { echo 'selected'; } ?>>TUSS</option>
@@ -90,6 +100,8 @@ if(!empty($infoDePara))
                                         <input type="hidden" value="<?php echo $Id_DeparaImportacao; ?>" name="Id_DeparaImportacao" id="Id_DeparaImportacao" />
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="No_Tabela">Nome tabela</label>
@@ -122,8 +134,6 @@ if(!empty($infoDePara))
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="No_CampoOrigem">Campo origem</label>
@@ -131,15 +141,15 @@ if(!empty($infoDePara))
                                             maxlength="128">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="No_CampoDestino">Campo destino</label>
                                         <input type="text" class="form-control required" id="No_CampoDestino" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('No_CampoDestino') : $No_CampoDestino ; ?>" name="No_CampoDestino"
-                                            maxlength="11">
+                                               maxlength="11">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Tp_Ativo">DePara ativo?</label>
