@@ -75,11 +75,48 @@ if ($this->uri->segment(2) == 'editar') {
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addRegraGruPro" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaRegraGruPro' : base_url().'editaRegraGruPro'; ?>" method="post" role="form">
                         <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="TbGrupoPro_CodGrupo">GrupoPro</label>
-                                        <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
+
+                        <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
+
+                                <h4><strong>Convênio</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        GrupoPro
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Regra
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        Faturamento
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Percentual pago
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ínicio
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Vigência
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraGruPro') : $Id_RegraGruPro ; ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
                                             <?php
                                             if(!empty($infoGrupoPro))
                                             {
@@ -93,14 +130,8 @@ if ($this->uri->segment(2) == 'editar') {
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                        <input type="hidden" value="<?php echo $Id_RegraGruPro; ?>" name="Id_RegraGruPro" id="Id_RegraGruPro" />
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="TbRegra_Id_Regra">Regra</label>
-                                        <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
+                                            </select>
+                                            <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
                                             <?php
                                             if(!empty($infoRegra))
                                             {
@@ -114,13 +145,11 @@ if ($this->uri->segment(2) == 'editar') {
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="TbFaturamento_Id_Faturamento">Faturamento</label>
-                                        <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
                                             <?php
                                             if(!empty($infoFaturamento))
                                             {
@@ -134,41 +163,37 @@ if ($this->uri->segment(2) == 'editar') {
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Perc_Pago">Percentual pago</label>
-                                        <input type="text" class="form-control required" id="Perc_Pago" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Perc_Pago') : $Perc_Pago ; ?>" name="Perc_Pago"
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" id="Perc_Pago" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Perc_Pago') : $Perc_Pago ; ?>" name="Perc_Pago"
                                                maxlength="13">
-                                    </div>
-                                </div>
+                                            </td>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Dt_IniVigencia">Data de início da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
-                                    </div>
-                                </div>
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_IniVigencia') : $Dt_IniVigencia ; ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
+                                            </td>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Dt_FimVigencia">Data de fim da vigência</label>
-                                        <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
-                                    </div>
-                                </div>
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
+                                            </td>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">Ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            <td>
+                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
-                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                            </select>
+                                            </td>
+                                </tr>
+
+                                </table>
                             </div>
+                            
 
                         </div>
                         <!-- /.box-body -->
