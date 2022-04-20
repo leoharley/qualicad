@@ -736,7 +736,7 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
     {
         $this->db->select('FatItem.*');
         $this->db->from('TbFatItem as FatItem');
-        $this->db->where('FatItem.TbFaturamento_Id_Faturamento ', $idConvenio);
+        $this->db->where('FatItem.TbFaturamento_Id_Faturamento ', $idFaturamento);
         $this->db->where('FatItem.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('FatItem.Deletado !=', 'S');
         $query = $this->db->get();
