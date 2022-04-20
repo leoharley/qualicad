@@ -171,7 +171,7 @@ if ($this->uri->segment(2) == 'editar') {
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control required" id="Perc_Pago" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Perc_Pago') : $Perc_Pago ; ?>" name="Perc_Pago"
+                                            <input type="text" class="form-control required valor" id="Perc_Pago" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Perc_Pago') : $Perc_Pago ; ?>" name="Perc_Pago"
                                                maxlength="13">
                                             </td>
 
@@ -181,10 +181,6 @@ if ($this->uri->segment(2) == 'editar') {
 
                                             <td>
                                             <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_FimVigencia') : $Dt_FimVigencia ; ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
-                                            </td>
-
-                                            <td>
-                                            <input type="date" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Dt_VigenciaConvenio') : $Dt_VigenciaConvenio ; ?>" id="Dt_VigenciaConvenio" name="Dt_VigenciaConvenio">
                                             </td>
 
                                             <td>
