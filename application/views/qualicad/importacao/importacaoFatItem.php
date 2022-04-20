@@ -34,9 +34,10 @@
     <?php } ?>
 	
     <div class="row">
-
-        <div class="row">
-            <div class="col-md-3">
+        
+        <!-- File upload form -->
+        <div class="col-md-12" id="importFrm">
+            <form action="<?php echo base_url() ?>importaFatItem" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="TbFaturamento_Id_Faturamento">Faturamento associado</label>
                     <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
@@ -55,12 +56,7 @@
                         ?>
                     </select>
                 </div>
-            </div>
-        </div>
-		
-        <!-- File upload form -->
-        <div class="col-md-12" id="importFrm">
-            <form action="<?php echo base_url() ?>importaFatItem" method="post" enctype="multipart/form-data">
+                <br/>
                 <input type="file" name="file" />
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">

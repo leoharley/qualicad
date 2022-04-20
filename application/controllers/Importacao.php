@@ -1068,6 +1068,7 @@ class Importacao extends BaseController
                             }
 
                             $memData += array(
+                                'TbFaturamento_Id_Faturamento' => $this->input->post('TbFaturamento_Id_Faturamento'),
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
