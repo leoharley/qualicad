@@ -1052,7 +1052,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('FatItem',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Ds_Layout'), 'FatItem',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -1132,7 +1132,7 @@ class Importacao extends BaseController
                 $Dt_Inativo = date('Y-m-d H:i:s');
             }
 
-            $infoDePara = array('Ds_Layout'=>$Ds_Layout, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+            $infoDePara = array('Ds_Layout'=>$Ds_Layout, 'No_Importacao'=>$No_Importacao, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                 'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
                 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
