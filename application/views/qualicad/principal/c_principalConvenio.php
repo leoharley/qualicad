@@ -196,12 +196,6 @@ if(!empty($infoConvenio))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Índice
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Regra
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
                                         Cod. do plano
                                         </th>                                        
                                         <th class="header-label" style="padding:10px">
@@ -214,11 +208,39 @@ if(!empty($infoConvenio))
                                         Acomodação padrão
                                         </th>
                                         <th class="header-label" style="padding:10px">
+                                        Índice
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Regra
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Plano ativo?
                                         </th>
                                     </tr>
                                 </thead>
-                                <tr id="row0">
+                                <tr id="row0">                                            
+                                            <td>
+                                            <input type="text" class="form-control" id="Id_Plano" value="<?php echo set_value('Id_Plano') ; ?>" name="Id_Plano"
+                                                maxlength="11" disabled>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo set_value('Cd_PlanoERP') ; ?>" name="Cd_PlanoERP"
+                                                maxlength="11">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" id="Ds_Plano" value="<?php echo set_value('Ds_Plano') ; ?>" name="Ds_Plano"
+                                                maxlength="128">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
+                                                <option value="1">Enfermaria</option>
+                                                <option value="2">Apartamento</option>
+                                            </select>
+                                            </td>
+
                                             <td>
                                                 <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
                                                     <?php
@@ -256,28 +278,6 @@ if(!empty($infoConvenio))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control" id="Id_Plano" value="<?php echo set_value('Id_Plano') ; ?>" name="Id_Plano"
-                                                maxlength="11" disabled>
-                                            </td>
-
-                                            <td>
-                                            <input type="text" class="form-control" id="Cd_PlanoERP" value="<?php echo set_value('Cd_PlanoERP') ; ?>" name="Cd_PlanoERP"
-                                                maxlength="11">
-                                            </td>
-
-                                            <td>
-                                            <input type="text" class="form-control" id="Ds_Plano" value="<?php echo set_value('Ds_Plano') ; ?>" name="Ds_Plano"
-                                                maxlength="128">
-                                            </td>
-
-                                            <td>
-                                            <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
-                                                <option value="1">Enfermaria</option>
-                                                <option value="2">Apartamento</option>
-                                            </select>
-                                            </td>
-
-                                            <td>
                                             <select class="form-control" id="Tp_Ativo_Plano" name="Tp_Ativo_Plano">
                                                 <option value="S">Sim</option>
                                                 <option value="N">Não</option>
@@ -291,13 +291,7 @@ if(!empty($infoConvenio))
                                 foreach ($infoPlano as $plano)
                                 {
                                 ?>
-                                <tr style="background-color:#c0c0c0">
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
-                                    </td>
+                                <tr style="background-color:#c0c0c0">                                    
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $plano->Id_Plano ?>" disabled>
                                     </td>
@@ -309,6 +303,12 @@ if(!empty($infoConvenio))
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php if ($plano->Tp_AcomodacaoPadrao == '1') { echo 'Enfermaria'; } else if ($plano->Tp_AcomodacaoPadrao == '2') { echo 'Apartamento'; } ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->TbIndice_Id_Indice.' - '.$plano->Ds_indice ?>" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?php echo $plano->TbRegra_Id_Regra.' - '.$plano->Ds_Regra ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo ($plano->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
