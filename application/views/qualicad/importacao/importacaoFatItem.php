@@ -47,7 +47,7 @@
         <br/>
 
 
-        <div class="row"
+        <div class="row">
         <div class="col-md-3">
             <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
                 <?php
