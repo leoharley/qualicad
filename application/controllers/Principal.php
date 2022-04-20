@@ -795,7 +795,45 @@ class Principal extends BaseController
 
             $result = $this->PrincipalModel->adicionaFaturamento($infoFaturamento);
 
-            if($result > 0)
+            $TbFaturamento_Id_Faturamento = $result;
+            $Ds_FatItem = $this->input->post('Ds_FatItem');
+            $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+            $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+            $Vl_Honorário = $this->input->post('Vl_Honorário');
+            $Vl_Operacional = $this->input->post('Vl_Operacional');
+            $Vl_Total = $this->input->post('Vl_Total');
+            $Vl_Filme = $this->input->post('Vl_Filme');
+            $Tp_Ativo = $this->input->post('Tp_Ativo_FatItem');
+
+
+        //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $Dt_Ativo = null;
+                }
+
+                //'Senha'=>getHashedPassword($senha)
+
+                if ($Ds_FatItem != '') {
+
+                $infoFaturamentoItem = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                    'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento, 'Ds_FatItem'=> $Ds_FatItem,
+                    'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Honorário'=>$Vl_Honorário,
+                    'Vl_Operacional'=>$Vl_Operacional,'Vl_Total'=>$Vl_Total, 'Vl_Filme'=>$Vl_Filme,
+                    'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+                $resultFatItem = $this->PrincipalModel->adicionaFaturamentoItem($infoFaturamentoItem);
+                } else {
+                    $resultFatItem = 1;
+                }
+
+            if(($result > 0) && ($resultFatItem > 0))
             {
                 $process = 'Adicionar faturamento';
                 $processFunction = 'Principal/adicionaFaturamento';
@@ -809,6 +847,10 @@ class Principal extends BaseController
                 else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
                     redirect('principalFaturamento/cadastrar');
                 }
+                else if (array_key_exists('salvarFatItem',$this->input->post())) {
+                    redirect('principalFaturamento/editar/'.$TbFaturamento_Id_Faturamento);
+                }
+
             }
             else
             {
@@ -877,11 +919,53 @@ class Principal extends BaseController
 
             $resultado = $this->PrincipalModel->editaFaturamento($infoFaturamento, $IdFaturamento);
 
-            if($resultado == true)
+            $Ds_FatItem = $this->input->post('Ds_FatItem');
+            $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
+            $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
+            $Vl_Honorário = $this->input->post('Vl_Honorário');
+            $Vl_Operacional = $this->input->post('Vl_Operacional');
+            $Vl_Total = $this->input->post('Vl_Total');
+            $Vl_Filme = $this->input->post('Vl_Filme');
+            $Tp_Ativo = $this->input->post('Tp_Ativo_FatItem');
+
+
+        //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
+
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $Dt_Ativo = null;
+                }
+
+                //'Senha'=>getHashedPassword($senha)
+
+                if ($Ds_FatItem != '') {
+
+                $infoFaturamentoItem = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                    'TbFaturamento_Id_Faturamento'=> $IdFaturamento, 'Ds_FatItem'=> $Ds_FatItem,
+                    'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Honorário'=>$Vl_Honorário,
+                    'Vl_Operacional'=>$Vl_Operacional,'Vl_Total'=>$Vl_Total, 'Vl_Filme'=>$Vl_Filme,
+                    'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+                $resultFatItem = $this->PrincipalModel->adicionaFaturamentoItem($infoFaturamentoItem);
+                } else {
+                    $resultFatItem = 1;
+                }
+
+            if(($resultado == true) && ($resultFatItem > 0))
             {
                 $process = 'Faturamento atualizado';
                 $processFunction = 'Principal/editaFaturamento';
                 $this->logrecord($process,$processFunction);
+
+                if (array_key_exists('salvarFatItem',$this->input->post())) {
+                    $this->session->set_flashdata('success', 'Faturamento item adicionado com sucesso');
+                    redirect('principalFaturamento/editar/'.$IdFaturamento);
+                }
 
                 $this->session->set_flashdata('success', 'Faturamento atualizado com sucesso');
             }

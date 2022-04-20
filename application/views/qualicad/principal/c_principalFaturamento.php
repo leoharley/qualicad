@@ -225,9 +225,9 @@ if(!empty($infoFaturamento))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
-                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
-                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
+                                            <select class="form-control required" id="Tp_Ativo_FatItem" name="Tp_Ativo_FatItem">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo_FatItem == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
+                                            <option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo_FatItem == 'N') { echo 'selected'; } ?>>Não</option>
                                             </select>
                                             </td>
                                 </tr>
@@ -261,7 +261,7 @@ if(!empty($infoFaturamento))
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Vl_Filme ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo ($fatitem->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
+                                    <input type="text" class="form-control" value="<?php echo ($fatitem->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
                                     </td>
                                 </tr>
                                     <?php
