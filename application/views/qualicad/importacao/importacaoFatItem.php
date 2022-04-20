@@ -39,6 +39,13 @@
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaFatItem" method="post" enctype="multipart/form-data">
                 <div class="form-group">
+                    <label for="Ds_Layout">Layout de importação</label>
+                    <select class="form-control required" id="Ds_Layout" name="Ds_Layout">
+                        <option value="Assefaz">Assefaz</option>
+                        <option value="Bradesco">Bradesco</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="TbFaturamento_Id_Faturamento">Faturamento associado</label>
                     <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
                         <?php
