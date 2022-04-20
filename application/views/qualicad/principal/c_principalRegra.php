@@ -151,6 +151,9 @@ if(!empty($infoRegra))
                                         Código
                                         </th>
                                         <th class="header-label" style="padding:10px">
+                                        Tp Grupo Pro
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Grupo pro associado
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -174,6 +177,13 @@ if(!empty($infoRegra))
 
                                             <td>
                                             <input type="text" class="form-control required" value="<?php echo set_value('Id_RegraGruPro'); ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
+                                            </td>
+
+                                            <td>
+                                                <select class="form-control" id="Tp_GrupoPro" name="Tp_GrupoPro">
+                                                    <option value="MA">MA</option>
+                                                    <option value="ME">ME</option>
+                                                </select>
                                             </td>
 
                                             <td>
