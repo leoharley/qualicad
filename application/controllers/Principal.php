@@ -1136,6 +1136,8 @@ class Principal extends BaseController
 
             $result = $this->PrincipalModel->adicionaRegra($infoRegra);
 
+            $Tp_GrupoPro  = $this->input->post('Tp_GrupoPro');
+
             $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
             $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
             $Perc_Pago = $this->input->post('Perc_Pago');
@@ -1158,7 +1160,13 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
 
+            $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($TbGrupoPro_CodGrupo,$this->session->userdata('IdEmpresa'));
+
+            var_dump ($carregaGrupoPro);exit;
+
             if ($Perc_Pago != '') {
+
+
                 $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                     'TbRegra_Id_Regra'=> $result, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
                     'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
