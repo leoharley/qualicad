@@ -46,6 +46,7 @@
                 <thead>
                   <tr>
                     <th>Id</th>
+                    <th>Layout</th>
                     <th>Importação</th>
                     <th>Tabela</th>
                     <th>Campo origem</th>
@@ -64,6 +65,9 @@
                     <tr>
                       <td>
                         <?php echo $registro->Id_DeparaImportacao ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Ds_Layout ?>
                       </td>
                       <td>
                         <?php echo $registro->No_Importacao ?>

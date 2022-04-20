@@ -243,6 +243,43 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
+
+    function carregaInfoFatItem($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbFatItem as FatItem');
+        $this->db->where('FatItem.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('FatItem.Deletado !=', 'S');
+        $this->db->where('FatItem.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function adicionaFatItem($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbFatItem', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
+    function carregaInfoFaturamento($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbFaturamento as Faturamento');
+        $this->db->where('Faturamento.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('Faturamento.Deletado !=', 'S');
+        $this->db->where('Faturamento.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function carregaInfoDePara($idEmpresa)
     {
         $this->db->select('*');
@@ -255,12 +292,13 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function consultaDePara($noImportacao, $idEmpresa)
+    function consultaDePara($dsLayout, $noImportacao, $idEmpresa)
     {
         $this->db->select('*');
         $this->db->from('Rl_DeparaImportacao as DePara');
         $this->db->where('DePara.No_Importacao', $noImportacao);
         $this->db->where('DePara.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('DePara.Ds_Layout', $dsLayout);
         $this->db->where('DePara.Deletado !=', 'S');
         $this->db->where('DePara.Tp_Ativo', 'S');
         $query = $this->db->get();

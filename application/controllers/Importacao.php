@@ -783,6 +783,7 @@ class Importacao extends BaseController
             } 
 
             $No_Importacao = ucwords(strtolower($this->security->xss_clean($this->input->post('No_Importacao'))));
+            $Ds_Layout = $this->input->post('Ds_Layout');
             $No_Tabela = $this->input->post('No_Tabela');
             $No_CampoOrigem = $this->input->post('No_CampoOrigem');
             $No_CampoDestino  = $this->input->post('No_CampoDestino');
@@ -804,7 +805,7 @@ class Importacao extends BaseController
 
                 //'Senha'=>getHashedPassword($senha)
 
-                $infoDePara = array('No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                $infoDePara = array('Ds_Layout'=>$Ds_Layout, 'No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                     'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
                     'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
@@ -1011,16 +1012,105 @@ class Importacao extends BaseController
         redirect('importacaoExcecaoValores');
     }
 
+
+    // IMPORTAÇÃO FATITEM
+
+    function importacaoFatItem()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação FatItem';
+
+        $data['infoFatItem'] = $this->ImportacaoModel->carregaInfoFatItem($this->session->userdata('IdEmpresa'));
+
+        $data['infoFaturamento'] = $this->ImportacaoModel->carregaInfoFaturamento($this->session->userdata('IdEmpresa'));
+
+        $this->loadViews("qualicad/importacao/importacaoFatItem", $this->global, $data, NULL);
+    }
+
+    public function importaFatItem(){
+        $data = array();
+        $memData = array();
+
+        //    $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
+
+        // If import request is submitted
+        if($this->input->post('importSubmit')){
+            // Form field validation rules
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
+
+            // Validate submitted form data
+            if($this->form_validation->run() == true){
+                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+
+                // If file uploaded
+                if(is_uploaded_file($_FILES['file']['tmp_name'])){
+                    // Load CSV reader library
+                    $this->load->library('CSVReader');
+
+                    // Parse data from CSV file
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Ds_Layout'), 'FatItem',$this->session->userdata('IdEmpresa'));
+
+                    // Insert/update CSV data into database
+                    if(!empty($csvData)){
+                        foreach($csvData as $row) {
+                            $rowCount++;
+
+                            $memData = array();
+
+                            for ($i=0;$i<count($dePara);$i++) {
+                                $memData += array(
+                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                );
+
+                            }
+
+                            $memData += array(
+                                'TbFaturamento_Id_Faturamento' => $this->input->post('TbFaturamento_Id_Faturamento'),
+                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                'Tp_Ativo'=> 'S');
+
+
+                            $insert = $this->ImportacaoModel->adicionaFatItem($memData);
+
+                            if($insert){
+                                $insertCount++;
+                            }
+
+                        }
+
+                        // Status message with imported data count
+                        $notAddCount = ($rowCount - ($insertCount + $updateCount));
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+
+                        $this->session->set_flashdata('success', $successMsg);
+                    }
+                }else{
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
+                //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
+            }
+        }
+        redirect('importacaoFatItem');
+    }
+
     function editaDePara()
     {
             if (array_key_exists('IrLista',$this->input->post())) {
-                redirect('importacaoDePara/listar'); 
+                redirect('importacaoDePara/listar');
             } 
 
             $this->load->library('form_validation');
 
             $IdDePara = $this->input->post('Id_DeparaImportacao');
 
+            $Ds_Layout = $this->input->post('Ds_Layout');
             $No_Importacao = ucwords(strtolower($this->security->xss_clean($this->input->post('No_Importacao'))));
             $No_Tabela = $this->input->post('No_Tabela');
             $No_CampoOrigem = $this->input->post('No_CampoOrigem');
@@ -1042,7 +1132,7 @@ class Importacao extends BaseController
                 $Dt_Inativo = date('Y-m-d H:i:s');
             }
 
-            $infoDePara = array('No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+            $infoDePara = array('Ds_Layout'=>$Ds_Layout, 'No_Importacao'=>$No_Importacao, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                 'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
                 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
