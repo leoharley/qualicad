@@ -131,6 +131,10 @@ if ($this->uri->segment(2) == 'editar') {
                                             }
                                             ?>
                                             </select>
+                                            </td>
+
+
+                                            <td>
                                             <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
                                             <?php
                                             if(!empty($infoRegra))
