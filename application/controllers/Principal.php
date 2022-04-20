@@ -1160,9 +1160,9 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
 
-            $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($TbGrupoPro_CodGrupo,$this->session->userdata('IdEmpresa'));
+            $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
 
-            var_dump ($Tp_GrupoPro);exit;
+            var_dump ($carregaGrupoPro);exit;
 
             if ($Perc_Pago != '') {
 
