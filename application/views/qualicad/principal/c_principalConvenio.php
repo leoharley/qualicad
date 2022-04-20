@@ -216,6 +216,9 @@ if(!empty($infoConvenio))
                                         <th class="header-label" style="padding:10px">
                                         Plano ativo?
                                         </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ações
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tr id="row0">                                            
@@ -282,10 +285,7 @@ if(!empty($infoConvenio))
                                                 <option value="S">Sim</option>
                                                 <option value="N">Não</option>
                                             </select>
-                                            </td>
-                                            <td>
-                                            Ações
-                                            </td>
+                                            </td>                                            
                                 </tr>
 
                                 <?php
