@@ -66,7 +66,7 @@ class Principal extends BaseController
                 
                 $count = $this->CadastroModel->userListingCount($searchText);
 
-                $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 10 );
+                $returns = $this->paginationCompress ( "principalConvenio/listar", $count, 100 );
                 
                 $data['registrosConvenios'] = $this->PrincipalModel->listaConvenio($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
                 
@@ -703,7 +703,7 @@ class Principal extends BaseController
                 
                 $count = $this->CadastroModel->userListingCount($searchText);
 
-                $returns = $this->paginationCompress ( "principalFaturamento/listar", $count, 10 );
+                $returns = $this->paginationCompress ( "principalFaturamento/listar", $count, 100 );
                 
                 $data['registrosFaturamentos'] = $this->PrincipalModel->listaFaturamento($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
                 
@@ -1721,7 +1721,7 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalIndiceGrupoPro/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalIndiceGrupoPro/listar", $count, 100 );
 
             $data['registrosIndiceGrupoPro'] = $this->PrincipalModel->listaIndiceGrupoPro($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
@@ -1990,7 +1990,7 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalRegraProibicao/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalRegraProibicao/listar", $count, 100 );
 
             $data['registrosRegraProibicao'] = $this->PrincipalModel->listaRegraProibicao($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
@@ -2258,7 +2258,7 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalFracaoSimproBra/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalFracaoSimproBra/listar", $count, 100 );
 
             $data['registrosFracaoSimproBra'] = $this->PrincipalModel->listaFracaoSimproBra($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
@@ -2533,7 +2533,7 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalFaturamentoItem/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalFaturamentoItem/listar", $count, 100 );
 
             $data['registrosFaturamentoItem'] = $this->PrincipalModel->listaFaturamentoItem($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
@@ -2803,7 +2803,7 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalUnidade/listar", $count, 10 );
+            $returns = $this->paginationCompress ( "principalUnidade/listar", $count, 100 );
 
             $data['registrosUnidade'] = $this->PrincipalModel->listaUnidade($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
@@ -3054,7 +3054,7 @@ class Principal extends BaseController
                 
                 $count = $this->CadastroModel->userListingCount($searchText);
 
-                $returns = $this->paginationCompress ( "principalExcecaoValores/listar", $count, 10 );
+                $returns = $this->paginationCompress ( "principalExcecaoValores/listar", $count, 100 );
                 
                 $data['registroExcecaoValores'] = $this->PrincipalModel->listaExcecaoValores($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
                 
