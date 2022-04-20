@@ -190,44 +190,44 @@ if(!empty($infoFaturamento))
                                 </thead>
                                 <tr id="row0">
                                             <td>
-                                            <input type="text" class="form-control required" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
+                                            <input type="text" class="form-control" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control required" id="Ds_FatItem" value="<?php echo set_value('Ds_FatItem'); ?>" name="Ds_FatItem"
+                                            <input type="text" class="form-control" id="Ds_FatItem" value="<?php echo set_value('Ds_FatItem'); ?>" name="Ds_FatItem"
                                                maxlength="128">
                                             </td>
 
                                             <td>
-                                            <input type="date" class="form-control required" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
+                                            <input type="date" class="form-control" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                             </td>
 
                                             <td>
-                                            <input type="date" class="form-control required" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
+                                            <input type="date" class="form-control" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor required" value="<?php echo set_value('Vl_Honorário'); ?>" id="Vl_Honorário" name="Vl_Honorário"
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Honorário'); ?>" id="Vl_Honorário" name="Vl_Honorário"
                                                maxlength="11">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor required" value="<?php echo set_value('Vl_Operacional'); ?>" id="Vl_Operacional" name="Vl_Operacional"
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Operacional'); ?>" id="Vl_Operacional" name="Vl_Operacional"
                                                maxlength="11">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor required" value="<?php echo set_value('Vl_Total'); ?>" id="Vl_Total" name="Vl_Total"
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Total'); ?>" id="Vl_Total" name="Vl_Total"
                                                maxlength="11">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor required" value="<?php echo set_value('Vl_Filme'); ?>" id="Vl_Filme" name="Vl_Filme"
+                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Filme'); ?>" id="Vl_Filme" name="Vl_Filme"
                                                maxlength="11">
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Tp_Ativo_FatItem" name="Tp_Ativo_FatItem">
+                                            <select class="form-control" id="Tp_Ativo_FatItem" name="Tp_Ativo_FatItem">
                                             <option value="S">Sim</option>
                                             <option value="N">Não</option>
                                             </select>
