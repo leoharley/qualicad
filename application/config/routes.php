@@ -100,6 +100,9 @@ $route['principalExcecaoValores/:any/:any'] = "principal/principalExcecaoValores
 $route['principalExcecaoValores/:any'] = "principal/principalExcecaoValores/$1";
 
 /*********** ROUTES DA IMPORTAÇÃO *******************/
+$route['importacaoFatItem'] = "importacao/importacaoFatItem";
+$route['importaFatItem'] = "importacao/importaFatItem";
+
 $route['importacaoGrupoPro'] = "importacao/importacaoGrupoPro";
 $route['importaGrupoPro'] = "importacao/importaGrupoPro";
 

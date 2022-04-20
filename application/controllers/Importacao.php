@@ -1011,10 +1011,95 @@ class Importacao extends BaseController
         redirect('importacaoExcecaoValores');
     }
 
+
+    // IMPORTAÇÃO FATITEM
+
+    function importacaoFatItem()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação FatItem';
+
+        $data['infoFatItem'] = $this->ImportacaoModel->carregaInfoFatItem($this->session->userdata('IdEmpresa'));
+
+        $this->loadViews("qualicad/importacao/importacaoFatItem", $this->global, $data, NULL);
+    }
+
+    public function importaFatItem(){
+        $data = array();
+        $memData = array();
+
+        //    $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
+
+        // If import request is submitted
+        if($this->input->post('importSubmit')){
+            // Form field validation rules
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
+
+            // Validate submitted form data
+            if($this->form_validation->run() == true){
+                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+
+                // If file uploaded
+                if(is_uploaded_file($_FILES['file']['tmp_name'])){
+                    // Load CSV reader library
+                    $this->load->library('CSVReader');
+
+                    // Parse data from CSV file
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
+                    $dePara = $this->ImportacaoModel->consultaDePara('FatItem',$this->session->userdata('IdEmpresa'));
+
+                    // Insert/update CSV data into database
+                    if(!empty($csvData)){
+                        foreach($csvData as $row) {
+                            $rowCount++;
+
+                            $memData = array();
+
+                            for ($i=0;$i<count($dePara);$i++) {
+                                $memData += array(
+                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                );
+
+                            }
+
+                            $memData += array(
+                                'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                'Tp_Ativo'=> 'S');
+
+
+                            $insert = $this->ImportacaoModel->adicionaFatItem($memData);
+
+                            if($insert){
+                                $insertCount++;
+                            }
+
+                        }
+
+                        // Status message with imported data count
+                        $notAddCount = ($rowCount - ($insertCount + $updateCount));
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+
+                        $this->session->set_flashdata('success', $successMsg);
+                    }
+                }else{
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
+                //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
+            }
+        }
+        redirect('importacaoFatItem');
+    }
+
     function editaDePara()
     {
             if (array_key_exists('IrLista',$this->input->post())) {
-                redirect('importacaoDePara/listar'); 
+                redirect('importacaoDePara/listar');
             } 
 
             $this->load->library('form_validation');

@@ -362,6 +362,14 @@ $(function() {
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
 
+
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoFatItem">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">FatItem</span>
+                            </a>
+                        </li>
+
                        <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>importacaoGrupoPro">
                                 <i class="fa fa-upload"></i>
