@@ -1048,9 +1048,8 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
 
     function carregaInfoRegraGruPro($IdRegraGruPro)
     {
-        $this->db->select('GrupoPro.Tp_GrupoPro,RegraGrupro.*');
-        $this->db->from('Tb_RegraGruPro as RegraGrupro');
-        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = RegraGrupro.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+        $this->db->select('*');
+        $this->db->from('Tb_RegraGruPro');
         $this->db->where('Id_RegraGruPro ', $IdRegraGruPro);
         $query = $this->db->get();
 
@@ -1073,7 +1072,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
 
     function carregaInfoRegraGruProRegra($idRegra)
     {
-        $this->db->select('GrupoPro.CodGrupo, GrupoPro.Ds_GrupoPro, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
+        $this->db->select('GrupoPro.Tp_GrupoPro, GrupoPro.CodGrupo, GrupoPro.Ds_GrupoPro, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
         $this->db->from('Tb_RegraGruPro as RegraGruPro');
         $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = RegraGruPro.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
         $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = RegraGruPro.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
