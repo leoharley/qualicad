@@ -44,21 +44,28 @@
             </form>
         </div>
 
-        <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
-            <?php
-            if(!empty($infoFaturamento))
-            {
-                foreach ($infoFaturamento as $faturamento)
+        <br/>
+
+
+        <div class="row"
+        <div class="col-md-3">
+            <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                <?php
+                if(!empty($infoFaturamento))
                 {
-                    ?>
-                    <option value="<?php echo $faturamento->Id_Faturamento  ?>">
-                        <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
-                    </option>
-                    <?php
+                    foreach ($infoFaturamento as $faturamento)
+                    {
+                        ?>
+                        <option value="<?php echo $faturamento->Id_Faturamento  ?>">
+                            <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
+                        </option>
+                        <?php
+                    }
                 }
-            }
-            ?>
-        </select>
+                ?>
+            </select>
+        </div>
+        </div>
 
         <!-- Data list table -->
         <table class="table table-striped table-bordered">
