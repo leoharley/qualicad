@@ -324,6 +324,11 @@ if(!empty($infoIndice))
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo ($indice->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
                                     </td>
+                                    <td>
+                                    <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalIndiceGrupoPro/editar/'.$indice->Id_IndiceGrupo; ?>" title="Editar">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    </td>
                                 </tr>
                                     <?php
                                 }
