@@ -112,6 +112,9 @@ if(!empty($infoPlano))
                                 </thead>
                                 <tr id="row0">
                                             <td>
+                                            <input type="text" class="form-control required" value="<?php echo set_value('Id_Plano'); ?>" id="Id_Plano" name="Id_Plano" disabled>
+                                            </td>
+                                            <td>
                                                 <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio">
                                                 <?php
                                                 if(!empty($infoConvenio))
