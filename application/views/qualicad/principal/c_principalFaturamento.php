@@ -242,28 +242,23 @@ if(!empty($infoFaturamento))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Cd_PorteMedico'); ?>" id="Cd_PorteMedico" name="Cd_PorteMedico"
-                                               maxlength="11">
+                                            <input type="text" class="form-control" value="<?php echo set_value('Cd_PorteMedico'); ?>" id="Cd_PorteMedico" name="Cd_PorteMedico">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Cd_TUSS'); ?>" id="Cd_TUSS" name="Cd_TUSS"
-                                               maxlength="11">
+                                            <input type="text" class="form-control" value="<?php echo set_value('Cd_TUSS'); ?>" id="Cd_TUSS" name="Cd_TUSS">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Cd_TISS'); ?>" id="Cd_TISS" name="Cd_TISS"
-                                               maxlength="11">
+                                            <input type="text" class="form-control" value="<?php echo set_value('Cd_TISS'); ?>" id="Cd_TISS" name="Cd_TISS">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Qt_Embalagem'); ?>" id="Qt_Embalagem" name="Qt_Embalagem"
-                                               maxlength="11">
+                                            <input type="text" class="form-control" value="<?php echo set_value('Qt_Embalagem'); ?>" id="Qt_Embalagem" name="Qt_Embalagem">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Ds_Unidade'); ?>" id="Ds_Unidade" name="Ds_Unidade"
-                                               maxlength="11">
+                                            <input type="text" class="form-control" value="<?php echo set_value('Ds_Unidade'); ?>" id="Ds_Unidade" name="Ds_Unidade">
                                             </td>
 
                                             <td>
