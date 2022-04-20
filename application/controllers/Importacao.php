@@ -1132,7 +1132,7 @@ class Importacao extends BaseController
                 $Dt_Inativo = date('Y-m-d H:i:s');
             }
 
-            $infoDePara = array('No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+            $infoDePara = array('Ds_Layout'=>$Ds_Layout, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                 'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
                 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
