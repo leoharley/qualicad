@@ -1162,7 +1162,7 @@ class Principal extends BaseController
 
             $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($TbGrupoPro_CodGrupo,$this->session->userdata('IdEmpresa'));
 
-            var_dump ($carregaGrupoPro);exit;
+            var_dump ($this->session->userdata('IdEmpresa'));exit;
 
             if ($Perc_Pago != '') {
 
