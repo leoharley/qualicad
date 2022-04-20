@@ -732,6 +732,18 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         return $query->result();
     }
 
+    function carregaInfoFatItemFaturamento($idFaturamento, $idEmpresa)
+    {
+        $this->db->select('FatItem.*');
+        $this->db->from('TbFatItem as FatItem');
+        $this->db->where('FatItem.TbFaturamento_Id_Faturamento ', $idConvenio);
+        $this->db->where('FatItem.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('FatItem.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function carregaInfoFaturamentoItemEmpresa($idEmpresa)
     {
         $this->db->select('*');
