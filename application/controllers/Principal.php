@@ -3417,6 +3417,7 @@ class Principal extends BaseController
             else
         { */
 
+        $Tp_GrupoPro  = $this->input->post('Tp_GrupoPro');    
         $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
         $TbRegra_Id_Regra = $this->input->post('TbRegra_Id_Regra');
         $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
@@ -3440,12 +3441,28 @@ class Principal extends BaseController
 
         //'Senha'=>getHashedPassword($senha)
 
-        $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-            'TbRegra_Id_Regra'=> $TbRegra_Id_Regra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
+        $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
+
+        if ($carregaGrupoPro != null) {
+        foreach ($carregaGrupoPro as $data){
+
+        $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$data->CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+            'TbRegra_Id_Regra'=> $result, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
             'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
             'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
         $result = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
+        }
+        } else {
+
+            $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+            'TbRegra_Id_Regra'=> $TbRegra_Id_Regra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
+            'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
+            'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+
+            $result = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
+        }
+            
 
         /*FIM ADICIONAR PLANO*/
 
