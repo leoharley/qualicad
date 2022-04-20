@@ -1048,8 +1048,9 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
 
     function carregaInfoRegraGruPro($IdRegraGruPro)
     {
-        $this->db->select('*');
-        $this->db->from('Tb_RegraGruPro');
+        $this->db->select('GrupoPro.Tp_GrupoPro,RegraGrupro.*');
+        $this->db->from('Tb_RegraGruPro as RegraGrupro');
+        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = RegraGrupro.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
         $this->db->where('Id_RegraGruPro ', $IdRegraGruPro);
         $query = $this->db->get();
 
