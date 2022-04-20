@@ -179,10 +179,6 @@ if(!empty($infoIndiceGrupoPro))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_M2Filme') : $Vl_M2Filme ; ?>" id="Vl_M2Filme" name="Vl_M2Filme">
-                                            </td>
-
-                                            <td>
                                             <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_Honorario') : $Vl_Honorario ; ?>" id="Vl_Honorario" name="Vl_Honorario"
                                             maxlength="11">
                                             </td>
