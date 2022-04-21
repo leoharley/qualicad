@@ -67,24 +67,45 @@ if(!empty($infoUnidade))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addUnidade" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaUnidade' : base_url().'editaUnidade'; ?>" method="post" role="form">
                         <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Ds_Unidade">Descrição</label>
-                                        <input type="text" class="form-control required" id="Ds_Unidade" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Unidade') : $Ds_Unidade ; ?>" name="Ds_Unidade"
-                                            maxlength="128">
-                                        <input type="hidden" value="<?php echo $Id_Unidade; ?>" name="Id_Unidade" id="Id_Unidade" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">Unidade ativa?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+
+                        <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
+
+                                <h4><strong>Unidade</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Unidade (Descrição)
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Unidade') : $Id_Unidade ; ?>" id="Id_Unidade" name="Id_Unidade" disabled>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Unidade') : $Ds_Unidade ; ?>" id="Ds_Unidade" name="Ds_Unidade" maxlength="128">
+                                            <input type="hidden" value="<?php echo $Id_Unidade; ?>" name="Id_Unidade" id="Id_Unidade" /> 
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
 											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                            </select>
+                                            </td>
+                                </tr>
+
+                                </table>
                             </div>
                         </div>
                         <!-- /.box-body -->
