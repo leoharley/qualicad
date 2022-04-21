@@ -7,6 +7,21 @@
         </h1>
     </section>
 
+<style>
+  table {
+    border-color: #808080!important;
+  }
+  th {
+    border-color: #808080!important;
+    color: black;
+    background-color: #d0d0d0;
+    }
+  td {
+    border-color: #808080!important;
+    color: black;
+    }
+  </style>    
+
     <section class="content">
 
       
