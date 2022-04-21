@@ -76,6 +76,18 @@ class PrincipalModel extends CI_Model
         return $query->result();
     }
 
+    function carregaInfoPorteMedicoEmpresa($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbPorteMedico as PorteMedico');
+        $this->db->where('PorteMedico.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('PorteMedico.Deletado !=', 'S');
+        $this->db->where('PorteMedico.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function carregaInfoConveniosEmpresa($idEmpresa)
     {
         $this->db->select('*');
