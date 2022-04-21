@@ -3079,7 +3079,7 @@ class Principal extends BaseController
                     redirect('acaoNaoAutorizada');
                 }
 
-                $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($this->session->userdata('IdEmpresa'));
+                $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));
                 $data['infoProFat'] = $this->PrincipalModel->carregaInfoProFatEmpresa($this->session->userdata('IdEmpresa'));
                 $data['infoTUSS'] = $this->PrincipalModel->carregaInfoTUSSEmpresa($this->session->userdata('IdEmpresa'));
 
@@ -3099,7 +3099,7 @@ class Principal extends BaseController
                     redirect('principalExcecaoValores/listar');
                 }
                 $data['infoExcecaoValores'] = $this->PrincipalModel->carregaInfoExcecaoValores($IdExcecaoValores);
-                $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConvenio($this->session->userdata('IdEmpresa'));
+                $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));
                 $data['infoProFat'] = $this->PrincipalModel->carregaInfoProFatEmpresa($this->session->userdata('IdEmpresa'));
                 $data['infoTUSS'] = $this->PrincipalModel->carregaInfoTUSSEmpresa($this->session->userdata('IdEmpresa'));
 
