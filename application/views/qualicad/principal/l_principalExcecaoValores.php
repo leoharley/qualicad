@@ -6,6 +6,36 @@
       <small>Listar</small>
     </h1>
   </section>
+<style>
+  #table, th, td {
+    border: 1px solid #c0c0c0;
+    border-collapse: collapse;
+    }
+    #table input {border:0!important;outline:0;}
+    #table input:focus {outline:none!important;}
+    #table select {border:0!important;outline:0;}
+    #table select:focus {outline:none!important;}
+
+    #table thead {
+    position: sticky;
+    top: 0;
+    }
+
+    #table thead th {
+    border: 1px solid #e4eff8;
+    background: white;
+    cursor: pointer;
+    }
+
+    #table thead th.header-label {
+    cursor: pointer;
+    background: linear-gradient(0deg, #3c8dbc, #4578a2 5%, #e4eff8 150%);
+    color: white;
+    border: 1px solid white;
+    }
+
+</style>
+
   <section class="content">
     <div class="col-xs-12">
       <div class="text-left">
@@ -42,7 +72,7 @@
             </div>
             <?php } ?>
             <div class="panel-body">
-              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+              <table width="100%" id="table">
                 <thead>
                   <tr>
                     <th>Id</th>
