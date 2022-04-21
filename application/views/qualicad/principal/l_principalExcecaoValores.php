@@ -6,6 +6,15 @@
       <small>Listar</small>
     </h1>
   </section>
+
+  <style>
+  th, td {
+    border-color: #c0c0c0;
+    color: white;
+    background-color: #000;
+    }
+  </style>
+
   <section class="content">
     <div class="col-xs-12">
       <div class="text-left">
