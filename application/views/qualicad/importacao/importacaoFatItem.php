@@ -20,6 +20,9 @@
     border-color: #808080!important;
     color: black;
     }
+ .importFrm {
+     margin-bottom: 20px;
+ }   
   </style>
 
 
@@ -85,8 +88,6 @@
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
             </form>
         </div>
-
-        <br/><br/>
 
         <!-- Data list table -->
         <table class="table table-striped table-bordered">
