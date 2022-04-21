@@ -42,8 +42,7 @@
             </div>
             <?php } ?>
             <div class="panel-body">
-              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
-                            background-color: #f5f5f5;padding-bottom:2rem">
+              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
                     <th>Id</th>
