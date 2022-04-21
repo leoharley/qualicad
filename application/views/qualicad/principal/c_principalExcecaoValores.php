@@ -31,6 +31,19 @@ if(!empty($infoExcecaoValores))
 ?>
 
 <style>
+  table {
+    border-color: #808080!important;
+  }
+  th {
+    border-color: #808080!important;
+    color: black;
+    background-color: #d0d0d0;
+    }
+  td {
+    border-color: #808080!important;
+    color: black;
+    }
+
     #table, th, td {
     border: 1px solid #c0c0c0;
     border-collapse: collapse;
