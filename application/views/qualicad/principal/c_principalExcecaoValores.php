@@ -167,6 +167,9 @@ if(!empty($infoExcecaoValores))
                                             }
                                             ?>
                                             </select>
+                                            </td>
+
+                                            <td>
                                             <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS">
                                             <?php
                                             if(!empty($infoTUSS))
