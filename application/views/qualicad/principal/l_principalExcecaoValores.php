@@ -13,8 +13,8 @@
   }
   th {
     border-color: #808080!important;
-    color: white;
-    background-color: #a0a0a0;
+    color: black;
+    background-color: #c0c0c0;
     }
   td {
     border-color: #808080!important;
