@@ -20,6 +20,9 @@
     border-color: #808080!important;
     color: black;
     }
+    #importFrm {
+        margin-bottom: 20px;
+    } 
   </style>
 
 
