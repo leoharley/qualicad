@@ -14,7 +14,7 @@
   th {
     border-color: #808080!important;
     color: black;
-    background-color: #b0b0b0;
+    background-color: #d0d0d0;
     }
   td {
     border-color: #808080!important;
