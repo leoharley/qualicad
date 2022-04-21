@@ -8,6 +8,9 @@
   </section>
 
   <style>
+  table {
+    border-color: #000!important;
+  }
   th {
     border-color: #000!important;
     color: white;
@@ -67,6 +70,7 @@
                     <th>Tipo</th>
                     <th>Valor</th>
                     <th>Ativo?</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
