@@ -301,6 +301,21 @@ if(!empty($infoFaturamento))
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Vl_Filme ?>" disabled>
                                     </td>
                                     <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_PorteMedico ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_TUSS ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_TISS ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Qt_Embalagem ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Ds_Unidade ?>" disabled>
+                                    </td>
+                                    <td>
                                     <input type="text" class="form-control" value="<?php echo ($fatitem->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
                                     </td>
                                     <td>
