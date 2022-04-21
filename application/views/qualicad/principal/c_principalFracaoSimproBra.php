@@ -128,7 +128,7 @@ if(!empty($infoFracaoSimproBra))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                            <td>
+                                            <td style="width:5%!important">
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_FracaoSimproBra') : $Id_FracaoSimproBra ; ?>" id="Id_FracaoSimproBra" name="Id_FracaoSimproBra" disabled>
                                             </td>
 
@@ -211,7 +211,7 @@ if(!empty($infoFracaoSimproBra))
                                             </td>
                                             
                                             <td>
-                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_FatorDivisao') : $Vl_FatorDivisao ; ?>" id="Vl_FatorDivisao" name="Vl_FatorDivisao"
+                                            <input type="text" class="form-control required valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_FatorDivisao') : $Vl_FatorDivisao ; ?>" id="Vl_FatorDivisao" name="Vl_FatorDivisao"
                                             maxlength="11">
                                             </td>
 
@@ -255,6 +255,10 @@ if(!empty($infoFracaoSimproBra))
 </div>
 <script src="<?php echo base_url(); ?>assets/js/addFracaoSimproBra.js" type="text/javascript"></script>
 <script>
+    $(document).ready(function(){
+        $(":input").inputmask();
+        $('.valor').maskMoney();
+    });
     shortcut.add("ctrl+l", function() {
     document.getElementById('IrLista').click();
     });
