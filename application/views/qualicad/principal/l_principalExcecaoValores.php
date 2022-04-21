@@ -8,10 +8,14 @@
   </section>
 
   <style>
-  th, td {
+  th {
     border-color: #c0c0c0;
     color: white;
     background-color: #000;
+    }
+  td {
+    border-color: #c0c0c0;
+    color: white;
     }
   </style>
 
