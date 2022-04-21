@@ -159,7 +159,7 @@ if(!empty($infoFaturamento))
                                 <table id="table" style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <th class="header-label" style="padding:10px">
+                                        <th class="header-label" style="padding:10px;width:5%!important;">
                                         Código
                                         </th>
                                         <th class="header-label" style="padding:10px">
