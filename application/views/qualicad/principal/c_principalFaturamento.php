@@ -242,21 +242,7 @@ if(!empty($infoFaturamento))
                                             </td>
 
                                             <td>
-                                            <select class="form-control" id="Cd_PorteMedico" name="Cd_PorteMedico">
-                                                <?php
-                                                if(!empty($infoPorteMedico))
-                                                {
-                                                    foreach ($infoPorteMedico as $portemedico)
-                                                    {
-                                                        ?>
-                                                        <option value="<?php echo $portemedico->CodGrupo ?>">
-                                                            <?php echo $portemedico->Id_PorteMedico .' - '.$portemedico->Ds_PorteMedico ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>                                            
+                                            <input type="text" class="form-control" value="<?php echo set_value('Cd_PorteMedico'); ?>" id="Cd_PorteMedico" name="Cd_PorteMedico">
                                             </td>
 
                                             <td>
