@@ -11,11 +11,11 @@
   th {
     border-color: #c0c0c0;
     color: white;
-    background-color: #000;
+    background-color: #a0a0a0;
     }
   td {
     border-color: #c0c0c0;
-    color: white;
+    color: black;
     }
   </style>
 
