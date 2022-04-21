@@ -9,12 +9,12 @@
 
   <style>
   th {
-    border-color: #000;
+    border-color: #000!important;
     color: white;
     background-color: #a0a0a0;
     }
   td {
-    border-color: #000;
+    border-color: #000!important;
     color: black;
     }
   </style>
