@@ -9,15 +9,15 @@
 
   <style>
   table {
-    border-color: #000!important;
+    border-color: #909090!important;
   }
   th {
-    border-color: #000!important;
+    border-color: #909090!important;
     color: white;
-    background-color: #a0a0a0;
+    background-color: #b0b0b0;
     }
   td {
-    border-color: #000!important;
+    border-color: #909090!important;
     color: black;
     }
   </style>
