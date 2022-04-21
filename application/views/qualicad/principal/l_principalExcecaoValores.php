@@ -9,16 +9,16 @@
 
   <style>
   table {
-    border-color: #c0c0c0!important;
+    border-color: #808080!important;
   }
   th {
     border-color: #808080!important;
-    color: #333;
-    background-color: #e0e0e0;
+    color: black;
+    background-color: #d0d0d0;
     }
   td {
-    border-color: #c0c0c0!important;
-    color: #333;
+    border-color: #808080!important;
+    color: black;
     }
   </style>
 
