@@ -86,7 +86,7 @@
             </form>
         </div>
 
-        <br/>
+        <br/><br/>
 
         <!-- Data list table -->
         <table class="table table-striped table-bordered">
