@@ -107,12 +107,52 @@ if(!empty($infoExcecaoValores))
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addExcecaoValores" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaExcecaoValores' : base_url().'editaExcecaoValores'; ?>" method="post" role="form">
-                        <div class="box-body" style="padding-left:1rem;padding-right:1rem">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="CD_Convenio">Convênio</label>
-                                        <select class="form-control required" id="CD_Convenio" name="CD_Convenio">
+                        <div class="box-body">
+
+                            <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                                background-color: #f5f5f5;padding-bottom:2rem">
+
+                                <h4><strong>Exceção Valores</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Código
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Convênio
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        TUSS associada
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        ProFat associado
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Descrição
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Classe Evento
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Tipo
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Valor
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td style="width:5%!important">
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('IdExcecaoValores') : $Id_ExcValores ; ?>" id="IdExcecaoValores" name="IdExcecaoValores" disabled>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="CD_Convenio" name="CD_Convenio">
                                             <?php
                                             if(!empty($infoConvenio))
                                             {
@@ -126,14 +166,8 @@ if(!empty($infoExcecaoValores))
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                        <input type="hidden" value="<?php echo $Id_ExcValores; ?>" name="IdExcecaoValores" id="IdExcecaoValores" />
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Cd_TUSS">TUSS associada</label>
-                                        <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS">
+                                            </select>
+                                            <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS">
                                             <?php
                                             if(!empty($infoTUSS))
                                             {
@@ -147,13 +181,11 @@ if(!empty($infoExcecaoValores))
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Cd_ProFat">ProFat associado</label>
-                                        <select class="form-control required" id="Cd_ProFat" name="Cd_ProFat">
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Cd_ProFat" name="Cd_ProFat">
                                             <?php
                                             if(!empty($infoProFat))
                                             {
@@ -167,51 +199,39 @@ if(!empty($infoExcecaoValores))
                                                 }
                                             }
                                             ?>
-                                        </select>                                        
-                                    </div>
-                                </div>
-                       <!--    </div> -->
-                        <!--    <div class="row"> -->
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <label for="Ds_ExcValores">Descrição</label>
-                                        <input type="text" class="form-control required" id="Ds_ExcValores" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_ExcValores') : $Ds_ExcValores ; ?>" name="Ds_ExcValores"
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" id="Ds_ExcValores" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_ExcValores') : $Ds_ExcValores ; ?>" name="Ds_ExcValores"
                                             maxlength="13">
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <label for="ClasseEvento">Classe Evento</label>
-                                        <input type="text" class="form-control required" id="ClasseEvento" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('ClasseEvento') : $ClasseEvento ; ?>" name="ClasseEvento"
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" id="ClasseEvento" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('ClasseEvento') : $ClasseEvento ; ?>" name="ClasseEvento"
                                             maxlength="13">
-                                    </div>
-                                </div>
-                        <!--    </div> -->
-                        <!--    <div class="row"> -->
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Tp_ExcValores">Tipo</label>
-                                        <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Tp_ExcValores') : $Tp_ExcValores ; ?>" id="Tp_ExcValores" name="Tp_ExcValores">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="Vl_ExcValores">Valor</label>
-                                        <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_ExcValores') : $Vl_ExcValores ; ?>" id="Vl_ExcValores" name="Vl_ExcValores">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">Ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Tp_ExcValores') : $Tp_ExcValores ; ?>" id="Tp_ExcValores" name="Tp_ExcValores">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_ExcValores') : $Vl_ExcValores ; ?>" id="Vl_ExcValores" name="Vl_ExcValores">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
 											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                                            </select>
+                                            </td>
+                                </tr>
+
+                                </table>
+                            </div>     
+
+                            
                         </div>
                         <!-- /.box-body -->
 

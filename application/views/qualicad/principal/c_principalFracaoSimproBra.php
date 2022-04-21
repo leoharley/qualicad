@@ -83,7 +83,6 @@ if(!empty($infoFracaoSimproBra))
                     <form role="form" id="addFracaoSimproBra" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaFracaoSimproBra' : base_url().'editaFracaoSimproBra'; ?>" method="post" role="form">
                         <div class="box-body">
 
-
                         <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;padding-bottom:2rem">
 
