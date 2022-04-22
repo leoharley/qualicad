@@ -47,7 +47,7 @@
       color: #646464;
     }
     .content-wrapper {
-    min-height: 1000px !important;
+    min-height: 900px !important;
     }
   </style>
   <!-- jQuery 2.1.4 -->
