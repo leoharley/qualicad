@@ -183,7 +183,7 @@ if(!empty($infoFaturamento))
                                         <th class="header-label" style="padding:10px">
                                         Valor filme
                                         </th>
-                                        <th class="header-label" style="padding:10px;width:5%!important;">
+                                        <th class="header-label" style="padding:10px">
                                         Cd_PorteMedico
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -241,7 +241,7 @@ if(!empty($infoFaturamento))
                                                maxlength="11">
                                             </td>
 
-                                            <td>
+                                            <td style="width:5%!important;">
                                             <input type="text" class="form-control" value="<?php echo set_value('Cd_PorteMedico'); ?>" id="Cd_PorteMedico" name="Cd_PorteMedico">
                                             </td>
 
