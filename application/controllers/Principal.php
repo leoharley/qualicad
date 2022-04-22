@@ -1161,7 +1161,8 @@ class Principal extends BaseController
             //'Senha'=>getHashedPassword($senha)
 
             $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
-
+            
+            var_dump ($carregaGrupoPro);exit;
 
             foreach ($carregaGrupoPro as $data){
                 if ($Perc_Pago != '') {
@@ -3443,8 +3444,6 @@ class Principal extends BaseController
 
         $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
 
-
-        var_dump ($carregaGrupoPro);exit;
         if ($carregaGrupoPro != null) {
         foreach ($carregaGrupoPro as $data){
 
