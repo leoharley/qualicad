@@ -1162,8 +1162,6 @@ class Principal extends BaseController
 
             $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
             
-            var_dump ($carregaGrupoPro);exit;
-
             foreach ($carregaGrupoPro as $data){
                 if ($Perc_Pago != '') {
                 $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$data->CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
@@ -1263,7 +1261,7 @@ class Principal extends BaseController
 
             $resultado = $this->PrincipalModel->editaRegra($infoRegra, $IdRegra);
 
-
+            $Tp_GrupoPro  = $this->input->post('Tp_GrupoPro');
             $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
             $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
             $Perc_Pago = $this->input->post('Perc_Pago');
@@ -1286,17 +1284,20 @@ class Principal extends BaseController
 
             //'Senha'=>getHashedPassword($senha)
 
-            if ($Perc_Pago != '') {
-                $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                    'TbRegra_Id_Regra'=> $IdRegra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
+            $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
+            
+            foreach ($carregaGrupoPro as $data){
+                if ($Perc_Pago != '') {
+                $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$data->CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                    'TbRegra_Id_Regra'=> $result, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
                     'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
                     'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
                 $result2 = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
-            } else {
-                $result2 = 1;
+                } else {
+                    $result2 = 1;
+                }
             }
-
 
             if(($resultado == true)&&($result2 > 0))
             {
