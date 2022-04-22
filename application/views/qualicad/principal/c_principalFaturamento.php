@@ -156,7 +156,7 @@ if(!empty($infoFaturamento))
 
                                 <h4><strong>Faturamento Item</strong></h4>
 
-                                <table id="table" style="width:100%;">
+                                <table id="table" style="width:100%; font-size:11px;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px;width:5%!important;">
@@ -241,7 +241,7 @@ if(!empty($infoFaturamento))
                                                maxlength="11">
                                             </td>
 
-                                            <td style="width:5%!important;">
+                                            <td>
                                             <input type="text" class="form-control" value="<?php echo set_value('Cd_PorteMedico'); ?>" id="Cd_PorteMedico" name="Cd_PorteMedico">
                                             </td>
 
