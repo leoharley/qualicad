@@ -3574,7 +3574,7 @@ class Principal extends BaseController
 
             if (array_key_exists('salvareVoltar',$this->input->post())) {
                 $this->session->set_flashdata('success', 'Regra GruPro adicionado com sucesso');
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                header("location:javascript://history.go(-1)");
             }
 
             $this->session->set_flashdata('success', 'Regra GruPro atualizado com sucesso');
