@@ -3572,6 +3572,11 @@ class Principal extends BaseController
                 redirect('principalRegraGruPro/editar/'.$IdRegraGruPro);
             }
 
+            if (array_key_exists('salvareVoltar',$this->input->post())) {
+                $this->session->set_flashdata('success', 'Regra GruPro adicionado com sucesso');
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+            }
+
             $this->session->set_flashdata('success', 'Regra GruPro atualizado com sucesso');
         }
         else

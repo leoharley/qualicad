@@ -123,6 +123,7 @@ if ($this->uri->segment(2) == 'editar') {
                                                     <option value="MA">MA</option>
                                                     <option value="ME">ME</option>
                                                 </select>
+                                                <input type="hidden" value="<?php echo $Id_RegraGruPro; ?>" name="Id_RegraGruPro" id="Id_RegraGruPro" />     
                                             </td>
 
                                             <td>
@@ -212,6 +213,7 @@ if ($this->uri->segment(2) == 'editar') {
                             <input type="button" class="btn btn-primary" onclick="window.location='<?php echo base_url(); ?>principalRegraGruPro/listar';" value="Lista (CTRL+L)" name="IrLista" id="IrLista"/>
                             <input type="submit" class="btn btn-primary" value="Salva e lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:5px;"/>
                             <input type="submit" class="btn btn-primary" value="Salva e cadastra outra regra grupro (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <input type="submit" class="btn btn-primary" value="Salva e volta (CTRL+V)" name="salvareVoltar" id="salvareVoltar" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                             <!--    <input type="submit" class="btn btn-primary" value="Salva e cadastra plano (CTRL+P)" name="salvarAvancar" id="salvarAvancar" style="margin-left:5px;<?php //if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/> -->
                             <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
@@ -244,6 +246,9 @@ if ($this->uri->segment(2) == 'editar') {
     });
     shortcut.add("ctrl+a", function() {
         document.getElementById('salvarMesmaTela').click();
+    });
+    shortcut.add("ctrl+v", function() {
+        document.getElementById('salvareVoltar').click();
     });
 
 </script>
