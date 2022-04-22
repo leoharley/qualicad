@@ -152,11 +152,12 @@ if(!empty($infoFaturamento))
                             </div>
 
                             <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
-                            background-color: #f5f5f5;padding-bottom:2rem;font-size:11px;">
+                            background-color: #f5f5f5;padding-bottom:2rem;">
 
                                 <h4><strong>Faturamento Item</strong></h4>
 
-                                <table id="table" style="width:100%;">
+                                <div class="table-responsive">
+                                <table id="table" style="overflow-x:auto;width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px;width:5%!important;">
