@@ -183,7 +183,7 @@ if(!empty($infoFaturamento))
                                         <th class="header-label" style="padding:10px">
                                         Valor filme
                                         </th>
-                                        <th class="header-label" style="padding:10px">
+                                        <th class="header-label" style="padding:10px;width:5%!important;">
                                         Cd_PorteMedico
                                         </th>
                                         <th class="header-label" style="padding:10px">
