@@ -118,6 +118,7 @@ if(!empty($infoRegra))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
+                                    
                                             <td>
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Regra') : $Id_Regra ; ?>" id="Id_Regra" name="Id_Regra" disabled>
                                             <input type="hidden" value="<?php echo $Id_Regra; ?>" name="Id_Regra" id="Id_Regra" /> 
