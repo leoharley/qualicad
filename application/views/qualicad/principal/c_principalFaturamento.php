@@ -2,6 +2,7 @@
 
 $Id_Faturamento = '';
 $Cd_PorteMedico = '';
+$Cd_Tuss = '';
 $Ds_Faturamento = '';
 $Tp_Faturamento = '';
 $Tp_Ativo = '';
@@ -13,6 +14,7 @@ if(!empty($infoFaturamento))
     {
         $Id_Faturamento = $r->Id_Faturamento;
         $Cd_PorteMedico = $r->Cd_PorteMedico;
+        $Cd_Tuss = $r->Cd_Tuss;
         $Ds_Faturamento = $r->Ds_Faturamento;
         $Tp_Faturamento = $r->Tp_Faturamento;
         $Tp_Ativo = $r->Tp_Ativo;
@@ -245,7 +247,6 @@ if(!empty($infoFaturamento))
                                             </td>
 
                                             <td>
-
                                             <select class="form-control required" id="Cd_PorteMedico" name="Cd_PorteMedico">
                                             <?php
                                             if(!empty($infoPorteMedico))
@@ -260,12 +261,25 @@ if(!empty($infoFaturamento))
                                                 }
                                             }
                                             ?>
-                                            </select>
-
-                                            <input type="text" class="form-control" value="<?php echo set_value('Cd_PorteMedico'); ?>" id="Cd_PorteMedico" name="Cd_PorteMedico">
+                                            </select>                                            
                                             </td>
 
                                             <td>
+                                            <select class="form-control required" id="Cd_PorteMedico" name="Cd_PorteMedico">
+                                            <?php
+                                            if(!empty($infoTUSS))
+                                            {
+                                                foreach ($infoTUSS as $tuss)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $tuss->Id_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Cd_Tuss  == $Cd_Tuss) { echo 'selected'; } ?>>
+                                                    <?php echo $tuss->Cd_Tuss .' - '.$tuss->Ds_Tuss ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                            </select>    
                                             <input type="text" class="form-control" value="<?php echo set_value('Cd_TUSS'); ?>" id="Cd_TUSS" name="Cd_TUSS">
                                             </td>
 

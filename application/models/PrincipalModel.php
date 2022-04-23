@@ -241,9 +241,8 @@ function apagaFaturamento($info, $id)
 
 function carregaInfoFaturamento($Id)
 {
-    $this->db->select('PorteMedico.Id_PorteMedico, PorteMedico.Cd_PorteMedico,PorteMedico.Ds_PorteMedico,  Faturamento.*');
-    $this->db->from('TbFaturamento as Faturamento');
-    $this->db->join('TbPorteMedico as PorteMedico', 'PorteMedico.Cd_PorteMedico = Faturamento.Cd_PorteMedico AND PorteMedico.Deletado != "S" AND PorteMedico.Tp_Ativo = "S"','left');
+    $this->db->select('Faturamento.*');
+    $this->db->from('TbFaturamento as Faturamento');    
     $this->db->where('Id_Faturamento', $Id);
     $query = $this->db->get();
 
@@ -735,8 +734,10 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
 
     function carregaInfoFatItemFaturamento($idFaturamento, $idEmpresa)
     {
-        $this->db->select('FatItem.*');
+        $this->db->select('TUSS.Id_Tuss,TUSS.Cd_Tuss,TUSS.Ds_Tuss, PorteMedico.Id_PorteMedico, PorteMedico.Cd_PorteMedico,PorteMedico.Ds_PorteMedico, FatItem.*');
         $this->db->from('TbFatItem as FatItem');
+        $this->db->join('TbPorteMedico as PorteMedico', 'PorteMedico.Cd_PorteMedico = FatItem.Cd_PorteMedico AND PorteMedico.Deletado != "S" AND PorteMedico.Tp_Ativo = "S"','left');
+        $this->db->join('TbTUSS as TUSS', 'TUSS.Cd_Tuss = FatItem.Cd_TUSS AND TUSS.Deletado != "S" AND TUSS.Tp_Ativo = "S"','left');
         $this->db->where('FatItem.TbFaturamento_Id_Faturamento ', $idFaturamento);
         $this->db->where('FatItem.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('FatItem.Deletado !=', 'S');
@@ -1084,18 +1085,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
 
         return $query->result();
     }
-
-    function carregaInfoPorteMedico($idEmpresa)
-    {
-        $this->db->select('*');
-        $this->db->from('TbPorteMedico as PorteMedico');
-        $this->db->where('PorteMedico.TbEmpresa_Id_Empresa', $idEmpresa);
-        $this->db->where('PorteMedico.Deletado !=', 'S');
-        $this->db->where('PorteMedico.Tp_Ativo', 'S');
-        $query = $this->db->get();
-
-        return $query->result();
-    }
+    
 
 
 // FIM DAS CONSULTAS NA TELA DE REGRAGRUPRO
