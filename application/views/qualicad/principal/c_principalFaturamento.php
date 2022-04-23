@@ -157,7 +157,7 @@ if(!empty($infoFaturamento))
                                 <h4><strong>Faturamento Item</strong></h4>
 
                                 <div class="table-responsive">
-                                <table id="table" style="overflow-x:auto;width:100%;">
+                                <table id="table" style="overflow-x:auto;width:200%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px;width:5%!important;">
@@ -205,11 +205,11 @@ if(!empty($infoFaturamento))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                            <td>
+                                            <td style="width:5%!important">
                                             <input type="text" class="form-control" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
                                             </td>
 
-                                            <td style="width:20%!important">
+                                            <td style="width:18%!important">
                                             <input type="text" class="form-control" id="Ds_FatItem" value="<?php echo set_value('Ds_FatItem'); ?>" name="Ds_FatItem"
                                                maxlength="128">
                                             </td>
