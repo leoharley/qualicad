@@ -160,7 +160,7 @@ if(!empty($infoFaturamento))
                                 <table id="table" style="overflow-x:auto;width:200%!important;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <th class="header-label" style="padding:10px;width:5%!important;">
+                                        <th class="header-label" style="padding:10px;width:2%!important;">
                                         Código
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -205,7 +205,7 @@ if(!empty($infoFaturamento))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                            <td style="width:5%!important">
+                                            <td style="width:2%!important">
                                             <input type="text" class="form-control" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
                                             </td>
 
@@ -223,22 +223,22 @@ if(!empty($infoFaturamento))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Honorário'); ?>" id="Vl_Honorário" name="Vl_Honorário"
+                                            <input type="text" style="width:2%!important" class="form-control valor" value="<?php echo set_value('Vl_Honorário'); ?>" id="Vl_Honorário" name="Vl_Honorário"
                                                maxlength="11">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Operacional'); ?>" id="Vl_Operacional" name="Vl_Operacional"
+                                            <input type="text" style="width:2%!important" class="form-control valor" value="<?php echo set_value('Vl_Operacional'); ?>" id="Vl_Operacional" name="Vl_Operacional"
                                                maxlength="11">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Total'); ?>" id="Vl_Total" name="Vl_Total"
+                                            <input type="text" style="width:2%!important" class="form-control valor" value="<?php echo set_value('Vl_Total'); ?>" id="Vl_Total" name="Vl_Total"
                                                maxlength="11">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Filme'); ?>" id="Vl_Filme" name="Vl_Filme"
+                                            <input type="text" style="width:2%!important" class="form-control valor" value="<?php echo set_value('Vl_Filme'); ?>" id="Vl_Filme" name="Vl_Filme"
                                                maxlength="11">
                                             </td>
 
