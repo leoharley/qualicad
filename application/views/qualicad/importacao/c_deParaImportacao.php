@@ -229,7 +229,7 @@ if(!empty($infoDePara))
 
     $(document).ready(function() {
 
-    var DsTabela = $(this).val();
+    var DsTabela = $('#No_Tabela').val();
     if(DsTabela) {
         $.ajax({
             url: '<?php echo base_url(); ?>consultaCamposTabela/'+DsTabela,
