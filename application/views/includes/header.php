@@ -478,7 +478,7 @@ $(function() {
                   {
                     echo '
                     <li class="treeview">
-                        <a href="'.base_url().'importacaoDePara/listar">
+                        <a href="'.base_url().'layoutImportacao/listar">
                             <i class="fa fa-th"></i>
                             <span style="color:yellow">Layout de importação</span>
                         </a>
