@@ -376,6 +376,19 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
+    function carregaInfoLayoutImportacao($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_LayoutImportacao as LayoutImportacao');
+        $this->db->where('LayoutImportacao.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->where('LayoutImportacao.Deletado !=', 'S');
+        $this->db->where('LayoutImportacao.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+
 }
 
   
