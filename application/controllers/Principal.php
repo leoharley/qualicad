@@ -635,6 +635,10 @@ class Principal extends BaseController
                 $this->logrecord($process,$processFunction);
 
                 $this->session->set_flashdata('success', 'Plano atualizado com sucesso');
+
+                if (array_key_exists('salvareVoltar',$this->input->post())) {
+                    redirect('principalConvenio/editar/'.$TbConvenio_Id_Convenio);
+                }
             }
             else
             {
@@ -1932,6 +1936,10 @@ class Principal extends BaseController
             $this->logrecord($process,$processFunction);
 
             $this->session->set_flashdata('success', 'Índice Grupo Pro atualizado com sucesso');
+
+            if (array_key_exists('salvareVoltar',$this->input->post())) {
+                redirect('principalIndice/editar/'.$TbIndice_Id_Indice);
+            }
         }
         else
         {
@@ -2744,6 +2752,10 @@ class Principal extends BaseController
             $this->logrecord($process,$processFunction);
 
             $this->session->set_flashdata('success', 'Faturamento item atualizado com sucesso');
+
+            if (array_key_exists('salvareVoltar',$this->input->post())) {
+                redirect('principalFaturamento/editar/'.$TbFaturamento_Id_Faturamento);
+            }
         }
         else
         {

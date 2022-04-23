@@ -207,6 +207,7 @@ if(!empty($infoPlano))
                             <input type="submit" class="btn btn-primary" value="Salva e lista (CTRL+S)" name="salvarIrLista" id="salvarIrLista" style="margin-left:5px;"/>
                             <input type="submit" class="btn btn-primary" value="Salva e cadastra novamente (CTRL+A)" name="salvarMesmaTela" id="salvarMesmaTela" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
                             <input type="submit" class="btn btn-primary" value="Salva e cadastra convênio (CTRL+C)" name="salvarRetroceder" id="salvarRetroceder" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'editar') { echo 'display:none'; } ?>"/>
+                            <input type="submit" class="btn btn-primary" value="Salva e edita convênio associado(CTRL+V)" name="salvareVoltar" id="salvareVoltar" style="margin-left:5px;<?php if ($this->uri->segment(2) == 'cadastrar') { echo 'display:none'; } ?>"/>
                         <!--    <input type="reset" class="btn btn-info" value="Limpar Campos" /> -->
                         </div>
                     </form>
@@ -236,5 +237,8 @@ if(!empty($infoPlano))
     });
     shortcut.add("ctrl+c", function() {
         document.getElementById('salvarRetroceder').click();
+    });
+    shortcut.add("ctrl+v", function() {
+        document.getElementById('salvareVoltar').click();
     });
 </script>    
