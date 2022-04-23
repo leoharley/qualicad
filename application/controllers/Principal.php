@@ -915,6 +915,8 @@ class Principal extends BaseController
             $Tp_Faturamento = $this->input->post('Tp_Faturamento');
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
+            var_dump($IdFaturamento);exit;
+
             foreach ($this->PrincipalModel->carregaInfoFaturamento($IdFaturamento) as $data){
                 $tpativoatual = ($data->Tp_Ativo);
             }
