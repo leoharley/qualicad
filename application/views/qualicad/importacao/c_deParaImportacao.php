@@ -73,11 +73,38 @@ if(!empty($infoDePara))
                     <?php $this->load->helper("form"); ?>
                     <form role="form" id="addDePara" action="<?php echo ($this->uri->segment(2) == 'cadastrar') ? base_url().'adicionaDePara' : base_url().'editaDePara'; ?>" method="post" role="form">
                         <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Tb_Id_LayoutImportacao">Layout de importação</label>
-                                        <select class="form-control required" id="Tb_Id_LayoutImportacao" name="Tb_Id_LayoutImportacao">
+
+                        <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
+                            background-color: #f5f5f5;padding-bottom:2rem">
+
+                                <h4><strong>DePara</strong></h4>
+
+                                <table style="width:100%;">
+                                    <thead>
+                                    <tr style="background-color:#e0e0e0">
+                                        <th class="header-label" style="padding:10px">
+                                        Layout de importação
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Nome importação
+                                        </th>                                        
+                                        <th class="header-label" style="padding:10px">
+                                        Nome tabela
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Campo destino
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Campo origem (CSV)
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ativo?
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tr id="row0">
+                                            <td>
+                                            <select class="form-control required" id="Tb_Id_LayoutImportacao" name="Tb_Id_LayoutImportacao">
                                             <?php
                                             if(!empty($infoLayoutImportacao))
                                             {
@@ -92,12 +119,10 @@ if(!empty($infoDePara))
                                             }
                                             ?>
                                             </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="No_Importacao">Nome importação</label>
-                                        <select class="form-control required" id="No_Importacao" name="No_Importacao">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="No_Importacao" name="No_Importacao">
                                             <option value="FatItem" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'FatItem') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>FatItem</option>
                                             <option value="GrupoPro" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'GrupoPro') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>GrupoPro</option>
                                             <option value="ProFat" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'ProFat') { echo 'selected'; } ?>>ProFat</option>
@@ -109,16 +134,12 @@ if(!empty($infoDePara))
                                             <option value="Contrato" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'Contrato') { echo 'selected'; } ?>>Contrato</option>
                                             <option value="PorteMedico" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'PorteMedico') { echo 'selected'; } ?>>PorteMedico</option>
                                             <option value="ExcecaoValores" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'ExcecaoValores') { echo 'selected'; } ?>>ExcecaoValores</option>
-                                        </select>
-                                        <input type="hidden" value="<?php echo $Id_DeparaImportacao; ?>" name="Id_DeparaImportacao" id="Id_DeparaImportacao" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="No_Tabela">Nome tabela</label>
-                                        <select class="form-control required" id="No_Tabela" name="No_Tabela">
+                                            </select>
+                                            <input type="hidden" value="<?php echo $Id_DeparaImportacao; ?>" name="Id_DeparaImportacao" id="Id_DeparaImportacao" /> 
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="No_Tabela" name="No_Tabela">
                                             <option value="TabTela" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TabTela') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>TabTela</option>
                                             <option value="TabUsuario" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TabUsuario') { echo 'selected'; } ?>>TabUsuario</option>
                                             <option value="TbConvenio" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TbConvenio') { echo 'selected'; } ?>>TbConvenio</option>
@@ -144,35 +165,30 @@ if(!empty($infoDePara))
                                             <option value="Tb_Unidade" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'Tb_Unidade') { echo 'selected'; } ?>>Tb_Unidade</option>
                                             <option value="TbPorteMedico" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TbPorteMedico') { echo 'selected'; } ?>>TbPorteMedico</option>
                                             <option value="TbExcValores" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TbExcValores') { echo 'selected'; } ?>>TbExcValores</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="No_CampoDestino">Campo destino</label>
-                                        <select class="form-control required" id="No_CampoDestino" name="No_CampoDestino">
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="No_CampoOrigem">Campo origem (CSV)</label>
-                                        <input type="text" class="form-control required" id="No_CampoOrigem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('No_CampoOrigem') : $No_CampoOrigem ; ?>" name="No_CampoOrigem"
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="No_CampoDestino" name="No_CampoDestino">
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control required" id="No_CampoOrigem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('No_CampoOrigem') : $No_CampoOrigem ; ?>" name="No_CampoOrigem"
                                             maxlength="128">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Tp_Ativo">DePara ativo?</label>
-                                        <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
 											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                            </select>
+                                            </td>
+                                </tr>
+
+                                </table>
                             </div>
+                            
                         </div>
                         <!-- /.box-body -->
 
@@ -195,7 +211,7 @@ if(!empty($infoDePara))
         </div>
     </section>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addPlano.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addDePara.js" type="text/javascript"></script>
 
 <script>
     shortcut.add("ctrl+l", function() {
