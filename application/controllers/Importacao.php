@@ -787,7 +787,7 @@ class Importacao extends BaseController
             } 
 
             $No_Importacao = ucwords(strtolower($this->security->xss_clean($this->input->post('No_Importacao'))));
-            $Ds_Layout = $this->input->post('Ds_Layout');
+            $Tb_Id_LayoutImportacao = $this->input->post('Tb_Id_LayoutImportacao');
             $No_Tabela = $this->input->post('No_Tabela');
             $No_CampoOrigem = $this->input->post('No_CampoOrigem');
             $No_CampoDestino  = $this->input->post('No_CampoDestino');
@@ -809,7 +809,7 @@ class Importacao extends BaseController
 
                 //'Senha'=>getHashedPassword($senha)
 
-                $infoDePara = array('Ds_Layout'=>$Ds_Layout, 'No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                $infoDePara = array('Tb_Id_LayoutImportacao'=>$Tb_Id_LayoutImportacao, 'No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                     'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
                     'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
@@ -1323,7 +1323,7 @@ class Importacao extends BaseController
 
             $IdDePara = $this->input->post('Id_DeparaImportacao');
 
-            $Ds_Layout = $this->input->post('Ds_Layout');
+            $Tb_Id_LayoutImportacao = $this->input->post('Tb_Id_LayoutImportacao');
             $No_Importacao = ucwords(strtolower($this->security->xss_clean($this->input->post('No_Importacao'))));
             $No_Tabela = $this->input->post('No_Tabela');
             $No_CampoOrigem = $this->input->post('No_CampoOrigem');
@@ -1345,7 +1345,7 @@ class Importacao extends BaseController
                 $Dt_Inativo = date('Y-m-d H:i:s');
             }
 
-            $infoDePara = array('Ds_Layout'=>$Ds_Layout, 'No_Importacao'=>$No_Importacao, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+            $infoDePara = array('Tb_Id_LayoutImportacao'=>$Tb_Id_LayoutImportacao, 'No_Importacao'=>$No_Importacao, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                 'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
                 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
@@ -1411,7 +1411,7 @@ class Importacao extends BaseController
             
             echo json_encode($resultado);
     }
-    
+
     /*
      * Callback function to check file value and type during validation
      */

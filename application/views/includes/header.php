@@ -480,7 +480,7 @@ $(function() {
                     <li class="treeview">
                         <a href="'.base_url().'layoutImportacao/listar">
                             <i class="fa fa-th"></i>
-                            <span style="color:yellow">Layout de importação</span>
+                            <span style="color:yellow">Layout de importação (CSV)</span>
                         </a>
                     </li>';
                   }
