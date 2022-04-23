@@ -83,7 +83,7 @@ if(!empty($infoDePara))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Layout de importação
+                                        Layout de importação (CSV)
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Tela de importação
