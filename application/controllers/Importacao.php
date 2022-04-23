@@ -77,7 +77,7 @@ class Importacao extends BaseController
                     
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('8',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara(8,'Grupopro',$this->session->userdata('IdEmpresa'));
 
                     var_dump ($csvData);exit;
                     
