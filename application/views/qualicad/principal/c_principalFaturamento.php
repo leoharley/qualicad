@@ -209,16 +209,16 @@ if(!empty($infoFaturamento))
                                             <input type="text" class="form-control" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
                                             </td>
 
-                                            <td style="width:16%!important">
+                                            <td style="width:14%!important">
                                             <input type="text" class="form-control" id="Ds_FatItem" value="<?php echo set_value('Ds_FatItem'); ?>" name="Ds_FatItem"
                                                maxlength="128">
                                             </td>
 
-                                            <td>
+                                            <td style="width:4%!important">
                                             <input type="date" class="form-control" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                             </td>
 
-                                            <td>
+                                            <td style="width:4%!important">
                                             <input type="date" class="form-control" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                             </td>
 
