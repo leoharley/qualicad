@@ -230,7 +230,6 @@ if(!empty($infoDePara))
     $(document).ready(function() {
 
     var DsTabela = $('#No_Tabela').val();
-    if(DsTabela) {
         $.ajax({
             url: '<?php echo base_url(); ?>consultaCamposTabela/'+DsTabela,
             type: "GET",
