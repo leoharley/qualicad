@@ -774,7 +774,7 @@ class Importacao extends BaseController
                 }
                 $data['infoDePara'] = $this->ImportacaoModel->carregaInfoDeParaId($IdDePara);
                 $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacao($this->session->userdata('IdEmpresa'));
-                
+
                 $this->global['pageTitle'] = 'QUALICAD : Editar DePara';      
                 $this->loadViews("qualicad/importacao/c_deParaImportacao", $this->global, $data, NULL);
             }
@@ -1103,6 +1103,215 @@ class Importacao extends BaseController
         }
         redirect('importacaoFatItem');
     }
+
+
+    function layoutImportacao()
+    {
+            $tpTela = $this->uri->segment(2);
+
+            $data['perfis'] = $this->CadastroModel->carregaPerfisUsuarios();
+
+            if ($tpTela == 'listar') {
+
+                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                    {             
+                    redirect('telaNaoAutorizada');
+                    }
+
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+                
+                $this->load->library('pagination');
+                
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "layoutImportacao/listar", $count, 100 );
+                
+                $data['registrosLayoutImportacao'] = $this->ImportacaoModel->listaLayoutImportacao($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+                
+                $process = 'Listar Layout Importacao';
+                $processFunction = 'Importacao/layoutImportacao';
+                $this->logrecord($process,$processFunction);
+
+                $this->global['pageTitle'] = 'QUALICAD : Lista de Layout Importação';
+                
+                $this->loadViews("qualicad/importacao/l_layoutImportacao", $this->global, $data, NULL);
+            }
+            else if ($tpTela == 'cadastrar') {
+
+                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                    {             
+                    redirect('telaNaoAutorizada');
+                    }                
+
+                $this->global['pageTitle'] = 'QUALICAD : Cadastro de Layout Importação';
+                $this->loadViews("qualicad/importacao/c_layoutImportacao", $this->global, $data, NULL); 
+            }
+            else if ($tpTela == 'editar') {
+
+                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                    {             
+                    redirect('telaNaoAutorizada');
+                    }
+
+                $IdLayoutImportacao = $this->uri->segment(3);
+                if($IdLayoutImportacao == null)
+                {
+                    redirect('layoutImportacao/listar');
+                }
+                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacao($IdLayoutImportacao);                
+
+                $this->global['pageTitle'] = 'QUALICAD : Editar Layout Importação';      
+                $this->loadViews("qualicad/importacao/c_layoutImportacao", $this->global, $data, NULL);
+            }
+    }
+
+    function adicionaLayoutImportacao() 
+    {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('layoutImportacao/listar'); 
+            } 
+
+            $Ds_LayoutImportacao = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_LayoutImportacao'))));
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            //    $roleId = $this->input->post('role');
+
+            //VERIFICAÇÃO DE DUPLICIDADE
+    //        if ($this->PrincipalModel->consultaPlanoExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
+
+                //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+                if ($Tp_Ativo == 'S')
+                {
+                    $Dt_Ativo = date('Y-m-d H:i:s');
+                } else
+                {
+                    $Dt_Ativo = null;
+                }
+
+                //'Senha'=>getHashedPassword($senha)
+
+                $infoLayoutImportacao = array('Ds_LayoutImportacao'=>$Ds_LayoutImportacao, 
+                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'), 'Tp_Ativo'=>$Tp_Ativo);
+
+                $result = $this->ImportacaoModel->adicionaLayoutImportacao($infoLayoutImportacao);
+
+                if($result > 0)
+                {
+                    $process = 'Adicionar Layout Importação';
+                    $processFunction = 'Importacao/adicionaLayoutImportacao';
+                    $this->logrecord($process,$processFunction);
+
+                    $this->session->set_flashdata('success', 'Layout Importação criado com sucesso');
+
+                    if (array_key_exists('salvarIrLista',$this->input->post())) {
+                        redirect('layoutImportacao/listar'); 
+                    }
+                    else if (array_key_exists('salvarMesmaTela',$this->input->post())) {
+                        redirect('layoutImportacao/cadastrar'); 
+                    }
+                    else if (array_key_exists('salvarRetroceder',$this->input->post())) {
+                        redirect('layoutImportacao/cadastrar');
+                    }
+
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Falha na criação do Layout Importação');
+                }
+
+          //  } else {
+            //    $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+          //  }
+
+            redirect('layoutImportacao/cadastrar');
+    }
+
+
+    function editaLayoutImportacao()
+    {
+            if (array_key_exists('IrLista',$this->input->post())) {
+                redirect('layoutImportacao/listar');
+            } 
+
+            $this->load->library('form_validation');
+
+            $IdLayoutImportacao = $this->input->post('Id_LayoutImportacao');
+
+            $Ds_LayoutImportacao = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_LayoutImportacao'))));
+            $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            foreach ($this->ImportacaoModel->carregaInfoLayoutImportacao($IdLayoutImportacao) as $data){
+                $Tp_Ativo_Atual = ($data->Tp_Ativo);
+            }
+
+            //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
+            if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
+            {
+                $Dt_Ativo = date('Y-m-d H:i:s');
+                $Dt_Inativo = null;
+            } else if ($Tp_Ativo == 'N')
+            {
+                $Dt_Ativo = null;
+                $Dt_Inativo = date('Y-m-d H:i:s');
+            }
+
+            array('Ds_LayoutImportacao'=>$Ds_LayoutImportacao, 
+                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'), 'Tp_Ativo'=>$Tp_Ativo);
+
+            $infoLayoutImportacao = array('Ds_LayoutImportacao'=>$Ds_LayoutImportacao, 
+            'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'), 'Tp_Ativo'=>$Tp_Ativo);
+
+            $resultado = $this->ImportacaoModel->editaLayoutImportacao($infoLayoutImportacao,$IdLayoutImportacao);
+
+            if($resultado == true)
+            {
+                $process = 'Layout Importação atualizado';
+                $processFunction = 'Importacao/editaLayoutImportacao';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Layout Importação atualizado com sucesso');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Falha na atualização do Layout Importação');
+            }
+
+            redirect('layoutImportacao/listar');
+            // }
+    }
+
+    function apagaLayoutImportacao()
+    {
+            if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+            {             
+            redirect('telaNaoAutorizada');
+            }
+
+            $IdLayoutImportacao = $this->uri->segment(2);
+
+            $infoLayoutImportacao = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->ImportacaoModel->apagaLayoutImportacao($infoLayoutImportacao, $IdLayoutImportacao);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                $process = 'Exclusão de Layout Importação';
+                $processFunction = 'Importacao/apagaLayoutImportacao';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Layout Importação deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o Layout Importação');
+                }
+                redirect('layoutImportacao/listar');
+    }
+
 
     function editaDePara()
     {
