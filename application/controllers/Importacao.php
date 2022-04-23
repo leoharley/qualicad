@@ -1290,7 +1290,7 @@ class Importacao extends BaseController
 
             $IdLayoutImportacao = $this->uri->segment(2);
 
-            $infoLayoutImportacao = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            $infoLayoutImportacao = array('Deletado'=>'S');
             
             $resultado = $this->ImportacaoModel->apagaLayoutImportacao($infoLayoutImportacao, $IdLayoutImportacao);
             
