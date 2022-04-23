@@ -222,22 +222,22 @@ if(!empty($infoFaturamento))
                                             <input type="date" class="form-control" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                             </td>
 
-                                            <td style="width:2%!important">
+                                            <td style="width:3%!important">
                                             <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Honorário'); ?>" id="Vl_Honorário" name="Vl_Honorário"
                                                maxlength="11">
                                             </td>
 
-                                            <td style="width:2%!important">
+                                            <td style="width:3%!important">
                                             <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Operacional'); ?>" id="Vl_Operacional" name="Vl_Operacional"
                                                maxlength="11">
                                             </td>
 
-                                            <td style="width:2%!important">
+                                            <td style="width:3%!important">
                                             <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Total'); ?>" id="Vl_Total" name="Vl_Total"
                                                maxlength="11">
                                             </td>
 
-                                            <td style="width:2%!important">
+                                            <td style="width:3%!important">
                                             <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Filme'); ?>" id="Vl_Filme" name="Vl_Filme"
                                                maxlength="11">
                                             </td>
