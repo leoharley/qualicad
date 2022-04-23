@@ -456,16 +456,6 @@ class ImportacaoModel extends CI_Model
     }
 
 
-
-    function rollback()
-    {
-        $this->db->trans_rollback();
-        
-        $this->db->trans_complete();
-
-        return TRUE;
-    }
-
 }
 
   

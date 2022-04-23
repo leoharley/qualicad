@@ -62,10 +62,6 @@
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
             </form>
         </div>
-
-        <a class="btn btn-sm btn-info" href="<?php echo base_url().'rollback' ?>" title="Editar">
-            Rollback
-        </a>
         
         <!-- Data list table -->
         <table class="table table-striped table-bordered">
