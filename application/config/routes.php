@@ -139,6 +139,10 @@ $route['importacaoDePara/:any'] = "importacao/importacaoDePara/$1";
 $route['layoutImportacao/:any/:any'] = "importacao/layoutImportacao/$1/$2";
 $route['layoutImportacao/:any'] = "importacao/layoutImportacao/$1";
 
+$route['adicionaDePara'] = "importacao/adicionaDePara";
+$route['editaDePara'] = "importacao/editaDePara";
+$route['apagaDePara/:any'] = "importacao/apagaDePara/$1";
+
 $route['adicionaLayoutImportacao'] = "importacao/adicionaLayoutImportacao";
 $route['editaLayoutImportacao'] = "importacao/editaLayoutImportacao";
 $route['apagaLayoutImportacao/:any'] = "importacao/apagaLayoutImportacao/$1";
