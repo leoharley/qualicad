@@ -149,6 +149,7 @@ $route['apagaLayoutImportacao/:any'] = "importacao/apagaLayoutImportacao/$1";
 
 $route['consultaCamposTabela/:any'] = "importacao/consultaCamposTabela/$1";
 
+$route['rollback'] = "importacao/rollback";
 
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";

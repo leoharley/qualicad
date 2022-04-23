@@ -1413,6 +1413,11 @@ class Importacao extends BaseController
             echo json_encode($resultado);
     }
 
+    function rollback()
+    {      
+        $resultado = $this->ImportacaoModel->rollback();
+    }
+
     /*
      * Callback function to check file value and type during validation
      */
