@@ -222,7 +222,7 @@ if(!empty($infoDePara))
                 success:function(data) {
                     $('select[name="No_CampoDestino"]').empty();
                     $.each(data, function(key, value) {
-                        $('select[name="No_CampoDestino"]').append('<option value="'+ value.Id_CamposDestino +'">'+ value.Ds_Tabela_CampoDestino +'</option>');
+                        $('select[name="No_CampoDestino"]').append('<option value="'+ value.Id_CamposDestino +'">'+ value.Ds_CampoDestino +'</option>');
                     });
                 }
             });
