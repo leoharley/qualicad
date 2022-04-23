@@ -157,7 +157,7 @@ if(!empty($infoFaturamento))
                                 <h4><strong>Faturamento Item</strong></h4>
 
                                 <div class="table-responsive">
-                                <table id="table" style="overflow-x:auto;width:200%;">
+                                <table id="table" style="overflow-x:auto;width:200%!important;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px;width:5%!important;">
