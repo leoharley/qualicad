@@ -83,7 +83,7 @@
                         <?php echo $registro->Id_DeparaImportacao ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_LayoutImportacao ?>
+                        <?php echo $registro->Ds_Layout ?>
                       </td>
                       <td>
                         <?php echo $registro->No_Importacao ?>
