@@ -243,6 +243,23 @@ if(!empty($infoFaturamento))
                                             </td>
 
                                             <td>
+
+                                            <select class="form-control required" id="Cd_PorteMedico" name="Cd_PorteMedico">
+                                            <?php
+                                            if(!empty($infoPorteMedico))
+                                            {
+                                                foreach ($infoPorteMedico as $portemedico)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $portemedico->Id_PorteMedico ?>" <?php if ($this->uri->segment(2) == 'editar' && $portemedico->Cd_PorteMedico  == $Cd_PorteMedico) { echo 'selected'; } ?>>
+                                                    <?php echo $portemedico->Cd_PorteMedico .' - '.$portemedico->Ds_PorteMedico ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                            </select>
+
                                             <input type="text" class="form-control" value="<?php echo set_value('Cd_PorteMedico'); ?>" id="Cd_PorteMedico" name="Cd_PorteMedico">
                                             </td>
 
