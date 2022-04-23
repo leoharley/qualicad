@@ -1080,6 +1080,8 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaFatItem($memData);
 
+                            var_dump ($insert);exit;
+
                             if($insert){
                                 $insertCount++;
                             }
