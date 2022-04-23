@@ -279,8 +279,7 @@ if(!empty($infoFaturamento))
                                                 }
                                             }
                                             ?>
-                                            </select>    
-                                            <input type="text" class="form-control" value="<?php echo set_value('Cd_TUSS'); ?>" id="Cd_TUSS" name="Cd_TUSS">
+                                            </select>                                            
                                             </td>
 
                                             <td>
