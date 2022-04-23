@@ -445,6 +445,15 @@ class ImportacaoModel extends CI_Model
         return $this->db->affected_rows();
     }
 
+    function consultaCamposTabela($DsTabela)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_CamposDestino');
+        $this->db->where('Ds_Tabela_CampoDestino', $DsTabela);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
 
 }
 

@@ -159,8 +159,8 @@ if(!empty($infoDePara))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="No_CampoDestino">Campo destino</label>
-                                        <input type="text" class="form-control required" id="No_CampoDestino" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('No_CampoDestino') : $No_CampoDestino ; ?>" name="No_CampoDestino"
-                                               maxlength="11">
+                                        <select id="No_CampoDestino" name="No_CampoDestino"  style="width:350px">
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -210,4 +210,26 @@ if(!empty($infoDePara))
     shortcut.add("ctrl+c", function() {
         document.getElementById('salvarRetroceder').click();
     });
+
+    $(document).ready(function() {
+    $('select[name="No_Tabela"]').on('change', function() {
+        var DsTabela = $(this).val();
+        if(DsTabela) {
+            $.ajax({
+                url: <?php echo base_url(); ?>'consultaCamposTabela/'+DsTabela,
+                type: "GET",
+                dataType: "json",
+                success:function(data) {
+                    $('select[name="No_CampoDestino"]').empty();
+                    $.each(data, function(key, value) {
+                        $('select[name="No_CampoDestino"]').append('<option value="'+ value.Id_CamposDestino +'">'+ value.Ds_Tabela_CampoDestino +'</option>');
+                    });
+                }
+            });
+        }else{
+            $('select[name="No_CampoDestino"]').empty();
+        }
+    });
+    });
+
 </script>    

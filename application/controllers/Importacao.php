@@ -1400,6 +1400,17 @@ class Importacao extends BaseController
                 }
                 redirect('importacaoDePara/listar');
     }
+
+
+    function consultaCamposTabela()
+    {
+           
+            $DsTabela = $this->uri->segment(2);
+                       
+            $resultado = $this->ImportacaoModel->consultaCamposTabela($DsTabela);
+            
+            echo json_encode($resultado);
+    }
     
     /*
      * Callback function to check file value and type during validation
