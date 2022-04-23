@@ -747,7 +747,7 @@ class Principal extends BaseController
                 $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamento($IdFaturamento);
 
                 $data['infoFatItem'] = $this->PrincipalModel->carregaInfoFatItemFaturamento($IdFaturamento,$this->session->userdata('IdEmpresa'));
-                $data['infoPorteMedico'] = $this->ImportacaoModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
+                $data['infoPorteMedico'] = $this->PrincipalModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
                 $data['infoTUSS'] = $this->PrincipalModel->carregaInfoTUSSEmpresa($this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Editar faturamento';      
