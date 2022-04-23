@@ -755,7 +755,7 @@ class Importacao extends BaseController
                     redirect('telaNaoAutorizada');
                     }
 
-                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacao($this->session->userdata('IdEmpresa'));
+                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa($this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de DePara';
                 $this->loadViews("qualicad/importacao/c_deParaImportacao", $this->global, $data, NULL); 
@@ -773,7 +773,7 @@ class Importacao extends BaseController
                     redirect('importacaoDePara/listar');
                 }
                 $data['infoDePara'] = $this->ImportacaoModel->carregaInfoDeParaId($IdDePara);
-                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacao($this->session->userdata('IdEmpresa'));
+                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa($this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Editar DePara';      
                 $this->loadViews("qualicad/importacao/c_deParaImportacao", $this->global, $data, NULL);

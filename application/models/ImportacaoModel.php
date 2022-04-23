@@ -376,7 +376,7 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function carregaInfoLayoutImportacao($idEmpresa)
+    function carregaInfoLayoutImportacaoEmpresa($idEmpresa)
     {
         $this->db->select('*');
         $this->db->from('Tb_LayoutImportacao as LayoutImportacao');
@@ -386,6 +386,63 @@ class ImportacaoModel extends CI_Model
         $query = $this->db->get();
 
         return $query->result();
+    }
+
+    function listaLayoutImportacao($IdEmpresa, $searchText = '', $page, $segment)
+    {
+        $this->db->select('LayoutImportacao.*');
+        $this->db->from('Tb_LayoutImportacao as LayoutImportacao');
+    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
+        if(!empty($searchText)) {
+            $likeCriteria = "(LayoutImportacao.Ds_LayoutImportacao LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
+
+        $this->db->where('LayoutImportacao.Deletado !=', 'S');
+        $this->db->where('LayoutImportacao.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->limit($page, $segment);
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
+    }
+
+    function carregaInfoLayoutImportacao($Id)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_LayoutImportacao');
+        $this->db->where('Id_LayoutImportacao', $Id);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function adicionaLayoutImportacao($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('Tb_LayoutImportacao', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
+    function editaLayoutImportacao($info, $id)
+    {
+        $this->db->where('Id_LayoutImportacao ', $id);
+        $this->db->update('Tb_LayoutImportacao', $info);
+
+        return TRUE;
+    }
+
+    function apagaLayoutImportacao($info, $id)
+    {
+        $this->db->where('Id_LayoutImportacao', $id);
+        $this->db->update('Tb_LayoutImportacao', $info);
+
+        return $this->db->affected_rows();
     }
 
 

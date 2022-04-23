@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-users"></i> Listar DePara
+      <i class="fa fa-users"></i> Listar Layout Importação
       <small>Listar</small>
     </h1>
   </section>
@@ -25,8 +25,8 @@
   <section class="content">
     <div class="col-xs-12">
       <div class="text-left">
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>importacaoDePara/cadastrar">
-          <i class="fa fa-plus"></i> Adicionar DePara</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>layoutImportacao/cadastrar">
+          <i class="fa fa-plus"></i> Adicionar Layout Importação</a>
       </div>
       <br/>
       <div class="box">
@@ -62,41 +62,25 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Layout</th>
-                    <th>Importação</th>
-                    <th>Tabela</th>
-                    <th>Campo origem</th>
-                    <th>Campo destino</th>
-                    <th>DePara ativo?</th>
+                    <th>Layout (descrição)</th>
+                    <th>Ativo?</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                      if(!empty($registrosDePara))
+                      if(!empty($registrosLayoutImportacao))
                       {
-                          foreach($registrosDePara as $registro)
+                          foreach($registrosLayoutImportacao as $registro)
                           {
                       ?>
                     <tr>
                       <td>
-                        <?php echo $registro->Id_DeparaImportacao ?>
+                        <?php echo $registro->Id_LayoutImportacao ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_Layout ?>
+                        <?php echo $registro->Ds_LayoutImportacao ?>
                       </td>
-                      <td>
-                        <?php echo $registro->No_Importacao ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->No_Tabela ?>
-                      </td>
-                      <td>
-                        <?php echo $registro->No_CampoOrigem ?>
-                      </td>
-                      <td>
-                          <?php echo $registro->No_CampoDestino ?>
-                      </td>                    
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
@@ -104,10 +88,10 @@
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'importacaoDePara/editar/'.$registro->Id_DeparaImportacao; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'layoutImportacao/editar/'.$registro->Id_LayoutImportacao; ?>" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaDePara/'.$registro->Id_DeparaImportacao; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaLayoutImportacao/'.$registro->Id_LayoutImportacao; ?>" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
