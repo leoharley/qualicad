@@ -209,7 +209,7 @@ if(!empty($infoFaturamento))
                                             <input type="text" class="form-control" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
                                             </td>
 
-                                            <td>
+                                            <td style="width:20%!important">
                                             <input type="text" class="form-control" id="Ds_FatItem" value="<?php echo set_value('Ds_FatItem'); ?>" name="Ds_FatItem"
                                                maxlength="128">
                                             </td>
