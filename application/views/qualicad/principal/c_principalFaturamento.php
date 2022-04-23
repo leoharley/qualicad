@@ -254,7 +254,7 @@ if(!empty($infoFaturamento))
                                                 foreach ($infoPorteMedico as $portemedico)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $portemedico->Id_PorteMedico ?>" <?php if ($this->uri->segment(2) == 'editar' && $portemedico->Cd_PorteMedico  == $Cd_PorteMedico) { echo 'selected'; } ?>>
+                                                <option value="<?php echo $portemedico->Id_PorteMedico ?>">
                                                     <?php echo $portemedico->Cd_PorteMedico .' - '.$portemedico->Ds_PorteMedico ?>
                                                 </option>
                                                 <?php
@@ -272,7 +272,7 @@ if(!empty($infoFaturamento))
                                                 foreach ($infoTUSS as $tuss)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $tuss->Id_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Cd_Tuss  == $Cd_Tuss) { echo 'selected'; } ?>>
+                                                <option value="<?php echo $tuss->Id_Tuss ?>">
                                                     <?php echo $tuss->Cd_Tuss .' - '.$tuss->Ds_Tuss ?>
                                                 </option>
                                                 <?php
@@ -334,10 +334,10 @@ if(!empty($infoFaturamento))
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Vl_Filme ?>" disabled>
                                     </td>
                                     <td>
-                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_PorteMedico ?>" disabled>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_PorteMedico. '-' .$fatitem->Ds_PorteMedico ?>" disabled>
                                     </td>
                                     <td>
-                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_TUSS ?>" disabled>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_Tuss. '-' .$fatitem->Ds_Tuss ?>" disabled>
                                     </td>
                                     <td>
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Cd_TISS ?>" disabled>
