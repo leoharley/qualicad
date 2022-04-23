@@ -1,6 +1,7 @@
 <?php
 
 $Id_Faturamento = '';
+$Cd_PorteMedico = '';
 $Ds_Faturamento = '';
 $Tp_Faturamento = '';
 $Tp_Ativo = '';
@@ -11,6 +12,7 @@ if(!empty($infoFaturamento))
     foreach ($infoFaturamento as $r)
     {
         $Id_Faturamento = $r->Id_Faturamento;
+        $Cd_PorteMedico = $r->Cd_PorteMedico;
         $Ds_Faturamento = $r->Ds_Faturamento;
         $Tp_Faturamento = $r->Tp_Faturamento;
         $Tp_Ativo = $r->Tp_Ativo;

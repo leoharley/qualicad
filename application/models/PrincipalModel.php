@@ -241,8 +241,9 @@ function apagaFaturamento($info, $id)
 
 function carregaInfoFaturamento($Id)
 {
-    $this->db->select('*');
-    $this->db->from('TbFaturamento');
+    $this->db->select('PorteMedico.Id_PorteMedico, PorteMedico.Cd_PorteMedico,PorteMedico.Ds_PorteMedico,  Faturamento.*');
+    $this->db->from('TbFaturamento as Faturamento');
+    $this->db->join('TbPorteMedico as PorteMedico', 'PorteMedico.Cd_PorteMedico = Faturamento.Cd_PorteMedico AND PorteMedico.Deletado != "S" AND PorteMedico.Tp_Ativo = "S"','left');
     $this->db->where('Id_Faturamento', $Id);
     $query = $this->db->get();
 
