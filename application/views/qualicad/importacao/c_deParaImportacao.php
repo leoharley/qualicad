@@ -228,6 +228,24 @@ if(!empty($infoDePara))
     });
 
     $(document).ready(function() {
+    $('select[name="No_Tabela"]').on('load', function() {
+    var DsTabela = $(this).val();
+    if(DsTabela) {
+        $.ajax({
+            url: '<?php echo base_url(); ?>consultaCamposTabela/'+DsTabela,
+            type: "GET",
+            dataType: "json",
+            success:function(data) {
+                $('select[name="No_CampoDestino"]').empty();
+                $.each(data, function(key, value) {
+                    $('select[name="No_CampoDestino"]').append('<option value="'+ value.Ds_CampoDestino +'">'+ value.Ds_CampoDestino +'</option>');
+                });
+            }
+        });
+    }else{
+        $('select[name="No_CampoDestino"]').empty();
+    }
+});
     $('select[name="No_Tabela"]').on('change', function() {
         var DsTabela = $(this).val();
         if(DsTabela) {
