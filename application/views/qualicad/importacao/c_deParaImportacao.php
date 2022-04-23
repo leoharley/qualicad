@@ -228,7 +228,7 @@ if(!empty($infoDePara))
     });
 
     $(document).ready(function() {
-    $('select[name="No_Tabela"]').on('load', function() {
+
     var DsTabela = $(this).val();
     if(DsTabela) {
         $.ajax({
@@ -242,10 +242,7 @@ if(!empty($infoDePara))
                 });
             }
         });
-    }else{
-        $('select[name="No_CampoDestino"]').empty();
-    }
-});
+
     $('select[name="No_Tabela"]').on('change', function() {
         var DsTabela = $(this).val();
         if(DsTabela) {
