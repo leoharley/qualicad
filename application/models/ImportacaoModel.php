@@ -448,7 +448,7 @@ class ImportacaoModel extends CI_Model
     function consultaCamposTabela($DsTabela)
     {
         $this->db->select('COLUMN_NAME as Ds_CampoDestino');
-        $this->db->from('INFORMATION_SCHEMA'.'COLUMNS');
+        $this->db->from('INFORMATION_SCHEMA.COLUMNS');
         $this->db->where('TABLE_NAME', $DsTabela);
         $query = $this->db->get();
 
