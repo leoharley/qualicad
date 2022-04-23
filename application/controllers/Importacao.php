@@ -1026,8 +1026,8 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação FatItem';
 
         $data['infoFatItem'] = $this->ImportacaoModel->carregaInfoFatItem($this->session->userdata('IdEmpresa'));
-
         $data['infoFaturamento'] = $this->ImportacaoModel->carregaInfoFaturamento($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa($this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoFatItem", $this->global, $data, NULL);
     }

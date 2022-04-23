@@ -59,6 +59,21 @@
             <form action="<?php echo base_url() ?>importaFatItem" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="Ds_Layout">Layout de importação</label>
+                    <select class="form-control required" id="Tb_Id_LayoutImportacao" name="Tb_Id_LayoutImportacao">
+                    <?php
+                    if(!empty($infoLayoutImportacao))
+                    {
+                        foreach ($infoLayoutImportacao as $layoutimportacao)
+                        {
+                            ?>
+                        <option value="<?php echo $layoutimportacao->Id_LayoutImportacao ?>" <?php if ($this->uri->segment(2) == 'editar' && $layoutimportacao->Id_LayoutImportacao  == $Tb_Id_LayoutImportacao) { echo 'selected'; } ?>>
+                            <?php echo $layoutimportacao->Id_LayoutImportacao.' - '.$layoutimportacao->Ds_LayoutImportacao ?>
+                        </option>
+                        <?php
+                        }
+                    }
+                    ?>
+                    </select>
                     <select class="form-control required" id="Ds_Layout" name="Ds_Layout">
                         <option value="Assefaz">Assefaz</option>
                         <option value="Bradesco">Bradesco</option>
