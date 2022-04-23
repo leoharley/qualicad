@@ -149,18 +149,18 @@ if(!empty($infoDePara))
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="No_CampoOrigem">Campo origem</label>
-                                        <input type="text" class="form-control required" id="No_CampoOrigem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('No_CampoOrigem') : $No_CampoOrigem ; ?>" name="No_CampoOrigem"
-                                            maxlength="128">
+                                        <label for="No_CampoDestino">Campo destino</label>
+                                        <select class="form-control required" id="No_CampoDestino" name="No_CampoDestino">
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="No_CampoDestino">Campo destino</label>
-                                        <select id="No_CampoDestino" name="No_CampoDestino"  style="width:350px">
-                                        </select>
+                                        <label for="No_CampoOrigem">Campo origem (CSV)</label>
+                                        <input type="text" class="form-control required" id="No_CampoOrigem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('No_CampoOrigem') : $No_CampoOrigem ; ?>" name="No_CampoOrigem"
+                                            maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
