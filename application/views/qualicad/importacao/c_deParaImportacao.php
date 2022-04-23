@@ -86,7 +86,7 @@ if(!empty($infoDePara))
                                         Layout de importação
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Nome importação
+                                        Tela de importação
                                         </th>                                        
                                         <th class="header-label" style="padding:10px">
                                         Nome tabela
