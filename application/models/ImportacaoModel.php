@@ -308,8 +308,9 @@ class ImportacaoModel extends CI_Model
 
     function listaDePara($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('*');
+        $this->db->select('LayoutImportacao.Ds_LayoutImportacao, DePara.*');
         $this->db->from('Rl_DeparaImportacao as DePara');
+        $this->db->join('Tb_LayoutImportacao as LayoutImportacao', 'LayoutImportacao.Id_LayoutImportacao = DePara.Tb_Id_LayoutImportacao','left');
     //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(DePara.No_Importacao LIKE '%".$searchText."%')";
