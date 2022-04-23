@@ -726,7 +726,7 @@ class Principal extends BaseController
                     redirect('acaoNaoAutorizada');
                 }
 
-                $data['infoPorteMedico'] = $this->ImportacaoModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
+                $data['infoPorteMedico'] = $this->PrincipalModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de Faturamento';
                 $this->loadViews("qualicad/principal/c_principalFaturamento", $this->global, $data, NULL); 
