@@ -261,7 +261,7 @@ if(!empty($infoFaturamento))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Cd_PorteMedico" name="Cd_PorteMedico">
+                                            <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS">
                                             <?php
                                             if(!empty($infoTUSS))
                                             {

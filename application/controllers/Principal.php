@@ -815,6 +815,11 @@ class Principal extends BaseController
             $Vl_Operacional = $this->input->post('Vl_Operacional');
             $Vl_Total = $this->input->post('Vl_Total');
             $Vl_Filme = $this->input->post('Vl_Filme');
+            $Cd_PorteMedico = $this->input->post('Cd_PorteMedico');
+            $Cd_TUSS = $this->input->post('Cd_TUSS');
+            $Cd_TISS = $this->input->post('Cd_TISS');
+            $Qt_Embalagem = $this->input->post('Qt_Embalagem');
+            $Ds_Unidade = $this->input->post('Ds_Unidade');
             $Tp_Ativo = $this->input->post('Tp_Ativo_FatItem');
 
 
@@ -837,8 +842,9 @@ class Principal extends BaseController
                     'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento, 'Ds_FatItem'=> $Ds_FatItem,
                     'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Honorário'=>$Vl_Honorário,
                     'Vl_Operacional'=>$Vl_Operacional,'Vl_Total'=>$Vl_Total, 'Vl_Filme'=>$Vl_Filme,
-                    'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+                    'Cd_PorteMedico'=>$Cd_PorteMedico, 'Cd_TUSS'=>$Cd_TUSS, 'Cd_TISS'=>$Cd_TISS, 
+                    'Qt_Embalagem'=>$Qt_Embalagem, 'Ds_Unidade'=>$Ds_Unidade,'CriadoPor'=>$this->vendorId, 
+                    'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
                 $resultFatItem = $this->PrincipalModel->adicionaFaturamentoItem($infoFaturamentoItem);
                 } else {
@@ -938,6 +944,11 @@ class Principal extends BaseController
             $Vl_Operacional = $this->input->post('Vl_Operacional');
             $Vl_Total = $this->input->post('Vl_Total');
             $Vl_Filme = $this->input->post('Vl_Filme');
+            $Cd_PorteMedico = $this->input->post('Cd_PorteMedico');
+            $Cd_TUSS = $this->input->post('Cd_TUSS');
+            $Cd_TISS = $this->input->post('Cd_TISS');
+            $Qt_Embalagem = $this->input->post('Qt_Embalagem');
+            $Ds_Unidade = $this->input->post('Ds_Unidade');
             $Tp_Ativo = $this->input->post('Tp_Ativo_FatItem');
 
 
@@ -960,8 +971,9 @@ class Principal extends BaseController
                     'TbFaturamento_Id_Faturamento'=> $IdFaturamento, 'Ds_FatItem'=> $Ds_FatItem,
                     'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Honorário'=>$Vl_Honorário,
                     'Vl_Operacional'=>$Vl_Operacional,'Vl_Total'=>$Vl_Total, 'Vl_Filme'=>$Vl_Filme,
-                    'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
-                    'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+                    'Cd_PorteMedico'=>$Cd_PorteMedico, 'Cd_TUSS'=>$Cd_TUSS, 'Cd_TISS'=>$Cd_TISS, 
+                    'Qt_Embalagem'=>$Qt_Embalagem,'Ds_Unidade'=>$Ds_Unidade, 'CriadoPor'=>$this->vendorId, 
+                    'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
                 $resultFatItem = $this->PrincipalModel->adicionaFaturamentoItem($infoFaturamentoItem);
                 } else {
