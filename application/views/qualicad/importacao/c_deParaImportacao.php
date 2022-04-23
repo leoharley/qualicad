@@ -216,7 +216,7 @@ if(!empty($infoDePara))
         var DsTabela = $(this).val();
         if(DsTabela) {
             $.ajax({
-                url: <?php echo base_url(); ?>'consultaCamposTabela/'+DsTabela,
+                url: '<?php echo base_url(); ?>consultaCamposTabela/'+DsTabela,
                 type: "GET",
                 dataType: "json",
                 success:function(data) {
