@@ -70,6 +70,11 @@
                     <th>Valor operacional</th>
                     <th>Valor total</th>
                     <th>Valor filme</th>
+                    <th>Cd_PorteMedico</th>
+                    <th>Cd_TUSS</th>
+                    <th>Cd_TISS</th>
+                    <th>Qt_Embalagem</th>
+                    <th>Ds_Unidade</th>
                     <th>Ativo?</th>                
                     <th>Ações</th>
                   </tr>
@@ -108,6 +113,21 @@
                       </td>
                       <td>
                           <?php echo $registro->Vl_Filme ?>
+                      </td>
+                      <td>
+                          <?php echo $registro->Cd_PorteMedico ?>
+                      </td>
+                      <td>
+                          <?php echo $registro->Cd_TUSS ?>
+                      </td>
+                      <td>
+                          <?php echo $registro->Cd_TISS ?>
+                      </td>
+                      <td>
+                          <?php echo $registro->Qt_Embalagem ?>
+                      </td>
+                      <td>
+                          <?php echo $registro->Ds_Unidade ?>
                       </td>
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>

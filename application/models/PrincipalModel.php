@@ -680,6 +680,8 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         $this->db->select('FaturamentoItem.*, Faturamento.Ds_Faturamento');
         $this->db->from('TbFatItem as FaturamentoItem');
         $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = FaturamentoItem.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
+        $this->db->join('TbPorteMedico as PorteMedico', 'PorteMedico.Cd_PorteMedico = FaturamentoItem.Cd_PorteMedico AND PorteMedico.Deletado != "S" AND PorteMedico.Tp_Ativo = "S"','left');
+        $this->db->join('TbTUSS as TUSS', 'TUSS.Cd_Tuss = FaturamentoItem.Cd_TUSS AND TUSS.Deletado != "S" AND TUSS.Tp_Ativo = "S"','left');
 //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(FaturamentoItem.Ds_FatItem LIKE '%".$searchText."%')";
