@@ -250,7 +250,7 @@ if(!empty($infoFaturamento))
                                                 foreach ($infoPorteMedico as $portemedico)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $portemedico->Id_PorteMedico ?>">
+                                                <option value="<?php echo $portemedico->Cd_PorteMedico ?>">
                                                     <?php echo $portemedico->Cd_PorteMedico .' - '.$portemedico->Ds_PorteMedico ?>
                                                 </option>
                                                 <?php
@@ -268,7 +268,7 @@ if(!empty($infoFaturamento))
                                                 foreach ($infoTUSS as $tuss)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $tuss->Id_Tuss ?>">
+                                                <option value="<?php echo $tuss->Cd_Tuss ?>">
                                                     <?php echo $tuss->Cd_Tuss .' - '.$tuss->Ds_Tuss ?>
                                                 </option>
                                                 <?php
