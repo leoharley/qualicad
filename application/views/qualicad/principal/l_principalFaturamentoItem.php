@@ -115,10 +115,10 @@
                           <?php echo $registro->Vl_Filme ?>
                       </td>
                       <td>
-                          <?php echo $registro->Cd_PorteMedico ?>
+                          <?php echo $registro->Cd_PorteMedico .'-'. $registro->Ds_PorteMedico?>
                       </td>
                       <td>
-                          <?php echo $registro->Cd_TUSS ?>
+                          <?php echo $registro->Cd_TUSS .'-'. $registro->Ds_Tuss ?>
                       </td>
                       <td>
                           <?php echo $registro->Cd_TISS ?>
