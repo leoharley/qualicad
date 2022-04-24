@@ -135,6 +135,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação ProFat';
 
         $data['infoProFat'] = $this->ImportacaoModel->carregaInfoProFat($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('ProFat',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoProFat", $this->global, $data, NULL);
     }
