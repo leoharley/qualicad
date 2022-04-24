@@ -97,7 +97,8 @@ if(!empty($infoFaturamentoItem))
 
                                 <h4><strong>Faturamento Item</strong></h4>
 
-                                <table style="width:100%;">
+                                <div class="table-responsive">
+                                <table id="table" style="overflow-x:auto;width:200%!important;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
@@ -263,6 +264,7 @@ if(!empty($infoFaturamentoItem))
                                 </tr>
 
                                 </table>
+                            </div>
                             </div>
 
                         </div>
