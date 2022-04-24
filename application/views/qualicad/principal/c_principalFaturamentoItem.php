@@ -10,6 +10,11 @@ $Vl_Honorário = '';
 $Vl_Operacional = '';
 $Vl_Total = '';
 $Vl_Filme = '';
+$Cd_PorteMedico = '';
+$Cd_TUSS = '';
+$Cd_TISS = '';
+$Qt_Embalagem = '';
+$Ds_Unidade = '';
 $Tp_Ativo = '';
 
 if ($this->uri->segment(2) == 'editar') {
@@ -27,6 +32,11 @@ if(!empty($infoFaturamentoItem))
         $Vl_Operacional = $r->Vl_Operacional;
         $Vl_Total = $r->Vl_Total;
         $Vl_Filme = $r->Vl_Filme;
+        $Cd_PorteMedico = $r->Cd_PorteMedico;
+        $Cd_TUSS = $r->Cd_TUSS;
+        $Cd_TISS = $r->Cd_TISS;
+        $Qt_Embalagem = $r->Qt_Embalagem;
+        $Ds_Unidade = $r->Ds_Unidade;
         $Tp_Ativo = $r->Tp_Ativo;
     }
 }
@@ -118,6 +128,21 @@ if(!empty($infoFaturamentoItem))
                                         Valor filme
                                         </th>
                                         <th class="header-label" style="padding:10px">
+                                        Cd_PorteMedico
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Cd_TUSS
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Cd_TISS
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Qt_Embalagem
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ds_Unidade
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Ativo?
                                         </th>
                                     </tr>
@@ -179,12 +204,62 @@ if(!empty($infoFaturamentoItem))
                                             maxlength="11">
                                             </td>
 
+
+                                            <td>
+                                            <select class="form-control required" id="Cd_PorteMedico" name="Cd_PorteMedico">
+                                            <?php
+                                            if(!empty($infoPorteMedico))
+                                            {
+                                                foreach ($infoPorteMedico as $portemedico)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $portemedico->Cd_PorteMedico ?>" <?php if ($this->uri->segment(2) == 'editar' && $portemedico->Cd_PorteMedico == $Cd_PorteMedico) { echo 'selected'; } ?>>
+                                                    <?php echo $portemedico->Cd_PorteMedico .' - '.$portemedico->Ds_PorteMedico ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                            </select>                                            
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS">
+                                            <?php
+                                            if(!empty($infoTUSS))
+                                            {
+                                                foreach ($infoTUSS as $tuss)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $tuss->Cd_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Cd_Tuss == $Cd_TUSS) { echo 'selected'; } ?>>
+                                                    <?php echo $tuss->Cd_Tuss .' - '.$tuss->Ds_Tuss ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                            </select>                                            
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_TISS') : $Cd_TISS ; ?>" id="Cd_TISS" name="Cd_TISS">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Qt_Embalagem') : $Qt_Embalagem ; ?>" id="Qt_Embalagem" name="Qt_Embalagem">
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_Unidade') : $Ds_Unidade ; ?>" id="Ds_Unidade" name="Ds_Unidade">
+                                            </td>
+
                                             <td>
                                             <select class="form-control required" id="Tp_Ativo" name="Tp_Ativo">
                                             <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
 											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Ativo == 'N') { echo 'selected'; } ?>>Não</option>
                                             </select>
                                             </td>
+
                                 </tr>
 
                                 </table>
