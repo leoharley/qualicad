@@ -677,7 +677,7 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
 // INICIO DAS CONSULTAS NA TELA DE FATURAMENTO ITEM
     function listaFaturamentoItem($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('FaturamentoItem.*, Faturamento.Ds_Faturamento');
+        $this->db->select('TUSS.Id_Tuss,TUSS.Cd_Tuss,TUSS.Ds_Tuss,PorteMedico.Id_PorteMedico,PorteMedico.Cd_PorteMedico,PorteMedico.Ds_PorteMedico,FaturamentoItem.*,Faturamento.Ds_Faturamento');
         $this->db->from('TbFatItem as FaturamentoItem');
         $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = FaturamentoItem.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
         $this->db->join('TbPorteMedico as PorteMedico', 'PorteMedico.Cd_PorteMedico = FaturamentoItem.Cd_PorteMedico AND PorteMedico.Deletado != "S" AND PorteMedico.Tp_Ativo = "S"','left');
