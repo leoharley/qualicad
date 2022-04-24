@@ -2585,6 +2585,9 @@ class Principal extends BaseController
                 redirect('acaoNaoAutorizada');
             } */
             $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
+            $data['infoPorteMedico'] = $this->PrincipalModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
+            $data['infoTUSS'] = $this->PrincipalModel->carregaInfoTUSSEmpresa($this->session->userdata('IdEmpresa'));
+
             $this->global['pageTitle'] = 'QUALICAD : Cadastro de Faturamento Item';
             $this->loadViews("qualicad/principal/c_principalFaturamentoItem", $this->global, $data, NULL);
         }
@@ -2602,6 +2605,9 @@ class Principal extends BaseController
             }
             $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
             $data['infoFaturamentoItem'] = $this->PrincipalModel->carregaInfoFaturamentoItem($IdFaturamentoItem);
+            $data['infoPorteMedico'] = $this->PrincipalModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
+            $data['infoTUSS'] = $this->PrincipalModel->carregaInfoTUSSEmpresa($this->session->userdata('IdEmpresa'));
+                
             $this->global['pageTitle'] = 'QUALICAD : Editar Faturamento Item';
             $this->loadViews("qualicad/principal/c_principalFaturamentoItem", $this->global, $data, NULL);
         }
