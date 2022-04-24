@@ -221,6 +221,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação TUSS';
 
         $data['infoTUSS'] = $this->ImportacaoModel->carregaInfoTUSS($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('TUSS',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoTUSS", $this->global, $data, NULL);
     }
@@ -305,6 +306,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação RegraGruPro';
 
         $data['infoRegraGruPro'] = $this->ImportacaoModel->carregaInfoRegraGruPro($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('RegraGruPro',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoRegraGruPro", $this->global, $data, NULL);
     }
@@ -390,6 +392,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação FracaoSimproBra';
 
         $data['infoFracaoSimproBra'] = $this->ImportacaoModel->carregaInfoFracaoSimproBra($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('FracaoSimproBra',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoFracaoSimproBra", $this->global, $data, NULL);
     }
@@ -474,6 +477,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação Produto';
 
         $data['infoProduto'] = $this->ImportacaoModel->carregaInfoProduto($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('Produto',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoProduto", $this->global, $data, NULL);
     }
@@ -558,6 +562,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação Producao';
 
         $data['infoProducao'] = $this->ImportacaoModel->carregaInfoProducao($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('Producao',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoProducao", $this->global, $data, NULL);
     }
@@ -642,6 +647,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação Contrato';
 
         $data['infoContrato'] = $this->ImportacaoModel->carregaInfoContrato($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('Contrato',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoContrato", $this->global, $data, NULL);
     }
@@ -858,6 +864,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação Porte Médico';
 
         $data['infoPorteMedico'] = $this->ImportacaoModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('PorteMedico',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoPorteMedico", $this->global, $data, NULL);
     }
@@ -943,6 +950,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação Exceção Valores';
 
         $data['infoExcecaoValores'] = $this->ImportacaoModel->carregaInfoExcecaoValores($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('ExcecaoValores',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoExcecaoValores", $this->global, $data, NULL);
     }
