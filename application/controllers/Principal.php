@@ -747,6 +747,7 @@ class Principal extends BaseController
                 $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamento($IdFaturamento);
 
                 $data['infoFatItem'] = $this->PrincipalModel->carregaInfoFatItemFaturamento($IdFaturamento,$this->session->userdata('IdEmpresa'));
+                var_dump($data['infoFatItem']);exit;
                 $data['infoPorteMedico'] = $this->PrincipalModel->carregaInfoPorteMedico($this->session->userdata('IdEmpresa'));
                 $data['infoTUSS'] = $this->PrincipalModel->carregaInfoTUSSEmpresa($this->session->userdata('IdEmpresa'));
 
@@ -914,8 +915,6 @@ class Principal extends BaseController
             $Ds_Faturamento = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Faturamento'))));
             $Tp_Faturamento = $this->input->post('Tp_Faturamento');
             $Tp_Ativo = $this->input->post('Tp_Ativo');
-
-            var_dump($IdFaturamento);exit;
 
             foreach ($this->PrincipalModel->carregaInfoFaturamento($IdFaturamento) as $data){
                 $tpativoatual = ($data->Tp_Ativo);
