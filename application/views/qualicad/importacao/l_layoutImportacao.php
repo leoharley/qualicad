@@ -63,6 +63,7 @@
                   <tr>
                     <th>Id</th>
                     <th>Layout (descrição)</th>
+                    <th>Importação associada (descrição)</th>
                     <th>Ativo?</th>
                     <th>Ações</th>
                   </tr>
@@ -80,6 +81,9 @@
                       </td>
                       <td>
                         <?php echo $registro->Ds_LayoutImportacao ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->No_Importacao ?>
                       </td>
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>

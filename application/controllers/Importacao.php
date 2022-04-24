@@ -49,6 +49,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação GrupoPro';
 
         $data['infoGrupoPro'] = $this->ImportacaoModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('GrupoPro',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoGrupoPro", $this->global, $data, NULL);
     }
@@ -755,7 +756,7 @@ class Importacao extends BaseController
                     redirect('telaNaoAutorizada');
                     }
 
-                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('todos',$this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Cadastro de DePara';
                 $this->loadViews("qualicad/importacao/c_deParaImportacao", $this->global, $data, NULL); 
@@ -773,7 +774,7 @@ class Importacao extends BaseController
                     redirect('importacaoDePara/listar');
                 }
                 $data['infoDePara'] = $this->ImportacaoModel->carregaInfoDeParaId($IdDePara);
-                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa($this->session->userdata('IdEmpresa'));
+                $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('todos',$this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Editar DePara';      
                 $this->loadViews("qualicad/importacao/c_deParaImportacao", $this->global, $data, NULL);
@@ -1027,7 +1028,7 @@ class Importacao extends BaseController
 
         $data['infoFatItem'] = $this->ImportacaoModel->carregaInfoFatItem($this->session->userdata('IdEmpresa'));
         $data['infoFaturamento'] = $this->ImportacaoModel->carregaInfoFaturamento($this->session->userdata('IdEmpresa'));
-        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa($this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('FatItem',$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoFatItem", $this->global, $data, NULL);
     }
@@ -1172,6 +1173,7 @@ class Importacao extends BaseController
             } 
 
             $Ds_LayoutImportacao = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_LayoutImportacao'))));
+            $No_Importacao = $this->input->post('No_Importacao');
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');
@@ -1190,7 +1192,7 @@ class Importacao extends BaseController
 
                 //'Senha'=>getHashedPassword($senha)
 
-                $infoLayoutImportacao = array('Ds_LayoutImportacao'=>$Ds_LayoutImportacao, 
+                $infoLayoutImportacao = array('Ds_LayoutImportacao'=>$Ds_LayoutImportacao, 'No_Importacao'=>$No_Importacao,  
                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'), 'Tp_Ativo'=>$Tp_Ativo);
 
                 $result = $this->ImportacaoModel->adicionaLayoutImportacao($infoLayoutImportacao);
@@ -1238,6 +1240,7 @@ class Importacao extends BaseController
             $IdLayoutImportacao = $this->input->post('Id_LayoutImportacao');
 
             $Ds_LayoutImportacao = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_LayoutImportacao'))));
+            $No_Importacao = $this->input->post('No_Importacao');
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             foreach ($this->ImportacaoModel->carregaInfoLayoutImportacao($IdLayoutImportacao) as $data){
@@ -1255,10 +1258,7 @@ class Importacao extends BaseController
                 $Dt_Inativo = date('Y-m-d H:i:s');
             }
 
-            array('Ds_LayoutImportacao'=>$Ds_LayoutImportacao, 
-                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'), 'Tp_Ativo'=>$Tp_Ativo);
-
-            $infoLayoutImportacao = array('Ds_LayoutImportacao'=>$Ds_LayoutImportacao, 
+            $infoLayoutImportacao = array('Ds_LayoutImportacao'=>$Ds_LayoutImportacao, 'No_Importacao'=>$No_Importacao,  
             'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'), 'Tp_Ativo'=>$Tp_Ativo);
 
             $resultado = $this->ImportacaoModel->editaLayoutImportacao($infoLayoutImportacao,$IdLayoutImportacao);

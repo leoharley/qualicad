@@ -376,10 +376,13 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function carregaInfoLayoutImportacaoEmpresa($idEmpresa)
+    function carregaInfoLayoutImportacaoEmpresa($noImportacao,$idEmpresa)
     {
         $this->db->select('*');
         $this->db->from('Tb_LayoutImportacao as LayoutImportacao');
+        if ($noImportacao != 'todos') {
+        $this->db->where('LayoutImportacao.No_Importacao', $noImportacao);
+        }
         $this->db->where('LayoutImportacao.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('LayoutImportacao.Deletado !=', 'S');
         $this->db->where('LayoutImportacao.Tp_Ativo', 'S');
