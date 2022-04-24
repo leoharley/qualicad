@@ -2566,7 +2566,7 @@ class Principal extends BaseController
 
             $count = $this->CadastroModel->userListingCount($searchText);
 
-            $returns = $this->paginationCompress ( "principalFaturamentoItem/listar", $count, 100 );
+            $returns = $this->paginationCompress ( "principalFaturamentoItem/listar", $count, 200 );
 
             $data['registrosFaturamentoItem'] = $this->PrincipalModel->listaFaturamentoItem($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
 
