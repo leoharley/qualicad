@@ -2,6 +2,7 @@
 
 $Id_LayoutImportacao = '';
 $Ds_LayoutImportacao = '';
+$No_Importacao = '';
 $Tp_Ativo = '';
 
 if ($this->uri->segment(2) == 'editar') {
@@ -11,6 +12,7 @@ if(!empty($infoLayoutImportacao))
     {
         $Id_LayoutImportacao = $r->Id_LayoutImportacao;
         $Ds_LayoutImportacao = $r->Ds_LayoutImportacao;
+        $No_Importacao = $r->No_Importacao;
         $Tp_Ativo = $r->Tp_Ativo;
     }
 }
