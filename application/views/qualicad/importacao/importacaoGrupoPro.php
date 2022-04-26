@@ -97,7 +97,7 @@
             <tbody>
                 <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->CdGrupoPro ?></td>
+                    <td><?php echo $registro->CdGrupoPro2 ?></td>
                     <td><?php echo $registro->Ds_GrupoPro ?></td>
                     <td><?php echo $registro->Tp_GrupoPro ?></td>
                     <td><?php echo $registro->Desc_Tp_GrupoPro ?></td>
