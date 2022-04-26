@@ -120,8 +120,12 @@ if ($this->uri->segment(2) == 'editar') {
 
                                             <td>
                                                 <select class="form-control" id="Tp_GrupoPro" name="Tp_GrupoPro">
-                                                    <option value="MA">MA</option>
-                                                    <option value="ME">ME</option>
+                                                    <option value="MD">MD</option>
+                                                    <option value="MT">MT</option>
+                                                    <option value="OP">OP</option>
+                                                    <option value="SH">SH</option>
+                                                    <option value="SP">SP</option>
+                                                    <option value="SD">SD</option>
                                                 </select>
                                                 <input type="hidden" value="<?php echo $Id_RegraGruPro; ?>" name="Id_RegraGruPro" id="Id_RegraGruPro" />     
                                             </td>
