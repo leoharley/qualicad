@@ -113,7 +113,7 @@ $(function() {
           <b>QLC</b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-          <b>QUALI</b>CAD</span>
+          <b>Qualidade do Cadastro<br/></b>(Convênio)</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">
