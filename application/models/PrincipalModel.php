@@ -60,7 +60,7 @@ class PrincipalModel extends CI_Model
         if(!$res)
         {
             $error = $this->db->error();
-            return $error;
+            return $error['code'];
             //return array $error['code'] & $error['message']
         }
         else
