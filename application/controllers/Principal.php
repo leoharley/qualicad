@@ -400,7 +400,7 @@ class Principal extends BaseController
 
                  $error = $this->db->error();
 
-                 $this->session->set_flashdata('success', 'Convênio '.$error.'deletado com sucesso');
+                 $this->session->set_flashdata('success', 'Convênio '.$error[0].'deletado com sucesso');
 
                 }
                 else 
