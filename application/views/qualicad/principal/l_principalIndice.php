@@ -88,10 +88,10 @@
                         <?php echo $registro->Ds_indice ?>
                       </td>
                       <td>
-                        <?php echo ($registro->Dt_IniVigencia != null) ? date("d/m/Y", strtotime($registro->Dt_IniVigencia)) : ''; ?>
+                        <?php echo ($registro->Dt_IniVigencia != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_IniVigencia)) : ''; ?>
                       </td>
                       <td>
-                        <?php echo ($registro->Dt_FimVigencia != null) ? date("d/m/Y", strtotime($registro->Dt_FimVigencia)) : ''; ?>
+                        <?php echo ($registro->Dt_FimVigencia != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_FimVigencia)) : ''; ?>
                       </td>
                         <td>
                             <?php echo $registro->Vl_Indice ?>

@@ -69,6 +69,7 @@
                     <th>Início vigência</th>
                     <th>Fim vigência</th>
                     <th>Ativo?</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -95,10 +96,10 @@
                         <?php echo $registro->Perc_Pago ?>
                       </td>
                       <td>
-                        <?php echo $registro->Dt_IniVigencia ?>
+                        <?php echo ($registro->Dt_IniVigencia != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_IniVigencia)) : ''; ?>                        
                       </td>
                       <td>
-                        <?php echo $registro->Dt_FimVigencia ?>
+                        <?php echo ($registro->Dt_FimVigencia != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_FimVigencia)) : ''; ?>                        
                       </td>
                       <td>
                         <?php echo $registro->Tp_Ativo ?>
