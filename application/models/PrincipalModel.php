@@ -55,8 +55,19 @@ class PrincipalModel extends CI_Model
     function apagaConvenio($info,$id)
     {
         $this->db->where('Id_Convenio', $id);
-        $this->db->delete('TbConvenio');
-        return TRUE;
+        $res = $this->db->delete('TbConvenio');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error;
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
     }
 
     function consultaConvenioExistente($CNPJ_Convenio, $IdEmpresa)
