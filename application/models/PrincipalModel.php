@@ -141,7 +141,7 @@ class PrincipalModel extends CI_Model
         return $this->db->affected_rows();
     } */
 
-    function apagaPlano($id)
+    function apagaPlano($info,$id)
     {
         $this->db->where('Id_Plano', $id);
         $this->db->delete('TbPlano');
