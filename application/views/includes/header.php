@@ -136,7 +136,7 @@ $(function() {
           <span class="sr-only">Toggle navigation</span>
         </a>
         <div class="nome_cliente">
-          Hospital Brasília
+          <b>Hospital Brasília</b>
         </div>  
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
