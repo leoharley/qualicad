@@ -51,7 +51,7 @@
     }
     .logo-lg {
     display: block;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 22px;
     margin-top: 4px;
     }
@@ -119,7 +119,7 @@ $(function() {
           <b>QLC</b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-          <b>Qualidade do Cadastro<br/>(Convênio)</b></span>
+          <b>Qualidade do Cadastro<br/></b>(Convênio)</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">
