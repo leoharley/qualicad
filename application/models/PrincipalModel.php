@@ -44,12 +44,19 @@ class PrincipalModel extends CI_Model
         return TRUE;
     }
 
-    function apagaConvenio($info, $id)
+/*    function apagaConvenio($info, $id)
     {
         $this->db->where('Id_Convenio', $id);
         $this->db->update('TbConvenio', $info);
         
         return $this->db->affected_rows();
+    } */
+
+    function apagaConvenio($info,$id)
+    {
+        $this->db->where('Id_Convenio', $id);
+        $this->db->delete('TbConvenio');
+        return TRUE;
     }
 
     function consultaConvenioExistente($CNPJ_Convenio, $IdEmpresa)
