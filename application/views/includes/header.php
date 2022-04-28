@@ -55,6 +55,14 @@
     line-height: 22px;
     margin-top: 4px;
     }
+    .nome_cliente {
+      color:white;
+      font-size:24px;
+      float:left;
+      left:40%;
+      margin-top:8px;
+      position:absolute
+    }
   </style>
   <!-- jQuery 2.1.4 -->
   <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
@@ -127,7 +135,9 @@ $(function() {
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
+        <div class="nome_cliente">
           Hospital Brasília
+        </div>  
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <li class="dropdown tasks-menu">
