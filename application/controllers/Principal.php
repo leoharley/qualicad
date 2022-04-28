@@ -398,9 +398,9 @@ class Principal extends BaseController
                  $processFunction = 'Principal/apagaConvenio';
                  $this->logrecord($process,$processFunction);
 
-                 $error = $this->db->error();
+                 
 
-                 var_dump($error);exit;
+                 var_dump($resultado);exit;
 
                  $this->session->set_flashdata('success', 'Convênio '.$error.'deletado com sucesso');
 
