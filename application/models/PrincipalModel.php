@@ -133,12 +133,19 @@ class PrincipalModel extends CI_Model
         return TRUE;
     }
 
-    function apagaPlano($info, $id)
+ /*   function apagaPlano($info, $id)
     {
         $this->db->where('Id_Plano', $id);
         $this->db->update('TbPlano', $info);
 
         return $this->db->affected_rows();
+    } */
+
+    function apagaPlano($id)
+    {
+        $this->db->where('Id_Plano', $id);
+        $this->db->delete('TbPlano');
+        return TRUE;
     }
 
     function carregaInfoPlanosEmpresa($idEmpresa)
