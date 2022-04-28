@@ -99,10 +99,10 @@
                             <?php echo $registro->Tp_Ativo ?>
                         </td>
                         <td>
-                            <?php echo ($registro->Dt_InicioConvenio != null) ? date("d/m/Y", strtotime($registro->Dt_InicioConvenio)) : ''; ?>
+                            <?php echo ($registro->Dt_InicioConvenio != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_InicioConvenio)) : '-'; ?>
                         </td>
                         <td>
-                            <?php echo ($registro->Dt_VigenciaConvenio != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_VigenciaConvenio)) : ''; ?>
+                            <?php echo ($registro->Dt_VigenciaConvenio != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_VigenciaConvenio)) : '-'; ?>
                         </td>
                       <td class="text-center">
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
