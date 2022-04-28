@@ -127,6 +127,9 @@ $(function() {
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
+        <div>
+          Hospital Brasília
+        </div>
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <li class="dropdown tasks-menu">
@@ -136,7 +139,7 @@ $(function() {
               <ul class="dropdown-menu">
                 <li class="header"> Son Giriş :
                   <i class="fa fa-clock-o"></i>
-                  <?= empty($last_login) ? "İlk Giriş" : $last_login; ?>
+                  <?= empty($last_login) ? "Primeiro login" : $last_login; ?>
                 </li>
               </ul>
             </li>
