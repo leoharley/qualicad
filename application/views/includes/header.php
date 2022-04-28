@@ -104,6 +104,20 @@ $(function() {
             collapseExample2.collapse("hide");
         }
 
+        const collapseExample3 = $("#auxiliar");
+        collapseExample3.on("shown.bs.collapse", function() {
+            localStorage.setItem("collapseExample3", "show");
+        });
+        collapseExample3.on("hidden.bs.collapse", function() {
+            localStorage.setItem("collapseExample3", "hide");
+        });
+        const showExampleCollapse3 = localStorage.getItem("collapseExample3");
+        if (showExampleCollapse3 === "show") {
+            collapseExample3.collapse("show");
+        } else {
+            collapseExample3.collapse("hide");
+        }
+
       });
 </script>
 
@@ -470,7 +484,7 @@ $(function() {
                         <span>Exportação BI</span>
                     </a>
                 </li>
-                
+
               <!--  <li class="treeview">
                     <a href="<?php //echo base_url(); ?>importacaoDePara">
                         <i class="fa fa-th"></i>
