@@ -96,7 +96,7 @@
                             <?php if ($registro->Tp_Convenio == '1') { echo 'Convênio'; } else if ($registro->Tp_Convenio == '2') { echo 'Filantrópico'; } else if ($registro->Tp_Convenio == '3') { echo 'Particular'; } ?>
                       </td>
                         <td>
-                            <?php echo $registro->Tp_Ativo ?>
+                            <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                         </td>
                         <td>
                             <?php echo ($registro->Dt_InicioConvenio != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_InicioConvenio)) : ''; ?>

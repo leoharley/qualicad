@@ -102,7 +102,7 @@
                         <?php echo ($registro->Dt_FimVigencia != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_FimVigencia)) : ''; ?>                        
                       </td>
                       <td>
-                        <?php echo $registro->Tp_Ativo ?>
+                        <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
                        
                       <td class="text-center">

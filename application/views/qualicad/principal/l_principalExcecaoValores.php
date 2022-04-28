@@ -106,7 +106,7 @@
                         <?php echo $registro->Vl_ExcValores ?>
                       </td>
                       <td>
-                        <?php echo $registro->Tp_Ativo ?>
+                        <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
                        
                       <td class="text-center">
