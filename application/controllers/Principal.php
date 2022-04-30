@@ -150,11 +150,11 @@ class Principal extends BaseController
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');                
-                if (($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa'))[0]['CNPJ_Convenio']) == $CNPJ_Convenio) {
+                if (($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa'))[0]->CNPJ_Convenio) == $CNPJ_Convenio) {
                 $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
                 }
-                else if (($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa'))[0]['Cd_ConvenioERP']) == $Cd_ConvenioERP) {
+                else if (($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa'))[0]->Cd_ConvenioERP) == $Cd_ConvenioERP) {
                 $this->session->set_flashdata('error', 'Código ERP já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
                 }
