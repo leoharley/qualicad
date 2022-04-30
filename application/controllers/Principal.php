@@ -149,6 +149,8 @@ class Principal extends BaseController
                 $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
+                var_dump(($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')))[0]->CNPJ_Convenio);exit;
+
             //    $roleId = $this->input->post('role');                
                 if (($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')))[0]->CNPJ_Convenio == $CNPJ_Convenio) {
                 $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
