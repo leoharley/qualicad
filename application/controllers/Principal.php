@@ -152,12 +152,12 @@ class Principal extends BaseController
             //    $roleId = $this->input->post('role');
             
             // VERIFICAÇÕES DE DUPLICIDADE:
-                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
+                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
                 $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
                 }
                 
-                if ($this->PrincipalModel->consultaCodERPExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
+                if ($this->PrincipalModel->consultaCodERPExistente($Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
                 $this->session->set_flashdata('error', 'Código ERP já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
                 }
