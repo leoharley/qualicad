@@ -396,8 +396,6 @@ class Principal extends BaseController
             $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
             $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
-
-            var_dump ($resultado);exit;
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
@@ -406,8 +404,12 @@ class Principal extends BaseController
                  $processFunction = 'Principal/apagaConvenio';
                  $this->logrecord($process,$processFunction);
 
-                 if ($resultado == 1451) $this->session->set_flashdata('error', 'Existe plano associado a este convênio');
-                 else $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+                 if ($resultado == 1451) {
+                     $this->session->set_flashdata('error', 'Existe plano associado a este convênio');
+                    }
+                 else {
+                     $this->session->set_flashdata('success', 'Convênio deletado com sucesso');
+                    }
 
                 }
                 else 
