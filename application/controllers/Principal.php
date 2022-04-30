@@ -147,16 +147,17 @@ class Principal extends BaseController
                 $Tp_Convenio = $this->input->post('Tp_Convenio');
                 $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
                 $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
-                $Tp_Ativo = $this->input->post('Tp_Ativo');
+                $Tp_Ativo = $this->input->post('Tp_Ativo');  
 
-                var_dump(($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')))[0]->CNPJ_Convenio);exit;
-
-            //    $roleId = $this->input->post('role');                
-                if (($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')))[0]->CNPJ_Convenio == $CNPJ_Convenio) {
+            //    $roleId = $this->input->post('role');
+            
+            // VERIFICAÇÕES DE DUPLICIDADE:
+                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
                 $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
                 }
-                else if (($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')))[0]->Cd_ConvenioERP == $Cd_ConvenioERP) {
+                
+                if ($this->PrincipalModel->consultaCodERPExistente($CNPJ_Convenio,$Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
                 $this->session->set_flashdata('error', 'Código ERP já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
                 }

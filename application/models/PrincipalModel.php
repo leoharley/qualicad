@@ -70,7 +70,7 @@ class PrincipalModel extends CI_Model
 
     }
 
-    function consultaConvenioExistente($CNPJ_Convenio, $Cd_ConvenioERP, $IdEmpresa)
+    function consultaConvenioExistente($CNPJ_Convenio, $IdEmpresa)
     {
         $this->db->select('Convenio.Id_Convenio, Convenio.CNPJ_Convenio, Convenio.Cd_ConvenioERP');
         $this->db->from('TbConvenio as Convenio');
@@ -78,6 +78,20 @@ class PrincipalModel extends CI_Model
         $campos = "(Convenio.CNPJ_Convenio = '".$CNPJ_Convenio."'
                     AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."') OR 
                     (Convenio.Cd_ConvenioERP = '".$Cd_ConvenioERP."'
+                    AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."')";
+        $this->db->where($campos);
+        $this->db->where('Convenio.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function consultaCodERPExistente($Cd_ConvenioERP, $IdEmpresa)
+    {
+        $this->db->select('Convenio.Id_Convenio, Convenio.CNPJ_Convenio, Convenio.Cd_ConvenioERP');
+        $this->db->from('TbConvenio as Convenio');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Convenio.TbUsuEmp_Id_UsuEmp','inner');
+        $campos = "(Convenio.Cd_ConvenioERP = '".$Cd_ConvenioERP."'
                     AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."')";
         $this->db->where($campos);
         $this->db->where('Convenio.Deletado !=', 'S');
