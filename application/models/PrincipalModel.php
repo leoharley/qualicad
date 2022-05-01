@@ -485,7 +485,9 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 
         $insert_id = $this->db->insert_id();
 
-        $this->db->trans_complete();
+    //    $this->db->trans_complete();
+
+        var_dump($this->db->trans_complete());exit;
 
         return $insert_id;
     }
