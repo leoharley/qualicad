@@ -396,6 +396,8 @@ class Principal extends BaseController
             $infoConvenio = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
             $resultado = $this->PrincipalModel->apagaConvenio($infoConvenio, $IdConvenio);
+
+            var_dump ($resultado);exit;
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
