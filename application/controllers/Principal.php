@@ -1925,7 +1925,7 @@ class Principal extends BaseController
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
         // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
-        if ($this->PrincipalModel->consultaIndiceGruProExistente($TbGrupoPro_CodGrupo,$TbIndice_Id_Indice,$this->session->userdata('IdEmpresa')) !== null) {
+        if ($this->PrincipalModel->consultaIndiceGruProExistente($TbGrupoPro_CodGrupo,$TbIndice_Id_Indice,$this->session->userdata('IdEmpresa'))) {
             $this->session->set_flashdata('error', 'Índice GruPro já foi cadastrado!');
             redirect('principalIndiceGrupoPro/cadastrar');
             }
