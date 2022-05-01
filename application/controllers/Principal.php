@@ -713,6 +713,7 @@ class Principal extends BaseController
 
     function apagaPlano_Sub()
     {
+        redirect('principalConvenio/editar/'.$IdConvenio);
             if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaPlano')[0]->Excluir == 'N')
                 {
                     redirect('acaoNaoAutorizada');
