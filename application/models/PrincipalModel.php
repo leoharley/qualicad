@@ -177,9 +177,8 @@ class PrincipalModel extends CI_Model
     {
         $this->db->select('Plano.Id_Plano, Plano.TbConvenio_Id_Convenio');
         $this->db->from('TbPlano as Plano');
-        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Plano.TbUsuEmp_Id_UsuEmp','inner');
         $campos = "(Plano.TbConvenio_Id_Convenio = '".$TbConvenio_Id_Convenio."' 
-                    AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."' 
+                    AND Plano.TbEmpresa_Id_Empresa  = '".$IdEmpresa."' 
                     AND Plano.Cd_PlanoERP = '".$Cd_PlanoERP."')";
         $this->db->where($campos);
         $this->db->where('Plano.Deletado !=', 'S');
