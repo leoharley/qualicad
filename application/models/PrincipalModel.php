@@ -485,18 +485,6 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 
         $insert_id = $this->db->insert_id();
 
-        if(!$insert_id)
-        {
-            $error = $this->db->error();
-            return $error;
-            //return array $error['code'] & $error['message']
-        }
-        else
-        {
-            return TRUE;
-        }
-
-
         $this->db->trans_complete();
 
         return $insert_id;
