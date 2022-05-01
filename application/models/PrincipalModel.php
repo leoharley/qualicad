@@ -490,6 +490,21 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         return $insert_id;
     }
 
+    function consultaIndiceGruProExistente($TbGrupoPro_CodGrupo, $TbIndice_Id_Indice, $IdEmpresa)
+    {
+        $this->db->select('IndiceGruPro.Id_IndiceGrupo , IndiceGruPro.TbGrupoPro_CodGrupo, IndiceGruPro.TbIndice_Id_Indice');
+        $this->db->from('TbIndiceGrupo as IndiceGruPro');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = IndiceGruPro.TbUsuEmp_Id_UsuEmp','inner');
+        $campos = "(IndiceGruPro.TbGrupoPro_CodGrupo = '".$TbGrupoPro_CodGrupo."'
+                    AND IndiceGruPro.TbIndice_Id_Indice = '".$TbIndice_Id_Indice."'
+                    AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."')";
+        $this->db->where($campos);
+        $this->db->where('IndiceGruPro.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function editaIndiceGrupoPro($info, $id)
     {
         $this->db->where('Id_IndiceGrupo', $id);

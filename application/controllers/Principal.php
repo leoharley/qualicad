@@ -1924,6 +1924,13 @@ class Principal extends BaseController
         $Vl_UCO = $this->input->post('Vl_UCO');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
+        // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+        if ($this->PrincipalModel->consultaIndiceGruProExistente($TbGrupoPro_CodGrupo,$TbIndice_Id_Indice,$this->session->userdata('IdEmpresa')) != null) {
+            $this->session->set_flashdata('error', 'Índice GruPro já foi cadastrado!');
+            redirect('principalIndiceGrupoPro/cadastrar');
+            }
+
+        // ***** FIM DE VERIFICAÇÕES *****
 
     //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
