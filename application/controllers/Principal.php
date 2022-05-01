@@ -153,7 +153,7 @@ class Principal extends BaseController
             
             // VERIFICAÇÕES DE DUPLICIDADE:
                 if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
-                $this->session->set_flashdata('error', 'Convênio já foi cadastrado!');
+                $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
                 }
                 
