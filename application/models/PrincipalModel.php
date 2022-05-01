@@ -494,9 +494,8 @@ function carregaInfoIndicesEmpresa($idEmpresa)
     {
         $this->db->select('*');
         $this->db->from('TbIndiceGrupo as IndiceGruPro');
-        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = IndiceGruPro.TbUsuEmp_Id_UsuEmp','inner');
-        $campos = "(IndiceGruPro.TbGrupoPro_CodGrupo = '".$TbGrupoPro_CodGrupo."'
-                    AND UsuEmp.TbEmpresa_Id_Empresa  = '".$IdEmpresa."')";
+        
+        $campos = "(IndiceGruPro.TbGrupoPro_CodGrupo = '".$TbGrupoPro_CodGrupo."')";
         $this->db->where($campos);
         $this->db->where('IndiceGruPro.Deletado !=', 'S');
         $query = $this->db->get();
