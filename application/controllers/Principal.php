@@ -295,6 +295,8 @@ class Principal extends BaseController
                 $Dt_InicioConvenio = $this->input->post('Dt_InicioConvenio');
                 $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
+                $Dt_Ativo = null;
+                $Dt_Inativo = null;
 
                 foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
                     $Tp_Ativo_Atual = ($data->Tp_Ativo);
