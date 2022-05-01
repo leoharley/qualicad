@@ -296,19 +296,6 @@ class Principal extends BaseController
                 $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
-                // ***** VERIFICAÇÕES DE DUPLICIDADE *****
-                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
-                    $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
-                    redirect('principalConvenio/cadastrar');
-                    }
-                    
-                    if ($this->PrincipalModel->consultaCodERPExistente($Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
-                    $this->session->set_flashdata('error', 'Código ERP já foi cadastrado!');
-                    redirect('principalConvenio/cadastrar');
-                    }
-                // ***** FIM DE VERIFICAÇÕES *****    
-
-
                 foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
                     $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
