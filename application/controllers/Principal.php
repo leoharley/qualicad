@@ -713,7 +713,6 @@ class Principal extends BaseController
 
     function apagaPlano_Sub()
     {
-        redirect('principalConvenio/editar/'.$IdConvenio);
             if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaPlano')[0]->Excluir == 'N')
                 {
                     redirect('acaoNaoAutorizada');
@@ -742,6 +741,8 @@ class Principal extends BaseController
                     //echo(json_encode(array('status'=>FALSE))); 
                     $this->session->set_flashdata('error', 'Falha em excluir o plano');
                 }
+
+                var_dump($IdConvenio);exit;
                 redirect('principalConvenio/editar/'.$IdConvenio);
     }
     // FIM DAS FUNÇÕES DA TELA DE PLANO
