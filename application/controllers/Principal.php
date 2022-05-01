@@ -661,7 +661,7 @@ class Principal extends BaseController
             if ($this->PrincipalModel->consultaPlanoCodERPExistente($Cd_PlanoERP,$TbConvenio_Id_Convenio,$this->session->userdata('IdEmpresa')) != null) {
                 if ($this->PrincipalModel->carregaInfoPlano($IdPlano)[0]->Cd_PlanoERP != $Cd_PlanoERP) {
                     $this->session->set_flashdata('error', 'Cod. ERP já foi cadastrado!');
-                    redirect('principalPlano/cadastrar/'.$IdPlano);
+                    redirect('principalPlano/editar/'.$IdPlano);
                 }
             }
             // ***** FIM DE VERIFICAÇÕES *****    
