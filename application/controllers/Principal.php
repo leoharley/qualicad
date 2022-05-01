@@ -151,7 +151,7 @@ class Principal extends BaseController
 
             //    $roleId = $this->input->post('role');
             
-            // ***** VERIFICAÇÕES DE DUPLICIDADE *****
+            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
                 if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
                 $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
                 redirect('principalConvenio/listar');
@@ -302,7 +302,7 @@ class Principal extends BaseController
                     $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
 
-                // ***** VERIFICAÇÕES DE DUPLICIDADE *****
+                // ***** VERIFICAÇÕES DE DUPLICIDADE NA EDIÇÃO *****
                 if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
                     if ($this->PrincipalModel->carregaInfoConvenio($IdConvenio)[0]->CNPJ_Convenio != $CNPJ_Convenio) {
                         $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
@@ -656,6 +656,15 @@ class Principal extends BaseController
             $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
             $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
             $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+            // ***** VERIFICAÇÕES DE DUPLICIDADE *****
+            if ($this->PrincipalModel->consultaPlanoCodERPExistente($Cd_PlanoERP,$TbConvenio_Id_Convenio,$this->session->userdata('IdEmpresa')) != null) {
+                if ($this->PrincipalModel->carregaInfoPlano($IdPlano)[0]->Cd_PlanoERP != $Cd_PlanoERP) {
+                    $this->session->set_flashdata('error', 'Cod. ERP já foi cadastrado!');
+                    redirect('principalPlano/cadastrar');
+                }
+            }
+            // ***** FIM DE VERIFICAÇÕES *****    
 
             foreach ($this->PrincipalModel->carregaInfoPlano($IdPlano) as $data){
                 $Tp_Ativo_Atual = ($data->Tp_Ativo);
