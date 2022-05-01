@@ -329,6 +329,13 @@ class Principal extends BaseController
                 $Cd_PlanoERP = $this->input->post('Cd_PlanoERP');
                 $Tp_AcomodacaoPadrao = $this->input->post('Tp_AcomodacaoPadrao');
                 $Tp_Ativo = $this->input->post('Tp_Ativo_Plano');
+                
+                // ***** VERIFICAÇÕES DE DUPLICIDADE *****
+                if ($this->PrincipalModel->consultaPlanoCodERPExistente($Cd_PlanoERP,$IdConvenio,$this->session->userdata('IdEmpresa')) != null) {
+                    $this->session->set_flashdata('error', 'Cod. ERP já foi cadastrado!');
+                    redirect('principalPlano/cadastrar');
+                    }
+                // ***** FIM DE VERIFICAÇÕES *****
 
                 //    $roleId = $this->input->post('role');
                 
@@ -534,7 +541,7 @@ class Principal extends BaseController
 
             // ***** VERIFICAÇÕES DE DUPLICIDADE *****
             if ($this->PrincipalModel->consultaPlanoCodERPExistente($Cd_PlanoERP,$TbConvenio_Id_Convenio,$this->session->userdata('IdEmpresa')) != null) {
-                $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
+                $this->session->set_flashdata('error', 'Cod. ERP já foi cadastrado!');
                 redirect('principalPlano/cadastrar');
                 }
             // ***** FIM DE VERIFICAÇÕES *****    
