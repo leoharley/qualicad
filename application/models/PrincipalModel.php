@@ -481,13 +481,12 @@ function carregaInfoIndicesEmpresa($idEmpresa)
     function adicionaIndiceGrupoPro($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbIndiceGrupo', $info);
+        var_dump($this->db->insert('TbIndiceGrupo', $info));exit;
+    //    $this->db->insert('TbIndiceGrupo', $info);
 
         $insert_id = $this->db->insert_id();
 
-    //    $this->db->trans_complete();
-
-        var_dump($this->db->trans_complete());exit;
+        $this->db->trans_complete();
 
         return $insert_id;
     }
