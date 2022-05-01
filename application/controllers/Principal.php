@@ -154,12 +154,12 @@ class Principal extends BaseController
             // ***** VERIFICAÇÕES DE DUPLICIDADE *****
                 if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
                 $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
-                redirect('principalConvenio/cadastrar');
+                redirect('principalConvenio/listar');
                 }
                 
                 if ($this->PrincipalModel->consultaCodERPExistente($Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
                 $this->session->set_flashdata('error', 'Código ERP já foi cadastrado!');
-                redirect('principalConvenio/cadastrar');
+                redirect('principalConvenio/listar');
                 }
             // ***** FIM DE VERIFICAÇÕES *****    
 
@@ -296,6 +296,19 @@ class Principal extends BaseController
                 $Dt_VigenciaConvenio = $this->input->post('Dt_VigenciaConvenio');
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
+                // ***** VERIFICAÇÕES DE DUPLICIDADE *****
+                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
+                    $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
+                    redirect('principalConvenio/cadastrar');
+                    }
+                    
+                    if ($this->PrincipalModel->consultaCodERPExistente($Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
+                    $this->session->set_flashdata('error', 'Código ERP já foi cadastrado!');
+                    redirect('principalConvenio/cadastrar');
+                    }
+                // ***** FIM DE VERIFICAÇÕES *****    
+
+
                 foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
                     $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
@@ -331,6 +344,7 @@ class Principal extends BaseController
                 $Tp_Ativo = $this->input->post('Tp_Ativo_Plano');
 
                 //    $roleId = $this->input->post('role');
+                
 
                 //VERIFICAÇÃO DE DUPLICIDADE
                 //        if ($this->PrincipalModel->consultaPlanoExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
@@ -529,6 +543,15 @@ class Principal extends BaseController
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');
+
+
+            // ***** VERIFICAÇÕES DE DUPLICIDADE *****
+            if ($this->PrincipalModel->consultaPlanoCodERPExistente($Cd_PlanoERP,$TbConvenio_Id_Convenio,$this->session->userdata('IdEmpresa')) != null) {
+                $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
+                redirect('principalPlano/cadastrar');
+                }
+            // ***** FIM DE VERIFICAÇÕES *****    
+
 
             //VERIFICAÇÃO DE DUPLICIDADE
     //        if ($this->PrincipalModel->consultaPlanoExistente($CNPJ_Convenio,$this->session->userdata('IdUsuEmp')) == null) {
