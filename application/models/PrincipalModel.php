@@ -95,8 +95,6 @@ class PrincipalModel extends CI_Model
         $this->db->where('Convenio.Deletado !=', 'S');
         $query = $this->db->get();
 
-        var_dump( $query);exit;
-
         return $query->result();
     }
 
