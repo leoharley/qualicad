@@ -151,7 +151,7 @@ class Principal extends BaseController
 
             //    $roleId = $this->input->post('role');
             
-            // VERIFICAÇÕES DE DUPLICIDADE:
+            // ***** VERIFICAÇÕES DE DUPLICIDADE *****
                 if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
                 $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
@@ -161,6 +161,7 @@ class Principal extends BaseController
                 $this->session->set_flashdata('error', 'Código ERP já foi cadastrado!');
                 redirect('principalConvenio/cadastrar');
                 }
+            // ***** FIM DE VERIFICAÇÕES *****    
 
                 //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
                 if ($Tp_Ativo == 'S')
