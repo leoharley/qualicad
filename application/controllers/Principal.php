@@ -1946,7 +1946,7 @@ class Principal extends BaseController
 
             $result = $this->PrincipalModel->adicionaIndiceGrupoPro($infoIndiceGrupoPro);
 
-            var_dump($result);exit;
+            var_dump($infoIndiceGrupoPro);exit;
 
             if($result > 0)
             {
