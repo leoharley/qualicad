@@ -182,10 +182,7 @@ class PrincipalModel extends CI_Model
                     AND Plano.Cd_PlanoERP = '".$Cd_PlanoERP."')";
         $this->db->where($campos);
         $this->db->where('Plano.Deletado !=', 'S');
-        $query = $this->db->get();
-        
-        var_dump( nl2br($query));exit;
-    
+        $query = $this->db->get();  
 
         return $query->result();
     }
