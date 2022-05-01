@@ -302,6 +302,27 @@ class Principal extends BaseController
                     $Tp_Ativo_Atual = ($data->Tp_Ativo);
                 }
 
+                // ***** VERIFICAÇÕES DE DUPLICIDADE *****
+                if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) != null) {
+                    if ($this->PrincipalModel->carregaInfoConvenio($IdConvenio)[0]->CNPJ_Convenio != $CNPJ_Convenio) {
+                        $this->session->set_flashdata('error', 'CNPJ já foi cadastrado!');
+                        redirect('principalConvenio/listar');
+                    }
+                }
+                    
+                if ($this->PrincipalModel->consultaCodERPExistente($Cd_ConvenioERP,$this->session->userdata('IdEmpresa')) != null) {
+                    if ($this->PrincipalModel->carregaInfoConvenio($IdConvenio)[0]->Cd_ConvenioERP != $Cd_ConvenioERP) {
+                    $this->session->set_flashdata('error', 'Código ERP já foi cadastrado!');
+                    redirect('principalConvenio/listar');
+                    }
+                }
+                // ***** FIM DE VERIFICAÇÕES *****    
+
+
+                foreach ($this->PrincipalModel->carregaInfoConvenio($IdConvenio) as $data){
+                    $Tp_Ativo_Atual = ($data->Tp_Ativo);
+                }
+
                 //SE O CONVENIO FOR SETADO COMO ATIVO PEGAR DATA ATUAL
                 if ($Tp_Ativo_Atual == 'N' && $Tp_Ativo == 'S')
                 {
