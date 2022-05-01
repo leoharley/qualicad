@@ -175,7 +175,7 @@ class PrincipalModel extends CI_Model
 
     function consultaPlanoCodERPExistente($Cd_PlanoERP,$TbConvenio_Id_Convenio,$IdEmpresa)
     {
-        $this->db->select('Plano.Id_Plano');
+        $this->db->select('Plano.Id_Plano, Plano.TbConvenio_Id_Convenio');
         $this->db->from('TbPlano as Plano');
         $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.Id_UsuEmp = Plano.TbUsuEmp_Id_UsuEmp','inner');
         $campos = "(Plano.TbConvenio_Id_Convenio = '".$TbConvenio_Id_Convenio."' 
