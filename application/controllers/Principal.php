@@ -742,7 +742,6 @@ class Principal extends BaseController
                     $this->session->set_flashdata('error', 'Falha em excluir o plano');
                 }
 
-                var_dump($IdConvenio);exit;
                 redirect('principalConvenio/editar/'.$IdConvenio);
     }
     // FIM DAS FUNÇÕES DA TELA DE PLANO
