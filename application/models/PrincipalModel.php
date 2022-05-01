@@ -501,7 +501,7 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         $query = $this->db->get();
 
         $result = $query->result();
-        if(!empty($result))
+        if(empty($result))
         return true;
         else
         {
