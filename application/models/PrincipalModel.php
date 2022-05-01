@@ -502,7 +502,7 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         $this->db->where('IndiceGruPro.Deletado !=', 'S');
         $query = $this->db->get();
 
-        return $query->result();
+        return $query;
     }
 
     function editaIndiceGrupoPro($info, $id)
