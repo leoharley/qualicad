@@ -335,7 +335,7 @@ class Principal extends BaseController
                 // ***** VERIFICAÇÕES DE DUPLICIDADE *****
                 if ($this->PrincipalModel->consultaPlanoCodERPExistente($Cd_PlanoERP,$IdConvenio,$this->session->userdata('IdEmpresa')) != null) {
                     $this->session->set_flashdata('error', 'Cod. ERP já foi cadastrado!');
-                    redirect('principalPlano/cadastrar');
+                    redirect('principalConvenio/editar/'.$IdConvenio);
                     }
                 // ***** FIM DE VERIFICAÇÕES *****
 
