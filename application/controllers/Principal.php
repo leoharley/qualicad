@@ -1946,6 +1946,8 @@ class Principal extends BaseController
 
             $result = $this->PrincipalModel->adicionaIndiceGrupoPro($infoIndiceGrupoPro);
 
+            var_dump($infoIndiceGrupoPro);exit;
+
             if($result > 0)
             {
                 $process = 'Adicionar índice grupo pro';
