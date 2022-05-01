@@ -1935,18 +1935,17 @@ class Principal extends BaseController
             {
                 $Dt_Ativo = null;
             }
+            
 
             //'Senha'=>getHashedPassword($senha)
 
             $infoIndiceGrupoPro = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                 'TbGrupoPro_CodGrupo'=> $TbGrupoPro_CodGrupo, 'TbIndice_Id_Indice'=> $TbIndice_Id_Indice,
                 'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'Vl_Indice'=>$Vl_Indice,
-                'Vl_M2Filme'=>$Vl_M2Filme,'Vl_Honorario'=>$Vl_Honorario, 'Vl_UCO'=>$Vl_UCO, 
+                'Vl_M2Filme'=>$Vl_M2Filme,'Vl_Honorario'=>$Vl_Honorario, 'Vl_UCO'=>$Vl_UCO, 'Dt_Criacao'=>date('Y-m-d'),
                 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
             $result = $this->PrincipalModel->adicionaIndiceGrupoPro($infoIndiceGrupoPro);
-
-            var_dump($infoIndiceGrupoPro);exit;
 
             if($result > 0)
             {
