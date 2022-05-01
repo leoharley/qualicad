@@ -710,6 +710,39 @@ class Principal extends BaseController
                 }
                 redirect('principalPlano/listar');
     }
+
+    function apagaPlano_Sub()
+    {
+            if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaPlano')[0]->Excluir == 'N')
+                {
+                    redirect('acaoNaoAutorizada');
+                }
+
+            $IdConvenio = $this->input->post('Id_Convenio');
+
+            $IdPlano = $this->uri->segment(2);
+
+            $infoPlano = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+            
+            $resultado = $this->PrincipalModel->apagaPlano($infoPlano, $IdPlano);
+            
+            if ($resultado > 0) {
+                // echo(json_encode(array('status'=>TRUE)));
+
+                $process = 'Exclusão de plano';
+                $processFunction = 'Cadastro/apagaPlano';
+                $this->logrecord($process,$processFunction);
+
+                $this->session->set_flashdata('success', 'Plano deletado com sucesso');
+
+                }
+                else 
+                { 
+                    //echo(json_encode(array('status'=>FALSE))); 
+                    $this->session->set_flashdata('error', 'Falha em excluir o plano');
+                }
+                redirect('principalConvenio/editar/'.$IdConvenio);
+    }
     // FIM DAS FUNÇÕES DA TELA DE PLANO
 
     // INICIO DAS FUNÇÕES DA TELA DE FATURAMENTO

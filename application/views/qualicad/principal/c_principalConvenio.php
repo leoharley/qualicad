@@ -317,6 +317,9 @@ if(!empty($infoConvenio))
                                     <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalPlano/editar/'.$plano->Id_Plano; ?>" title="Editar">
                                         <i class="fa fa-pencil"></i>
                                     </a>
+                                    <a class="btn btn-sm btn-info" href="<?php echo base_url().'apagaPlano_Sub/'.$plano->Id_Plano; ?>" title="Apagar">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
                                     </td>
                                     
                                 </tr>
