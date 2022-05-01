@@ -718,7 +718,7 @@ class Principal extends BaseController
                     redirect('acaoNaoAutorizada');
                 }
 
-            $IdConvenio = $this->input->post('Id_Convenio');
+            $IdConvenio = $this->uri->segment(3);
 
             $IdPlano = $this->uri->segment(2);
 

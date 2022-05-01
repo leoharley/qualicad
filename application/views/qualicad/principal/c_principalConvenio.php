@@ -319,7 +319,7 @@ if(!empty($infoConvenio))
                                     </a>
                                     </td>
                                     <td>
-                                    <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaPlano_Sub/'.$plano->Id_Plano; ?>" title="Excluir">
+                                    <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaPlano_Sub/'.$plano->Id_Plano.'/'.$Id_Convenio; ?>" title="Excluir">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                     </td>

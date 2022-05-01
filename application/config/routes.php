@@ -158,7 +158,7 @@ $route['apagaConvenio/:any'] = "principal/apagaConvenio/$1";
 $route['adicionaPlano'] = "principal/adicionaPlano";
 $route['editaPlano'] = "principal/editaPlano";
 $route['apagaPlano/:any'] = "principal/apagaPlano/$1";
-$route['apagaPlano_Sub/:any'] = "principal/apagaPlano_Sub/$1";
+$route['apagaPlano_Sub/:any/:any'] = "principal/apagaPlano_Sub/$1/$2";
 
 /*********** ROUTES PARA AÇÕES DA TELA FATURAMENTO *******************/
 $route['adicionaFaturamento'] = "principal/adicionaFaturamento";
