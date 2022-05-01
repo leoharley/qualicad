@@ -185,7 +185,7 @@ class PrincipalModel extends CI_Model
         $this->db->where('Plano.Deletado !=', 'S');
         $query = $this->db->get();
         
-        echo nl2br($query);exit;
+        var_dump( nl2br($query));exit;
     
 
         return $query->result();
