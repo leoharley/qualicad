@@ -62,6 +62,7 @@
                 <thead>
                   <tr>
                     <th>Id</th>
+                    <th>CodGrupo</th>
                     <th>GrupoPro</th>
                     <th>Regra</th>
                     <th>Faturamento</th>
@@ -84,7 +85,10 @@
                         <?php echo $registro->Id_RegraGruPro ?>
                       </td>
                       <td>
-                        <?php echo $registro->CodGrupo.'-'.$registro->Ds_GrupoPro ?>
+                        <?php echo $registro->CodGrupo ?>
+                      </td>
+                      <td>
+                        <?php echo $registro->Ds_GrupoPro ?>
                       </td>
                       <td>
                         <?php echo $registro->Ds_Regra ?>
