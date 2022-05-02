@@ -492,8 +492,6 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 
     function consultaIndiceGruProExistente($TbGrupoPro_CodGrupo, $TbIndice_Id_Indice, $IdEmpresa)
     {
-
-        var_dump($IdEmpresa);exit;
         $this->db->select('*');
         $this->db->from('TbIndiceGrupo as IndiceGruPro');
         $this->db->where('IndiceGruPro.TbGrupoPro_CodGrupo', $TbGrupoPro_CodGrupo);
@@ -503,7 +501,6 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         $query = $this->db->get();
         $result = $query->result();
 
-        var_dump($result);exit;
         if(empty($result))
         return true;
         else
