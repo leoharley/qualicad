@@ -1610,6 +1610,12 @@ class Principal extends BaseController
                 $Vl_UCO = $this->input->post('Vl_UCO_GrupoPro');
                 $Tp_Ativo = $this->input->post('Tp_Ativo_GrupoPro');
 
+                // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                if ($this->PrincipalModel->consultaIndiceGruProExistente($TbGrupoPro_CodGrupo,$TbIndice_Id_Indice,$this->session->userdata('IdEmpresa')) != null) {
+                    $this->session->set_flashdata('error', 'Índice GruPro já foi cadastrado!');
+                    redirect('principalIndiceGrupoPro/cadastrar');
+                    }
+
 
         //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
 
