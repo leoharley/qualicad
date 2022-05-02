@@ -84,7 +84,7 @@
                         <?php echo $registro->Id_RegraGruPro ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_GrupoPro ?>
+                        <?php echo $registro->CodGrupo.'-'.$registro->Ds_GrupoPro ?>
                       </td>
                       <td>
                         <?php echo $registro->Ds_Regra ?>
