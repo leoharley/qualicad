@@ -47,7 +47,7 @@
       color: #646464;
     }
     .content-wrapper {
-    min-height: 900px !important;
+    min-height: 1200px !important;
     }
     .logo-lg {
     display: block;
