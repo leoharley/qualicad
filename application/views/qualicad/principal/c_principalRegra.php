@@ -148,7 +148,7 @@ if(!empty($infoRegra))
                                 <table id="dataTables-example" style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <th class="header-label" style="padding:10px">
+                                        <th  style="padding:10px">
                                         Código
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -174,7 +174,6 @@ if(!empty($infoRegra))
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>                                
                                 <tr id="row0">
 
                                             <td style="width:5%!important">
@@ -255,7 +254,7 @@ if(!empty($infoRegra))
                                 {
                                 foreach ($infoRegraGruPro as $regragrupro)
                                 {
-                                ?>                                
+                                ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Id_RegraGruPro ?>" disabled>
@@ -292,7 +291,6 @@ if(!empty($infoRegra))
                                     </a>
                                     </td>
                                 </tr>
-                                </tbody>
                                     <?php
                                 }
                                 }
