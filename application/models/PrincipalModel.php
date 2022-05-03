@@ -503,6 +503,19 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         return $query->result();
     }
 
+    function consultaRegraGruProExistente($TbGrupoPro_CodGrupo, $TbRegra_Id_Regra, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_RegraGruPro as RegraGruPro');
+        $this->db->where('RegraGruPro.TbGrupoPro_CodGrupo', $TbGrupoPro_CodGrupo);
+        $this->db->where('RegraGruPro.TbRegra_Id_Regra', $TbIndice_Id_Indice);
+        $this->db->where('RegraGruPro.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('RegraGruPro.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function editaIndiceGrupoPro($info, $id)
     {
         $this->db->where('Id_IndiceGrupo', $id);

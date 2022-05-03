@@ -148,7 +148,7 @@ if(!empty($infoRegra))
                                 <table id="dataTables-example" style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <th  style="padding:10px">
+                                        <th class="header-label" style="padding:10px">
                                         Código
                                         </th>
                                         <th class="header-label" style="padding:10px">
