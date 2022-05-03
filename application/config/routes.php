@@ -174,6 +174,7 @@ $route['apagaRegra/:any'] = "principal/apagaRegra/$1";
 $route['adicionaRegraGruPro'] = "principal/adicionaRegraGruPro";
 $route['editaRegraGruPro'] = "principal/editaRegraGruPro";
 $route['apagaRegraGruPro/:any'] = "principal/apagaRegraGruPro/$1";
+$route['apagaRegraGruPro_Sub/:any/:any'] = "principal/apagaRegraGruPro_Sub/$1/$2";
 
 /*********** ROUTES PARA AÇÕES DA TELA ÍNDICE *******************/
 $route['adicionaIndice'] = "principal/adicionaIndice";

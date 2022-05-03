@@ -285,6 +285,11 @@ if(!empty($infoRegra))
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     </td>
+                                    <td>
+                                    <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaPlano_Sub/'.$regragrupro->Id_RegraGruPro.'/'.$Id_Regra; ?>" title="Excluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                    </td>
                                 </tr>
                                     <?php
                                 }

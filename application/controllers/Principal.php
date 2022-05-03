@@ -3788,6 +3788,40 @@ class Principal extends BaseController
         }
         redirect('principalRegraGruPro/listar');
     }
+
+    function apagaRegraGruPro_Sub()
+    {
+
+        if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Excluir == 'N')
+        {
+            redirect('acaoNaoAutorizada');
+        }
+
+        $IdRegra = $this->uri->segment(3);
+
+        $IdRegraGruPro = $this->uri->segment(2);
+
+        $infoRegraGruPro = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $resultado = $this->PrincipalModel->apagaRegraGruPro($infoRegraGruPro, $IdRegraGruPro);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de regra grupro';
+            $processFunction = 'Principal/apagaRegraGruPro';
+            $this->logrecord($process,$processFunction);
+
+            $this->session->set_flashdata('success', 'Regra GruPro deletada com sucesso');
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir regra grupro');
+        }
+        redirect('principalRegraGruPro/editar'.$IdRegra);
+    }
     // FIM DAS FUNÇÕES DA REGRAGRUPRO
 
 
