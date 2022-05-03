@@ -1261,6 +1261,14 @@ class Principal extends BaseController
             $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
             $Tp_Ativo = $this->input->post('Tp_Ativo_RegraGruPro');
 
+            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+            if ($this->PrincipalModel->consultaRegraGruProExistente($TbGrupoPro_CodGrupo,$result,$this->session->userdata('IdEmpresa')) != null) {
+                $this->session->set_flashdata('error', 'Regra GruPro já foi cadastrado!');
+                redirect('principalRegraGruPro/cadastrar');
+                }
+
+            // ***** FIM DE VERIFICAÇÕES *****
+
             //    $roleId = $this->input->post('role');
 
             //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {
@@ -1384,6 +1392,17 @@ class Principal extends BaseController
             $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
             $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
             $Tp_Ativo = $this->input->post('Tp_Ativo_RegraGruPro');
+
+
+            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+            if ($this->PrincipalModel->consultaRegraGruProExistente($TbGrupoPro_CodGrupo,$IdRegra,$this->session->userdata('IdEmpresa')) != null) {
+                if ($this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($IdRegra,$this->session->userdata('IdEmpresa'))[0]->TbGrupoPro_CodGrupo != $TbGrupoPro_CodGrupo) {
+                $this->session->set_flashdata('error', 'Regra GruPro já foi cadastrado!');
+                redirect('principalRegra/editar/'.$IdRegra);
+                }
+            }
+
+            // ***** FIM DE VERIFICAÇÕES *****
 
             //    $roleId = $this->input->post('role');
 
