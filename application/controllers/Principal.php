@@ -1362,6 +1362,8 @@ class Principal extends BaseController
 
             $Ds_Regra = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_Regra'))));
             $Tp_Ativo = $this->input->post('Tp_Ativo');
+            $Dt_Ativo = '';
+            $Dt_Inativo = '';
 
             foreach ($this->PrincipalModel->carregaInfoRegra($IdRegra) as $data){
                 $tpativoatual = ($data->Tp_Ativo);
