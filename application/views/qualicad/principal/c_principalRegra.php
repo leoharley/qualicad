@@ -145,7 +145,7 @@ if(!empty($infoRegra))
 
                                 <h4><strong>Regra Grupo</strong></h4>
 
-                                <table id="table" class="table table-striped table-bordered table-hover" style="width:100%;">
+                                <table  class="table table-striped table-bordered table-hover" id="dataTables-example" style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
