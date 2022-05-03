@@ -1401,21 +1401,12 @@ class Principal extends BaseController
                 $this->session->set_flashdata('error', 'Regra GruPro já foi cadastrado!');
                 redirect('principalRegra/editar/'.$IdRegra);
                 } else {
-                    $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
-            
-                    foreach ($carregaGrupoPro as $data){
-                        if ($Perc_Pago != '') {
-                    
-                        $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$data->CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                            'TbRegra_Id_Regra'=> $IdRegra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
-                            'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
-                            'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
-
-                        $result2 = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
-                        
-                        } else {
-                            $result2 = 1;
-                        }
+                    if ($Perc_Pago != '') {
+                    $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$data->CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                        'TbRegra_Id_Regra'=> $IdRegra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
+                        'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
+                        'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+                    $result2 = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
                     }
                 }
 
