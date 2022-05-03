@@ -1394,6 +1394,12 @@ class Principal extends BaseController
             $Tp_Ativo = $this->input->post('Tp_Ativo_RegraGruPro');
 
 
+            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+            if ($this->PrincipalModel->consultaRegraGruProExistente($TbGrupoPro_CodGrupo,$IdRegra,$this->session->userdata('IdEmpresa')) != null) {
+                $this->session->set_flashdata('error', 'Regra GruPro já foi cadastrado!');
+                redirect('principalRegra/editar/'.$IdRegra);
+                }
+
             // ***** FIM DE VERIFICAÇÕES *****
 
             //    $roleId = $this->input->post('role');
