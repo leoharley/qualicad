@@ -3820,7 +3820,7 @@ class Principal extends BaseController
             //echo(json_encode(array('status'=>FALSE)));
             $this->session->set_flashdata('error', 'Falha em excluir regra grupro');
         }
-        redirect('principalRegraGruPro/editar'.$IdRegra);
+        redirect('principalRegra/editar/'.$IdRegra);
     }
     // FIM DAS FUNÇÕES DA REGRAGRUPRO
 
