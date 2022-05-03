@@ -513,6 +513,7 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         $this->db->where('RegraGruPro.Deletado !=', 'S');
         $query = $this->db->get();
 
+        var_dump($query->result());exit;
         return $query->result();
     }
 
