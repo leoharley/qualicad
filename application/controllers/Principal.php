@@ -3343,6 +3343,18 @@ class Principal extends BaseController
                 $Vl_ExcValores = $this->input->post('Vl_ExcValores');        
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
+                // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                if ($this->PrincipalModel->consultaExcValoresTUSSExistente($CD_Convenio,$Cd_TUSS,$this->session->userdata('IdEmpresa')) != null) {
+                    $this->session->set_flashdata('error', 'Exceção valor já foi cadastrado!');
+                    redirect('principalExcecaoValores/listar');
+                    }
+                    
+                    if ($this->PrincipalModel->consultaExcValoresProFatExistente($CD_Convenio,$Cd_ProFat,$this->session->userdata('IdEmpresa')) != null) {
+                    $this->session->set_flashdata('error', 'Exceção valor já foi cadastrado!');
+                    redirect('principalExcecaoValores/listar');
+                    }
+                // ***** FIM DE VERIFICAÇÕES *****    
+
             //    $roleId = $this->input->post('role');
 
             //    if ($this->PrincipalModel->consultaConvenioExistente($CNPJ_Convenio,$this->session->userdata('IdEmpresa')) == null) {

@@ -98,6 +98,32 @@ class PrincipalModel extends CI_Model
         return $query->result();
     }
 
+    function consultaExcValoresTUSSExistente($CD_Convenio, $Cd_TUSS, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbExcValores as ExcValores');
+        $this->db->where('ExcValores.CD_Convenio', $CD_Convenio);
+        $this->db->where('ExcValores.Cd_TUSS', $Cd_TUSS);
+        $this->db->where('ExcValores.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('ExcValores.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function consultaExcValoresProFatExistente($CD_Convenio, $Cd_ProFat, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbExcValores as ExcValores');
+        $this->db->where('ExcValores.CD_Convenio', $CD_Convenio);
+        $this->db->where('ExcValores.Cd_ProFat', $Cd_ProFat);
+        $this->db->where('ExcValores.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('ExcValores.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function carregaInfoConvenio($IdConvenio)
     {
         $this->db->select('*');
