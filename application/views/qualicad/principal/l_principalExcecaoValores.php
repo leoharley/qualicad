@@ -88,7 +88,7 @@
                         <?php echo $registro->Ds_Convenio ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_Tuss ?>
+                        <?php echo $registro->Cd_TUSS ?>
                       </td>
                       <td>
                         <?php echo $registro->Ds_ProFat ?>
