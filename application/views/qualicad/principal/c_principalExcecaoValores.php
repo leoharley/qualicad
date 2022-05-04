@@ -170,21 +170,8 @@ if(!empty($infoExcecaoValores))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS">
-                                            <?php
-                                            if(!empty($infoTUSS))
-                                            {
-                                                foreach ($infoTUSS as $tuss)
-                                                {
-                                                    ?>
-                                                <option value="<?php echo $tuss->Id_Tuss ?>" <?php if ($this->uri->segment(2) == 'editar' && $tuss->Id_Tuss == $Cd_TUSS) { echo 'selected'; } ?>>
-                                                    <?php echo $tuss->Id_Tuss.' - '.$tuss->Ds_Tuss ?>
-                                                </option>
-                                                <?php
-                                                }
-                                            }
-                                            ?>
-                                            </select>
+                                            <input type="text" class="form-control required" id="Cd_TUSS" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Cd_TUSS') : $Cd_TUSS ; ?>" name="Cd_TUSS"
+                                                   maxlength="13">
                                             </td>
 
                                             <td>
