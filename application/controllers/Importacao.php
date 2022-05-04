@@ -126,6 +126,37 @@ class Importacao extends BaseController
     }
 
 
+    function apagaImportacaoGrupoPro()
+    {
+
+        $IdGrupoPro = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoGrupoPro($IdGrupoPro);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação Grupo Pro';
+            $processFunction = 'Importacao/apagaImportacaoGrupoPro';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe Regra Grupo ou ProFat associada');
+            }
+            else {
+                $this->session->set_flashdata('success', 'GrupoPro deletado com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o GruPro');
+        }
+        redirect('importacaoGrupoPro');
+    }
+
+
     // IMPORTAÇÃO PROFAT
 
     function importacaoProFat()

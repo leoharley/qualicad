@@ -105,6 +105,7 @@ $route['importaFatItem'] = "importacao/importaFatItem";
 
 $route['importacaoGrupoPro'] = "importacao/importacaoGrupoPro";
 $route['importaGrupoPro'] = "importacao/importaGrupoPro";
+$route['apagaImportacaoGrupoPro'] = "importacao/apagaImportacaoGrupoPro";
 
 $route['importacaoProFat'] = "importacao/importacaoProFat";
 $route['importaProFat'] = "importacao/importaProFat";

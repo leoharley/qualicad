@@ -92,6 +92,7 @@
                     <th>Desc_Tp_GrupoPro</th>
                     <th>Dt_Criacao</th>
                     <th>Tp_Ativo</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,6 +104,11 @@
                     <td><?php echo $registro->Desc_Tp_GrupoPro ?></td>
                     <td><?php echo $registro->Dt_Criacao ?></td>
                     <td><?php echo $registro->Tp_Ativo ?></td>
+                    <td>
+                    <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoGrupoPro/'.$registro->CodGrupo; ?> "title="Excluir">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
