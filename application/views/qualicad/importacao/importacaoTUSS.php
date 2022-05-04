@@ -91,6 +91,7 @@
                     <th>Ds_Tuss</th>
                     <th>Dt_IniVigencia</th>
                     <th>Dt_FimVigencia</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,6 +103,11 @@
                     <td><?php echo $registro->Ds_Tuss ?></td>
                     <td><?php echo $registro->Dt_IniVigencia ?></td>
                     <td><?php echo $registro->Dt_FimVigencia ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoTUSS/'.$registro->Id_Tuss; ?> "title="Excluir">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

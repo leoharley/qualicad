@@ -114,6 +114,7 @@ $route['apagaImportacaoProFat/:any'] = "importacao/apagaImportacaoProFat/$1";
 
 $route['importacaoTUSS'] = "importacao/importacaoTUSS";
 $route['importaTUSS'] = "importacao/importaTUSS";
+$route['apagaImportacaoTUSS/:any'] = "importacao/apagaImportacaoTUSS/$1";
 
 $route['importacaoRegraGruPro'] = "importacao/importacaoRegraGruPro";
 $route['importaRegraGruPro'] = "importacao/importaRegraGruPro";
