@@ -529,6 +529,24 @@ class ImportacaoModel extends CI_Model
 
     }
 
+    function apagaImportacaoRegraGruPro($id)
+    {
+        $this->db->where('Id_RegraGruPro', $id);
+        $res = $this->db->delete('Tb_RegraGruPro');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
+
 
 }
 

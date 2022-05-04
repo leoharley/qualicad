@@ -473,6 +473,35 @@ class Importacao extends BaseController
         redirect('importacaoRegraGruPro');
     }
 
+    function apagaImportacaoRegraGruPro()
+    {
+
+        $IdRegraGruPro = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoRegraGruPro($IdRegraGruPro);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação RegraGruPro';
+            $processFunction = 'Importacao/apagaImportacaoRegraGruPro';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+            }
+            else {
+                $this->session->set_flashdata('success', 'RegraGruPro deletado com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o RegraGruPro');
+        }
+        redirect('importacaoRegraGruPro');
+    }
 
     // IMPORTAÇÃO FracaoSimproBra
 
