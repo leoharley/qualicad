@@ -451,13 +451,23 @@ function editaIndice($info, $id)
     return TRUE;
 }
 
-function apagaIndice($info, $id)
-{
-    $this->db->where('Id_Indice', $id);
-    $this->db->update('TbIndice', $info);
-    
-    return $this->db->affected_rows();
-}
+function apagaIndice($info,$id)
+    {
+        $this->db->where('Id_Indice', $id);
+        $res = $this->db->delete('TbIndice');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
 
 function carregaInfoIndice($Id)
 {

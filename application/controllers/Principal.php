@@ -1851,8 +1851,13 @@ class Principal extends BaseController
                     $processFunction = 'Cadastro/apagaIndice';
                     $this->logrecord($process,$processFunction);
     
-                    $this->session->set_flashdata('success', 'Índice deletado com sucesso');
-    
+                    if ($resultado === 1451) {
+                        $this->session->set_flashdata('error', 'Índice associado a plano ou índice grupo cadastrado');
+                       }
+                    else {
+                        $this->session->set_flashdata('success', 'Índice deletado com sucesso');
+                       }
+
                     }
                     else 
                     { 
