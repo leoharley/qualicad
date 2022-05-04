@@ -116,6 +116,7 @@
                     <th>Cd_TISS</th>
                     <th>Qt_Embalagem</th>
                     <th>Ds_Unidade</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -133,6 +134,11 @@
                     <td><?php echo $registro->Cd_TISS ?></td>
                     <td><?php echo $registro->Qt_Embalagem ?></td>
                     <td><?php echo $registro->Ds_Unidade ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoFatItem/'.$registro->Id_FatItem; ?> "title="Excluir">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

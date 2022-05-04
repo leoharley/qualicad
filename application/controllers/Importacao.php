@@ -1144,6 +1144,36 @@ class Importacao extends BaseController
         redirect('importacaoFatItem');
     }
 
+    function apagaImportacaoFatItem()
+    {
+
+        $IdFatItem = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoFatItem($IdFatItem);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação Fat Item';
+            $processFunction = 'Importacao/apagaImportacaoFatItem';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+            }
+            else {
+                $this->session->set_flashdata('success', 'FatItem deletada com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o FatItem');
+        }
+        redirect('importacaoFatItem');
+    }
+
 
     function layoutImportacao()
     {

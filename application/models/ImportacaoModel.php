@@ -473,6 +473,23 @@ class ImportacaoModel extends CI_Model
         {
             return TRUE;
         }
+    }
+
+    function apagaImportacaoFatItem($id)
+    {
+        $this->db->where('Id_FatItem', $id);
+        $res = $this->db->delete('TbFatItem');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
 
     }
 
