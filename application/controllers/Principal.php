@@ -1487,7 +1487,12 @@ class Principal extends BaseController
                 $processFunction = 'Principal/apagaRegra';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Regra deletada com sucesso');
+                if ($resultado === 1451) {
+                    $this->session->set_flashdata('error', 'Regra associada a plano ou regra grupo cadastrada');
+                   }
+                else {
+                    $this->session->set_flashdata('success', 'Regra deletada com sucesso');
+                   }
 
                 }
                 else 

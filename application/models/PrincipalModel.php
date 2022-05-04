@@ -381,13 +381,23 @@ function editaRegra($info, $id)
     return TRUE;
 }
 
-function apagaRegra($info, $id)
-{
-    $this->db->where('Id_Regra', $id);
-    $this->db->update('TbRegra', $info);
-    
-    return $this->db->affected_rows();
-}
+function apagaRegra($info,$id)
+    {
+        $this->db->where('Id_Regra', $id);
+        $res = $this->db->delete('TbRegra');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
 
 function carregaInfoRegra($Id)
 {
