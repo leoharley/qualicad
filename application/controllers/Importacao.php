@@ -242,6 +242,36 @@ class Importacao extends BaseController
         redirect('importacaoProFat');
     }
 
+    function apagaImportacaoProFat()
+    {
+
+        $IdProFat = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoProFat($IdProFat);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação ProFat';
+            $processFunction = 'Importacao/apagaImportacaoProFat';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe exceção de valores associada');
+            }
+            else {
+                $this->session->set_flashdata('success', 'ProFat deletada com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir o ProFat');
+        }
+        redirect('importacaoProFat');
+    }
+
 
     // IMPORTAÇÃO TUSS
 

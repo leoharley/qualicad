@@ -110,6 +110,7 @@ $route['apagaImportacaoGrupoPro/:any'] = "importacao/apagaImportacaoGrupoPro/$1"
 
 $route['importacaoProFat'] = "importacao/importacaoProFat";
 $route['importaProFat'] = "importacao/importaProFat";
+$route['apagaImportacaoProFat/:any'] = "importacao/apagaImportacaoProFat/$1";
 
 $route['importacaoTUSS'] = "importacao/importacaoTUSS";
 $route['importaTUSS'] = "importacao/importaTUSS";

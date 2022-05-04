@@ -493,6 +493,24 @@ class ImportacaoModel extends CI_Model
 
     }
 
+    function apagaImportacaoProFat($id)
+    {
+        $this->db->where('Cd_ProFat', $id);
+        $res = $this->db->delete('TbProFat');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
+
 
 }
 

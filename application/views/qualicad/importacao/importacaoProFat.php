@@ -90,6 +90,7 @@
                     <th>Ds_Unidade</th>
                     <th>TbGrupoPro_CodGrupo</th>
                     <th>Tp_Ativo</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,6 +101,11 @@
                     <td><?php echo $registro->Ds_Unidade ?></td>
                     <td><?php echo $registro->TbGrupoPro_CodGrupo ?></td>
                     <td><?php echo $registro->Tp_Ativo ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoProFat/'.$registro->Cd_ProFat; ?> "title="Excluir">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
