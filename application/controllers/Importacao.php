@@ -588,6 +588,36 @@ class Importacao extends BaseController
         redirect('importacaoFracaoSimproBra');
     }
 
+    function apagaImportacaoFracaoSimproBra()
+    {
+
+        $IdFracaoSimproBra = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoFracaoSimproBra($IdFracaoSimproBra);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação Fracao SimproBra';
+            $processFunction = 'Importacao/apagaImportacaoFracaoSimproBra';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+            }
+            else {
+                $this->session->set_flashdata('success', 'Fração SimproBra deletada com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir Fração SimproBra');
+        }
+        redirect('importacaoFracaoSimproBra');
+    }
+
     // IMPORTAÇÃO Produto
 
     function importacaoProduto()
@@ -673,6 +703,36 @@ class Importacao extends BaseController
         redirect('importacaoProduto');
     }
 
+    function apagaImportacaoProduto()
+    {
+
+        $IdProduto = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoProduto($IdProduto);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação Produto';
+            $processFunction = 'Importacao/apagaImportacaoProduto';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+            }
+            else {
+                $this->session->set_flashdata('success', 'Produto deletado com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir Produto');
+        }
+        redirect('importacaoProduto');
+    }
+
     // IMPORTAÇÃO Produção
 
     function importacaoProducao()
@@ -754,6 +814,36 @@ class Importacao extends BaseController
                 $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
                 //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
             }
+        }
+        redirect('importacaoProducao');
+    }
+
+    function apagaImportacaoProducao()
+    {
+
+        $IdProducao = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoProducao($IdProducao);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação Produção';
+            $processFunction = 'Importacao/apagaImportacaoProducao';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+            }
+            else {
+                $this->session->set_flashdata('success', 'Produção deletada com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir Produção');
         }
         redirect('importacaoProducao');
     }
@@ -1060,6 +1150,36 @@ class Importacao extends BaseController
         redirect('importacaoPorteMedico');
     }
 
+    function apagaImportacaoPorteMedico()
+    {
+
+        $IdPorteMedico = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoPorteMedico($IdPorteMedico);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação Porte Médico';
+            $processFunction = 'Importacao/apagaImportacaoPorteMedico';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+            }
+            else {
+                $this->session->set_flashdata('success', 'Porte Médico deletado com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir Porte Médico');
+        }
+        redirect('importacaoPorteMedico');
+    }
+
 
     // IMPORTAÇÃO EXCEÇÃO VALORES
 
@@ -1142,6 +1262,36 @@ class Importacao extends BaseController
                 $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
                 //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
             }
+        }
+        redirect('importacaoExcecaoValores');
+    }
+
+    function apagaImportacaoExcecaoValores()
+    {
+
+        $IdExcecaoValores = $this->uri->segment(2);
+
+        $resultado = $this->ImportacaoModel->apagaImportacaoExcecaoValores($IdExcecaoValores);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de importação Exceção Valores';
+            $processFunction = 'Importacao/apagaImportacaoExcecaoValores';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+            }
+            else {
+                $this->session->set_flashdata('success', 'Exceção valores deletada com sucesso');
+            }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir Exceção Valores');
         }
         redirect('importacaoExcecaoValores');
     }

@@ -94,6 +94,7 @@
                     <th>ClasseEvento</th>
                     <th>Tp_ExcValores</th>
                     <th>Vl_ExcValores</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -107,6 +108,11 @@
                     <td><?php echo $registro->ClasseEvento ?></td>
                     <td><?php echo $registro->Tp_ExcValores ?></td>
                     <td><?php echo $registro->Vl_ExcValores ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoExcecaoValores/'.$registro->Id_ExcValores; ?> "title="Excluir">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

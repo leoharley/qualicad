@@ -547,6 +547,95 @@ class ImportacaoModel extends CI_Model
 
     }
 
+    function apagaImportacaoFracaoSimproBra($id)
+    {
+        $this->db->where('Id_FracaoSimproBra', $id);
+        $res = $this->db->delete('Tb_FracaoSimproBra');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
+
+    function apagaImportacaoProduto($id)
+    {
+        $this->db->where('Id_Produto', $id);
+        $res = $this->db->delete('Tb_Produto');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
+
+    function apagaImportacaoProducao($id)
+    {
+        $this->db->where('Id_Producao', $id);
+        $res = $this->db->delete('Tb_Producao');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
+
+    function apagaImportacaoPorteMedico($id)
+    {
+        $this->db->where('Id_PorteMedico', $id);
+        $res = $this->db->delete('TbPorteMedico');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
+
+    function apagaImportacaoExcecaoValores($id)
+    {
+        $this->db->where('Id_ExcValores', $id);
+        $res = $this->db->delete('TbExcValores');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
 
 }
 

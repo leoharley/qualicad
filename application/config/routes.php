@@ -122,21 +122,27 @@ $route['apagaImportacaoRegraGruPro/:any'] = "importacao/apagaImportacaoRegraGruP
 
 $route['importacaoFracaoSimproBra'] = "importacao/importacaoFracaoSimproBra";
 $route['importaFracaoSimproBra'] = "importacao/importaFracaoSimproBra";
+$route['apagaImportacaoFracaoSimproBra/:any'] = "importacao/apagaImportacaoFracaoSimproBra/$1";
 
 $route['importacaoProduto'] = "importacao/importacaoProduto";
 $route['importaProduto'] = "importacao/importaProduto";
+$route['apagaImportacaoProduto/:any'] = "importacao/apagaImportacaoProduto/$1";
 
 $route['importacaoProducao'] = "importacao/importacaoProducao";
 $route['importaProducao'] = "importacao/importaProducao";
+$route['apagaImportacaoProducao/:any'] = "importacao/apagaImportacaoProducao/$1";
 
 $route['importacaoContrato'] = "importacao/importacaoContrato";
 $route['importaContrato'] = "importacao/importaContrato";
+$route['apagaImportacaoContrato/:any'] = "importacao/apagaImportacaoContrato/$1";
 
 $route['importacaoPorteMedico'] = "importacao/importacaoPorteMedico";
 $route['importaPorteMedico'] = "importacao/importaPorteMedico";
+$route['apagaImportacaoPorteMedico/:any'] = "importacao/apagaImportacaoPorteMedico/$1";
 
 $route['importacaoExcecaoValores'] = "importacao/importacaoExcecaoValores";
 $route['importaExcecaoValores'] = "importacao/importaExcecaoValores";
+$route['apagaImportacaoExcecaoValores/:any'] = "importacao/apagaImportacaoExcecaoValores/$1";
 
 $route['importacaoDePara/:any/:any'] = "importacao/importacaoDePara/$1/$2";
 $route['importacaoDePara/:any'] = "importacao/importacaoDePara/$1";

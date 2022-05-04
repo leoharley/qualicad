@@ -95,6 +95,7 @@
                     <th>Tp_MatMed</th>
                     <th>Vl_FatorDivisao</th>
                     <th>Qt_Prod</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -109,6 +110,11 @@
                     <td><?php echo $registro->Tp_MatMed ?></td>
                     <td><?php echo $registro->Vl_FatorDivisao ?></td>
                     <td><?php echo $registro->Qt_Prod ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoFracaoSimproBra/'.$registro->Id_FracaoSimproBra; ?> "title="Excluir">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

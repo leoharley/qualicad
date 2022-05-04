@@ -431,7 +431,7 @@ $(function() {
                         <li class="treeview" style="margin-left:22px;">                       
                             <a href="<?php echo base_url(); ?>importacaoFracaoSimproBra">
                                 <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">FracaoSimproBra</span>
+                                <span style="margin-left:5px">Fração Mat/Med</span>
                             </a>
                         </li>
                         <li class="treeview" style="margin-left:22px;">

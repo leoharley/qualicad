@@ -94,6 +94,7 @@
                     <th>Vl_Conta</th>
                     <th>Cd_Movimento</th>
                     <th>Cd_ITMovimento</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -108,6 +109,11 @@
                     <td><?php echo $registro->Vl_Conta ?></td>
                     <td><?php echo $registro->Cd_Movimento ?></td>
                     <td><?php echo $registro->Cd_ITMovimento ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoProducao/'.$registro->Id_Producao; ?> "title="Excluir">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

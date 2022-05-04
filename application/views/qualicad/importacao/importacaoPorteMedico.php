@@ -90,6 +90,7 @@
                     <th>Cd_PorteMedico</th>
                     <th>Ds_PorteMedico</th>
                     <th>Vl_PorteMedico</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,6 +101,11 @@
                     <td><?php echo $registro->Cd_PorteMedico ?></td>
                     <td><?php echo $registro->Ds_PorteMedico ?></td>
                     <td><?php echo $registro->Vl_PorteMedico ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoPorteMedico/'.$registro->Id_PorteMedico; ?> "title="Excluir">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>

@@ -96,6 +96,7 @@
                     <th>Vl_Fator</th>
                     <th>Vl_FatorProFat</th>
                     <th>Vl_CustoFinal</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -112,6 +113,11 @@
                     <td><?php echo $registro->Vl_Fator ?></td>
                     <td><?php echo $registro->Vl_FatorProFat ?></td>
                     <td><?php echo $registro->Vl_CustoFinal ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoProduto/'.$registro->Id_Produto; ?> "title="Excluir">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
