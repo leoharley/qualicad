@@ -450,12 +450,22 @@ class ImportacaoModel extends CI_Model
         return TRUE;
     }
 
-    function apagaLayoutImportacao($info, $id)
+    function apagaLayoutImportacao($id)
     {
         $this->db->where('Id_LayoutImportacao', $id);
-        $this->db->update('Tb_LayoutImportacao', $info);
+        $res = $this->db->delete('Tb_LayoutImportacao');
 
-        return $this->db->affected_rows();
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
     }
 
     function consultaCamposTabela($DsTabela)

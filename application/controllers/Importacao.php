@@ -1598,9 +1598,7 @@ class Importacao extends BaseController
 
             $IdLayoutImportacao = $this->uri->segment(2);
 
-            $infoLayoutImportacao = array('Deletado'=>'S');
-            
-            $resultado = $this->ImportacaoModel->apagaLayoutImportacao($infoLayoutImportacao, $IdLayoutImportacao);
+            $resultado = $this->ImportacaoModel->apagaLayoutImportacao($IdLayoutImportacao);
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
@@ -1609,7 +1607,12 @@ class Importacao extends BaseController
                 $processFunction = 'Importacao/apagaLayoutImportacao';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Layout Importação deletado com sucesso');
+                if ($resultado === 1451) {
+                    $this->session->set_flashdata('error', 'Existe associação ativa');
+                }
+                else {
+                    $this->session->set_flashdata('success', 'Layout Importação deletado com sucesso');
+                }
 
                 }
                 else 
