@@ -44,14 +44,6 @@ class PrincipalModel extends CI_Model
         return TRUE;
     }
 
-/*    function apagaConvenio($info, $id)
-    {
-        $this->db->where('Id_Convenio', $id);
-        $this->db->update('TbConvenio', $info);
-        
-        return $this->db->affected_rows();
-    } */
-
     function apagaConvenio($info,$id)
     {
         $this->db->where('Id_Convenio', $id);
@@ -216,8 +208,19 @@ class PrincipalModel extends CI_Model
     function apagaPlano($info,$id)
     {
         $this->db->where('Id_Plano', $id);
-        $this->db->delete('TbPlano');
-        return TRUE;
+        $res = $this->db->delete('TbPlano');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
     }
 
     function carregaInfoPlanosEmpresa($idEmpresa)
@@ -580,12 +583,22 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         return TRUE;
     }
 
-    function apagaIndiceGrupoPro($info, $id)
+    function apagaIndiceGrupoPro($info,$id)
     {
         $this->db->where('Id_IndiceGrupo', $id);
-        $this->db->update('TbIndiceGrupo', $info);
+        $res = $this->db->delete('TbIndiceGrupo');
 
-        return $this->db->affected_rows();
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
     }
 
     function carregaInfoIndiceGrupoPro($Id)
@@ -679,12 +692,22 @@ function editaRegraProibicao($info, $id)
     return TRUE;
 }
 
-function apagaRegraProibicao($info, $id)
+function apagaRegraProibicao($info,$id)
 {
     $this->db->where('Id_RegraProibicao', $id);
-    $this->db->update('Tb_RegraProibicao', $info);
+    $res = $this->db->delete('Tb_RegraProibicao');
 
-    return $this->db->affected_rows();
+    if(!$res)
+    {
+        $error = $this->db->error();
+        return $error['code'];
+        //return array $error['code'] & $error['message']
+    }
+    else
+    {
+        return TRUE;
+    }
+
 }
 
 function carregaInfoRegraProibicao($Id)
@@ -754,13 +777,23 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         return TRUE;
     }
 
-    function apagaFracaoSimproBra($info, $id)
+    function apagaFracaoSimproBra($info,$id)
     {
-        $this->db->where('Id_FracaoSimproBra ', $id);
-        $this->db->update('Tb_FracaoSimproBra', $info);
-
-        return $this->db->affected_rows();
-    }
+        $this->db->where('Id_FracaoSimproBra', $id);
+        $res = $this->db->delete('Tb_FracaoSimproBra');
+    
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+    
+    }    
 
     function carregaInfoFracaoSimproBra($Id)
     {
@@ -851,12 +884,22 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         return TRUE;
     }
 
-    function apagaFaturamentoItem($info, $id)
+    function apagaFaturamentoItem($info,$id)
     {
         $this->db->where('Id_FatItem', $id);
-        $this->db->update('TbFatItem', $info);
-
-        return $this->db->affected_rows();
+        $res = $this->db->delete('TbFatItem');
+    
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+    
     }
 
     function carregaInfoFaturamentoItem($Id)
@@ -947,12 +990,22 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         return TRUE;
     }
 
-    function apagaUnidade($info, $id)
+    function apagaUnidade($info,$id)
     {
         $this->db->where('Id_Unidade', $id);
-        $this->db->update('Tb_Unidade', $info);
-
-        return $this->db->affected_rows();
+        $res = $this->db->delete('Tb_Unidade');
+    
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+    
     }
 
     function carregaInfoUnidade($Id)
@@ -985,14 +1038,14 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
 function listaProibicao($IdEmpresa, $searchText = '', $page, $segment)
 {
     $this->db->select('*');
-    $this->db->from('TbIndice as Indice');
+    $this->db->from('Tb_Proibicao as Proibicao');
 //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
     if(!empty($searchText)) {
-        $likeCriteria = "(Indice.Ds_Indice LIKE '%".$searchText."%')";
+        $likeCriteria = "(Proibicao.Tp_Proibicao LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
-    $this->db->where('Indice.Deletado !=', 'S');
-    $this->db->where('Indice.TbEmpresa_Id_Empresa', $IdEmpresa);
+    $this->db->where('Proibicao.Deletado !=', 'S');
+    $this->db->where('Proibicao.TbEmpresa_Id_Empresa', $IdEmpresa);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
 
@@ -1003,7 +1056,7 @@ function listaProibicao($IdEmpresa, $searchText = '', $page, $segment)
 function adicionaProibicao($info)
 {
     $this->db->trans_start();
-    $this->db->insert('TbIndice', $info);
+    $this->db->insert('Tb_Proibicao', $info);
 
     $insert_id = $this->db->insert_id();
 
@@ -1014,25 +1067,35 @@ function adicionaProibicao($info)
 
 function editaProibicao($info, $id)
 {
-    $this->db->where('Id_Indice', $id);
-    $this->db->update('TbIndice', $info);
+    $this->db->where('Id_Proibicao', $id);
+    $this->db->update('Tb_Proibicao', $info);
 
     return TRUE;
 }
 
-function apagaProibicao($info, $id)
+function apagaProibicao($info,$id)
 {
-    $this->db->where('Id_Indice', $id);
-    $this->db->update('TbIndice', $info);
+    $this->db->where('Id_Proibicao', $id);
+    $res = $this->db->delete('Tb_Proibicao');
 
-    return $this->db->affected_rows();
+    if(!$res)
+    {
+        $error = $this->db->error();
+        return $error['code'];
+        //return array $error['code'] & $error['message']
+    }
+    else
+    {
+        return TRUE;
+    }
+
 }
 
 function carregaInfoProibicao($Id)
 {
     $this->db->select('*');
-    $this->db->from('TbIndice');
-    $this->db->where('Id_Indice', $Id);
+    $this->db->from('Tb_Proibicao');
+    $this->db->where('Id_Proibicao', $Id);
     $query = $this->db->get();
 
     return $query->result();
@@ -1041,10 +1104,10 @@ function carregaInfoProibicao($Id)
 function carregaInfoProibicaoEmpresa($idEmpresa)
 {
     $this->db->select('*');
-    $this->db->from('TbIndice as Indice');
-    $this->db->where('Indice.TbEmpresa_Id_Empresa', $idEmpresa);
-    $this->db->where('Indice.Deletado !=', 'S');
-    $this->db->where('Indice.Tp_Ativo', 'S');
+    $this->db->from('Tb_Proibicao as Proibicao');
+    $this->db->where('Proibicao.TbEmpresa_Id_Empresa', $idEmpresa);
+    $this->db->where('Proibicao.Deletado !=', 'S');
+    $this->db->where('Proibicao.Tp_Ativo', 'S');
     $query = $this->db->get();
 
     return $query->result();
@@ -1092,12 +1155,22 @@ function editaExcecaoValores($info, $id)
     return TRUE;
 }
 
-function apagaExcecaoValores($info, $id)
+function apagaExcecaoValores($info,$id)
 {
     $this->db->where('Id_ExcValores', $id);
-    $this->db->update('TbExcValores', $info);
-    
-    return $this->db->affected_rows();
+    $res = $this->db->delete('TbExcValores');
+
+    if(!$res)
+    {
+        $error = $this->db->error();
+        return $error['code'];
+        //return array $error['code'] & $error['message']
+    }
+    else
+    {
+        return TRUE;
+    }
+
 }
 
 /*function consultaExcecaoValoresExistente($CNPJ_Convenio, $IdEmpresa)
@@ -1177,12 +1250,22 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
         return TRUE;
     }
 
-    function apagaRegraGruPro($info, $id)
+    function apagaRegraGruPro($info,$id)
     {
         $this->db->where('Id_RegraGruPro', $id);
-        $this->db->update('Tb_RegraGruPro', $info);
+        $res = $this->db->delete('Tb_RegraGruPro');
 
-        return $this->db->affected_rows();
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
     }
 
     function carregaInfoRegraGruPro($IdRegraGruPro)

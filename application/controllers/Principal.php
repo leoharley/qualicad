@@ -730,7 +730,12 @@ class Principal extends BaseController
                 $processFunction = 'Cadastro/apagaPlano';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Plano deletado com sucesso');
+                if ($resultado === 1451) {
+                    $this->session->set_flashdata('error', 'Existe associação ativa');
+                   }
+                else {
+                    $this->session->set_flashdata('success', 'Plano deletado com sucesso');
+                   }
 
                 }
                 else 
@@ -2154,7 +2159,12 @@ class Principal extends BaseController
             $processFunction = 'Principal/apagaIndiceGrupoPro';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Índice Grupo Pro deletado com sucesso');
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+               }
+            else {
+                $this->session->set_flashdata('success', 'Índice Grupo Pro deletado com sucesso');
+               }
 
         }
         else
@@ -2422,7 +2432,12 @@ class Principal extends BaseController
             $processFunction = 'Principal/apagaRegraProibicao';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Regra proibição deletada com sucesso');
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+               }
+            else {
+                $this->session->set_flashdata('success', 'Regra proibição deletada com sucesso');
+               }
 
         }
         else
@@ -2696,7 +2711,12 @@ class Principal extends BaseController
             $processFunction = 'Principal/apagaFracaoSimproBra';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Fração Simpro Bra deletada com sucesso');
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+               }
+            else {
+                $this->session->set_flashdata('success', 'Fração Simpro Bra deletada com sucesso');
+               }
 
         }
         else
@@ -2988,7 +3008,12 @@ class Principal extends BaseController
             $processFunction = 'Principal/apagaFaturamentoItem';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Faturamento item deletado com sucesso');
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+               }
+            else {
+                $this->session->set_flashdata('success', 'Faturamento item deletado com sucesso');
+               }
 
         }
         else
@@ -3237,7 +3262,12 @@ class Principal extends BaseController
             $processFunction = 'Principal/apagaUnidade';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Unidade deletada com sucesso');
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+               }
+            else {
+                $this->session->set_flashdata('success', 'Unidade deletada com sucesso');
+               }
 
         }
         else
@@ -3531,7 +3561,12 @@ class Principal extends BaseController
                  $processFunction = 'Principal/apagaExcecaoValores';
                  $this->logrecord($process,$processFunction);
 
-                 $this->session->set_flashdata('success', 'Exceção valores deletado com sucesso');
+                 if ($resultado === 1451) {
+                    $this->session->set_flashdata('error', 'Existe associação ativa');
+                   }
+                else {
+                    $this->session->set_flashdata('success', 'Exceção valores deletado com sucesso');
+                   }
 
                 }
                 else 
@@ -3841,7 +3876,12 @@ class Principal extends BaseController
             $processFunction = 'Principal/apagaRegraGruPro';
             $this->logrecord($process,$processFunction);
 
-            $this->session->set_flashdata('success', 'Regra GruPro deletada com sucesso');
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+               }
+            else {
+                $this->session->set_flashdata('success', 'Regra GruPro deletada com sucesso');
+               }
 
         }
         else
