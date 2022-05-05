@@ -80,7 +80,6 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara(8,'Grupopro',$this->session->userdata('IdEmpresa'));
                     
-                    var_dump($csvData);exit;
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -100,6 +99,8 @@ class Importacao extends BaseController
                                     'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                     'Tp_Ativo'=> 'S');
                                    
+
+                                    var_dump($memData);exit;
 
                                 $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
                             
