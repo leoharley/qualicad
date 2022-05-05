@@ -310,13 +310,23 @@ function editaFaturamento($info, $id)
     return TRUE;
 }
 
-function apagaFaturamento($info, $id)
-{
-    $this->db->where('Id_Faturamento', $id);
-    $this->db->update('TbFaturamento', $info);
-    
-    return $this->db->affected_rows();
-}
+function apagaFaturamento($info,$id)
+    {
+        $this->db->where('Id_Faturamento', $id);
+        $res = $this->db->delete('TbFaturamento');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
 
 function carregaInfoFaturamento($Id)
 {

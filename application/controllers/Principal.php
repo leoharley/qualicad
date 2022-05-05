@@ -1117,7 +1117,12 @@ class Principal extends BaseController
                 $processFunction = 'Principal/apagaFaturamento';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Faturamento deletado com sucesso');
+                if ($resultado === 1451) {
+                    $this->session->set_flashdata('error', 'Existe associação ativa');
+                   }
+                else {
+                    $this->session->set_flashdata('success', 'Faturamento deletado com sucesso');
+                   }
 
                 }
                 else 
