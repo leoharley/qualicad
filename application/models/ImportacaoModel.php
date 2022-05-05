@@ -346,12 +346,22 @@ class ImportacaoModel extends CI_Model
         return TRUE;
     }
 
-    function apagaDePara($info, $id)
+    function apagaDePara($id)
     {
         $this->db->where('Id_DeparaImportacao', $id);
-        $this->db->update('Rl_DeparaImportacao', $info);
+        $res = $this->db->delete('Rl_DeparaImportacao');
 
-        return $this->db->affected_rows();
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
     }
 
     function carregaInfoDeParaEmpresa($idEmpresa)

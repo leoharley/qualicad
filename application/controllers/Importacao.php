@@ -1686,10 +1686,8 @@ class Importacao extends BaseController
             }
 
             $IdDePara = $this->uri->segment(2);
-
-            $infoDePara = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
             
-            $resultado = $this->ImportacaoModel->apagaDePara($infoDePara, $IdDePara);
+            $resultado = $this->ImportacaoModel->apagaDePara($IdDePara);
             
             if ($resultado > 0) {
                 // echo(json_encode(array('status'=>TRUE)));
@@ -1698,7 +1696,12 @@ class Importacao extends BaseController
                 $processFunction = 'Importacao/apagaDePara';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'DePara deletado com sucesso');
+                if ($resultado === 1451) {
+                    $this->session->set_flashdata('error', 'Existe associação ativa');
+                }
+                else {
+                    $this->session->set_flashdata('success', 'DePara deletado com sucesso');
+                }
 
                 }
                 else 
