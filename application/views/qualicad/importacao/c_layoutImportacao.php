@@ -84,7 +84,7 @@ if(!empty($infoLayoutImportacao))
                                         Conjunto DEPARA (descrição)
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Tela de importação que este conjunto aparece
+                                        Tela de importação onde escolhe este conjunto
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Ativo?
