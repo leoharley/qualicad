@@ -103,7 +103,7 @@
                     <td><?php echo $registro->Tp_GrupoPro ?></td>
                     <td><?php echo $registro->Desc_Tp_GrupoPro ?></td>
                     <td><?php echo $registro->Dt_Criacao ?></td>
-                    <td><?php echo $registro->Tp_Ativo ?></td>
+                    <td><?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?></td>
                     <td>
                     <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoGrupoPro/'.$registro->CodGrupo; ?> "title="Excluir">
                         <i class="fa fa-trash-o"></i>
