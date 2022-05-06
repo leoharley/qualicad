@@ -55,7 +55,7 @@
 		
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
-            <form action="<?php echo base_url() ?>importaGrupoPro" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>importaProFat" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="Ds_Layout">Conjunto DEPARA</label>
                     <select class="form-control required" id="Tb_Id_LayoutImportacao" name="Tb_Id_LayoutImportacao">
