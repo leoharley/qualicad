@@ -63,7 +63,7 @@
                   <tr>
                     <th>Id</th>
                     <th>Conjunto DEPARA (descrição)</th>
-                    <th>Tela de importação onde escolhe este conjunto</th>
+                    <th>Tela de importação que aparece este conjunto para escolher</th>
                     <th>Ativo?</th>
                     <th>Ações</th>
                   </tr>
