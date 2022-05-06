@@ -44,7 +44,7 @@ class ImportacaoModel extends CI_Model
         $this->db->trans_start();
         $teste = $this->db->insert('TbProFat', $info);
 
-        var_dump($teste);exit;
+        var_dump($info);exit;
 
         $insert_id = $this->db->insert_id();
 
