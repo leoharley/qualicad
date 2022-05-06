@@ -116,6 +116,7 @@ if(!empty($infoDePara))
                                             }
                                             ?>
                                             </select>
+                                             <input type="hidden" value="<?php echo $Id_DeparaImportacao; ?>" name="Id_DeparaImportacao" id="Id_DeparaImportacao" />
                                             </td>  
 
                                             <td>
