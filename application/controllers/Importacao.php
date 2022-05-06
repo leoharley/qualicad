@@ -78,7 +78,7 @@ class Importacao extends BaseController
                     
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'Grupopro',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'GrupoPro',$this->session->userdata('IdEmpresa'));
                     
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -195,7 +195,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'ProFat',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -311,7 +311,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('TUSS',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'TUSS',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -426,7 +426,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('RegraGruPro',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'RegraGruPro',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -541,7 +541,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('FracaoSimproBra',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'FracaoSimproBra',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -656,7 +656,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('Produto',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'Produto',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -771,7 +771,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('Producao',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'Producao',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -886,7 +886,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('Contrato',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'Contrato',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -1103,7 +1103,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('PorteMedico',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'PorteMedico',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -1219,7 +1219,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('ExcecaoValores',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'ExcecaoValores',$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
