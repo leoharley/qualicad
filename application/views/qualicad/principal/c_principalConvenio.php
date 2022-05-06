@@ -236,6 +236,7 @@ if(!empty($infoConvenio))
 
                                             <td>
                                             <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
+                                                <option selected>SELECIONE</option>
                                                 <option value="1">Enfermaria</option>
                                                 <option value="2">Apartamento</option>
                                             </select>
@@ -262,6 +263,7 @@ if(!empty($infoConvenio))
 
                                             <td>
                                             <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
+                                                <option selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoRegra))
                                                 {
