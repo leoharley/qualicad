@@ -83,11 +83,8 @@ if(!empty($infoDePara))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Layout de importação (CSV)
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Tela de importação
-                                        </th>                                        
+                                        Conjunto DePara
+                                        </th>                                
                                         <th class="header-label" style="padding:10px">
                                         Nome tabela
                                         </th>
@@ -119,24 +116,7 @@ if(!empty($infoDePara))
                                             }
                                             ?>
                                             </select>
-                                            </td>
-
-                                            <td>
-                                            <select class="form-control required" id="No_Importacao" name="No_Importacao">
-                                            <option value="FatItem" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'FatItem') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>FatItem</option>
-                                            <option value="GrupoPro" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'GrupoPro') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>GrupoPro</option>
-                                            <option value="ProFat" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'ProFat') { echo 'selected'; } ?>>ProFat</option>
-                                            <option value="TUSS" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'TUSS') { echo 'selected'; } ?>>TUSS</option>
-                                            <option value="RegraGruPro" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'RegraGruPro') { echo 'selected'; } ?>>RegraGruPro</option>
-                                            <option value="FracaoSimproBra" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'FracaoSimproBra') { echo 'selected'; } ?>>FracaoSimproBra</option>
-                                            <option value="Produto" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'Produto') { echo 'selected'; } ?>>Produto</option>
-                                            <option value="Producao" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'Producao') { echo 'selected'; } ?>>Producao</option>
-                                            <option value="Contrato" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'Contrato') { echo 'selected'; } ?>>Contrato</option>
-                                            <option value="PorteMedico" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'PorteMedico') { echo 'selected'; } ?>>PorteMedico</option>
-                                            <option value="ExcecaoValores" <?php if ($this->uri->segment(2) == 'editar' && $No_Importacao == 'ExcecaoValores') { echo 'selected'; } ?>>ExcecaoValores</option>
-                                            </select>
-                                            <input type="hidden" value="<?php echo $Id_DeparaImportacao; ?>" name="Id_DeparaImportacao" id="Id_DeparaImportacao" /> 
-                                            </td>
+                                            </td>  
 
                                             <td>
                                             <select class="form-control required" id="No_Tabela" name="No_Tabela">
