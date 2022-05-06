@@ -42,7 +42,9 @@ class ImportacaoModel extends CI_Model
     function adicionaProFat($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbProFat', $info);
+        $teste = $this->db->insert('TbProFat', $info);
+
+        var_dump($teste);exit;
 
         $insert_id = $this->db->insert_id();
 
