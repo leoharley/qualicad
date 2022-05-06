@@ -48,9 +48,18 @@ class ImportacaoModel extends CI_Model
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        if(!$insert_id)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
     }
-
+    
     function carregaInfoTUSS($idEmpresa)
     {
         $this->db->select('*');
