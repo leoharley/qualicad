@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-users"></i> Listar DePara
+      <i class="fa fa-users"></i> Listar regras de conjunto DEPARA
       <small>Listar</small>
     </h1>
   </section>
@@ -63,10 +63,10 @@
                   <tr>
                     <th>Id</th>
                     <th>Conjunto DEPARA</th>
-                    <th>Tabela</th>
-                    <th>Campo origem</th>
-                    <th>Campo destino</th>
-                    <th>DePara ativo?</th>
+                    <th>Tabela no banco</th>
+                    <th>Campo origem (no CSV)</th>
+                    <th>Campo destino (no banco)</th>
+                    <th>Regra ativa?</th>
                     <th>Ações</th>
                   </tr>
                 </thead>

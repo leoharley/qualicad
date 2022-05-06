@@ -497,9 +497,9 @@ $(function() {
                   {
                     echo '
                     <li class="treeview">
-                        <a href="'.base_url().'importacaoDePara/listar">
+                        <a href="'.base_url().'layoutImportacao/listar">
                             <i class="fa fa-th"></i>
-                            <span style="color:yellow">Configurar DePara</span>
+                            <span style="color:yellow">Conjunto DEPARA</span>
                         </a>
                     </li>';
                   }
@@ -510,9 +510,9 @@ $(function() {
                   {
                     echo '
                     <li class="treeview">
-                        <a href="'.base_url().'layoutImportacao/listar">
+                        <a href="'.base_url().'importacaoDePara/listar">
                             <i class="fa fa-th"></i>
-                            <span style="color:yellow">Layout de importação (CSV)</span>
+                            <span style="color:yellow">Regras de conjunto DEPARA</span>
                         </a>
                     </li>';
                   }
