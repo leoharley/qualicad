@@ -215,9 +215,7 @@ class Importacao extends BaseController
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
-
-                            var_dump($memData);exit;
-
+                            
                             $insert = $this->ImportacaoModel->adicionaProFat($memData);
 
                             if($insert){
