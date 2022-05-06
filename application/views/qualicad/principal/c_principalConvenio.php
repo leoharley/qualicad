@@ -243,7 +243,7 @@ if(!empty($infoConvenio))
 
                                             <td>
                                                 <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
-                      
+                                                    <option selected>SELECIONE</option>
                                                     <?php
                                                     if(!empty($infoIndice))
                                                     {
