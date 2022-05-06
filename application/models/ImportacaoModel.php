@@ -59,7 +59,7 @@ class ImportacaoModel extends CI_Model
             return TRUE;
         }
     }
-    
+
     function carregaInfoTUSS($idEmpresa)
     {
         $this->db->select('*');
