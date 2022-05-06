@@ -30,7 +30,7 @@ if(!empty($infoDePara))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar regra para um conjunto DEPARA' : 'Editar regra para um conjunto DEPARA' ; ?>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar uma regra de um conjunto DEPARA' : 'Editar uma regra de um conjunto DEPARA' ; ?>
             <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
@@ -83,19 +83,19 @@ if(!empty($infoDePara))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Conjunto DEPARA
+                                        Conjunto DEPARA (descrição)
                                         </th>                                
                                         <th class="header-label" style="padding:10px">
-                                        Nome tabela
+                                        Tabela no banco
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Campo destino
+                                        Campo de origem (CSV)
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Campo origem (CSV)
+                                        Campo de destino (no banco)
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Ativo?
+                                        Regra ativa?
                                         </th>
                                     </tr>
                                 </thead>
@@ -149,13 +149,13 @@ if(!empty($infoDePara))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="No_CampoDestino" name="No_CampoDestino">
-                                            </select>
+                                            <input type="text" class="form-control required" id="No_CampoOrigem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('No_CampoOrigem') : $No_CampoOrigem ; ?>" name="No_CampoOrigem"
+                                            maxlength="128">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control required" id="No_CampoOrigem" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('No_CampoOrigem') : $No_CampoOrigem ; ?>" name="No_CampoOrigem"
-                                            maxlength="128">
+                                            <select class="form-control required" id="No_CampoDestino" name="No_CampoDestino">
+                                            </select>
                                             </td>
 
                                             <td>

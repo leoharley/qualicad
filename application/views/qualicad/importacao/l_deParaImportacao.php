@@ -62,10 +62,10 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Conjunto DEPARA</th>
+                    <th>Conjunto DEPARA (descrição)</th>
                     <th>Tabela no banco</th>
-                    <th>Campo origem (no CSV)</th>
-                    <th>Campo destino (no banco)</th>
+                    <th>Campo de origem (no CSV)</th>
+                    <th>Campo de destino (no banco)</th>
                     <th>Regra ativa?</th>
                     <th>Ações</th>
                   </tr>
