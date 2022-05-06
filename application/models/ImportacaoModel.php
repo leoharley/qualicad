@@ -42,13 +42,24 @@ class ImportacaoModel extends CI_Model
     function adicionaProFat($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbProFat', $info);
+        $teste = $this->db->insert('TbProFat', $info);
+
+        var_dump($info);exit;
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        if(!$insert_id)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
     }
 
     function carregaInfoTUSS($idEmpresa)
