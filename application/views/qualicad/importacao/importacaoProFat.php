@@ -100,7 +100,7 @@
                     <td><?php echo $registro->Ds_ProFat ?></td>
                     <td><?php echo $registro->Ds_Unidade ?></td>
                     <td><?php echo $registro->TbGrupoPro_CodGrupo ?></td>
-                    <td><?php echo $registro->Tp_Ativo ?></td>
+                    <td><?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?></td>
                     <td>
                         <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoProFat/'.$registro->Cd_ProFat; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>

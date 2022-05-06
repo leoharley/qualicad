@@ -217,7 +217,7 @@ class Importacao extends BaseController
                                 'Tp_Ativo'=> 'S');
 
                             $insert = $this->ImportacaoModel->adicionaProFat($memData);
-                            
+
                             if($insert){
                                 $insertCount++;
                             }
