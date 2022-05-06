@@ -30,7 +30,7 @@ if(!empty($infoDePara))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar DePara' : 'Editar DePara' ; ?>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar regra para um conjunto DEPARA' : 'Editar regra para um conjunto DEPARA' ; ?>
             <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
@@ -77,13 +77,13 @@ if(!empty($infoDePara))
                         <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;padding-bottom:2rem">
 
-                                <h4><strong>DePara</strong></h4>
+                                <h4><strong>Regra</strong></h4>
 
                                 <table style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Conjunto DePara
+                                        Conjunto DEPARA
                                         </th>                                
                                         <th class="header-label" style="padding:10px">
                                         Nome tabela

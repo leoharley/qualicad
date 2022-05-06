@@ -24,7 +24,7 @@ if(!empty($infoLayoutImportacao))
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar Layout Importação' : 'Editar Layout Importação' ; ?>
+            <i class="fa fa-users"></i> <?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Cadastrar conjunto DEPARA' : 'Editar conjunto DEPARA' ; ?>
             <small><?php echo ($this->uri->segment(2) == 'cadastrar') ? 'Adicionar' : 'Editar' ; ?></small>
         </h1>
     </section>
@@ -72,7 +72,7 @@ if(!empty($infoLayoutImportacao))
                         <div class="row" style="display: inline-block;width: 98%;height: 100%;margin: 0.15rem;padding-top: 0.85rem;padding-left:1rem;padding-right:1rem;
                             background-color: #f5f5f5;padding-bottom:2rem">
 
-                                <h4><strong>Convênio</strong></h4>
+                                <h4><strong>Conjunto DEPARA</strong></h4>
 
                                 <table style="width:100%;">
                                     <thead>
@@ -81,10 +81,10 @@ if(!empty($infoLayoutImportacao))
                                         Código
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Layout (descrição)
+                                        Conjunto DEPARA (descrição)
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Importação associada (descrição)
+                                        Tela de importação que este conjunto aparece
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Ativo?

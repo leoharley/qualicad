@@ -26,7 +26,7 @@
     <div class="col-xs-12">
       <div class="text-left">
         <a class="btn btn-primary" href="<?php echo base_url(); ?>importacaoDePara/cadastrar">
-          <i class="fa fa-plus"></i> Adicionar Regras para um "Conjunto DePara"</a>
+          <i class="fa fa-plus"></i> Adicionar regra para um conjunto DEPARA</a>
       </div>
       <br/>
       <div class="box">
@@ -62,7 +62,7 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Conjunto DePara</th>
+                    <th>Conjunto DEPARA</th>
                     <th>Tabela</th>
                     <th>Campo origem</th>
                     <th>Campo destino</th>

@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <i class="fa fa-users"></i> Listar Layout Importação
+      <i class="fa fa-users"></i> Listar conjunto DEPARA
       <small>Listar</small>
     </h1>
   </section>
@@ -26,7 +26,7 @@
     <div class="col-xs-12">
       <div class="text-left">
         <a class="btn btn-primary" href="<?php echo base_url(); ?>layoutImportacao/cadastrar">
-          <i class="fa fa-plus"></i> Adicionar Layout Importação</a>
+          <i class="fa fa-plus"></i> Adicionar conjunto DEPARA</a>
       </div>
       <br/>
       <div class="box">
@@ -62,8 +62,8 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Layout (descrição)</th>
-                    <th>Importação associada (descrição)</th>
+                    <th>Conjunto DEPARA (descrição)</th>
+                    <th>Tela de importação que este conjunto aparece</th>
                     <th>Ativo?</th>
                     <th>Ações</th>
                   </tr>
