@@ -80,7 +80,6 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'Grupopro',$this->session->userdata('IdEmpresa'));
                     
-                    var_dump($dePara);exit;
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -167,7 +166,7 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação ProFat';
 
         $data['infoProFat'] = $this->ImportacaoModel->carregaInfoProFat($this->session->userdata('IdEmpresa'));
-        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('ProFat',$this->session->userdata('IdEmpresa'));
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa($this->input->post('Tb_Id_LayoutImportacao'),$this->session->userdata('IdEmpresa'));
 
         $this->loadViews("qualicad/importacao/importacaoProFat", $this->global, $data, NULL);
     }
@@ -196,7 +195,7 @@ class Importacao extends BaseController
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    $dePara = $this->ImportacaoModel->consultaDePara('ProFat',$this->session->userdata('IdEmpresa'));
+                    $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),$this->session->userdata('IdEmpresa'));
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -1005,6 +1004,9 @@ class Importacao extends BaseController
                 redirect('importacaoDePara/listar'); 
             } 
 
+            $consultaNoImportacao = $this->ImportacaoModel->consultaNoImportacao($Tb_Id_LayoutImportacao,$this->session->userdata('IdEmpresa'));
+
+            var_dump($consultaNoImportacao[0]['No_Importacao']);exit;
             $No_Importacao = ucwords(strtolower($this->security->xss_clean($this->input->post('No_Importacao'))));
             $Tb_Id_LayoutImportacao = $this->input->post('Tb_Id_LayoutImportacao');
             $No_Tabela = $this->input->post('No_Tabela');
