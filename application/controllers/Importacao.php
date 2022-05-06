@@ -1005,7 +1005,7 @@ class Importacao extends BaseController
             } 
 
             $Tb_Id_LayoutImportacao = $this->input->post('Tb_Id_LayoutImportacao');
-            $No_Importacao = $this->ImportacaoModel->consultaNoImportacao($Tb_Id_LayoutImportacao,$this->session->userdata('IdEmpresa'))[0]['No_Importacao'];
+            $No_Importacao = $this->ImportacaoModel->consultaNoImportacao($Tb_Id_LayoutImportacao,$this->session->userdata('IdEmpresa'))[0]->No_Importacao;
             var_dump($No_Importacao);exit;
             $No_Tabela = $this->input->post('No_Tabela');
             $No_CampoOrigem = $this->input->post('No_CampoOrigem');
