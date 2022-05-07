@@ -115,7 +115,8 @@ if(!empty($infoPlano))
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Plano') : $Id_Plano ; ?>" id="Id_Plano" name="Id_Plano" disabled>
                                             </td>
                                             <td>
-                                                <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio">
+                                                <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio" required>
+                                                <option value="" selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoConvenio))
                                                 {
@@ -134,7 +135,8 @@ if(!empty($infoPlano))
                                             </td>
 
                                             <td>
-                                                <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                                                <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice" required>
+                                                <option value="" selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoIndice))
                                                 {
@@ -152,7 +154,8 @@ if(!empty($infoPlano))
                                             </td>
 
                                             <td>
-                                                <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
+                                                <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra" required>
+                                                <option value="" selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoRegra))
                                                 {
@@ -180,7 +183,8 @@ if(!empty($infoPlano))
                                             </td>
 
                                             <td>
-                                                <select class="form-control required" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
+                                                <select class="form-control required" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao" required>
+                                                <option value="" selected>SELECIONE</option>
                                                 <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '1') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Enfermaria</option>
                                                 <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '2') { echo 'selected'; } ?>>Apartamento</option>
                                                 </select>
