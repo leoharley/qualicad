@@ -172,9 +172,6 @@ if(!empty($infoRegra))
                                         <th class="header-label" style="padding:10px">
                                         Ativo?
                                         </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Ações
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tr id="row0">
@@ -205,7 +202,7 @@ if(!empty($infoRegra))
                                                         {
                                                             ?>
                                                             <option value="<?php echo $grupopro->CodGrupo ?>">
-                                                                <?php echo $grupopro->CodGrupo .' - '.$grupopro->Ds_GrupoPro ?>
+                                                                <?php echo $grupopro->CdGrupoPro .' - '.$grupopro->Ds_GrupoPro ?>
                                                             </option>
                                                             <?php
                                                         }
