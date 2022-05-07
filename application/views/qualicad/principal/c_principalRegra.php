@@ -180,7 +180,7 @@ if(!empty($infoRegra))
                                             <input type="text" class="form-control" value="<?php echo set_value('Id_RegraGruPro'); ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
                                             </td>
 
-                                            <td>
+                                            <td style="width:10%">
                                                 <select class="form-control" id="Tp_GrupoPro" name="Tp_GrupoPro">
                                                     <option value="" disabled selected>SELECIONE</option>
                                                     <option value="MD">MD</option>
