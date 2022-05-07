@@ -123,7 +123,7 @@ if(!empty($infoFaturamento))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                    <td>
+                                    <td style="width:12%">
                                     <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Faturamento') : $Id_Faturamento ; ?>" id="Id_Faturamento" name="Id_Faturamento" disabled>
                                     </td>
 
