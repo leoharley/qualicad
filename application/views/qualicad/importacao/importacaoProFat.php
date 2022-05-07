@@ -86,7 +86,7 @@
         <br/>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered" id="dataTables-example">
             <thead class="thead-dark">
                 <tr>
                     <th>CodProFat</th>
