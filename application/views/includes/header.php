@@ -315,7 +315,7 @@ $(function() {
                       </a>
                   </li>
 
-                  <li class="treeview">
+                  <li class="treeview" style="display:none">
                       <a href="<?php echo base_url(); ?>principalIndiceGrupoPro/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>Índice Grupo Pro</span>
@@ -329,7 +329,7 @@ $(function() {
                       </a>
                   </li>
 
-                  <li class="treeview">
+                  <li class="treeview" style="display:none">
                       <a href="<?php echo base_url(); ?>principalRegraGruPro/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
                           <span>RegraGrupoPro</span>
