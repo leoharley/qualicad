@@ -2174,6 +2174,45 @@ class Principal extends BaseController
         }
         redirect('principalIndiceGrupoPro/listar');
     }
+
+    function apagaIndiceGrupoPro_Sub()
+    {
+
+        if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Excluir == 'N')
+        {
+            redirect('acaoNaoAutorizada');
+        }
+
+        $IdIndice = $this->uri->segment(3);
+
+        $IdIndiceGrupoPro = $this->uri->segment(2);
+
+        $infoIndiceGrupoPro = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
+
+        $resultado = $this->PrincipalModel->apagaIndiceGrupoPro($infoIndiceGrupoPro, $IdIndiceGrupoPro);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de Índice Grupo Pro';
+            $processFunction = 'Principal/apagaIndiceGrupoPro_Sub';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+               }
+            else {
+                $this->session->set_flashdata('success', 'Índice Grupo Pro deletado com sucesso');
+               }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir regra grupro');
+        }
+        redirect('principalIndice/editar/'.$IdIndice);
+    }
     // FIM DAS FUNÇÕES DA TELA DE INDICE GRUPO PRO
 
     // INICIO DAS FUNÇÕES DA TELA DE REGRA PROIBIÇÃO

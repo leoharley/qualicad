@@ -196,6 +196,7 @@ $route['apagaIndice/:any'] = "principal/apagaIndice/$1";
 $route['adicionaIndiceGrupoPro'] = "principal/adicionaIndiceGrupoPro";
 $route['editaIndiceGrupoPro'] = "principal/editaIndiceGrupoPro";
 $route['apagaIndiceGrupoPro/:any'] = "principal/apagaIndiceGrupoPro/$1";
+$route['apagaIndiceGrupoPro_Sub/:any/:any'] = "principal/apagaIndiceGrupoPro_Sub/$1/$2";
 
 /*********** ROUTES PARA AÇÕES DA TELA DE REGRA PROIBIÇÃO *******************/
 $route['adicionaRegraProibicao'] = "principal/adicionaRegraProibicao";
