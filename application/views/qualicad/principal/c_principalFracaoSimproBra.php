@@ -131,7 +131,7 @@ if(!empty($infoFracaoSimproBra))
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_FracaoSimproBra') : $Id_FracaoSimproBra ; ?>" id="Id_FracaoSimproBra" name="Id_FracaoSimproBra" disabled>
                                             </td>
 
-                                            <td>
+                                            <td style="width:10%">
                                             <select class="form-control required" id="TbProFat_Cd_ProFat" name="TbProFat_Cd_ProFat" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
@@ -151,7 +151,7 @@ if(!empty($infoFracaoSimproBra))
                                             <input type="hidden" value="<?php echo $Id_FracaoSimproBra; ?>" name="Id_FracaoSimproBra" id="Id_FracaoSimproBra" /> 
                                             </td>
 
-                                            <td>
+                                            <td style="width:10%">
                                             <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
@@ -170,7 +170,7 @@ if(!empty($infoFracaoSimproBra))
                                             </select>
                                             </td>
 
-                                            <td>
+                                            <td style="width:10%">
                                             <select class="form-control required" id="TbTUSS_Id_Tuss" name="TbTUSS_Id_Tuss" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
@@ -207,7 +207,7 @@ if(!empty($infoFracaoSimproBra))
                                             <td>
                                             <select class="form-control required" id="Tp_MatMed" name="Tp_MatMed" required>
                                             <option value="" disabled selected>SELECIONE</option>
-                                            <option value="MED" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MED') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>MED</option>
+                                            <option value="MED" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MED') { echo 'selected'; } ?>>MED</option>
                                             <option value="MAT" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MAT') { echo 'selected'; } ?>>MAT</option>
                                             <option value="SOL" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'SOL') { echo 'selected'; } ?>>SOL</option>
                                             </select>
