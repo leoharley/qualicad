@@ -90,8 +90,8 @@
             <thead class="thead-dark">
                 <tr>
                     <th>TbGrupoPro_CodGrupo</th>
-                    <th>TbRegra_Id_Regra</th>
-                    <th>TbFaturamento_Id_Faturamento</th>
+                    <th>TbRegra_Id_Regra*</th>
+                    <th>TbFaturamento_Id_Faturamento*</th>
                     <th>Perc_Pago</th>
                     <th>Dt_IniVigencia</th>
                     <th>Dt_FimVigencia</th>

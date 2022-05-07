@@ -80,7 +80,7 @@
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
             </form>
         </div>
-        
+
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
@@ -90,7 +90,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th>TbProFat_Cd_ProFat</th>
-                    <th>TbPlano_Id_Plano</th>
+                    <th>TbPlano_Id_Plano*</th>
                     <th>Num_Conta</th>
                     <th>Num_Atendimento</th>
                     <th>Dt_Lancamento</th>

@@ -91,8 +91,8 @@
             <thead class="thead-dark">
                 <tr>
                     <th>TbProFat_Cd_ProFat</th>
-                    <th>TbFaturamento_Id_Faturamento</th>
-                    <th>TbTUSS_Id_Tuss</th>
+                    <th>TbFaturamento_Id_Faturamento*</th>
+                    <th>TbTUSS_Id_Tuss*</th>
                     <th>Ds_FracaoSimproBra</th>
                     <th>Ds_Laboratorio</th>
                     <th>Ds_Apresentacao</th>

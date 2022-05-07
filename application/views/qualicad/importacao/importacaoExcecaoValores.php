@@ -91,9 +91,9 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Id_ExcValores</th>
-                    <th>CD_Convenio</th>
-                    <th>Cd_TUSS</th>
-                    <th>Cd_ProFat</th>
+                    <th>CD_Convenio*</th>
+                    <th>Cd_TUSS*</th>
+                    <th>Cd_ProFat*</th>
                     <th>Ds_ExcValores</th>
                     <th>ClasseEvento</th>
                     <th>Tp_ExcValores</th>

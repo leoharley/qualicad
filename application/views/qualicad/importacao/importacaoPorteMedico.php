@@ -90,7 +90,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Id_PorteMedico</th>
-                    <th>Id_TabFaturamento</th>
+                    <th>Id_TabFaturamento*</th>
                     <th>Cd_PorteMedico</th>
                     <th>Ds_PorteMedico</th>
                     <th>Vl_PorteMedico</th>

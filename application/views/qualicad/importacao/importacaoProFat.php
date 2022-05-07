@@ -92,7 +92,7 @@
                     <th>CodProFat</th>
                     <th>Ds_ProFat</th>
                     <th>Ds_Unidade</th>
-                    <th>TbGrupoPro_CodGrupo</th>
+                    <th>TbGrupoPro_CodGrupo*</th>
                     <th>Tp_Ativo</th>
                     <th>Ações</th>
                 </tr>

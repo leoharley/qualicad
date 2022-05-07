@@ -90,8 +90,8 @@
             <thead class="thead-dark">
                 <tr>
                     <th>TbProFat_Cd_ProFat</th>
-                    <th>TbConvenio_Id_Convenio</th>
-                    <th>Cd_Tuss</th>
+                    <th>TbConvenio_Id_Convenio*</th>
+                    <th>Cd_Tuss*</th>
                     <th>Ds_Tuss</th>
                     <th>Dt_IniVigencia</th>
                     <th>Dt_FimVigencia</th>
