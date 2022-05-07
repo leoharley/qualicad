@@ -301,7 +301,7 @@ if(!empty($infoIndice))
                                     </td>
 
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $indice->TbGrupoPro_CodGrupo.' - '.$indice->Ds_GrupoPro ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $indice->CdGrupoPro.' - '.$indice->Ds_GrupoPro ?>" disabled>
                                     </td>
 
                                     <td>
