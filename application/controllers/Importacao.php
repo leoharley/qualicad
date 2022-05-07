@@ -102,8 +102,10 @@ class Importacao extends BaseController
 
                                 $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
                             
-                                if($insert){
+                                if($insert != 0){
                                     $insertCount++;
+                                } else {
+                                    $notAddCount++;
                                 }
 
                         }
@@ -336,8 +338,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaTUSS($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
@@ -451,8 +455,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaRegraGruPro($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
@@ -566,8 +572,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaFracaoSimproBra($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
@@ -681,8 +689,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaProduto($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
@@ -796,8 +806,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaProducao($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
@@ -911,8 +923,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaContrato($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
@@ -1128,8 +1142,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaPorteMedico($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
@@ -1244,8 +1260,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaExcecaoValores($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
@@ -1361,8 +1379,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaFatItem($memData);
 
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
