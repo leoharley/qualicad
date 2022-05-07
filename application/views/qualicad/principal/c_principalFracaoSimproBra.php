@@ -204,7 +204,7 @@ if(!empty($infoFracaoSimproBra))
                                             maxlength="128">
                                             </td>
 
-                                            <td>
+                                            <td style="width:10%">
                                             <select class="form-control required" id="Tp_MatMed" name="Tp_MatMed" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <option value="MED" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MED') { echo 'selected'; } ?>>MED</option>
