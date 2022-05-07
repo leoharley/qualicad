@@ -125,7 +125,7 @@ if(!empty($infoIndiceGrupoPro))
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_IndiceGrupo') : $Id_IndiceGrupo ; ?>" id="Id_IndiceGrupo" name="Id_IndiceGrupo" disabled>
                                             </td>
 
-                                            <td style="width:20%">
+                                            <td style="width:10%">
                                             <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
