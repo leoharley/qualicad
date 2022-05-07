@@ -1260,6 +1260,8 @@ class Principal extends BaseController
                 'Ds_Regra'=> $Ds_Regra, 'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
+            var_dump($infoRegra);exit;
+
             $result = $this->PrincipalModel->adicionaRegra($infoRegra);
 
             $Tp_GrupoPro  = $this->input->post('Tp_GrupoPro');
