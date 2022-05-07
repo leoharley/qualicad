@@ -1448,8 +1448,6 @@ class Principal extends BaseController
                     'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
                 $result2 = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
-
-                var_dump ($infoRegraGruPro);exit;
                 
                 } else {
                     $result2 = 1;
