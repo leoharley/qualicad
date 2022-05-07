@@ -218,10 +218,10 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaProFat($memData);
 
-                            var_dump($insert);
-
-                            if($insert){
+                            if($insert != 0){
                                 $insertCount++;
+                            } else {
+                                $notAddCount++;
                             }
 
                         }
