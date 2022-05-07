@@ -132,7 +132,8 @@ if(!empty($infoFracaoSimproBra))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbProFat_Cd_ProFat" name="TbProFat_Cd_ProFat">
+                                            <select class="form-control required" id="TbProFat_Cd_ProFat" name="TbProFat_Cd_ProFat" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoProFat))
                                             {
@@ -151,7 +152,8 @@ if(!empty($infoFracaoSimproBra))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoFaturamento))
                                             {
@@ -169,7 +171,8 @@ if(!empty($infoFracaoSimproBra))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbTUSS_Id_Tuss" name="TbTUSS_Id_Tuss">
+                                            <select class="form-control required" id="TbTUSS_Id_Tuss" name="TbTUSS_Id_Tuss" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoTUSS))
                                             {
@@ -202,7 +205,8 @@ if(!empty($infoFracaoSimproBra))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Tp_MatMed" name="Tp_MatMed">
+                                            <select class="form-control required" id="Tp_MatMed" name="Tp_MatMed" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <option value="MED" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MED') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>MED</option>
                                             <option value="MAT" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'MAT') { echo 'selected'; } ?>>MAT</option>
                                             <option value="SOL" <?php if ($this->uri->segment(2) == 'editar' && $Tp_MatMed == 'SOL') { echo 'selected'; } ?>>SOL</option>

@@ -154,7 +154,8 @@ if(!empty($infoFaturamentoItem))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoFaturamento))
                                             {
@@ -207,7 +208,8 @@ if(!empty($infoFaturamentoItem))
 
 
                                             <td>
-                                            <select class="form-control required" id="Cd_PorteMedico" name="Cd_PorteMedico">
+                                            <select class="form-control required" id="Cd_PorteMedico" name="Cd_PorteMedico" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoPorteMedico))
                                             {
@@ -225,7 +227,8 @@ if(!empty($infoFaturamentoItem))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS">
+                                            <select class="form-control required" id="Cd_TUSS" name="Cd_TUSS" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoTUSS))
                                             {

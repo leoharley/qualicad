@@ -152,7 +152,8 @@ if(!empty($infoExcecaoValores))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="CD_Convenio" name="CD_Convenio">
+                                            <select class="form-control required" id="CD_Convenio" name="CD_Convenio" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoConvenio))
                                             {
@@ -175,7 +176,8 @@ if(!empty($infoExcecaoValores))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Cd_ProFat" name="Cd_ProFat">
+                                            <select class="form-control required" id="Cd_ProFat" name="Cd_ProFat" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoProFat))
                                             {

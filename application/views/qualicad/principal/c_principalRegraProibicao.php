@@ -122,7 +122,8 @@ if(!empty($infoRegraProibicao))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoFaturamento))
                                             {
@@ -141,7 +142,8 @@ if(!empty($infoRegraProibicao))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
+                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoGrupoPro))
                                             {
@@ -159,7 +161,8 @@ if(!empty($infoRegraProibicao))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbPlano_Id_Plano" name="TbPlano_Id_Plano">
+                                            <select class="form-control required" id="TbPlano_Id_Plano" name="TbPlano_Id_Plano" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoPlano))
                                             {
@@ -182,7 +185,8 @@ if(!empty($infoRegraProibicao))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Tp_RegraProibicao" name="Tp_RegraProibicao">
+                                            <select class="form-control required" id="Tp_RegraProibicao" name="Tp_RegraProibicao" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <option value="AG" <?php if ($this->uri->segment(2) == 'editar' && $Tp_RegraProibicao == 'AG') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>AG</option>
                                             <option value="FC" <?php if ($this->uri->segment(2) == 'editar' && $Tp_RegraProibicao == 'FC') { echo 'selected'; } ?>>FC</option>
                                             <option value="NA" <?php if ($this->uri->segment(2) == 'editar' && $Tp_RegraProibicao == 'NA') { echo 'selected'; } ?>>NA</option>
@@ -190,7 +194,8 @@ if(!empty($infoRegraProibicao))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Tp_Atendimento" name="Tp_Atendimento">
+                                            <select class="form-control required" id="Tp_Atendimento" name="Tp_Atendimento" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <option value="T" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'T') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>T</option>
                                             <option value="U" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'U') { echo 'selected'; } ?>>U</option>
                                             <option value="I" <?php if ($this->uri->segment(2) == 'editar' && $Tp_Atendimento == 'I') { echo 'selected'; } ?>>I</option>
