@@ -162,6 +162,7 @@ if(!empty($infoConvenio))
 
                                             <td>
                                             <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio">
+                                            <option selected>SELECIONE</option>
                                             <option value="1">Convênio</option>
                                             <option value="2">Filantrópico</option>
                                             <option value="3">Particular</option>
