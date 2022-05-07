@@ -185,7 +185,7 @@ if(!empty($infoPlano))
                                             <td>
                                                 <select class="form-control required" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao" required>
                                                 <option value="" selected>SELECIONE</option>
-                                                <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '1') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Enfermaria</option>
+                                                <option value="1" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '1') { echo 'selected'; } ?>>Enfermaria</option>
                                                 <option value="2" <?php if ($this->uri->segment(2) == 'editar' && $Tp_AcomodacaoPadrao == '2') { echo 'selected'; } ?>>Apartamento</option>
                                                 </select>
                                             </td>
