@@ -162,7 +162,7 @@ if(!empty($infoConvenio))
 
                                             <td>
                                             <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio" required>
-                                            <option value="" selected>SELECIONE</option>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <option value="1">Convênio</option>
                                             <option value="2">Filantrópico</option>
                                             <option value="3">Particular</option>
@@ -237,7 +237,7 @@ if(!empty($infoConvenio))
 
                                             <td>
                                             <select class="form-control" id="Tp_AcomodacaoPadrao" name="Tp_AcomodacaoPadrao">
-                                                <option value="" selected>SELECIONE</option>
+                                                <option value="" disabled selected>SELECIONE</option>
                                                 <option value="1">Enfermaria</option>
                                                 <option value="2">Apartamento</option>
                                             </select>
@@ -245,7 +245,7 @@ if(!empty($infoConvenio))
 
                                             <td>
                                                 <select class="form-control" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
-                                                    <option value="" selected>SELECIONE</option>
+                                                    <option value="" disabled selected>SELECIONE</option>
                                                     <?php
                                                     if(!empty($infoIndice))
                                                     {
@@ -264,7 +264,7 @@ if(!empty($infoConvenio))
 
                                             <td>
                                             <select class="form-control" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
-                                                <option value="" selected>SELECIONE</option>
+                                                <option value="" disabled selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoRegra))
                                                 {

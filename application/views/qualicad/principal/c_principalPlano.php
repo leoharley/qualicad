@@ -116,7 +116,7 @@ if(!empty($infoPlano))
                                             </td>
                                             <td>
                                                 <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio" required>
-                                                <option value="" selected>SELECIONE</option>
+                                                <option value="" disabled selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoConvenio))
                                                 {
@@ -136,7 +136,7 @@ if(!empty($infoPlano))
 
                                             <td>
                                                 <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice" required>
-                                                <option value="" selected>SELECIONE</option>
+                                                <option value="" disabled selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoIndice))
                                                 {
@@ -155,7 +155,7 @@ if(!empty($infoPlano))
 
                                             <td>
                                                 <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra" required>
-                                                <option value="" selected>SELECIONE</option>
+                                                <option value="" disabled selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoRegra))
                                                 {
