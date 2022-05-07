@@ -118,7 +118,7 @@ if(!empty($infoIndice))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Codigo
+                                        Id Seq
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Índice (descrição)
@@ -201,7 +201,7 @@ if(!empty($infoIndice))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Código
+                                        Id Seq
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Grupo associado
@@ -227,6 +227,9 @@ if(!empty($infoIndice))
                                         <th class="header-label" style="padding:10px">
                                         Ativo?
                                         </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ações
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tr id="row0">
@@ -244,7 +247,7 @@ if(!empty($infoIndice))
                                                         {
                                                             ?>
                                                             <option value="<?php echo $grupoPro->CodGrupo ?>">
-                                                                <?php echo $grupoPro->CodGrupo.' - '.$grupoPro->Ds_GrupoPro ?>
+                                                                <?php echo $grupoPro->CdGrupoPro.' - '.$grupoPro->Ds_GrupoPro ?>
                                                             </option>
                                                             <?php
                                                         }

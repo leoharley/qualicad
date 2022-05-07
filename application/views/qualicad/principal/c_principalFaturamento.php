@@ -162,7 +162,7 @@ if(!empty($infoFaturamento))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px;width:2%!important;">
-                                        Código
+                                        Id Seq
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Descrição

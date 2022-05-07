@@ -172,6 +172,9 @@ if(!empty($infoRegra))
                                         <th class="header-label" style="padding:10px">
                                         Ativo?
                                         </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ações
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tr id="row0">

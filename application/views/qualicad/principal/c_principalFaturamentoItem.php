@@ -102,7 +102,7 @@ if(!empty($infoFaturamentoItem))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Código
+                                        Id Seq
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Faturamento associado

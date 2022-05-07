@@ -61,7 +61,7 @@
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Id</th>
+                    <th>Id Seq</th>
                     <th>Índice</th>
                     <th>Grupo de procedimento (descrição)</th>
                     <th>Data de início</th>
@@ -89,7 +89,7 @@
                         <?php echo $registro->Ds_indice ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_GrupoPro ?>
+                        <?php echo $registro->CdGrupoPro .'-'.$registro->Ds_GrupoPro ?>
                       </td>
                       <td>
                         <?php echo ($registro->Dt_IniVigencia != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_IniVigencia)) : ''; ?>

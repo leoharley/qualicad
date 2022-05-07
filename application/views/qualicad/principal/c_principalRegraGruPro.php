@@ -85,7 +85,7 @@ if ($this->uri->segment(2) == 'editar') {
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Código
+                                        Id Seq
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Tp Grupo Pro
@@ -141,7 +141,7 @@ if ($this->uri->segment(2) == 'editar') {
                                                 {
                                                     ?>
                                                     <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
-                                                        <?php echo $grupoPro->CodGrupo.' - '.$grupoPro->Ds_GrupoPro ?>
+                                                        <?php echo $grupoPro->CdGrupoPro.' - '.$grupoPro->Ds_GrupoPro ?>
                                                     </option>
                                                     <?php
                                                 }
