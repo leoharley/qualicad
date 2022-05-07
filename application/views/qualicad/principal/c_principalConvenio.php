@@ -161,7 +161,7 @@ if(!empty($infoConvenio))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio">
+                                            <select class="form-control required" id="Tp_Convenio" name="Tp_Convenio" required>
                                             <option value="" selected>SELECIONE</option>
                                             <option value="1">Convênio</option>
                                             <option value="2">Filantrópico</option>
