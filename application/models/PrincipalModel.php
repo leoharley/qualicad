@@ -1273,6 +1273,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
         $this->db->select('*');
         $this->db->from('Tb_RegraGruPro');
         $this->db->where('Id_RegraGruPro ', $IdRegraGruPro);
+        
         $query = $this->db->get();
 
         return $query->result();
@@ -1301,6 +1302,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
         $this->db->where('RegraGruPro.TbRegra_Id_Regra', $idRegra);
         $this->db->where('RegraGruPro.Deletado !=', 'S');
         $this->db->where('RegraGruPro.Tp_Ativo', 'S');
+        $this->db->order_by('GrupoPro.Tp_GrupoPro', 'DESC');
         $query = $this->db->get();
 
         return $query->result();
