@@ -1262,7 +1262,6 @@ class Principal extends BaseController
 
             $result = $this->PrincipalModel->adicionaRegra($infoRegra);
 
-            var_dump($result);exit;
 
             $Tp_GrupoPro  = $this->input->post('Tp_GrupoPro');
 
@@ -1306,6 +1305,7 @@ class Principal extends BaseController
                     'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
                 $result2 = $this->PrincipalModel->adicionaRegraGruPro($infoRegraGruPro);
+                var_dump($result2);exit;
                 } else {
                     $result2 = 1;
                 }
