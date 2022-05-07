@@ -1212,7 +1212,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
 // INICIO DAS CONSULTAS NA TELA DE REGRAGRUPRO
     function listaRegraGruPro($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('GruPro.CodGrupo, GruPro.Ds_GrupoPro, Regra.Id_Regra, Regra.Ds_Regra, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
+        $this->db->select('GruPro.CdGrupoPro, GruPro.Ds_GrupoPro, Regra.Id_Regra, Regra.Ds_Regra, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
         $this->db->from('Tb_RegraGruPro as RegraGruPro');
         $this->db->join('TbGrupoPro as GruPro', 'GruPro.CodGrupo = RegraGruPro.TbGrupoPro_CodGrupo','left');
         $this->db->join('TbRegra as Regra', 'Regra.Id_Regra = RegraGruPro.TbRegra_Id_Regra','left');
