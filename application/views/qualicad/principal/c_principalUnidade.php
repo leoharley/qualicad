@@ -88,7 +88,7 @@ if(!empty($infoUnidade))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                            <td>
+                                            <td style="width:12%">
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_Unidade') : $Id_Unidade ; ?>" id="Id_Unidade" name="Id_Unidade" disabled>
                                             </td>
 
