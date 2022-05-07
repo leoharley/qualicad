@@ -201,7 +201,7 @@ if(!empty($infoRegra))
                                                         foreach ($infoGrupoPro as $grupopro)
                                                         {
                                                             ?>
-                                                            <option value="<?php echo $grupopro->CodGrupo ?>">
+                                                            <option value="<?php echo $grupopro->CdGrupoPro ?>">
                                                                 <?php echo $grupopro->CdGrupoPro .' - '.$grupopro->Ds_GrupoPro ?>
                                                             </option>
                                                             <?php
