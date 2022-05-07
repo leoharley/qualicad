@@ -82,6 +82,10 @@
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
             </form>
         </div>
+
+        <br/>
+        <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
+        <br/>
         
         <!-- Data list table -->
         <table class="table table-striped table-bordered">

@@ -82,7 +82,7 @@
         </div>
 
         <br/>
-        <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES DAS CHAVES ESTRANGEIRAS</small></span>
+        <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
         
         <!-- Data list table -->
