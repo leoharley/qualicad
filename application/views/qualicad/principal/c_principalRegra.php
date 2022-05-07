@@ -182,6 +182,7 @@ if(!empty($infoRegra))
 
                                             <td>
                                                 <select class="form-control" id="Tp_GrupoPro" name="Tp_GrupoPro">
+                                                    <option value="" disabled selected>SELECIONE</option>
                                                     <option value="MD">MD</option>
                                                     <option value="MT">MT</option>
                                                     <option value="OP">OP</option>
@@ -193,6 +194,7 @@ if(!empty($infoRegra))
 
                                             <td>
                                                 <select class="form-control" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
+                                                    <option value="" disabled selected>SELECIONE</option>
                                                     <?php
                                                     if(!empty($infoGrupoPro))
                                                     {
@@ -211,6 +213,7 @@ if(!empty($infoRegra))
 
                                             <td>
                                             <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                                <option value="" disabled selected>SELECIONE</option>
                                                 <?php
                                                 if(!empty($infoFaturamento))
                                                 {

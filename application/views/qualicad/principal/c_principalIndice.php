@@ -236,6 +236,7 @@ if(!empty($infoIndice))
 
                                             <td>
                                                 <select class="form-control" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
+                                                    <option value="" disabled selected>SELECIONE</option>
                                                     <?php
                                                     if(!empty($infoGrupoPro))
                                                     {

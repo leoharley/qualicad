@@ -119,7 +119,8 @@ if ($this->uri->segment(2) == 'editar') {
                                             </td>
 
                                             <td>
-                                                <select class="form-control" id="Tp_GrupoPro" name="Tp_GrupoPro">
+                                                <select class="form-control required" id="Tp_GrupoPro" name="Tp_GrupoPro" required>
+                                                    <option value="" disabled selected>SELECIONE</option>
                                                     <option value="MD">MD</option>
                                                     <option value="MT">MT</option>
                                                     <option value="OP">OP</option>
@@ -131,7 +132,8 @@ if ($this->uri->segment(2) == 'editar') {
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
+                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoGrupoPro))
                                             {
@@ -150,7 +152,8 @@ if ($this->uri->segment(2) == 'editar') {
 
 
                                             <td>
-                                            <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra">
+                                            <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoRegra))
                                             {
@@ -168,7 +171,8 @@ if ($this->uri->segment(2) == 'editar') {
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoFaturamento))
                                             {

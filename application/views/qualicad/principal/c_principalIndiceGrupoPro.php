@@ -126,7 +126,8 @@ if(!empty($infoIndiceGrupoPro))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice">
+                                            <select class="form-control required" id="TbIndice_Id_Indice" name="TbIndice_Id_Indice" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoIndice))
                                             {
@@ -145,7 +146,8 @@ if(!empty($infoIndiceGrupoPro))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo">
+                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required>
+                                            <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoGrupoPro))
                                             {
