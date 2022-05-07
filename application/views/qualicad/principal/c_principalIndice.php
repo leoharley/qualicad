@@ -227,9 +227,6 @@ if(!empty($infoIndice))
                                         <th class="header-label" style="padding:10px">
                                         Ativo?
                                         </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Ações
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tr id="row0">
@@ -289,8 +286,6 @@ if(!empty($infoIndice))
                                                 <option value="N">Não</option>
                                             </select>
                                             </td>
-                                            <td>
-                                            </td>
                                 </tr>
 
                                 <?php
@@ -334,6 +329,8 @@ if(!empty($infoIndice))
                                     <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalIndiceGrupoPro/editar/'.$indice->Id_IndiceGrupo; ?>" title="Editar">
                                         <i class="fa fa-pencil"></i>
                                     </a>
+                                    </td>
+                                    <td>
                                     <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaIndiceGrupoPro_Sub/'.$indice->Id_IndiceGrupo.'/'.$Id_Indice; ?>" title="Excluir">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
