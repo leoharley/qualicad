@@ -118,7 +118,7 @@ if ($this->uri->segment(2) == 'editar') {
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraGruPro') : $Id_RegraGruPro ; ?>" id="Id_RegraGruPro" name="Id_RegraGruPro" disabled>
                                             </td>
 
-                                            <td>
+                                            <td style="width:10%">
                                                 <select class="form-control required" id="Tp_GrupoPro" name="Tp_GrupoPro" required>
                                                     <option value="" disabled selected>SELECIONE</option>
                                                     <option value="MD">MD</option>
@@ -151,7 +151,7 @@ if ($this->uri->segment(2) == 'editar') {
                                             </td>
 
 
-                                            <td>
+                                            <td style="width:10%">
                                             <select class="form-control required" id="TbRegra_Id_Regra" name="TbRegra_Id_Regra" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
