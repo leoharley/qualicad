@@ -197,7 +197,7 @@ if(!empty($infoIndice))
 
                                 <h4><strong>Índice Grupo</strong></h4>
 
-                                <table id="table" style="width:100%;">
+                                <table id="dataTables-example" style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
