@@ -107,7 +107,7 @@ if(!empty($infoRegra))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Código
+                                        Id Seq
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Regra (descrição)
@@ -149,7 +149,7 @@ if(!empty($infoRegra))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
-                                        Código
+                                        Id Seq
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Tp Grupo Pro
@@ -269,7 +269,7 @@ if(!empty($infoRegra))
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Tp_GrupoPro ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $regragrupro->CodGrupo .' - '.$regragrupro->Ds_GrupoPro ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->CdGrupoPro .' - '.$regragrupro->Ds_GrupoPro ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Id_Faturamento .' - '.$regragrupro->Ds_Faturamento ?>" disabled>
