@@ -222,21 +222,19 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaProFat($memData);
 
-                            $insertCount++;
-
                             if($insert != 0){
-                                array_push($errosDeChave, $insert);
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, $memData['TbGrupoPro_CodGrupo']);
                                 $notAddCount++;
                             }
 
                         }
 
-                        foreach ($errosDeChave as $row) {
+                       /* foreach ($errosDeChave as $row) {
                         echo $row . '<br/>';
                         }
-                        exit;
+                        exit; */
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
