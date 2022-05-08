@@ -316,6 +316,8 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'TUSS',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -339,11 +341,13 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                                var_dump ($memData);exit;
+                                $errosDeChave += array('TbProFat_Cd_ProFat'=>$memData['TbProFat_Cd_ProFat']);
                                 $notAddCount++;
                             }
 
                         }
+
+                        var_dump($errosDeChave);exit;
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
