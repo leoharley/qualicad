@@ -90,7 +90,7 @@
         <br/>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered" id="dataTables-example">
+      <!--  <table class="table table-striped table-bordered" id="dataTables-example">
             <thead class="thead-dark">
                 <tr>
                     <th>CodProFat</th>
@@ -102,24 +102,24 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoProFat)){ foreach($infoProFat as $registro){ ?>
+                <?php //if(!empty($infoProFat)){ foreach($infoProFat as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->CodProFat ?></td>
-                    <td><?php echo $registro->Ds_ProFat ?></td>
-                    <td><?php echo $registro->Ds_Unidade ?></td>
-                    <td><?php echo $registro->TbGrupoPro_CodGrupo ?></td>
-                    <td><?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?></td>
+                    <td><?php //echo $registro->CodProFat ?></td>
+                    <td><?php //echo $registro->Ds_ProFat ?></td>
+                    <td><?php //echo $registro->Ds_Unidade ?></td>
+                    <td><?php //echo $registro->TbGrupoPro_CodGrupo ?></td>
+                    <td><?php //echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?></td>
                     <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoProFat/'.$registro->Cd_ProFat; ?> "title="Excluir">
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoProFat/'.$registro->Cd_ProFat; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5"></td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table> -->
 
     </div>
 </div>

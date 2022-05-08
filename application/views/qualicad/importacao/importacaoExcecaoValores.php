@@ -87,7 +87,7 @@
         <br/>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+      <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>Id_ExcValores</th>
@@ -102,27 +102,27 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoExcecaoValores)){ foreach($infoExcecaoValores as $registro){ ?>
+                <?php //if(!empty($infoExcecaoValores)){ foreach($infoExcecaoValores as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->Id_ExcValores ?></td>
-                    <td><?php echo $registro->CD_Convenio ?></td>
-                    <td><?php echo $registro->Cd_TUSS ?></td>
-                    <td><?php echo $registro->Cd_ProFat ?></td>
-                    <td><?php echo $registro->Ds_ExcValores ?></td>
-                    <td><?php echo $registro->ClasseEvento ?></td>
-                    <td><?php echo $registro->Tp_ExcValores ?></td>
-                    <td><?php echo $registro->Vl_ExcValores ?></td>
+                    <td><?php //echo $registro->Id_ExcValores ?></td>
+                    <td><?php //echo $registro->CD_Convenio ?></td>
+                    <td><?php //echo $registro->Cd_TUSS ?></td>
+                    <td><?php //echo $registro->Cd_ProFat ?></td>
+                    <td><?php //echo $registro->Ds_ExcValores ?></td>
+                    <td><?php //echo $registro->ClasseEvento ?></td>
+                    <td><?php //echo $registro->Tp_ExcValores ?></td>
+                    <td><?php //echo $registro->Vl_ExcValores ?></td>
                     <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoExcecaoValores/'.$registro->Id_ExcValores; ?> "title="Excluir">
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoExcecaoValores/'.$registro->Id_ExcValores; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>
 
