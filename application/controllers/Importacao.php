@@ -297,7 +297,7 @@ class Importacao extends BaseController
     }
 
 
-    function apagaImportacaoExcecaoValores()
+    function importacaoDeletaProFat()
     {     
         $resultado = $this->ImportacaoModel->apagaProFat();
         
@@ -305,7 +305,7 @@ class Importacao extends BaseController
             // echo(json_encode(array('status'=>TRUE)));
 
              $process = 'Limpa Tabela ProFat';
-             $processFunction = 'Importacao/apagaImportacaoExcecaoValores';
+             $processFunction = 'Importacao/importacaoDeletaProFat';
              $this->logrecord($process,$processFunction);
 
              if ($resultado === 1451) {
