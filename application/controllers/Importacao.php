@@ -339,6 +339,7 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                var_dump ($memData);exit;
                                 $notAddCount++;
                             }
 
