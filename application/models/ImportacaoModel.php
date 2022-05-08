@@ -28,13 +28,14 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
-    function carregaInfoProFat($idEmpresa)
+    function carregaInfoProFat($idEmpresa, $searchText = '', $page, $segment)
     {
         $this->db->select('*');
         $this->db->from('TbProFat as ProFat');
         $this->db->where('ProFat.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('ProFat.Deletado !=', 'S');
         $this->db->where('ProFat.Tp_Ativo', 'S');
+        $this->db->limit($page, $segment);
         $query = $this->db->get();
 
         return $query->result();
