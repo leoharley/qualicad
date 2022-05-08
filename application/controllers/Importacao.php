@@ -297,6 +297,33 @@ class Importacao extends BaseController
     }
 
 
+    function apagaImportacaoExcecaoValores()
+    {     
+        $resultado = $this->ImportacaoModel->apagaProFat();
+        
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+             $process = 'Limpa Tabela ProFat';
+             $processFunction = 'Importacao/apagaImportacaoExcecaoValores';
+             $this->logrecord($process,$processFunction);
+
+             if ($resultado === 1451) {
+                 $this->session->set_flashdata('error', 'Existe associação ativa');
+                }
+             else {
+                 $this->session->set_flashdata('success', 'ProFat deletada com sucesso');
+                }
+
+            }
+            else 
+            { 
+                //echo(json_encode(array('status'=>FALSE))); 
+                $this->session->set_flashdata('error', 'Falha em excluir a ProFat');
+            }
+            redirect('importacaoProFat');      
+
+    }
     // IMPORTAÇÃO TUSS
 
     function importacaoTUSS()

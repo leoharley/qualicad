@@ -53,6 +53,24 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
+    function apagaProFat()
+    {
+        $res = $this->db->delete('TbProFat');
+
+        if(!$res)
+        {
+            $error = $this->db->error();
+            return $error['code'];
+            //return array $error['code'] & $error['message']
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
+
+
     function carregaInfoTUSS($idEmpresa)
     {
         $this->db->select('*');
