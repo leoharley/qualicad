@@ -26,11 +26,11 @@
   </style>    
 
     <section class="content">
-    <div class="text-right">
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>importacaoDeletaProFat">
-        <!--  <i class="fa fa-erase"></i> Apagar Base</a> -->
+ <!--   <div class="text-right">
+        <a class="btn btn-primary" href="<?php// echo base_url(); ?>importacaoDeletaProFat">
+         <i class="fa fa-erase"></i> Apagar Base</a>
       </div>
-    <br/>  
+    <br/>  -->
       
 <div class="container">
     <?php
