@@ -1661,9 +1661,9 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			array_values($this->qb_set)
 		);
 
-		if ($table == 'TbTUSS') {
+	/*	if ($table == 'TbTUSS') {
 		var_dump($sql);exit;
-		}
+		} */
 
 		$this->_reset_write();
 		return $this->query($sql);
