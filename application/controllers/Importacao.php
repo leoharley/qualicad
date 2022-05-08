@@ -164,7 +164,7 @@ class Importacao extends BaseController
     function importacaoProFat()
     {
 
-        if ($this->uri->segment(2) != NULL) {
+        if ($this->uri->segment(2) == '1') {
         $searchText = $this->security->xss_clean($this->input->post('searchText'));
         $data['searchText'] = $searchText;
         
