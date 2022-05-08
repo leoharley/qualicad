@@ -86,7 +86,7 @@
         <br/>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+      <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>TbProFat_Cd_ProFat</th>
@@ -99,25 +99,25 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoTUSS)){ foreach($infoTUSS as $registro){ ?>
+                <?php //if(!empty($infoTUSS)){ foreach($infoTUSS as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->TbProFat_Cd_ProFat ?></td>
-                    <td><?php echo $registro->TbConvenio_Id_Convenio ?></td>
-                    <td><?php echo $registro->Cd_Tuss ?></td>
-                    <td><?php echo $registro->Ds_Tuss ?></td>
-                    <td><?php echo $registro->Dt_IniVigencia ?></td>
-                    <td><?php echo $registro->Dt_FimVigencia ?></td>
+                    <td><?php //echo $registro->TbProFat_Cd_ProFat ?></td>
+                    <td><?php //echo $registro->TbConvenio_Id_Convenio ?></td>
+                    <td><?php //echo $registro->Cd_Tuss ?></td>
+                    <td><?php //echo $registro->Ds_Tuss ?></td>
+                    <td><?php //echo $registro->Dt_IniVigencia ?></td>
+                    <td><?php //echo $registro->Dt_FimVigencia ?></td>
                     <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoTUSS/'.$registro->Id_Tuss; ?> "title="Excluir">
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoTUSS/'.$registro->Id_Tuss; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php// } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php// } ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>
 
