@@ -112,10 +112,10 @@
                     </td>
                 </tr>
                 <?php } }else{ ?>
-                <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
+                <tr><td colspan="5"></td></tr>
                 <?php } ?>
             </tbody>
-        </table> -->
+        </table>
 
     </div>
 </div>
