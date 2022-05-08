@@ -1661,7 +1661,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			array_values($this->qb_set)
 		);
 
-		if ($table == 'u941632971_qualicad.TbTUSS') {
+		if ($table == 'TbTUSS') {
 		var_dump($sql);exit;
 		}
 
