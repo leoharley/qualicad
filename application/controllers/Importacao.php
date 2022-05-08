@@ -341,7 +341,7 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                                $errosDeChave += array('TbProFat_Cd_ProFat'=>$memData['TbProFat_Cd_ProFat']);
+                                array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']);
                                 $notAddCount++;
                             }
 
