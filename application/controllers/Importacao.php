@@ -163,14 +163,27 @@ class Importacao extends BaseController
 
     function importacaoProFat()
     {
-        $data['roles'] = $this->user_model->getUserRoles();
+
+        $searchText = $this->security->xss_clean($this->input->post('searchText'));
+        $data['searchText'] = $searchText;
+        
+        $this->load->library('pagination');
+        
+        $count = $this->CadastroModel->userListingCount($searchText);
+
+        $returns = $this->paginationCompress ( "importacaoProFat/listar", $count, 100 );
+        
+        $data['infoProFat'] = $this->ImportacaoModel->carregaInfoProFat($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('ProFat',$this->session->userdata('IdEmpresa'));
+        
+        $process = 'Listar importação ProFat';
+        $processFunction = 'importacao/importacaoProFat';
+        $this->logrecord($process,$processFunction);
 
         $this->global['pageTitle'] = 'QUALICAD : Importação ProFat';
-
-        $data['infoProFat'] = $this->ImportacaoModel->carregaInfoProFat($this->session->userdata('IdEmpresa'));
-        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('ProFat',$this->session->userdata('IdEmpresa'));
-
+        
         $this->loadViews("qualicad/importacao/importacaoProFat", $this->global, $data, NULL);
+
     }
 
     public function importaProFat(){
