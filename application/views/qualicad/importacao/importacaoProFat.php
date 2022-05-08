@@ -26,10 +26,11 @@
   </style>    
 
     <section class="content">
-    <div class="text-left">
+    <div class="text-right">
         <a class="btn btn-primary" href="<?php echo base_url(); ?>importacaoApagaProFat">
-          <i class="fa fa-plus"></i> Apagar Base</a>
+          <i class="fa fa-erase"></i> Apagar Base</a>
       </div>
+    <br/>  
       
 <div class="container">
     <?php
