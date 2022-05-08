@@ -168,11 +168,11 @@ class Importacao extends BaseController
         
         $this->load->library('pagination');
         
-        $count = $this->ImportacaoModel->carregaInfoProFat(1,$this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+        $count = $this->CadastroModel->userListingCount($searchText);
 
-        $returns = $this->paginationCompress ( "importacaoProFat/listar", $count, $count );
+        $returns = $this->paginationCompress ( "importacaoProFat/listar", $count, (50.000) );
         
-        $data['infoProFat'] = $this->ImportacaoModel->carregaInfoProFat(0,$this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
+        $data['infoProFat'] = $this->ImportacaoModel->carregaInfoProFat($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
         $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('ProFat',$this->session->userdata('IdEmpresa'));
         
         $process = 'Listar importação ProFat';
