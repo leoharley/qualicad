@@ -38,7 +38,7 @@ class ImportacaoModel extends CI_Model
         $this->db->limit($page, $segment);
         $query = $this->db->get();
 
-        if ($count) {
+        if ($count == 1) {
             return $query->num_rows(); 
         } else {
             return $query->result();
