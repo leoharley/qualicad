@@ -222,10 +222,12 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaProFat($memData);
 
+                            $insertCount++;
+
                             if($insert != 0){
+                                array_push($errosDeChave, $insert);
                                 $insertCount++;
                             } else {
-                                array_push($errosDeChave, $memData['TbGrupoPro_CodGrupo']);
                                 $notAddCount++;
                             }
 
