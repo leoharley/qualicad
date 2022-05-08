@@ -212,6 +212,7 @@ class Importacao extends BaseController
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'ProFat',$this->session->userdata('IdEmpresa'));
 
                     $errosDeChave = array();
+                    $memData2 = array();
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -232,6 +233,7 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
+                                $memData2 +=  $memData;      
                             $insert = $this->ImportacaoModel->adicionaProFat($memData);
 
                             if($insert != 0){
@@ -262,7 +264,27 @@ class Importacao extends BaseController
                 //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
             }
         }
-        redirect('importacaoProFat');
+
+        $searchText = $this->security->xss_clean($this->input->post('searchText'));
+        $data['searchText'] = $searchText;
+        
+        $this->load->library('pagination');
+        
+        $count = $this->CadastroModel->userListingCount($searchText);
+
+        $returns = $this->paginationCompress ( "importacaoProFat/listar", $count, 100 );
+        
+        $data['infoProFat'] = $memData2;
+        $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('ProFat',$this->session->userdata('IdEmpresa'));
+        
+        $process = 'Listar importação ProFat';
+        $processFunction = 'importacao/importacaoProFat';
+        $this->logrecord($process,$processFunction);
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação ProFat';
+        
+        $this->loadViews("qualicad/importacao/importacaoProFat", $this->global, $data, NULL);
+
     }
 
     function apagaImportacaoProFat()
