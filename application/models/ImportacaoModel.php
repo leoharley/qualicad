@@ -28,7 +28,7 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
-    function carregaInfoProFat($idEmpresa, $searchText = '', $page, $segment)
+    function carregaInfoProFat($count,$idEmpresa, $searchText = '', $page, $segment)
     {
         $this->db->select('*');
         $this->db->from('TbProFat as ProFat');
@@ -38,7 +38,11 @@ class ImportacaoModel extends CI_Model
         $this->db->limit($page, $segment);
         $query = $this->db->get();
 
-        return $query->result();
+        if ($count) {
+            return $query->num_rows(); 
+        } else {
+            return $query->result();
+        }
     }
 
     function adicionaProFat($info)
