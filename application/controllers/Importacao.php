@@ -199,6 +199,8 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'ProFat',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -223,10 +225,16 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, $memData['TbGrupoPro_CodGrupo']);
                                 $notAddCount++;
                             }
 
                         }
+
+                        foreach ($errosDeChave as $row) {
+                        echo $row . '<br/>';
+                        }
+                        exit;
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
@@ -347,10 +355,10 @@ class Importacao extends BaseController
 
                         }
 
-                        foreach ($errosDeChave as $row) {
+                     /*   foreach ($errosDeChave as $row) {
                         echo $row . '<br/>';
                         }
-                        exit;
+                        exit; */
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
