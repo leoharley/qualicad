@@ -67,7 +67,7 @@ class ImportacaoModel extends CI_Model
     function adicionaTUSS($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbTUSS', $info);
+        var_dump($this->db->insert('TbTUSS', $info));exit;
 
         $insert_id = $this->db->insert_id();
 
