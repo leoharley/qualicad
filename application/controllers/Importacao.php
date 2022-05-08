@@ -270,7 +270,7 @@ class Importacao extends BaseController
         
         $count = $this->CadastroModel->userListingCount($searchText);
 
-        $returns = $this->paginationCompress ( "importacaoProFat/listar", $count, $insertCount );
+        $returns = $this->paginationCompress ( "importacaoProFat/listar", $count, 100 );
         
         $data['infoProFat'] = $this->ImportacaoModel->carregaInfoProFat($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
         $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('ProFat',$this->session->userdata('IdEmpresa'));
@@ -283,6 +283,7 @@ class Importacao extends BaseController
         
         $this->loadViews("qualicad/importacao/importacaoProFat", $this->global, $data, NULL);
 
+      
       //  redirect('importacaoProFat');
     }
 
