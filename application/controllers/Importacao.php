@@ -338,6 +338,8 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaTUSS($memData);
 
+                            var_dump ($memData);exit;
+
                             if($insert != 0){
                                 $insertCount++;
                             } else {
