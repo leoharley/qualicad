@@ -335,9 +335,9 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-
-                            var_dump($memData);exit; 
+                            
                             $insert = $this->ImportacaoModel->adicionaTUSS($memData);
+                            var_dump($insert);exit; 
 
                             if($insert != 0){
                                 $insertCount++;
