@@ -164,6 +164,7 @@ class Importacao extends BaseController
     function importacaoProFat()
     {
 
+        if ($this->uri->segment(2) != NULL) {
         $searchText = $this->security->xss_clean($this->input->post('searchText'));
         $data['searchText'] = $searchText;
         
@@ -183,6 +184,9 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação ProFat';
         
         $this->loadViews("qualicad/importacao/importacaoProFat", $this->global, $data, NULL);
+        } else {
+            $this->loadViews("qualicad/importacao/importacaoProFat", $this->global, $data, NULL);
+        }
 
     }
 
@@ -263,7 +267,7 @@ class Importacao extends BaseController
                 //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
             }
         }
-        redirect('importacaoProFat');
+        redirect('importacaoProFat/'.'1');
     }
 
     function apagaImportacaoProFat()
