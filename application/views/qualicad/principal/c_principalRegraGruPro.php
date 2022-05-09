@@ -140,7 +140,7 @@ if ($this->uri->segment(2) == 'editar') {
                                                 foreach ($infoGrupoPro as $grupoPro)
                                                 {
                                                     ?>
-                                                    <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
+                                                    <option value="<?php echo $grupoPro->CdGrupoPro ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CdGrupoPro == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
                                                         <?php echo $grupoPro->CdGrupoPro.' - '.$grupoPro->Ds_GrupoPro ?>
                                                     </option>
                                                     <?php
