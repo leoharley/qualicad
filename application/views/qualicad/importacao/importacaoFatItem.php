@@ -103,9 +103,9 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
-        
+
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered" id=">
             <thead class="thead-dark">
                 <tr>
                     <th>Id_FatItem</th>
