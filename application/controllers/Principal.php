@@ -1309,6 +1309,8 @@ class Principal extends BaseController
                     $result2 = 1;
                 }
             }
+
+            var_dump($result);exit;
             
 
             if(($result > 0)&&($result2 > 0))
