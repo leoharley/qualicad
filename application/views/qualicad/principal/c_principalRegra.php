@@ -351,5 +351,6 @@ $(document).ready(function(){
 <script !src="">
     var app = angular.module('appPrincipal', []);
     app.controller('entercontroller', function ($scope, $http) {
+        console.log('success');
     });
 </script>
