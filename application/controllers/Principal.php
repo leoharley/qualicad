@@ -1449,6 +1449,7 @@ class Principal extends BaseController
 
             $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
             
+            if ($carregaGrupoPro != null) {                
             foreach ($carregaGrupoPro as $data){
                 if (($Perc_Pago != '') && ($this->PrincipalModel->consultaRegraGruProExistente($data->CodGrupo,$IdRegra,$this->session->userdata('IdEmpresa')) == null)) {
                
@@ -1462,6 +1463,8 @@ class Principal extends BaseController
                 } else {
                     $result2 = 1;
                 }
+            } } else {
+                $result2 = 2;
             }
 
             if(($resultado == true)&&($result2 > 0))
@@ -1475,7 +1478,12 @@ class Principal extends BaseController
                     redirect('principalRegra/editar/'.$IdRegra);
                 }
 
-                $this->session->set_flashdata('success', 'Regra atualizada com sucesso');
+                if (($result2 == 1)||($result2 == 2)){
+                    $this->session->set_flashdata('success', 'Regra atualizada com sucesso');
+                    } else if (($result2 != 1)&&($result2 != 2))
+                    {
+                    $this->session->set_flashdata('success', 'Regra grupro adicionada com sucesso');
+                    }
             }
             else
             {
