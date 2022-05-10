@@ -58,7 +58,7 @@ class Exportacao extends BaseController
         "Dt_FimVigencia","Vl_Honorário","Vl_Operacional","Vl_Total","Vl_Filme","Cd_PorteMedico","Cd_TUSS",
         "Cd_TISS","Qt_Embalagem","Ds_Unidade"); 
 		fputcsv($file, $header);
-		foreach ($exportacao as $key=>$line){ 
+		foreach ($exportacao as $line){ 
 			fputcsv($file, $line); 
 		}
         exit;
