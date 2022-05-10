@@ -59,8 +59,10 @@ class Exportacao extends BaseController
         "Cd_TISS","Qt_Embalagem","Ds_Unidade"); 
 		fputcsv($file, $header);
 		foreach ($exportacao as $key=>$line){ 
-			fputcsv($file,$line); 
+            var_dump($line);
+		//	fputcsv($file, $line); 
 		}
+        exit;
 		fclose($file); 
 		exit;
     }
