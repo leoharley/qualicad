@@ -5,7 +5,7 @@ class ExportacaoModel extends CI_Model
 
     function exportaFatItem_Tudo()
     {
-        $this->db->select('Id_FatItem,CodFatItem,TbFaturamento_Id_Faturamento');
+        $this->db->select('*');
         $this->db->from('TbFatItem as FatItem');
         $this->db->where('FatItem.Deletado !=', 'S');
         $this->db->where('FatItem.Tp_Ativo', 'S');

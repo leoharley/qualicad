@@ -64,7 +64,6 @@ class Exportacao extends BaseController
             $data->Ds_FatItem,$data->Dt_IniVigencia,$data->Dt_FimVigencia,$data->Vl_Honorário,$data->Vl_Operacional,
             $data->Vl_Total,$data->Vl_Filme,$data->Cd_PorteMedico,$data->Cd_TUSS,$data->Cd_TISS,$data->Qt_Embalagem,
             $data->Ds_Unidade,$data->Tp_Ativo));
-
         }
             fclose($handle);
         exit;
