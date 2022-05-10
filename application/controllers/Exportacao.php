@@ -53,7 +53,7 @@ class Exportacao extends BaseController
 	   /* get data */
 		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo();
 		/* file creation */
-		$file = fopen('php:/* output','w');
+		$file = fopen("php:/* output","w");
 		$header = array("Id_FatItem","CodFatItem","TbFaturamento_Id_Faturamento","Ds_FatItem","Dt_IniVigencia",
         "Dt_FimVigencia","Vl_Honorário","Vl_Operacional","Vl_Total","Vl_Filme","Cd_PorteMedico","Cd_TUSS",
         "Cd_TISS","Qt_Embalagem","Ds_Unidade"); 
