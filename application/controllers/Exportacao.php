@@ -47,23 +47,24 @@ class Exportacao extends BaseController
     {
         /* file name */
 		$filename = 'users_'.date('Ymd').'.csv'; 
-
+		header("Content-Description: File Transfer"); 
+		header("Content-Disposition: attachment; filename=$filename"); 
+		header("Content-Type: application/csv; ");
 	   /* get data */
 		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo();
-
-        header("Content-type: application/csv");
-        header("Content-Disposition: attachment; filename=$filename");
-        header("Pragma: no-cache");
-        header("Expires: 0");
-        $handle = fopen('php://output', 'w');
-        fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento'));
-        $i = 1;
-        foreach ($exportacao as $data) {
-            fputcsv($handle, array($i, $data["Id_FatItem"], $data["CodFatItem"], $data["TbFaturamento_Id_Faturamento"]));
-            $i++;
-        }
-            fclose($handle);
+        
+		/* file creation */
+		$file = fopen("php://output","w");
+		$header = array("Id_FatItem","CodFatItem","TbFaturamento_Id_Faturamento","Ds_FatItem","Dt_IniVigencia",
+        "Dt_FimVigencia","Vl_Honorário","Vl_Operacional","Vl_Total","Vl_Filme","Cd_PorteMedico","Cd_TUSS",
+        "Cd_TISS","Qt_Embalagem","Ds_Unidade"); 
+		fputcsv($file, $header);
+		foreach ($exportacao as $line){ 
+			fputcsv($file, $line); 
+		}
         exit;
+		fclose($file); 
+		exit;
     }
 
 
