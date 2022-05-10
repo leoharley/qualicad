@@ -58,7 +58,7 @@ class Exportacao extends BaseController
         fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento'));
 
         foreach ($exportacao as $data) {
-            fputcsv($handle, array($data["Id_FatItem"], $data["CodFatItem"], $data["TbFaturamento_Id_Faturamento"]));
+            fputcsv($handle, array('3', '4', '4'));
 
         }
             fclose($handle);
