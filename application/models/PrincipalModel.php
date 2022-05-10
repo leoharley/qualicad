@@ -1309,7 +1309,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
         $this->db->where('RegraGruPro.Deletado !=', 'S');
         $this->db->where('RegraGruPro.Tp_Ativo', 'S');
         $this->db->order_by('GrupoPro.Tp_GrupoPro', 'ASC');
-        $this->db->order_by('GrupoPro.CdGrupoPro', 'ASC');
+        $this->db->order_by('Faturamento.Id_Faturamento', 'ASC');
         $query = $this->db->get();
 
         return $query->result();
