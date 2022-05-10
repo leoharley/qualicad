@@ -347,3 +347,9 @@ $(document).ready(function(){
         document.getElementById('salvarRegraGruPro').click();
     });
 </script>
+
+<script !src="">
+    var app = angular.module('appPrincipal', []);
+    app.controller('entercontroller', function ($scope, $http) {
+    });
+</script>
