@@ -1270,10 +1270,15 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
 
     function carregaInfoRegraGruPro($IdRegraGruPro)
     {
-        $this->db->select('*');
-        $this->db->from('Tb_RegraGruPro');
-        $this->db->where('Id_RegraGruPro ', $IdRegraGruPro);
-        
+        $this->db->select('GrupoPro.CdGrupoPro, GrupoPro.Tp_GrupoPro, GrupoPro.CodGrupo, GrupoPro.Ds_GrupoPro, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
+        $this->db->from('Tb_RegraGruPro as RegraGruPro');
+        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CdGrupoPro = RegraGruPro.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+        $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = RegraGruPro.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
+        $this->db->where('RegraGruPro.Id_RegraGruPro', $IdRegraGruPro);
+        $this->db->where('RegraGruPro.Deletado !=', 'S');
+        $this->db->where('RegraGruPro.Tp_Ativo', 'S');
+        $this->db->order_by('GrupoPro.Tp_GrupoPro', 'ASC');
+        $this->db->order_by('Faturamento.Id_Faturamento', 'ASC');
         $query = $this->db->get();
 
         return $query->result();

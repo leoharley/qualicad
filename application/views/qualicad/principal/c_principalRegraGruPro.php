@@ -1,6 +1,7 @@
 <?php
 
 $Id_RegraGruPro = '';
+$Tp_GrupoPro = '';
 $TbGrupoPro_CodGrupo = '';
 $TbRegra_Id_Regra = '';
 $TbFaturamento_Id_Faturamento = '';
@@ -15,6 +16,7 @@ if ($this->uri->segment(2) == 'editar') {
         foreach ($infoRegraGruPro as $r)
         {
             $Id_RegraGruPro = $r->Id_RegraGruPro;
+            $Tp_GrupoPro = $r->Tp_GrupoPro;
             $TbGrupoPro_CodGrupo = $r->TbGrupoPro_CodGrupo;
             $TbRegra_Id_Regra = $r->TbRegra_Id_Regra;
             $TbFaturamento_Id_Faturamento = $r->TbFaturamento_Id_Faturamento;
@@ -121,12 +123,12 @@ if ($this->uri->segment(2) == 'editar') {
                                             <td style="width:10%">
                                                 <select class="form-control required" id="Tp_GrupoPro" name="Tp_GrupoPro" required>
                                                     <option value="" disabled selected>SELECIONE</option>
-                                                    <option value="MD">MD</option>
-                                                    <option value="MT">MT</option>
-                                                    <option value="OP">OP</option>
-                                                    <option value="SH">SH</option>
-                                                    <option value="SP">SP</option>
-                                                    <option value="SD">SD</option>
+                                                    <option value="MD" <?php if ($Tp_GrupoPro == 'MD') { echo 'selected'; } ?>>MD</option>
+                                                    <option value="MT" <?php if ($Tp_GrupoPro == 'MT') { echo 'selected'; } ?>>MT</option>
+                                                    <option value="OP" <?php if ($Tp_GrupoPro == 'OP') { echo 'selected'; } ?>>OP</option>
+                                                    <option value="SH" <?php if ($Tp_GrupoPro == 'SH') { echo 'selected'; } ?>>SH</option>
+                                                    <option value="SP" <?php if ($Tp_GrupoPro == 'SP') { echo 'selected'; } ?>>SP</option>
+                                                    <option value="SD" <?php if ($Tp_GrupoPro == 'SD') { echo 'selected'; } ?>>SD</option>
                                                 </select>
                                                 <input type="hidden" value="<?php echo $Id_RegraGruPro; ?>" name="Id_RegraGruPro" id="Id_RegraGruPro" />     
                                             </td>
