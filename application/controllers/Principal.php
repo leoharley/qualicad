@@ -3861,12 +3861,15 @@ class Principal extends BaseController
             $Dt_Inativo = date('Y-m-d H:i:s');
         }
 
+
+
         $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
             'TbRegra_Id_Regra'=> $TbRegra_Id_Regra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
             'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
             'AtualizadoPor'=>$this->vendorId,'Tp_GrupoPro'=>$Tp_GrupoPro, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
 
+        var_dump($Perc_Pago);exit;
         $resultado = $this->PrincipalModel->editaRegraGruPro($infoRegraGruPro,$IdRegraGruPro);
 
         if(($resultado == true))
