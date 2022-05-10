@@ -58,7 +58,7 @@ if(!empty($infoRegra))
         </h1>
     </section>
 
-    <section class="content">
+    <section class="content" ng-app="appPrincipal">
 
         <div class="row">
             <!-- left column -->
