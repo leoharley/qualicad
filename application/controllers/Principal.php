@@ -1310,7 +1310,7 @@ class Principal extends BaseController
                 }
             }
 
-            var_dump($result);exit;
+            var_dump($result2);exit;
             
 
             if(($result > 0)&&($result2 > 0))
