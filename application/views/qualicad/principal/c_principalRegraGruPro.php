@@ -121,7 +121,7 @@ if ($this->uri->segment(2) == 'editar') {
                                             </td>
 
                                             <td style="width:10%">
-                                                <select class="form-control required" id="Tp_GrupoPro" name="Tp_GrupoPro" required disabled>
+                                                <select class="form-control required" id="Tp_GrupoPro" name="Tp_GrupoPro" disabled>
                                                     <option value="" disabled selected>SELECIONE</option>
                                                     <option value="MD" <?php if ($Tp_GrupoPro == 'MD') { echo 'selected'; } ?>>MD</option>
                                                     <option value="MT" <?php if ($Tp_GrupoPro == 'MT') { echo 'selected'; } ?>>MT</option>

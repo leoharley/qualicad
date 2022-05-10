@@ -3837,8 +3837,6 @@ class Principal extends BaseController
            else
            { */
 
-        $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
-        $Tp_GrupoPro  = $this->input->post('Tp_GrupoPro');
         $TbRegra_Id_Regra = $this->input->post('TbRegra_Id_Regra');
         $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
         $Perc_Pago = $this->input->post('Perc_Pago');
@@ -3864,10 +3862,10 @@ class Principal extends BaseController
         }
 
 
-        $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$TbGrupoPro_CodGrupo, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+        $infoRegraGruPro = array('TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
             'TbRegra_Id_Regra'=> $TbRegra_Id_Regra, 'TbFaturamento_Id_Faturamento'=> $TbFaturamento_Id_Faturamento,'Perc_Pago'=>$Perc_Pago,
             'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
-            'AtualizadoPor'=>$this->vendorId,'Tp_GrupoPro'=>$Tp_GrupoPro, 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
+            'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
         var_dump($infoRegraGruPro);exit;
 
