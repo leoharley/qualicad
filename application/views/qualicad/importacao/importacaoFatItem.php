@@ -103,9 +103,13 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
+        <br/>
+
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem_Tudo">
+          <i class="fa fa-plus"></i> Exportar tabela toda</a>
 
         <!-- Data list table -->
-        <table class="table table-striped table-bordered" id=">
+       <!-- <table class="table table-striped table-bordered" id=">
             <thead class="thead-dark">
                 <tr>
                     <th>Id_FatItem</th>
@@ -124,31 +128,31 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoFatItem)){ foreach($infoFatItem as $registro){ ?>
+                <?php //if(!empty($infoFatItem)){ foreach($infoFatItem as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->Id_FatItem ?></td>
-                    <td><?php echo $registro->TbFaturamento_Id_Faturamento ?></td>
-                    <td><?php echo $registro->Ds_FatItem ?></td>
-                    <td><?php echo $registro->Vl_Honorário ?></td>
-                    <td><?php echo $registro->Vl_Operacional ?></td>
-                    <td><?php echo $registro->Vl_Total ?></td>
-                    <td><?php echo $registro->Vl_Filme ?></td>
-                    <td><?php echo $registro->Cd_PorteMedico ?></td>
-                    <td><?php echo $registro->Cd_TUSS ?></td>
-                    <td><?php echo $registro->Cd_TISS ?></td>
-                    <td><?php echo $registro->Qt_Embalagem ?></td>
-                    <td><?php echo $registro->Ds_Unidade ?></td>
+                    <td><?php //echo $registro->Id_FatItem ?></td>
+                    <td><?php //echo $registro->TbFaturamento_Id_Faturamento ?></td>
+                    <td><?php //echo $registro->Ds_FatItem ?></td>
+                    <td><?php //echo $registro->Vl_Honorário ?></td>
+                    <td><?php //echo $registro->Vl_Operacional ?></td>
+                    <td><?php //echo $registro->Vl_Total ?></td>
+                    <td><?php //echo $registro->Vl_Filme ?></td>
+                    <td><?php //echo $registro->Cd_PorteMedico ?></td>
+                    <td><?php //echo $registro->Cd_TUSS ?></td>
+                    <td><?php //echo $registro->Cd_TISS ?></td>
+                    <td><?php //echo $registro->Qt_Embalagem ?></td>
+                    <td><?php //echo $registro->Ds_Unidade ?></td>
                     <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoFatItem/'.$registro->Id_FatItem; ?> "title="Excluir">
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoFatItem/'.$registro->Id_FatItem; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>
 
