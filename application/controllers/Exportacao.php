@@ -46,7 +46,7 @@ class Exportacao extends BaseController
     function exportaFatItem_Tudo()
     {
         /* file name */
-		$filename = 'users_'.date('Ymd').'.csv'; 
+		$filename = 'TbFatItem.csv';
 
 		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo($this->session->userdata('IdEmpresa'));
 
