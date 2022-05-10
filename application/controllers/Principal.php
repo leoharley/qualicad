@@ -1321,9 +1321,9 @@ class Principal extends BaseController
                 $processFunction = 'Principal/adicionaRegra';
                 $this->logrecord($process,$processFunction);
 
-                if ($result2 == 2){
+                if (($result2) == 2||($result2) == 1){
                 $this->session->set_flashdata('success', 'Regra criada com sucesso');
-                } else if ($result2 == 1)
+                } else
                 {
                 $this->session->set_flashdata('success', 'Regra e regra grupro criadas com sucesso');
                 }
