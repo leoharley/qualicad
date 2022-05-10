@@ -48,7 +48,7 @@ class Exportacao extends BaseController
         /* file name */
 		$filename = 'users_'.date('Ymd').'.csv'; 
 
-		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo();
+		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo($this->session->userdata('IdEmpresa'));
 
 		header("Content-Description: File Transfer"); 
         header("Content-Disposition: attachment; filename=$filename");
@@ -56,7 +56,7 @@ class Exportacao extends BaseController
 
         $handle = fopen('php://output', 'w');
         fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento',
-        'Ds_FatItem','Dt_IniVigencia','Dt_FimVigencia','Vl_Honorário','Vl_Operacional','Vl_Total',
+        'Ds_FatItem','Dt_IniVigencia','Dt_FimVigencia','Vl_Honorario','Vl_Operacional','Vl_Total',
         'Vl_Filme','Cd_PorteMedico','Cd_TUSS','Cd_TISS','Qt_Embalagem','Ds_Unidade','Tp_Ativo'));
 
         foreach ($exportacao as $data) {
