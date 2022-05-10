@@ -3867,8 +3867,6 @@ class Principal extends BaseController
             'Dt_IniVigencia'=>$Dt_IniVigencia, 'Dt_FimVigencia'=>$Dt_FimVigencia, 'CriadoPor'=>$this->vendorId,
             'AtualizadoPor'=>$this->vendorId,'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
-        var_dump($infoRegraGruPro);exit;
-
         $resultado = $this->PrincipalModel->editaRegraGruPro($infoRegraGruPro,$IdRegraGruPro);
 
         if(($resultado == true))
