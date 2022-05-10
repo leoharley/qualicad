@@ -1297,6 +1297,9 @@ class Principal extends BaseController
 
             $carregaGrupoPro = $this->PrincipalModel->carregaInfoGrupoProTpGrupoPro($Tp_GrupoPro,$this->session->userdata('IdEmpresa'));
             
+
+            var_dump($carregaGrupoPro);exit;
+
             foreach ($carregaGrupoPro as $data){
                 if ($Perc_Pago != '') {
                 $infoRegraGruPro = array('TbGrupoPro_CodGrupo'=>$data->CdGrupoPro, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
@@ -1309,8 +1312,6 @@ class Principal extends BaseController
                     $result2 = 1;
                 }
             }
-
-            var_dump($result2);exit;
             
 
             if(($result > 0)&&($result2 > 0))
