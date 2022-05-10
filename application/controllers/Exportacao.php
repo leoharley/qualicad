@@ -55,10 +55,15 @@ class Exportacao extends BaseController
         header("Content-Type: application/csv; ");
 
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento'));
+        fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento',
+        'Ds_FatItem','Dt_IniVigencia','Dt_FimVigencia','Vl_Honorário','Vl_Operacional','Vl_Total',
+        'Vl_Filme','Cd_PorteMedico','Cd_TUSS','Cd_TISS','Qt_Embalagem','Ds_Unidade','Tp_Ativo'));
 
         foreach ($exportacao as $data) {
-            fputcsv($handle, $data);
+            fputcsv($handle, array($data->Id_FatItem, $data->CodFatItem, $data->TbFaturamento_Id_Faturamento,
+            $data->Ds_FatItem,$data->Dt_IniVigencia,$data->Dt_FimVigencia,$data->Vl_Honorário,$data->Vl_Operacional,
+            $data->Vl_Total,$data->Vl_Filme,$data->Cd_PorteMedico,$data->Cd_TUSS,$data->Cd_TISS,$data->Qt_Embalagem,
+            $data->Ds_Unidade,$data->Tp_Ativo));
 
         }
             fclose($handle);
