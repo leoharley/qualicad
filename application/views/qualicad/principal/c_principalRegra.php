@@ -181,7 +181,7 @@ if(!empty($infoRegra))
                                             </td>
 
                                             <td style="width:10%">
-                                                <select class="form-control"  name="Tp_GrupoPro" ng-model="teste" ng-show="teste2!='SELECIONE'">
+                                                <select class="form-control" ng-model="teste" ng-show="false">
                                                     <option value="" disabled selected>SELECIONE</option>
                                                     <option value="MD">MD</option>
                                                     <option value="MT">MT</option>
