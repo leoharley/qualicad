@@ -1311,7 +1311,7 @@ class Principal extends BaseController
                 }
             } }
             else {
-                $result2 = 1;
+                $result2 = 2;
             }
             
 
@@ -1321,7 +1321,12 @@ class Principal extends BaseController
                 $processFunction = 'Principal/adicionaRegra';
                 $this->logrecord($process,$processFunction);
 
-                $this->session->set_flashdata('success', 'Regra e regra grupo criados com sucesso');
+                if ($result2 == 2){
+                $this->session->set_flashdata('success', 'Regra criada com sucesso');
+                } else if ($result2 == 1)
+                {
+                $this->session->set_flashdata('success', 'Regra e regra grupro criadas com sucesso');
+                }
 
                 if (array_key_exists('salvarIrLista',$this->input->post())) {
                     redirect('principalRegra/listar');
