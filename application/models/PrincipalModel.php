@@ -643,6 +643,7 @@ function carregaInfoIndicesEmpresa($idEmpresa)
         $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('GrupoPro.Deletado !=', 'S');
         $this->db->where('GrupoPro.Tp_Ativo', 'S');
+        $this->db->order_by('GrupoPro.Tp_GrupoPro', 'ASC');
         $query = $this->db->get();
 
         return $query->result();
