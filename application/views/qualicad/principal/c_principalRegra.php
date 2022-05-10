@@ -181,7 +181,7 @@ if(!empty($infoRegra))
                                             </td>
 
                                             <td style="width:10%">
-                                                <select class="form-control" name="Tp_GrupoPro" ng-model="teste" ng-init="teste='SELECIONE'">
+                                                <select class="form-control" name="Tp_GrupoPro" ng-model="Tp_GrupoPro" ng-init="Tp_GrupoPro='SELECIONE'" ng-disabled="TbGrupoPro_CodGrupo!=='SELECIONE'">
                                                     <option value="SELECIONE">SELECIONE</option>
                                                     <option value="MD">MD</option>
                                                     <option value="MT">MT</option>
@@ -193,7 +193,7 @@ if(!empty($infoRegra))
                                             </td>
 
                                             <td>
-                                                <select class="form-control" name="TbGrupoPro_CodGrupo" ng-selected="SELECIONE" ng-model="teste2" ng-disabled="teste!=='SELECIONE'">
+                                                <select class="form-control" name="TbGrupoPro_CodGrupo" ng-selected="SELECIONE" ng-init="TbGrupoPro_CodGrupo='SELECIONE'" ng-model="TbGrupoPro_CodGrupo" ng-disabled="Tp_GrupoPro!=='SELECIONE'">
                                                     <option value="SELECIONE">SELECIONE</option>
                                                     <?php
                                                     if(!empty($infoGrupoPro))
