@@ -45,10 +45,14 @@ class Exportacao extends BaseController
 
     function exportaFatItem_Tudo()
     {
+        /* file name */
+		$filename = 'users_'.date('Ymd').'.csv'; 
+
+	   /* get data */
 		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo();
 
         header("Content-type: application/csv");
-        header("Content-Disposition: attachment; filename=\"application".".csv\"");
+        header("Content-Disposition: attachment; filename=$filename");
         header("Pragma: no-cache");
         header("Expires: 0");
         $handle = fopen('php://output', 'w');
