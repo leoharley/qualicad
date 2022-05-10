@@ -134,7 +134,7 @@ if ($this->uri->segment(2) == 'editar') {
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required disabled>
+                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoGrupoPro))
