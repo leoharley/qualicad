@@ -36,7 +36,7 @@
         $('#dataTables-example').DataTable({
             //Dom Gösterim şekli B-> buttonlar l-> lengthMenu f-> filtre vs.
             dom: "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
-                "<'row'<'col-sm-12'tr>>" +
+         
                 "<'row'<'col-sm-9'i><'col-sm-3'B>>" +
                 "<'row'<'col-sm-7 col-centered'p>>",
             lengthMenu: [
