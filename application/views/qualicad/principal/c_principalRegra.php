@@ -194,7 +194,7 @@ if(!empty($infoRegra))
 
                                             <td>
                                                 <select class="form-control" name="TbGrupoPro_CodGrupo" ng-model="teste2">
-                                                    <option value="SELECIONE" disabled selected>SELECIONE</option>
+                                                    <option value="SELECIONE"  selected>SELECIONE</option>
                                                     <?php
                                                     if(!empty($infoGrupoPro))
                                                     {
