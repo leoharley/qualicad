@@ -275,10 +275,10 @@ if(!empty($infoRegra))
                                         <input type="text" id="perc" class="form-control valor" value="<?php echo $regragrupro->Perc_Pago ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $regragrupro->Dt_IniVigencia ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo ($regragrupro->Dt_IniVigencia != '0000-00-00') ? date("d/m/Y", strtotime($regragrupro->Dt_IniVigencia)) : ''; ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $regragrupro->Dt_FimVigencia ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo ($regragrupro->Dt_FimVigencia != '0000-00-00') ? date("d/m/Y", strtotime($regragrupro->Dt_FimVigencia)) : ''; ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo ($regragrupro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
