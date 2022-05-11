@@ -106,7 +106,7 @@
         <br/>
 
         <a class="btn btn-primary" href="<?php echo base_url(). 'exportaFatItem/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
-            <i class="fa fa-upload"></i> Exportar registros importados</a>
+            <i class="fa fa-upload"></i> Exportar importação atual</a>
         <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem/0">
             <i class="fa fa-upload"></i> Exportar todos registros</a>
 
