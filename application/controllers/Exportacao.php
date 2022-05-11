@@ -61,11 +61,6 @@ class Exportacao extends BaseController
         ob_clean();
         flush();
 
-
-	/*	header("Content-Description: File Transfer");
-        header("Content-Disposition: attachment; filename=$filename");
-        header("Content-Type: application/csv; "); */
-
         $handle = fopen('php://output', 'w');
         fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento',
         'Ds_FatItem','Dt_IniVigencia','Dt_FimVigencia','Vl_Honorario','Vl_Operacional','Vl_Total',
