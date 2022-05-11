@@ -366,6 +366,7 @@ class Importacao extends BaseController
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'TUSS',$this->session->userdata('IdEmpresa'));
 
                     $errosDeChave = array();
+                    $campoNaoLocalizado = '';
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -375,6 +376,8 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
+                                if (!isset($dePara[$i]->No_CampoDestino)) {$campoNaoLocalizado += $dePara[$i]->No_CampoDestino.' ';}
+                                if (!isset($dePara[$i]->No_CampoOrigem)) {$campoNaoLocalizado += $dePara[$i]->No_CampoOrigem.' ';}
                                 $memData += array(
                                     ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                 );
@@ -405,7 +408,12 @@ class Importacao extends BaseController
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela TUSS importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
+
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
