@@ -85,9 +85,15 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
+        <br/>
+
+        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaFracaoSimproBra/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
+            <i class="fa fa-upload"></i> Exportar importação atual</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFracaoSimproBra/0">
+            <i class="fa fa-upload"></i> Exportar todos registros</a>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+    <!--    <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>TbProFat_Cd_ProFat</th>
@@ -103,28 +109,28 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoFracaoSimproBra)){ foreach($infoFracaoSimproBra as $registro){ ?>
+                <?php //if(!empty($infoFracaoSimproBra)){ foreach($infoFracaoSimproBra as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->TbProFat_Cd_ProFat ?></td>
-                    <td><?php echo $registro->TbFaturamento_Id_Faturamento ?></td>
-                    <td><?php echo $registro->TbTUSS_Id_Tuss ?></td>
-                    <td><?php echo $registro->Ds_FracaoSimproBra ?></td>
-                    <td><?php echo $registro->Ds_Laboratorio ?></td>
-                    <td><?php echo $registro->Ds_Apresentacao ?></td>
-                    <td><?php echo $registro->Tp_MatMed ?></td>
-                    <td><?php echo $registro->Vl_FatorDivisao ?></td>
-                    <td><?php echo $registro->Qt_Prod ?></td>
+                    <td><?php //echo $registro->TbProFat_Cd_ProFat ?></td>
+                    <td><?php //echo $registro->TbFaturamento_Id_Faturamento ?></td>
+                    <td><?php //echo $registro->TbTUSS_Id_Tuss ?></td>
+                    <td><?php //echo $registro->Ds_FracaoSimproBra ?></td>
+                    <td><?php //echo $registro->Ds_Laboratorio ?></td>
+                    <td><?php //echo $registro->Ds_Apresentacao ?></td>
+                    <td><?php //echo $registro->Tp_MatMed ?></td>
+                    <td><?php //echo $registro->Vl_FatorDivisao ?></td>
+                    <td><?php //echo $registro->Qt_Prod ?></td>
                     <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoFracaoSimproBra/'.$registro->Id_FracaoSimproBra; ?> "title="Excluir">
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoFracaoSimproBra/'.$registro->Id_FracaoSimproBra; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>
 

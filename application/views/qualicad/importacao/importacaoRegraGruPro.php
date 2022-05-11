@@ -84,9 +84,15 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
+        <br/>
+
+        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaRegraGruPro/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
+            <i class="fa fa-upload"></i> Exportar importação atual</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaRegraGruPro/0">
+            <i class="fa fa-upload"></i> Exportar todos registros</a>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+      <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>TbGrupoPro_CodGrupo</th>
@@ -99,25 +105,25 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoRegraGruPro)){ foreach($infoRegraGruPro as $registro){ ?>
+                <?php //if(!empty($infoRegraGruPro)){ foreach($infoRegraGruPro as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->TbGrupoPro_CodGrupo ?></td>
-                    <td><?php echo $registro->TbRegra_Id_Regra ?></td>
-                    <td><?php echo $registro->TbFaturamento_Id_Faturamento ?></td>
-                    <td><?php echo $registro->Perc_Pago ?></td>
-                    <td><?php echo $registro->Dt_IniVigencia ?></td>
-                    <td><?php echo $registro->Dt_FimVigencia ?></td>
+                    <td><?php //echo $registro->TbGrupoPro_CodGrupo ?></td>
+                    <td><?php //echo $registro->TbRegra_Id_Regra ?></td>
+                    <td><?php //echo $registro->TbFaturamento_Id_Faturamento ?></td>
+                    <td><?php //echo $registro->Perc_Pago ?></td>
+                    <td><?php //echo $registro->Dt_IniVigencia ?></td>
+                    <td><?php //echo $registro->Dt_FimVigencia ?></td>
                     <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoRegraGruPro/'.$registro->Id_RegraGruPro; ?> "title="Excluir">
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoRegraGruPro/'.$registro->Id_RegraGruPro; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>
 

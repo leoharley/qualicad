@@ -84,9 +84,15 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
+        <br/>
+
+        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaProduto/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
+            <i class="fa fa-upload"></i> Exportar importação atual</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaProduto/0">
+            <i class="fa fa-upload"></i> Exportar todos registros</a>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+       <!-- <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>TbProFat_Cd_ProFat</th>
@@ -104,30 +110,30 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoProduto)){ foreach($infoProduto as $registro){ ?>
+                <?php //if(!empty($infoProduto)){ foreach($infoProduto as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->TbProFat_Cd_ProFat ?></td>
-                    <td><?php echo $registro->Tb_Unidade_Id_Unidade ?></td>
-                    <td><?php echo $registro->Cd_Produto ?></td>
-                    <td><?php echo $registro->Ds_Produto ?></td>
-                    <td><?php echo $registro->Ds_Especie ?></td>
-                    <td><?php echo $registro->Cd_ProdutoMestre ?></td>
-                    <td><?php echo $registro->SN_Mestre ?></td>
-                    <td><?php echo $registro->Vl_CustoMedio ?></td>
-                    <td><?php echo $registro->Vl_Fator ?></td>
-                    <td><?php echo $registro->Vl_FatorProFat ?></td>
-                    <td><?php echo $registro->Vl_CustoFinal ?></td>
+                    <td><?php //echo $registro->TbProFat_Cd_ProFat ?></td>
+                    <td><?php //echo $registro->Tb_Unidade_Id_Unidade ?></td>
+                    <td><?php //echo $registro->Cd_Produto ?></td>
+                    <td><?php //echo $registro->Ds_Produto ?></td>
+                    <td><?php //echo $registro->Ds_Especie ?></td>
+                    <td><?php //echo $registro->Cd_ProdutoMestre ?></td>
+                    <td><?php //echo $registro->SN_Mestre ?></td>
+                    <td><?php //echo $registro->Vl_CustoMedio ?></td>
+                    <td><?php //echo $registro->Vl_Fator ?></td>
+                    <td><?php //echo $registro->Vl_FatorProFat ?></td>
+                    <td><?php //echo $registro->Vl_CustoFinal ?></td>
                     <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoProduto/'.$registro->Id_Produto; ?> "title="Excluir">
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoProduto/'.$registro->Id_Produto; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>
 

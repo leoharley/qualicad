@@ -84,9 +84,15 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
+        <br/>
+
+        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaPorteMedico/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
+            <i class="fa fa-upload"></i> Exportar importação atual</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaPorteMedico/0">
+            <i class="fa fa-upload"></i> Exportar todos registros</a>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+       <!-- <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>Id_PorteMedico</th>
@@ -98,24 +104,24 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoPorteMedico)){ foreach($infoPorteMedico as $registro){ ?>
+                <?php //if(!empty($infoPorteMedico)){ foreach($infoPorteMedico as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->Id_PorteMedico ?></td>
-                    <td><?php echo $registro->Id_TabFaturamento ?></td>
-                    <td><?php echo $registro->Cd_PorteMedico ?></td>
-                    <td><?php echo $registro->Ds_PorteMedico ?></td>
-                    <td><?php echo $registro->Vl_PorteMedico ?></td>
+                    <td><?php //echo $registro->Id_PorteMedico ?></td>
+                    <td><?php //echo $registro->Id_TabFaturamento ?></td>
+                    <td><?php //echo $registro->Cd_PorteMedico ?></td>
+                    <td><?php //echo $registro->Ds_PorteMedico ?></td>
+                    <td><?php //echo $registro->Vl_PorteMedico ?></td>
                     <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoPorteMedico/'.$registro->Id_PorteMedico; ?> "title="Excluir">
+                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoPorteMedico/'.$registro->Id_PorteMedico; ?> "title="Excluir">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table>-->
     </div>
 </div>
 

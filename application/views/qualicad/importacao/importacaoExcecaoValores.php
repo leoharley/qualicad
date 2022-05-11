@@ -85,6 +85,12 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
+        <br/>
+
+        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaExcecaoValores/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
+            <i class="fa fa-upload"></i> Exportar importação atual</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaExcecaoValores/0">
+            <i class="fa fa-upload"></i> Exportar todos registros</a>
         
         <!-- Data list table -->
       <!--  <table class="table table-striped table-bordered">

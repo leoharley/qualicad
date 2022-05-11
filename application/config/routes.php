@@ -164,6 +164,26 @@ $route['consultaCamposTabela/:any'] = "importacao/consultaCamposTabela/$1";
 /*********** ROUTES DA EXPORTAÇÃO *******************/
 $route['exportaFatItem/:any'] = "exportacao/exportaFatItem/$1";
 
+$route['exportaGrupoPro/:any'] = "exportacao/exportaGrupoPro/$1";
+
+$route['exportaProFat/:any'] = "exportacao/exportaProFat/$1";
+
+$route['exportaTUSS/:any'] = "exportacao/exportaTUSS/$1";
+
+$route['exportaRegraGruPro/:any'] = "exportacao/exportaRegraGruPro/$1";
+
+$route['exportaFracaoSimproBra/:any'] = "exportacao/exportaFracaoSimproBra/$1";
+
+$route['exportaProduto/:any'] = "exportacao/exportaProduto/$1";
+
+$route['exportaProducao/:any'] = "exportacao/exportaProducao/$1";
+
+$route['exportaContrato/:any'] = "exportacao/exportaContrato/$1";
+
+$route['exportaPorteMedico/:any'] = "exportacao/exportaPorteMedico/$1";
+
+$route['exportaExcecaoValores/:any'] = "exportacao/exportaExcecaoValores/$1";
+
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";
 $route['editaConvenio'] = "principal/editaConvenio";
