@@ -376,7 +376,7 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado += $row[($dePara[$i]->No_CampoOrigem)].' ';}                                
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado += $row[($dePara[$i]->No_CampoOrigem)].' ';}                                
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
                                 $memData += array(
                                     ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
