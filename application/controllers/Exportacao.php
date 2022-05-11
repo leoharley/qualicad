@@ -50,7 +50,7 @@ class Exportacao extends BaseController
         /* file name */
 		$filename = 'TbFatItem.csv';
 
-		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo($this->session->userdata('IdEmpresa'),$var);
+		$exportacao = $this->ExportacaoModel->exportaFatItem($this->session->userdata('IdEmpresa'),$var);
 
 		header("Content-Description: File Transfer"); 
         header("Content-Disposition: attachment; filename=$filename");

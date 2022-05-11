@@ -3,7 +3,7 @@
 class ExportacaoModel extends CI_Model
 {
 
-    function exportaFatItem_Tudo($idEmpresa,$var)
+    function exportaFatItem($idEmpresa,$var)
     {
         $this->db->select('*');
         $this->db->from('TbFatItem as FatItem');
