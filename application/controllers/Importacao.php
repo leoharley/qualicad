@@ -378,10 +378,11 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($dePara[$i]->No_CampoDestino)) {$campoNaoLocalizado += $dePara[$i]->No_CampoDestino.' ';}
                                 if (!isset($dePara[$i]->No_CampoOrigem)) {$campoNaoLocalizado += $dePara[$i]->No_CampoOrigem.' ';}
+                                if (isset($dePara[$i]->No_CampoDestino) && isset($dePara[$i]->No_CampoOrigem)) {
                                 $memData += array(
                                     ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                 );
-
+                            }
                             }
 
                             $memData += array(                                
