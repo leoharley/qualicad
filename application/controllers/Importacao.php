@@ -1445,6 +1445,7 @@ class Importacao extends BaseController
                         $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
