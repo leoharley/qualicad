@@ -43,12 +43,14 @@ class Exportacao extends BaseController
 
     // IMPORTAÇÃO GRUPO PRO
 
-    function exportaFatItem_Tudo()
+    function exportaFatItem()
     {
+        $var = $this->uri->segment(2);
+
         /* file name */
 		$filename = 'TbFatItem.csv';
 
-		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo($this->session->userdata('IdEmpresa'));
+		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo($this->session->userdata('IdEmpresa'),$var);
 
 		header("Content-Description: File Transfer"); 
         header("Content-Disposition: attachment; filename=$filename");

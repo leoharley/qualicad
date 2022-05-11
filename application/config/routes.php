@@ -162,8 +162,7 @@ $route['apagaLayoutImportacao/:any'] = "importacao/apagaLayoutImportacao/$1";
 $route['consultaCamposTabela/:any'] = "importacao/consultaCamposTabela/$1";
 
 /*********** ROUTES DA EXPORTAÇÃO *******************/
-$route['exportaFatItem_Tudo'] = "exportacao/exportaFatItem_Tudo";
-$route['exportaFatItem_Imp/:any'] = "exportacao/exportaFatItem_Imp/$1";
+$route['exportaFatItem/:any'] = "exportacao/exportaFatItem/$1";
 
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";
