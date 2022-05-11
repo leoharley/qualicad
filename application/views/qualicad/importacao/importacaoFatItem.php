@@ -107,7 +107,7 @@
 
         <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem_Tudo">
           <i class="fa fa-upload"></i> Exportar tabela</a>
-        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaFatItem_Imp/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled onclick=\"return false;\"'; } ?>>
+        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaFatItem_Imp/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled onclick=return false;'; } ?>>
         <i class="fa fa-upload"></i> Exportar registros importados</a>
 
         <!-- Data list table -->
