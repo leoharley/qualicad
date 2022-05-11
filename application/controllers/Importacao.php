@@ -244,8 +244,10 @@ class Importacao extends BaseController
                         }
 
                         foreach ($errosDeChave as $row) {
-                        echo $row . '<br/>';
+                        $errosDeChaveMsg += $row . '<br/>';
                         }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $errosDeChaveMsg);
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));

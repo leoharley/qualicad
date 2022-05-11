@@ -88,6 +88,8 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
+
+        <?php echo $this->session->flashdata('errosDeChaveMsg'); ?>
         
         <!-- Data list table -->
       <!--  <table class="table table-striped table-bordered" id="dataTables-example">
