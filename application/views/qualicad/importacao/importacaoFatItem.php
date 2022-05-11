@@ -107,8 +107,8 @@
 
         <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem_Tudo">
           <i class="fa fa-upload"></i> Exportar tabela</a>
-
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem_Imp/"<?php $this->load->helper('form'); echo $this->session->flashdata('success'); ?>>
+          <?php echo $this->session->flashdata('success'); ?>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem_Imp/"<?php echo $this->session->flashdata('success'); ?>>
         <i class="fa fa-upload"></i> Exportar registros importados</a>
 
         <!-- Data list table -->
