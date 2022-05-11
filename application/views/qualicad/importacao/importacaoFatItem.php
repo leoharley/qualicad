@@ -108,7 +108,7 @@
         <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem_Tudo">
           <i class="fa fa-upload"></i> Exportar tabela</a>
           <?php $num_linhas_importadas = $this->session->flashdata('num_linhas_importadas'); ?>
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem_Imp/"<?= $num_linhas_importadas ?>>
+        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaFatItem_Imp/'.$num_linhas_importadas; ?>>
         <i class="fa fa-upload"></i> Exportar registros importados</a>
 
         <!-- Data list table -->
