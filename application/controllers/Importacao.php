@@ -376,8 +376,7 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                if (!isset($dePara[$i]->No_CampoDestino)) {$campoNaoLocalizado += $dePara[$i]->No_CampoDestino.' ';}
-                                if (!isset($dePara[$i]->No_CampoOrigem)) {$campoNaoLocalizado += $dePara[$i]->No_CampoOrigem.' ';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado += $row[($dePara[$i]->No_CampoOrigem)].' ';}                                
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
                                 $memData += array(
                                     ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
@@ -394,7 +393,9 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                                array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']);
+                                if (isset($memData['TbProFat_Cd_ProFat'])) {
+                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
+                                }
                                 $notAddCount++;
                             }
 
