@@ -87,7 +87,7 @@
         <br/>
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+      <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>CodGrupo</th>
@@ -100,25 +100,25 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
+                <?php //if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->CdGrupoPro ?></td>
-                    <td><?php echo $registro->Ds_GrupoPro ?></td>
-                    <td><?php echo $registro->Tp_GrupoPro ?></td>
-                    <td><?php echo $registro->Desc_Tp_GrupoPro ?></td>
-                    <td><?php echo $registro->Dt_Criacao ?></td>
-                    <td><?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?></td>
+                    <td><?php //echo $registro->CdGrupoPro ?></td>
+                    <td><?php //echo $registro->Ds_GrupoPro ?></td>
+                    <td><?php //echo $registro->Tp_GrupoPro ?></td>
+                    <td><?php //echo $registro->Desc_Tp_GrupoPro ?></td>
+                    <td><?php //echo $registro->Dt_Criacao ?></td>
+                    <td><?php //echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?></td>
                     <td>
-                    <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaImportacaoGrupoPro/'.$registro->CodGrupo; ?> "title="Excluir">
+                    <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoGrupoPro/'.$registro->CodGrupo; ?> "title="Excluir">
                         <i class="fa fa-trash-o"></i>
                     </a>
                     </td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>
 
