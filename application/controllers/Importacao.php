@@ -243,10 +243,9 @@ class Importacao extends BaseController
 
                         }
 
-                       /* foreach ($errosDeChave as $row) {
+                        foreach ($errosDeChave as $row) {
                         echo $row . '<br/>';
                         }
-                        exit; */
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
