@@ -106,7 +106,7 @@
         <br/>
 
         <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem_Tudo">
-          <i class="fa fa-file"></i> Exportar tabela</a>
+          <i class="fa fa-upload"></i> Exportar tabela</a>
 
         <!-- Data list table -->
        <!-- <table class="table table-striped table-bordered" id=">
