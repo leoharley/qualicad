@@ -108,7 +108,7 @@
                 <i class="fa fa-upload"></i> Exportar importação atual</a>
             <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem/0">
                 <i class="fa fa-upload"></i> Exportar todos registros</a>
-            
+
         </div>
 
 

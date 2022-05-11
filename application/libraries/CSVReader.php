@@ -23,9 +23,9 @@ class CSVReader {
     // Columns names after parsing
     private $fields;
     // Separator used to explode each line
-    private $separator = '|';
+    private $separator = '§';
     // Enclosure used to decorate each field
-    private $enclosure = '|';
+    private $enclosure = '§';
     // Maximum row size to be used for decoding
     private $max_row_size = 4096;
     
@@ -49,7 +49,7 @@ class CSVReader {
         
         // Get Fields and values
         $this->fields = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure);
-        $keys_values = explode(';', $this->fields[0]);
+        $keys_values = explode('|', $this->fields[0]);
         $keys = $this->escape_string($keys_values);
         
         // Store CSV data in an array
@@ -58,7 +58,7 @@ class CSVReader {
         while(($row = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure)) !== FALSE){
             // Skip empty lines
             if($row != NULL){
-                $values = explode(';', $row[0]);
+                $values = explode('|', $row[0]);
                 if(count($keys) == count($values)){
                     $arr        = array();
                     $new_values = array();
