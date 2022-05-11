@@ -52,7 +52,7 @@ class Exportacao extends BaseController
 
 		header("Content-Description: File Transfer"); 
         header("Content-Disposition: attachment; filename=$filename");
-        header("Content-Type: application/csv; ");
+        header("Content-Type: application/vnd.ms-excel ");
 
         $handle = fopen('php://output', 'w');
         fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento',
