@@ -46,13 +46,13 @@ class Exportacao extends BaseController
     function exportaFatItem_Tudo()
     {
         /* file name */
-		$filename = 'TbFatItem.xls';
+		$filename = 'TbFatItem.csv';
 
 		$exportacao = $this->ExportacaoModel->exportaFatItem_Tudo($this->session->userdata('IdEmpresa'));
 
 		header("Content-Description: File Transfer"); 
         header("Content-Disposition: attachment; filename=$filename");
-        header("Content-Type: application/vnd.ms-excel ");
+        header("Content-Type: application/csv; ");
 
         $handle = fopen('php://output', 'w');
         fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento',
