@@ -48,13 +48,23 @@ class Exportacao extends BaseController
         $var = $this->uri->segment(2);
 
         /* file name */
-		$filename = 'TbFatItem.csv';
+		$filename = 'TbFatItem.xls';
 
 		$exportacao = $this->ExportacaoModel->exportaFatItem($this->session->userdata('IdEmpresa'),$var);
 
-		header("Content-Description: File Transfer"); 
+        header('Content-type: aapplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-type: application/force-download');
+        header('Content-Disposition: attachment; filename=$filename');
+        header('Pragma: no-cache');
+        header('Cache-Control: max-age=0');
+        header('X-Accel-Buffering: no');
+        ob_clean();
+        flush();
+
+
+	/*	header("Content-Description: File Transfer");
         header("Content-Disposition: attachment; filename=$filename");
-        header("Content-Type: application/csv; ");
+        header("Content-Type: application/csv; "); */
 
         $handle = fopen('php://output', 'w');
         fputcsv($handle, array('Id_FatItem', 'CodFatItem', 'TbFaturamento_Id_Faturamento',
