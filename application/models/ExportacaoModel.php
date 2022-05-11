@@ -10,7 +10,7 @@ class ExportacaoModel extends CI_Model
         $this->db->where('FatItem.Deletado !=', 'S');
         $this->db->where('FatItem.Tp_Ativo', 'S');
         $this->db->where('FatItem.TbEmpresa_Id_Empresa', $idEmpresa);
-        if ($var != 0) { echo $this->db->limit($var); }
+        if ($var != 0) { $this->db->limit($var); }
         $this->db->order_by('FatItem.Id_FatItem', 'ASC');
         $query = $this->db->get();
 
