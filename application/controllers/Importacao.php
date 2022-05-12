@@ -394,7 +394,7 @@ class Importacao extends BaseController
                                 $insertCount++;
                             } else {
                                 if (isset($memData['TbProFat_Cd_ProFat'])) {
-                                    array_push($errosDeChave, $memData); 
+                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
                                 }
                                 $notAddCount++;
                             }
@@ -403,8 +403,10 @@ class Importacao extends BaseController
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
                         foreach ($errosDeChave as $row) {
-                        echo $row . '<br/>';
+                        $errosDeChaveMsg += $row . '<br/>';
                         }
+    
+                        $this->session->set_flashdata('errosDeChaveMsg', $errosDeChaveMsg);
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));

@@ -90,7 +90,8 @@
             <i class="fa fa-upload"></i> Exportar importação atual</a>
         <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaTUSS/0">
             <i class="fa fa-upload"></i> Exportar todos registros</a>
-        
+
+        <?php echo $this->session->flashdata('errosDeChaveMsg'); ?>
         <!-- Data list table -->
       <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
