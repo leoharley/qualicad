@@ -408,12 +408,11 @@ class Importacao extends BaseController
                      //   var_dump($rowCount);exit;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
-                    /*    foreach ($errosDeChave as $row) {
-                        echo $row . '<br/>';
+                        foreach ($errosDeChave as $row) {
+                        $this->session->set_flashdata('errosDeChaveMsg', $row);
                         }
-                        exit; */
     
-                        $this->session->set_flashdata('errosDeChaveMsg', $errosDeChaveMsg);
+                    //    $this->session->set_flashdata('errosDeChaveMsg', $errosDeChaveMsg);
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
