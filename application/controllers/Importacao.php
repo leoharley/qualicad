@@ -409,9 +409,10 @@ class Importacao extends BaseController
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
                         foreach ($errosDeChave as $row) {
-                        $this->session->set_flashdata('errosDeChaveMsg', $row);
+                        $temp .= $row . '<br/>';
                         }
     
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
                     //    $this->session->set_flashdata('errosDeChaveMsg', $errosDeChaveMsg);
 
                         // Status message with imported data count
