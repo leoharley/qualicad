@@ -388,18 +388,14 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-                                if (isset($memData['TbProFat_Cd_ProFat'])) {
-                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
-                                }
-                          
                             $insert = $this->ImportacaoModel->adicionaTUSS($memData);
 
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                            /*    if (isset($memData['Cd_Tuss'])) {
-                                    array_push($errosDeChave, $memData['Cd_Tuss']); 
-                                } */
+                                if (isset($memData['TbProFat_Cd_ProFat'])) {
+                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
+                                }
 
                             //    array_push($errosDeChave, $rowCount); 
 
