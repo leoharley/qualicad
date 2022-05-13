@@ -23,9 +23,9 @@ class CSVReader {
     // Columns names after parsing
     private $fields;
     // Separator used to explode each line
-    private $separator = '@';
+    private $separator = '\\';
     // Enclosure used to decorate each field
-    private $enclosure = '@';
+    private $enclosure = '\\';
     // Maximum row size to be used for decoding
     private $max_row_size = 4096;
     
