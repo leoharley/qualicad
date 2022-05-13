@@ -387,18 +387,22 @@ class Importacao extends BaseController
                             $memData += array(                                
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
+
+                                if (isset($memData['Cd_Tuss'])) {
+                                    array_push($errosDeChave, $memData['Cd_Tuss']); 
+                                }
                           
                             $insert = $this->ImportacaoModel->adicionaTUSS($memData);
 
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                                if (isset($memData['Cd_Tuss'])) {
+                            /*    if (isset($memData['Cd_Tuss'])) {
                                     array_push($errosDeChave, $memData['Cd_Tuss']); 
-                                }
+                                } */
 
                             //    array_push($errosDeChave, $rowCount); 
-                            
+
                                 $notAddCount++;
                             }
 
