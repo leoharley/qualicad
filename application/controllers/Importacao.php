@@ -1445,13 +1445,20 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaFatItem($memData);
 
+                            var_dump($insert);
+
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                              /*  if (isset($memData['TbProFat_Cd_ProFat'])) {
+                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
+                                }*/
                                 $notAddCount++;
                             }
 
                         }
+
+                        exit;
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
