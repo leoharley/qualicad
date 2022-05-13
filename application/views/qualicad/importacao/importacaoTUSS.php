@@ -48,6 +48,10 @@
     <div class="alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <?php echo $this->session->flashdata('success'); ?>
+    <br/>
+    <?php
+    $errosDeChaveMsg = $this->session->flashdata('errosDeChaveMsg');
+        echo 'Linhas não inseridas:'. $errosDeChaveMsg; ?>
     </div>
     <?php } ?>
 	
@@ -91,10 +95,6 @@
         <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaTUSS/0">
             <i class="fa fa-upload"></i> Exportar todos registros</a>
 
-        <?php 
-        $errosDeChaveMsg = $this->session->flashdata('errosDeChaveMsg');
-        echo $errosDeChaveMsg . '<br/>';
-             ?>
         <!-- Data list table -->
       <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
