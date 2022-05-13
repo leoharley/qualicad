@@ -79,19 +79,24 @@ class Importacao extends BaseController
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'GrupoPro',$this->session->userdata('IdEmpresa'));
-                    
+
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
                             $rowCount++;
 
                             $memData = array();
-                            
-                            for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
 
+                            for ($i=0;$i<count($dePara);$i++) {
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                                 $memData += array(
@@ -105,16 +110,31 @@ class Importacao extends BaseController
                                 if($insert != 0){
                                     $insertCount++;
                                 } else {
+                                    array_push($errosDeChave, ($rowCount+1));
                                     $notAddCount++;
                                 }
 
                         }
+
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
                                                 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela GrupoPro importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
-                        
-                        $this->session->set_flashdata('success', $successMsg);
+
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -212,6 +232,7 @@ class Importacao extends BaseController
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'ProFat',$this->session->userdata('IdEmpresa'));
 
                     $errosDeChave = array();
+                    $campoNaoLocalizado = '';
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -221,10 +242,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -237,23 +260,31 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                                array_push($errosDeChave, $memData['TbGrupoPro_CodGrupo']);
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
 
                         }
 
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
                         foreach ($errosDeChave as $row) {
-                        $errosDeChaveMsg += $row . '<br/>';
+                            $temp .= $row . ' - ';
                         }
 
-                        $this->session->set_flashdata('errosDeChaveMsg', $errosDeChaveMsg);
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela ProFat importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -421,6 +452,7 @@ class Importacao extends BaseController
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela TUSS importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
                             $this->session->set_flashdata('success', $successMsg);
                         } else {
@@ -509,6 +541,9 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'RegraGruPro',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -517,10 +552,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -534,16 +571,31 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
 
                         }
 
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela RegraGruPro importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -626,6 +678,9 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'FracaoSimproBra',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -634,10 +689,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -651,16 +708,31 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
 
                         }
 
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela FracaoSimproBra importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -743,6 +815,9 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'Produto',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -751,10 +826,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -768,16 +845,31 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
 
                         }
 
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela Produto importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -860,6 +952,9 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'Producao',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -868,10 +963,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -885,16 +982,31 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
 
                         }
 
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela Producao importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -977,6 +1089,9 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'Contrato',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -985,10 +1100,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -1002,16 +1119,31 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
 
                         }
 
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela Contrato importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -1196,6 +1328,9 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'PorteMedico',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -1204,10 +1339,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -1221,16 +1358,31 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
 
                         }
 
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela Porte Médico importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -1314,6 +1466,9 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'ExcecaoValores',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -1322,10 +1477,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -1338,16 +1495,31 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
 
                         }
 
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela Exceção Valores importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
@@ -1432,6 +1604,9 @@ class Importacao extends BaseController
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'FatItem',$this->session->userdata('IdEmpresa'));
 
+                    $errosDeChave = array();
+                    $campoNaoLocalizado = '';
+
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
@@ -1440,10 +1615,12 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
+                                if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
+                                    $memData += array(
+                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                }
                             }
 
                             $memData += array(
@@ -1460,17 +1637,31 @@ class Importacao extends BaseController
                               /*  if (isset($memData['TbProFat_Cd_ProFat'])) {
                                     array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
                                 }*/
+                                array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
                         }
+
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        foreach ($errosDeChave as $row) {
+                            $temp .= $row . ' - ';
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
 
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
                         $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
-                        $this->session->set_flashdata('success', $successMsg);
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
                     }
                 }else{
                     $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
