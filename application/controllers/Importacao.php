@@ -393,16 +393,18 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                             /*   if (isset($memData['TbProFat_Cd_ProFat'])) {
-                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
-                                } */
-                                array_push($errosDeChave, $rowCount); 
+                                if (isset($memData['Cd_Tuss'])) {
+                                    array_push($errosDeChave, $memData['Cd_Tuss']); 
+                                }
+
+                            //    array_push($errosDeChave, $rowCount); 
+                            
                                 $notAddCount++;
                             }
 
                         }
 
-                        var_dump($rowCount);exit;
+                     //   var_dump($rowCount);exit;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
                         foreach ($errosDeChave as $row) {
