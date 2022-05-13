@@ -1453,12 +1453,8 @@ class Importacao extends BaseController
                                 }*/
                                 $notAddCount++;
                             }
-
                         }
 
-                        var_dump($rowCount);
-
-                        exit;
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
