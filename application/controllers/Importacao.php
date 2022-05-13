@@ -1445,8 +1445,6 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaFatItem($memData);
 
-                            var_dump($insert);
-
                             if($insert != 0){
                                 $insertCount++;
                             } else {
@@ -1457,6 +1455,8 @@ class Importacao extends BaseController
                             }
 
                         }
+
+                        var_dump($rowCount);
 
                         exit;
 
