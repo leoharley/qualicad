@@ -407,8 +407,10 @@ class Importacao extends BaseController
 
                      //   var_dump($rowCount);exit;
 
+                        $temp = null;
+
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
-                        foreach ($errosDeChave as $row) {
+                        foreach ($errosDeChave as $row) {  
                         $temp .= $row . ' - ';
                         }
     

@@ -51,7 +51,7 @@
     <br/>
     <?php
     $errosDeChaveMsg = $this->session->flashdata('errosDeChaveMsg');
-        echo 'Linhas não inseridas:'. $errosDeChaveMsg; ?>
+        echo 'Linhas não inseridas: '. $errosDeChaveMsg; ?>
     </div>
     <?php } ?>
 	
