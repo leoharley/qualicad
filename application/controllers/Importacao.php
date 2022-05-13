@@ -396,15 +396,17 @@ class Importacao extends BaseController
                              /*   if (isset($memData['TbProFat_Cd_ProFat'])) {
                                     array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
                                 } */
+                                array_push($errosDeChave, $rowCount); 
                                 $notAddCount++;
                             }
 
                         }
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
-                     /*   foreach ($errosDeChave as $row) {
-                        $errosDeChaveMsg += $row . '<br/>';
-                        } */
+                        foreach ($errosDeChave as $row) {
+                        echo $row . '<br/>';
+                        }
+                        exit;
     
                         $this->session->set_flashdata('errosDeChaveMsg', $errosDeChaveMsg);
 
