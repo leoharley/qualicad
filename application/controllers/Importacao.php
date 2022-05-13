@@ -393,11 +393,12 @@ class Importacao extends BaseController
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                                if (isset($memData['TbProFat_Cd_ProFat'])) {
-                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
-                                }
 
-                            //    array_push($errosDeChave, $rowCount); 
+                              /*  if (isset($memData['TbProFat_Cd_ProFat'])) {
+                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
+                                } */
+
+                                array_push($errosDeChave, $rowCount); 
 
                                 $notAddCount++;
                             }
@@ -407,10 +408,10 @@ class Importacao extends BaseController
                      //   var_dump($rowCount);exit;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
-                        foreach ($errosDeChave as $row) {
+                    /*    foreach ($errosDeChave as $row) {
                         echo $row . '<br/>';
                         }
-                        exit;
+                        exit; */
     
                         $this->session->set_flashdata('errosDeChaveMsg', $errosDeChaveMsg);
 

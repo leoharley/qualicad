@@ -91,7 +91,11 @@
         <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaTUSS/0">
             <i class="fa fa-upload"></i> Exportar todos registros</a>
 
-        <?php echo $this->session->flashdata('errosDeChaveMsg'); ?>
+        <?php 
+        
+        foreach ($this->session->flashdata('errosDeChaveMsg') as $row) {
+            echo $row . '<br/>';
+            } ?>
         <!-- Data list table -->
       <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
