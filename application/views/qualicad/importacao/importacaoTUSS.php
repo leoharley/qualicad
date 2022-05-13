@@ -92,10 +92,9 @@
             <i class="fa fa-upload"></i> Exportar todos registros</a>
 
         <?php 
-        
-        foreach ($this->session->flashdata('errosDeChaveMsg') as $row) {
-            echo $row . '<br/>';
-            } ?>
+        $errosDeChaveMsg = $this->session->flashdata('errosDeChaveMsg');
+        echo $errosDeChaveMsg . '<br/>';
+             ?>
         <!-- Data list table -->
       <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
