@@ -402,7 +402,7 @@ class Importacao extends BaseController
 
                         }
 
-                        var_dump($insertCount);exit;
+                        var_dump($rowCount);exit;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
                         foreach ($errosDeChave as $row) {
