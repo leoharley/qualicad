@@ -50,8 +50,8 @@
     <?php echo $this->session->flashdata('success'); ?>
     <br/>
     <?php
-    $errosDeChaveMsg = $this->session->flashdata('errosDeChaveMsg');
-        echo 'VERIFICAR AS LINHAS (não inseridas): '. $errosDeChaveMsg; ?>
+            $errosDeChaveMsg = $this->session->flashdata('errosDeChaveMsg');
+    if ($errosDeChaveMsg != '') echo 'VERIFICAR AS LINHAS (não inseridas): '. $errosDeChaveMsg; ?>
     </div>
     <?php } ?>
 	

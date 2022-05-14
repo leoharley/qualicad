@@ -55,7 +55,7 @@
             <br/>
             <?php
             $errosDeChaveMsg = $this->session->flashdata('errosDeChaveMsg');
-            echo 'VERIFICAR AS LINHAS (não inseridas): '. $errosDeChaveMsg; ?>
+            if ($errosDeChaveMsg != '') echo 'VERIFICAR AS LINHAS (não inseridas): '. $errosDeChaveMsg; ?>
         </div>
     <?php } ?>
 
