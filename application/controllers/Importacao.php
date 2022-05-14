@@ -127,7 +127,7 @@ class Importacao extends BaseController
                                                 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela GrupoPro importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela GrupoPro importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -277,7 +277,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela ProFat importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela ProFat importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -450,7 +450,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela TUSS importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela TUSS importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -588,7 +588,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela RegraGruPro importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela RegraGruPro importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -725,7 +725,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela FracaoSimproBra importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FracaoSimproBra importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -862,7 +862,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Produto importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela Produto importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -999,7 +999,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Producao importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela Producao importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -1136,7 +1136,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Contrato importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela Contrato importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -1375,7 +1375,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Porte Médico importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela Porte Médico importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -1512,7 +1512,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Exceção Valores importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela Exceção Valores importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -1654,7 +1654,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Registros ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
