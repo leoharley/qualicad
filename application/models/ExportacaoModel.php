@@ -10,7 +10,10 @@ class ExportacaoModel extends CI_Model
         //    return $query->result_array();
 
         //    $query = $this->db->query("SELECT * FROM ( SELECT * FROM TbFatItem ORDER BY Id_FatItem DESC LIMIT '.$var.' ) sub WHERE TbEmpresa_Id_Empresa = '.$idEmpresa.' AND Deletado != 'S' AND Tp_Ativo = 'S' ORDER BY Id_FatItem ASC");
-            $query = $this->db->get('TbFatItem')->order_by('Id_FatItem','desc')->limit($var);
+            $this->db->get('TbFatItem');
+            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->limit($var);
+            $query = $this->db->get();
             return $query->result();
         }
         $this->db->select('*');
