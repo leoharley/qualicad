@@ -5,12 +5,15 @@ class ExportacaoModel extends CI_Model
 
     function exportaFatItem($idEmpresa,$var)
     {
+        if ($var != 0) {
+            $sql = 'SELECT * FROM ( SELECT * FROM TbFatItem ORDER BY Id_FatItem DESC LIMIT '.$var.' ) sub ORDER BY Id_FatItem ASC;';
+            return $this->query($sql);
+        }
         $this->db->select('*');
         $this->db->from('TbFatItem as FatItem');
         $this->db->where('FatItem.Deletado !=', 'S');
         $this->db->where('FatItem.Tp_Ativo', 'S');
         $this->db->where('FatItem.TbEmpresa_Id_Empresa', $idEmpresa);
-        if ($var != 0) { $this->db->limit($var); }
         $this->db->order_by('FatItem.Id_FatItem', 'ASC');
         $query = $this->db->get();
 
