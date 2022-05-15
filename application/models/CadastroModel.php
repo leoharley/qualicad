@@ -182,7 +182,7 @@ function listaEmpresas($idUser, $searchText = '', $page, $segment)
         $this->db->where($likeCriteria);
     }
     $this->db->where('Empresas.Deletado !=', 'S');
-  //  $this->db->where('Empresas.CriadoPor', $idUser);
+    $this->db->where('Empresas.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
