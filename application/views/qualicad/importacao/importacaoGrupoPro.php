@@ -82,10 +82,11 @@
                 <br/>
                 <input type="file" name="file" />
                 <br/>
-                
+
                 <div>
-                <span>O arquivo está sendo carregado, aguarde...</span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
+                <br/>
+                <span>O arquivo está sendo carregado, aguarde...</span>
                 </div>
 
                 <br/>
