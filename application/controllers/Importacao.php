@@ -1595,7 +1595,7 @@ class Importacao extends BaseController
 
             // Validate submitted form data
             if($this->form_validation->run() == true){
-                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
 
                 // If file uploaded
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
@@ -1630,6 +1630,15 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
+                            
+                            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                            if (isset($memData['Cd_TUSS'])&&isset($memData['Cd_TISS'])&&isset($memData['TbFaturamento_Id_Faturamento'])) {
+                            if ($this->ImportacaoModel->consultaRegraTbFatItemExistente($memData['Cd_TUSS'],$memData['Cd_TISS'],$memData['TbFaturamento_Id_Faturamento'],$this->session->userdata('IdEmpresa')) != null) {
+                                $duplicidade++;
+                                }
+                            }
+                            // ***** FIM DE VERIFICAÇÕES *****
+
 
                             $insert = $this->ImportacaoModel->adicionaFatItem($memData);
 
@@ -1656,7 +1665,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {

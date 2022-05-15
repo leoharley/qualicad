@@ -690,6 +690,20 @@ class ImportacaoModel extends CI_Model
 
     }
 
+    function consultaRegraTbFatItemExistente($Cd_TUSS, $Cd_TISS, $TbFaturamento_Id_Faturamento, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbFatItem as FatItem');
+        $this->db->where('FatItem.Cd_TUSS', $Cd_TUSS);
+        $this->db->where('FatItem.Cd_TISS', $Cd_TISS);
+        $this->db->where('FatItem.TbFaturamento_Id_Faturamento', $TbFaturamento_Id_Faturamento);
+        $this->db->where('FatItem.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('FatItem.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 }
 
   
