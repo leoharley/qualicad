@@ -169,7 +169,7 @@ class CadastroModel extends CI_Model
 // FIM DAS CONSULTAS NA TELA DE USUÁRIO
     
 // INICIO DAS CONSULTAS NA TELA DE EMPRESA
-function listaEmpresas($idUser, $searchText = '', $page, $segment)
+function listaEmpresas($idUser, $idEmpresa, $searchText = '', $page, $segment)
 {
     $this->db->select('Empresas.Id_Empresa, Empresas.Nome_Empresa, Empresas.CNPJ, Empresas.Cd_EmpresaERP, Empresas.End_Empresa, Empresas.Nome_Contato, 
     Empresas.Telefone, Empresas.Email_Empresa, Empresas.CriadoPor, Empresas.Dt_Valida_Contrato, Empresas.Tp_Ativo, Empresas.Dt_Ativo, Empresas.Dt_Inativo');
@@ -181,8 +181,10 @@ function listaEmpresas($idUser, $searchText = '', $page, $segment)
                         OR  Empresas.CNPJ  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
+    $likeCriteria2 = "(Empresas.CriadoPor = '.$idUser.'
+                        OR  Empresas.Id_Empresa = '.$idEmpresa.')";
+    $this->db->where($likeCriteria2);
     $this->db->where('Empresas.Deletado !=', 'S');
-    $this->db->where('Empresas.CriadoPor', $idUser);
     $this->db->limit($page, $segment);
     $query = $this->db->get();
     
