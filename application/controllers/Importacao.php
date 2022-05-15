@@ -1630,7 +1630,7 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-                            
+                            $insert = 0;
                             // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
                             if (isset($memData['Cd_TUSS'])&&isset($memData['Cd_TISS'])&&isset($memData['TbFaturamento_Id_Faturamento'])) {
                             if ($this->ImportacaoModel->consultaRegraTbFatItemExistente($memData['Cd_TUSS'],$memData['Cd_TISS'],$memData['TbFaturamento_Id_Faturamento'],$this->session->userdata('IdEmpresa')) != null) {
