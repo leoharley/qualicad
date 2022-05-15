@@ -82,7 +82,7 @@
                 <br/>
                 <input type="file" name="file" />
                 <br/>
-                <img src="<?php echo base_url(); ?>assets/images/loading.gif">
+                <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
             </form>
