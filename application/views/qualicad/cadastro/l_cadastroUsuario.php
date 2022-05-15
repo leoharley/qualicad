@@ -53,7 +53,7 @@
                   <!--  <th>Admin?</th> -->
                   <!--  <th>Data ativo</th>
                     <th>Data inativo</th> -->
-                    <th>Ações</th>
+                    <th <?php if ($this->session->userdata('userId') != $registrosUsuarios[0] -> CriadoPor) { echo 'style="display:none"';}?>>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,10 +92,10 @@
                         <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
                               <i class="fa fa-history"></i>
                           </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroUsuario/editar/'.$registro->Id_Usuario; ?>" title="Editar">
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroUsuario/editar/'.$registro->Id_Usuario; ?>" title="Editar" <?php if ($this->session->userdata('userId') != $registrosUsuarios[0] -> CriadoPor) { echo 'style="display:none"';}?>>
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaUsuario/'.$registro->Id_Usuario; ?>" data-userid="<?php echo $registro->Id_Usuario; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaUsuario/'.$registro->Id_Usuario; ?>" data-userid="<?php echo $registro->Id_Usuario; ?>" title="Excluir" <?php if ($this->session->userdata('userId') != $registrosUsuarios[0] -> CriadoPor) { echo 'style="display:none"';}?>>
                               <i class="fa fa-trash-o"></i>
                           </a>
                       </td>
