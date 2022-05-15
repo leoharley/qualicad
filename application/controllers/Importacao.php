@@ -1638,8 +1638,7 @@ class Importacao extends BaseController
                                 } else {
                                     $insert = $this->ImportacaoModel->adicionaFatItem($memData);
                                 }
-                            }
-                        }
+                            }                        
                             // ***** FIM DE VERIFICAÇÕES *****
       
                             if($insert != 0){
