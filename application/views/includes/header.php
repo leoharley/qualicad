@@ -276,6 +276,102 @@ $(function() {
 
                 <hr>
 
+                <li class="treeview" data-toggle="collapse" data-target="#auxiliar" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                    
+                    <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  AUXILIAR</b></h4>
+
+                    <ul class="nav nav-list collapse" style="margin-top:10px" id="auxiliar">
+
+                  <li >
+                      <a href="<?php echo base_url(); ?>principalIndice/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Índice</span>
+                      </a>
+                  </li>
+
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalFaturamento/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Faturamento</span>
+                      </a>
+                  </li>
+
+                  <li class="treeview">
+                      <a href="<?php echo base_url(); ?>principalRegra/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Regra</span>
+                      </a>
+                  </li>
+
+                  <li class="treeview">
+                      <a href="<?php //echo base_url(); ?>principalExcecaoValores/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Exceção Valores</span>
+                      </a>
+                  </li>
+
+                <!--  <li class="treeview" style="display:none">
+                      <a href="<?php //echo base_url(); ?>principalIndiceGrupoPro/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Índice Grupo Pro</span>
+                      </a>
+                  </li> -->
+                  
+
+                <!--  <li class="treeview" style="display:none">
+                      <a href="<?php //echo base_url(); ?>principalRegraGruPro/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>RegraGrupoPro</span>
+                      </a>
+                  </li> -->
+
+                <!--  <li class="treeview">
+                      <a href="<?php //echo base_url(); ?>principalRegraProibicao/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>RegraProibição</span>
+                      </a>
+                  </li> -->                               
+
+                <!--  <li class="treeview">
+                      <a href="<?php //echo base_url(); ?>principalFaturamentoItem/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Item Faturamento</span>
+                      </a>
+                  </li> -->
+                  
+                <!--  <li class="treeview">
+                      <a href="<?php //echo base_url(); ?>principalFracaoSimproBra/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Fração Mat/Med</span>
+                      </a>
+                  </li> -->
+                  
+                <!--  <li class="treeview">
+                      <a href="<?php //echo base_url(); ?>principalUnidade/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Unidade</span>
+                      </a>
+                  </li> -->
+
+                <!--  <li class="treeview">
+                      <a href="<?php //echo base_url(); ?>principalExcecaoValores/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Exceção Valores</span>
+                      </a>
+                  </li> -->
+
+                <!-- 
+                  <li class="treeview">
+                      <a href="<?php //echo base_url(); ?>principalProibicao/listar">
+                          <i class="fa fa-th" style="margin-right:5px!important"></i>
+                          <span>Proibição</span>
+                      </a>
+                  </li> -->
+                  </ul>
+                </li>
+
+                <hr>
+
               <!--  <h4 style="margin-left:18px!important;color:white"><b> PRINCIPAL </b></h4> -->
 
                 <li class="treeview" data-toggle="collapse" data-target="#principal" style="margin-bottom: 10px!important;cursor: pointer!important;">
@@ -301,95 +397,7 @@ $(function() {
                   </ul>
                   </li>
 
-                  <hr>
-
-                  <li class="treeview" data-toggle="collapse" data-target="#auxiliar" style="margin-bottom: 10px!important;cursor: pointer!important;">
-                    
-                    <h4 style="margin-left:18px!important;color:white"><b><i class="fa fa-chevron-circle-down" style="margin-right:5px"></i>  AUXILIAR</b></h4>
-
-                    <ul class="nav nav-list collapse" style="margin-top:10px" id="auxiliar">
-
-                  <li >
-                      <a href="<?php echo base_url(); ?>principalIndice/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Índice</span>
-                      </a>
-                  </li>
-
-                  <li class="treeview" style="display:none">
-                      <a href="<?php echo base_url(); ?>principalIndiceGrupoPro/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Índice Grupo Pro</span>
-                      </a>
-                  </li>
-                  
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalRegra/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Regra</span>
-                      </a>
-                  </li>
-
-                  <li class="treeview" style="display:none">
-                      <a href="<?php echo base_url(); ?>principalRegraGruPro/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>RegraGrupoPro</span>
-                      </a>
-                  </li>
-
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalRegraProibicao/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>RegraProibição</span>
-                      </a>
-                  </li>
-                   
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalFaturamento/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Faturamento</span>
-                      </a>
-                  </li>
-
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalFaturamentoItem/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Item Faturamento</span>
-                      </a>
-                  </li>
-                  
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalFracaoSimproBra/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Fração Mat/Med</span>
-                      </a>
-                  </li>
-                  
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalUnidade/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Unidade</span>
-                      </a>
-                  </li>
-
-                  <li class="treeview">
-                      <a href="<?php echo base_url(); ?>principalExcecaoValores/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Exceção Valores</span>
-                      </a>
-                  </li>
-
-                <!-- 
-                  <li class="treeview">
-                      <a href="<?php //echo base_url(); ?>principalProibicao/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Proibição</span>
-                      </a>
-                  </li> -->
-                  </ul>
-                </li>
-
-                <hr>
+                  <hr>                  
 
                 <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
@@ -397,6 +405,26 @@ $(function() {
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
 
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoGrupoPro">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">GrupoPro</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoProFat">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">ProFat</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoTUSS">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">TUSS</span>
+                            </a>
+                        </li>
 
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>importacaoFatItem">
@@ -405,78 +433,69 @@ $(function() {
                             </a>
                         </li>
 
-                       <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>importacaoGrupoPro">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">GrupoPro</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>importacaoProFat">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">ProFat</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>importacaoTUSS">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">TUSS</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">                       
-                            <a href="<?php echo base_url(); ?>importacaoRegraGruPro">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">RegraGruPro</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">                       
-                            <a href="<?php echo base_url(); ?>importacaoFracaoSimproBra">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Fração Mat/Med</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>importacaoProduto">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Produto</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">                       
-                            <a href="<?php echo base_url(); ?>importacaoProducao">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Produção</span>
-                            </a>
-                        </li>
-                        <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>importacaoContrato">
-                                <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Contrato</span>
-                            </a>
-                        </li>
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>importacaoPorteMedico">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Valor porte médico</span>
                             </a>
                         </li>
+
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>importacaoExcecaoValores">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Exceção de valores</span>
                             </a>
                         </li>
+
+                        <li class="treeview" style="margin-left:22px;">                       
+                            <a href="<?php echo base_url(); ?>importacaoFracaoSimproBra">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Fração Mat/Med</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoContrato">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Contrato</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>importacaoProduto">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Produto</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview" style="margin-left:22px;">                       
+                            <a href="<?php echo base_url(); ?>importacaoProducao">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Produção</span>
+                            </a>
+                        </li>
+
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>importacaoSimpro">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Simpro</span>
                             </a>
                         </li>
+
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>importacaoBrasIndice">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Brasindice</span>
                             </a>
                         </li>
+                                                                       
+                        <li class="treeview" style="margin-left:22px;">                       
+                            <a href="<?php echo base_url(); ?>importacaoRegraGruPro">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">RegraGruPro</span>
+                            </a>
+                        </li>
+                                                              
                     </ul>
                 </li>
                 <li class="treeview">
