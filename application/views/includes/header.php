@@ -60,7 +60,7 @@
       color:white;
       font-size:24px;
       float:left;
-      left:40%;
+      left:35%;
       margin-top:8px;
       position:absolute
     }
