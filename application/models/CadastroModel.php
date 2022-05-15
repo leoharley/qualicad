@@ -33,10 +33,11 @@ class CadastroModel extends CI_Model
      */
 
 // INICIO DAS CONSULTAS NA TELA DE USUÁRIO
-    function listaUsuarios($idUser, $searchText = '', $page, $segment)
+    function listaUsuarios($idUser, $idEmpresa, $searchText = '', $page, $segment)
     {
         $this->db->select('Usuarios.Id_Usuario, Usuarios.Nome_Usuario, Usuarios.Admin, Usuarios.Cpf_Usuario, Usuarios.Tp_Ativo, Usuarios.Dt_Ativo, Usuarios.Dt_Inativo, Usuarios.Email');
         $this->db->from('TabUsuario as Usuarios');
+        $this->db->join('TbUsuEmp as UsuEmp', 'UsuEmp.TabUsuario_Id_Usuario = Usuarios.Id_Usuario AND UsuEmp.Deletado != "S"','left');
    //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(Usuarios.Email  LIKE '%".$searchText."%'
@@ -44,9 +45,10 @@ class CadastroModel extends CI_Model
                             OR  Usuarios.Cpf_Usuario  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
+        $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('Usuarios.Deletado !=', 'S');
         $this->db->where('Usuarios.Id_Usuario !=', $idUser);
-        $this->db->where('Usuarios.CriadoPor', $idUser);
+    //    $this->db->where('Usuarios.CriadoPor', $idUser);
 
         $this->db->limit($page, $segment);
         $query = $this->db->get();
