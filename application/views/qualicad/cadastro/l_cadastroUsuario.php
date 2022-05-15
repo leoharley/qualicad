@@ -55,7 +55,7 @@
                     <th>Data inativo</th> -->
                     <?php echo 'usuário logado: ' .$this->session->userdata('userId');?>
                     <?php echo 'criado por:' .$registrosUsuarios[0]->CriadoPor; ?>
-                    <?php if ($this->session->userdata('userId') != $registrosUsuarios[0]->CriadoPor) { echo '<th>Ações</th>'; } ?>
+                    <?php if ($this->session->userdata('userId') == $registrosUsuarios[0]->CriadoPor) { echo '<th>Ações</th>'; } ?>
                   </tr>
                 </thead>
                 <tbody>
