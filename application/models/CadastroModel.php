@@ -47,7 +47,7 @@ class CadastroModel extends CI_Model
         }
         $this->db->where('UsuEmp.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('Usuarios.Deletado !=', 'S');
-        $this->db->where('Usuarios.Id_Usuario !=', $idUser);
+    //    $this->db->where('Usuarios.Id_Usuario !=', $idUser);
     //    $this->db->where('Usuarios.CriadoPor', $idUser);
 
         $this->db->limit($page, $segment);
