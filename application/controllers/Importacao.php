@@ -1570,8 +1570,7 @@ class Importacao extends BaseController
         $data['roles'] = $this->user_model->getUserRoles();
 
         $this->global['pageTitle'] = 'QUALICAD : Importação FatItem';
-
-        $data['infoFatItem'] = $this->ImportacaoModel->carregaInfoFatItem($this->session->userdata('IdEmpresa'));
+        
         $data['infoFaturamento'] = $this->ImportacaoModel->carregaInfoFaturamento($this->session->userdata('IdEmpresa'));
         $data['infoLayoutImportacao'] = $this->ImportacaoModel->carregaInfoLayoutImportacaoEmpresa('FatItem',$this->session->userdata('IdEmpresa'));
 
@@ -1584,7 +1583,7 @@ class Importacao extends BaseController
 
         $this->session->set_flashdata('Id_LayoutImportacao', $this->input->post('Tb_Id_LayoutImportacao'));
         $this->session->set_flashdata('Id_Faturamento', $this->input->post('TbFaturamento_Id_Faturamento'));
-        
+
         //    $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
 
         // If import request is submitted
