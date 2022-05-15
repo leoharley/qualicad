@@ -86,8 +86,7 @@
                
                 <div style="margin-top:30px">
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
-                <br/><br/>
-                <span>O arquivo está sendo carregado, aguarde...</span>
+                <span style="margin-top:20px">O arquivo está sendo carregado, aguarde...</span>
                 </div>
 
             </form>
