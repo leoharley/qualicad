@@ -151,7 +151,7 @@ $(function() {
           <span class="sr-only">Toggle navigation</span>
         </a>
         <div class="nome_cliente">
-          <b>Hospital Brasília</b>
+          <b><?= $this->session->userdata('IdEmpresa') ?></b>
         </div>  
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
