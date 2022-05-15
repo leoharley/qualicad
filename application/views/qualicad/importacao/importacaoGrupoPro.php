@@ -84,7 +84,7 @@
                 <br/>                
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                
-                <div id="loader" style="margin-top:30px">
+                <div id="loader" style="display:none;margin-top:30px">
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 <span style="margin-top:20px">O arquivo está sendo carregado, aguarde...</span>
                 </div>
@@ -164,7 +164,7 @@ $(document).ready(function () {
 
         $('#importSubmit').click(
         function () {
-            $('#loader').attr('display', false);
+            $('#loader').attr('display', 'inline-block');
         });   
     });
 </script>
