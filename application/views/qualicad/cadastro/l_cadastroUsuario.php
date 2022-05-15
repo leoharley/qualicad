@@ -97,7 +97,7 @@
                           <a class="btn btn-sm btn-danger deleteUser" href="'.base_url().'apagaUsuario/'.$registro->Id_Usuario.'" data-userid="'.$registro->Id_Usuario.'" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
-                      </td>';?>
+                      </td>'; }?>
                     </tr>
                     <?php
                           }
