@@ -1635,10 +1635,11 @@ class Importacao extends BaseController
                             if (isset($memData['Cd_TUSS'])&&isset($memData['Cd_TISS'])&&isset($memData['TbFaturamento_Id_Faturamento'])) {
                             if ($this->ImportacaoModel->consultaRegraTbFatItemExistente($memData['Cd_TUSS'],$memData['Cd_TISS'],$memData['TbFaturamento_Id_Faturamento'],$this->session->userdata('IdEmpresa')) != null) {
                                 $duplicidade++;
-                                } else {
+                            /*    } else {
                                     $insert = $this->ImportacaoModel->adicionaFatItem($memData);
-                                }
+                                } */
                             }
+                        }
                             // ***** FIM DE VERIFICAÇÕES *****
       
                             if($insert != 0){
