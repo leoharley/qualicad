@@ -90,17 +90,14 @@
                       <td>
                         <?php //echo ($registro->Dt_Inativo != null) ? date("d/m/Y", strtotime($registro->Dt_Inativo)) : ''; ?>
                       </td> -->
-                      <td class="text-center" <?php if ($this->session->userdata('userId') == $registrosUsuarios[0]->CriadoPor) { echo 'display:none!important'; }?>>
-                        <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
-                              <i class="fa fa-history"></i>
-                          </a> -->
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroUsuario/editar/'.$registro->Id_Usuario; ?>" title="Editar">
+                      <?php if ($this->session->userdata('userId') == $registrosUsuarios[0]->CriadoPor) { echo '<td class="text-center">
+                          <a class="btn btn-sm btn-info" href="'.base_url().'cadastroUsuario/editar/'.$registro->Id_Usuario.'" title="Editar">
                               <i class="fa fa-pencil"></i>
                           </a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaUsuario/'.$registro->Id_Usuario; ?>" data-userid="<?php echo $registro->Id_Usuario; ?>" title="Excluir">
+                          <a class="btn btn-sm btn-danger deleteUser" href="'.base_url().'apagaUsuario/'.$registro->Id_Usuario.'" data-userid="'.$registro->Id_Usuario.'" title="Excluir">
                               <i class="fa fa-trash-o"></i>
                           </a>
-                      </td>
+                      </td>';?>
                     </tr>
                     <?php
                           }
