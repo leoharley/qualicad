@@ -84,14 +84,12 @@
                 <br/>                
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                
-                <br/>
-                <div>
+                <div style="margin-top:30px">
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
-                <br/>
+                <br/><br/>
                 <span>O arquivo está sendo carregado, aguarde...</span>
                 </div>
-                <br/>
-                
+
             </form>
         </div>
         
