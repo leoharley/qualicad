@@ -704,6 +704,83 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
+    function consultaRegraTbGrupoProExistente($CdGrupoPro, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbGrupoPro as GrupoPro');
+        $this->db->where('GrupoPro.CdGrupoPro', $CdGrupoPro);
+        $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('GrupoPro.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function consultaRegraTbProFatExistente($CodProFat, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbProFat as ProFat');
+        $this->db->where('ProFat.CodProFat', $CodProFat);
+        $this->db->where('ProFat.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('ProFat.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function consultaRegraTbTUSSExistente($TbProFat_Cd_ProFat, $TbConvenio_Id_Convenio, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbTUSS as TUSS');
+        $this->db->where('TUSS.TbProFat_Cd_ProFat', $TbProFat_Cd_ProFat);
+        $this->db->where('TUSS.TbConvenio_Id_Convenio', $TbConvenio_Id_Convenio);
+        $this->db->where('TUSS.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('TUSS.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function consultaRegraTbExcValoresExistente($Cd_TUSS, $Cd_ProFat, $CD_Convenio, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbExcValores as ExcValores');
+        $this->db->where('ExcValores.Cd_TUSS', $Cd_TUSS);
+        $this->db->where('ExcValores.Cd_ProFat', $Cd_ProFat);
+        $this->db->where('ExcValores.CD_Convenio', $CD_Convenio);
+        $this->db->where('ExcValores.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('ExcValores.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function consultaRegraTbProdutoExistente($Cd_Produto, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_Produto as Produto');
+        $this->db->where('Produto.Cd_Produto', $Cd_Produto);
+        $this->db->where('Produto.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('Produto.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+    
+    function consultaRegraTbProducaoExistente($TbProFat_Cd_ProFat, $Dt_Lancamento, $TbPlano_Id_Plano, $IdEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('Tb_Producao as Producao');
+        $this->db->where('Producao.TbProFat_Cd_ProFat', $TbProFat_Cd_ProFat);
+        $this->db->where('Producao.Dt_Lancamento', $Dt_Lancamento);
+        $this->db->where('Producao.TbPlano_Id_Plano', $TbPlano_Id_Plano);
+        $this->db->where('Producao.TbEmpresa_Id_Empresa', $IdEmpresa);
+        $this->db->where('Producao.Deletado !=', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 }
 
   

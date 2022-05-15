@@ -69,7 +69,7 @@ class Importacao extends BaseController
             
             // Validate submitted form data
             if($this->form_validation->run() == true){
-                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
                 
                 // If file uploaded
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
@@ -103,9 +103,17 @@ class Importacao extends BaseController
                                     'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                     'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                     'Tp_Ativo'=> 'S');
-                                   
-
-                                $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
+                                
+                                $insert = 0;
+                                // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                                if (isset($memData['CdGrupoPro'])) {
+                                if ($this->ImportacaoModel->consultaRegraTbGrupoProExistente($memData['CdGrupoPro'],$this->session->userdata('IdEmpresa')) != null) {
+                                    $duplicidade++;
+                                    } else {
+                                        $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);
+                                    }
+                                }                        
+                                // ***** FIM DE VERIFICAÇÕES *****    
                             
                                 if($insert != 0){
                                     $insertCount++;
@@ -127,7 +135,7 @@ class Importacao extends BaseController
                                                 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela GrupoPro importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -220,7 +228,7 @@ class Importacao extends BaseController
 
             // Validate submitted form data
             if($this->form_validation->run() == true){
-                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
 
                 // If file uploaded
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
@@ -254,8 +262,17 @@ class Importacao extends BaseController
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
-
-                            $insert = $this->ImportacaoModel->adicionaProFat($memData);
+                            
+                            $insert = 0;
+                            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                            if (isset($memData['CodProFat'])) {
+                            if ($this->ImportacaoModel->consultaRegraTbProFatExistente($memData['CodProFat'],$this->session->userdata('IdEmpresa')) != null) {
+                                $duplicidade++;
+                                } else {
+                                    $insert = $this->ImportacaoModel->adicionaProFat($memData);
+                                }
+                            }                        
+                            // ***** FIM DE VERIFICAÇÕES *****    
 
                             if($insert != 0){
                                 $insertCount++;
@@ -277,7 +294,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela ProFat importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -385,7 +402,7 @@ class Importacao extends BaseController
 
             // Validate submitted form data
             if($this->form_validation->run() == true){
-                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
 
                 // If file uploaded
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
@@ -419,7 +436,16 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-                            $insert = $this->ImportacaoModel->adicionaTUSS($memData);
+                            $insert = 0;
+                            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                            if (isset($memData['TbProFat_Cd_ProFat'])&&isset($memData['TbConvenio_Id_Convenio'])) {
+                            if ($this->ImportacaoModel->consultaRegraTbTUSSExistente($memData['TbProFat_Cd_ProFat'],$memData['TbConvenio_Id_Convenio'],$this->session->userdata('IdEmpresa')) != null) {
+                                $duplicidade++;
+                                } else {
+                                    $insert = $this->ImportacaoModel->adicionaTUSS($memData);
+                                }
+                            }                        
+                            // ***** FIM DE VERIFICAÇÕES *****
 
                             if($insert != 0){
                                 $insertCount++;
@@ -450,7 +476,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela TUSS importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -804,7 +830,7 @@ class Importacao extends BaseController
 
             // Validate submitted form data
             if($this->form_validation->run() == true){
-                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
 
                 // If file uploaded
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
@@ -839,8 +865,16 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-
-                            $insert = $this->ImportacaoModel->adicionaProduto($memData);
+                            $insert = 0;
+                            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                            if (isset($memData['Cd_Produto'])) {
+                            if ($this->ImportacaoModel->consultaRegraTbProdutoExistente($memData['Cd_Produto'],$this->session->userdata('IdEmpresa')) != null) {
+                                $duplicidade++;
+                                } else {
+                                    $insert = $this->ImportacaoModel->adicionaProduto($memData);
+                                }
+                            }                        
+                            // ***** FIM DE VERIFICAÇÕES *****
 
                             if($insert != 0){
                                 $insertCount++;
@@ -862,7 +896,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Produto importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -941,7 +975,7 @@ class Importacao extends BaseController
 
             // Validate submitted form data
             if($this->form_validation->run() == true){
-                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
 
                 // If file uploaded
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
@@ -975,9 +1009,17 @@ class Importacao extends BaseController
                                 'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
-
-
-                            $insert = $this->ImportacaoModel->adicionaProducao($memData);
+                            
+                            $insert = 0;
+                            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                            if (isset($memData['TbProFat_Cd_ProFat'])&&isset($memData['Dt_Lancamento'])&&isset($memData['TbPlano_Id_Plano'])) {
+                            if ($this->ImportacaoModel->consultaRegraTbProducaoExistente($memData['TbProFat_Cd_ProFat'],$memData['Dt_Lancamento'],$memData['TbPlano_Id_Plano'],$this->session->userdata('IdEmpresa')) != null) {
+                                $duplicidade++;
+                                } else {
+                                    $insert = $this->ImportacaoModel->adicionaProducao($memData);
+                                }
+                            }                        
+                            // ***** FIM DE VERIFICAÇÕES *****
 
                             if($insert != 0){
                                 $insertCount++;
@@ -999,7 +1041,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Producao importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -1455,7 +1497,7 @@ class Importacao extends BaseController
 
             // Validate submitted form data
             if($this->form_validation->run() == true){
-                $insertCount = $updateCount = $rowCount = $notAddCount = 0;
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
 
                 // If file uploaded
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
@@ -1489,8 +1531,16 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-
-                            $insert = $this->ImportacaoModel->adicionaExcecaoValores($memData);
+                            $insert = 0;
+                            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                            if (isset($memData['Cd_TUSS'])&&isset($memData['Cd_ProFat'])&&isset($memData['CD_Convenio'])) {
+                            if ($this->ImportacaoModel->consultaRegraTbExcValoresExistente($memData['Cd_TUSS'],$memData['Cd_ProFat'],$memData['CD_Convenio'],$this->session->userdata('IdEmpresa')) != null) {
+                                $duplicidade++;
+                                } else {
+                                    $insert = $this->ImportacaoModel->adicionaExcecaoValores($memData);
+                                }
+                            }                        
+                            // ***** FIM DE VERIFICAÇÕES *****
 
                             if($insert != 0){
                                 $insertCount++;
@@ -1512,7 +1562,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Exceção Valores importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.')';
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
