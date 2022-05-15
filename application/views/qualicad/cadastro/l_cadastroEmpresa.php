@@ -57,7 +57,7 @@
                   <!--  <th>Data ativa</th>
                     <th>Data inativa</th> -->
                     <th>Empresa ativa?</th>
-                    <?php if ($this->session->userdata('userId') == $registrosEmpresas[0]->CriadoPor) { echo '<th>Ações</th>'; } ?>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>  
@@ -105,14 +105,15 @@
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
                       <td class="text-center">
-                        <?php if ($this->session->userdata('userId') == $registrosEmpresas[0]->CriadoPor) { echo '<td class="text-center">
-                            <a class="btn btn-sm btn-info" href="'.base_url().'cadastroEmpresa/editar/'.$registro->Id_Empresa.'" title="Editar">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                            <a class="btn btn-sm btn-danger deleteUser" href="'.base_url().'apagaEmpresa/'.$registro->Id_Empresa.'" data-userid="'.$registro->Id_Usuario.'" title="Excluir">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
-                        </td>'; }?>                          
+                        <!--  <a class="btn btn-sm btn-primary" href="<?php //echo base_url().'log-history/'.$record->userId; ?>" title="Log geçmişi">
+                              <i class="fa fa-history"></i>
+                          </a> -->
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'cadastroEmpresa/editar/'.$registro->Id_Empresa; ?>" title="Editar">
+                              <i class="fa fa-pencil"></i>
+                          </a>
+                          <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url().'apagaEmpresa/'.$registro->Id_Empresa; ?>" data-userid="<?php echo $registro->Id_Empresa; ?>" title="Excluir">
+                              <i class="fa fa-trash-o"></i>
+                          </a>
                       </td>
                     </tr>
                     <?php
