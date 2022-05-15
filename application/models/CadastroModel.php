@@ -181,8 +181,8 @@ function listaEmpresas($idUser, $idEmpresa, $searchText = '', $page, $segment)
                         OR  Empresas.CNPJ  LIKE '%".$searchText."%')";
         $this->db->where($likeCriteria);
     }
-    $likeCriteria2 = "(Empresas.CriadoPor = '.$idUser.'
-                        OR  Empresas.Id_Empresa = '.$idEmpresa.')";
+    $likeCriteria2 = "(Empresas.CriadoPor = ''.$idUser.''
+                        OR  Empresas.Id_Empresa = ''.$idEmpresa.'')";
     $this->db->where($likeCriteria2);
     $this->db->where('Empresas.Deletado !=', 'S');
     $this->db->limit($page, $segment);
