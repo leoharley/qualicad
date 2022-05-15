@@ -55,7 +55,7 @@
                     <th>Data inativo</th> -->
                     <?php echo 'usuário logado: ' .$this->session->userdata('userId');?>
                     <?php echo 'criado por:' .$registrosUsuarios[0]->CriadoPor; ?>
-                    <th <?php if ($this->session->userdata('userId') != '55') { echo 'style=\"display:none!important\"';}?>>Açõs</th>
+                    <th style="display:none!important">Açõs</th>
                   </tr>
                 </thead>
                 <tbody>
