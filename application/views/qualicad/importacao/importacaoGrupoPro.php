@@ -82,6 +82,8 @@
                 <br/>
                 <input type="file" name="file" />
                 <br/>
+                <img src="<?php echo base_url(); ?>assets/images/loading.gif">
+                <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
             </form>
         </div>
