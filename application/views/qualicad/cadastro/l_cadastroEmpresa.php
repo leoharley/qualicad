@@ -105,7 +105,7 @@
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
                       <td class="text-center">
-                        <?php if ($this->session->userdata('userId') == $registrosUsuarios[0]->CriadoPor) { echo '<td class="text-center">
+                        <?php if ($this->session->userdata('userId') == $registrosEmpresas[0]->CriadoPor) { echo '<td class="text-center">
                             <a class="btn btn-sm btn-info" href="'.base_url().'cadastroEmpresa/editar/'.$registro->Id_Empresa.'" title="Editar">
                                 <i class="fa fa-pencil"></i>
                             </a>
