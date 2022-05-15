@@ -88,7 +88,7 @@
                             foreach ($infoFaturamento as $faturamento)
                             {
                                 ?>
-                                <option value="<?php echo $faturamento->Id_Faturamento  ?>">
+                                <option value="<?php echo $faturamento->Id_Faturamento  ?>" <?php if ($faturamento->Id_Faturamento  == $this->session->flashdata('Id_Faturamento')) { echo 'selected'; } ?>>
                                     <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
                                 </option>
                                 <?php

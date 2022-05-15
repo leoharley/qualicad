@@ -1583,7 +1583,8 @@ class Importacao extends BaseController
         $memData = array();
 
         $this->session->set_flashdata('Id_LayoutImportacao', $this->input->post('Tb_Id_LayoutImportacao'));
-
+        $this->session->set_flashdata('Id_Faturamento', $this->input->post('TbFaturamento_Id_Faturamento'));
+        
         //    $DePara = $this->ImportacaoModel->consultaDePara('GrupoPro',$this->session->userdata('IdEmpresa'));
 
         // If import request is submitted
