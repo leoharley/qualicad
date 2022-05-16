@@ -1299,7 +1299,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
         return $query->result();
     }
 
-    function carregaInfoRegraGruProRegra($idRegra, $IdEmpresa, $searchText = '', $page, $segment)
+    function carregaInfoRegraGruProRegra($idRegra, $IdEmpresa, $page, $segment)
     {
         $this->db->select('GrupoPro.CdGrupoPro, GrupoPro.Tp_GrupoPro, GrupoPro.CodGrupo, GrupoPro.Ds_GrupoPro, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
         $this->db->from('Tb_RegraGruPro as RegraGruPro');
