@@ -1746,10 +1746,12 @@ class Importacao extends BaseController
                             if ($this->ImportacaoModel->consultaRegraTbFatItemExistente($memData['Cd_TUSS'],$memData['Cd_TISS'],$memData['TbFaturamento_Id_Faturamento'],$this->session->userdata('IdEmpresa')) != null) {
                                 $duplicidade++;
                                 } else {
-                                    $insert = $this->ImportacaoModel->adicionaFatItem($memData);
+                                //    $insert = $this->ImportacaoModel->adicionaFatItem($memData);
                                 }
                             }                        
                             // ***** FIM DE VERIFICAÇÕES *****
+
+                            $insert = $this->ImportacaoModel->adicionaFatItem($memData);
       
                             if($insert != 0){
                                 $insertCount++;
