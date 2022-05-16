@@ -470,7 +470,9 @@ class Importacao extends BaseController
                         $i = 0;
                         foreach ($errosDeChave as $row) {
                         if ($i < sizeof($errosDeChave) ) { 
-                            $temp .= $row . ' - ';
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
                         }
                         $i++;
                         }
