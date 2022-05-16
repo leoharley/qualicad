@@ -1740,16 +1740,18 @@ class Importacao extends BaseController
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
-                            $insert = 0;
-                            $duplicidade_flag = false;
+                        /*    $insert = 0;
                             // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
-                                if ($this->ImportacaoModel->consultaRegraTbFatItemExistente($memData['Cd_TUSS'], $memData['Cd_TISS'], $memData['TbFaturamento_Id_Faturamento'], $this->session->userdata('IdEmpresa')) != null) {
-                                    $duplicidade++;
-                                    $duplicidade_flag = true;
+                            if (isset($memData['Cd_TUSS'])&&isset($memData['Cd_TISS'])&&isset($memData['TbFaturamento_Id_Faturamento'])) {
+                            if ($this->ImportacaoModel->consultaRegraTbFatItemExistente($memData['Cd_TUSS'],$memData['Cd_TISS'],$memData['TbFaturamento_Id_Faturamento'],$this->session->userdata('IdEmpresa')) != null) {
+                                $duplicidade++;
+                                } else {
+                                    $insert = $this->ImportacaoModel->adicionaFatItem($memData);
                                 }
+                            } */
                             // ***** FIM DE VERIFICAÇÕES *****
 
-                            if (!$duplicidade_flag) { $insert = $this->ImportacaoModel->adicionaFatItem($memData); }
+                            $insert = $this->ImportacaoModel->adicionaFatItem($memData);
 
                             if($insert != 0){
                                 $insertCount++;
