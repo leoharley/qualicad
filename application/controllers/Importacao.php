@@ -467,8 +467,12 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
-                        foreach ($errosDeChave as $row) {  
-                        $temp .= $row . ' - ';
+                        $i = 0;
+                        foreach ($errosDeChave as $row) {
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ',';
+                        }
+                        $i++;
                         }
     
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
