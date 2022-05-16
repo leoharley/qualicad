@@ -1205,9 +1205,19 @@ class Principal extends BaseController
                 $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
                 $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
 
-                $data['infoRegraGruPro'] = $this->PrincipalModel->carregaInfoRegraGruProRegra($IdRegra);
+               // $data['infoRegraGruPro'] = $this->PrincipalModel->carregaInfoRegraGruProRegra($IdRegra);
 
-                var_dump($data['infoRegraGruPro']);exit;
+                $searchText = $this->security->xss_clean($this->input->post('searchText'));
+                $data['searchText'] = $searchText;
+
+                $this->load->library('pagination');
+
+                $count = $this->CadastroModel->userListingCount($searchText);
+
+                $returns = $this->paginationCompress ( "cadastroUsuario/listar", $count, 100 );
+
+                $data['infoRegraGruPro'] = $this->PrincipalModel->carregaInfoRegraGruProRegra($IdRegra, $this->session->userdata('IdEmpresa'), $returns["page"], $returns["segment"]);
+
 
                 $this->global['pageTitle'] = 'QUALICAD : Editar regra';      
                 $this->loadViews("qualicad/principal/c_principalRegra", $this->global, $data, NULL);
