@@ -469,12 +469,12 @@ class Importacao extends BaseController
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
                         $i = 0;
                         foreach ($errosDeChave as $row) {
+                        $i++;
                         if ($i < sizeof($errosDeChave) ) { 
                             $temp .= $row . ', ';
                         } else {
                             $temp .= $row;
                         }
-                        $i++;
                         }
     
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
