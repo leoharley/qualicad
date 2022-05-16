@@ -1749,7 +1749,7 @@ class Importacao extends BaseController
                                 $duplicidade_flag = true;
                             }                        
                             // ***** FIM DE VERIFICAÇÕES *****
-                            
+
                             if (!$duplicidade_flag) { $insert = $this->ImportacaoModel->adicionaFatItem($memData); }
 
                             if($insert != 0){
