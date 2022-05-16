@@ -127,8 +127,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -286,8 +292,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -612,8 +624,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -749,8 +767,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -894,8 +918,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -1039,8 +1069,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -1176,8 +1212,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -1415,8 +1457,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -1560,8 +1608,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
@@ -1711,8 +1765,14 @@ class Importacao extends BaseController
                         $temp = null;
 
                         /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
                         foreach ($errosDeChave as $row) {
-                            $temp .= $row . ' - ';
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
                         }
 
                         $this->session->set_flashdata('errosDeChaveMsg', $temp);
