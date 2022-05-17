@@ -1841,7 +1841,7 @@ class Importacao extends BaseController
 
             if ($tpTela == 'listar') {
 
-                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                if ($this->session->userdata('isAdmin') != 'S')
                     {             
                     redirect('telaNaoAutorizada');
                     }
@@ -1867,7 +1867,7 @@ class Importacao extends BaseController
             }
             else if ($tpTela == 'cadastrar') {
 
-                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                if ($this->session->userdata('isAdmin') != 'S')
                     {             
                     redirect('telaNaoAutorizada');
                     }                
@@ -1877,7 +1877,7 @@ class Importacao extends BaseController
             }
             else if ($tpTela == 'editar') {
 
-                if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+                if ($this->session->userdata('isAdmin') != 'S')
                     {             
                     redirect('telaNaoAutorizada');
                     }
