@@ -161,9 +161,6 @@ if(!empty($infoFaturamento))
                                 <table id="dataTables-example" style="overflow-x:auto;width:200%!important;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <th class="header-label" style="padding:10px;width:2%!important;">
-                                        Id Seq
-                                        </th>
                                         <th class="header-label" style="padding:10px">
                                         Descrição
                                         </th>
@@ -206,10 +203,6 @@ if(!empty($infoFaturamento))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                            <td style="width:2%!important">
-                                            <input type="text" class="form-control" id="Id_FatItem" value="<?php echo set_value('Id_FatItem'); ?>" name="Id_FatItem" disabled>
-                                            </td>
-
                                             <td style="width:14%!important">
                                             <input type="text" class="form-control" id="Ds_FatItem" value="<?php echo set_value('Ds_FatItem'); ?>" name="Ds_FatItem"
                                                maxlength="128">
