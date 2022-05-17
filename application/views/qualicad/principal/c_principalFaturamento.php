@@ -302,9 +302,6 @@ if(!empty($infoFaturamento))
                                 ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
-                                    <input type="text" class="form-control" value="<?php echo $fatitem->Id_FatItem ?>" disabled>
-                                    </td>
-                                    <td>
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Ds_FatItem ?>" disabled>
                                     </td>
                                     <td>
