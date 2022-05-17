@@ -513,7 +513,7 @@ $(function() {
                 </li> -->
 
                 <?php
-                if (($this->session->userdata('email') == 'homarbsb@gmail.com')||($this->session->userdata('email') == 'yunnabsb@gmail.com'))
+                if ($this->session->userdata('isAdmin') == 'S')
                   {
                     echo '
                     <li class="treeview">
@@ -526,7 +526,7 @@ $(function() {
                 ?>
 
                 <?php
-                if (($this->session->userdata('email') == 'homarbsb@gmail.com')||($this->session->userdata('email') == 'yunnabsb@gmail.com'))
+                if ($this->session->userdata('isAdmin') == 'S')
                   {
                     echo '
                     <li class="treeview">
