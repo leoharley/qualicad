@@ -286,7 +286,7 @@ if(!empty($infoFaturamento))
                                             <input type="text" class="form-control" value="<?php echo set_value('Ds_Unidade'); ?>" id="Ds_Unidade" name="Ds_Unidade">
                                             </td>
 
-                                            <td style="width:2%!important">
+                                            <td style="width:3%!important">
                                             <select class="form-control" id="Tp_Ativo_FatItem" name="Tp_Ativo_FatItem">
                                             <option value="S">Sim</option>
                                             <option value="N">Não</option>
