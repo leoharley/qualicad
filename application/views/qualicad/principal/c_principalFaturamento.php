@@ -241,12 +241,12 @@ if(!empty($infoFaturamento))
                                                maxlength="11">
                                             </td>
 
-                                            <td style="width:5%!important">
+                                            <td style="width:4%!important">
                                             <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Total'); ?>" id="Vl_Total" name="Vl_Total"
                                                maxlength="11">
                                             </td>
 
-                                            <td style="width:5%!important">
+                                            <td style="width:4%!important">
                                             <input type="text" class="form-control valor" value="<?php echo set_value('Vl_Filme'); ?>" id="Vl_Filme" name="Vl_Filme"
                                                maxlength="11">
                                             </td>
