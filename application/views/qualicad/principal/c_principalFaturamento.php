@@ -278,7 +278,7 @@ if(!empty($infoFaturamento))
                                             <input type="date" class="form-control" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                             </td>                                            
 
-                                            <td>
+                                            <td style="width:4%!important">
                                             <input type="text" class="form-control" value="<?php echo set_value('Qt_Embalagem'); ?>" id="Qt_Embalagem" name="Qt_Embalagem">
                                             </td>
 
