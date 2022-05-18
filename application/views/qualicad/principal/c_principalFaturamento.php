@@ -222,7 +222,7 @@ if(!empty($infoFaturamento))
                                             </select>                                            
                                             </td>
 
-                                            <td>
+                                            <td style="width:2%!important">
                                             <input type="text" class="form-control" value="<?php echo set_value('Cd_TISS'); ?>" id="Cd_TISS" name="Cd_TISS">
                                             </td>
 
