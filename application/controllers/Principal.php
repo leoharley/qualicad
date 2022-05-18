@@ -2196,10 +2196,10 @@ class Principal extends BaseController
     function apagaIndiceGrupoPro_Sub()
     {
 
-        if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Excluir == 'N')
+    /*    if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Excluir == 'N')
         {
             redirect('acaoNaoAutorizada');
-        }
+        } */
 
         $IdIndice = $this->uri->segment(3);
 
@@ -3054,9 +3054,7 @@ class Principal extends BaseController
 
         $IdFaturamentoItem = $this->uri->segment(2);
 
-        $infoFaturamentoItem = array('Deletado'=>'S', 'AtualizadoPor'=>$this->vendorId, 'Dt_Atualizacao'=>date('Y-m-d H:i:s'));
-
-        $resultado = $this->PrincipalModel->apagaFaturamentoItem($infoFaturamentoItem, $IdFaturamentoItem);
+        $resultado = $this->PrincipalModel->apagaFaturamentoItem($IdFaturamentoItem);
 
         if ($resultado > 0) {
             // echo(json_encode(array('status'=>TRUE)));
@@ -3080,6 +3078,44 @@ class Principal extends BaseController
         }
         redirect('principalFaturamentoItem/listar');
     }
+
+    function apagaFaturamentoItem_Sub()
+    {
+
+    /*    if (!$this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaConvenio'))
+        {
+            redirect('acaoNaoAutorizada');
+        } */
+
+        $Id_Faturamento = $this->uri->segment(3);
+
+        $Id_FatItem = $this->uri->segment(2);        
+
+        $resultado = $this->PrincipalModel->apagaFaturamentoItem($Id_FatItem);
+
+        if ($resultado > 0) {
+            // echo(json_encode(array('status'=>TRUE)));
+
+            $process = 'Exclusão de Faturamento Item';
+            $processFunction = 'Principal/apagaFaturamentoItem_Sub';
+            $this->logrecord($process,$processFunction);
+
+            if ($resultado === 1451) {
+                $this->session->set_flashdata('error', 'Existe associação ativa');
+               }
+            else {
+                $this->session->set_flashdata('success', 'Faturamento Item deletado com sucesso');
+               }
+
+        }
+        else
+        {
+            //echo(json_encode(array('status'=>FALSE)));
+            $this->session->set_flashdata('error', 'Falha em excluir faturamento item');
+        }
+        redirect('principalFaturamento/editar/'.$Id_Faturamento);
+    }
+
     // FIM DAS FUNÇÕES DA TELA DE FATURAMENTO ITEM
 
 
@@ -3953,10 +3989,10 @@ class Principal extends BaseController
     function apagaRegraGruPro_Sub()
     {
 
-        if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Excluir == 'N')
+    /*    if ($this->PermissaoModel->permissaoAcaoExcluir($this->session->userdata('IdUsuEmp'),'TelaRegraGruPro')[0]->Excluir == 'N')
         {
             redirect('acaoNaoAutorizada');
-        }
+        } */
 
         $IdRegra = $this->uri->segment(3);
 

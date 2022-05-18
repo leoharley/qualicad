@@ -236,6 +236,7 @@ $route['apagaFracaoSimproBra/:any'] = "principal/apagaFracaoSimproBra/$1";
 $route['adicionaFaturamentoItem'] = "principal/adicionaFaturamentoItem";
 $route['editaFaturamentoItem'] = "principal/editaFaturamentoItem";
 $route['apagaFaturamentoItem/:any'] = "principal/apagaFaturamentoItem/$1";
+$route['apagaFaturamentoItem_Sub/:any/:any'] = "principal/apagaFaturamentoItem_Sub/$1/$2";
 
 /*********** ROUTES PARA AÇÕES DA TELA DE UNIDADE *******************/
 $route['adicionaUnidade'] = "principal/adicionaUnidade";
