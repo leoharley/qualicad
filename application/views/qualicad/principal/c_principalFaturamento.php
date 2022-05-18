@@ -162,14 +162,14 @@ if(!empty($infoFaturamento))
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
+                                        Cd_TUSS
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Cd_TISS
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Descrição
                                         </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Início da vigência
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Fim da vigência
-                                        </th>                                        
                                         <th class="header-label" style="padding:10px">
                                         Valor do honorário
                                         </th>
@@ -186,10 +186,10 @@ if(!empty($infoFaturamento))
                                         Cd_PorteMedico
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Cd_TUSS
+                                        Início da vigência
                                         </th>
                                         <th class="header-label" style="padding:10px">
-                                        Cd_TISS
+                                        Fim da vigência
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Qt_Embalagem
@@ -203,17 +203,32 @@ if(!empty($infoFaturamento))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
+                                            <td>
+                                            <select class="form-control" id="Cd_TUSS" name="Cd_TUSS">
+                                            <option value="" disabled selected>SELECIONE</option>
+                                            <?php
+                                            if(!empty($infoTUSS))
+                                            {
+                                                foreach ($infoTUSS as $tuss)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $tuss->Cd_Tuss ?>">
+                                                    <?php echo $tuss->Cd_Tuss .' - '.$tuss->Ds_Tuss ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                            </select>                                            
+                                            </td>
+
+                                            <td>
+                                            <input type="text" class="form-control" value="<?php echo set_value('Cd_TISS'); ?>" id="Cd_TISS" name="Cd_TISS">
+                                            </td>
+
                                             <td style="width:14%!important">
                                             <input type="text" class="form-control" id="Ds_FatItem" value="<?php echo set_value('Ds_FatItem'); ?>" name="Ds_FatItem"
                                                maxlength="128">
-                                            </td>
-
-                                            <td style="width:4%!important">
-                                            <input type="date" class="form-control" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
-                                            </td>
-
-                                            <td style="width:4%!important">
-                                            <input type="date" class="form-control" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
                                             </td>
 
                                             <td style="width:3%!important">
@@ -255,28 +270,13 @@ if(!empty($infoFaturamento))
                                             </select>                                            
                                             </td>
 
-                                            <td>
-                                            <select class="form-control" id="Cd_TUSS" name="Cd_TUSS">
-                                            <option value="" disabled selected>SELECIONE</option>
-                                            <?php
-                                            if(!empty($infoTUSS))
-                                            {
-                                                foreach ($infoTUSS as $tuss)
-                                                {
-                                                    ?>
-                                                <option value="<?php echo $tuss->Cd_Tuss ?>">
-                                                    <?php echo $tuss->Cd_Tuss .' - '.$tuss->Ds_Tuss ?>
-                                                </option>
-                                                <?php
-                                                }
-                                            }
-                                            ?>
-                                            </select>                                            
+                                            <td style="width:4%!important">
+                                            <input type="date" class="form-control" value="<?php echo set_value('Dt_IniVigencia'); ?>" id="Dt_IniVigencia" name="Dt_IniVigencia">
                                             </td>
 
-                                            <td>
-                                            <input type="text" class="form-control" value="<?php echo set_value('Cd_TISS'); ?>" id="Cd_TISS" name="Cd_TISS">
-                                            </td>
+                                            <td style="width:4%!important">
+                                            <input type="date" class="form-control" value="<?php echo set_value('Dt_FimVigencia'); ?>" id="Dt_FimVigencia" name="Dt_FimVigencia">
+                                            </td>                                            
 
                                             <td>
                                             <input type="text" class="form-control" value="<?php echo set_value('Qt_Embalagem'); ?>" id="Qt_Embalagem" name="Qt_Embalagem">
@@ -302,13 +302,13 @@ if(!empty($infoFaturamento))
                                 ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_Tuss. '-' .$fatitem->Ds_Tuss ?>" disabled>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_TISS ?>" disabled>
+                                    </td>
+                                    <td>
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Ds_FatItem ?>" disabled>
-                                    </td>
-                                    <td>
-                                    <input type="text" class="form-control" value="<?php echo $fatitem->Dt_IniVigencia ?>" disabled>
-                                    </td>
-                                    <td>
-                                    <input type="text" class="form-control" value="<?php echo $fatitem->Dt_FimVigencia ?>" disabled>
                                     </td>
                                     <td>
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Vl_Honorário ?>" disabled>
@@ -326,10 +326,10 @@ if(!empty($infoFaturamento))
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Cd_PorteMedico. '-' .$fatitem->Ds_PorteMedico ?>" disabled>
                                     </td>
                                     <td>
-                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_Tuss. '-' .$fatitem->Ds_Tuss ?>" disabled>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Dt_IniVigencia ?>" disabled>
                                     </td>
                                     <td>
-                                    <input type="text" class="form-control" value="<?php echo $fatitem->Cd_TISS ?>" disabled>
+                                    <input type="text" class="form-control" value="<?php echo $fatitem->Dt_FimVigencia ?>" disabled>
                                     </td>
                                     <td>
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Qt_Embalagem ?>" disabled>
