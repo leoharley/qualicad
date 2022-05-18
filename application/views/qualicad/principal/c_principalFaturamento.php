@@ -344,8 +344,6 @@ if(!empty($infoFaturamento))
                                     <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalFaturamentoItem/editar/'.$fatitem->Id_FatItem; ?>" title="Editar">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    </td>
-                                    <td>
                                     <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaFaturamentoItem_Sub/'.$fatitem->Id_FatItem.'/'.$Id_Faturamento; ?>" title="Excluir">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
