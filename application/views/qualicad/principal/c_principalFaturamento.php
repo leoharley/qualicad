@@ -345,6 +345,11 @@ if(!empty($infoFaturamento))
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     </td>
+                                    <td>
+                                    <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaFaturamentoItem_Sub/'.$fatitem->Id_FatItem.'/'.$Id_Faturamento; ?>" title="Excluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                    </td>
                                 </tr>
                                     <?php
                                 }
