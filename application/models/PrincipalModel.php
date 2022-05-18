@@ -885,7 +885,7 @@ function carregaInfoRegraProibicaoEmpresa($idEmpresa)
         return TRUE;
     }
 
-    function apagaFaturamentoItem($info,$id)
+    function apagaFaturamentoItem($id)
     {
         $this->db->where('Id_FatItem', $id);
         $res = $this->db->delete('TbFatItem');
