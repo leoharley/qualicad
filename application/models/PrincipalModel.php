@@ -1214,8 +1214,9 @@ function buscaProFat($Ds_ProFat)
     {
         $this->db->select('ProFat.CodProFat as id, ProFat.Ds_ProFat as text');
         $this->db->from('TbProFat as ProFat');
-        $this->db->like('ProFat.Ds_ProFat', $Ds_ProFat['term']);
-        $this->db->like('ProFat.CodProFat', $Ds_ProFat['term']);
+        $likeCriteria = "(ProFat.Ds_ProFat LIKE '%".$Ds_ProFat['term']."%')";
+        $this->db->where($likeCriteria);
+
         $query = $this->db->get();
 
         return $query->result();
