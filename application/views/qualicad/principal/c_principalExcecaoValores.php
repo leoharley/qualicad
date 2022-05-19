@@ -267,9 +267,8 @@ if(!empty($infoExcecaoValores))
           dataType: 'json',
           delay: 250,
           processResults: function (data) {
-
-            console.log ('teste');
             return {
+            console.log ('teste');
               results: data
             };
           },
