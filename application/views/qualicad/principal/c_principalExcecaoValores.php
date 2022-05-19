@@ -276,7 +276,7 @@ if(!empty($infoExcecaoValores))
                     },
                     results: function (data, page) {
                         var more = (page * 10) < data.total;
-                        console.log('aqui');
+                        console.log(data.results);
                         return {results: data.results, more: more};
                     }
                 },
