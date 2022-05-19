@@ -264,7 +264,7 @@ if(!empty($infoExcecaoValores))
                 placeholder: "Buscar",
                 minimumInputLength: 3,
                 ajax: {
-                    url:"/echo/json/",
+                    url:"/buscaProFat",
                     dataType: 'json',
                     quietMillis: 100,
                     data: function (term, page) {
