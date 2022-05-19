@@ -265,7 +265,7 @@ if(!empty($infoExcecaoValores))
                     inputTooShort: function(args) {
                     // args.minimum is the minimum required length
                     // args.input is the user-typed text
-                    return "Digite para localizar";
+                    return "Digite código ou descrição para localizar";
                     },
                     inputTooLong: function(args) {
                     // args.maximum is the maximum allowed length
