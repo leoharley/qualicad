@@ -263,14 +263,11 @@ if(!empty($infoExcecaoValores))
         $("#itemName").select2({
                 placeholder: "Buscar",
                 minimumInputLength: 3,
-                language: {
-                    inputTooShort: function() {
-                        return 'Please Add More Text';
-                    },
+                formatInputTooShort: "Please add more text",
                 ajax: {
                     url:"/buscaProFat",
                     dataType: 'json',
-                    quietMillis: 100,                    
+                    quietMillis: 100,
                     data: function (term, page) {
                         return {
                             q: term, //search term
