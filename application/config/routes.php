@@ -247,6 +247,7 @@ $route['apagaUnidade/:any'] = "principal/apagaUnidade/$1";
 $route['adicionaExcecaoValores'] = "principal/adicionaExcecaoValores";
 $route['editaExcecaoValores'] = "principal/editaExcecaoValores";
 $route['apagaExcecaoValores/:any'] = "principal/apagaExcecaoValores/$1";
+$route['buscaProFat'] = "principal/buscaProFat";
 
 $route['principalProibicao'] = "principal/principalProibicao";
 

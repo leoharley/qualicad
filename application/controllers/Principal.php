@@ -3669,6 +3669,11 @@ class Principal extends BaseController
                 }
                 redirect('principalExcecaoValores/listar');
     }
+
+    function buscaProFat()
+    {
+    return $this->PrincipalModel->buscaProFat();
+    }
     // FIM DAS FUNÇÕES DA TELA DE CONVENIO
 
 

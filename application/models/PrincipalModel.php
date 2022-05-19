@@ -1210,6 +1210,16 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
     return $query->result();
 }
 
+function buscaProFat($Ds_ProFat)
+    {
+        $this->db->select('ProFat.Ds_ProFat');
+        $this->db->from('TbProFat as ProFat');
+        $this->db->where("ProFat.Ds_ProFat LIKE '%".$Ds_ProFat."%'");
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 // INICIO DAS CONSULTAS NA TELA DE REGRAGRUPRO
     function listaRegraGruPro($IdEmpresa, $searchText = '', $page, $segment)
     {

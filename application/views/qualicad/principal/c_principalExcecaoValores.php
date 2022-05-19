@@ -195,6 +195,10 @@ if(!empty($infoExcecaoValores))
                                             </td> -->
 
                                             <td>
+                                            <select class="itemName form-control" style="width:500px" name="itemName"></select>
+                                            </td>
+
+                                            <td>
                                             <input type="text" class="form-control required" id="Ds_ExcValores" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_ExcValores') : $Ds_ExcValores ; ?>" name="Ds_ExcValores"
                                             maxlength="13">
                                             </td>
@@ -268,5 +272,22 @@ if(!empty($infoExcecaoValores))
     shortcut.add("ctrl+p", function() {
         document.getElementById('salvarPlano').click();
     });
+
+
+    $('.itemName').select2({
+        placeholder: '--- Select Item ---',
+        ajax: {
+          url: '/buscaProFat',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+        }
+      });
+
 
 </script>
