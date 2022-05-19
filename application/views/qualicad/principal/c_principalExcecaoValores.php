@@ -269,20 +269,17 @@ if(!empty($infoExcecaoValores))
                     quietMillis: 100,
                     data: function (term, page) {
                         return {
-                            json: JSON.stringify(term),
-                            delay: 0.3
+                            q: term, //search term
+                            page_limit: 10, // page size
+                            page: page
                         };
                     },
-                    processResults: function(data) {
-                    return {
-                        results: $.map(data, function(obj) {
+                    processResults: function (response) {
                         return {
-                            id: obj.id,
-                            text: obj.text
+                            results: response
                         };
-                        })
-                    };
-                    }
+                    },
+                    cache: true
                 },
                 escapeMarkup: function (m) { return m; }
             });
