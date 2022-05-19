@@ -22,9 +22,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
   <link href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
 
   <style>
     .error {
@@ -70,7 +67,7 @@
     }
   </style>
   <!-- jQuery 2.1.4 -->
-
+  <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/money-mask/jquery.maskMoney.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/shortcut.js"></script>
@@ -125,6 +122,10 @@ $(function() {
 
       });
 </script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
