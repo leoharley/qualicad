@@ -268,7 +268,7 @@ if(!empty($infoExcecaoValores))
           delay: 250,
           processResults: function (data) {
 
-            console.log (data);
+            console.log ('teste');
             return {
               results: data
             };
