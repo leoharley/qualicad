@@ -259,22 +259,8 @@ if(!empty($infoExcecaoValores))
     $(document).ready(function(){
         $(":input").inputmask();
         $('.valor').maskMoney();
-    });
-    shortcut.add("ctrl+l", function() {
-    document.getElementById('IrLista').click();
-    });   
-    shortcut.add("ctrl+s", function() {
-        document.getElementById('salvarIrLista').click();
-    });
-    shortcut.add("ctrl+a", function() {
-        document.getElementById('salvarMesmaTela').click();
-    });
-    shortcut.add("ctrl+p", function() {
-        document.getElementById('salvarPlano').click();
-    });
 
-
-    $('#itemName').select2({
+        $('#itemName').select2({
         placeholder: '--- Select Item ---',
         ajax: {
           url: '/buscaProFat',
@@ -288,6 +274,20 @@ if(!empty($infoExcecaoValores))
           cache: true
         }
       });
+
+    });
+    shortcut.add("ctrl+l", function() {
+    document.getElementById('IrLista').click();
+    });   
+    shortcut.add("ctrl+s", function() {
+        document.getElementById('salvarIrLista').click();
+    });
+    shortcut.add("ctrl+a", function() {
+        document.getElementById('salvarMesmaTela').click();
+    });
+    shortcut.add("ctrl+p", function() {
+        document.getElementById('salvarPlano').click();
+    });
 
 
 </script>
