@@ -3398,7 +3398,7 @@ class Principal extends BaseController
                 
                 $count = $this->CadastroModel->userListingCount($searchText);
 
-                $returns = $this->paginationCompress ( "principalExcecaoValores/listar", $count, 100 );
+                $returns = $this->paginationCompress ( "principalExcecaoValores/listar", $count, 300 );
                 
                 $data['registroExcecaoValores'] = $this->PrincipalModel->listaExcecaoValores($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
                 
