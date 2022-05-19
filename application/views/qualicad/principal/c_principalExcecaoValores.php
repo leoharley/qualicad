@@ -269,16 +269,17 @@ if(!empty($infoExcecaoValores))
                     quietMillis: 100,
                     data: function (term, page) {
                         return {
-                            q: term, //search term
-                            page_limit: 10, // page size
-                            page: page
+                            json: JSON.stringify(json),
+                            delay: 0.3
                         };
                     },
-                    processResults: function (data) {
-                        console.log('aqui!');
+                    processResults: function(data) {
                     return {
                         results: $.map(data, function(obj) {
-                            return { id: obj.id, text: obj.text };
+                        return {
+                            id: obj.id,
+                            text: obj.text
+                        };
                         })
                     };
                     }
