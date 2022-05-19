@@ -261,6 +261,34 @@ if(!empty($infoExcecaoValores))
         $('.valor').maskMoney();
 
         $("#itemName").select2({
+                language: {
+                    inputTooShort: function(args) {
+                    // args.minimum is the minimum required length
+                    // args.input is the user-typed text
+                    return "Type more stuff";
+                    },
+                    inputTooLong: function(args) {
+                    // args.maximum is the maximum allowed length
+                    // args.input is the user-typed text
+                    return "You typed too much";
+                    },
+                    errorLoading: function() {
+                    return "Error loading results";
+                    },
+                    loadingMore: function() {
+                    return "Loading more results";
+                    },
+                    noResults: function() {
+                    return "No results found";
+                    },
+                    searching: function() {
+                    return "Searching...";
+                    },
+                    maximumSelected: function(args) {
+                    // args.maximum is the maximum number of items the user may select
+                    return "Error loading results";
+                    }
+                },
                 placeholder: "Buscar",
                 minimumInputLength: 3,
                 formatInputTooShort: "Please add more text",
