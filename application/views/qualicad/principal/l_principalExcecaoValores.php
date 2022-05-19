@@ -61,7 +61,6 @@
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Id Seq</th>
                     <th>Convênio</th>
                     <th>TUSS</th>
                     <th>ProFat</th>
@@ -81,9 +80,6 @@
                           {
                       ?>
                     <tr>
-                      <td>
-                        <?php echo $registro->Id_ExcValores ?>
-                      </td>
                       <td>
                         <?php echo $registro->Ds_Convenio ?>
                       </td>
