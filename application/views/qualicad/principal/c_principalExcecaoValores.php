@@ -268,37 +268,12 @@ if(!empty($infoExcecaoValores))
           delay: 250,
           processResults: function (data) {
             return {
-            console.log ('teste');
               results: data
             };
           },
           cache: true
         }
       });
-
-      $("#itemName").select2({
-            placeholder: "Buscar",
-            minimumInputLength: 3,
-            ajax: {
-                url:"/echo/json/",
-                dataType: 'json',
-                quietMillis: 100,
-                data: function (term, page) {
-                    return {
-                        q: term, //search term
-                        page_limit: 10, // page size
-                        page: page
-                    };
-                },
-                results: function (data, page) {
-                    var more = (page * 10) < data.total;
-                    return {results: data.results, more: more};
-                }
-            },
-            escapeMarkup: function (m) { return m; }
-        });
-
-
 
     });
     shortcut.add("ctrl+l", function() {
