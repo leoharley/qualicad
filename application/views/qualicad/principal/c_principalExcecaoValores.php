@@ -269,7 +269,7 @@ if(!empty($infoExcecaoValores))
                     quietMillis: 100,
                     data: function (term, page) {
                         return {
-                            json: JSON.stringify(json),
+                            json: JSON.stringify(term),
                             delay: 0.3
                         };
                     },
