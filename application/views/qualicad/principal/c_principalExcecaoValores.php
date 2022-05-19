@@ -268,15 +268,19 @@ if(!empty($infoExcecaoValores))
                     dataType: 'json',
                     quietMillis: 100,
                     data: function (term, page) {
-                        console.log ('teste'); 
                         return {
                             q: term, //search term
                             page_limit: 10, // page size
                             page: page
                         };
                     },
-                    results: function (data, page) {                              
-                        return {results: data};
+                    processResults: function (data) {
+                        console.log('aqui!');
+                    return {
+                        results: $.map(data, function(obj) {
+                            return { id: obj.id, text: obj.text };
+                        })
+                    };
                     }
                 },
                 escapeMarkup: function (m) { return m; }
