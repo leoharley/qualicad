@@ -3672,7 +3672,7 @@ class Principal extends BaseController
 
     function buscaProFat()
     {
-        return json_encode($this->PrincipalModel->buscaProFat());
+    return json_encode($this->PrincipalModel->buscaProFat($this->input->get("q")));
     }
     // FIM DAS FUNÇÕES DA TELA DE CONVENIO
 
