@@ -160,8 +160,8 @@ if(!empty($infoExcecaoValores))
                                                 foreach ($infoConvenio as $convenio)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $convenio->Id_Convenio ?>" <?php if ($this->uri->segment(2) == 'editar' && $convenio->Id_Convenio == $CD_Convenio) { echo 'selected'; } ?>>
-                                                    <?php echo $convenio->Id_Convenio.' - '.$convenio->Ds_Convenio ?>
+                                                <option value="<?php echo $convenio->Cd_ConvenioERP ?>" <?php if ($this->uri->segment(2) == 'editar' && $convenio->Id_Convenio == $CD_Convenio) { echo 'selected'; } ?>>
+                                                    <?php echo $convenio->Cd_ConvenioERP.' - '.$convenio->Ds_Convenio ?>
                                                 </option>
                                                 <?php
                                                 }
