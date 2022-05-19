@@ -258,22 +258,9 @@ if(!empty($infoExcecaoValores))
 
     $(document).ready(function(){
         $(":input").inputmask();
-        $('.valor').maskMoney();        
-    });
-    shortcut.add("ctrl+l", function() {
-    document.getElementById('IrLista').click();
-    });   
-    shortcut.add("ctrl+s", function() {
-        document.getElementById('salvarIrLista').click();
-    });
-    shortcut.add("ctrl+a", function() {
-        document.getElementById('salvarMesmaTela').click();
-    });
-    shortcut.add("ctrl+p", function() {
-        document.getElementById('salvarPlano').click();
-    });
+        $('.valor').maskMoney();
 
-    $("#itemName").select2({
+        $("#itemName").select2({
                 placeholder: "Buscar",
                 minimumInputLength: 3,
                 ajax: {
@@ -287,14 +274,26 @@ if(!empty($infoExcecaoValores))
                             page: page
                         };
                     },
-                    results: function (data, page) {
-                        var more = (page * 10) < data.total;
-                        console.log(data.results);
-                        return {results: data.results, more: more};
+                    results: function (data, page) {       
+                        return {results: data};
                     }
                 },
                 escapeMarkup: function (m) { return m; }
             });
+
+    });
+    shortcut.add("ctrl+l", function() {
+    document.getElementById('IrLista').click();
+    });   
+    shortcut.add("ctrl+s", function() {
+        document.getElementById('salvarIrLista').click();
+    });
+    shortcut.add("ctrl+a", function() {
+        document.getElementById('salvarMesmaTela').click();
+    });
+    shortcut.add("ctrl+p", function() {
+        document.getElementById('salvarPlano').click();
+    });
 
 
 </script>
