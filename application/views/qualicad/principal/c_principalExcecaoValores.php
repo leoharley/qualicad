@@ -267,6 +267,7 @@ if(!empty($infoExcecaoValores))
                     url:"/buscaProFat",
                     dataType: 'json',
                     quietMillis: 100,
+                    formatInputTooShort: "Please add more text",
                     data: function (term, page) {
                         return {
                             q: term, //search term
