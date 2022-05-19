@@ -195,7 +195,7 @@ if(!empty($infoExcecaoValores))
                                             </td> -->
 
                                             <td>
-                                            <select class="itemName form-control" style="width:500px" name="itemName"></select>
+                                            <select id="itemName" class="form-control" style="width:500px"></select>
                                             </td>
 
                                             <td>
@@ -274,7 +274,7 @@ if(!empty($infoExcecaoValores))
     });
 
 
-    $('.itemName').select2({
+    $('#itemName').select2({
         placeholder: '--- Select Item ---',
         ajax: {
           url: '/buscaProFat',
