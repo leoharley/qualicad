@@ -1120,7 +1120,7 @@ function listaExcecaoValores($IdEmpresa, $searchText = '', $page, $segment)
 {
     $this->db->select('ProFat.Ds_ProFat, TUSS.Ds_Tuss, Convenio.Ds_Convenio, ExcValores.*');
     $this->db->from('TbExcValores as ExcValores');
-    $this->db->join('TbConvenio as Convenio', 'Convenio.Id_Convenio = ExcValores.CD_Convenio','left');
+    $this->db->join('TbConvenio as Convenio', 'Convenio.Cd_ConvenioERP = ExcValores.CD_Convenio','left');
     $this->db->join('TbTUSS as TUSS', 'TUSS.Id_Tuss = ExcValores.Cd_TUSS','left');
     $this->db->join('TbProFat as ProFat', 'ProFat.Cd_ProFat = ExcValores.Cd_ProFat','left');
     if(!empty($searchText)) {
