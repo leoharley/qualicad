@@ -270,7 +270,7 @@ if(!empty($infoExcecaoValores))
                     language: {
                     inputTooShort: function() {
                         return 'Please Add More Text';
-                    },
+                    }
                     data: function (term, page) {
                         return {
                             q: term, //search term
