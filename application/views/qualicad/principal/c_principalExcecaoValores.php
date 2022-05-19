@@ -175,10 +175,10 @@ if(!empty($infoExcecaoValores))
                                                    maxlength="13">
                                             </td>
 
-                                            <td>
+                                         <!--   <td>
                                             <select class="form-control required" id="Cd_ProFat" name="Cd_ProFat" required>
                                             <option value="" disabled selected>SELECIONE</option>
-                                            <?php
+                                            <?php /*
                                             if(!empty($infoProFat))
                                             {
                                                 foreach ($infoProFat as $proFat)
@@ -189,10 +189,10 @@ if(!empty($infoExcecaoValores))
                                                 </option>
                                                 <?php
                                                 }
-                                            }
+                                            } */
                                             ?>
                                             </select>
-                                            </td>
+                                            </td> -->
 
                                             <td>
                                             <input type="text" class="form-control required" id="Ds_ExcValores" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Ds_ExcValores') : $Ds_ExcValores ; ?>" name="Ds_ExcValores"
