@@ -1212,7 +1212,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
 
 function buscaProFat($Ds_ProFat)
     {
-        var_dump($Ds_ProFat[0]->q);exit;
+        var_dump($Ds_ProFat);exit;
         $this->db->select('ProFat.CodProFat as id, ProFat.Ds_ProFat as text');
         $this->db->from('TbProFat as ProFat');
         $this->db->like('ProFat.Ds_ProFat', $Ds_ProFat[0]->text);
