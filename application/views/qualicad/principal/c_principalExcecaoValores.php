@@ -274,7 +274,8 @@ if(!empty($infoExcecaoValores))
                             page: page
                         };
                     },
-                    results: function (data, page) {       
+                    results: function (data, page) {      
+                        console.log ('teste'); 
                         return {results: data};
                     }
                 },
