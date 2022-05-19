@@ -195,7 +195,7 @@ if(!empty($infoExcecaoValores))
                                             </td> -->
 
                                             <td>
-                                            <select id="itemName" class="form-control" style="width:500px"></select>
+                                            <select id="itemName" class="form-control required" style="width:500px" name="Cd_ProFat" required></select>
                                             </td>
 
                                             <td>
