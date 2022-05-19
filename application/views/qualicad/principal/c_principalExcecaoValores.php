@@ -268,14 +268,14 @@ if(!empty($infoExcecaoValores))
                     dataType: 'json',
                     quietMillis: 100,
                     data: function (term, page) {
+                        console.log ('teste'); 
                         return {
                             q: term, //search term
                             page_limit: 10, // page size
                             page: page
                         };
                     },
-                    results: function (data, page) {      
-                        console.log ('teste'); 
+                    results: function (data, page) {                              
                         return {results: data};
                     }
                 },
