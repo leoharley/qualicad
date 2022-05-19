@@ -265,28 +265,28 @@ if(!empty($infoExcecaoValores))
                     inputTooShort: function(args) {
                     // args.minimum is the minimum required length
                     // args.input is the user-typed text
-                    return "Type more stuff";
+                    return "Digite para localizar";
                     },
                     inputTooLong: function(args) {
                     // args.maximum is the maximum allowed length
                     // args.input is the user-typed text
-                    return "You typed too much";
+                    return "Limite de texto excedido";
                     },
                     errorLoading: function() {
-                    return "Error loading results";
+                    return "Erro ao carregar resultados";
                     },
                     loadingMore: function() {
-                    return "Loading more results";
+                    return "Carregando mais resultados";
                     },
                     noResults: function() {
-                    return "No results found";
+                    return "Nenhum resultado localizado";
                     },
                     searching: function() {
-                    return "Searching...";
+                    return "Buscando...";
                     },
                     maximumSelected: function(args) {
                     // args.maximum is the maximum number of items the user may select
-                    return "Error loading results";
+                    return "Erro ao carregar resultados";
                     }
                 },
                 placeholder: "Buscar",
