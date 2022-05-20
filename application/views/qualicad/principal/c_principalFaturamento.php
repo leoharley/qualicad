@@ -161,7 +161,8 @@ if(!empty($infoFaturamento))
                                 <table id="dataTables-example" style="overflow-x:auto;width:200%!important;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <th>
+                                        <th class="header-label" style="padding:10px">
+                                        Ações
                                         </th>
                                         <th class="header-label" style="padding:10px">
                                         Cd_TUSS
