@@ -204,6 +204,14 @@ if(!empty($infoFaturamento))
                                 </thead>
                                 <tr id="row0">
                                             <td>
+                                            <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalFaturamentoItem/editar/'.$fatitem->Id_FatItem; ?>" title="Editar">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaFaturamentoItem_Sub/'.$fatitem->Id_FatItem.'/'.$Id_Faturamento; ?>" title="Excluir">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                            </td>
+                                            <td>
                                             <select class="form-control" id="Cd_TUSS" name="Cd_TUSS">
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
