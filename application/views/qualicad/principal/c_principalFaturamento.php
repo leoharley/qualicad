@@ -205,7 +205,7 @@ if(!empty($infoFaturamento))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                            <td style="width:4%!important">
+                                            <td style="width:6%!important">
                                             </td>    
                                             <td style="width:12%!important">
                                             <select class="form-control" id="Cd_TUSS" name="Cd_TUSS">
