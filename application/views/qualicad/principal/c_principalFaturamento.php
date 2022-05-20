@@ -207,7 +207,7 @@ if(!empty($infoFaturamento))
                                 <tr id="row0">
                                             <td style="width:2%!important">
                                             </td>    
-                                            <td style="width:5%!important">
+                                            <td style="width:8%!important">
                                             <select class="form-control" id="Cd_TUSS" name="Cd_TUSS">
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
