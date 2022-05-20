@@ -302,6 +302,14 @@ if(!empty($infoFaturamento))
                                 ?>
                                 <tr style="background-color:#c0c0c0">
                                     <td>
+                                    <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalFaturamentoItem/editar/'.$fatitem->Id_FatItem; ?>" title="Editar">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaFaturamentoItem_Sub/'.$fatitem->Id_FatItem.'/'.$Id_Faturamento; ?>" title="Excluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                    </td>
+                                    <td>
                                     <input type="text" class="form-control" value="<?php echo $fatitem->Cd_Tuss. '-' .$fatitem->Ds_Tuss ?>" disabled>
                                     </td>
                                     <td>
@@ -339,14 +347,6 @@ if(!empty($infoFaturamento))
                                     </td>
                                     <td>
                                     <input type="text" class="form-control" value="<?php echo ($fatitem->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>" disabled>
-                                    </td>
-                                    <td>
-                                    <a class="btn btn-sm btn-info" href="<?php echo base_url().'principalFaturamentoItem/editar/'.$fatitem->Id_FatItem; ?>" title="Editar">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                    <a class="btn btn-sm btn-danger" href="<?php echo base_url().'apagaFaturamentoItem_Sub/'.$fatitem->Id_FatItem.'/'.$Id_Faturamento; ?>" title="Excluir">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
                                     </td>
                                 </tr>
                                     <?php
