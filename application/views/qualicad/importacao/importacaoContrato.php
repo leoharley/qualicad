@@ -96,9 +96,16 @@
         <br/>
         <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
         <br/>
+        <br/>
+
+        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaContrato/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
+            <i class="fa fa-upload"></i> Exportar importação atual</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaContrato/0">
+            <i class="fa fa-upload"></i> Exportar todos registros</a>
+
         
         <!-- Data list table -->
-        <table class="table table-striped table-bordered">
+       <!-- <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>??</th>
@@ -109,7 +116,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoContrato)){ foreach($infoContrato as $registro){ ?>
+                <?php //if(!empty($infoContrato)){ foreach($infoContrato as $registro){ ?>
                 <tr>
                     <td>??</td>
                     <td>??</td>
@@ -117,11 +124,11 @@
                     <td>??</td>
                     <td>??</td>
                 </tr>
-                <?php } }else{ ?>
+                <?php //} }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
+                <?php //} ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>
 
