@@ -1768,10 +1768,10 @@ class Principal extends BaseController
                     $Ds_indice = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_indice'))));
                     $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
                     $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-                    $Vl_Indice = $this->input->post('Vl_Indice');
+                    $Vl_Indice = str_replace(',','.',$this->input->post('Vl_Indice'));
                     $Vl_M2Filme = str_replace(',','.',$this->input->post('Vl_M2Filme'));
-                    $Vl_Honorário = $this->input->post('Vl_Honorário');
-                    $Vl_UCO = $this->input->post('Vl_UCO');
+                    $Vl_Honorário = str_replace(',','.',$this->input->post('Vl_Honorário'));
+                    $Vl_UCO = str_replace(',','.',$this->input->post('Vl_UCO'));
                     $Tp_Ativo = $this->input->post('Tp_Ativo');
     
                     foreach ($this->PrincipalModel->carregaInfoIndice($IdIndice) as $data){
