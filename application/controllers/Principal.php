@@ -911,10 +911,10 @@ class Principal extends BaseController
             $Ds_FatItem = $this->input->post('Ds_FatItem');
             $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
             $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-            $Vl_Honorário = $this->input->post('Vl_Honorário');
-            $Vl_Operacional = $this->input->post('Vl_Operacional');
-            $Vl_Total = $this->input->post('Vl_Total');
-            $Vl_Filme = $this->input->post('Vl_Filme');
+            $Vl_Honorário = $this->valor($this->input->post('Vl_Honorário'));
+            $Vl_Operacional = $this->valor($this->input->post('Vl_Operacional'));
+            $Vl_Total = $this->valor($this->input->post('Vl_Total'));
+            $Vl_Filme = $this->valor($this->input->post('Vl_Filme'));
             $Cd_PorteMedico = $this->input->post('Cd_PorteMedico');
             $Cd_TUSS = $this->input->post('Cd_TUSS');
             $Cd_TISS = $this->input->post('Cd_TISS');
@@ -1040,10 +1040,10 @@ class Principal extends BaseController
             $Ds_FatItem = $this->input->post('Ds_FatItem');
             $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
             $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-            $Vl_Honorário = $this->input->post('Vl_Honorário');
-            $Vl_Operacional = $this->input->post('Vl_Operacional');
-            $Vl_Total = $this->input->post('Vl_Total');
-            $Vl_Filme = $this->input->post('Vl_Filme');
+            $Vl_Honorário = $this->valor($this->input->post('Vl_Honorário'));
+            $Vl_Operacional = $this->valor($this->input->post('Vl_Operacional'));
+            $Vl_Total = $this->valor($this->input->post('Vl_Total'));
+            $Vl_Filme = $this->valor($this->input->post('Vl_Filme'));
             $Cd_PorteMedico = $this->input->post('Cd_PorteMedico');
             $Cd_TUSS = $this->input->post('Cd_TUSS');
             $Cd_TISS = $this->input->post('Cd_TISS');
@@ -1633,10 +1633,10 @@ class Principal extends BaseController
             $Ds_indice = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_indice'))));
             $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
             $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-            $Vl_Indice = $this->input->post('Vl_Indice');
-            $Vl_M2Filme = $this->input->post('Vl_M2Filme');
-            $Vl_Honorário = $this->input->post('Vl_Honorário');
-            $Vl_UCO = $this->input->post('Vl_UCO');
+            $Vl_Indice = $this->valor($this->input->post('Vl_Indice'));
+            $Vl_M2Filme = $this->valor($this->input->post('Vl_M2Filme'));
+            $Vl_Honorário = $this->valor($this->input->post('Vl_Honorário'));
+            $Vl_UCO = $this->valor($this->input->post('Vl_UCO'));
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');
@@ -1666,10 +1666,10 @@ class Principal extends BaseController
                 $TbIndice_Id_Indice = $result;
                 $Dt_IniVigencia = $this->input->post('Dt_IniVigencia_GrupoPro');
                 $Dt_FimVigencia = $this->input->post('Dt_FimVigencia_GrupoPro');
-                $Vl_Indice = $this->input->post('Vl_Indice_GrupoPro');
-                $Vl_M2Filme = $this->input->post('Vl_M2Filme_GrupoPro');
-                $Vl_Honorario = $this->input->post('Vl_Honorario_GrupoPro');
-                $Vl_UCO = $this->input->post('Vl_UCO_GrupoPro');
+                $Vl_Indice = $this->valor($this->input->post('Vl_Indice_GrupoPro'));
+                $Vl_M2Filme = $this->valor($this->input->post('Vl_M2Filme_GrupoPro'));
+                $Vl_Honorario = $this->valor($this->input->post('Vl_Honorario_GrupoPro'));
+                $Vl_UCO = $this->valor($this->input->post('Vl_UCO_GrupoPro'));
                 $Tp_Ativo = $this->input->post('Tp_Ativo_GrupoPro');
 
                 // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
@@ -1802,10 +1802,10 @@ class Principal extends BaseController
                     $TbIndice_Id_Indice = $IdIndice;
                     $Dt_IniVigencia = $this->input->post('Dt_IniVigencia_GrupoPro');
                     $Dt_FimVigencia = $this->input->post('Dt_FimVigencia_GrupoPro');
-                    $Vl_Indice = $this->input->post('Vl_Indice_GrupoPro');
-                    $Vl_M2Filme = $this->input->post('Vl_M2Filme_GrupoPro');
-                    $Vl_Honorario = $this->input->post('Vl_Honorario_GrupoPro');
-                    $Vl_UCO = $this->input->post('Vl_UCO_GrupoPro');
+                    $Vl_Indice =  $this->valor($this->input->post('Vl_Indice_GrupoPro'));
+                    $Vl_M2Filme =  $this->valor($this->input->post('Vl_M2Filme_GrupoPro'));
+                    $Vl_Honorario = $this->valor($this->input->post('Vl_Honorario_GrupoPro'));
+                    $Vl_UCO =  $this->valor($this->input->post('Vl_UCO_GrupoPro'));
                     $Tp_Ativo = $this->input->post('Tp_Ativo_GrupoPro');
 
                     // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
@@ -1997,10 +1997,10 @@ class Principal extends BaseController
         $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
         $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
         $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-        $Vl_Indice = $this->input->post('Vl_Indice');
-        $Vl_M2Filme = $this->input->post('Vl_M2Filme');
-        $Vl_Honorario = $this->input->post('Vl_Honorario');
-        $Vl_UCO = $this->input->post('Vl_UCO');
+        $Vl_Indice =  $this->valor($this->input->post('Vl_Indice'));
+        $Vl_M2Filme = $this->valor($this->input->post('Vl_M2Filme'));
+        $Vl_Honorario = $this->valor($this->input->post('Vl_Honorario'));
+        $Vl_UCO = $this->valor($this->input->post('Vl_UCO'));
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
         // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
@@ -2098,10 +2098,10 @@ class Principal extends BaseController
         $TbIndice_Id_Indice = $this->input->post('TbIndice_Id_Indice');
         $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
         $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-        $Vl_Indice = $this->input->post('Vl_Indice');
-        $Vl_M2Filme = $this->input->post('Vl_M2Filme');
-        $Vl_Honorario = $this->input->post('Vl_Honorario');
-        $Vl_UCO = $this->input->post('Vl_UCO');
+        $Vl_Indice = $this->valor($this->input->post('Vl_Indice'));
+        $Vl_M2Filme = $this->valor($this->input->post('Vl_M2Filme'));
+        $Vl_Honorario = $this->valor($this->input->post('Vl_Honorario'));
+        $Vl_UCO = $this->valor($this->input->post('Vl_UCO'));
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
         // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
@@ -2333,7 +2333,7 @@ class Principal extends BaseController
         $Ds_RegraProibicao = $this->input->post('Ds_RegraProibicao');
         $Tp_RegraProibicao = $this->input->post('Tp_RegraProibicao');
         $Tp_Atendimento = $this->input->post('Tp_Atendimento');
-        $Vl_RegraProibicao = $this->input->post('Vl_RegraProibicao');
+        $Vl_RegraProibicao = $this->valor($this->input->post('Vl_RegraProibicao'));
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
 
@@ -2425,7 +2425,7 @@ class Principal extends BaseController
         $Ds_RegraProibicao = $this->input->post('Ds_RegraProibicao');
         $Tp_RegraProibicao = $this->input->post('Tp_RegraProibicao');
         $Tp_Atendimento = $this->input->post('Tp_Atendimento');
-        $Vl_RegraProibicao = $this->input->post('Vl_RegraProibicao');
+        $Vl_RegraProibicao = $this->valor($this->input->post('Vl_RegraProibicao'));
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
         foreach ($this->PrincipalModel->carregaInfoRegraProibicao($IdRegraProibicao) as $data){
@@ -2607,7 +2607,7 @@ class Principal extends BaseController
         $Ds_Laboratorio = $this->input->post('Ds_Laboratorio');
         $Ds_Apresentacao = $this->input->post('Ds_Apresentacao');
         $Tp_MatMed = $this->input->post('Tp_MatMed');
-        $Vl_FatorDivisao = $this->input->post('Vl_FatorDivisao');
+        $Vl_FatorDivisao = $this->valor($this->input->post('Vl_FatorDivisao'));
         $Qt_Prod = $this->input->post('Qt_Prod');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
@@ -2702,7 +2702,7 @@ class Principal extends BaseController
         $Ds_Laboratorio = $this->input->post('Ds_Laboratorio');
         $Ds_Apresentacao = $this->input->post('Ds_Apresentacao');
         $Tp_MatMed = $this->input->post('Tp_MatMed');
-        $Vl_FatorDivisao = $this->input->post('Vl_FatorDivisao');
+        $Vl_FatorDivisao = $this->valor($this->input->post('Vl_FatorDivisao'));
         $Qt_Prod = $this->input->post('Qt_Prod');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
@@ -2887,10 +2887,10 @@ class Principal extends BaseController
         $Ds_FatItem = $this->input->post('Ds_FatItem');
         $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
         $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-        $Vl_Honorário = $this->input->post('Vl_Honorário');
-        $Vl_Operacional = $this->input->post('Vl_Operacional');
-        $Vl_Total = $this->input->post('Vl_Total');
-        $Vl_Filme = $this->input->post('Vl_Filme');
+        $Vl_Honorário = $this->valor($this->input->post('Vl_Honorário'));
+        $Vl_Operacional = $this->valor($this->input->post('Vl_Operacional'));
+        $Vl_Total = $this->valor($this->input->post('Vl_Total'));
+        $Vl_Filme = $this->valor($this->input->post('Vl_Filme'));
         $Cd_PorteMedico = $this->input->post('Cd_PorteMedico');
         $Cd_TUSS = $this->input->post('Cd_TUSS');
         $Cd_TISS = $this->input->post('Cd_TISS');
@@ -2987,10 +2987,10 @@ class Principal extends BaseController
         $Ds_FatItem = $this->input->post('Ds_FatItem');
         $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
         $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-        $Vl_Honorário = $this->input->post('Vl_Honorário');
-        $Vl_Operacional = $this->input->post('Vl_Operacional');
-        $Vl_Total = $this->input->post('Vl_Total');
-        $Vl_Filme = $this->input->post('Vl_Filme');
+        $Vl_Honorário = $this->valor($this->input->post('Vl_Honorário'));
+        $Vl_Operacional = $this->valor($this->input->post('Vl_Operacional'));
+        $Vl_Total = $this->valor($this->input->post('Vl_Total'));
+        $Vl_Filme = $this->valor($this->input->post('Vl_Filme'));
         $Cd_PorteMedico = $this->input->post('Cd_PorteMedico');
         $Cd_TUSS = $this->input->post('Cd_TUSS');
         $Cd_TISS = $this->input->post('Cd_TISS');
@@ -3478,7 +3478,7 @@ class Principal extends BaseController
                 $Ds_ExcValores = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_ExcValores'))));
                 $ClasseEvento = $this->input->post('ClasseEvento');
                 $Tp_ExcValores = $this->input->post('Tp_ExcValores');
-                $Vl_ExcValores = $this->input->post('Vl_ExcValores');        
+                $Vl_ExcValores = $this->valor($this->input->post('Vl_ExcValores'));        
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
                 // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
@@ -3585,7 +3585,7 @@ class Principal extends BaseController
                 $Ds_ExcValores = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_ExcValores'))));
                 $ClasseEvento = $this->input->post('ClasseEvento');
                 $Tp_ExcValores = $this->input->post('Tp_ExcValores');
-                $Vl_ExcValores = $this->input->post('Vl_ExcValores');        
+                $Vl_ExcValores = $this->valor($this->input->post('Vl_ExcValores'));        
                 $Tp_Ativo = $this->input->post('Tp_Ativo');
 
                 foreach ($this->PrincipalModel->carregaInfoExcecaoValores($IdExcecaoValores) as $data){
