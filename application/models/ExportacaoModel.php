@@ -28,8 +28,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('TbGrupoPro');   
+            $this->db->order_by('CodGrupo','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -49,8 +49,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('TbProFat');   
+            $this->db->order_by('Cd_ProFat','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -70,8 +70,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('TbTUSS');   
+            $this->db->order_by('Id_Tuss','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -91,8 +91,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('Tb_RegraGruPro');   
+            $this->db->order_by('Id_RegraGruPro','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -112,8 +112,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('Tb_FracaoSimproBra');   
+            $this->db->order_by('Id_FracaoSimproBra','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -133,8 +133,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('Tb_Produto');   
+            $this->db->order_by('Id_Produto','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -154,8 +154,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('Tb_Producao');   
+            $this->db->order_by('Id_Producao','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -175,8 +175,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('TbPorteMedico');   
+            $this->db->order_by('Id_PorteMedico','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -196,8 +196,8 @@ class ExportacaoModel extends CI_Model
     {
         if ($var != 0) {
             $this->db->select('*');
-            $this->db->from('TbFatItem');   
-            $this->db->order_by('Id_FatItem','DESC');
+            $this->db->from('TbExcValores');   
+            $this->db->order_by('Id_ExcValores','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -208,6 +208,27 @@ class ExportacaoModel extends CI_Model
         $this->db->where('ExcValores.Tp_Ativo', 'S');
         $this->db->where('ExcValores.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->order_by('ExcValores.CD_Convenio', 'ASC');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function exportaContrato($idEmpresa,$var)
+    {
+        if ($var != 0) {
+            $this->db->select('*');
+            $this->db->from('TbContrato');   
+            $this->db->order_by('Id_Contrato','DESC');
+            $this->db->limit($var);
+            $query = $this->db->get();
+            return $query->result();
+        }
+        $this->db->select('*');
+        $this->db->from('TbContrato as Contrato');
+        $this->db->where('Contrato.Deletado !=', 'S');
+        $this->db->where('Contrato.Tp_Ativo', 'S');
+        $this->db->where('Contrato.TbEmpresa_Id_Empresa', $idEmpresa);
+        $this->db->order_by('Contrato.CD_Convenio', 'ASC');
         $query = $this->db->get();
 
         return $query->result();

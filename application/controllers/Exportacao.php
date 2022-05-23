@@ -304,6 +304,49 @@ class Exportacao extends BaseController
         exit;
     }
 
+    //  EXPORTACAO CONTRATO
+
+    function exportaContrato()
+    {
+        $var = $this->uri->segment(2);
+
+        /* file name */
+        $filename = 'Tb_Contrato.csv';
+
+        $exportacao = $this->ExportacaoModel->exportaContrato($this->session->userdata('IdEmpresa'),$var);
+
+        header('Content-type: aapplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-type: application/force-download');
+        header('Content-Disposition: attachment; filename='.$filename.'');
+        header('Pragma: no-cache');
+        header('Cache-Control: max-age=0');
+        header('X-Accel-Buffering: no');
+        ob_clean();
+        flush();
+
+        $handle = fopen('php://output', 'w');
+        fputcsv($handle, array('Cd_EmpresaERP', 'Cd_ConvenioERP', 'Cd_PlanoERP', 'Cd_ProFatERP', 'Cd_IndiceERP', 
+        'Ds_IndiceERP', 'Dt_VigenciaIndiceERP', 'Vl_IndiceERP', 'Vl_FilmeIndiceERP', 'Vl_HonorarioIndiceERP', 
+        'Vl_UCOIndiceERP', 'Cd_RegraERP', 'Ds_RegraERP', 'Cd_TabFatERP', 'Ds_TabFatERP', 'Cd_MoedaERP', 
+        'Ds_MoedaERP', 'Cd_RegraGruProErp', 'Ds_RegraGruProErp', 'Per_RegraPGErp', 'Ds_ProFatERP', 'UnidadeProFatERP', 
+        'Vl_ProHonorarioERP', 'Vl_ProOperaçãoERP', 'Vl_ProTotalERP', 'Vl_ProExcecValorERP', 'Ds_PrestadoraExcec', 
+        'Qtde_M2FilmeERP', 'Cd_PortMedicoERP', 'Ds_PortMedicoERP', 'Vl_PorteMedicoERP', 'Cd_ExcecPorMedicoERP', 
+        'Vl_ExcecPorMedicoERP', 'Vl_FinalERP', 'Vl_FinalExecERP', 'Tp_ProibicaoERP'),'|');
+
+        foreach ($exportacao as $data) {
+            fputcsv($handle, array($data->Cd_EmpresaERP, $data->Cd_ConvenioERP, $data->Cd_PlanoERP,
+                $data->Cd_ProFatERP,$data->Cd_IndiceERP,$data->Ds_IndiceERP,$data->Dt_VigenciaIndiceERP,$data->Vl_IndiceERP,
+                $data->Vl_FilmeIndiceERP,$data->Vl_HonorarioIndiceERP,$data->Vl_UCOIndiceERP,$data->Cd_RegraERP,
+                $data->Ds_RegraERP,$data->Cd_TabFatERP,$data->Ds_TabFatERP,$data->Cd_MoedaERP,$data->Ds_MoedaERP,
+                $data->Cd_RegraGruProErp,$data->Ds_RegraGruProErp,$data->Per_RegraPGErp,$data->Ds_ProFatERP,$data->UnidadeProFatERP,
+                $data->Vl_ProHonorarioERP,$data->Vl_ProOperaçãoERP,$data->Vl_ProTotalERP,$data->Vl_ProExcecValorERP,$data->Ds_PrestadoraExcec,
+                $data->Qtde_M2FilmeERP,$data->Cd_PortMedicoERP,$data->Ds_PortMedicoERP,$data->Vl_PorteMedicoERP,$data->Cd_ExcecPorMedicoERP,
+                $data->Vl_ExcecPorMedicoERP,$data->Vl_FinalERP,$data->Vl_FinalExecERP,$data->Tp_ProibicaoERP),'|');
+        }
+        fclose($handle);
+        exit;
+    }
+
     //  EXPORTACAO PORTE MEDICO
 
     function exportaPorteMedico()
