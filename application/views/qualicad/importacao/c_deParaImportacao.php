@@ -146,6 +146,7 @@ if(!empty($infoDePara))
                                             <option value="Tb_Unidade" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'Tb_Unidade') { echo 'selected'; } ?>>Tb_Unidade</option>
                                             <option value="TbPorteMedico" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TbPorteMedico') { echo 'selected'; } ?>>TbPorteMedico</option>
                                             <option value="TbExcValores" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TbExcValores') { echo 'selected'; } ?>>TbExcValores</option>
+                                            <option value="TbContrato" <?php if ($this->uri->segment(2) == 'editar' && $No_Tabela == 'TbContrato') { echo 'selected'; } ?>>TbContrato</option>
                                             </select>
                                             </td>
 
