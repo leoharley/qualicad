@@ -1768,10 +1768,10 @@ class Principal extends BaseController
                     $Ds_indice = ucwords(strtolower($this->security->xss_clean($this->input->post('Ds_indice'))));
                     $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
                     $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
-                    $Vl_Indice = str_replace(',','.',$this->input->post('Vl_Indice'));
-                    $Vl_M2Filme = str_replace(',','.',$this->input->post('Vl_M2Filme'));
-                    $Vl_Honorário = str_replace(',','.',$this->input->post('Vl_Honorário'));
-                    $Vl_UCO = str_replace(',','.',$this->input->post('Vl_UCO'));
+                    $Vl_Indice = valor($this->input->post('Vl_Indice'));
+                    $Vl_M2Filme = valor($this->input->post('Vl_M2Filme'));
+                    $Vl_Honorário = valor($this->input->post('Vl_Honorário'));
+                    $Vl_UCO = valor($this->input->post('Vl_UCO'));
                     $Tp_Ativo = $this->input->post('Tp_Ativo');
     
                     foreach ($this->PrincipalModel->carregaInfoIndice($IdIndice) as $data){
@@ -4046,5 +4046,9 @@ class Principal extends BaseController
         $this->loadViewsModal("qualicad/principal/principalPlano", $this->global, $data, NULL);
     }
 
+    function valor($valor)
+    {
+    return str_replace(',','.',$valor);
+    }
 
 }
