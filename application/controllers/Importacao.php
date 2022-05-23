@@ -1321,6 +1321,7 @@ class Importacao extends BaseController
             $No_Tabela = $this->input->post('No_Tabela');
             $No_CampoOrigem = $this->input->post('No_CampoOrigem');
             $No_CampoDestino  = $this->input->post('No_CampoDestino');
+            $St_Valor  = $this->input->post('St_Valor');
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');
@@ -1341,7 +1342,7 @@ class Importacao extends BaseController
 
                 $infoDePara = array('Tb_Id_LayoutImportacao'=>$Tb_Id_LayoutImportacao, 'No_Importacao'=>$No_Importacao,  'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                     'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
-                    'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                    'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'St_Valor'=>$St_Valor,
                     'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
                 $result = $this->ImportacaoModel->adicionaDePara($infoDePara);
@@ -2057,6 +2058,7 @@ class Importacao extends BaseController
             $No_Tabela = $this->input->post('No_Tabela');
             $No_CampoOrigem = $this->input->post('No_CampoOrigem');
             $No_CampoDestino  = $this->input->post('No_CampoDestino');
+            $St_Valor  = $this->input->post('St_Valor');
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             foreach ($this->ImportacaoModel->carregaInfoDePara($IdDePara) as $data){
@@ -2076,7 +2078,7 @@ class Importacao extends BaseController
 
             $infoDePara = array('Tb_Id_LayoutImportacao'=>$Tb_Id_LayoutImportacao, 'No_Importacao'=>$No_Importacao, 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                 'No_Tabela'=>$No_Tabela, 'No_CampoOrigem'=> $No_CampoOrigem, 'No_CampoDestino'=> $No_CampoDestino,
-                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId,
+                'CriadoPor'=>$this->vendorId, 'AtualizadoPor'=>$this->vendorId, 'St_Valor'=>$St_Valor,
                 'Tp_Ativo'=>$Tp_Ativo, 'Dt_Ativo'=>$Dt_Ativo);
 
 

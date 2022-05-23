@@ -66,6 +66,7 @@
                     <th>Tabela no banco</th>
                     <th>Campo de origem (no CSV)</th>
                     <th>Campo de destino (no banco)</th>
+                    <th>É valor?</th>
                     <th>Regra ativa?</th>
                     <th>Ações</th>
                   </tr>
@@ -92,7 +93,10 @@
                       </td>
                       <td>
                           <?php echo $registro->No_CampoDestino ?>
-                      </td>                    
+                      </td>
+                      <td>
+                        <?php echo ($registro->St_Valor == 'S') ? 'Sim' : 'Não'; ?>
+                      </td>                  
                       <td>
                         <?php echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?>
                       </td>
