@@ -1769,7 +1769,7 @@ class Principal extends BaseController
                     $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
                     $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
                     $Vl_Indice = $this->input->post('Vl_Indice');
-                    $Vl_M2Filme = $this->input->post('Vl_M2Filme');
+                    $Vl_M2Filme = str_replace(',','.',$this->input->post('Vl_M2Filme'));
                     $Vl_Honorário = $this->input->post('Vl_Honorário');
                     $Vl_UCO = $this->input->post('Vl_UCO');
                     $Tp_Ativo = $this->input->post('Tp_Ativo');
