@@ -194,7 +194,7 @@ class ImportacaoModel extends CI_Model
     function carregaInfoContrato($idEmpresa)
     {
         $this->db->select('*');
-        $this->db->from('Tb_Contrato as Contrato');
+        $this->db->from('TbContrato as Contrato');
         $this->db->where('Contrato.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('Contrato.Deletado !=', 'S');
         $this->db->where('Contrato.Tp_Ativo', 'S');
