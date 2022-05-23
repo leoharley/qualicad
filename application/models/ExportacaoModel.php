@@ -228,7 +228,7 @@ class ExportacaoModel extends CI_Model
         $this->db->where('Contrato.Deletado !=', 'S');
         $this->db->where('Contrato.Tp_Ativo', 'S');
         $this->db->where('Contrato.TbEmpresa_Id_Empresa', $idEmpresa);
-        $this->db->order_by('Contrato.CD_Convenio', 'ASC');
+        $this->db->order_by('Contrato.Id_Contrato', 'ASC');
         $query = $this->db->get();
 
         return $query->result();
