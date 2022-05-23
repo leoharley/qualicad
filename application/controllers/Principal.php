@@ -1773,6 +1773,8 @@ class Principal extends BaseController
                     $Vl_Honorário = $this->input->post('Vl_Honorário');
                     $Vl_UCO = $this->input->post('Vl_UCO');
                     $Tp_Ativo = $this->input->post('Tp_Ativo');
+
+                    var_dump($Vl_M2Filme);exit;
     
                     foreach ($this->PrincipalModel->carregaInfoIndice($IdIndice) as $data){
                         $tpativoatual = ($data->Tp_Ativo);
