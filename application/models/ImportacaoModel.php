@@ -206,7 +206,7 @@ class ImportacaoModel extends CI_Model
     function adicionaContrato($info)
     {
         $this->db->trans_start();
-        $this->db->insert('Tb_Contrato', $info);
+        $this->db->insert('TbContrato', $info);
 
         $insert_id = $this->db->insert_id();
 
