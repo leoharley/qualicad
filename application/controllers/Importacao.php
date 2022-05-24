@@ -1575,18 +1575,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    
                                     if ($dePara[$i]->St_Valor == 'S') {
                                         $memData += array(
                                             ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
                                         );
-                                        var_dump ($memData);exit;
-                                    }
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
-
-
+                                    }
                                 }
                             }
 
@@ -2180,15 +2177,10 @@ class Importacao extends BaseController
     {
         $cleanString = preg_replace('/([^0-9\.,])/i', '', $valor);
         $onlyNumbersString = preg_replace('/([^0-9])/i', '', $valor);
-    
         $separatorsCountToBeErased = strlen($cleanString) - strlen($onlyNumbersString) - 1;
-    
         $stringWithCommaOrDot = preg_replace('/([,\.])/', '', $cleanString, $separatorsCountToBeErased);
         $removedThousandSeparator = preg_replace('/(\.|,)(?=[0-9]{3,}$)/', '',  $stringWithCommaOrDot);
-    
-        var_dump((float) str_replace(',', '.', $removedThousandSeparator));exit;
         return (float) str_replace(',', '.', $removedThousandSeparator);
-    return number_format(str_replace('R$','',str_replace('R$','',$valor)), 2, '.','');
     }
 
 }
