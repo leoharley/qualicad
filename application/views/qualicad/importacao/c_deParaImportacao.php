@@ -165,8 +165,8 @@ if(!empty($infoDePara))
 
                                             <td>
                                             <select class="form-control required" id="St_Valor" name="St_Valor">
-                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $St_Valor == 'S') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; } ?>>Sim</option>
-											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $St_Valor == 'N') { echo 'selected'; } ?>>Não</option>
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $St_Valor == 'S') { echo 'selected'; } ?>>Sim</option>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $St_Valor == 'N') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; }?>>Não</option>
                                             </select>
                                             </td>
 
