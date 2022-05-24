@@ -2179,7 +2179,7 @@ class Importacao extends BaseController
     function valor($valor)
     {
     $fmt = new NumberFormatter( 'de_DE', NumberFormatter::CURRENCY );
-    var_dump ($fmt->parseCurrency($valor, $curr));exit;
+    var_dump ($fmt->parseCurrency($valor, $curr), $curr);exit;
     return number_format(str_replace('R$','',str_replace('R$','',$valor)), 2, '.','');
     }
 
