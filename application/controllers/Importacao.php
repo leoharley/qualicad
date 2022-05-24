@@ -93,9 +93,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
@@ -258,9 +264,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
@@ -436,12 +448,18 @@ class Importacao extends BaseController
                             $memData = array();
 
                             for ($i=0;$i<count($dePara);$i++) {
-                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}                                
+                                if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                $memData += array(
-                                    ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                );
-                            }
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    );
+                                    }
+                                }
                             }
 
                             $memData += array(                                
@@ -598,9 +616,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
@@ -741,9 +765,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
@@ -883,9 +913,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
@@ -1034,9 +1070,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
@@ -1185,9 +1227,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
@@ -1431,9 +1479,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
@@ -1735,9 +1789,15 @@ class Importacao extends BaseController
                             for ($i=0;$i<count($dePara);$i++) {
                                 if (!isset($row[($dePara[$i]->No_CampoOrigem)])) {$campoNaoLocalizado = 'Arquivo CSV com uma ou mais colunas inválidas';}
                                 if (isset($row[($dePara[$i]->No_CampoOrigem)])) {
-                                    $memData += array(
-                                        ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
+                                    if ($dePara[$i]->St_Valor == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    } else {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
+                                    }
                                 }
                             }
 
