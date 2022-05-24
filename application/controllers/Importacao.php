@@ -1088,7 +1088,7 @@ class Importacao extends BaseController
                                 'Tp_Ativo'=> 'S');
                             
                             $insert = 0;
-                            // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
+                        /*    // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
                             if (isset($memData['TbProFat_Cd_ProFat'])&&isset($memData['Dt_Lancamento'])&&isset($memData['TbPlano_Id_Plano'])) {
                             if ($this->ImportacaoModel->consultaRegraTbProducaoExistente($memData['TbProFat_Cd_ProFat'],$memData['Dt_Lancamento'],$memData['TbPlano_Id_Plano'],$this->session->userdata('IdEmpresa')) != null) {
                                 $duplicidade++;
@@ -1096,7 +1096,9 @@ class Importacao extends BaseController
                                     $insert = $this->ImportacaoModel->adicionaProducao($memData);
                                 }
                             }                        
-                            // ***** FIM DE VERIFICAÇÕES *****
+                            // ***** FIM DE VERIFICAÇÕES ***** */
+
+                            $insert = $this->ImportacaoModel->adicionaProducao($memData);
 
                             if($insert != 0){
                                 $insertCount++;
