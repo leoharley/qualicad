@@ -1314,7 +1314,7 @@ class Importacao extends BaseController
                 
                 $count = $this->CadastroModel->userListingCount($searchText);
 
-                $returns = $this->paginationCompress ( "importacaoDePara/listar", $count, 100 );
+                $returns = $this->paginationCompress ( "importacaoDePara/listar", $count, 300 );
                 
                 $data['registrosDePara'] = $this->ImportacaoModel->listaDePara($this->session->userdata('IdEmpresa'), $searchText, $returns["page"], $returns["segment"]);
                 
