@@ -2178,8 +2178,7 @@ class Importacao extends BaseController
 
     function valor($valor)
     {
-    var_dump ($valor);exit;
-    return number_format(str_replace('R$','',$valor), 2, '.','');
+    return number_format(str_replace('R$','',str_replace(' ','',$valor)), 2, '.','');
     }
 
 }
