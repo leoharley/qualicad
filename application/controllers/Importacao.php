@@ -2178,8 +2178,16 @@ class Importacao extends BaseController
 
     function valor($valor)
     {
-    $fmt = new NumberFormatter( 'de_DE', NumberFormatter::CURRENCY );
-    var_dump ($fmt->parseCurrency($valor, $curr), $curr);exit;
+        $cleanString = preg_replace('/([^0-9\.,])/i', '', $valor);
+        $onlyNumbersString = preg_replace('/([^0-9])/i', '', $valor);
+    
+        $separatorsCountToBeErased = strlen($cleanString) - strlen($onlyNumbersString) - 1;
+    
+        $stringWithCommaOrDot = preg_replace('/([,\.])/', '', $cleanString, $separatorsCountToBeErased);
+        $removedThousandSeparator = preg_replace('/(\.|,)(?=[0-9]{3,}$)/', '',  $stringWithCommaOrDot);
+    
+        var_dump((float) str_replace(',', '.', $removedThousandSeparator));exit;
+        return (float) str_replace(',', '.', $removedThousandSeparator);
     return number_format(str_replace('R$','',str_replace('R$','',$valor)), 2, '.','');
     }
 
