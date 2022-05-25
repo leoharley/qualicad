@@ -2252,6 +2252,7 @@ class Importacao extends BaseController
 
     function data($data)
     {
+        var_dump($data);exit;
         return preg_replace("/(\d+)\D+(\d+)\D+(\d+)/","$3-$2-$1",$data);
     }
 
