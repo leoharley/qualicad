@@ -1078,8 +1078,6 @@ class Importacao extends BaseController
                                         $memData += array(
                                             ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
                                         );
-
-                                        var_dump($this->data($row[($dePara[$i]->No_CampoOrigem)]));exit;
                                     }
                                     else {
                                         $memData += array(
@@ -2256,7 +2254,7 @@ class Importacao extends BaseController
 
     function data($data)
     {
-        return preg_replace("/(\d+)\D+(\d+)\D+(\d+)/","$3-$2-$1",$data);
+        return "leo";
     }
 
 }
