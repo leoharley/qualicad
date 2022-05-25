@@ -1079,11 +1079,7 @@ class Importacao extends BaseController
                                             ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
                                         );
                                     }
-                                    else {
-                                        $memData += array(
-                                            ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
-                                    );
-                                    }
+                                    
                                 }
                             }
 
