@@ -1074,7 +1074,12 @@ class Importacao extends BaseController
                                         $memData += array(
                                             ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
                                         );
-                                    } else {
+                                    } else if ($dePara[$i]->St_Data == 'S') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
+                                        );
+                                    }
+                                    else {
                                         $memData += array(
                                             ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
@@ -2243,6 +2248,11 @@ class Importacao extends BaseController
         $stringWithCommaOrDot = preg_replace('/([,\.])/', '', $cleanString, $separatorsCountToBeErased);
         $removedThousandSeparator = preg_replace('/(\.|,)(?=[0-9]{3,}$)/', '',  $stringWithCommaOrDot);
         return (float) str_replace(',', '.', $removedThousandSeparator);
+    }
+
+    function data($data)
+    {
+        return preg_replace("/(\d+)\D+(\d+)\D+(\d+)/","$3-$2-$1",$data);
     }
 
 }

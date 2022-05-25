@@ -95,6 +95,9 @@ if(!empty($infoDePara))
                                         Campo de destino (no banco)
                                         </th>
                                         <th class="header-label" style="padding:10px">
+                                        É data?
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         É valor?
                                         </th>
                                         <th class="header-label" style="padding:10px">
@@ -160,6 +163,13 @@ if(!empty($infoDePara))
 
                                             <td>
                                             <select class="form-control required" id="No_CampoDestino" name="No_CampoDestino">
+                                            </select>
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="St_Data" name="St_Data">
+                                            <option value="S" <?php if ($this->uri->segment(2) == 'editar' && $St_Valor == 'S') { echo 'selected'; } ?>>Sim</option>
+											<option value="N" <?php if ($this->uri->segment(2) == 'editar' && $St_Valor == 'N') { echo 'selected'; } else if ($this->uri->segment(2) == 'cadastrar') { echo 'selected'; }?>>Não</option>
                                             </select>
                                             </td>
 
