@@ -1075,7 +1075,6 @@ class Importacao extends BaseController
                                             ($dePara[$i]->No_CampoDestino) => $this->valor($row[($dePara[$i]->No_CampoOrigem)])
                                         );
                                     } else if ($dePara[$i]->St_Data == 'S') {
-                                        var_dump($this->data($row[($dePara[$i]->No_CampoOrigem)]));exit;
                                         $memData += array(
                                             ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
                                         );
@@ -1092,6 +1091,8 @@ class Importacao extends BaseController
                             //    'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
+
+                            var_dump($memData);exit;    
                             
                             $insert = 0;
                         /*    // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
