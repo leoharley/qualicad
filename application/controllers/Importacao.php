@@ -2253,7 +2253,7 @@ class Importacao extends BaseController
 
     function data($data)
     {
-        return "leo";
+        return preg_replace("/(\d+)\D+(\d+)\D+(\d+)/","$3-$2-$1",$data);
     }
 
 }
