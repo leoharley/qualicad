@@ -1078,8 +1078,10 @@ class Importacao extends BaseController
                                         $memData += array(
                                             ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
                                         );
+
+                                        var_dump($dePara[$i]->No_CampoDestino);exit;
                                     }
-                                    else if ($dePara[$i]->St_Valor != 'S' && $dePara[$i]->St_Data != 'S') {
+                                    else {
                                         $memData += array(
                                             ($dePara[$i]->No_CampoDestino) => $row[($dePara[$i]->No_CampoOrigem)]
                                     );
