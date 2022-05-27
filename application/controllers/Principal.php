@@ -3781,7 +3781,7 @@ class Principal extends BaseController
         $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
         $TbRegra_Id_Regra = $this->input->post('TbRegra_Id_Regra');
         $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
-        $Perc_Pago = $this->input->post('Perc_Pago');
+        $Perc_Pago = $this->valor($this->input->post('Perc_Pago'));
         $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
         $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
@@ -3897,7 +3897,7 @@ class Principal extends BaseController
 
         $TbRegra_Id_Regra = $this->input->post('TbRegra_Id_Regra');
         $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
-        $Perc_Pago = $this->input->post('Perc_Pago');
+        $Perc_Pago = $this->valor($this->input->post('Perc_Pago'));
         $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
         $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
