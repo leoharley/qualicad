@@ -2334,8 +2334,8 @@ class Principal extends BaseController
         $Ds_RegraProibicao = $this->input->post('Ds_RegraProibicao');
         $Tp_RegraProibicao = $this->input->post('Tp_RegraProibicao');
         $Tp_Atendimento = $this->input->post('Tp_Atendimento');
-        var_dump($this->input->post('Vl_RegraProibicao'));exit;
         $Vl_RegraProibicao = $this->valor($this->input->post('Vl_RegraProibicao'));
+        var_dump($Vl_RegraProibicao);exit;
 
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
@@ -4051,7 +4051,7 @@ class Principal extends BaseController
 
     function valor($valor)
     {
-    return str_replace(',','.',$valor);
+    return str_replace(',','.',str_replace('.','',$valor));
     }
 
 }
