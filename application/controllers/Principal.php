@@ -1637,7 +1637,7 @@ class Principal extends BaseController
             $Vl_M2Filme = $this->valor($this->input->post('Vl_M2Filme'));
             $Vl_Honorário = $this->valor($this->input->post('Vl_Honorário'));
             $Vl_UCO = $this->valor($this->input->post('Vl_UCO'));
-            if ($Vl_UCO == "") $Vl_UCO = 0.00;
+            if ($Vl_UCO == "") $Vl_UCO = "0.00";
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');
