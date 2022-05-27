@@ -179,7 +179,7 @@ if(!empty($infoIndice))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_UCO') : $Vl_UCO ; ?>" id="Vl_UCO" name="Vl_UCO"
+                                            <input type="text" class="form-control valor required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? '0,00' : $Vl_UCO ; ?>" id="Vl_UCO" name="Vl_UCO"
                                             maxlength="11">
                                             </td>
                                             <td>
