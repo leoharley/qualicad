@@ -192,7 +192,7 @@ if ($this->uri->segment(2) == 'editar') {
                                             </td>
 
                                             <td>
-                                            <input type="text" data-inputmask="mask" ="="" '99\\="" %'"="" class="form-control required" id="Perc_Pago" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Perc_Pago') : $Perc_Pago ; ?>" name="Perc_Pago"
+                                            <input type="text" data-inputmask:"'mask': '99 \\%'" class="form-control required" id="Perc_Pago" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Perc_Pago') : $Perc_Pago ; ?>" name="Perc_Pago"
                                                maxlength="13">
                                             </td>
 
