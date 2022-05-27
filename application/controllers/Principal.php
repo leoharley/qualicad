@@ -1637,6 +1637,7 @@ class Principal extends BaseController
             $Vl_M2Filme = $this->valor($this->input->post('Vl_M2Filme'));
             $Vl_Honorário = $this->valor($this->input->post('Vl_Honorário'));
             $Vl_UCO = $this->valor($this->input->post('Vl_UCO'));
+            if ($Vl_UCO == "") $Vl_UCO = "0.00";
             $Tp_Ativo = $this->input->post('Tp_Ativo');
 
             //    $roleId = $this->input->post('role');
@@ -3781,7 +3782,7 @@ class Principal extends BaseController
         $TbGrupoPro_CodGrupo  = $this->input->post('TbGrupoPro_CodGrupo');
         $TbRegra_Id_Regra = $this->input->post('TbRegra_Id_Regra');
         $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
-        $Perc_Pago = $this->input->post('Perc_Pago');
+        $Perc_Pago = $this->valor($this->input->post('Perc_Pago'));
         $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
         $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
@@ -3897,7 +3898,7 @@ class Principal extends BaseController
 
         $TbRegra_Id_Regra = $this->input->post('TbRegra_Id_Regra');
         $TbFaturamento_Id_Faturamento = $this->input->post('TbFaturamento_Id_Faturamento');
-        $Perc_Pago = $this->input->post('Perc_Pago');
+        $Perc_Pago = $this->valor($this->input->post('Perc_Pago'));
         $Dt_IniVigencia = $this->input->post('Dt_IniVigencia');
         $Dt_FimVigencia = $this->input->post('Dt_FimVigencia');
         $Tp_Ativo = $this->input->post('Tp_Ativo');
