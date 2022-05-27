@@ -2335,7 +2335,6 @@ class Principal extends BaseController
         $Tp_RegraProibicao = $this->input->post('Tp_RegraProibicao');
         $Tp_Atendimento = $this->input->post('Tp_Atendimento');
         $Vl_RegraProibicao = $this->valor($this->input->post('Vl_RegraProibicao'));
-        var_dump($Vl_RegraProibicao);exit;
 
         $Tp_Ativo = $this->input->post('Tp_Ativo');
 
