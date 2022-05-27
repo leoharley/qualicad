@@ -358,14 +358,7 @@ $(function() {
                       </a>
                   </li> -->
 
-                  <li class="treeview">
-                      <a href="<?php //echo base_url(); ?>principalExcecaoValores/listar">
-                          <i class="fa fa-th" style="margin-right:5px!important"></i>
-                          <span>Exceção Valores</span>
-                      </a>
-                  </li>
-
-                <!-- 
+                <!--
                   <li class="treeview">
                       <a href="<?php //echo base_url(); ?>principalProibicao/listar">
                           <i class="fa fa-th" style="margin-right:5px!important"></i>
