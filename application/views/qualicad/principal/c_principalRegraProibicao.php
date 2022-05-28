@@ -189,7 +189,7 @@ if(!empty($infoRegraProibicao))
                                             <input type="hidden" value="<?php echo $Id_RegraProibicao; ?>" name="Id_RegraProibicao" id="Id_RegraProibicao" /> 
                                             </td>
 
-                                            <td>
+                                            <td style="width:15%">
                                             <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
