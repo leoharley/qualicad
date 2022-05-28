@@ -89,13 +89,7 @@ if(!empty($infoRegraProibicao))
                                     <tr style="background-color:#e0e0e0">
                                         <th class="header-label" style="padding:10px">
                                         Id Seq
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Faturamento associado
-                                        </th>
-                                        <th class="header-label" style="padding:10px">
-                                        Grupo Pro associado
-                                        </th>                                        
+                                        </th>                                      
                                         <th class="header-label" style="padding:10px">
                                         Plano associado
                                         </th>
@@ -112,6 +106,12 @@ if(!empty($infoRegraProibicao))
                                         Valor da regra de proibição
                                         </th>
                                         <th class="header-label" style="padding:10px">
+                                        Faturamento associado
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
+                                        Grupo Pro associado
+                                        </th>
+                                        <th class="header-label" style="padding:10px">
                                         Ativo?
                                         </th>
                                     </tr>
@@ -119,45 +119,6 @@ if(!empty($infoRegraProibicao))
                                 <tr id="row0">
                                             <td style="width:5%!important">
                                             <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraProibicao') : $Id_RegraProibicao ; ?>" id="Id_RegraProibicao" name="Id_RegraProibicao" disabled>
-                                            </td>
-
-                                            <td>
-                                            <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
-                                            <option value="" disabled selected>SELECIONE</option>
-                                            <?php
-                                            if(!empty($infoFaturamento))
-                                            {
-                                                foreach ($infoFaturamento as $faturamento)
-                                                {
-                                                    ?>
-                                                <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
-                                                    <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
-                                                </option>
-                                                <?php
-                                                }
-                                            }
-                                            ?>
-                                            </select>
-                                            <input type="hidden" value="<?php echo $Id_RegraProibicao; ?>" name="Id_RegraProibicao" id="Id_RegraProibicao" /> 
-                                            </td>
-
-                                            <td>
-                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required>
-                                            <option value="" disabled selected>SELECIONE</option>
-                                            <?php
-                                            if(!empty($infoGrupoPro))
-                                            {
-                                                foreach ($infoGrupoPro as $grupoPro)
-                                                {
-                                                    ?>
-                                                <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
-                                                    <?php echo $grupoPro->CodGrupo.' - '.$grupoPro->Ds_GrupoPro ?>
-                                                </option>
-                                                <?php
-                                                }
-                                            }
-                                            ?>
-                                            </select>
                                             </td>
 
                                             <td>
@@ -206,6 +167,45 @@ if(!empty($infoRegraProibicao))
                                             <td>
                                             <input type="text" class="form-control required valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_RegraProibicao') : $Vl_RegraProibicao ; ?>" id="Vl_RegraProibicao" name="Vl_RegraProibicao"
                                             maxlength="11"> 
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
+                                            <option value="" disabled selected>SELECIONE</option>
+                                            <?php
+                                            if(!empty($infoFaturamento))
+                                            {
+                                                foreach ($infoFaturamento as $faturamento)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $faturamento->Id_Faturamento ?>" <?php if ($this->uri->segment(2) == 'editar' && $faturamento->Id_Faturamento == $TbFaturamento_Id_Faturamento) { echo 'selected'; } ?>>
+                                                    <?php echo $faturamento->Id_Faturamento.' - '.$faturamento->Ds_Faturamento ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                            </select>
+                                            <input type="hidden" value="<?php echo $Id_RegraProibicao; ?>" name="Id_RegraProibicao" id="Id_RegraProibicao" /> 
+                                            </td>
+
+                                            <td>
+                                            <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required>
+                                            <option value="" disabled selected>SELECIONE</option>
+                                            <?php
+                                            if(!empty($infoGrupoPro))
+                                            {
+                                                foreach ($infoGrupoPro as $grupoPro)
+                                                {
+                                                    ?>
+                                                <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
+                                                    <?php echo $grupoPro->CdGrupoPro.' - '.$grupoPro->Ds_GrupoPro ?>
+                                                </option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                            </select>
                                             </td>
 
                                             <td>
