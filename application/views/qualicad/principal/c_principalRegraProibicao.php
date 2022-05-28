@@ -122,7 +122,7 @@ if(!empty($infoRegraProibicao))
                                             </td>
 
                                             <td>
-                                            <select class="form-control required" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento" required>
+                                            <select class="form-control" id="TbFaturamento_Id_Faturamento" name="TbFaturamento_Id_Faturamento">
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
                                             if(!empty($infoFaturamento))
