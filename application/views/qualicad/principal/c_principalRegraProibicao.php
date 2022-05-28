@@ -87,9 +87,9 @@ if(!empty($infoRegraProibicao))
                                 <table style="width:100%;">
                                     <thead>
                                     <tr style="background-color:#e0e0e0">
-                                        <th class="header-label" style="padding:10px">
+                                    <!--    <th class="header-label" style="padding:10px">
                                         Id Seq
-                                        </th>                                      
+                                        </th>  -->                                  
                                         <th class="header-label" style="padding:10px">
                                         Plano associado
                                         </th>
@@ -117,9 +117,9 @@ if(!empty($infoRegraProibicao))
                                     </tr>
                                 </thead>
                                 <tr id="row0">
-                                            <td style="width:5%!important">
-                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraProibicao') : $Id_RegraProibicao ; ?>" id="Id_RegraProibicao" name="Id_RegraProibicao" disabled>
-                                            </td>
+                                        <!--    <td style="width:5%!important">
+                                            <input type="text" class="form-control required" value="<?php //echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Id_RegraProibicao') : $Id_RegraProibicao ; ?>" id="Id_RegraProibicao" name="Id_RegraProibicao" disabled>
+                                            </td> -->
 
                                             <td>
                                             <select class="form-control required" id="TbPlano_Id_Plano" name="TbPlano_Id_Plano" required>
