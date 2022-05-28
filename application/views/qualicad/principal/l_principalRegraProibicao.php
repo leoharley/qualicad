@@ -85,7 +85,7 @@
                         <?php echo $registro->Id_RegraProibicao ?>
                       </td>
                       <td>
-                        <?php echo $registro->Ds_Faturamento ?>
+                        <?php echo ($registro->Ds_Faturamento) ? $registro->Ds_Faturamento : '<span style=\'red\'><strong>SEM FATURAMENTO ASSOCIADO</strong></span>'; ?>
                       </td>
                       <td>
                         <?php echo $registro->Ds_GrupoPro ?>
