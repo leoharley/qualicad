@@ -95,7 +95,7 @@
                       <td>
                         <?php echo $registro->Tp_RegraProibicao ?>
                       </td>
-                      <td style="width:8%">
+                      <td style="width:5%">
                         <?php echo $registro->Tp_Atendimento ?>
                       </td>
                       <td>
