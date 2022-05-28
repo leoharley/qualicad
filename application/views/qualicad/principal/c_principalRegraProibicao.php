@@ -164,7 +164,7 @@ if(!empty($infoRegraProibicao))
                                             </select>
                                             </td>
 
-                                            <td>
+                                            <td style="width:10%">
                                             <input type="text" class="form-control required valor" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Vl_RegraProibicao') : $Vl_RegraProibicao ; ?>" id="Vl_RegraProibicao" name="Vl_RegraProibicao"
                                             maxlength="11"> 
                                             </td>
@@ -189,7 +189,7 @@ if(!empty($infoRegraProibicao))
                                             <input type="hidden" value="<?php echo $Id_RegraProibicao; ?>" name="Id_RegraProibicao" id="Id_RegraProibicao" /> 
                                             </td>
 
-                                            <td style="width:10%">
+                                            <td>
                                             <select class="form-control required" id="TbGrupoPro_CodGrupo" name="TbGrupoPro_CodGrupo" required>
                                             <option value="" disabled selected>SELECIONE</option>
                                             <?php
