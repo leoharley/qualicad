@@ -61,7 +61,6 @@
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Id Seq</th>
                     <th>Faturamento (descrição)</th>
                     <th>Grupo Pro (descrição)</th>
                     <th>Plano (descrição)</th>
@@ -81,9 +80,6 @@
                           {
                       ?>
                     <tr>
-                      <td>
-                        <?php echo $registro->Id_RegraProibicao ?>
-                      </td>
                       <td>
                         <?php echo ($registro->Ds_Faturamento) ? $registro->Ds_Faturamento : '<span style=\'color:red\'><strong>SEM FATURAMENTO ASSOCIADO</strong></span>'; ?>
                       </td>
