@@ -251,7 +251,7 @@ class ExportacaoModel extends CI_Model
         CON_CONV_FINAL.Vl_IND_Honorário,
         CON_CONV_FINAL.Vl_UCO,
         CON_CONV_FINAL.TbRegra_Id_Regra,
-       CON_CONV_FINAL.Ds_Regra,
+        CON_CONV_FINAL.Ds_Regra,
         CON_CONV_FINAL.TbGrupoPro_CodGrupo,
         CON_CONV_FINAL.TbFaturamento_Id_Faturamento,
         CON_CONV_FINAL.Ds_Faturamento,
@@ -337,15 +337,7 @@ FROM
        EXV.TbProFat_Cd_ProFat,
        TbExcValores.Vl_ExcValores,
        TbExcValores.Tp_ExcValores,
-     
-      /* case when (TbExcValores.Vl_ExcValores is not null )
-            then case when (TbExcValores.Tp_ExcValores is null OR TbExcValores.Tp_ExcValores = '')
-                      then TbExcValores.Vl_ExcValores
-                      else EXV.Vl_Total
-                  end 
-            else  EXV.Vl_Total
-       end vr_final_conv,*/
-        Tb_FracaoSimproBra.Vl_FatorDivisao,
+       Tb_FracaoSimproBra.Vl_FatorDivisao,
          round(case when Tb_FracaoSimproBra.Vl_FatorDivisao is not null
               then (case when (TbExcValores.Vl_ExcValores is not null )
                         then case when (TbExcValores.Tp_ExcValores is null OR TbExcValores.Tp_ExcValores = '')
@@ -450,8 +442,8 @@ FROM TbConvenio,TbPlano,TbIndice,TbRegra,Tb_RegraGruPro, TbGrupoPro, TbFaturamen
   
 LEFT OUTER JOIN TbPorteMedico ON (TbPorteMedico.Id_TabFaturamento = TbFatItem.TbFaturamento_Id_Faturamento AND TbPorteMedico.Cd_PorteMedico = TbFatItem.Cd_PorteMedico)
 
-where TbConvenio.tbempresa_id_empresa = $idEmpresa  -- selecionar empresa
-      and TbConvenio.Cd_ConvenioERP = $idConvenio -- selecionar convenio
+where TbConvenio.tbempresa_id_empresa = $idEmpresa
+      and TbConvenio.Cd_ConvenioERP = $idConvenio
       and TbConvenio.id_convenio = TbPlano.TbConvenio_Id_Convenio
       and TbConvenio.tbempresa_id_empresa = TbPlano.TbEmpresa_Id_Empresa
       and TbPlano.TbIndice_Id_Indice = TbIndice.Id_Indice
@@ -467,7 +459,6 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa  -- selecionar empresa
       and TbIndice.Tp_Ativo = 'S'
       and TbRegra.Tp_Ativo = 'S'
       and TbGrupoPro.Tp_Ativo = 'S'
-    -- and TbFatItem.Cd_TUSS = 90236190
 ) AA
       inner JOIN TbTUSS ON (TbTUSS.TbConvenio_Id_Convenio =  AA.Cd_ConvenioERP AND TbTUSS.Cd_Tuss = AA.CD_TUSS and TbTUSS.cd_gru_pro = AA.TbGrupoPro_CodGrupo)) EXV
       LEFT OUTER JOIN TbExcValores ON (TbExcValores.CD_Convenio = EXV.Cd_ConvenioERP AND TbExcValores.Cd_TUSS =  EXV.Cd_TUSS AND TbExcValores.Cd_ProFat = EXV.TbProFat_Cd_ProFat and TbExcValores.TbEmpresa_Id_Empresa = EXV.tbempresa_id_empresa)
