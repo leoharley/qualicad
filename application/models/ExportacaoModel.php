@@ -450,8 +450,8 @@ FROM TbConvenio,TbPlano,TbIndice,TbRegra,Tb_RegraGruPro, TbGrupoPro, TbFaturamen
   
 LEFT OUTER JOIN TbPorteMedico ON (TbPorteMedico.Id_TabFaturamento = TbFatItem.TbFaturamento_Id_Faturamento AND TbPorteMedico.Cd_PorteMedico = TbFatItem.Cd_PorteMedico)
 
-where TbConvenio.tbempresa_id_empresa = '.$idEmpresa.'  -- selecionar empresa
-      and TbConvenio.Cd_ConvenioERP = '.$idConvenio.' -- selecionar convenio
+where TbConvenio.tbempresa_id_empresa = $idEmpresa  -- selecionar empresa
+      and TbConvenio.Cd_ConvenioERP = $idConvenio -- selecionar convenio
       and TbConvenio.id_convenio = TbPlano.TbConvenio_Id_Convenio
       and TbConvenio.tbempresa_id_empresa = TbPlano.TbEmpresa_Id_Empresa
       and TbPlano.TbIndice_Id_Indice = TbIndice.Id_Indice
