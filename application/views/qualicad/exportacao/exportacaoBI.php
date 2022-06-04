@@ -96,26 +96,14 @@
                     </select>
                 </div>
                 <br/>
-                <input type="file" name="file" />
-                <br/>
-                <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
+                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR ARQUIVO">
             
                 <div id="loader" style="display:none;margin-top:30px">
                 <span><strong>O arquivo está sendo carregado, aguarde...    </strong></span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
 
-            </form>
-
-            <br/>
-            <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
-            <br/>
-            <br/>
-
-            <a class="btn btn-primary" href="<?php echo base_url(). 'exportaFatItem/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
-                <i class="fa fa-upload"></i> Exportar importação atual</a>
-            <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaFatItem/0">
-                <i class="fa fa-upload"></i> Exportar todos registros</a>
+            </form>            
 
         </div>
 
