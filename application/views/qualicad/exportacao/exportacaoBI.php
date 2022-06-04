@@ -66,7 +66,7 @@
                             foreach ($empresasPerfilUsuario as $empresa)
                             {
                                 ?>
-                            <option value="<?php echo $empresa->Id_Empresa ?>" disabled>
+                            <option value="<?php echo $empresa->Id_Empresa ?>" selected>
                                 <?php echo $empresa->Nome_Empresa ?>
                             </option>
                             <?php
