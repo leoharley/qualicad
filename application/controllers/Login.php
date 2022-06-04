@@ -234,9 +234,10 @@ class Login extends BaseController
         $IdEmpresa = $this->input->post('Id_Empresa');
         foreach ($this->CadastroModel->carregaInfoEmpresa($IdEmpresa) as $data){
             $NomeEmpresa = ($data->Nome_Empresa);
+            $Cd_EmpresaERP = ($data->Cd_EmpresaERP);
         }
 
-        $sessionArray = array('idEmpresa'=>$IdEmpresa,'nomeEmpresa'=>$NomeEmpresa);
+        $sessionArray = array('idEmpresa'=>$IdEmpresa,'nomeEmpresa'=>$NomeEmpresa, 'Cd_EmpresaERP'=>$Cd_EmpresaERP);
 
         $this->session->set_userdata($sessionArray);
 
