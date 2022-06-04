@@ -497,7 +497,7 @@ $(function() {
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="<?php echo base_url(); ?>dadas">
+                    <a href="<?php echo base_url(); ?>exportacaoBI">
                         <i class="fa fa-th"></i>
                         <span>Exportação BI</span>
                     </a>
