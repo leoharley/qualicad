@@ -430,8 +430,8 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
-        $consultaConvenio = $this->ExportacaoModel->exportaBI('13','121');
-        var_dump ($consultaConvenio);exit;
+        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI('13','121');
+        var_dump ($consultaConvenioBI);exit;
         
     }
 
