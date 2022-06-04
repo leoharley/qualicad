@@ -459,6 +459,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
       and TbIndice.Tp_Ativo = 'S'
       and TbRegra.Tp_Ativo = 'S'
       and TbGrupoPro.Tp_Ativo = 'S'
+      and TbFatItem.Cd_TUSS = 90236190
 ) AA
       inner JOIN TbTUSS ON (TbTUSS.TbConvenio_Id_Convenio =  AA.Cd_ConvenioERP AND TbTUSS.Cd_Tuss = AA.CD_TUSS and TbTUSS.cd_gru_pro = AA.TbGrupoPro_CodGrupo)) EXV
       LEFT OUTER JOIN TbExcValores ON (TbExcValores.CD_Convenio = EXV.Cd_ConvenioERP AND TbExcValores.Cd_TUSS =  EXV.Cd_TUSS AND TbExcValores.Cd_ProFat = EXV.TbProFat_Cd_ProFat and TbExcValores.TbEmpresa_Id_Empresa = EXV.tbempresa_id_empresa)
