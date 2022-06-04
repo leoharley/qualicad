@@ -184,6 +184,9 @@ $route['exportaPorteMedico/:any'] = "exportacao/exportaPorteMedico/$1";
 
 $route['exportaExcecaoValores/:any'] = "exportacao/exportaExcecaoValores/$1";
 
+$route['exportacaoBI'] = "exportacao/exportacaoBI";
+$route['exportaBI'] = "exportacao/exportaBI";
+
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";
 $route['editaConvenio'] = "principal/editaConvenio";

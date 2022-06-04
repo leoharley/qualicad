@@ -20,6 +20,7 @@ class Exportacao extends BaseController
         $this->load->model('user_model');
         $this->load->model('ImportacaoModel');
         $this->load->model('PermissaoModel');
+        $this->load->model('PrincipalModel');
         $this->load->model('CadastroModel');
         $this->load->model('ExportacaoModel');
         // Datas -> libraries ->BaseController / This function used load user sessions
@@ -412,6 +413,23 @@ class Exportacao extends BaseController
         fclose($handle);
         exit;
     }
+
+    /* EXPORTACAO BI */
+    function exportacaoBI()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Exportação BI';
+        
+        $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId'));
+        $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));    
+
+        $this->loadViews("qualicad/exportacao/exportacaoBI", $this->global, $data, NULL);
+    }
+
+
+
+
 
 
 }
