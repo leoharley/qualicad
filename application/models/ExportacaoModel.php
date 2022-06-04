@@ -474,7 +474,7 @@ where TbConvenio.tbempresa_id_empresa = '.$idEmpresa.'  -- selecionar empresa
       LEFT OUTER JOIN Tb_FracaoSimproBra ON (Tb_FracaoSimproBra.TbEmpresa_Id_Empresa = EXV.tbempresa_id_empresa and Tb_FracaoSimproBra.TbFatItem_Id_FatItem =EXV.TbFaturamento_Id_Faturamento and Tb_FracaoSimproBra.CD_TISS = EXV.Cd_TISS)
        Left outer join Tb_RegraProibicao on ( Tb_RegraProibicao.TbEmpresa_Id_Empresa =  EXV.tbempresa_id_empresa and Tb_RegraProibicao.TbPlano_Id_Plano = EXV.Id_Plano and Tb_RegraProibicao.TbGrupoPro_CodGrupo = EXV.CodGrupo )) CON_CONV_FINAL";
 
-    $query = $this->db->query($SQL);    
+    $query = $this->db->query($sql);    
     return $query->result_array();
     }
 
