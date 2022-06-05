@@ -435,6 +435,9 @@ class Exportacao extends BaseController
 
         $memData = array();
         if(!empty($consultaConvenioBI)){
+
+            $insertCount = $notAddCount = 0;
+
             foreach($consultaConvenioBI as $row) {
                 foreach($row as $key => $value) {
                 $memData += array(
@@ -446,36 +449,22 @@ class Exportacao extends BaseController
 
                 $insert = $this->ExportacaoModel->adicionaConvenio($memData);
 
-                var_dump ($insert);exit;
-                    
+                if($insert != 0){
+                    $insertCount++;
+                } else {
+                    $notAddCount++;
+                }
+
                 $memData = array();
             }
         }
 
-            if($insert != 0){
-                $insertCount++;
-            } else {
-                /*  if (isset($memData['TbProFat_Cd_ProFat'])) {
-                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
-                }*/
-                array_push($errosDeChave, ($rowCount+1));
-                $notAddCount++;
-            }
-        
-            $this->session->set_flashdata('errosDeChaveMsg', $temp);
-
-
             // Status message with imported data count
             $notAddCount = ($rowCount - ($insertCount + $updateCount));
-            $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
+            $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCount.') | Não inseridos ('.$notAddCount.')';
+            
+            $this->session->set_flashdata('success', $successMsg);
 
-            $this->session->set_flashdata('num_linhas_importadas', $insertCount);
-            if ($campoNaoLocalizado == '') {
-                $this->session->set_flashdata('success', $successMsg);
-            } else {
-                $this->session->set_flashdata('error', $campoNaoLocalizado);
-            }     
-        
     }
 
 
