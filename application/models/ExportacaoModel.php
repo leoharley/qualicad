@@ -529,8 +529,8 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
         CON_CONTRATO.TP_TUSS,
         CON_CONTRATO.DS_TIP_TUSS,
         CON_CONTRATO.Cd_Tuss,
-        CON_CONTRATO.Ds_Tuss,
-        CON_CONTRATO.PRODUTO_ATIVO
+        CON_CONTRATO.Ds_Tuss
+  --      CON_CONTRATO.PRODUTO_ATIVO
             
         FROM
 
