@@ -436,18 +436,15 @@ class Exportacao extends BaseController
         $memData = array();
         if(!empty($consultaConvenioBI)){
             foreach($consultaConvenioBI as $row) {
-
                 foreach($row as $key => $value) {
-
-                var_dump ($value);exit;
-
-                }
-
                 $memData += array(
-                    $row => $row
+                    $key => $value
                 );
+                }
             }
         }
+
+        var_dump ($memData);exit;
  
             $memData += array(
                 'Tp_Ativo'=> 'S');
