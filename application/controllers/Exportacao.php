@@ -459,8 +459,6 @@ class Exportacao extends BaseController
             }
         }
 
-            // Status message with imported data count
-            $notAddCount = ($rowCount - ($insertCount + $updateCount));
             $successMsg = 'MSG TEMPORÁRIA: TABEA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCount.') | Não inseridos ('.$notAddCount.')';
             
             $this->session->set_flashdata('success', $successMsg);
