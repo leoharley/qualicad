@@ -444,7 +444,7 @@ class Exportacao extends BaseController
                 $memData += array(
                     'Tp_Ativo'=> 'S');
                 var_dump ($memData);
-                $memData = NULL;
+                $memData = array();
             }
         }
 
