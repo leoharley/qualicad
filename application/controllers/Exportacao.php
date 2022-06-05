@@ -432,7 +432,55 @@ class Exportacao extends BaseController
     {
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI('13','121');
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI('5','121');
-        var_dump ($consultaContratoBI);exit;
+
+        $memData = array();
+        if(!empty($consultaConvenioBI)){
+            foreach($consultaConvenioBI as $row) {
+                $rowCount++;
+
+                $memData += array(
+                    $row
+                );
+            }
+        }
+ 
+            $memData += array(
+                'TbFaturamento_Id_Faturamento' => $this->input->post('TbFaturamento_Id_Faturamento'),                                
+                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                'Tp_Ativo'=> 'S');
+
+            var_dump ($memData);exit;
+
+            $insert = $this->ImportacaoModel->adicionaFatItem($memData);
+
+            if($insert != 0){
+                $insertCount++;
+            } else {
+                /*  if (isset($memData['TbProFat_Cd_ProFat'])) {
+                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
+                }*/
+                array_push($errosDeChave, ($rowCount+1));
+                $notAddCount++;
+            }
+        }
+
+           
+
+
+            $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
+
+            // Status message with imported data count
+            $notAddCount = ($rowCount - ($insertCount + $updateCount));
+            $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
+
+            $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+            if ($campoNaoLocalizado == '') {
+                $this->session->set_flashdata('success', $successMsg);
+            } else {
+                $this->session->set_flashdata('error', $campoNaoLocalizado);
+            }
+        }  
         
     }
 
