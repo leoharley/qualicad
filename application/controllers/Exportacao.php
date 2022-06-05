@@ -439,7 +439,7 @@ class Exportacao extends BaseController
 
                 foreach($row as $key => $value) {
 
-                var_dump ($key);exit;
+                var_dump ($value);exit;
 
                 }
 
