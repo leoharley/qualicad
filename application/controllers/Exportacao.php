@@ -438,7 +438,7 @@ class Exportacao extends BaseController
             foreach($consultaConvenioBI as $row) {
 
                 $memData += array(
-                    $row
+                    $row => $row
                 );
             }
         }
