@@ -492,6 +492,8 @@ class Exportacao extends BaseController
         
         $this->session->set_flashdata('success', $successMsg);
 
+        $this->session->set_flashdata('idconvenio', $idConvenio);
+
         redirect('exportacaoBI');
     }
 

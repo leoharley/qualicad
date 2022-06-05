@@ -81,12 +81,14 @@
                     <select class="form-control required" id="TbConvenio_Id_Convenio" name="TbConvenio_Id_Convenio" required>
                     <option value="" disabled selected>SELECIONE</option>
                     <?php
+                    $idconvenio = $this->session->flashdata('idconvenio');
+                    
                     if(!empty($infoConvenio))
                     {
                         foreach ($infoConvenio as $convenio)
                         {
                             ?>
-                        <option value="<?php echo $convenio->Cd_ConvenioERP ?>">
+                        <option value="<?php echo $convenio->Cd_ConvenioERP ?>" <?php if ($idconvenio&&$convenio->Id_Convenio == $idconvenio) { echo 'selected'; } ?>>
                             <?php echo $convenio->Cd_ConvenioERP.' - '.$convenio->Ds_Convenio ?>
                         </option>
                         <?php
