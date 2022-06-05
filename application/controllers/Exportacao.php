@@ -430,8 +430,9 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
-        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI('13','121');
-        $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI('5','121');
+        $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
+        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI('13',$idConvenio);
+        $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI('5',$idConvenio);
 
         $memData = array();
         if(!empty($consultaConvenioBI)){
