@@ -683,6 +683,18 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
         return $insert_id;
     }
 
+    function consultaCodERPEmpresa($IdEmpresa)
+    {
+        $this->db->select('empresa.Cd_EmpresaERP');
+        $this->db->from('TbEmpresa as empresa');
+        $this->db->where('empresa.Id_Empresa', $IdEmpresa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+
+
 }
 
   

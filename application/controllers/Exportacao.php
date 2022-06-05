@@ -431,8 +431,10 @@ class Exportacao extends BaseController
     function exportaBI()
     {
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
-        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI('13',$idConvenio);
-        $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI('5',$idConvenio);
+        $idEmpresa = $this->input->post('Id_Empresa');
+        var_dump($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP);exit;
+        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio);
+        $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio);
 
         $memData = array();
         if(!empty($consultaConvenioBI)){
