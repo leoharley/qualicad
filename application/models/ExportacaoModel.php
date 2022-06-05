@@ -239,7 +239,7 @@ class ExportacaoModel extends CI_Model
     $sql="SELECT CON_CONV_FINAL.id_convenio,
        CON_CONV_FINAL.ds_convenio,
         CON_CONV_FINAL.Cd_ConvenioERP,
-        CON_CONV_FINAL.tbempresa_id_empresa,
+        CON_CONV_FINAL.TbEmpresa_Id_Empresa,
         CON_CONV_FINAL.Id_Plano,
         CON_CONV_FINAL.Ds_Plano,
         CON_CONV_FINAL.Cd_PlanoERP,
@@ -669,6 +669,18 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
 
     $query = $this->db->query($sql);    
     return $query->result();
+    }
+
+    function adicionaConvenio($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('Tmp_Convenio', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
     }
 
 }

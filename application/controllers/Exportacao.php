@@ -436,7 +436,6 @@ class Exportacao extends BaseController
         $memData = array();
         if(!empty($consultaConvenioBI)){
             foreach($consultaConvenioBI as $row) {
-                $rowCount++;
 
                 $memData += array(
                     $row
@@ -445,13 +444,11 @@ class Exportacao extends BaseController
         }
  
             $memData += array(
-                'TbFaturamento_Id_Faturamento' => $this->input->post('TbFaturamento_Id_Faturamento'),                                
-                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                 'Tp_Ativo'=> 'S');
 
-            var_dump ($memData);exit;
+            $insert = $this->ExportacaoModel->adicionaConvenio($memData);
 
-            $insert = $this->ImportacaoModel->adicionaFatItem($memData);
+            var_dump ($insert);exit;
 
             if($insert != 0){
                 $insertCount++;
