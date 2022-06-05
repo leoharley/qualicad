@@ -432,14 +432,13 @@ class Exportacao extends BaseController
     {
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
-        var_dump($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP);exit;
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio);
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio);
 
         $memData = array();
         if(!empty($consultaConvenioBI)){
 
-            $insertCount = $notAddCount = 0;
+            $insertCountConvenio = $notAddCountConvenio = 0;
 
             foreach($consultaConvenioBI as $row) {
                 foreach($row as $key => $value) {
@@ -453,20 +452,47 @@ class Exportacao extends BaseController
                 $insert = $this->ExportacaoModel->adicionaConvenio($memData);
 
                 if($insert != 0){
-                    $insertCount++;
+                    $insertCountConvenio++;
                 } else {
-                    $notAddCount++;
+                    $notAddCountConvenio++;
                 }
 
                 $memData = array();
             }
         }
 
-            $successMsg = 'MSG TEMPORÁRIA: TABEA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCount.') | Não inseridos ('.$notAddCount.')';
-            
-            $this->session->set_flashdata('success', $successMsg);
+        $memData = array();
+        if(!empty($consultaContratoBI)){
 
-            redirect('exportacaoBI');
+            $insertCountContrato = $notAddCountContrato = 0;
+
+            foreach($consultaContratoBI as $row) {
+                foreach($row as $key => $value) {
+                $memData += array(
+                    $key => $value
+                );
+                }
+                $memData += array(
+                    'Tp_Ativo'=> 'S');
+
+                $insert = $this->ExportacaoModel->adicionaContrato($memData);
+
+                if($insert != 0){
+                    $insertCountContrato++;
+                } else {
+                    $notAddCountContrato++;
+                }
+
+                $memData = array();
+            }
+        }
+
+        $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
+                        MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
+        
+        $this->session->set_flashdata('success', $successMsg);
+
+        redirect('exportacaoBI');
     }
 
 

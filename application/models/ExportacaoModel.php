@@ -683,6 +683,18 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
         return $insert_id;
     }
 
+    function adicionaContrato($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('Tmp_Contrato', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
     function consultaCodERPEmpresa($IdEmpresa)
     {
         $this->db->select('empresa.Cd_EmpresaERP');
