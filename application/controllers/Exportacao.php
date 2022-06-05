@@ -443,19 +443,14 @@ class Exportacao extends BaseController
                 }
                 $memData += array(
                     'Tp_Ativo'=> 'S');
-                var_dump ($memData);
+
+                $insert = $this->ExportacaoModel->adicionaConvenio($memData);
+
+                var_dump ($insert);exit;
+                    
                 $memData = array();
             }
         }
-
-        exit;
- 
-            $memData += array(
-                'Tp_Ativo'=> 'S');
-
-            $insert = $this->ExportacaoModel->adicionaConvenio($memData);
-
-            var_dump ($insert);exit;
 
             if($insert != 0){
                 $insertCount++;
