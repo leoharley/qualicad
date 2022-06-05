@@ -437,6 +437,8 @@ class Exportacao extends BaseController
         if(!empty($consultaConvenioBI)){
             foreach($consultaConvenioBI as $row) {
 
+                var_dump ($row);exit;
+
                 $memData += array(
                     $row => $row
                 );
