@@ -86,8 +86,8 @@
                         foreach ($infoConvenio as $convenio)
                         {
                             ?>
-                        <option value="<?php echo $convenio->Id_Convenio ?>">
-                            <?php echo $convenio->Id_Convenio.' - '.$convenio->Ds_Convenio ?>
+                        <option value="<?php echo $convenio->Cd_ConvenioERP ?>">
+                            <?php echo $convenio->Cd_ConvenioERP.' - '.$convenio->Ds_Convenio ?>
                         </option>
                         <?php
                         }
