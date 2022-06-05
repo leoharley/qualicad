@@ -433,6 +433,7 @@ class Exportacao extends BaseController
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI('13','121');
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI('5','121');
 
+        var_dump ($consultaConvenioBI);exit;
         $memData = array();
         if(!empty($consultaConvenioBI)){
             foreach($consultaConvenioBI as $row) {
