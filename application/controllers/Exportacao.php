@@ -462,11 +462,7 @@ class Exportacao extends BaseController
                 array_push($errosDeChave, ($rowCount+1));
                 $notAddCount++;
             }
-        }
-
-           
-
-
+        
             $this->session->set_flashdata('errosDeChaveMsg', $temp);
 
 
@@ -479,8 +475,7 @@ class Exportacao extends BaseController
                 $this->session->set_flashdata('success', $successMsg);
             } else {
                 $this->session->set_flashdata('error', $campoNaoLocalizado);
-            }
-        }  
+            }     
         
     }
 
