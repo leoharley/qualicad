@@ -438,10 +438,9 @@ class Exportacao extends BaseController
             $offset = $this->input->post('offset');
         }
 
-        $limit = 25000;
+        $offset = $offset + 25000;
 
-        var_dump($offset);
-        var_dump($limit);
+        $limit = 25000;
 
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
@@ -503,10 +502,10 @@ class Exportacao extends BaseController
         }
 
 
-        $offsetSession = $this->session->set_flashdata('offset', $offset + 25000);
+        $this->session->set_flashdata('offset', $offset + 25000);
 
-        $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Limit ('.($limit).') | Offset ('.($offset + 25000).') | Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
-                        MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
+        $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Linhas acumuladas ('.($offset + 25000).') | Inseridos agora ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
+                        MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Linhas acumuladas ('.($offset + 25000).') | Inseridos agora ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
         
         $this->session->set_flashdata('success', $successMsg);
 
