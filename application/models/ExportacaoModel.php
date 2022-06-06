@@ -234,7 +234,7 @@ class ExportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset)
+    function consultaConvenioBI($idEmpresa,$idConvenio)
     {
     $sql="SELECT CON_CONV_FINAL.id_convenio,
        CON_CONV_FINAL.ds_convenio,
@@ -466,14 +466,14 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
       Left outer join Tb_RegraProibicao on ( Tb_RegraProibicao.TbEmpresa_Id_Empresa =  EXV.tbempresa_id_empresa and Tb_RegraProibicao.TbPlano_Id_Plano = EXV.Id_Plano and Tb_RegraProibicao.TbGrupoPro_CodGrupo = EXV.CodGrupo )) CON_CONV_FINAL
     --  LIMIT 20000
     --  LIMIT 40000 OFFSET 20000
-        LIMIT $limit OFFSET $offset
+
       ";
 
     $query = $this->db->query($sql);    
     return $query->result();
     }
 
-    function consultaContratoBI($idEmpresa,$idConvenio,$limit,$offset)
+    function consultaContratoBI($idEmpresa,$idConvenio)
     {
     $sql="SELECT CON_CONTRATO.TbEmpresa_Id_Empresa,
             CON_CONTRATO.Cd_EmpresaERP, 
@@ -668,7 +668,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
         ) CON_CONTRATO
     --    LIMIT 20000
     --    LIMIT 40000 OFFSET 20000
-        LIMIT $limit OFFSET $offset
+
       ";
 
     $query = $this->db->query($sql);    
