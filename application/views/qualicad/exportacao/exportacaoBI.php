@@ -97,6 +97,9 @@
                     ?>
                     </select>
                 </div>
+                <input type="hidden" name="insertCountContrato" id="insertCountContrato" value="<?php echo $this->session->flashdata('insertCountContrato'); ?>">
+                <input type="hidden" name="insertCountConvenio" id="insertCountConvenio" value="<?php echo $this->session->flashdata('insertCountConvenio'); ?>">
+                
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
 
                 <div id="loader" style="display:none;margin-top:30px">

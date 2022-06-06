@@ -454,8 +454,8 @@ class Exportacao extends BaseController
             $offset = $this->input->post('offset');
         }
 
-        $insertCountConvenio = intval($this->session->flashdata('insertCountConvenio'));
-        $insertCountContrato = intval($this->session->flashdata('insertCountContrato'));
+        $insertCountConvenio = intval($this->input->post('insertCountConvenio'));
+        $insertCountContrato = intval($this->input->post('insertCountContrato'));
 
         $offset = $offset + 25000;
 
