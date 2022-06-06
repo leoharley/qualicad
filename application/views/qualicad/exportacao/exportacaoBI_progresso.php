@@ -100,13 +100,14 @@
                 <br/>
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
 
-                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" disabled>
-                <input type="submit" class="btn btn-primary" style="display:none" name="exportSubmit2" id="exportSubmit2" value="">
-            
                 <div id="loader" style="margin-top:30px">
                 <span><strong>Processando registros, aguarde...    </strong></span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
+                <br/>
+
+                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" disabled>
+                <input type="submit" class="btn btn-primary" style="display:none" name="exportSubmit2" id="exportSubmit2" value="">
 
             </form>            
 
