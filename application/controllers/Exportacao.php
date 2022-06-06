@@ -433,10 +433,10 @@ class Exportacao extends BaseController
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
         
-        for ($x = 0; $x <= 100; $x++)
+        for ($x = 0; $x <= 2; $x++)
         {
-        $offset = $x;
-        $limit = $x + 1;
+        $offset = $x*10000;
+        $limit = ($x+1)*10000;
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
         $memData = array();
