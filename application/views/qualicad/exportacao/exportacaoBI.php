@@ -100,7 +100,7 @@
                 <br/>
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
 
-                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="PROCESSAR MAIS 25.000 REGISTROS">
+                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR">
             
                 <div id="loader" style="display:none;margin-top:30px">
                 <span><strong>O arquivo está sendo carregado, aguarde...    </strong></span>

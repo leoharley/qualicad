@@ -710,7 +710,6 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     }
 
 
-
 }
 
   
