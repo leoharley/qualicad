@@ -465,7 +465,8 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
       LEFT OUTER JOIN Tb_FracaoSimproBra ON (Tb_FracaoSimproBra.TbEmpresa_Id_Empresa = EXV.tbempresa_id_empresa and Tb_FracaoSimproBra.TbFatItem_Id_FatItem =EXV.TbFaturamento_Id_Faturamento and Tb_FracaoSimproBra.CD_TISS = EXV.Cd_TISS)
       Left outer join Tb_RegraProibicao on ( Tb_RegraProibicao.TbEmpresa_Id_Empresa =  EXV.tbempresa_id_empresa and Tb_RegraProibicao.TbPlano_Id_Plano = EXV.Id_Plano and Tb_RegraProibicao.TbGrupoPro_CodGrupo = EXV.CodGrupo )) CON_CONV_FINAL
     --  LIMIT 20000
-      LIMIT 40000 OFFSET 20000
+    --  LIMIT 40000 OFFSET 20000
+    LIMIT 1
       ";
 
     $query = $this->db->query($sql);    
@@ -666,7 +667,8 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
         END) IN ('A')
         ) CON_CONTRATO
     --    LIMIT 20000
-        LIMIT 40000 OFFSET 20000
+    --    LIMIT 40000 OFFSET 20000
+        LIMIT 1
       ";
 
     $query = $this->db->query($sql);    
