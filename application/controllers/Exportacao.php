@@ -454,8 +454,8 @@ class Exportacao extends BaseController
             $offset = $this->input->post('offset');
         }
 
-        $insertCountConvenio = $this->session->flashdata('insertCountConvenio');
-        $insertCountContrato = $this->session->flashdata('insertCountContrato');
+        $insertCountConvenio = intval($this->session->flashdata('insertCountConvenio'));
+        $insertCountContrato = intval($this->session->flashdata('insertCountContrato'));
 
         $offset = $offset + 25000;
 
@@ -532,7 +532,7 @@ class Exportacao extends BaseController
             $msgInseridosContrato = 'Todas as linhas foram inseridas' ;
             $todosInseridosContrato = true;
         } else {
-            $msgInseridosContrato = 'Inseridos agora ('.$insertCountContrato.')';
+            $msgInseridosContrato = 'Inseridos até agora ('.$insertCountContrato.')';
         }
 
         $successMsg = 'TMP_CONVENIO: '.$msgInseridosConvenio.' | Não inseridos ('.$notAddCountConvenio.')<br/>
