@@ -521,7 +521,7 @@ class Exportacao extends BaseController
 
         if ($insertCountConvenio == '')
         {
-            $msgInseridosConvenio = 'Todas as linhas foram inseridas' ;
+            $msgInseridosConvenio = 'Todas as linhas foram inseridas ('.$insertCountConvenio.')' ;
             $todosInseridosConvenio = true;
         } else {
             $msgInseridosConvenio = 'Inseridos até agora ('.$insertCountConvenio.')';
@@ -529,7 +529,7 @@ class Exportacao extends BaseController
 
         if ($insertCountContrato == '')
         {
-            $msgInseridosContrato = 'Todas as linhas foram inseridas' ;
+            $msgInseridosContrato = 'Todas as linhas foram inseridas ('.$insertCountContrato.')' ;
             $todosInseridosContrato = true;
         } else {
             $msgInseridosContrato = 'Inseridos até agora ('.$insertCountContrato.')';
