@@ -448,11 +448,14 @@ class Exportacao extends BaseController
 
         if ($this->input->post('offset') < 1) {
             $offset = 0;
-            $insertCountConvenio = $notAddCountConvenio = 0;
-            $insertCountContrato = $notAddCountContrato = 0;
+            $insertCountConvenioSession = $notAddCountConvenioSession = 0;
+            $insertCountContratoSession = $notAddCountContratoSession = 0;
         } else {
             $offset = $this->input->post('offset');
         }
+
+        $insertCountConvenioSession = intval($this->input->post('insertCountConvenioSession'));
+        $insertCountContratoSession = intval($this->input->post('insertCountContratoSession'));
 
         $offset = $offset + 25000;
 
@@ -465,6 +468,7 @@ class Exportacao extends BaseController
 
         $memData = array();
         if(!empty($consultaConvenioBI)){
+            $insertCountConvenio = $notAddCountConvenio = 0;
 
             foreach($consultaConvenioBI as $row) {
                 foreach($row as $key => $value) {
@@ -478,8 +482,10 @@ class Exportacao extends BaseController
                 $insert = $this->ExportacaoModel->adicionaConvenio($memData);
 
                 if($insert != 0){
+                    $insertCountConvenioSession++;
                     $insertCountConvenio++;
                 } else {
+                    $notAddCountConvenioSession++;
                     $notAddCountConvenio++;
                 }
 
@@ -491,7 +497,7 @@ class Exportacao extends BaseController
 
         $memData = array();
         if(!empty($consultaContratoBI)) {
-
+            $insertCountContrato = $notAddCountContrato = 0;
             foreach ($consultaContratoBI as $row) {
                 foreach ($row as $key => $value) {
                     $memData += array(
@@ -505,8 +511,10 @@ class Exportacao extends BaseController
 
                 if ($insert != 0) {
                     $insertCountContrato++;
+                    $insertCountContratoSession++;
                 } else {
                     $notAddCountContrato++;
+                    $notAddCountContratoSession++;
                 }
 
                 $memData = array();
@@ -518,18 +526,18 @@ class Exportacao extends BaseController
 
         if ($insertCountConvenio == '')
         {
-            $msgInseridosConvenio = 'Todas as linhas foram inseridas' ;
+            $msgInseridosConvenio = 'Todas as linhas foram inseridas ('.$insertCountConvenioSession.')' ;
             $todosInseridosConvenio = true;
         } else {
-            $msgInseridosConvenio = 'Inseridos até agora ('.$insertCountConvenio.')';
+            $msgInseridosConvenio = 'Inseridos até agora ('.$insertCountConvenioSession.')';
         }
 
         if ($insertCountContrato == '')
         {
-            $msgInseridosContrato = 'Todas as linhas foram inseridas' ;
+            $msgInseridosContrato = 'Todas as linhas foram inseridas ('.$insertCountContratoSession.')' ;
             $todosInseridosContrato = true;
         } else {
-            $msgInseridosContrato = 'Inseridos agora ('.$insertCountContrato.')';
+            $msgInseridosContrato = 'Inseridos até agora ('.$insertCountContratoSession.')';
         }
 
         $successMsg = 'TMP_CONVENIO: '.$msgInseridosConvenio.' | Não inseridos ('.$notAddCountConvenio.')<br/>
@@ -539,7 +547,8 @@ class Exportacao extends BaseController
 
         $this->session->set_flashdata('idconvenio', $idConvenio);
 
-        $this->session->set_flashdata('success', $successMsg);
+        $this->session->set_flashdata('insertCountContratoSession', $insertCountContratoSession);
+        $this->session->set_flashdata('insertCountConvenioSession', $insertCountConvenioSession);
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
             redirect('exportacaoBI');
