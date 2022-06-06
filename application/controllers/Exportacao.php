@@ -430,6 +430,8 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
+        set_time_limit(0);
+
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
         
@@ -463,9 +465,7 @@ class Exportacao extends BaseController
 
                 $memData = array();
             }
-        }
-        
-        sleep(1000);
+        }    
 
         }
         /*
