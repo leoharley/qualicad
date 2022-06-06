@@ -436,7 +436,7 @@ class Exportacao extends BaseController
         $idEmpresa = $this->input->post('Id_Empresa');
 
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio);
-        $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio);
+        //$consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio);
 
         $memData = array();
         if(!empty($consultaConvenioBI)){
@@ -464,7 +464,7 @@ class Exportacao extends BaseController
             }
         }
 
-        $memData = array();
+    /*    $memData = array();
         if(!empty($consultaContratoBI)){
 
             $insertCountContrato = $notAddCountContrato = 0;
@@ -488,7 +488,7 @@ class Exportacao extends BaseController
 
                 $memData = array();
             }
-        }
+        } */
         
    /*     for ($x = 0; $x <= 2; $x++)
         {
