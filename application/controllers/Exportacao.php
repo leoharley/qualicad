@@ -504,8 +504,8 @@ class Exportacao extends BaseController
 
         $this->session->set_flashdata('offset', $offset);
 
-        $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Linhas acumuladas ('.($offset).') | Inseridos agora ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
-                        MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Linhas acumuladas ('.($offset).') | Inseridos agora ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
+        $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Total inseridos ('.($offset).') | Inseridos agora ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
+                        MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Total inseridos ('.($offset).') | Inseridos agora ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
         
         $this->session->set_flashdata('success', $successMsg);
 
