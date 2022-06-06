@@ -434,63 +434,8 @@ class Exportacao extends BaseController
 
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
-
-        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio);
-        //$consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio);
-
-        $memData = array();
-        if(!empty($consultaConvenioBI)){
-
-            $insertCountConvenio = $notAddCountConvenio = 0;
-
-            foreach($consultaConvenioBI as $row) {
-                foreach($row as $key => $value) {
-                    $memData += array(
-                        $key => $value
-                    );
-                }
-                $memData += array(
-                    'Tp_Ativo'=> 'S');
-
-                $insert = $this->ExportacaoModel->adicionaConvenio($memData);
-
-                if($insert != 0){
-                    $insertCountConvenio++;
-                } else {
-                    $notAddCountConvenio++;
-                }
-
-                $memData = array();
-            }
-        }
-
-    /*    $memData = array();
-        if(!empty($consultaContratoBI)){
-
-            $insertCountContrato = $notAddCountContrato = 0;
-
-            foreach($consultaContratoBI as $row) {
-                foreach($row as $key => $value) {
-                    $memData += array(
-                        $key => $value
-                    );
-                }
-                $memData += array(
-                    'Tp_Ativo'=> 'S');
-
-                $insert = $this->ExportacaoModel->adicionaContrato($memData);
-
-                if($insert != 0){
-                    $insertCountContrato++;
-                } else {
-                    $notAddCountContrato++;
-                }
-
-                $memData = array();
-            }
-        } */
         
-   /*     for ($x = 0; $x <= 2; $x++)
+        for ($x = 0; $x <= 3; $x++)
         {
         $offset = $x*10000;
         $limit = ($x+1)*10000;
@@ -525,7 +470,7 @@ class Exportacao extends BaseController
         }
 
 
-        for ($x = 0; $x <= 2; $x++)
+        for ($x = 0; $x <= 3; $x++)
         {
         $offset = $x*10000;
         $limit = ($x+1)*10000;
@@ -557,7 +502,7 @@ class Exportacao extends BaseController
             }
         }
 
-        } */
+        }
 
         $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
                         MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
