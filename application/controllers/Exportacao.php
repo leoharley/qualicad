@@ -437,8 +437,8 @@ class Exportacao extends BaseController
         {
         $offset = $x*10000;
         $limit = ($x+1)*10000;
-        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
-        $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
+        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);        
+        
         $memData = array();
         if(!empty($consultaConvenioBI)){
 
@@ -463,7 +463,16 @@ class Exportacao extends BaseController
 
                 $memData = array();
             }
+        } 
+
         }
+        /*
+
+        for ($x = 0; $x <= 2; $x++)
+        {
+        $offset = $x*10000;
+        $limit = ($x+1)*10000;
+        $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
 
         $memData = array();
         if(!empty($consultaContratoBI)){
@@ -491,7 +500,7 @@ class Exportacao extends BaseController
             }
         }
 
-        }
+        } */
 
         $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
                         MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
