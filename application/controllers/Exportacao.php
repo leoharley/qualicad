@@ -427,10 +427,24 @@ class Exportacao extends BaseController
         $this->loadViews("qualicad/exportacao/exportacaoBI", $this->global, $data, NULL);
     }
 
+    function exportacaoBI_progresso()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Exportação BI';
+        
+        $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId'));
+        $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));    
+
+        $this->loadViews("qualicad/exportacao/exportacaoBI_progresso", $this->global, $data, NULL);
+    }
 
     function exportaBI()
     {
         set_time_limit(0);
+
+        $todosInseridosConvenio = false;
+        $todosInseridosContrato = false;
 
         if ($this->input->post('offset') < 1) {
             $offset = 0;
@@ -507,6 +521,7 @@ class Exportacao extends BaseController
         if ($insertCountConvenio == '')
         {
             $msgInseridosConvenio = 'Todas as linhas foram inseridas' ;
+            $todosInseridosConvenio = true;
         } else {
             $msgInseridosConvenio = 'Inseridos agora ('.$insertCountConvenio.')';
         }
@@ -514,6 +529,7 @@ class Exportacao extends BaseController
         if ($insertCountContrato == '')
         {
             $msgInseridosContrato = 'Todas as linhas foram inseridas' ;
+            $todosInseridosContrato = true;
         } else {
             $msgInseridosContrato = 'Inseridos agora ('.$insertCountContrato.')';
         }
@@ -525,7 +541,11 @@ class Exportacao extends BaseController
 
         $this->session->set_flashdata('idconvenio', $idConvenio);
 
-        redirect('exportacaoBI');
+        if ($todosInseridosConvenio && $todosInseridosContrato) {
+            redirect('exportacaoBI');
+        } else {
+            redirect('exportacaoBI_progresso');
+        }
     }
 
 

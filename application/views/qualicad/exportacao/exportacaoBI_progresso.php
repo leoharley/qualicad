@@ -173,6 +173,8 @@ function formToggle(ID){
     }
 }
 $(document).ready(function () {
+        $('#exportSubmit').click();
+
         $('#importSubmit').attr('disabled', true);
         $('input:file').change(
             function () {
