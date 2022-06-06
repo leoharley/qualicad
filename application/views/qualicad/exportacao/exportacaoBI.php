@@ -184,7 +184,7 @@ $(document).ready(function () {
                 }
             });
 
-            $('#importSubmit').click(
+            $('#exportSubmit').click(
             function () {
                 $('#loader').show();
             });

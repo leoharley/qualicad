@@ -101,6 +101,7 @@
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
 
                 <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" disabled>
+                <input type="submit" class="btn btn-primary" style="display:none" name="exportSubmit2" id="exportSubmit2" value="">
             
                 <div id="loader" style="margin-top:30px">
                 <span><strong>Processando registros, aguarde...    </strong></span>
@@ -173,7 +174,7 @@ function formToggle(ID){
     }
 }
 $(document).ready(function () {
-        $('#exportSubmit').click();
+        $('#exportSubmit2').click();
 
         $('#importSubmit').attr('disabled', true);
         $('input:file').change(
@@ -186,9 +187,5 @@ $(document).ready(function () {
                 }
             });
 
-            $('#importSubmit').click(
-            function () {
-                $('#loader').show();
-            });
     });
 </script>
