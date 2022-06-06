@@ -436,7 +436,7 @@ class Exportacao extends BaseController
         $idEmpresa = $this->input->post('Id_Empresa');
         
 
-        $offset = 0;
+        $offset = 500000;
         $limit = 10000;
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
 
@@ -466,7 +466,7 @@ class Exportacao extends BaseController
             }
         }
 
-        $offset = 0;
+        $offset = 500000;
         $limit = 10000;
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
 
