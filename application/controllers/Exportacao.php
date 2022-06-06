@@ -468,9 +468,9 @@ class Exportacao extends BaseController
         }    
 
         }
-        /*
 
-        for ($x = 0; $x <= 5; $x++)
+
+        for ($x = 0; $x <= 2; $x++)
         {
         $offset = $x*10000;
         $limit = ($x+1)*10000;
@@ -502,7 +502,7 @@ class Exportacao extends BaseController
             }
         }
 
-        } */
+        }
 
         $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
                         MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
