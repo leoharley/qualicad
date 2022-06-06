@@ -433,7 +433,7 @@ class Exportacao extends BaseController
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
         
-        for ($x = 0; $x <= 2; $x++)
+        for ($x = 0; $x <= 5; $x++)
         {
         $offset = $x*10000;
         $limit = ($x+1)*10000;
@@ -468,7 +468,7 @@ class Exportacao extends BaseController
         }
         
 
-        for ($x = 0; $x <= 2; $x++)
+        for ($x = 0; $x <= 5; $x++)
         {
         $offset = $x*10000;
         $limit = ($x+1)*10000;
