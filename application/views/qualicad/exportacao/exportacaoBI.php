@@ -97,7 +97,6 @@
                     ?>
                     </select>
                 </div>
-                <br/>
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
 
                 <div id="loader" style="display:none;margin-top:30px">
