@@ -432,12 +432,21 @@ class Exportacao extends BaseController
     {
         set_time_limit(0);
 
+        if ($this->input->post('offset') < 1) {
+            $offset = 0;
+        } else {
+            $offset = $this->input->post('offset');
+        }
+
+        if ($this->input->post('limit') < 1) {
+            $limit = 10000;
+        } else {
+            $limit = $this->input->post('limit');
+        }
+
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
-        
 
-        $offset = 500000;
-        $limit = 10000;
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
 
         $memData = array();
@@ -466,8 +475,6 @@ class Exportacao extends BaseController
             }
         }
 
-        $offset = 500000;
-        $limit = 10000;
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
 
         $memData = array();
@@ -495,6 +502,9 @@ class Exportacao extends BaseController
                 $memData = array();
             }
         }
+
+        $this->session->set_flashdata('offset', $offset + 10000);
+        $this->session->set_flashdata('limit', $limit + 10000);
 
         $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
                         MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
