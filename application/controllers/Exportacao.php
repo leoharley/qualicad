@@ -463,7 +463,9 @@ class Exportacao extends BaseController
 
                 $memData = array();
             }
-        } 
+        }
+        
+        sleep(1000);
 
         }
         /*
