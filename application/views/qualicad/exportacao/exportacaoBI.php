@@ -100,7 +100,7 @@
                 <br/>
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
 
-                <div id="loader" style="margin-top:30px">
+                <div id="loader" style="display:none;margin-top:30px">
                 <span><strong>Processando registros, aguarde...    </strong></span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
