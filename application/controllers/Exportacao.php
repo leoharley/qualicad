@@ -448,6 +448,8 @@ class Exportacao extends BaseController
 
         if ($this->input->post('offset') < 1) {
             $offset = 0;
+            $insertCountConvenio = $notAddCountConvenio = 0;
+            $insertCountContrato = $notAddCountContrato = 0;
         } else {
             $offset = $this->input->post('offset');
         }
@@ -463,8 +465,6 @@ class Exportacao extends BaseController
 
         $memData = array();
         if(!empty($consultaConvenioBI)){
-
-            $insertCountConvenio = $notAddCountConvenio = 0;
 
             foreach($consultaConvenioBI as $row) {
                 foreach($row as $key => $value) {
@@ -491,8 +491,6 @@ class Exportacao extends BaseController
 
         $memData = array();
         if(!empty($consultaContratoBI)) {
-
-            $insertCountContrato = $notAddCountContrato = 0;
 
             foreach ($consultaContratoBI as $row) {
                 foreach ($row as $key => $value) {
