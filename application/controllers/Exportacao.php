@@ -454,9 +454,6 @@ class Exportacao extends BaseController
             $offset = $this->input->post('offset');
         }
 
-        $insertCountConvenio = intval($this->input->post('insertCountConvenio'));
-        $insertCountContrato = intval($this->input->post('insertCountContrato'));
-
         $offset = $offset + 25000;
 
         $limit = 25000;
@@ -521,7 +518,7 @@ class Exportacao extends BaseController
 
         if ($insertCountConvenio == '')
         {
-            $msgInseridosConvenio = 'Todas as linhas foram inseridas ('.$insertCountConvenio.')' ;
+            $msgInseridosConvenio = 'Todas as linhas foram inseridas' ;
             $todosInseridosConvenio = true;
         } else {
             $msgInseridosConvenio = 'Inseridos até agora ('.$insertCountConvenio.')';
@@ -529,10 +526,10 @@ class Exportacao extends BaseController
 
         if ($insertCountContrato == '')
         {
-            $msgInseridosContrato = 'Todas as linhas foram inseridas ('.$insertCountContrato.')' ;
+            $msgInseridosContrato = 'Todas as linhas foram inseridas' ;
             $todosInseridosContrato = true;
         } else {
-            $msgInseridosContrato = 'Inseridos até agora ('.$insertCountContrato.')';
+            $msgInseridosContrato = 'Inseridos agora ('.$insertCountContrato.')';
         }
 
         $successMsg = 'TMP_CONVENIO: '.$msgInseridosConvenio.' | Não inseridos ('.$notAddCountConvenio.')<br/>
@@ -542,8 +539,7 @@ class Exportacao extends BaseController
 
         $this->session->set_flashdata('idconvenio', $idConvenio);
 
-        $this->session->set_flashdata('insertCountContrato', $insertCountContrato);
-        $this->session->set_flashdata('insertCountConvenio', $insertCountConvenio);
+        $this->session->set_flashdata('success', $successMsg);
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
             redirect('exportacaoBI');
