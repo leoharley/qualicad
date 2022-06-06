@@ -435,10 +435,9 @@ class Exportacao extends BaseController
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
         
-        for ($x = 0; $x <= 2; $x++)
-        {
-        $offset = $x*10000;
-        $limit = ($x+1)*10000;
+
+        $offset = 0;
+        $limit = 10000;
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
 
         $memData = array();
@@ -467,32 +466,27 @@ class Exportacao extends BaseController
             }
         }
 
-        }
-
-
-        for ($x = 0; $x <= 2; $x++)
-        {
-        $offset = $x*10000;
-        $limit = ($x+1)*10000;
+        $offset = 0;
+        $limit = 10000;
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
 
         $memData = array();
-        if(!empty($consultaContratoBI)){
+        if(!empty($consultaContratoBI)) {
 
             $insertCountContrato = $notAddCountContrato = 0;
 
-            foreach($consultaContratoBI as $row) {
-                foreach($row as $key => $value) {
-                $memData += array(
-                    $key => $value
-                );
+            foreach ($consultaContratoBI as $row) {
+                foreach ($row as $key => $value) {
+                    $memData += array(
+                        $key => $value
+                    );
                 }
                 $memData += array(
-                    'Tp_Ativo'=> 'S');
+                    'Tp_Ativo' => 'S');
 
                 $insert = $this->ExportacaoModel->adicionaContrato($memData);
 
-                if($insert != 0){
+                if ($insert != 0) {
                     $insertCountContrato++;
                 } else {
                     $notAddCountContrato++;
@@ -500,8 +494,6 @@ class Exportacao extends BaseController
 
                 $memData = array();
             }
-        }
-
         }
 
         $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
