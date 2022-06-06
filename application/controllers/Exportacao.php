@@ -438,7 +438,7 @@ class Exportacao extends BaseController
             $offset = $this->input->post('offset');
         }
 
-        $limit = 10000;
+        $limit = 25000;
 
         var_dump($offset);
         var_dump($limit);
