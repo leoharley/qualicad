@@ -1,9 +1,12 @@
-DirectoryIndex index.php
-RewriteEngine on
- 
-RewriteCond $1 !^(index\.php|(.*)\.swf|forums|images|css|downloads|jquery|js|robots\.txt|favicon\.ico)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ ./index.php?$1 [L,QSA]
-
-php_flag max_input_time -1
+php_value max_execution_time 0
+RewriteEngine On
+RewriteRule .* - [E=noconntimeout:1]
+<IfModule mod_security.c>
+SecFilterEngine Off
+SecFilterScanPOST Off
+</IfModule>
+<IfModule mod_php5.c>
+#Session timeout
+php_value session.cookie_lifetime 10
+php_value session.gc_maxlifetime 10
+</IfModule>
