@@ -438,11 +438,7 @@ class Exportacao extends BaseController
             $offset = $this->input->post('offset');
         }
 
-        if ($this->input->post('limit') < 1) {
-            $limit = 10000;
-        } else {
-            $limit = $this->input->post('limit');
-        }
+        $limit = 10000;
 
         var_dump($offset);
         var_dump($limit);
@@ -508,9 +504,8 @@ class Exportacao extends BaseController
 
 
         $offsetSession = $this->session->set_flashdata('offset', $offset + 10000);
-        $limitSession = $this->session->set_flashdata('limit', $limit + 10000);
 
-        $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Limit ('.($limit + 10000).') | Offset ('.($offset + 10000).') | Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
+        $successMsg = 'MSG TEMPORÁRIA: TABELA TMP_CONVENIO ATUALIZADA COM SUCESSO! Limit ('.($limit).') | Offset ('.($offset + 10000).') | Inseridos ('.$insertCountConvenio.') | Não inseridos ('.$notAddCountConvenio.')<br/>
                         MSG TEMPORÁRIA: TABELA TMP_CONTRATO ATUALIZADA COM SUCESSO! Inseridos ('.$insertCountContrato.') | Não inseridos ('.$notAddCountContrato.')';
         
         $this->session->set_flashdata('success', $successMsg);

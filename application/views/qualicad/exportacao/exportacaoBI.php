@@ -99,7 +99,7 @@
                 </div>
                 <br/>
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
-                <input type="hidden" name="limit" id="limit" value="<?php echo $this->session->flashdata('limit'); ?>">
+
                 <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR ARQUIVO">
             
                 <div id="loader" style="display:none;margin-top:30px">
