@@ -435,12 +435,12 @@ class Exportacao extends BaseController
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
         
-        for ($x = 0; $x <= 3; $x++)
+        for ($x = 0; $x <= 2; $x++)
         {
         $offset = $x*10000;
         $limit = ($x+1)*10000;
-        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);        
-        
+        $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
+
         $memData = array();
         if(!empty($consultaConvenioBI)){
 
@@ -465,12 +465,12 @@ class Exportacao extends BaseController
 
                 $memData = array();
             }
-        }    
+        }
 
         }
 
 
-        for ($x = 0; $x <= 3; $x++)
+        for ($x = 0; $x <= 2; $x++)
         {
         $offset = $x*10000;
         $limit = ($x+1)*10000;
