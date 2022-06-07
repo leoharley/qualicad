@@ -458,8 +458,6 @@ class Exportacao extends BaseController
         $insertCountConvenioSession = intval($this->input->post('insertCountConvenioSession'));
         $insertCountContratoSession = intval($this->input->post('insertCountContratoSession'));
 
-        $offset = $offset + 25000;
-
         $limit = 25000;
 
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
@@ -522,6 +520,7 @@ class Exportacao extends BaseController
             }
         }
 
+        $offset = $offset + 25000;
 
         $this->session->set_flashdata('offset', $offset);
 
