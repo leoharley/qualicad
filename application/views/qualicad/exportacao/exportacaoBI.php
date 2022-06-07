@@ -102,13 +102,15 @@
 
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
 
+                <?php if ($this->session->flashdata('concluido') == 'true') {echo '<span><strong>Processamento concluído!</strong></span>';} ?>
+
                 <div id="loader" style="display:none;margin-top:30px">
                 <span><strong>Processando registros, aguarde...    </strong></span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
                 <br/>
 
-                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR">
+                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" <?php if ($this->session->flashdata('concluido') == 'true') {echo 'disabled';} ?> >
             
             </form>            
 

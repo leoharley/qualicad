@@ -448,6 +448,7 @@ class Exportacao extends BaseController
 
         if ($this->input->post('offset') < 1) {
             $offset = 0;
+            $this->session->set_flashdata('concluido', 'false');
             $insertCountConvenioSession = $notAddCountConvenioSession = 0;
             $insertCountContratoSession = $notAddCountContratoSession = 0;
         } else {
@@ -550,7 +551,10 @@ class Exportacao extends BaseController
         $this->session->set_flashdata('insertCountContratoSession', $insertCountContratoSession);
         $this->session->set_flashdata('insertCountConvenioSession', $insertCountConvenioSession);
 
+        // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
+
         if ($todosInseridosConvenio && $todosInseridosContrato) {
+            $this->session->set_flashdata('concluido', 'true');
             redirect('exportacaoBI');
         } else {
             redirect('exportacaoBI_progresso');
