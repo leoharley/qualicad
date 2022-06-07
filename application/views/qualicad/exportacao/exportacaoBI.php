@@ -102,7 +102,7 @@
 
                 <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
 
-                <?php if ($this->session->flashdata('concluido') == 'true') {echo '<span><strong>Processamento concluído!</strong></span>';} ?>
+                <?php if ($this->session->flashdata('concluido') == 'true') {echo '<span><strong>Processamento concluído!</strong></span><br/>';} ?>
 
                 <div id="loader" style="display:none;margin-top:30px">
                 <span><strong>Processando registros, aguarde...    </strong></span>
