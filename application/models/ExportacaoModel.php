@@ -671,6 +671,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
         LIMIT $limit OFFSET $offset
       ";
 
+    var_dump($sql);exit;
     $query = $this->db->query($sql);    
     return $query->result();
     }
