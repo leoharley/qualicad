@@ -446,7 +446,7 @@ class Exportacao extends BaseController
         $todosInseridosConvenio = false;
         $todosInseridosContrato = false;
 
-        if ($this->input->post('offset') < 1) {
+        if ($this->input->post('offset') == '') {
             $offset = 0;
             $this->session->set_flashdata('concluido', 'false');
             $insertCountConvenioSession = $notAddCountConvenioSession = 0;
