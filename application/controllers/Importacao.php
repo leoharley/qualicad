@@ -2314,14 +2314,18 @@ class Importacao extends BaseController
         }
     }
 
-    function valor($valor)
+    function valor($val)
     {
+        $val = str_replace(",",".",$val);
+            $val = preg_replace('/\.(?=.*\.)/', '', $val);
+            return floatval($val);
+            
     /*    $cleanString = preg_replace('/([^0-9\.,])/i', '', $valor);
         $onlyNumbersString = preg_replace('/([^0-9])/i', '', $valor);
         $separatorsCountToBeErased = strlen($cleanString) - strlen($onlyNumbersString) - 1;
         $stringWithCommaOrDot = preg_replace('/([,\.])/', '', $cleanString, $onlyNumbersString);
         $removedThousandSeparator = preg_replace('/(\.|,)(?=[0-9]{3,}$)/', '',  $stringWithCommaOrDot); */
-        return (float) str_replace(',', '.', floatval($valor));
+    //    return (float) str_replace(',', '.', floatval($valor));
     //    return (float) str_replace(',', '.', $removedThousandSeparator);
     }
 
