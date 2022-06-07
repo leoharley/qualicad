@@ -2318,8 +2318,8 @@ class Importacao extends BaseController
     {
         $cleanString = preg_replace('/([^0-9\.,])/i', '', $valor);
         $onlyNumbersString = preg_replace('/([^0-9])/i', '', $valor);
-        $separatorsCountToBeErased = strlen($cleanString) - strlen($onlyNumbersString) - 1;
-        $stringWithCommaOrDot = preg_replace('/([,\.])/', '', $cleanString, $separatorsCountToBeErased);
+     //   $separatorsCountToBeErased = strlen($cleanString) - strlen($onlyNumbersString) - 1;
+        $stringWithCommaOrDot = preg_replace('/([,\.])/', '', $cleanString, $onlyNumbersString);
         $removedThousandSeparator = preg_replace('/(\.|,)(?=[0-9]{3,}$)/', '',  $stringWithCommaOrDot);
         return (float) str_replace(',', '.', $removedThousandSeparator);
     }
