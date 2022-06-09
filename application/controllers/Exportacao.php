@@ -512,6 +512,7 @@ class Exportacao extends BaseController
                     $insertCountContrato++;
                     $insertCountContratoSession++;
                 } else {
+                    var_dump($memData);exit;
                     $notAddCountContrato++;
                     $notAddCountContratoSession++;
                 }
