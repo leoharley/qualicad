@@ -529,12 +529,13 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
             CON_CONTRATO.CD_TISS,
             CON_CONTRATO.vl_fator_divisao_fracao,
             CON_CONTRATO.qtde_final,
-        CON_CONTRATO.PRODUCAO_FINAL,
-        CON_CONTRATO.TP_TUSS,
-        CON_CONTRATO.DS_TIP_TUSS,
-        CON_CONTRATO.Cd_Tuss,
-        CON_CONTRATO.Ds_Tuss
-  --      CON_CONTRATO.PRODUTO_ATIVO
+            CON_CONTRATO.PRODUCAO_FINAL,
+            CON_CONTRATO.TP_TUSS,
+            CON_CONTRATO.DS_TIP_TUSS,
+            CON_CONTRATO.Cd_Tuss,
+            CON_CONTRATO.Ds_Tuss,
+            con_qtprofat_tuss.qtde_tuss_duplic
+    --      CON_CONTRATO.PRODUTO_ATIVO
             
         FROM
 
@@ -668,6 +669,31 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
             else 'A'
         END) IN ('A')
         ) CON_CONTRATO
+        LEFT OUTER JOIN(
+        SELECT
+            TbEmpresa.Id_Empresa,
+            TbEmpresa.Cd_EmpresaERP,
+            TbConvenio.Id_Convenio,
+            TbConvenio.Cd_ConvenioERP,
+            TbTUSS.Cd_Tuss,
+            COUNT(TbTUSS.TbProFat_Cd_ProFat) qtde_tuss_duplic
+        FROM
+            TbEmpresa,
+            TbConvenio,
+            TbTUSS
+        WHERE
+            TbEmpresa.Id_Empresa = TbConvenio.TbEmpresa_Id_Empresa AND TbConvenio.Cd_ConvenioERP = TbTUSS.TbConvenio_Id_Convenio AND TbEmpresa.Cd_EmpresaERP = TbTUSS.TbEmpresa_Id_Empresa
+        GROUP BY
+            TbEmpresa.Id_Empresa,
+            TbEmpresa.Cd_EmpresaERP,
+            TbConvenio.Id_Convenio,
+            TbConvenio.Cd_ConvenioERP,
+            TbTUSS.Cd_Tuss
+        ) con_qtprofat_tuss
+        ON
+            (
+                con_qtprofat_tuss.Cd_EmpresaERP = CON_CONTRATO.Cd_EmpresaERP AND con_qtprofat_tuss.Cd_ConvenioERP = CON_CONTRATO.Cd_ConvenioERP AND con_qtprofat_tuss.Cd_Tuss = CON_CONTRATO.Cd_Tuss
+            )
     --    LIMIT 20000
     --    LIMIT 40000 OFFSET 20000
         LIMIT $limit OFFSET $offset
