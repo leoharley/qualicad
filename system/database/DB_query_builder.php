@@ -1661,9 +1661,9 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			array_values($this->qb_set)
 		);
 
-		if ($this->session->flashdata('paraaqui') == 'true') {
+	/*	if ($this->session->flashdata('paraaqui') == 'true') {
 			var_dump($sql);exit;
-		}
+		} */
 	/*	if ($table == 'Tmp_Contrato') {
 		var_dump($sql);exit;
 		} */
