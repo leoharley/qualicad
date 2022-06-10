@@ -512,6 +512,7 @@ class Exportacao extends BaseController
                     $insertCountContrato++;
                     $insertCountContratoSession++;
                 } else {
+                    $this->session->set_flashdata('paraaqui', 'true');
                     $notAddCountContrato++;
                     $notAddCountContratoSession++;
                 }
