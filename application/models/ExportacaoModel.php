@@ -982,7 +982,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
 
       ";
 
-    echo (nl2br($sql));exit;
+//    echo (nl2br($sql));exit;
     $query = $this->db->query($sql);    
     return $query->result();
     }
