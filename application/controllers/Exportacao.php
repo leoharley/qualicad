@@ -457,8 +457,6 @@ class Exportacao extends BaseController
                     $memData += array(
                         'Tp_Ativo'=> 'S');
 
-                    var_dump($memData);exit;
-
                     $insert = $this->ExportacaoModel->adicionaTbBI($memData);
 
                     if($insert != 0){
