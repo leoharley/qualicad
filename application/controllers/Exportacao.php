@@ -469,6 +469,7 @@ class Exportacao extends BaseController
                 }
             }
 
+         var_dump($insertCountTbBI);exit;   
         set_time_limit(0);
 
         $todosInseridosConvenio = false;
