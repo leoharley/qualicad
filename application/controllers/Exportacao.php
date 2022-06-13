@@ -443,9 +443,9 @@ class Exportacao extends BaseController
     {
 
         $insertCountTbBI = $notAddCountTbBI = 0;
-        for ($i=400000;$i<=400001; $i++) {
-            $limit = 1;
-            $consultaTbBI = $this->ExportacaoModel->consultaTbBI($limit, $i);
+
+
+            $consultaTbBI = $this->ExportacaoModel->consultaTbBI();
             $memData = array();
             if(!empty($consultaTbBI)){
                 foreach($consultaTbBI as $row) {
@@ -468,9 +468,7 @@ class Exportacao extends BaseController
                     }
                     $memData = array();
                 }
-            } else {
-                $i = 99999999;
-            }
+
         }
         var_dump($insertCountTbBI);exit;
 
