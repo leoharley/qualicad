@@ -442,11 +442,12 @@ class Exportacao extends BaseController
     function exportaBI()
     {
 
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI();
-            
+        $insertCountTbBI = $notAddCountTbBI = 0;
+        for ($i=0;$i<=302965;$i++) {
+        $limit = 1;
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($limit, $i);
             $memData = array();
             if(!empty($consultaTbBI)){
-                $insertCountTbBI = $notAddCountTbBI = 0;
                 foreach($consultaTbBI as $row) {
                     foreach($row as $key => $value) {
                     $memData += array(
@@ -468,8 +469,10 @@ class Exportacao extends BaseController
                     $memData = array();
                 }
             }
+        }
 
-         var_dump($insertCountTbBI);exit;   
+        var_dump($insertCountTbBI);exit;
+
         set_time_limit(0);
 
         $todosInseridosConvenio = false;
