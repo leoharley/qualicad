@@ -459,15 +459,13 @@ class Exportacao extends BaseController
 
                     $insert = $this->ExportacaoModel->adicionaTbBI($memData);
 
-                    $insertCountTbBI++;
-
-                /*    if($insert != 0){
+                    if($insert != 0){
                         //    $insertCountConvenioSession++;
                         $insertCountTbBI++;
                     } else {
                         //    $notAddCountConvenioSession++;
                         $notAddCountTbBI++;
-                    } */
+                    }
                     $memData = array();
                 }
             }
