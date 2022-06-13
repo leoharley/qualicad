@@ -443,7 +443,7 @@ class Exportacao extends BaseController
     {
 
         $insertCountTbBI = $notAddCountTbBI = 0;
-        for ($i=0;$i<=3; $i++) {
+        for ($i=0;$i<=2; $i++) {
             $limit = 1;
             $consultaTbBI = $this->ExportacaoModel->consultaTbBI($limit, $i);
             $memData = array();
@@ -459,13 +459,15 @@ class Exportacao extends BaseController
 
                     $insert = $this->ExportacaoModel->adicionaTbBI($memData);
 
-                    if($insert != 0){
+                    $insertCountTbBI++;
+
+                /*    if($insert != 0){
                         //    $insertCountConvenioSession++;
                         $insertCountTbBI++;
                     } else {
                         //    $notAddCountConvenioSession++;
                         $notAddCountTbBI++;
-                    }
+                    } */
                     $memData = array();
                 }
             }
