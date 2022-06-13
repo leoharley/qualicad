@@ -446,8 +446,6 @@ class Exportacao extends BaseController
         for ($i=0;$i<=1;$i++) {
             $limit = 1;
             $consultaTbBI = $this->ExportacaoModel->consultaTbBI($limit, $i);
-
-            var_dump($consultaTbBI);exit;
             $memData = array();
             if(!empty($consultaTbBI)){
                 foreach($consultaTbBI as $row) {
@@ -458,6 +456,8 @@ class Exportacao extends BaseController
                     }
                     $memData += array(
                         'Tp_Ativo'=> 'S');
+
+                    var_dump($memData);exit;
 
                     $insert = $this->ExportacaoModel->adicionaTbBI($memData);
 
