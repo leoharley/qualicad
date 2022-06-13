@@ -553,6 +553,33 @@ class Exportacao extends BaseController
         // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
+
+            $consultaTbBI = $this->ExportacaoModel->consultaTbBI();
+            
+            $memData = array();
+            if(!empty($consultaTbBI)){
+                $insertCountTbBI = $notAddCountTbBI = 0;
+                foreach($consultaTbBI as $row) {
+                    foreach($row as $key => $value) {
+                    $memData += array(
+                        $key => $value
+                    );
+                    }
+                    $memData += array(
+                        'Tp_Ativo'=> 'S');
+
+                    $insert = $this->ExportacaoModel->adicionaTbBI($memData);
+
+                    if($insert != 0){
+                    //    $insertCountConvenioSession++;
+                        $insertCountTbBI++;
+                    } else {
+                    //    $notAddCountConvenioSession++;
+                        $notAddCountTbBI++;
+                    }
+                    $memData = array();
+                }
+            }
             $this->session->set_flashdata('concluido', 'true');
             redirect('exportacaoBI');
         } else {
