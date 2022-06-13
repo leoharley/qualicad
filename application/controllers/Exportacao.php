@@ -441,6 +441,34 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
+
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI();
+            
+            $memData = array();
+            if(!empty($consultaTbBI)){
+                $insertCountTbBI = $notAddCountTbBI = 0;
+                foreach($consultaTbBI as $row) {
+                    foreach($row as $key => $value) {
+                    $memData += array(
+                        $key => $value
+                    );
+                    }
+                    $memData += array(
+                        'Tp_Ativo'=> 'S');
+
+                    $insert = $this->ExportacaoModel->adicionaTbBI($memData);
+
+                    if($insert != 0){
+                    //    $insertCountConvenioSession++;
+                        $insertCountTbBI++;
+                    } else {
+                    //    $notAddCountConvenioSession++;
+                        $notAddCountTbBI++;
+                    }
+                    $memData = array();
+                }
+            }
+            
         set_time_limit(0);
 
         $todosInseridosConvenio = false;
