@@ -441,38 +441,6 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
-
-   /*     $insertCountTbBI = $notAddCountTbBI = 0;
-        for ($i=0;$i<=302965;$i++) {
-        $limit = 1;
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($limit, $i);
-            $memData = array();
-            if(!empty($consultaTbBI)){
-                foreach($consultaTbBI as $row) {
-                    foreach($row as $key => $value) {
-                    $memData += array(
-                        $key => $value
-                    );
-                    }
-                    $memData += array(
-                        'Tp_Ativo'=> 'S');
-
-                    $insert = $this->ExportacaoModel->adicionaTbBI($memData);
-
-                    if($insert != 0){
-                    //    $insertCountConvenioSession++;
-                        $insertCountTbBI++;
-                    } else {
-                    //    $notAddCountConvenioSession++;
-                        $notAddCountTbBI++;
-                    }
-                    $memData = array();
-                }
-            }
-        }
-
-        var_dump($insertCountTbBI);exit; */
-
         set_time_limit(0);
 
         $todosInseridosConvenio = false;
@@ -503,9 +471,9 @@ class Exportacao extends BaseController
 
             foreach($consultaConvenioBI as $row) {
                 foreach($row as $key => $value) {
-                $memData += array(
-                    $key => $value
-                );
+                    $memData += array(
+                        $key => $value
+                    );
                 }
                 $memData += array(
                     'Tp_Ativo'=> 'S');
@@ -574,7 +542,7 @@ class Exportacao extends BaseController
 
         $successMsg = 'TMP_CONVENIO: '.$msgInseridosConvenio.' | Não inseridos ('.$notAddCountConvenio.')<br/>
                         TMP_CONTRATO: '.$msgInseridosContrato.' | Não inseridos ('.$notAddCountContrato.')';
-        
+
         $this->session->set_flashdata('success', $successMsg);
 
         $this->session->set_flashdata('idconvenio', $idConvenio);
@@ -585,33 +553,6 @@ class Exportacao extends BaseController
         // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
-
-            $consultaTbBI = $this->ExportacaoModel->consultaTbBI();
-            
-            $memData = array();
-            if(!empty($consultaTbBI)){
-                $insertCountTbBI = $notAddCountTbBI = 0;
-                foreach($consultaTbBI as $row) {
-                    foreach($row as $key => $value) {
-                    $memData += array(
-                        $key => $value
-                    );
-                    }
-                    $memData += array(
-                        'Tp_Ativo'=> 'S');
-
-                    $insert = $this->ExportacaoModel->adicionaTbBI($memData);
-
-                    if($insert != 0){
-                    //    $insertCountConvenioSession++;
-                        $insertCountTbBI++;
-                    } else {
-                    //    $notAddCountConvenioSession++;
-                        $notAddCountTbBI++;
-                    }
-                    $memData = array();
-                }
-            }
             $this->session->set_flashdata('concluido', 'true');
             redirect('exportacaoBI');
         } else {
