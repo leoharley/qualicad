@@ -789,7 +789,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
             0 'Diverg_sem_simpro_brasindice',
             0 'Diverg_sem_tab_propriobrasindice',
             con_cont_conv1.qtde_tuss_duplic,
-            con_cont_conv1.tp_moeda_tab_Fat,
+        --    con_cont_conv1.tp_moeda_tab_Fat,
         --    con_cont_conv1.ds_tp_gru_pro,
         --    con_cont_conv1.vl_fator_divisao_fracao,
 
