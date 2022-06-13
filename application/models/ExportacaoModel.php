@@ -757,7 +757,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
             con_cont_conv1.CD_TISS,
             con_tuss_valido.cd_tuss cd_tuss_Valido,
             con_cont_conv1.ds_tuss_Valido,
-            -- con_tiss ----
+
             con_tiss.cd_tiss cd_tiss_fracao,
             con_cont_conv1.vl_ind_quali 'Ind-vr',
             con_cont_conv1.vl_ind_filme_quali 'Ind-vr-filme',
@@ -792,7 +792,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
             con_cont_conv1.tp_moeda_tab_Fat,
             con_cont_conv1.ds_tp_gru_pro,
             con_cont_conv1.vl_fator_divisao_fracao,
-            -- Convenio --
+
             con_cont_conv1.tp_AcomodacaoPadrao,
             con_cont_conv1.ds_ind_quali,
             con_cont_conv1.ds_regra_quali,
@@ -866,7 +866,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
                 Tmp_Contrato.qtde_final Qt_FinalProd,
                 Tmp_Contrato.PRODUCAO_FINAL Vl_FinalProd,
                 Tmp_Contrato.qtde_tuss_duplic,
-                -- Convenio --
+
                 Tmp_Convenio.Cd_TUSS,
                 Tmp_Convenio.Cd_TISS cd_tiss_valido,
                 Tmp_Convenio.Ds_FatItem ds_tuss_Valido,
@@ -982,7 +982,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
      --   LIMIT $limit OFFSET $offset
       ";
 
-//    echo (nl2br($sql));exit;
+    echo (nl2br($sql));exit;
     $query = $this->db->query($sql);    
     return $query->result();
     }
