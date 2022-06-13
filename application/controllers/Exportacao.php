@@ -447,7 +447,7 @@ class Exportacao extends BaseController
             $limit = 1;
             $consultaTbBI = $this->ExportacaoModel->consultaTbBI($limit, $i);
 
-            var_dump($consultaTbBI)
+            var_dump($consultaTbBI);exit;
             $memData = array();
             if(!empty($consultaTbBI)){
                 foreach($consultaTbBI as $row) {
