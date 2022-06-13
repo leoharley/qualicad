@@ -442,7 +442,7 @@ class Exportacao extends BaseController
     function exportaBI()
     {
 
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI(25000,0);
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI();
             
             $memData = array();
             if(!empty($consultaTbBI)){
