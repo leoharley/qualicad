@@ -442,7 +442,7 @@ class Exportacao extends BaseController
     function exportaBI()
     {
 
-        $insertCountTbBI = $notAddCountTbBI = 0;
+   /*     $insertCountTbBI = $notAddCountTbBI = 0;
         for ($i=0;$i<=302965;$i++) {
         $limit = 1;
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($limit, $i);
@@ -471,7 +471,7 @@ class Exportacao extends BaseController
             }
         }
 
-        var_dump($insertCountTbBI);exit;
+        var_dump($insertCountTbBI);exit; */
 
         set_time_limit(0);
 
