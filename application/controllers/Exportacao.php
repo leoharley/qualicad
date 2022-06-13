@@ -442,7 +442,7 @@ class Exportacao extends BaseController
     function exportaBI()
     {
 
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI();
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI(25000,0);
             
             $memData = array();
             if(!empty($consultaTbBI)){
@@ -468,7 +468,7 @@ class Exportacao extends BaseController
                     $memData = array();
                 }
             }
-            
+
         set_time_limit(0);
 
         $todosInseridosConvenio = false;
