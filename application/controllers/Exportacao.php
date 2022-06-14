@@ -578,7 +578,8 @@ class Exportacao extends BaseController
     {
 
         $todosInseridosTbBI = false;
-        $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
+        $idConvenio = 121;
+    //    $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
         $insertCountTbBI = $notAddCountTbBI = 0;
