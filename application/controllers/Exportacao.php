@@ -583,12 +583,12 @@ class Exportacao extends BaseController
 
         $insertCountTbBI = $notAddCountTbBI = 0;
         
-        if ($this->input->post('offset') == '') {
+        if ($this->input->post('offsetTbBI') == '') {
             $o = 0;
             $this->session->set_flashdata('concluido', 'false');
             $insertCountTbBISession = $notAddCountTbBISession = 0;
         } else {
-            $o = $this->input->post('offset');
+            $o = $this->input->post('offsetTbBI');
         }
 
         $insertCountTbBISession = intval($this->input->post('insertCountTbBISession'));
@@ -632,12 +632,12 @@ class Exportacao extends BaseController
                 $msgInseridosTbBI = 'Inseridos até agora ('.$insertCountTbBISession.')';
             }
 
-            $successMsg = 'Tb_Bi: '.$msgInseridosTbBI.' | Não inseridos ('.$notAddCountTbBI.')';
+            $successMsg = 'Tb_BI: '.$msgInseridosTbBI.' | Não inseridos ('.$notAddCountTbBI.')';
 
             $this->session->set_flashdata('success', $successMsg);
             $this->session->set_flashdata('idconvenio', $idConvenio);
             $this->session->set_flashdata('insertCountTbBISession', $insertCountTbBISession);
-            $this->session->set_flashdata('offset', $o);
+            $this->session->set_flashdata('offsetTbBI', $o);
 
 
         } else {

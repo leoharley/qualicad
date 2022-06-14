@@ -99,7 +99,7 @@
                 </div>
                 <input type="hidden" name="insertCountTbBISession" id="insertCountTbBISession" value="<?php echo $this->session->flashdata('insertCountTbBISession'); ?>"> 
 
-                <input type="hidden" name="offset" id="offset" value="<?php echo $this->session->flashdata('offset'); ?>">
+                <input type="hidden" name="offsetTbBI" id="offsetTbBI" value="<?php echo $this->session->flashdata('offsetTbBI'); ?>">
 
                 <div id="loader" style="margin-top:30px">
                 <span><strong>Processando consolidado final, aguarde...    </strong></span>
