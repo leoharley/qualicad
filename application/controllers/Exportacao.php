@@ -439,6 +439,18 @@ class Exportacao extends BaseController
         $this->loadViews("qualicad/exportacao/exportacaoBI_progresso", $this->global, $data, NULL);
     }
 
+    function exportacaoTbBI_progresso()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Exportação BI';
+        
+        $data['empresasPerfilUsuario'] = $this->CadastroModel->carregaEmpresasPerfilUsuario($this->session->userdata('userId'));
+        $data['infoConvenio'] = $this->PrincipalModel->carregaInfoConveniosEmpresa($this->session->userdata('IdEmpresa'));    
+
+        $this->loadViews("qualicad/exportacao/exportacaoTbBI_progresso", $this->global, $data, NULL);
+    }
+
     function exportaBI()
     {
         $this->exportaTbBI();
@@ -555,7 +567,7 @@ class Exportacao extends BaseController
         // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
-            exportaTbBI();
+            $this->exportaTbBI();
         //    $this->session->set_flashdata('concluido', 'true');
         //    redirect('exportacaoBI');
         } else {
