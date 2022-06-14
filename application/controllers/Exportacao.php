@@ -445,43 +445,6 @@ class Exportacao extends BaseController
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
-        $insertCountTbBI = $notAddCountTbBI = 0;
-        $o = 0;
-
-    //    for ($i=0;$i<=500000; $i++) {
-        do {
-            $consultaTbBI = null;
-            unset($memData);
-            $memData = array();
-            $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,40000,$o);
-                foreach($consultaTbBI as $row) {
-                    foreach($row as $key => $value) {
-                        $memData += array(
-                            $key => $value
-                        );
-                    }
-                    $memData += array(
-                        'Tp_Ativo'=> 'S');
-
-                    $insert = $this->ExportacaoModel->adicionaTbBI($memData);
-
-                    if($insert != 0){
-                        //    $insertCountConvenioSession++;
-                        $insertCountTbBI++;
-                    } else {
-                        //    $notAddCountConvenioSession++;
-                        $notAddCountTbBI++;
-                    }
-                    $memData = array();
-                }
-                $o = $o + 40000;
-            } while (!empty($consultaTbBI));
-             /* else {
-                $i = 9999999; 
-            } */
-    //    }
-        var_dump($insertCountTbBI);exit;
-
         set_time_limit(0);
 
         $todosInseridosConvenio = false;
@@ -591,11 +554,84 @@ class Exportacao extends BaseController
         // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
-            $this->session->set_flashdata('concluido', 'true');
-            redirect('exportacaoBI');
+            exportaTbBI();
+        //    $this->session->set_flashdata('concluido', 'true');
+        //    redirect('exportacaoBI');
         } else {
             redirect('exportacaoBI_progresso');
         }
+    }
+
+    function exportaTbBI()
+    {
+
+        $todosInseridosTbBI = false;
+        $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
+        $idEmpresa = $this->input->post('Id_Empresa');
+
+        $insertCountTbBI = $notAddCountTbBI = 0;
+        
+        if ($this->input->post('offset') == '') {
+            $o = 0;
+            $this->session->set_flashdata('concluido', 'false');
+            $insertCountTbBISession = $notAddCountTbBISession = 0;
+        } else {
+            $o = $this->input->post('offset');
+        }
+
+        $insertCountTbBISession = intval($this->input->post('insertCountTbBISession'));
+
+        $consultaTbBI = null;
+        unset($memData);
+        $memData = array();
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,40000,$o);
+        if (!empty($consultaTbBI)) {
+        foreach($consultaTbBI as $row) {
+                foreach($row as $key => $value) {
+                    $memData += array(
+                        $key => $value
+                    );
+                }
+                $memData += array(
+                    'Tp_Ativo'=> 'S');
+
+                $insert = $this->ExportacaoModel->adicionaTbBI($memData);
+
+                if($insert != 0){
+                    $insertCountTbBISession++;
+                    $insertCountTbBI++;
+                } else {
+                    $notAddCountTbBISession++;
+                    $notAddCountTbBI++;
+                }
+                $memData = array();
+            }
+            $o = $o + 40000;
+
+            if ($insertCountTbBI == '')
+            {
+                $msgInseridosTbBI = 'Todas as linhas foram inseridas ('.$insertCountTbBISession.')' ;
+                $todosInseridosTbBI = true;
+            } else {
+                $msgInseridosTbBI = 'Inseridos até agora ('.$insertCountTbBISession.')';
+            }
+
+            $successMsg = 'Tb_Bi: '.$msgInseridosTbBI.' | Não inseridos ('.$notAddCountTbBI.')';
+
+            $this->session->set_flashdata('success', $successMsg);
+            $this->session->set_flashdata('insertCountTbBISession', $insertCountTbBISession);
+            $this->session->set_flashdata('offset', $o);
+
+
+        } else {
+            $this->session->set_flashdata('concluido', 'true');
+            redirect('exportacaoBI');
+        }
+
+        redirect('exportacaoTbBI_progresso');
+
+
+    //    var_dump($insertCountTbBI);exit;
     }
 
 

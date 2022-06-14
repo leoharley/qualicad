@@ -186,6 +186,9 @@ $route['exportaExcecaoValores/:any'] = "exportacao/exportaExcecaoValores/$1";
 
 $route['exportacaoBI'] = "exportacao/exportacaoBI";
 $route['exportacaoBI_progresso'] = "exportacao/exportacaoBI_progresso";
+$route['exportacaoTbBI_progresso'] = "exportacao/exportacaoTbBI_progresso";
+
+$route['exportaTbBI'] = "exportacao/exportaTbBI";
 $route['exportaBI'] = "exportacao/exportaBI";
 
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
