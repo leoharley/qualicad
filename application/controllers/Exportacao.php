@@ -566,7 +566,7 @@ class Exportacao extends BaseController
         // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
-            $this->exportaTbBI();
+              redirect('exportacaoTbBI_progresso');
         //    $this->session->set_flashdata('concluido', 'true');
         //    redirect('exportacaoBI');
         } else {
