@@ -449,6 +449,7 @@ class Exportacao extends BaseController
         $o = 0;
     //    for ($i=0;$i<=500000; $i++) {
         do {
+            $consultaTbBI = null;
             $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,50000,$o);
             $memData = array();
                 foreach($consultaTbBI as $row) {
@@ -471,7 +472,6 @@ class Exportacao extends BaseController
                     }
                     $memData = array();
                 }
-                $consultaTbBI = '';
                 $o = $o + 50000;
             } while (!empty($consultaTbBI));
              /* else {
