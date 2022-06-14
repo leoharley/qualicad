@@ -441,7 +441,7 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
-
+        exportaTbBI();
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
@@ -449,6 +449,8 @@ class Exportacao extends BaseController
 
         $todosInseridosConvenio = false;
         $todosInseridosContrato = false;
+        $insertCountConvenio = $notAddCountConvenio = 0;
+        $insertCountContrato = $notAddCountContrato = 0;
 
         if ($this->input->post('offset') == '') {
             $offset = 0;
@@ -468,7 +470,6 @@ class Exportacao extends BaseController
 
         $memData = array();
         if(!empty($consultaConvenioBI)){
-            $insertCountConvenio = $notAddCountConvenio = 0;
 
             foreach($consultaConvenioBI as $row) {
                 foreach($row as $key => $value) {
@@ -497,7 +498,7 @@ class Exportacao extends BaseController
 
         $memData = array();
         if(!empty($consultaContratoBI)) {
-            $insertCountContrato = $notAddCountContrato = 0;
+            
             foreach ($consultaContratoBI as $row) {
                 foreach ($row as $key => $value) {
                     $memData += array(
