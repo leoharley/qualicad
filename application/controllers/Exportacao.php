@@ -471,6 +471,7 @@ class Exportacao extends BaseController
                     }
                     $memData = array();
                 }
+                $consultaTbBI = null;
                 $o = $o + 50000;
             } while (!empty($consultaTbBI));
              /* else {
