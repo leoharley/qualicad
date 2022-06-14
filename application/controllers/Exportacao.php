@@ -566,7 +566,7 @@ class Exportacao extends BaseController
         // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
-              redirect('exportacaoTbBI_progresso');
+            redirect('exportacaoTbBI_progresso');
         //    $this->session->set_flashdata('concluido', 'true');
         //    redirect('exportacaoBI');
         } else {
@@ -578,8 +578,7 @@ class Exportacao extends BaseController
     {
 
         $todosInseridosTbBI = false;
-        $idConvenio = 121;
-    //    $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
+        $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
         $insertCountTbBI = $notAddCountTbBI = 0;
@@ -597,6 +596,10 @@ class Exportacao extends BaseController
         $consultaTbBI = null;
         unset($memData);
         $memData = array();
+
+        var_dump($idConvenio);
+        var_dump($idEmpresa);
+        exit;
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,40000,$o);
         if (!empty($consultaTbBI)) {
         foreach($consultaTbBI as $row) {
