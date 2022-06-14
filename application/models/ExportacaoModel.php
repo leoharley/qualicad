@@ -909,8 +909,6 @@ FROM
         Tmp_Contrato.Cd_Tuss = Tmp_Convenio.Cd_TUSS AND 
         (Tmp_Contrato.CD_TISS = Tmp_Convenio.Cd_TISS OR Tmp_Contrato.CD_TISS = 0)
         )
-
-      where Tmp_Contrato.Cd_EmpresaERP = $cdEmpresaERP and Tmp_Contrato.Cd_ConvenioERP = $idConvenio 
 ) con_cont_conv1
 LEFT OUTER JOIN(
     SELECT
@@ -964,7 +962,6 @@ LEFT OUTER JOIN(
         Tmp_Convenio.Cd_TUSS
     FROM
         Tmp_Convenio
-    WHERE Tmp_Convenio.Cd_ConvenioERP = $idConvenio AND Tmp_Convenio.TbEmpresa_Id_Empresa = $idEmpresa
     GROUP BY
         Tmp_Convenio.TbEmpresa_Id_Empresa,
         Tmp_Convenio.Cd_ConvenioERP,
