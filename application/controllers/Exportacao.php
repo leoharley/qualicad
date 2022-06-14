@@ -442,10 +442,13 @@ class Exportacao extends BaseController
     function exportaBI()
     {
 
+        $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
+        $idEmpresa = $this->input->post('Id_Empresa');
+
         $insertCountTbBI = $notAddCountTbBI = 0;
 
 
-            $consultaTbBI = $this->ExportacaoModel->consultaTbBI();
+            $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio);
             $memData = array();
             if(!empty($consultaTbBI)){
                 foreach($consultaTbBI as $row) {
@@ -490,9 +493,6 @@ class Exportacao extends BaseController
         $insertCountContratoSession = intval($this->input->post('insertCountContratoSession'));
 
         $limit = 25000;
-
-        $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
-        $idEmpresa = $this->input->post('Id_Empresa');
 
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
 

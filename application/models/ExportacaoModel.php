@@ -704,7 +704,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     return $query->result();
     }
 
-    function consultaTbBI()
+    function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio)
     {
     $sql="SELECT
     con_cont_conv1.cd_emp,
@@ -789,7 +789,6 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     0 'Diverg_sem_simpro_brasindice',
     0 'Diverg_sem_tab_propriobrasindice',
     con_cont_conv1.qtde_tuss_duplic,
-    con_cont_conv1.tp_moeda_tab_Fat,
     con_cont_conv1.ds_tp_gru_pro,
     con_cont_conv1.vl_fator_divisao_fracao,
 
@@ -910,6 +909,8 @@ FROM
         Tmp_Contrato.Cd_Tuss = Tmp_Convenio.Cd_TUSS AND 
         (Tmp_Contrato.CD_TISS = Tmp_Convenio.Cd_TISS OR Tmp_Contrato.CD_TISS = 0)
         )
+
+      where Tmp_Contrato.Cd_EmpresaERP = $cdEmpresaERP and Tmp_Contrato.Cd_ConvenioERP = $idConvenio 
 ) con_cont_conv1
 LEFT OUTER JOIN(
     SELECT
@@ -963,6 +964,7 @@ LEFT OUTER JOIN(
         Tmp_Convenio.Cd_TUSS
     FROM
         Tmp_Convenio
+    WHERE Tmp_Convenio.Cd_ConvenioERP = $idConvenio AND Tmp_Convenio.TbEmpresa_Id_Empresa = $idEmpresa
     GROUP BY
         Tmp_Convenio.TbEmpresa_Id_Empresa,
         Tmp_Convenio.Cd_ConvenioERP,
@@ -976,7 +978,7 @@ ON
         con_tuss_valido.Cd_ConvenioERP = con_cont_conv1.cd_convenio AND 
         con_tuss_valido.Cd_PlanoERP = con_cont_conv1.cd_plano AND 
         con_tuss_valido.TbProFat_Cd_ProFat = con_cont_conv1.cd_profat AND 
-        con_tuss_valido.cd_tuss = con_cont_conv1.Cd_Tuss
+        con_tuss_valido.Cd_TUSS = con_cont_conv1.Cd_TUSS
     )
       ";
 
