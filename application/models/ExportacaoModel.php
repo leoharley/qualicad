@@ -704,7 +704,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     return $query->result();
     }
 
-    function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio)
+    function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio,$limit,$offset)
     {
     $sql="SELECT
     con_cont_conv1.cd_emp,
@@ -980,6 +980,7 @@ ON
         con_tuss_valido.TbProFat_Cd_ProFat = con_cont_conv1.cd_profat AND 
         con_tuss_valido.Cd_TUSS = con_cont_conv1.Cd_TUSS
     )
+    LIMIT $limit OFFSET $offset
       ";
 
 //    echo (nl2br($sql));exit;

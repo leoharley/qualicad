@@ -447,8 +447,8 @@ class Exportacao extends BaseController
 
         $insertCountTbBI = $notAddCountTbBI = 0;
 
-
-            $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio);
+        for ($i=0;$i<=2; $i++) {
+            $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,1,$i);
             $memData = array();
             if(!empty($consultaTbBI)){
                 foreach($consultaTbBI as $row) {
@@ -471,7 +471,7 @@ class Exportacao extends BaseController
                     }
                     $memData = array();
                 }
-
+            }
         }
         var_dump($insertCountTbBI);exit;
 
