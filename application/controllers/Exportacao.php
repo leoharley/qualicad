@@ -632,6 +632,7 @@ class Exportacao extends BaseController
             $successMsg = 'Tb_Bi: '.$msgInseridosTbBI.' | Não inseridos ('.$notAddCountTbBI.')';
 
             $this->session->set_flashdata('success', $successMsg);
+            $this->session->set_flashdata('idconvenio', $idConvenio);
             $this->session->set_flashdata('insertCountTbBISession', $insertCountTbBISession);
             $this->session->set_flashdata('offset', $o);
 
