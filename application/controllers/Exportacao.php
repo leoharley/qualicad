@@ -671,10 +671,8 @@ class Exportacao extends BaseController
         $result = mysqli_query("SHOW FULL PROCESSLIST");
         while ($row = mysqli_fetch_array($result)) {
             $process_id = $row["Id"];
-            if ($row["Time"] > 10) {
-                $sql = "KILL $process_id";
-                mysqli_query($sql);
-            }
+            $sql = "KILL $process_id";
+            mysqli_query($sql);
         }
     }
 
