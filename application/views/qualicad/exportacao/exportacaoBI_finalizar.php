@@ -114,7 +114,7 @@
 
                 <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" <?php if ($this->session->flashdata('concluido') == 'true') {echo 'disabled';} ?> >
 
-                <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;visibility: hidden"/>
+                <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/>
             <br/>
 
                 <strong>*** YUNNA: NÃO MEXER NESSA TELA POR ENQUANTO, ESTOU TRABALHANDO NELA *** </strong>
@@ -185,7 +185,7 @@ function formToggle(ID){
 }
 $(document).ready(function () {
 
-        $('#geraTbBI').click();
+ //       $('#geraTbBI').click();
 
         $('#importSubmit').attr('disabled', true);
         $('input:file').change(
