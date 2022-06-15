@@ -182,7 +182,7 @@ function formToggle(ID){
     }
 }
 $(document).ready(function () {
-        $('#geraTbBI').click();
+
 
         $('#importSubmit').attr('disabled', true);
         $('input:file').change(
