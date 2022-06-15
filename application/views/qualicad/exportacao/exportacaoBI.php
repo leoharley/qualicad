@@ -112,9 +112,7 @@
 
                 <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" <?php if ($this->session->flashdata('concluido') == 'true') {echo 'disabled';} ?> >
 
-                <a href="<?php echo base_url(); ?>exportaTbBI"><i class="fa fa-th"></i><span>Processar TbBI</span></a>
-
-                <input type="button" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" <?php if ($this->session->flashdata('concluido') == 'true') {echo 'disabled';} ?> >
+                <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/>     
             
             </form>            
 

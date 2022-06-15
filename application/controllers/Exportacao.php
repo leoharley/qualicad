@@ -453,6 +453,10 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
+        if (array_key_exists('geraTbBI',$this->input->post())) {
+            $this->exportaTbBI();
+        } 
+
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
@@ -575,7 +579,7 @@ class Exportacao extends BaseController
     }
 
     function exportaTbBI()
-    {
+    {   
 
         $todosInseridosTbBI = false;
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
