@@ -755,10 +755,10 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     con_cont_conv1.Cd_Tuss,
     con_cont_conv1.Ds_Tuss,
     con_cont_conv1.CD_TISS,
-    con_tuss_valido.cd_tuss cd_tuss_Valido,
+/*    con_tuss_valido.cd_tuss cd_tuss_Valido, */
     con_cont_conv1.ds_tuss_Valido,
 
-    con_tiss.cd_tiss cd_tiss_fracao,
+/*    con_tiss.cd_tiss cd_tiss_fracao, */
     con_cont_conv1.vl_ind_quali 'Ind-vr',
     con_cont_conv1.vl_ind_filme_quali 'Ind-vr-filme',
     con_cont_conv1.vl_ind_honor_quali 'Ind-vr-honor',
@@ -910,7 +910,7 @@ FROM
         (Tmp_Contrato.CD_TISS = Tmp_Convenio.Cd_TISS OR Tmp_Contrato.CD_TISS = 0)
         )
 ) con_cont_conv1
-LEFT OUTER JOIN(
+/*LEFT OUTER JOIN(
     SELECT
         TbEmpresa.Id_Empresa,
         TbEmpresa.Cd_EmpresaERP,
@@ -976,7 +976,7 @@ ON
         con_tuss_valido.Cd_PlanoERP = con_cont_conv1.cd_plano AND 
         con_tuss_valido.TbProFat_Cd_ProFat = con_cont_conv1.cd_profat AND 
         con_tuss_valido.Cd_TUSS = con_cont_conv1.Cd_TUSS
-    )
+    ) */
     LIMIT $limit OFFSET $offset
       ";
 
