@@ -453,6 +453,9 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
+
+        exportaTbBI();
+        
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
@@ -598,6 +601,7 @@ class Exportacao extends BaseController
         $memData = array();
 
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,40000,$o);
+        var_dump($consultaTbBI);exit;
         if (!empty($consultaTbBI)) {
         foreach($consultaTbBI as $row) {
                 foreach($row as $key => $value) {
