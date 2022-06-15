@@ -907,7 +907,7 @@ FROM
         (Tmp_Contrato.CD_TISS = Tmp_Convenio.Cd_TISS OR Tmp_Contrato.CD_TISS = 0)
         )
     LIMIT $limit OFFSET $offset
-) con_cont_conv1
+    ) con_cont_conv1
       ";
 
 //    echo (nl2br($sql));exit;
