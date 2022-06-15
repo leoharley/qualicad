@@ -591,8 +591,8 @@ class Exportacao extends BaseController
     }
 
     function exportaTbBI()
-    {   
-
+    {
+        $this->killAllProcess();
         $todosInseridosTbBI = false;
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
@@ -614,7 +614,7 @@ class Exportacao extends BaseController
         $memData = array();
 
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,40000,$o);
-        
+
         if (!empty($consultaTbBI)) {
         foreach($consultaTbBI as $row) {
                 foreach($row as $key => $value) {
@@ -663,6 +663,19 @@ class Exportacao extends BaseController
 
 
     //    var_dump($insertCountTbBI);exit;
+    }
+
+
+    function killAllProcess()
+    {
+        $result = mysqli_query("SHOW FULL PROCESSLIST");
+        while ($row = mysqli_fetch_array($result)) {
+            $process_id = $row["Id"];
+            if ($row["Time"] > 10) {
+                $sql = "KILL $process_id";
+                mysqli_query($sql);
+            }
+        }
     }
 
 
