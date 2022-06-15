@@ -453,7 +453,6 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
-        $this->exportaTbBI();
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
@@ -567,7 +566,7 @@ class Exportacao extends BaseController
         // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
-            redirect('exportacaoTbBI_progresso');
+            $this->exportaTbBI();
         //    $this->session->set_flashdata('concluido', 'true');
         //    redirect('exportacaoBI');
         } else {
