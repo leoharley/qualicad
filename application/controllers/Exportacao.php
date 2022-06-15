@@ -453,8 +453,6 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
-        redirect('exportacaoTbBI_progresso');
-        
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
