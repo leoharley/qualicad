@@ -186,6 +186,8 @@ $route['exportaExcecaoValores/:any'] = "exportacao/exportaExcecaoValores/$1";
 
 $route['exportacaoBI'] = "exportacao/exportacaoBI";
 $route['exportacaoBI_progresso'] = "exportacao/exportacaoBI_progresso";
+$route['exportacaoBI_finalizar'] = "exportacao/exportacaoBI_finalizar";
+
 $route['exportacaoTbBI_progresso'] = "exportacao/exportacaoTbBI_progresso";
 
 $route['exportaTbBI'] = "exportacao/exportaTbBI";
