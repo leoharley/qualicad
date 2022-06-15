@@ -108,13 +108,13 @@
 
                 <div id="loader" style="margin-top:30px">
                 <span><strong>Processando tabelas temporárias, aguarde...    </strong></span>
-                <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto;display:none">
+                <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
                 <br/>
 
                 <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" <?php if ($this->session->flashdata('concluido') == 'true') {echo 'disabled';} ?> >
 
-                <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/>
+                <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;visibility: hidden"/>
             <br/>
 
                 <strong>*** YUNNA: NÃO MEXER NESSA TELA POR ENQUANTO, ESTOU TRABALHANDO NELA *** </strong>
@@ -185,7 +185,7 @@ function formToggle(ID){
 }
 $(document).ready(function () {
 
-
+        $('#geraTbBI').click();
 
         $('#importSubmit').attr('disabled', true);
         $('input:file').change(
