@@ -976,8 +976,8 @@ ON
         con_tuss_valido.Cd_PlanoERP = con_cont_conv1.cd_plano AND 
         con_tuss_valido.TbProFat_Cd_ProFat = con_cont_conv1.cd_profat AND 
         con_tuss_valido.Cd_TUSS = con_cont_conv1.Cd_TUSS
-    ) */
-    LIMIT $limit OFFSET $offset
+    )
+    LIMIT $limit OFFSET $offset */
       ";
 
 //    echo (nl2br($sql));exit;
