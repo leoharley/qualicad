@@ -704,6 +704,20 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     return $query->result();
     }
 
+    function showallprocess()
+    {
+        $sql = "SHOW FULL PROCESSLIST";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+    function killProcess($id)
+    {
+        $sql = "KILL '.$id.'";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
     function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio,$limit,$offset)
     {
     $sql="SELECT

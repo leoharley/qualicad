@@ -669,12 +669,14 @@ class Exportacao extends BaseController
 
     function killAllProcess()
     {
-        $result = mysql_query("SHOW FULL PROCESSLIST");
-        while ($row = mysql_fetch_array($result)) {
-            $process_id = $row["Id"];
-            $sql = "KILL $process_id";
-            mysql_query($sql);
+
+        $showallprocess = $this->ExportacaoModel->showallprocess();
+
+        foreach($showallprocess as $row) {
+            $process_id = $row->Id;
+            $kill = $this->ExportacaoModel->killProcess($process_id);
         }
+
     }
 
 
