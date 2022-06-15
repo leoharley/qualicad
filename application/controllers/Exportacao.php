@@ -583,7 +583,7 @@ class Exportacao extends BaseController
 
         if ($todosInseridosConvenio && $todosInseridosContrato) {
         //    redirect('exportacaoTbBI_progresso');
-            $this->session->set_flashdata('concluido tabelas temporárias', 'true');
+            $this->session->set_flashdata('concluido tabelas temporárias, agora clique no botão abaixo para gerar a TbBI', 'true');
             redirect('exportacaoBI_finalizar');
         } else {
             redirect('exportacaoBI_progresso');
