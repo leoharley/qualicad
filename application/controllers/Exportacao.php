@@ -454,6 +454,7 @@ class Exportacao extends BaseController
     function exportaBI()
     {
         if (array_key_exists('geraTbBI',$this->input->post())) {
+            var_dump('leo');exit;
             $this->exportaTbBI();
         } 
 
