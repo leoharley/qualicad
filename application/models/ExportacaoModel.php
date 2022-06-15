@@ -755,9 +755,9 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     con_cont_conv1.Cd_Tuss,
     con_cont_conv1.Ds_Tuss,
     con_cont_conv1.CD_TISS,
-    con_tuss_valido.cd_tuss cd_tuss_Valido,
+
     con_cont_conv1.ds_tuss_Valido,
-    con_tiss.cd_tiss cd_tiss_fracao,
+
     con_cont_conv1.vl_ind_quali 'Ind-vr',
     con_cont_conv1.vl_ind_filme_quali 'Ind-vr-filme',
     con_cont_conv1.vl_ind_honor_quali 'Ind-vr-honor',
