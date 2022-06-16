@@ -678,6 +678,8 @@ class Exportacao extends BaseController
 
         $showallprocess = $this->ExportacaoModel->showallprocess();
 
+        var_dump($showallprocess);exit;
+
         foreach($showallprocess as $row) {
             $process_id = $row->Id;
             $this->ExportacaoModel->killProcess($process_id);
