@@ -675,6 +675,7 @@ class Exportacao extends BaseController
 
     function killAllProcess()
     {
+        return;
 
         $showallprocess = $this->ExportacaoModel->showallprocess();
 
