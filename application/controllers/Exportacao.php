@@ -465,6 +465,7 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
+        $this->killAllProcess();
         if (array_key_exists('geraTbBI',$this->input->post())) {
             $this->exportaTbBI();
         } 
