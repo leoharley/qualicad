@@ -713,6 +713,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
 
     function killProcess($id)
     {
+        var_dump($id);exit;
         $sql = "KILL '.$id.'";
         $query = $this->db->query($sql);
 
