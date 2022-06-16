@@ -681,7 +681,6 @@ class Exportacao extends BaseController
         foreach($showallprocess as $row) {
             $process_id = $row->Id;
             $query = $this->ExportacaoModel->killProcess($process_id);
-            var_dump($query);exit;
         }
 
     }
