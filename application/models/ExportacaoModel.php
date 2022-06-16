@@ -715,7 +715,11 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     {
         $sql = "KILL '.$id.'";
         $query = $this->db->query($sql);
-        return $query->result();
+
+        if($query->num_rows() > 0) 
+        return true;
+        else
+        return false;
     }
 
     function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio,$limit,$offset)
