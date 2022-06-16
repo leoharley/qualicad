@@ -236,6 +236,7 @@ class ExportacaoModel extends CI_Model
 
     function consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset)
     {
+    $this->db->start_cache();
     $sql="SELECT CON_CONV_FINAL.id_convenio,
        CON_CONV_FINAL.ds_convenio,
         CON_CONV_FINAL.Cd_ConvenioERP,
@@ -471,12 +472,15 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     
 //    echo (nl2br($sql));exit;
 
-    $query = $this->db->query($sql);    
+    $query = $this->db->query($sql);
+    $this->db->stop_cache();
+    $this->db->flush_cache();
     return $query->result();
     }
 
     function consultaContratoBI($idEmpresa,$idConvenio,$limit,$offset)
     {
+    $this->db->start_cache();
     $sql="SELECT CON_CONTRATO.TbEmpresa_Id_Empresa,
             CON_CONTRATO.Cd_EmpresaERP, 
             CON_CONTRATO.Cd_ConvenioERP, 
@@ -700,7 +704,9 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
       ";
 
 //    echo (nl2br($sql));exit;
-    $query = $this->db->query($sql);    
+    $query = $this->db->query($sql);
+    $this->db->stop_cache();
+    $this->db->flush_cache();
     return $query->result();
     }
 
