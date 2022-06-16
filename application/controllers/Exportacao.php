@@ -496,6 +496,8 @@ class Exportacao extends BaseController
 
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
 
+        $this->killAllProcess();
+
         $memData = array();
         if(!empty($consultaConvenioBI)){
 
@@ -523,6 +525,8 @@ class Exportacao extends BaseController
         }
 
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
+
+        $this->killAllProcess();
 
         $memData = array();
         if(!empty($consultaContratoBI)) {
@@ -615,6 +619,8 @@ class Exportacao extends BaseController
         $memData = array();
 
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,40000,$o);
+
+        $this->killAllProcess();
 
         if (!empty($consultaTbBI)) {
         foreach($consultaTbBI as $row) {
