@@ -682,7 +682,6 @@ class Exportacao extends BaseController
             if ($row->Host == 'localhost') {
             $process_id = $row->Id;
             $query = $this->ExportacaoModel->killProcess($process_id);
-            var_dump($query);exit;
             }
         }
 
