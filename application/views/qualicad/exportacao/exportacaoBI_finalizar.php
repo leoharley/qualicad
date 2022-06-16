@@ -106,7 +106,7 @@
 
                 <?php if ($this->session->flashdata('concluido') == 'true') {echo '<span><strong>Processamento concluído!</strong></span><br/>';} ?>
 
-                <div id="loader" style="margin-top:30px;display:none">
+                <div id="loader" style="margin-top:30px">
                 <span><strong>Processando consolidado final, aguarde...    </strong></span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
@@ -114,7 +114,7 @@
 
                 <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" disabled >
 
-                <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/>
+                <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;visibility:hidden"/>
             <br/>
 
             </form>            
@@ -184,11 +184,7 @@ function formToggle(ID){
 }
 $(document).ready(function () {
 
-    if(!window.location.hash) {
-        window.location = window.location + '#loaded';
-        window.location.reload();
-    }
-    //    $('#geraTbBI').click();
+        $('#geraTbBI').click();
 
         $('#importSubmit').attr('disabled', true);
         $('input:file').change(
