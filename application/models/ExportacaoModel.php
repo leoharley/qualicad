@@ -708,7 +708,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     {
         $sql = "SHOW FULL PROCESSLIST";
         $query = $this->db->query($sql);
-        return $query->result_array();
+        return $query->result();
     }
 
     function killProcess($id)
