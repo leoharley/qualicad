@@ -106,13 +106,13 @@
 
                 <?php if ($this->session->flashdata('concluido') == 'true') {echo '<span><strong>Processamento concluído!</strong></span><br/>';} ?>
 
-                <div id="loader" style="margin-top:30px;display: none">
-                <span><strong>Processando tabelas temporárias, aguarde...    </strong></span>
+                <div id="loader" style="margin-top:30px">
+                <span><strong>Processando consolidado final, aguarde...    </strong></span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
                 <br/>
 
-                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" <?php if ($this->session->flashdata('concluido') == 'true') {echo 'disabled';} ?> >
+                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" disabled >
 
                 <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;visibility: hidden"/>
             <br/>
