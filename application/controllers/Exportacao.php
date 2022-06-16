@@ -618,7 +618,7 @@ class Exportacao extends BaseController
         unset($memData);
         $memData = array();
 
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,40000,$o);
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,25000,$o);
 
         $this->killAllProcess();
 
