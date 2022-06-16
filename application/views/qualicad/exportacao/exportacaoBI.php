@@ -115,7 +115,6 @@
                 <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;visibility: hidden"/>
             <br/>
 
-                <strong>*** YUNNA: NÃO MEXER NESSA TELA POR ENQUANTO, ESTOU TRABALHANDO NELA *** </strong>
             </form>            
 
         </div>
