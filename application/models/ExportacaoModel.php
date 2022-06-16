@@ -716,6 +716,8 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
         $sql = "KILL $id";
         $query = $this->db->query($sql);
 
+        var_dump($sql);exit;
+
         if($query) 
         return true;
         else
