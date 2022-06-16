@@ -714,8 +714,8 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     function killProcess($id)
     {
         $sql = "KILL '.$id.'";
-        $this->db->query($sql);
-        return TRUE;
+        $query = $this->db->query($sql);
+        return $query->result();
     }
 
     function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio,$limit,$offset)
