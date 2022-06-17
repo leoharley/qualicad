@@ -729,6 +729,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
 
     function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio,$limit,$offset)
     {
+    $this->db->_reset_write();
     $this->db->reconnect();
     $this->db->start_cache();
     $sql="SELECT
