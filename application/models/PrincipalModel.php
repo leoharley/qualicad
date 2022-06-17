@@ -1323,7 +1323,7 @@ function buscaProFat($Ds_ProFat)
         $this->db->where('RegraGruPro.Deletado !=', 'S');
         $this->db->where('RegraGruPro.Tp_Ativo', 'S');
         $this->db->order_by('GrupoPro.Tp_GrupoPro', 'ASC');
-        $this->db->order_by('Faturamento.Id_Faturamento', 'ASC');
+
         $query = $this->db->get();
 
         var_dump( $query->result());exit;
