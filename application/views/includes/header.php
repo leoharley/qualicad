@@ -496,11 +496,29 @@ $(function() {
                                                               
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="<?php echo base_url(); ?>exportacaoBI">
-                        <i class="fa fa-th"></i>
-                        <span>Exportação BI</span>
-                    </a>
+                <li class="treeview" data-toggle="collapse" data-target="#test2" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                    <i class="fa fa-th" style="margin-left:18px;color:white"></i>
+                    <span style="margin-left:5px;color:white">Exportação BI</span>
+
+                        <ul class="nav nav-list collapse" style="margin-top:10px" id="test2">
+
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>exportacaoBI">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Exportar Tabelas Temporárias</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php echo base_url(); ?>exportacaoBI_finalizar">
+                                <i class="fa fa-upload"></i>
+                                <span style="margin-left:5px">Exportar Tabela BI</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+
                 </li>
 
               <!--  <li class="treeview">
