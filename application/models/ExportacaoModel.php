@@ -982,14 +982,13 @@ FROM
 
     function consultaCodERPEmpresa($IdEmpresa)
     {
-        $this->db->trans_start();
         $this->db->select('empresa.Cd_EmpresaERP');
         $this->db->from('TbEmpresa as empresa');
         $this->db->where('empresa.Id_Empresa', $IdEmpresa);
         $query = $this->db->get();
-        $this->db->trans_complete();
 
-        return $query->result();
+        $result = $query->result();
+        return $result;
     }
 
 
