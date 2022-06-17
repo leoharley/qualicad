@@ -465,7 +465,6 @@ class Exportacao extends BaseController
 
     function exportaBI()
     {
-        $this->killAllProcess();
         if (array_key_exists('geraTbBI',$this->input->post())) {
             $this->exportaTbBI();
         } 
@@ -496,8 +495,6 @@ class Exportacao extends BaseController
 
         $consultaConvenioBI = $this->ExportacaoModel->consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset);
 
-        $this->killAllProcess();
-
         $memData = array();
         if(!empty($consultaConvenioBI)){
 
@@ -525,8 +522,6 @@ class Exportacao extends BaseController
         }
 
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
-
-        $this->killAllProcess();
 
         $memData = array();
         if(!empty($consultaContratoBI)) {
