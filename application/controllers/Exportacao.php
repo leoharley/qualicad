@@ -688,7 +688,7 @@ class Exportacao extends BaseController
     function stopall()
     {
 
-        die;
+        exit;
 
 
     }
