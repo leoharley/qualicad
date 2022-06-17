@@ -676,14 +676,14 @@ class Exportacao extends BaseController
 
         $showallprocess = $this->ExportacaoModel->showallprocess();
 
-        if ($showallprocess) {
+     /*   if ($showallprocess) {
             foreach($showallprocess as $row) {
                 if ($row->Host == 'localhost') {
                 $process_id = $row->Id;
                 $executar = $this->ExportacaoModel->killProcess($process_id);
                 }
             }
-        }
+        } */
 
 
     }
