@@ -935,7 +935,7 @@ FROM
     ) con_cont_conv1
       ";
 
-//    echo (nl2br($sql));exit;
+    echo (nl2br($sql));exit;
     $query = $this->db->query($sql);
     $this->db->stop_cache();
     $this->db->flush_cache();
