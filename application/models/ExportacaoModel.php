@@ -725,15 +725,17 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
 
         if(!$res)
         {
+            $this->db->reset_query();
             $error = $this->db->error();
             return $error['code'];
             //return array $error['code'] & $error['message']
         }
         else
         {
+            $this->db->reset_query();
             return TRUE;
         }
-        
+
     }
 
     function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio,$limit,$offset)
