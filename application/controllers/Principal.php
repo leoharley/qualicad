@@ -1205,7 +1205,7 @@ class Principal extends BaseController
                 $data['infoGrupoPro'] = $this->PrincipalModel->carregaInfoGrupoPro($this->session->userdata('IdEmpresa'));
                 $data['infoFaturamento'] = $this->PrincipalModel->carregaInfoFaturamentoEmpresa($this->session->userdata('IdEmpresa'));
 
-                $data['infoRegraGruPro'] = $this->PrincipalModel->carregaInfoRegraGruProRegra($IdRegra);
+                $data['infoRegraGruPro'] = $this->PrincipalModel->carregaInfoRegraGruProRegra($IdRegra,$this->session->userdata('IdEmpresa'));
 
                 $this->global['pageTitle'] = 'QUALICAD : Editar regra';      
                 $this->loadViews("qualicad/principal/c_principalRegra", $this->global, $data, NULL);
