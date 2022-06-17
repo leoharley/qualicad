@@ -154,8 +154,8 @@ if(!empty($infoIndiceGrupoPro))
                                                 foreach ($infoGrupoPro as $grupoPro)
                                                 {
                                                     ?>
-                                                <option value="<?php echo $grupoPro->CodGrupo ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupo == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
-                                                    <?php echo $grupoPro->CodGrupo.' - '.$grupoPro->Ds_GrupoPro ?>
+                                                <option value="<?php echo $grupoPro->CodGrupoPro ?>" <?php if ($this->uri->segment(2) == 'editar' && $grupoPro->CodGrupoPro == $TbGrupoPro_CodGrupo) { echo 'selected'; } ?>>
+                                                    <?php echo $grupoPro->CodGrupoPro.' - '.$grupoPro->Ds_GrupoPro ?>
                                                 </option>
                                                 <?php
                                                 }

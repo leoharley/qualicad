@@ -201,8 +201,8 @@ if(!empty($infoRegra))
                                                         foreach ($infoGrupoPro as $grupopro)
                                                         {
                                                             ?>
-                                                            <option value="<?php echo $grupopro->CdGrupoPro ?>">
-                                                                <?php echo $grupopro->CdGrupoPro .' - '.$grupopro->Ds_GrupoPro ?>
+                                                            <option value="<?php echo $grupopro->CodGrupoPro ?>">
+                                                                <?php echo $grupopro->CodGrupoPro .' - '.$grupopro->Ds_GrupoPro ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -266,7 +266,7 @@ if(!empty($infoRegra))
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Tp_GrupoPro ?>" disabled>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $regragrupro->CdGrupoPro .' - '.$regragrupro->Ds_GrupoPro ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $regragrupro->CodGrupoPro .' - '.$regragrupro->Ds_GrupoPro ?>" disabled>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="<?php echo $regragrupro->Id_Faturamento .' - '.$regragrupro->Ds_Faturamento ?>" disabled>

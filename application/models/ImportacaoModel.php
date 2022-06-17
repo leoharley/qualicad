@@ -513,7 +513,7 @@ class ImportacaoModel extends CI_Model
 
     function apagaImportacaoGrupoPro($id)
     {
-        $this->db->where('CodGrupo', $id);
+        $this->db->where('CodGrupoPro', $id);
         $res = $this->db->delete('TbGrupoPro');
 
         if(!$res)
@@ -704,11 +704,11 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function consultaRegraTbGrupoProExistente($CdGrupoPro, $IdEmpresa)
+    function consultaRegraTbGrupoProExistente($CodGrupoPro, $IdEmpresa)
     {
         $this->db->select('*');
         $this->db->from('TbGrupoPro as GrupoPro');
-        $this->db->where('GrupoPro.CodGrupoPro', $CdGrupoPro);
+        $this->db->where('GrupoPro.CodGrupoPro', $CodGrupoPro);
         $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->where('GrupoPro.Deletado !=', 'S');
         $query = $this->db->get();

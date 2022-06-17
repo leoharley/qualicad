@@ -120,8 +120,8 @@ class Importacao extends BaseController
                                 
                                 $insert = 0;
                                 // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
-                                if (isset($memData['CdGrupoPro'])) {
-                                if ($this->ImportacaoModel->consultaRegraTbGrupoProExistente($memData['CdGrupoPro'],$this->session->userdata('IdEmpresa')) != null) {
+                                if (isset($memData['CodGrupoPro'])) {
+                                if ($this->ImportacaoModel->consultaRegraTbGrupoProExistente($memData['CodGrupoPro'],$this->session->userdata('IdEmpresa')) != null) {
                                     $duplicidade++;
                                     } else {
                                         $insert = $this->ImportacaoModel->adicionaGrupoPro($memData);

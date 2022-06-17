@@ -243,8 +243,8 @@ if(!empty($infoIndice))
                                                         foreach ($infoGrupoPro as $grupoPro)
                                                         {
                                                             ?>
-                                                            <option value="<?php echo $grupoPro->CodGrupo ?>">
-                                                                <?php echo $grupoPro->CdGrupoPro.' - '.$grupoPro->Ds_GrupoPro ?>
+                                                            <option value="<?php echo $grupoPro->CodGrupoPro ?>">
+                                                                <?php echo $grupoPro->CodGrupoPro.' - '.$grupoPro->Ds_GrupoPro ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -301,7 +301,7 @@ if(!empty($infoIndice))
                                     </td>
 
                                     <td>
-                                        <input type="text" class="form-control" value="<?php echo $indice->CdGrupoPro.' - '.$indice->Ds_GrupoPro ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php echo $indice->CodGrupoPro.' - '.$indice->Ds_GrupoPro ?>" disabled>
                                     </td>
 
                                     <td>

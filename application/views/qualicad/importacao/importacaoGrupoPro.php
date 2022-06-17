@@ -106,7 +106,7 @@
       <!--  <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>CodGrupo</th>
+                    <th>CodGrupoPro</th>
                     <th>Ds_GrupoPro</th>
                     <th>Tp_GrupoPro</th>
                     <th>Desc_Tp_GrupoPro</th>
@@ -118,14 +118,14 @@
             <tbody>
                 <?php //if(!empty($infoGrupoPro)){ foreach($infoGrupoPro as $registro){ ?>
                 <tr>
-                    <td><?php //echo $registro->CdGrupoPro ?></td>
+                    <td><?php //echo $registro->CodGrupoPro ?></td>
                     <td><?php //echo $registro->Ds_GrupoPro ?></td>
                     <td><?php //echo $registro->Tp_GrupoPro ?></td>
                     <td><?php //echo $registro->Desc_Tp_GrupoPro ?></td>
                     <td><?php //echo $registro->Dt_Criacao ?></td>
                     <td><?php //echo ($registro->Tp_Ativo == 'S') ? 'Sim' : 'Não'; ?></td>
                     <td>
-                    <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoGrupoPro/'.$registro->CodGrupo; ?> "title="Excluir">
+                    <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoGrupoPro/'.$registro->CodGrupoPro; ?> "title="Excluir">
                         <i class="fa fa-trash-o"></i>
                     </a>
                     </td>

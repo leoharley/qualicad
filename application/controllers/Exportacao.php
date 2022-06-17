@@ -98,11 +98,11 @@ class Exportacao extends BaseController
         flush();
 
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, array('CdGrupoPro', 'Ds_GrupoPro', 'Tp_GrupoPro',
+        fputcsv($handle, array('CodGrupoPro', 'Ds_GrupoPro', 'Tp_GrupoPro',
             'Desc_Tp_GrupoPro','Dt_Criacao','Tp_Ativo'),'|');
 
         foreach ($exportacao as $data) {
-            fputcsv($handle, array($data->CdGrupoPro, $data->Ds_GrupoPro, $data->Tp_GrupoPro,
+            fputcsv($handle, array($data->CodGrupoPro, $data->Ds_GrupoPro, $data->Tp_GrupoPro,
                 $data->Desc_Tp_GrupoPro,$data->Dt_Criacao,$data->Tp_Ativo),'|');
         }
         fclose($handle);

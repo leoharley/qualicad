@@ -89,7 +89,7 @@
                         <?php echo $registro->Ds_indice ?>
                       </td>
                       <td>
-                        <?php echo $registro->CdGrupoPro .'-'.$registro->Ds_GrupoPro ?>
+                        <?php echo $registro->CodGrupoPro .'-'.$registro->Ds_GrupoPro ?>
                       </td>
                       <td>
                         <?php echo ($registro->Dt_IniVigencia != '0000-00-00') ? date("d/m/Y", strtotime($registro->Dt_IniVigencia)) : ''; ?>

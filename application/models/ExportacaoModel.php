@@ -29,7 +29,7 @@ class ExportacaoModel extends CI_Model
         if ($var != 0) {
             $this->db->select('*');
             $this->db->from('TbGrupoPro');   
-            $this->db->order_by('CodGrupo','DESC');
+            $this->db->order_by('CodGrupoPro','DESC');
             $this->db->limit($var);
             $query = $this->db->get();
             return $query->result();
@@ -314,7 +314,7 @@ FROM
        EXV.TbRegra_Id_Regra,
       EXV.Ds_Regra,
        EXV.TbGrupoPro_CodGrupo,
-       EXV.CodGrupo ,
+       EXV.CodGrupoPro ,
        EXV.Desc_Tp_GrupoPro,
        EXV.TbFaturamento_Id_Faturamento,
        EXV.Ds_Faturamento,
@@ -379,7 +379,7 @@ FROM
        AA.TbRegra_Id_Regra,
        AA.Ds_Regra,
        AA.TbGrupoPro_CodGrupo,
-       AA.CodGrupo ,
+       AA.CodGrupoPro ,
        AA.Desc_Tp_GrupoPro,
        AA.TbFaturamento_Id_Faturamento,
        AA.Ds_Faturamento,
@@ -436,7 +436,7 @@ FROM
        TbFatItem.Cd_PorteMedico,
        TbPorteMedico.Ds_PorteMedico,
        TbPorteMedico.Vl_PorteMedico,
-       TbGrupoPro.CodGrupo ,
+       TbGrupoPro.CodGrupoPro ,
        TbGrupoPro.Desc_Tp_GrupoPro
       
 FROM TbConvenio,TbPlano,TbIndice,TbRegra,Tb_RegraGruPro, TbGrupoPro, TbFaturamento,TbFatItem
@@ -464,7 +464,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
       inner JOIN TbTUSS ON (TbTUSS.TbConvenio_Id_Convenio =  AA.Cd_ConvenioERP AND TbTUSS.Cd_Tuss = AA.CD_TUSS and TbTUSS.cd_gru_pro = AA.TbGrupoPro_CodGrupo)) EXV
       LEFT OUTER JOIN TbExcValores ON (TbExcValores.CD_Convenio = EXV.Cd_ConvenioERP AND TbExcValores.Cd_TUSS =  EXV.Cd_TUSS AND TbExcValores.Cd_ProFat = EXV.TbProFat_Cd_ProFat and TbExcValores.TbEmpresa_Id_Empresa = EXV.tbempresa_id_empresa)
       LEFT OUTER JOIN Tb_FracaoSimproBra ON (Tb_FracaoSimproBra.TbEmpresa_Id_Empresa = EXV.tbempresa_id_empresa and Tb_FracaoSimproBra.TbFatItem_Id_FatItem =EXV.TbFaturamento_Id_Faturamento and Tb_FracaoSimproBra.CD_TISS = EXV.Cd_TISS)
-      Left outer join Tb_RegraProibicao on ( Tb_RegraProibicao.TbEmpresa_Id_Empresa =  EXV.tbempresa_id_empresa and Tb_RegraProibicao.TbPlano_Id_Plano = EXV.Id_Plano and Tb_RegraProibicao.TbGrupoPro_CodGrupo = EXV.CodGrupo )) CON_CONV_FINAL
+      Left outer join Tb_RegraProibicao on ( Tb_RegraProibicao.TbEmpresa_Id_Empresa =  EXV.tbempresa_id_empresa and Tb_RegraProibicao.TbPlano_Id_Plano = EXV.Id_Plano and Tb_RegraProibicao.TbGrupoPro_CodGrupo = EXV.CodGrupoPro )) CON_CONV_FINAL
     --  LIMIT 20000
     --  LIMIT 40000 OFFSET 20000
         LIMIT $limit OFFSET $offset
