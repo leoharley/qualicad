@@ -1326,6 +1326,8 @@ function buscaProFat($Ds_ProFat)
         $this->db->order_by('Faturamento.Id_Faturamento', 'ASC');
         $query = $this->db->get();
 
+        var_dump($query);exit;
+
         return $query->result();
     }
 
