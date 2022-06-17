@@ -525,7 +525,7 @@ class Principal extends BaseController
             }
     }
 
-    function adicionaPlano() 
+    function adicionaPlano()
     {
             if (array_key_exists('IrLista',$this->input->post())) {
                 redirect('principalPlano/listar'); 
