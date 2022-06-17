@@ -397,7 +397,7 @@ $(function() {
 
                   <hr>                  
 
-                <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 10px!important;cursor: pointer!important;">
+                <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 20px!important;cursor: pointer!important;">
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
                     <span style="margin-left:5px;color:white">Importação (cargas)</span>
 
@@ -496,7 +496,7 @@ $(function() {
                                                               
                     </ul>
                 </li>
-                
+
                 <li class="treeview" data-toggle="collapse" data-target="#test2" style="margin-bottom: 10px!important;cursor: pointer!important;">
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
                     <span style="margin-left:5px;color:white">Exportação BI</span>
