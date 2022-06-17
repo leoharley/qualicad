@@ -720,8 +720,8 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
 
     function killProcess($id)
     {
-        $sql2 = "KILL ".$id;
-        $this->db->query($sql2);
+        $sql = "KILL ".$id;
+        $this->db->query($sql);
 
         return TRUE;
 
@@ -985,7 +985,7 @@ FROM
         $this->db->where('empresa.Id_Empresa', $IdEmpresa);
         $query = $this->db->get();  
 
-        return $query->result();
+        return 5;
     }
 
 
