@@ -594,7 +594,7 @@ class Exportacao extends BaseController
     {
 
         
-    //    $this->killAllProcess();
+        $this->killAllProcess();
 
         $todosInseridosTbBI = false;
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
@@ -677,9 +677,9 @@ class Exportacao extends BaseController
         $showallprocess = $this->ExportacaoModel->showallprocess();
 
         if ($showallprocess) {
-            foreach($showallprocess as $row2) {
-                if ($row2->Host == 'localhost') {
-                $process_id = $row2->Id;
+            foreach($showallprocess as $row) {
+                if ($row->Host == 'localhost') {
+                $process_id = $row->Id;
                 $result = $this->ExportacaoModel->killProcess($process_id);
                 }
             }

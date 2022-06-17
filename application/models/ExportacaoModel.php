@@ -722,7 +722,8 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     {
         $sql = "KILL ".$id;
         $res = $this->db->query($sql);
-        return;
+        
+        return $query->result();
 
     }
 
@@ -984,9 +985,7 @@ FROM
         $this->db->where('empresa.Id_Empresa', $IdEmpresa);
         $query = $this->db->get();  
 
-   //     return $query->result();
-
-        var_dump($query->result());exit;
+        return $query->result();
     }
 
 
