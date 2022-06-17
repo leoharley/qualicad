@@ -979,7 +979,6 @@ FROM
 
     function consultaCodERPEmpresa($IdEmpresa)
     {
-        var_dump($IdEmpresa);exit;
         $this->db->select('empresa.Cd_EmpresaERP');
         $this->db->from('TbEmpresa as empresa');
         $this->db->where('empresa.Id_Empresa', $IdEmpresa);
