@@ -592,8 +592,6 @@ class Exportacao extends BaseController
 
     function exportaTbBI()
     {
-
-        $this->output->clear_all_cache();
     //    $this->killAllProcess();
 
         $todosInseridosTbBI = false;
