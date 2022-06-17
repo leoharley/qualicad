@@ -1664,6 +1664,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		if ($table == 'TbGrupoPro') {
 		var_dump($sql);
 		}
+		exit;
 
 		$this->_reset_write();
 		return $this->query($sql);
