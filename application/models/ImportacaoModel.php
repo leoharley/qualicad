@@ -708,7 +708,7 @@ class ImportacaoModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('TbGrupoPro as GrupoPro');
-        $this->db->where('GrupoPro.CdGrupoPro', $CdGrupoPro);
+        $this->db->where('GrupoPro.CodGrupoPro', $CdGrupoPro);
         $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $IdEmpresa);
         $this->db->where('GrupoPro.Deletado !=', 'S');
         $query = $this->db->get();

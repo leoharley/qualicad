@@ -39,7 +39,7 @@ class ExportacaoModel extends CI_Model
         $this->db->where('GrupoPro.Deletado !=', 'S');
         $this->db->where('GrupoPro.Tp_Ativo', 'S');
         $this->db->where('GrupoPro.TbEmpresa_Id_Empresa', $idEmpresa);
-        $this->db->order_by('GrupoPro.CdGrupoPro', 'ASC');
+        $this->db->order_by('GrupoPro.CodGrupoPro', 'ASC');
         $query = $this->db->get();
 
         return $query->result();
@@ -454,7 +454,7 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
       and TbRegra.TbEmpresa_Id_Empresa = Tb_RegraGruPro.TbEmpresa_Id_Empresa
       and Tb_RegraGruPro.TbFaturamento_Id_Faturamento = TbFaturamento.Id_Faturamento
       and Tb_RegraGruPro.TbFaturamento_Id_Faturamento = TbFatItem.TbFaturamento_Id_Faturamento
-      and  Tb_RegraGruPro.TbGrupoPro_CodGrupo = TbGrupoPro.CdGrupoPro and Tb_RegraGruPro.TbEmpresa_Id_Empresa = TbGrupoPro.TbEmpresa_Id_Empresa 
+      and  Tb_RegraGruPro.TbGrupoPro_CodGrupo = TbGrupoPro.CodGrupoPro and Tb_RegraGruPro.TbEmpresa_Id_Empresa = TbGrupoPro.TbEmpresa_Id_Empresa 
       and TbConvenio.Tp_Ativo= 'S'
       and TbPlano.Tp_Ativo = 'S'
       and TbIndice.Tp_Ativo = 'S'

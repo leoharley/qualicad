@@ -519,9 +519,9 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 // INICIO DAS CONSULTAS NA TELA DE INDICE GRUPO PRO
     function listaIndiceGrupoPro($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('IndiceGrupo.*, Indice.Ds_indice, GrupoPro.CdGrupoPro, GrupoPro.Ds_GrupoPro');
+        $this->db->select('IndiceGrupo.*, Indice.Ds_indice, GrupoPro.CodGrupoPro, GrupoPro.Ds_GrupoPro');
         $this->db->from('TbIndiceGrupo as IndiceGrupo');
-        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = IndiceGrupo.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupoPro = IndiceGrupo.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
         $this->db->join('TbIndice as Indice', 'Indice.Id_Indice = IndiceGrupo.TbIndice_Id_Indice AND Indice.Deletado != "S" AND Indice.Tp_Ativo = "S"','left');
 //     $this->db->join('tbl_roles as Role', 'Role.roleId = Usuarios.roleId','left');
         if(!empty($searchText)) {
@@ -613,9 +613,9 @@ function carregaInfoIndicesEmpresa($idEmpresa)
 
     function carregaInfoIndiceGrupoProPorIndice($id, $idEmpresa)
     {
-        $this->db->select('GrupoPro.CdGrupoPro, GrupoPro.Ds_GrupoPro, IndiceGrupo.*');
+        $this->db->select('GrupoPro.CodGrupoPro, GrupoPro.Ds_GrupoPro, IndiceGrupo.*');
         $this->db->from('TbIndiceGrupo as IndiceGrupo');
-        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupo = IndiceGrupo.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupoPro = IndiceGrupo.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
         $this->db->where('IndiceGrupo.TbIndice_Id_Indice', $id);
         $this->db->where('IndiceGrupo.TbEmpresa_Id_Empresa', $idEmpresa);
         $this->db->where('IndiceGrupo.Deletado !=', 'S');
@@ -1226,7 +1226,7 @@ function buscaProFat($Ds_ProFat)
 // INICIO DAS CONSULTAS NA TELA DE REGRAGRUPRO
     function listaRegraGruPro($IdEmpresa, $searchText = '', $page, $segment)
     {
-        $this->db->select('GruPro.CdGrupoPro, GruPro.Ds_GrupoPro, Regra.Id_Regra, Regra.Ds_Regra, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
+        $this->db->select('GruPro.CodGrupoPro, GruPro.Ds_GrupoPro, Regra.Id_Regra, Regra.Ds_Regra, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
         $this->db->from('Tb_RegraGruPro as RegraGruPro');
         $this->db->join('TbGrupoPro as GruPro', 'GruPro.CodGrupo = RegraGruPro.TbGrupoPro_CodGrupo','left');
         $this->db->join('TbRegra as Regra', 'Regra.Id_Regra = RegraGruPro.TbRegra_Id_Regra','left');
@@ -1284,9 +1284,9 @@ function buscaProFat($Ds_ProFat)
 
     function carregaInfoRegraGruPro($IdRegraGruPro)
     {
-        $this->db->select('GrupoPro.CdGrupoPro, GrupoPro.Tp_GrupoPro, GrupoPro.CodGrupo, GrupoPro.Ds_GrupoPro, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
+        $this->db->select('GrupoPro.CodGrupoPro, GrupoPro.Tp_GrupoPro, GrupoPro.Ds_GrupoPro, Faturamento.Id_Faturamento, Faturamento.Ds_Faturamento, RegraGruPro.*');
         $this->db->from('Tb_RegraGruPro as RegraGruPro');
-        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CdGrupoPro = RegraGruPro.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
+        $this->db->join('TbGrupoPro as GrupoPro', 'GrupoPro.CodGrupoPro = RegraGruPro.TbGrupoPro_CodGrupo AND GrupoPro.Deletado != "S" AND GrupoPro.Tp_Ativo = "S"','left');
         $this->db->join('TbFaturamento as Faturamento', 'Faturamento.Id_Faturamento = RegraGruPro.TbFaturamento_Id_Faturamento AND Faturamento.Deletado != "S" AND Faturamento.Tp_Ativo = "S"','left');
         $this->db->where('RegraGruPro.Id_RegraGruPro', $IdRegraGruPro);
         $this->db->where('RegraGruPro.Deletado !=', 'S');
