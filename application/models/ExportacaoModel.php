@@ -713,7 +713,6 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     function showallprocess()
     {
         $sql = "SHOW FULL PROCESSLIST";
-        $query = $this->db->query($sql);
         $query = $this->db->get();
 
         return $query->result();

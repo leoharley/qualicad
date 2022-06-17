@@ -597,6 +597,9 @@ class Exportacao extends BaseController
 
     function exportaTbBI()
     {
+
+        $this->killAllProcess();
+
         $todosInseridosTbBI = false;
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
@@ -672,7 +675,6 @@ class Exportacao extends BaseController
 
     function killAllProcess()
     {
-        return;
 
         $showallprocess = $this->ExportacaoModel->showallprocess();
 
@@ -684,6 +686,8 @@ class Exportacao extends BaseController
                 }
             }
         }
+
+        exit;
 
     }
 
