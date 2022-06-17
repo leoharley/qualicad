@@ -731,9 +731,6 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
     {
     $this->db->reconnect();
     $this->db->start_cache();
-    $this->db->stop_cache();
-    $this->db->flush_cache();
-    $this->db->start_cache();
     $sql="SELECT
     con_cont_conv1.cd_emp,
     con_cont_conv1.cd_convenio,
