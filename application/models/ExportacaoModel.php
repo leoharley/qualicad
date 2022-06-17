@@ -236,6 +236,7 @@ class ExportacaoModel extends CI_Model
 
     function consultaConvenioBI($idEmpresa,$idConvenio,$limit,$offset)
     {  
+    $this->db->reset_query();
     $this->db->start_cache();
     $sql="SELECT CON_CONV_FINAL.id_convenio,
        CON_CONV_FINAL.ds_convenio,
