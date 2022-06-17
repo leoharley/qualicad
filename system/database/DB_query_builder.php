@@ -1661,7 +1661,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			array_values($this->qb_set)
 		);
 
-		if ($table == 'TbGrupoPro') {
+		if ($table == 'TbFatItem') {
 		var_dump($sql);
 		} 
 
