@@ -1661,9 +1661,9 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			array_values($this->qb_set)
 		);
 
-		var_dump($table);exit;
-		if ($table != 'TbFatItem') {
+		if ($table != 'tbl_log') {
 		var_dump($sql);
+		exit;
 		} 
 
 		$this->_reset_write();
