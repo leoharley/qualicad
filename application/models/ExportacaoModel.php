@@ -984,7 +984,9 @@ FROM
         $this->db->where('empresa.Id_Empresa', $IdEmpresa);
         $query = $this->db->get();  
 
-        var_dump($query);exit;
+   //     return $query->result();
+
+        var_dump($query->result());exit;
     }
 
 
