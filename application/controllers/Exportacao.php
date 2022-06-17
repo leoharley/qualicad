@@ -687,7 +687,6 @@ class Exportacao extends BaseController
             }
         }
 
-        exit;
 
     }
 
