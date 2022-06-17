@@ -76,6 +76,7 @@ class Importacao extends BaseController
                     // Load CSV reader library
                     $this->load->library('CSVReader');
                     
+                    var_dump($this->session->userdata('IdEmpresa'));exit;
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
                     $dePara = $this->ImportacaoModel->consultaDePara($this->input->post('Tb_Id_LayoutImportacao'),'GrupoPro',$this->session->userdata('IdEmpresa'));
