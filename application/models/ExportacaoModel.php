@@ -979,13 +979,18 @@ FROM
 
     function consultaCodERPEmpresa($IdEmpresa)
     {
-        $query = array();
         $this->db->select('empresa.Cd_EmpresaERP');
         $this->db->from('TbEmpresa as empresa');
         $this->db->where('empresa.Id_Empresa', $IdEmpresa);
         $query = $this->db->get();  
 
-        return $query->result();
+        if($query == 1) {
+            $results = $query->result();
+            return  $results;
+         }
+         else{
+              return false;
+         }
     }
 
 
