@@ -734,7 +734,6 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
 
     function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio,$limit,$offset)
     {
-    $this->db->reset_query();
     $this->db->start_cache();
     $sql="SELECT
     con_cont_conv1.cd_emp,
@@ -944,6 +943,7 @@ FROM
     $query = $this->db->query($sql);
     $this->db->stop_cache();
     $this->db->flush_cache();
+    $this->db->reset_query();
     return $query->result();
     }
 
