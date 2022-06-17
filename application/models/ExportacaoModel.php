@@ -720,19 +720,17 @@ where TbConvenio.tbempresa_id_empresa = $idEmpresa
 
     function killProcess($id)
     {
-        $sql = "KILL ".$id;
-        $res = $this->db->query($sql);
+        $sql2 = "KILL ".$id;
+        $res = $this->db->query($sql2);
 
         if(!$res)
         {
-            $this->db->reset_query();
             $error = $this->db->error();
             return $error['code'];
             //return array $error['code'] & $error['message']
         }
         else
         {
-            $this->db->reset_query();
             return TRUE;
         }
 
