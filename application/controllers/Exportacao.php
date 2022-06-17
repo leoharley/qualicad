@@ -593,7 +593,7 @@ class Exportacao extends BaseController
     function exportaTbBI()
     {
 
-        
+        $this->output->clear_all_cache();
     //    $this->killAllProcess();
 
         $todosInseridosTbBI = false;
@@ -613,8 +613,8 @@ class Exportacao extends BaseController
         $insertCountTbBISession = intval($this->input->post('insertCountTbBISession'));
 
         $consultaTbBI = null;
-        unset($memData);
         $memData = array();
+        unset($memData);
 
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,25000,$o);
 
