@@ -594,7 +594,7 @@ class Exportacao extends BaseController
     {
 
         
-        $this->killAllProcess();
+    //    $this->killAllProcess();
 
         $todosInseridosTbBI = false;
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
