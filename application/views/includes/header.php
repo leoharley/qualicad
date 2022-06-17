@@ -506,7 +506,7 @@ $(function() {
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>exportacaoBI">
                                 <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Exportar Tabelas Temporárias</span>
+                                <span style="margin-left:5px">Exportar Temporárias</span>
                             </a>
                         </li>
 
