@@ -2154,7 +2154,7 @@ class Importacao extends BaseController
 
     function apagaLayoutImportacao()
     {
-            if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+            if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com')&&($this->session->userdata('email') != 'anamrbs@gmail.com'))
             {             
             redirect('telaNaoAutorizada');
             }
@@ -2247,7 +2247,7 @@ class Importacao extends BaseController
 
     function apagaDePara()
     {
-            if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com'))
+            if (($this->session->userdata('email') != 'homarbsb@gmail.com')&&($this->session->userdata('email') != 'yunnabsb@gmail.com')&&($this->session->userdata('email') != 'anamrbs@gmail.com'))
             {             
             redirect('telaNaoAutorizada');
             }
