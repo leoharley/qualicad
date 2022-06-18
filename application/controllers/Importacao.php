@@ -492,6 +492,8 @@ class Importacao extends BaseController
 
                             $memData += array(                                
                                 'Tp_Ativo'=> 'S');
+
+                            var_dump($memData);exit;
                                 
                             $insert = 0;
                             // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
