@@ -487,8 +487,6 @@ class Importacao extends BaseController
                             $memData += array(                                
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
-
-                            var_dump($memData);exit;
                                 
                             $insert = 0;
                             // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
