@@ -490,8 +490,8 @@ class Importacao extends BaseController
 
                             $insert = 0;
                             // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
-                            if (isset($memData['TbProFat_Cd_ProFat'])&&isset($memData['TbConvenio_Id_Convenio'])) {
-                            if ($this->ImportacaoModel->consultaRegraTbTUSSExistente($memData['TbProFat_Cd_ProFat'],$memData['TbConvenio_Id_Convenio'],$this->session->userdata('IdEmpresa')) != null) {
+                            if (isset($memData['TbProFat_CodProFat'])&&isset($memData['TbConvenio_Id_Convenio'])) {
+                            if ($this->ImportacaoModel->consultaRegraTbTUSSExistente($memData['TbProFat_CodProFat'],$memData['TbConvenio_Id_Convenio'],$this->session->userdata('IdEmpresa')) != null) {
                                 $duplicidade++;
                                 } else {
                                     $insert = $this->ImportacaoModel->adicionaTUSS($memData);
