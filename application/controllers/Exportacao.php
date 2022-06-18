@@ -162,11 +162,11 @@ class Exportacao extends BaseController
         flush();
 
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, array('TbProFat_Cd_ProFat', 'TbConvenio_Id_Convenio', 'Cd_Tuss',
+        fputcsv($handle, array('TbProFat_CodProFat', 'TbConvenio_Id_Convenio', 'Cd_Tuss',
             'Ds_Tuss','Dt_IniVigencia','Dt_FimVigencia'),'|');
 
         foreach ($exportacao as $data) {
-            fputcsv($handle, array($data->TbProFat_Cd_ProFat, $data->TbConvenio_Id_Convenio, $data->Cd_Tuss,
+            fputcsv($handle, array($data->TbProFat_CodProFat, $data->TbConvenio_Id_Convenio, $data->Cd_Tuss,
                 $data->Ds_Tuss,$data->Dt_IniVigencia,$data->Dt_FimVigencia),'|');
         }
         fclose($handle);
@@ -226,7 +226,7 @@ class Exportacao extends BaseController
         flush();
 
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, array('TbProFat_Cd_ProFat', 'TbFaturamento_Id_Faturamento', 'TbTUSS_Id_Tuss',
+        fputcsv($handle, array('TbProFat_CodProFat', 'TbFaturamento_Id_Faturamento', 'TbTUSS_Id_Tuss',
             'Ds_FracaoSimproBra','Ds_Laboratorio','Ds_Apresentacao','Tp_MatMed','Vl_FatorDivisao','Qt_Prod'),'|');
 
         foreach ($exportacao as $data) {
