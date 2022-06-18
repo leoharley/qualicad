@@ -781,6 +781,19 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
+
+    function consultaIdEmpresaPorERP($ERPEmpresa)
+    {
+        $this->db->select('Empresa.Id_Empresa');
+        $this->db->from('TbEmpresa as Empresa');
+        $this->db->where('Empresa.Cd_EmpresaERP', $ERPEmpresa);
+        $this->db->where('Empresa.Deletado !=', 'S');
+        $this->db->where('Empresa.Tp_Ativo', 'S');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 }
 
   

@@ -476,9 +476,16 @@ class Importacao extends BaseController
                                             );
                                         }
                                     } else {
+                                       if ($dePara[$i]->No_CampoDestino == 'TbEmpresa_Id_Empresa') {
+                                        $memData += array(
+                                            ($dePara[$i]->No_CampoDestino) => $this->ImportacaoModel->consultaIdEmpresaPorERP($this->data($row[($dePara[$i]->No_CampoOrigem)]))[0]->Id_Empresa
+                                        );   
+                                        }
+                                        else {
                                         $memData += array(
                                             ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
                                         );
+                                        }
                                     }
                                 }
                             }
@@ -486,6 +493,8 @@ class Importacao extends BaseController
                             $memData += array(                                
                                 'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
+
+                                var_dump($memData);exit;
                                 
                             $insert = 0;
                             // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
