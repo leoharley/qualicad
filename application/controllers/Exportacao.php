@@ -163,11 +163,12 @@ class Exportacao extends BaseController
 
         $handle = fopen('php://output', 'w');
         fputcsv($handle, array('TbProFat_Cd_ProFat', 'TbConvenio_Id_Convenio', 'Cd_Tuss',
-            'Ds_Tuss','Dt_IniVigencia','Dt_FimVigencia'),'|');
+            'Ds_Tuss','Dt_IniVigencia','Dt_FimVigencia','TbEmpresa_Id_Empresa','TP_TUSS','DS_TIP_TUSS','cd_gru_pro'),'|');
 
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->TbProFat_Cd_ProFat, $data->TbConvenio_Id_Convenio, $data->Cd_Tuss,
-                $data->Ds_Tuss,$data->Dt_IniVigencia,$data->Dt_FimVigencia),'|');
+                $data->Ds_Tuss,$data->Dt_IniVigencia,$data->Dt_FimVigencia,$data->TbEmpresa_Id_Empresa,$data->TP_TUSS
+                ,$data->DS_TIP_TUSS,$data->cd_gru_pro),'|');
         }
         fclose($handle);
         exit;
