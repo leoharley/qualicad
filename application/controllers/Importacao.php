@@ -967,16 +967,22 @@ class Importacao extends BaseController
                                             );
                                         }
                                     } else {
-                                        $memData += array(
-                                            ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
-                                        );
+                                        if ($dePara[$i]->No_CampoDestino == 'TbEmpresa_Id_Empresa') {
+                                            $memData += array(
+                                                ($dePara[$i]->No_CampoDestino) => $this->ImportacaoModel->consultaIdEmpresaPorERP($this->data($row[($dePara[$i]->No_CampoOrigem)]))[0]->Id_Empresa
+                                            );   
+                                            }
+                                            else {
+                                            $memData += array(
+                                                ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
+                                            );
+                                            }
                                     }
                                 }
                             }
 
                             $memData += array(
                             //    'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
-                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
 
                             $insert = 0;
@@ -1131,16 +1137,22 @@ class Importacao extends BaseController
                                             );
                                         }
                                     } else {
-                                        $memData += array(
-                                            ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
-                                        );
+                                        if ($dePara[$i]->No_CampoDestino == 'TbEmpresa_Id_Empresa') {
+                                            $memData += array(
+                                                ($dePara[$i]->No_CampoDestino) => $this->ImportacaoModel->consultaIdEmpresaPorERP($this->data($row[($dePara[$i]->No_CampoOrigem)]))[0]->Id_Empresa
+                                            );   
+                                            }
+                                            else {
+                                            $memData += array(
+                                                ($dePara[$i]->No_CampoDestino) => $this->data($row[($dePara[$i]->No_CampoOrigem)])
+                                            );
+                                            }
                                     }
                                 }
                             }
 
                             $memData += array(
                             //    'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
-                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
                             
                             $insert = 0;
