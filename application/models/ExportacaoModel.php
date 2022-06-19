@@ -561,221 +561,287 @@ class ExportacaoModel extends CI_Model
     function consultaContratoBI($idEmpresa,$idConvenio,$limit,$offset)
     {
     $this->db->start_cache();
-    $sql="SELECT CON_CONTRATO.TbEmpresa_Id_Empresa,
-        CON_CONTRATO.Cd_EmpresaERP, 
-        CON_CONTRATO.Cd_ConvenioERP, 
-        CON_CONTRATO.ds_convenioerp, 
-        CON_CONTRATO.Cd_PlanoERP, 
-        CON_CONTRATO.Ds_PlanoERP, 
-        CON_CONTRATO.Cd_IndiceERP, 
-        CON_CONTRATO.Ds_IndiceERP, 
-        CON_CONTRATO.Dt_VigenciaIndiceERP, 
-        CON_CONTRATO.Vl_IndiceERP, 
-        CON_CONTRATO.Vl_FilmeIndiceERP, 
-        CON_CONTRATO.Vl_HonorarioIndiceERP, 
-        CON_CONTRATO.Vl_UCOIndiceERP, 
-        CON_CONTRATO.Cd_RegraERP, 
-        CON_CONTRATO.Ds_RegraERP, 
-        CON_CONTRATO.Cd_TabFatERP, 
-        CON_CONTRATO.Ds_TabFatERP, 
-        CON_CONTRATO.Cd_MoedaERP, 
-        CON_CONTRATO.Ds_MoedaERP, 
-        CON_CONTRATO.Cd_RegraGruProErp, 
-        CON_CONTRATO.Ds_RegraGruProErp, 
-        CON_CONTRATO.TP_GRU_PRO_ERP,
-        CON_CONTRATO.DS_TP_GRU_PRO_ERP,
-        CON_CONTRATO.Per_RegraPGErp, 
-        CON_CONTRATO.Cd_ProFatERP, 
-        CON_CONTRATO.Ds_ProFatERP, 
-        CON_CONTRATO.UnidadeProFatERP, 
-        CON_CONTRATO.Vl_ProHonorarioERP, 
-        CON_CONTRATO.Vl_ProOperaçãoERP, 
-        CON_CONTRATO.Vl_ProTotalERP, 
-        CON_CONTRATO.Vl_ProExcecValorERP,
-        CON_CONTRATO.Ds_PrestadoraExcec,
-        CON_CONTRATO.Qtde_M2FilmeERP, 
-        CON_CONTRATO.Cd_PortMedicoERP, 
-        CON_CONTRATO.Ds_PortMedicoERP, 
-        CON_CONTRATO.Vl_PorteMedicoERP, 
-        CON_CONTRATO.Cd_ExcecPorMedicoERP, 
-        CON_CONTRATO.Vl_ExcecPorMedicoERP, 
-        CON_CONTRATO.Vl_FinalERP, 
-        CON_CONTRATO.Vl_FinalExecERP, 
-        CON_CONTRATO.CD_PRODUTO, 
-        CON_CONTRATO.DS_PRODUTO, 
-        CON_CONTRATO.Cd_unidade, 
-        CON_CONTRATO.Vl_CustoMedio, 
-        CON_CONTRATO.Vl_Fator, 
-        CON_CONTRATO.Vl_FatorProFat, 
-        CON_CONTRATO.Vl_CustoFinal,
-        CON_CONTRATO.vr_contrato_final,
-        CON_CONTRATO.Tp_ProibicaoERP, 
-        CON_CONTRATO.CD_TISS,
-        CON_CONTRATO.vl_fator_divisao_fracao,
-        CON_CONTRATO.qtde_final,
-        CON_CONTRATO.PRODUCAO_FINAL,
-        CON_CONTRATO.TP_TUSS,
-        CON_CONTRATO.DS_TIP_TUSS,
-        CON_CONTRATO.Cd_Tuss,
-        CON_CONTRATO.Ds_Tuss,
-        CON_CONTRATO.PRODUTO_ATIVO,
-        con_qtprofat_tuss.qtde_tuss_duplic
+    $sql="select con_cont_conv1.cd_emp,
+        con_cont_conv1.cd_convenio,
+        con_cont_conv1.nm_convenio,
+        con_cont_conv1.cd_plano,
+        con_cont_conv1.ds_plano,
+        con_cont_conv1.cd_Regra,
+        con_cont_conv1.ds_Regra,
+        con_cont_conv1.cd_tab_Fat,
+        con_cont_conv1.ds_Tab_Fat,
+        con_cont_conv1.cd_gru_pro 				Cd_GrupoPro,
+        con_cont_conv1.ds_gru_pro 				Ds_GrupoPro,
+        con_cont_conv1.tp_gru_pro 				Tp_GrupoPro,
+        con_cont_conv1.Ds_MoedaERP 				Tp_Moeda_tab_fat,
+        con_cont_conv1.perc_pgto,
+        con_cont_conv1.cd_indice,
+        con_cont_conv1.ds_indice,
+        con_cont_conv1.vl_indice,
+        con_cont_conv1.vl_M2filme,
+        con_cont_conv1.vl_honorario_ind,
+        con_cont_conv1.vl_uco_ind,
+        con_cont_conv1.cd_profat,
+        con_cont_conv1.ds_pro_Fat,
+        con_cont_conv1.ds_unidade_Fat,
+        con_cont_conv1.Vl_HonorarioProced,
+        con_cont_conv1.Vl_OperacaoProced,
+        con_cont_conv1.Vl_TotalProced,
+        con_cont_conv1.QT_M2_FILME_cont,
+        con_cont_conv1.Vl_ExcecaoProced,
+        con_cont_conv1.CD_PRESTADOR,
+        con_cont_conv1.Cd_PorteMedico,
+        con_cont_conv1.Ds_PorteMedico,
+        con_cont_conv1.Vl_PorteMedico,
+        con_cont_conv1.Cd_PorteMedicoExcecao,
+        con_cont_conv1.Vl_PorteMedicoExcecao,
+        0   										Vl_BrutoProced,
+        con_cont_conv1.vl_contrato_neg,
+        con_cont_conv1.Vl_ExcecaoProced_final,
+        con_cont_conv1.Vl_ContratoProced,
+        con_cont_conv1.Cd_ProibicaoRegra,
+        con_cont_conv1.Tp_ProibicaoRegra,
+        con_cont_conv1.Tp_AtendProibicaoRegra,
+        con_cont_conv1.Vl_ProibicaoRegra,
+        con_cont_conv1.TP_PROIBICAO,
+        con_cont_conv1.TP_TUSS,
+        con_cont_conv1.DS_TIP_TUSS,
+        con_cont_conv1.Cd_Tuss,
+        con_cont_conv1.Ds_Tuss,
+        con_cont_conv1.CD_TISS,
+        con_tuss_valido.cd_tuss				cd_tuss_Valido,
+        con_cont_conv1.ds_tuss_Valido,
+
+        con_tiss.cd_tiss 					cd_tiss_fracao,
+        con_cont_conv1.vl_ind_quali				'Ind-vr',
+        con_cont_conv1.vl_ind_filme_quali			'Ind-vr-filme',
+        con_cont_conv1.vl_ind_honor_quali			'Ind-vr-honor',
+        con_cont_conv1.vl_ind_uco_quali			'Ind-Vr-Uco',
+        con_cont_conv1.vl_total_quali			'Vl_Venda', 
+        con_cont_conv1.vl_oper_quali			'vr_operacional',
+        con_cont_conv1.vl_honor_quali			'vr_honorario',
+        con_cont_conv1.vl_filme_quali			'qt_m2_filme',
+        con_cont_conv1.vl_porte_med_quali			'vr_porte_medico',
+        con_cont_conv1.Vl_FatorDivisao			'VL_FATOR_DIVISAO',
+        con_cont_conv1.qt_emb_quali			'qt_embalagem',
+        con_cont_conv1.vl_excvalor_quali			'Vl_Excecao',
+        con_cont_conv1.Tp_ExcValores				'tp_exc_conv',
+        con_cont_conv1.VR_FINAL				'Vl_FinalConv',
+        con_cont_conv1.CD_PRODUTO,
+        con_cont_conv1.DS_PRODUTO,
+        con_cont_conv1.Ds_Unidadeproduto,
+        con_cont_conv1.Vl_CustoMedio,
+        con_cont_conv1.Vl_Fator,
+        con_cont_conv1.Vl_FatorProFat,
+        con_cont_conv1.Vl_CustoFinal,
+        con_cont_conv1.Qt_FinalProd,
+        con_cont_conv1.Vl_FinalProd,
+        0  								'vr_dif_vr_convenio_val_pro',
+        0								'vr_dif_venda_custo',
+        0								'Diverg_regra_proibicao_vl',     
+        0  								'Diverg_sem_tuss',
+        0								'Diverg_sem_simpro_brasindice',
+        0								'Diverg_sem_tab_propriobrasindice',
+        con_cont_conv1.qtde_tuss_duplic,
+        con_cont_conv1.ds_tp_gru_pro,
+        con_cont_conv1.vl_fator_divisao_fracao,
+    
+        con_cont_conv1.tp_AcomodacaoPadrao,
+        con_cont_conv1.ds_ind_quali,
+        con_cont_conv1.ds_regra_quali,
+        con_cont_conv1.cd_gru_pro_quali,
+        con_cont_conv1.cd_tab_Fat_quali,
+        con_cont_conv1.ds_Tab_Fat_quali,
+        con_cont_conv1.tp_Fat_quali,
+        con_cont_conv1.perc_pago_quali,
+        con_cont_conv1.cd_porte_med_quali,
+        con_cont_conv1.ds_porte_med_quali,
+        con_cont_conv1.vr_final_conv,
+        con_cont_conv1.Ds_RegraProibicao,
+        con_cont_conv1.TbEmpresa_Id_Empresa
+    from 
+    (SELECT Tmp_Contrato.TbEmpresa_Id_Empresa,
+        Tmp_Contrato.Cd_EmpresaERP 			cd_emp,
+        Tmp_Contrato.Cd_ConvenioERP 			cd_convenio,
+        Tmp_Contrato.ds_convenioerp 			nm_convenio,
+        Tmp_Contrato.Cd_PlanoERP 			cd_plano,
+        Tmp_Contrato.Ds_PlanoERP 			ds_plano,
+        Tmp_Contrato.Cd_IndiceERP 			cd_indice,
+        Tmp_Contrato.Ds_IndiceERP 			ds_indice,
+        Tmp_Contrato.Vl_IndiceERP 			vl_indice,
+        Tmp_Contrato.Vl_FilmeIndiceERP 		vl_M2filme,
+        Tmp_Contrato.Vl_HonorarioIndiceERP 	vl_honorario_ind,
+        Tmp_Contrato.Vl_UCOIndiceERP 		vl_uco_ind,
+        Tmp_Contrato.Cd_RegraERP 			cd_Regra,
+        Tmp_Contrato.Ds_RegraERP 			ds_Regra,
+        Tmp_Contrato.Cd_TabFatERP 			cd_tab_Fat,
+        Tmp_Contrato.Ds_TabFatERP 			ds_Tab_Fat,
+        Tmp_Contrato.Cd_MoedaERP 			tp_moeda_tab_Fat,
+        Tmp_Contrato.Ds_MoedaERP,
+        Tmp_Contrato.Cd_RegraGruProErp 		cd_gru_pro,
+        Tmp_Contrato.Ds_RegraGruProErp 		ds_gru_pro,
+        Tmp_Contrato.TP_GRU_PRO_ERP 			tp_gru_pro,
+        Tmp_Contrato.DS_TP_GRU_PRO_ERP 		ds_tp_gru_pro,
+        Tmp_Contrato.Per_RegraPGErp 			perc_pgto,
+        Tmp_Contrato.Cd_ProFatERP 			cd_profat,
+        Tmp_Contrato.Ds_ProFatERP 			ds_pro_Fat,
+        Tmp_Contrato.UnidadeProFatERP 		ds_unidade_Fat,
+        Tmp_Contrato.Vl_ProHonorarioERP 		Vl_HonorarioProced,
+        Tmp_Contrato.Vl_ProOperaçãoERP 		Vl_OperacaoProced,
+        Tmp_Contrato.Vl_ProTotalERP 			Vl_TotalProced,
+        Tmp_Contrato.Qtde_M2FilmeERP 		QT_M2_FILME_cont,
+        Tmp_Contrato.Vl_ProExcecValorERP 		Vl_ExcecaoProced,
+        Tmp_Contrato.Ds_PrestadoraExcec 		CD_PRESTADOR,
+        Tmp_Contrato.Cd_PortMedicoERP 		Cd_PorteMedico,
+        Tmp_Contrato.Ds_PortMedicoERP 		Ds_PorteMedico,
+        Tmp_Contrato.Vl_PorteMedicoERP 		Vl_PorteMedico,
+        Tmp_Contrato.Cd_ExcecPorMedicoERP 		Cd_PorteMedicoExcecao,
+        Tmp_Contrato.Vl_ExcecPorMedicoERP 		Vl_PorteMedicoExcecao,
+        Tmp_Contrato.Vl_FinalERP 			vl_contrato_neg,
+        Tmp_Contrato.Vl_FinalExecERP 		Vl_ExcecaoProced_final,
+        Tmp_Contrato.vr_contrato_final 		Vl_ContratoProced,
+        Tmp_Contrato.Tp_ProibicaoERP 		TP_PROIBICAO,
+        Tmp_Contrato.CD_PRODUTO,
+        Tmp_Contrato.DS_PRODUTO,
+        Tmp_Contrato.Cd_Unidade 			Ds_Unidadeproduto,
+        Tmp_Contrato.Vl_CustoMedio,
+        Tmp_Contrato.Vl_Fator,
+        Tmp_Contrato.Vl_FatorProFat,
+        Tmp_Contrato.Vl_CustoFinal,
+        Tmp_Contrato.TP_TUSS,
+        Tmp_Contrato.DS_TIP_TUSS,
+        Tmp_Contrato.Cd_Tuss,
+        Tmp_Contrato.Ds_Tuss,
+        Tmp_Contrato.CD_TISS,
+        Tmp_Contrato.vl_fator_divisao_fracao,
+        Tmp_Contrato.qtde_final 			Qt_FinalProd,
+        Tmp_Contrato.PRODUCAO_FINAL 			Vl_FinalProd,
+        Tmp_Contrato.qtde_tuss_duplic,
+        Tmp_Convenio.Cd_TUSS, 				
+        Tmp_Convenio.Cd_TISS 				cd_tiss_valido,
+        Tmp_Convenio.Ds_FatItem 			ds_tuss_Valido,
+        Tmp_Convenio.Tp_AcomodacaoPadrao,
+        Tmp_Convenio.Ds_indice 			ds_ind_quali,
+        Tmp_Convenio.Vl_Indice 			vl_ind_quali,
+        Tmp_Convenio.Vl_M2Filme 			vl_ind_filme_quali,
+        Tmp_Convenio.Vl_IND_Honorário 		vl_ind_honor_quali,
+        Tmp_Convenio.Vl_UCO 				vl_ind_uco_quali,
+        Tmp_Convenio.Ds_Regra 				ds_regra_quali,
+        Tmp_Convenio.TbGrupoPro_CodGrupo 		cd_gru_pro_quali,
+        Tmp_Convenio.TbFaturamento_Id_Faturamento cd_tab_Fat_quali,
+        Tmp_Convenio.Ds_Faturamento 			ds_Tab_Fat_quali,
+        Tmp_Convenio.Tp_Faturamento 			tp_Fat_quali,
+        Tmp_Convenio.Perc_Pago 			perc_pago_quali,
+        Tmp_Convenio.Vl_Honorario 			vl_honor_quali,
+        Tmp_Convenio.Vl_Operacional 			vl_oper_quali,
+        Tmp_Convenio.Vl_Filme 				vl_filme_quali,
+        Tmp_Convenio.Vl_Total 				vl_total_quali,
+        Tmp_Convenio.Qt_Embalagem 			qt_emb_quali,
+        Tmp_Convenio.Cd_PorteMedico 			cd_porte_med_quali,
+        Tmp_Convenio.Ds_PorteMedico 			ds_porte_med_quali,
+        Tmp_Convenio.Vl_PorteMedico 			vl_porte_med_quali,
+        Tmp_Convenio.Vl_ExcValores  			vl_excvalor_quali,
+        Tmp_Convenio.Tp_ExcValores,
+        Tmp_Convenio.Vl_FatorDivisao,
+        Tmp_Convenio.vr_final_conv,
+        Tmp_Convenio.VR_FINAL,
+        Tmp_Convenio.Id_RegraProibicao 		Cd_ProibicaoRegra,
+        Tmp_Convenio.Ds_RegraProibicao,
+        Tmp_Convenio.Tp_RegraProibicao 		Tp_ProibicaoRegra,
+        Tmp_Convenio.Tp_Atendimento 			Tp_AtendProibicaoRegra,
+        Tmp_Convenio.Vl_RegraProibicao 		Vl_ProibicaoRegra
+    
+    FROM Tmp_Contrato
+    LEFT join Tmp_Convenio on (Tmp_Contrato.TbEmpresa_Id_Empresa = Tmp_Convenio.TbEmpresa_Id_Empresa 
+        and  Tmp_Contrato.Cd_ConvenioERP = Tmp_Convenio.Cd_ConvenioERP 
+        and Tmp_Contrato.Cd_PlanoERP = Tmp_Convenio.Cd_PlanoERP 
+        and  Tmp_Contrato.Cd_ProFatERP = Tmp_Convenio.TbProFat_Cd_ProFat 
+        and  Tmp_Contrato.Cd_Tuss = Tmp_Convenio.Cd_TUSS 
+        and (Tmp_Contrato.CD_TISS = Tmp_Convenio.Cd_TISS or Tmp_Contrato.CD_TISS = 0) )                     
+        
+    ) con_cont_conv1
+    left outer join (select AA.Id_Empresa,
+        AA.Cd_EmpresaERP,
+        AA.Id_Convenio,
+        AA.Cd_ConvenioERP,
+        AA.Id_Plano,
+        AA.Cd_PlanoERP,
+        AA.TbRegra_Id_Regra,
+        AA.Ds_Regra,
+        AA.Tp_GrupoPro,
+        AA.TbFaturamento_Id_Faturamento,
+        AA.Ds_Faturamento,
+        TbFatItem.Cd_TISS
+        
     FROM
-
-    (SELECT TbContrato.TbEmpresa_Id_Empresa,
-        TbContrato.Cd_EmpresaERP, 
-        TbContrato.Cd_ConvenioERP, 
-        TbContrato.ds_convenioerp, 
-        TbContrato.Cd_PlanoERP, 
-        TbContrato.Ds_PlanoERP, 
-        TbContrato.Cd_IndiceERP, 
-        TbContrato.Ds_IndiceERP, 
-        TbContrato.Dt_VigenciaIndiceERP, 
-        TbContrato.Vl_IndiceERP, 
-        TbContrato.Vl_FilmeIndiceERP, 
-        TbContrato.Vl_HonorarioIndiceERP, 
-        TbContrato.Vl_UCOIndiceERP, 
-        TbContrato.Cd_RegraERP, 
-        TbContrato.Ds_RegraERP, 
-        TbContrato.Cd_TabFatERP, 
-        TbContrato.Ds_TabFatERP, 
-        TbContrato.Cd_MoedaERP, 
-        TbContrato.Ds_MoedaERP, 
-        TbContrato.Cd_RegraGruProErp, 
-        TbContrato.Ds_RegraGruProErp, 
-        TbContrato.TP_GRU_PRO_ERP,
-        TbContrato.DS_TP_GRU_PRO_ERP,
-        TbContrato.Per_RegraPGErp, 
-        TbContrato.Cd_ProFatERP, 
-        TbContrato.Ds_ProFatERP, 
-        TbContrato.UnidadeProFatERP, 
-        TbContrato.Vl_ProHonorarioERP, 
-        TbContrato.Vl_ProOperaçãoERP, 
-        TbContrato.Vl_ProTotalERP, 
-        TbContrato.Vl_ProExcecValorERP,
-        TbContrato.Ds_PrestadoraExcec,
-        TbContrato.Qtde_M2FilmeERP, 
-        TbContrato.Cd_PortMedicoERP, 
-        TbContrato.Ds_PortMedicoERP, 
-        TbContrato.Vl_PorteMedicoERP, 
-        TbContrato.Cd_ExcecPorMedicoERP, 
-        TbContrato.Vl_ExcecPorMedicoERP, 
-        TbContrato.Vl_FinalERP, 
-        TbContrato.Vl_FinalExecERP, 
-        Tb_Produto.CD_PRODUTO, 
-        Tb_Produto.DS_PRODUTO, 
-        Tb_Produto.Cd_unidade, 
-        Tb_Produto.Vl_CustoMedio, 
-        Tb_Produto.Vl_Fator, 
-        Tb_Produto.Vl_FatorProFat, 
-        Tb_Produto.Vl_CustoFinal,
-        
-        CASE WHEN  (TbContrato.Vl_ProExcecValorERP > 0 AND (TbContrato.Ds_PrestadoraExcec = NULL or TbContrato.Ds_PrestadoraExcec = '' ))
-            THEN  TbContrato.Vl_ProExcecValorERP 
-            ELSE CASE WHEN  (TbContrato.Cd_ExcecPorMedicoERP != NULL )
-                        THEN  TbContrato.Vl_FinalExecERP
-                        ELSE TbContrato.Vl_FinalERP 
-                END
-        END vr_contrato_final,
-        
-        CASE WHEN (TbContrato.Vl_ProExcecValorERP > 0 AND (TbContrato.Ds_PrestadoraExcec = NULL or TbContrato.Ds_PrestadoraExcec = '' ))
-            THEN  'TbContrato.Vl_ProExcecValorERP' 
-            ELSE CASE WHEN  (TbContrato.Cd_ExcecPorMedicoERP != NULL )
-                        THEN  'TbContrato.Vl_FinalExecERP2'
-                        ELSE  'TbContrato.Vl_FinalERP'
-                END
-        END teste,
+    (select TbEmpresa.Id_Empresa,
+                            TbEmpresa.Cd_EmpresaERP,
+                            TbConvenio.Id_Convenio,
+                            TbConvenio.Cd_ConvenioERP,
+                            TbPlano.Id_Plano,
+                            TbPlano.Cd_PlanoERP,
+                            TbPlano.TbRegra_Id_Regra,
+                            TbRegra.Ds_Regra,
+                            TbGrupoPro.Tp_GrupoPro,
+                            Tb_RegraGruPro.TbFaturamento_Id_Faturamento,
+                            TbFaturamento.Ds_Faturamento
+    from TbEmpresa, 
+    TbConvenio,
+    TbPlano,
+    TbRegra,
+    Tb_RegraGruPro,
+    TbFaturamento,
+    TbGrupoPro
+    where TbEmpresa.Id_Empresa = TbConvenio.TbEmpresa_Id_Empresa
+        and TbConvenio.Id_Convenio = TbPlano.TbConvenio_Id_Convenio
+        and TbPlano.TbRegra_Id_Regra = TbRegra.Id_Regra 
+        and TbPlano.TbEmpresa_Id_Empresa = TbRegra.TbEmpresa_Id_Empresa
+        and TbRegra.Id_Regra = Tb_RegraGruPro.TbRegra_Id_Regra 
+        and TbRegra.TbEmpresa_Id_Empresa = Tb_RegraGruPro.TbEmpresa_Id_Empresa
+        and Tb_RegraGruPro.TbFaturamento_Id_Faturamento =TbFaturamento.Id_Faturamento 
+        and Tb_RegraGruPro.TbEmpresa_Id_Empresa = TbFaturamento.TbEmpresa_Id_Empresa
     
-        TbContrato.Tp_ProibicaoERP, 
-        TbContrato.CD_TISS,
-        TbContrato.vl_fator_divisao_fracao,
-        CON_TUSS.qtde_final,
-        CON_TUSS.PRODUCAO_FINAL,
-        TbTUSS.TP_TUSS,
-        TbTUSS.DS_TIP_TUSS,
-        TbTUSS.Cd_Tuss,
-        TbTUSS.Ds_Tuss,
-    
-    case when((TbContrato.TP_GRU_PRO_ERP ='MT' or TbContrato.TP_GRU_PRO_ERP ='MD') and (Tb_Produto.CD_PRODUTO is not null))
-        then case when  Tb_Produto.CD_PRODUTO is not null
-                    then 'A'
-                END
-        else 'A'
-    END AS PRODUTO_ATIVO
-
-    FROM TbProFat,
-    TbContrato
-    LEFT JOIN Tb_Produto ON (TbContrato.TbEmpresa_Id_Empresa = Tb_Produto.TbEmpresa_Id_Empresa AND TbContrato.Cd_ProFatERP = Tb_Produto .TbProFat_Cd_ProFat) 
-    LEFT JOIN TbTUSS ON (TbContrato.TbEmpresa_Id_Empresa = TbTUSS.TbEmpresa_Id_Empresa AND TbContrato.Cd_ConvenioERP = TbTUSS.TbConvenio_Id_Convenio AND  TbContrato.Cd_ProFatERP = TbTUSS.TbProFat_Cd_ProFat)
-    LEFT JOIN (SELECT Tb_Producao.TbEmpresa_Id_Empresa,
-        Tb_Producao.TbContrato_Cd_EmpresaERP,
-        Tb_Producao.TbContrato_Cd_Convenio,
-        Tb_Producao.TbContrato_Cd_PlanoERP,
-        Tb_Producao.TbContrato_Cd_ProFatERP,
-        TbTUSS.Dt_IniVigencia,
-        Sum(case when TbTUSS.Dt_IniVigencia is not null
-                then case when Tb_Producao.Dt_Lancamento >=TbTUSS.Dt_IniVigencia
-                        then Tb_Producao.Qt_Lancamento
-                        else 0
-                    END
-                ELSE
-                    Tb_Producao.Qt_Lancamento
-            END)  qtde_final,
-        Sum(case when TbTUSS.Dt_IniVigencia is not null
-                then case when Tb_Producao.Dt_Lancamento >=TbTUSS.Dt_IniVigencia
-                        then Tb_Producao.Vl_Conta
-                        else 0
-                    END
-                ELSE
-                    Tb_Producao.Vl_Conta
-            END)  producao_final
-                            
-    FROM Tb_Producao 
-            LEFT JOIN  TbTUSS ON( Tb_Producao.TbEmpresa_Id_Empresa = TbTUSS.TbEmpresa_Id_Empresa 
-                                and 	Tb_Producao.TbContrato_Cd_Convenio = TbTUSS.TbConvenio_Id_Convenio
-                                and Tb_Producao.TbContrato_Cd_ProFatERP = TbTUSS.TbProFat_Cd_ProFat)
+        and Tb_RegraGruPro.TbEmpresa_Id_Empresa = TbGrupoPro.TbEmpresa_Id_Empresa
+        and Tb_RegraGruPro.TbGrupoPro_CodGrupo = TbGrupoPro.CodGrupoPro
     group by 
-    Tb_Producao.TbEmpresa_Id_Empresa,
-        Tb_Producao.TbContrato_Cd_EmpresaERP,
-        Tb_Producao.TbContrato_Cd_Convenio,
-        Tb_Producao.TbContrato_Cd_PlanoERP,
-        Tb_Producao.TbContrato_Cd_ProFatERP,
-        TbTUSS.Dt_IniVigencia) CON_TUSS ON (TbContrato.Cd_EmpresaERP = CON_TUSS.TbContrato_Cd_EmpresaERP AND  TbContrato.Cd_ConvenioERP = CON_TUSS.TbContrato_Cd_Convenio AND  TbContrato.Cd_PlanoERP = CON_TUSS.TbContrato_Cd_PlanoERP AND TbContrato.Cd_ProFatERP = CON_TUSS.TbContrato_Cd_ProFatERP)
+            TbEmpresa.Id_Empresa,
+        TbEmpresa.Cd_EmpresaERP,
+        TbConvenio.Id_Convenio,
+        TbConvenio.Cd_ConvenioERP,
+        TbPlano.Id_Plano,
+        TbPlano.Cd_PlanoERP,
+        TbPlano.TbRegra_Id_Regra,
+        TbRegra.Ds_Regra,
+        TbGrupoPro.Tp_GrupoPro,
+        Tb_RegraGruPro.TbFaturamento_Id_Faturamento,
+        TbFaturamento.Ds_Faturamento) AA,
+    TbFatItem
 
-
-    WHERE 
-    (TbProFat.CodProFat = TbContrato.Cd_ProFatERP and TbContrato.TbEmpresa_Id_Empresa = TbProFat.TbEmpresa_Id_Empresa)
-    AND TbContrato.Cd_EmpresaERP =  $idEmpresa
-    and  TbContrato.Cd_ConvenioERP = $idConvenio
-    and (case when(TbContrato.TP_GRU_PRO_ERP ='MT' or TbContrato.TP_GRU_PRO_ERP ='MD')
-        then case when  Tb_Produto.CD_PRODUTO is not null
-                    then 'A'
-                END
-        else 'A'
-    END) IN ('A')
-    ) CON_CONTRATO
-
-    left outer join (SELECT TbEmpresa.Id_Empresa,
-                        TbEmpresa.Cd_EmpresaERP,
-                        TbConvenio.Id_Convenio,
-                        TbConvenio.Cd_ConvenioERP,
-                        TbTUSS.Cd_Tuss,
-                        count(TbTUSS.TbProFat_Cd_ProFat) qtde_tuss_duplic
-                    FROM TbEmpresa ,
-                        TbConvenio,
-                        TbTUSS 
-                    WHERE
-                        TbEmpresa.Id_Empresa = TbConvenio.TbEmpresa_Id_Empresa
-                        and TbConvenio.Cd_ConvenioERP = TbTUSS.TbConvenio_Id_Convenio 
-                        and TbEmpresa.Id_Empresa = TbTUSS.TbEmpresa_Id_Empresa
-                    group by 
-                        TbEmpresa.Id_Empresa,
-                        TbEmpresa.Cd_EmpresaERP,
-                        TbConvenio.Id_Convenio,
-                        TbConvenio.Cd_ConvenioERP,
-                        TbTUSS.Cd_Tuss) con_qtprofat_tuss on (con_qtprofat_tuss.Cd_EmpresaERP = CON_CONTRATO.Cd_EmpresaERP 
-                                                            and con_qtprofat_tuss.Cd_ConvenioERP = CON_CONTRATO.Cd_ConvenioERP
-                                                            and con_qtprofat_tuss.Cd_Tuss = CON_CONTRATO.Cd_Tuss)
+    WHERE
+    AA.TbFaturamento_Id_Faturamento = TbFatItem.TbFaturamento_Id_Faturamento 
+    and AA.Id_Empresa = TbFatItem.TbEmpresa_Id_Empresa
+    and TbFatItem.Cd_TISS is not null
+    and TbFatItem.Tp_Ativo = 'S') con_tiss on (con_tiss.Cd_EmpresaERP =  con_cont_conv1.cd_emp 
+                            and con_tiss.Cd_ConvenioERP =con_cont_conv1.cd_convenio 
+                            and con_tiss.Cd_PlanoERP =con_cont_conv1.cd_plano
+                            and con_tiss.Tp_GrupoPro = con_cont_conv1.tp_gru_pro 
+                            and con_tiss.Cd_TISS = con_cont_conv1.cd_tiss)
+    left outer join (SELECT Tmp_Convenio.TbEmpresa_Id_Empresa ,
+                        Tmp_Convenio.Cd_ConvenioERP ,
+                        Tmp_Convenio.Cd_PlanoERP,
+                        Tmp_Convenio.TbProFat_Cd_ProFat,
+                        Tmp_Convenio.Cd_TUSS 
+    FROM Tmp_Convenio 
+    group by 
+    Tmp_Convenio.TbEmpresa_Id_Empresa ,
+    Tmp_Convenio.Cd_ConvenioERP ,
+    Tmp_Convenio.Cd_PlanoERP,
+    Tmp_Convenio.TbProFat_Cd_ProFat,
+    Tmp_Convenio.Cd_TUSS ) con_tuss_valido on (con_tuss_valido.TbEmpresa_Id_Empresa = con_cont_conv1.TbEmpresa_Id_Empresa
+                        and con_tuss_valido.Cd_ConvenioERP =  con_cont_conv1.cd_convenio
+                        and con_tuss_valido.Cd_PlanoERP = con_cont_conv1.cd_plano
+                        and con_tuss_valido.TbProFat_Cd_ProFat =con_cont_conv1.cd_profat
+                        and con_tuss_valido.cd_tuss =con_cont_conv1.Cd_Tuss)
 
     --    LIMIT 20000
     --    LIMIT 40000 OFFSET 20000
