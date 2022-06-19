@@ -628,11 +628,11 @@ class ExportacaoModel extends CI_Model
         TbContrato.CD_TISS,
         TbContrato.vl_fator_divisao_fracao,
         CON_TUSS.qtde_final,
-    CON_TUSS.PRODUCAO_FINAL,
-    TbTUSS.TP_TUSS,
-    TbTUSS.DS_TIP_TUSS,
-    TbTUSS.Cd_Tuss,
-    TbTUSS.Ds_Tuss,
+        CON_TUSS.PRODUCAO_FINAL,
+        TbTUSS.TP_TUSS,
+        TbTUSS.DS_TIP_TUSS,
+        TbTUSS.Cd_Tuss,
+        TbTUSS.Ds_Tuss,
     
     case when((TbContrato.TP_GRU_PRO_ERP ='MT' or TbContrato.TP_GRU_PRO_ERP ='MD') and (Tb_Produto.CD_PRODUTO is not null))
         then case when  Tb_Produto.CD_PRODUTO is not null
