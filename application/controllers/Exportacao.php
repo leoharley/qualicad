@@ -524,6 +524,7 @@ class Exportacao extends BaseController
 
         $consultaContratoBI = $this->ExportacaoModel->consultaContratoBI($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,$limit,$offset);
 
+        var_dump($consultaContratoBI);exit;
         $memData = array();
         if(!empty($consultaContratoBI)) {
             
