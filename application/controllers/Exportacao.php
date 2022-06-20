@@ -613,6 +613,8 @@ class Exportacao extends BaseController
 
         $memData = array();
 
+        var_dump($o);exit;
+
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,25000,$o);
 
         if (!empty($consultaTbBI)) {
