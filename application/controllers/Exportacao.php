@@ -613,7 +613,7 @@ class Exportacao extends BaseController
 
         $memData = array();
 
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,25000,$o);
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa);
 
    //     if (!empty($consultaTbBI)) {
         foreach($consultaTbBI as $row) {

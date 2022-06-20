@@ -806,7 +806,7 @@ class ExportacaoModel extends CI_Model
 
     }
 
-    function consultaTbBI($idEmpresa,$limit,$offset)
+    function consultaTbBI($idEmpresa)
     {
     $this->db->reconnect();
     $this->db->start_cache();
@@ -1089,7 +1089,6 @@ group by
                      and con_tuss_valido.TbProFat_Cd_ProFat =con_cont_conv1.cd_profat
                      and con_tuss_valido.cd_tuss =con_cont_conv1.Cd_Tuss)
     WHERE con_cont_conv1.TbEmpresa_Id_Empresa = $idEmpresa
-    LIMIT $limit OFFSET $offset
       ";
 
     $query = $this->db->query($sql);
