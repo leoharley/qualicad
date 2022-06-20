@@ -598,7 +598,7 @@ class Exportacao extends BaseController
         $this->ExportacaoModel->cargaBI();
 
         $this->session->set_flashdata('concluido', 'true');
-        redirect('exportacaoBI');
+        redirect('exportacaoBI_finalizar');
 
 
     //    $todosInseridosTbBI = false;
