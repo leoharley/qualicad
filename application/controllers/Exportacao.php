@@ -612,9 +612,7 @@ class Exportacao extends BaseController
         $insertCountTbBISession = intval($this->input->post('insertCountTbBISession'));
 
         $memData = array();
-
-        var_dump($o);exit;
-
+        
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,25000,$o);
 
         if (!empty($consultaTbBI)) {
