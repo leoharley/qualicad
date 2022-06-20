@@ -806,7 +806,7 @@ class ExportacaoModel extends CI_Model
 
     }
 
-    function consultaTbBI($idEmpresa,$cdEmpresaERP,$idConvenio,$limit,$offset)
+    function consultaTbBI($idEmpresa,$limit,$offset)
     {
     $this->db->reconnect();
     $this->db->start_cache();

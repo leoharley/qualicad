@@ -615,7 +615,7 @@ class Exportacao extends BaseController
 
         var_dump($o);exit;
 
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,$this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio,25000,$o);
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,25000,$o);
 
         if (!empty($consultaTbBI)) {
         foreach($consultaTbBI as $row) {
@@ -640,20 +640,21 @@ class Exportacao extends BaseController
             }
             $o = $o + 40000;
 
-            if ($insertCountTbBI == '')
+            $this->session->set_flashdata('offsetTbBI', $o);
+
+        /*    if ($insertCountTbBI == '')
             {
                 $msgInseridosTbBI = 'Todas as linhas foram inseridas ('.$insertCountTbBISession.')' ;
                 $todosInseridosTbBI = true;
             } else {
                 $msgInseridosTbBI = 'Inseridos até agora ('.$insertCountTbBISession.')';
-            }
+            } */
 
             $successMsg = 'Tb_BI: '.$msgInseridosTbBI.' | Não inseridos ('.$notAddCountTbBI.')';
 
             $this->session->set_flashdata('success', $successMsg);
             $this->session->set_flashdata('idconvenio', $idConvenio);
             $this->session->set_flashdata('insertCountTbBISession', $insertCountTbBISession);
-            $this->session->set_flashdata('offsetTbBI', $o);
 
 
         } else {
