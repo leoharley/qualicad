@@ -593,10 +593,16 @@ class Exportacao extends BaseController
 
     function exportaTbBI()
     {
-    //    $this->killAllProcess();
+    //    $this->killAllProcess();,
 
-        $todosInseridosTbBI = false;
-        $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
+        $this->ExportacaoModel->cargaBI();
+
+        $this->session->set_flashdata('concluido', 'true');
+        redirect('exportacaoBI');
+        
+
+    //    $todosInseridosTbBI = false;
+    /*    $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
         $insertCountTbBI = $notAddCountTbBI = 0;
@@ -613,10 +619,10 @@ class Exportacao extends BaseController
 
         $memData = array();
 
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa);
+        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa); */
 
    //     if (!empty($consultaTbBI)) {
-        foreach($consultaTbBI as $row) {
+    /*    foreach($consultaTbBI as $row) {
                 foreach($row as $key => $value) {
                     $memData += array(
                         $key => $value
@@ -638,7 +644,7 @@ class Exportacao extends BaseController
             }
             $o = $o + 40000;
 
-            $this->session->set_flashdata('offsetTbBI', $o);
+            $this->session->set_flashdata('offsetTbBI', $o); */
 
         /*    if ($insertCountTbBI == '')
             {
@@ -648,11 +654,11 @@ class Exportacao extends BaseController
                 $msgInseridosTbBI = 'Inseridos até agora ('.$insertCountTbBISession.')';
             } */
 
-            $successMsg = 'Tb_BI: '.$msgInseridosTbBI.' | Não inseridos ('.$notAddCountTbBI.')';
+        /*    $successMsg = 'Tb_BI: '.$msgInseridosTbBI.' | Não inseridos ('.$notAddCountTbBI.')';
 
             $this->session->set_flashdata('success', $successMsg);
             $this->session->set_flashdata('idconvenio', $idConvenio);
-            $this->session->set_flashdata('insertCountTbBISession', $insertCountTbBISession);
+            $this->session->set_flashdata('insertCountTbBISession', $insertCountTbBISession); */
 
 
      /*   } else {
@@ -660,7 +666,7 @@ class Exportacao extends BaseController
             redirect('exportacaoBI');
         } */
 
-        redirect('exportacaoTbBI_progresso');
+    //    redirect('exportacaoTbBI_progresso');
 
 
     //    var_dump($insertCountTbBI);exit;

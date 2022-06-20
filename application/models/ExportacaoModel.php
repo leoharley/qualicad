@@ -806,6 +806,15 @@ class ExportacaoModel extends CI_Model
 
     }
 
+    function cargaBI()
+    {
+        $this->db->reconnect();
+        $query = $this->db->query("CALL cargaBI()");
+        $this->db->close();
+        return $query->result();
+    }
+
+
     function consultaTbBI($idEmpresa)
     {
     $this->db->reconnect();
