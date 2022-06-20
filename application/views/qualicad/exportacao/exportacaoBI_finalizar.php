@@ -112,7 +112,7 @@
                 </div>
                 <br/>
 
-                <input type="submit" class="btn btn-primary" value="Processar (BI)" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/>
+                <input type="submit" class="btn btn-primary" value="Processar BI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/>
 
             <br/>
 
