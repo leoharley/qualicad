@@ -114,7 +114,6 @@
 
              <!--   <input type="submit" class="btn btn-primary" value="Processar BI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/> -->
                 <a href="<?php echo base_url().'gerarTbBI' ?>">
-                    <i class="fa fa-th"></i>
                     <span class="btn btn-primary">Gerar BI</span>
                 </a>
 
