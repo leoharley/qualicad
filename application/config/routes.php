@@ -194,6 +194,8 @@ $route['exportaTbBI'] = "exportacao/exportaTbBI";
 $route['exportaBI'] = "exportacao/exportaBI";
 
 
+$route['gerarTbBI'] = "exportacao/gerarTbBI";
+
 /*********** ROUTES PARA AÇÕES DA TELA CONVÊNIO *******************/
 $route['adicionaConvenio'] = "principal/adicionaConvenio";
 $route['editaConvenio'] = "principal/editaConvenio";

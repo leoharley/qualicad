@@ -591,6 +591,16 @@ class Exportacao extends BaseController
         }
     }
 
+    function gerarTbBI()
+    {
+        //    $this->killAllProcess();,
+
+        $this->ExportacaoModel->cargaBI();
+
+        $this->session->set_flashdata('concluido', 'true');
+        redirect('exportacaoBI_finalizar');
+    }
+
     function exportaTbBI()
     {
     //    $this->killAllProcess();,
