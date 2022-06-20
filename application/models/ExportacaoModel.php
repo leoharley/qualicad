@@ -957,15 +957,14 @@ from
     Tmp_Contrato.Vl_CustoFinal,
     Tmp_Contrato.TP_TUSS,
     Tmp_Contrato.DS_TIP_TUSS,
-
+    Tmp_Contrato.Cd_Tuss,
     Tmp_Contrato.Ds_Tuss,
     Tmp_Contrato.CD_TISS,
     Tmp_Contrato.vl_fator_divisao_fracao,
     Tmp_Contrato.qtde_final 			Qt_FinalProd,
     Tmp_Contrato.PRODUCAO_FINAL 			Vl_FinalProd,
     Tmp_Contrato.qtde_tuss_duplic,
-
-    Tmp_Convenio.Cd_TUSS, 				
+			
     Tmp_Convenio.Cd_TISS 				cd_tiss_valido,
     Tmp_Convenio.Ds_FatItem 			ds_tuss_Valido,
     Tmp_Convenio.Tp_AcomodacaoPadrao,
