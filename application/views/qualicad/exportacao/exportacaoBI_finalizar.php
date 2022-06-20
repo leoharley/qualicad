@@ -184,8 +184,9 @@ function formToggle(ID){
 $(document).ready(function () {
 
 //        $('#geraTbBI').click();
-        $('#geraTbBI').click(function(){
-            $(this).attr("disabled", true);
+        $('#geraTbBI').click(function() {
+            $(this).attr('disabled', 'disabled');
+            $(this).parents('form').submit();
         });
 
         $('#importSubmit').attr('disabled', true);
