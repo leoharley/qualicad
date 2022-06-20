@@ -957,7 +957,7 @@ from
     Tmp_Contrato.Vl_CustoFinal,
     Tmp_Contrato.TP_TUSS,
     Tmp_Contrato.DS_TIP_TUSS,
-    Tmp_Contrato.Cd_Tuss,
+
     Tmp_Contrato.Ds_Tuss,
     Tmp_Contrato.CD_TISS,
     Tmp_Contrato.vl_fator_divisao_fracao,
