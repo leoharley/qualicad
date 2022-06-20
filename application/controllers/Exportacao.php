@@ -599,7 +599,7 @@ class Exportacao extends BaseController
 
         $this->session->set_flashdata('concluido', 'true');
         redirect('exportacaoBI');
-        
+
 
     //    $todosInseridosTbBI = false;
     /*    $idConvenio = $this->input->post('TbConvenio_Id_Convenio');

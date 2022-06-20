@@ -811,7 +811,7 @@ class ExportacaoModel extends CI_Model
         $this->db->reconnect();
         $query = $this->db->query("CALL cargaBI()");
         $this->db->close();
-        return $query->result();
+        return TRUE;
     }
 
 
