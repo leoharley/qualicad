@@ -112,7 +112,11 @@
                 </div>
                 <br/>
 
-                <input type="submit" class="btn btn-primary" value="Processar BI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/>
+             <!--   <input type="submit" class="btn btn-primary" value="Processar BI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/> -->
+                <a href="<?php echo base_url().'exportaTbBI' ?>">
+                    <i class="fa fa-th"></i>
+                    <span style="color:yellow">Gerar BI</span>
+                </a>
 
             <br/>
 
