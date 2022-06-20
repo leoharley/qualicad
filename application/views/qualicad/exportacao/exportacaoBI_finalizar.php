@@ -112,14 +112,7 @@
                 </div>
                 <br/>
 
-                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" disabled >
-
                 <input type="submit" class="btn btn-primary" value="Processar TbBI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/>
-
-                <a href="<?php echo base_url(); ?>stopall">
-                    <i class="fa fa-upload"></i>
-                    <span style="margin-left:5px">Parar</span>
-                </a>
 
             <br/>
 
