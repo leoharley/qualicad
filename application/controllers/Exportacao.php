@@ -612,10 +612,10 @@ class Exportacao extends BaseController
         $insertCountTbBISession = intval($this->input->post('insertCountTbBISession'));
 
         $memData = array();
-        
+
         $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa,25000,$o);
 
-        if (!empty($consultaTbBI)) {
+   //     if (!empty($consultaTbBI)) {
         foreach($consultaTbBI as $row) {
                 foreach($row as $key => $value) {
                     $memData += array(
@@ -655,10 +655,10 @@ class Exportacao extends BaseController
             $this->session->set_flashdata('insertCountTbBISession', $insertCountTbBISession);
 
 
-        } else {
+     /*   } else {
             $this->session->set_flashdata('concluido', 'true');
             redirect('exportacaoBI');
-        }
+        } */
 
         redirect('exportacaoTbBI_progresso');
 
