@@ -56,7 +56,7 @@
 
         <!-- File upload form -->
         <div class="col-md-12" id="exportFrm">
-            <form action="<?php echo base_url() ?>exportaBI" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>exportaTbBI" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="Id_Empresa">Empresa</label>
                     <select class="form-control required" id="Id_Empresa" name="Id_Empresa">
