@@ -3,7 +3,7 @@
     <section class="content-header">
         <h1>
             <i class="fa fa-users"></i> Importa Simpro
-            <small>Importação</small>
+            <small>Importação de mensagem</small>
         </h1>
     </section>
 
@@ -59,9 +59,9 @@
 		
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
-            <form action="<?php echo base_url() ?>importaProducao" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>importaSimpro" method="post" enctype="multipart/form-data">
                 <br/>
-                <label for="file">CARREGAR MENSAGEM:<input type="file" name="file"/></label>         
+                <input type="file" name="file"/>
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                 
