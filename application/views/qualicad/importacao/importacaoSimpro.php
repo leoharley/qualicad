@@ -61,7 +61,11 @@
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaProducao" method="post" enctype="multipart/form-data">
                 <br/>
-                <input type="file" name="file" class="custom-file-input"/>
+                <label class="btn btn-primary">
+                <i class="fa fa-image"></i> Your text here<input type="file" style="display: none;"  name="image">
+                </label>
+
+                <input type="file" name="file"/>
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                 
