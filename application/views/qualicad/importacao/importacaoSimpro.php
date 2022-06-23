@@ -120,7 +120,7 @@
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
                 <?php } ?>
             </tbody>
-        </table> -->
+        </table>
     </div>
 </div>
 
