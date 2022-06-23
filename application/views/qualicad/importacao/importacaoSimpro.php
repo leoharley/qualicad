@@ -61,9 +61,7 @@
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaProducao" method="post" enctype="multipart/form-data">
                 <br/>
-                <input type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();" />
-                <input type="file" style="display:none;" id="file" name="file"/>
-            <!--    <input type="file" name="file" /> -->
+                <input type="file" name="file" />
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                 
