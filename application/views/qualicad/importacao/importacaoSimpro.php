@@ -70,11 +70,14 @@
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
 
+                <span>Última Mensagem:</span> <span style="color:green">14/2022</span>
+                <span>Data de Envio:</span> <span style="color:green">04/04/2022</span>
+                <span>Data da Atualização:</span> <span style="color:green">04/04/2022</span>
+
             </form>
         </div>
 
         <br/>
-        <span>Última Mensagem:</span> <span style="color:green">14/2022</span>
         <br/>
 
         <a class="btn btn-primary" href="<?php echo base_url(). 'exportaProducao/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
