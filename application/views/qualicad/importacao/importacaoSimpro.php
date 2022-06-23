@@ -74,8 +74,7 @@
         </div>
 
         <br/>
-        <span style="color:red"><small>* VERIFICAR SE EXISTE CORRESPONDÊNCIA DE VALORES NAS CHAVES ESTRANGEIRAS</small></span>
-        <br/>
+        <span>Última Mensagem:</span> <span style="color:green">14/2022</span>
         <br/>
 
         <a class="btn btn-primary" href="<?php echo base_url(). 'exportaProducao/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
