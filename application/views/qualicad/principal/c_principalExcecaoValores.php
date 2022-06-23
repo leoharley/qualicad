@@ -204,12 +204,12 @@ if(!empty($infoExcecaoValores))
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control required" id="ClasseEvento" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('ClasseEvento') : $ClasseEvento ; ?>" name="ClasseEvento"
+                                            <input type="text" class="form-control" id="ClasseEvento" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('ClasseEvento') : $ClasseEvento ; ?>" name="ClasseEvento"
                                             maxlength="13">
                                             </td>
 
                                             <td>
-                                            <input type="text" class="form-control required" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Tp_ExcValores') : $Tp_ExcValores ; ?>" id="Tp_ExcValores" name="Tp_ExcValores">
+                                            <input type="text" class="form-control" value="<?php echo ($this->uri->segment(2) == 'cadastrar') ? set_value('Tp_ExcValores') : $Tp_ExcValores ; ?>" id="Tp_ExcValores" name="Tp_ExcValores">
                                             </td>
 
                                             <td>
