@@ -1212,7 +1212,7 @@ function carregaInfoExcValoresEmpresa($idEmpresa)
 
 function buscaProFat($Ds_ProFat)
     {
-        $this->db->select('ProFat.CodProFat as id, ProFat.Ds_ProFat as text');
+        $this->db->select('ProFat.CodProFat as id, CONCAT(ProFat.CodProFat, ' - ', ProFat.Ds_ProFat) as text');
         $this->db->from('TbProFat as ProFat');
         $likeCriteria = "(ProFat.Ds_ProFat LIKE '%".$Ds_ProFat['term']."%'
                         OR ProFat.CodProFat LIKE '%".$Ds_ProFat['term']."%')";
