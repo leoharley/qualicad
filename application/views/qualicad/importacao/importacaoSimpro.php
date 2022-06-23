@@ -83,13 +83,13 @@
         <br/>
         <br/>
 
-        <a class="btn btn-primary" href="<?php echo base_url(). 'exportaProducao/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
+    <!--    <a class="btn btn-primary" href="<?php //echo base_url(). 'exportaProducao/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
             <i class="fa fa-upload"></i> Exportar importação atual</a>
-        <a class="btn btn-primary" href="<?php echo base_url(); ?>exportaProducao/0">
-            <i class="fa fa-upload"></i> Exportar todos registros</a>
+        <a class="btn btn-primary" href="<?php //echo base_url(); ?>exportaProducao/0">
+            <i class="fa fa-upload"></i> Exportar todos registros</a> -->
 
         <!-- Data list table -->
-       <!-- <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>TbProFat_Cd_ProFat</th>
@@ -101,30 +101,24 @@
                     <th>Vl_Conta</th>
                     <th>Cd_Movimento</th>
                     <th>Cd_ITMovimento</th>
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <?php //if(!empty($infoProducao)){ foreach($infoProducao as $registro){ ?>
+                <?php if(!empty($infoProducao)){ foreach($infoProducao as $registro){ ?>
                 <tr>
-                    <td><?php //echo $registro->TbProFat_Cd_ProFat ?></td>
-                    <td><?php //echo $registro->TbPlano_Id_Plano ?></td>
-                    <td><?php //echo $registro->Num_Conta ?></td>
-                    <td><?php //echo $registro->Num_Atendimento ?></td>
-                    <td><?php //echo $registro->Dt_Lancamento ?></td>
-                    <td><?php //echo $registro->Qt_Lancamento ?></td>
-                    <td><?php //echo $registro->Vl_Conta ?></td>
-                    <td><?php //echo $registro->Cd_Movimento ?></td>
-                    <td><?php //echo $registro->Cd_ITMovimento ?></td>
-                    <td>
-                        <a class="btn btn-sm btn-danger deleteUser" href="<?php //echo base_url().'apagaImportacaoProducao/'.$registro->Id_Producao; ?> "title="Excluir">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
-                    </td>
+                    <td><?php echo $registro->TbProFat_Cd_ProFat ?></td>
+                    <td><?php echo $registro->TbPlano_Id_Plano ?></td>
+                    <td><?php echo $registro->Num_Conta ?></td>
+                    <td><?php echo $registro->Num_Atendimento ?></td>
+                    <td><?php echo $registro->Dt_Lancamento ?></td>
+                    <td><?php echo $registro->Qt_Lancamento ?></td>
+                    <td><?php echo $registro->Vl_Conta ?></td>
+                    <td><?php echo $registro->Cd_Movimento ?></td>
+                    <td><?php echo $registro->Cd_ITMovimento ?></td>
                 </tr>
-                <?php //} }else{ ?>
+                <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php //} ?>
+                <?php } ?>
             </tbody>
         </table> -->
     </div>
