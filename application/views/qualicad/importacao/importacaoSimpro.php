@@ -61,9 +61,7 @@
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaProducao" method="post" enctype="multipart/form-data">
                 <br/>
-                <label for="file">Carregar mensagem</label>         
-                <input type="file" name="file"/>
-
+                <label for="file">CARREGAR MENSAGEM:<input type="file" name="file"/></label>         
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                 
