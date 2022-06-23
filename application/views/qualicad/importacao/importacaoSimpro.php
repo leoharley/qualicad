@@ -22,6 +22,30 @@
     }
     #importFrm {
         margin-bottom: 20px;
+    }
+    .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+    }
+    .custom-file-input::before {
+    content: 'Select some files';
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    }
+    .custom-file-input:hover::before {
+    border-color: black;
+    }
+    .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
     } 
   </style>   
 
@@ -61,7 +85,7 @@
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaProducao" method="post" enctype="multipart/form-data">
                 <br/>
-                <input type="file" name="file" />
+                <input type="file" name="file" class="custom-file-input"/>
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                 
