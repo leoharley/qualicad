@@ -69,12 +69,13 @@
                 <span><strong>O arquivo está sendo carregado, aguarde...    </strong></span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
-                
+
+                <br/>
                 <br/>
 
-                <p>Última Mensagem: <span style="color:green">14/2022</span></p>
-                <p>Data de Envio: <span style="color:green">04/04/2022</span></p>
-                <p>Data da Atualização: <span style="color:green">04/04/2022</span></p>
+                <p>Última Mensagem: <span style="color:green"><b>14/2022</b></span></p>
+                <p>Data de Envio: <span style="color:green"><b>04/04/2022</b></span></p>
+                <p>Data da Atualização: <span style="color:green"><b>04/04/2022</b></span></p>
 
             </form>
         </div>
