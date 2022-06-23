@@ -63,7 +63,7 @@
                 <br/>
                 <input type="file" name="file"/>
                 <br/>
-                <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
+                <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="ATUALIZAR">
                 
                 <div id="loader" style="display:none;margin-top:30px">
                 <span><strong>O arquivo está sendo carregado, aguarde...    </strong></span>
@@ -89,18 +89,18 @@
             <i class="fa fa-upload"></i> Exportar todos registros</a> -->
 
         <!-- Data list table -->
+        <p><b>HISTÓRICO DE MENSAGENS</b></p>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>TbProFat_Cd_ProFat</th>
-                    <th>TbPlano_Id_Plano*</th>
-                    <th>Num_Conta</th>
-                    <th>Num_Atendimento</th>
-                    <th>Dt_Lancamento</th>
-                    <th>Qt_Lancamento</th>
-                    <th>Vl_Conta</th>
-                    <th>Cd_Movimento</th>
-                    <th>Cd_ITMovimento</th>
+                    <th>Nº da Mensagem</th>
+                    <th>Dt. de Envio</th>
+                    <th>Dt. de Atualização</th>
+                    <th>Inclusões</th>
+                    <th>Alterações</th>
+                    <th>Fora de Linha</th>
+                    <th>Atualização Suspensa</th>
+                    <th>Descontinuados</th>
                 </tr>
             </thead>
             <tbody>
@@ -114,7 +114,6 @@
                     <td><?php echo $registro->Qt_Lancamento ?></td>
                     <td><?php echo $registro->Vl_Conta ?></td>
                     <td><?php echo $registro->Cd_Movimento ?></td>
-                    <td><?php echo $registro->Cd_ITMovimento ?></td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
