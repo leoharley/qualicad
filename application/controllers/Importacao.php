@@ -2309,6 +2309,19 @@ class Importacao extends BaseController
             echo json_encode($resultado);
     }
 
+
+    // IMPORTAÇÃO Simpro
+
+    function importacaoSimpro()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação Simpro';       
+
+        $this->loadViews("qualicad/importacao/importacaoSimpro", $this->global, $data, NULL);
+    }
+
+
     /*
      * Callback function to check file value and type during validation
      */
