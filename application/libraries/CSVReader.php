@@ -49,6 +49,7 @@ class CSVReader {
         
         // Get Fields and values
         $this->fields = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure);
+        var_dump($this->fields[0]);exit;
         $keys_values = explode('|', $this->fields[0]);
         $keys = $this->escape_string($keys_values);
         
