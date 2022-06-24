@@ -2359,30 +2359,59 @@ class Importacao extends BaseController
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name'], 'simpro');
 
-                    var_dump($csvData);exit;
-
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
                             $rowCount++;
 
                             $memData += array(
-                                'TbFaturamento_Id_Faturamento' => $this->input->post('TbFaturamento_Id_Faturamento'),                                
-                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
-                                'Tp_Ativo'=> 'S');
+                                'Cd_Usuario' => $row['CD_USUARIO'],
+                                'Cd_Fracao'=> $row['CD_FRACAO'],
+                                'Ds_Produto'=> $row['DESCRICAO'],
+                                'DT_Vigencia'=> $row['VIGENCIA'],
+                                'Identificacao'=> $row['IDENTIF'],
+                                'Pr_FabEmbalagem'=> $row['PC_EM_FAB'],
+                                'Pr_VenEmbalagem'=> $row['PC_EM_VEN'],
+                                'Pr_UsuEmbalagem'=> $row['PC_EM_USU'],
+                                'Pr_FabFracao'=> $row['PC_FR_FAB'],
+                                'Pr_VenFracao'=> $row['PC_FR_VEN'],
+                                'Pr_UsuFracao'=> $row['PC_FR_USU'],
+                                'Tp_Embalagem'=> $row['TP_EMBAL'],
+                                'Tp_Fracao'=> $row['TP_FRACAO'],
+                                'Qt_Embalagem'=> $row['QTDE_EMBAL'],
+                                'Qt_Fracao'=> $row['QTDE_FRAC'],
+                                'Perc_LucroUsu'=> $row['PERC_LUCR'],
+                                'Tp_Alteracao'=> $row['TIP_ALT'],
+                                'Fabricante'=> $row['FABRICA'],
+                                'Cd_Simpro'=> $row['CD_SIMPRO'],
+                                'Cd_Mercado'=> $row['CD_MERCADO'],
+                                'Perc_Desconto'=> $row['PERC_DESC'],
+                                'Perc_IPI'=> $row['VLR_IPI'],
+                                'Nm_RegAnvisa'=> $row['CD_REG_ANV'],
+                                'Dt_ValRegAnvisa'=> $row['DT_REG_ANV'],
+                                'Nm_CodBarra'=> $row['CD_BARRA'],
+                                'Tp_Lista'=> $row['LISTA'],
+                                'Uso_Hospitalar'=> $row['HOSPITALAR'],
+                                'ProdFracao_SN'=> $row['FRACIONAR'],
+                                'Cd_TUSS'=> $row['CD_TUSS'],
+                                'Classif_Produto'=> $row['CD_CLASSIF'],
+                                'Refer_Produto'=> $row['CD_REF_PRO'],
+                                'Generico_SN'=> $row['GENERICO'],
+                                'Diversos_SN'=> $row['DIVERSOS']);
 
-                            $insert = $this->ImportacaoModel->adicionaFatItem($memData);
+                        //    $insert = $this->ImportacaoModel->adicionaFatItem($memData);
+
+                            $insert = 1;
 
                             if($insert != 0){
                                 $insertCount++;
                             } else {
-                              /*  if (isset($memData['TbProFat_Cd_ProFat'])) {
-                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
-                                }*/
                                 array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
                         }
+
+                        var_dump($memData);exit;
 
                         $temp = null;
 
