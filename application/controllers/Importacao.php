@@ -2358,10 +2358,17 @@ class Importacao extends BaseController
 
                     $this->load->library('CSVReader');
 
+                    $headers = array("prezime","ime","datumrodjenja","mestorodjenja","rod","prebivaliste","brojpasosa","izdatod","vazido","profesija","zanimanje","fiksni","mobilni","email","napomena");
+
+                    $fp = fopen($_FILES['file']['tmp_name'],'a');
+                    //add BOM to fix UTF-8 in Excel
+                    fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+
+                    fputcsv($fp, $headers);
+                    fclose($fp);
+
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
-                    
-                    var_dump($csvData);exit;
 
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
