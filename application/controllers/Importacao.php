@@ -2338,11 +2338,6 @@ class Importacao extends BaseController
     public function importaSimproMae(){
         $data = array();
         $memData = array();
-        $line = array
-        (
-        'LEO|TESTE|ANA|ROYCE|GAEL'
-        );
-
 
         // If import request is submitted
         if($this->input->post('importSubmit')){
@@ -2359,15 +2354,7 @@ class Importacao extends BaseController
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
                     // Load CSV reader library
 
-                    var_dump($_FILES['file']['tmp_name']);
-                    var_dump($_FILES['file']['tmp_name']);exit;
-                    $handle = fopen($_FILES['file']['tmp_name'], "a");
-
-                    fputcsv($handle, $line);
-
-                    fclose($handle);
-
-                    var_dump($handle);exit;
+                    $this->adicionaCabecalhoSimpro($_FILES['file']['tmp_name']);
 
                     $this->load->library('CSVReader');
 
@@ -2469,6 +2456,19 @@ class Importacao extends BaseController
     function data($data)
     {
         return preg_replace("/(\d+)\D+(\d+)\D+(\d+)/","$3-$2-$1",$data);
+    }
+
+    function adicionaCabecalhoSimpro($data) {
+        $outstream = fopen("php://output", "a");
+
+        $headers = 'Office, User, Tag, Value';
+        fwrite($outstream,$headers);
+
+        function __outputCSV(&$vals, $key, $filehandler) {
+            fputcsv($filehandler, $vals); // add parameters if you want
+        }
+        array_walk($data, "__outputCSV", $outstream);
+        fclose($outstream);
     }
 
 }
