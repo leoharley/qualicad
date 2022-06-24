@@ -37,7 +37,7 @@ class CSVReader {
      *
      * @return mixed|boolean
      */
-    function parse_csv($filepath){
+    function parse_csv($filepath,$tpImportacao = null){
         
         // If file doesn't exist, return false
         if(!file_exists($filepath)){
@@ -58,8 +58,16 @@ class CSVReader {
         while(($row = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure)) !== FALSE){
             // Skip empty lines
             if($row != NULL){
-                var_dump($row[0]);exit;
-                $values = explode('|', $row[0]);
+
+                if ($tpImportacao == null) {
+                    $values = explode('|', $row[0]);
+                }
+                else if ($tpImportacao == 'simpro') {
+                    $linha = "LEO|ANA|TESTE|11092009|A|7182|0|0|5985|0|0|CX|UN|1200|0|0|I|DILEPE|67912|20|0|0||||#|N|S||ME||N|N";
+                    $values = explode('|', $linha);
+                    var_dump($values);exit;
+                }
+
                 if(count($keys) == count($values)){
                     $arr        = array();
                     $new_values = array();
