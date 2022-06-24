@@ -148,6 +148,9 @@ $route['apagaImportacaoExcecaoValores/:any'] = "importacao/apagaImportacaoExceca
 $route['importacaoSimpro'] = "importacao/importacaoSimpro";
 $route['importaSimpro'] = "importacao/importaSimpro";
 
+$route['importacaoSimproMae'] = "importacao/importacaoSimproMae";
+$route['importaSimproMae'] = "importacao/importaSimproMae";
+
 $route['importacaoDePara/:any/:any'] = "importacao/importacaoDePara/$1/$2";
 $route['importacaoDePara/:any'] = "importacao/importacaoDePara/$1";
 

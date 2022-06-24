@@ -480,12 +480,38 @@ $(function() {
                             </a>
                         </li>
 
+                        <?php
+                        if ($this->session->userdata('isAdmin') == 'S')
+                          {
+                            echo '
+                            <li class="treeview" style="margin-left:22px;">
+                              <a href="'.base_url().'importacaoSimproMae">
+                                  <i class="fa fa-upload"></i>
+                                  <span style="margin-left:5px">Simpro (Carga mãe)</span>
+                              </a>
+                            </li>';
+                          }
+                          ?>
+
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>importacaoBrasIndice">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Brasindice</span>
                             </a>
                         </li>
+
+                        <?php
+                        if ($this->session->userdata('isAdmin') == 'S')
+                          {
+                            echo '
+                            <li class="treeview" style="margin-left:22px;">
+                              <a href="'.base_url().'importacaoBrasIndiceMae">
+                                  <i class="fa fa-upload"></i>
+                                  <span style="margin-left:5px">Brasindice (Carga mãe)</span>
+                              </a>
+                            </li>';
+                          }
+                          ?>
                                                                        
                         <li class="treeview" style="margin-left:22px;">                       
                             <a href="<?php echo base_url(); ?>importacaoRegraGruPro">

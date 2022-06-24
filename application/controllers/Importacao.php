@@ -2310,7 +2310,7 @@ class Importacao extends BaseController
     }
 
 
-    // IMPORTAÇÃO Simpro
+    // IMPORTAÇÃO SIMPRO
 
     function importacaoSimpro()
     {
@@ -2319,6 +2319,19 @@ class Importacao extends BaseController
         $this->global['pageTitle'] = 'QUALICAD : Importação Simpro';       
 
         $this->loadViews("qualicad/importacao/importacaoSimpro", $this->global, $data, NULL);
+    }
+
+
+
+    // IMPORTAÇÃO SIMPRO MAE
+
+    function importacaoSimproMae()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação Simpro Mãe';       
+
+        $this->loadViews("qualicad/importacao/importacaoSimproMae", $this->global, $data, NULL);
     }
 
 
