@@ -2338,6 +2338,7 @@ class Importacao extends BaseController
     public function importaSimproMae(){
         $data = array();
         $memData = array();
+        $line = 'LEO|TESTE|ANA|ROYCE|GAEL';
 
         // If import request is submitted
         if($this->input->post('importSubmit')){
