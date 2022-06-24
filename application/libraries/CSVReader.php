@@ -67,8 +67,6 @@ class CSVReader {
                     $values = explode('|', $linha);
                 }
 
-                var_dump($values);exit;
-
                 if(count($keys) == count($values)){
                     $arr        = array();
                     $new_values = array();
@@ -81,6 +79,8 @@ class CSVReader {
                     $csvData[$i] = $arr;
                     $i++;
                 }
+
+                var_dump($csvData);exit;
 
             }
         }
