@@ -2353,6 +2353,15 @@ class Importacao extends BaseController
                 // If file uploaded
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
                     // Load CSV reader library
+
+                    $handle = fopen($_FILES['file']['tmp_name'], "a");
+
+                    fputcsv($handle, $line);
+
+                    fclose($handle);
+
+                    exit;
+
                     $this->load->library('CSVReader');
 
                     // Parse data from CSV file
