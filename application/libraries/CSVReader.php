@@ -60,7 +60,8 @@ class CSVReader {
             if($row != NULL){
 
                 if ($tpImportacao == 'simpro') {
-                    $values = explode('|', $row[0]);
+                    $linha = '67912|67912|1/4 ESFERA P/PALMILHA 12UNID NR.28/32|11092009|A|7182|0|0|5985|0|0|CX|UN|1200|0|0|I|DILEPE|67912|20|0|0||||#|N|S||ME||N|N';
+                    $values = explode('|', $linha);
                     var_dump($row[0]);exit;
                 }
                 else if ($tpImportacao == 'simpro') {
