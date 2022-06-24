@@ -2369,7 +2369,7 @@ class Importacao extends BaseController
                     fclose($fp);
 
                     // Parse data from CSV file
-                    $csvData = $this->csvreader->parse_csv($fp);
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
 
                     var_dump($csvData);exit;
 
