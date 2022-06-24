@@ -59,7 +59,7 @@ class CSVReader {
             // Skip empty lines
             if($row != NULL){
 
-                if ($tpImportacao == null) {
+                if ($tpImportacao == 'simpro') {
                     $values = explode('|', $row[0]);
                     var_dump($row[0]);exit;
                 }
