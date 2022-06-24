@@ -54,7 +54,7 @@ class CSVReader {
         
         // Store CSV data in an array
         $csvData = array();
-        $i = 1;
+        $i = 2;
         while(($row = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure)) !== FALSE){
             // Skip empty lines
             if($row != NULL){
