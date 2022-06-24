@@ -2356,17 +2356,24 @@ class Importacao extends BaseController
 
                     $this->load->library('CSVReader');
 
-                    $headers = array("prezime","ime","datumrodjenja","mestorodjenja","rod","prebivaliste","brojpasosa","izdatod","vazido","profesija","zanimanje","fiksni","mobilni","email","napomena");
+                    $headers = ["ItemID", "Name", "Ref", "Quantity"];
 
-                    $fp = fopen($_FILES['file']['tmp_name'],'a');
-                    //add BOM to fix UTF-8 in Excel
-                    fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+                    $csvName = "file.csv";
+                    $fileHandle = fopen($csvName, 'w') or die('Can\'t create .csv file, try again later.');
 
-                    fputcsv($fp, $headers);
-                    fclose($fp);
+                    //Add the headers
+                    fputcsv($fileHandle, $headers);
+
+                    //Add the data
+                    foreach ($headers as $item) {
+                        fputcsv($fileHandle, $item);
+                    }
+
+                    //close file
+                    fclose($fileHandle);
 
                     // Parse data from CSV file
-                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
+                    $csvData = $this->csvreader->parse_csv($fileHandle);
 
                     var_dump($csvData);exit;
 
