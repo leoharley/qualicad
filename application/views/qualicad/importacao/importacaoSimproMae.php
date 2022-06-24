@@ -63,7 +63,7 @@
                 <br/>
                 <input type="file" name="file"/>
                 <br/>
-                <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="ATUALIZAR">
+                <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                 
                 <div id="loader" style="display:none;margin-top:30px">
                 <span><strong>O arquivo está sendo carregado, aguarde...    </strong></span>

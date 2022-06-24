@@ -2335,6 +2335,93 @@ class Importacao extends BaseController
     }
 
 
+    public function importaSimproMae(){
+        $data = array();
+        $memData = array();
+
+        // If import request is submitted
+        if($this->input->post('importSubmit')){
+            // Form field validation rules
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
+
+            // Validate submitted form data
+            if($this->form_validation->run() == true){
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
+
+                // If file uploaded
+                if(is_uploaded_file($_FILES['file']['tmp_name'])){
+                    // Load CSV reader library
+                    $this->load->library('CSVReader');
+
+                    // Parse data from CSV file
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
+                    
+                    var_dump($csvData);exit;
+
+                    // Insert/update CSV data into database
+                    if(!empty($csvData)){
+                        foreach($csvData as $row) {
+                            $rowCount++;
+
+                            $memData += array(
+                                'TbFaturamento_Id_Faturamento' => $this->input->post('TbFaturamento_Id_Faturamento'),                                
+                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
+                                'Tp_Ativo'=> 'S');
+
+                            $insert = $this->ImportacaoModel->adicionaFatItem($memData);
+
+                            if($insert != 0){
+                                $insertCount++;
+                            } else {
+                              /*  if (isset($memData['TbProFat_Cd_ProFat'])) {
+                                    array_push($errosDeChave, $memData['TbProFat_Cd_ProFat']); 
+                                }*/
+                                array_push($errosDeChave, ($rowCount+1));
+                                $notAddCount++;
+                            }
+                        }
+
+                        $temp = null;
+
+                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
+                        $i = 0;
+                        foreach ($errosDeChave as $row) {
+                        $i++;
+                        if ($i < sizeof($errosDeChave) ) { 
+                            $temp .= $row . ', ';
+                        } else {
+                            $temp .= $row;
+                        }
+                        }
+
+                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
+
+
+                        // Status message with imported data count
+                        $notAddCount = ($rowCount - ($insertCount + $updateCount));
+                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
+
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
+                    }
+                }else{
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
+                //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
+            }
+        }
+        redirect('importacaoFatItem');
+    }
+
+
     /*
      * Callback function to check file value and type during validation
      */
