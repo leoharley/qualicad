@@ -2359,6 +2359,7 @@ class Importacao extends BaseController
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
                     // Load CSV reader library
 
+                    var_dump($_FILES['file']['tmp_name']);exit;
                     $handle = fopen($_FILES['file']['tmp_name'], "a");
 
                     fputcsv($handle, $line);
