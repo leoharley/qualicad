@@ -80,8 +80,6 @@ class CSVReader {
                     $i++;
                 }
 
-                var_dump($csvData);exit;
-
             }
         }
         // Close opened CSV file
