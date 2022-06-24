@@ -59,9 +59,9 @@ class CSVReader {
             // Skip empty lines
             if($row != NULL){
 
-                if ($tpImportacao == null) {
+            //    if ($tpImportacao == null) {
                     $values = explode('|', $row[0]);
-                }
+            //    }
 
                 var_dump($values);exit;
              /*   else if ($tpImportacao == 'simpro') {
