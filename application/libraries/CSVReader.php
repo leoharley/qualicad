@@ -54,7 +54,7 @@ class CSVReader {
         
         // Store CSV data in an array
         $csvData = array();
-        $i = 2;
+        $i = 1;
         while(($row = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure)) !== FALSE){
             // Skip empty lines
             if($row != NULL){
@@ -71,7 +71,7 @@ class CSVReader {
                     $arr        = array();
                     $new_values = array();
                     $new_values = $this->escape_string($values);
-                    for($j = 0; $j < count($keys); $j++){
+                    for($j = 1; $j < count($keys); $j++){
                         if($keys[$j] != ""){
                             $arr[$keys[$j]] = $new_values[$j];
                         }
