@@ -2365,7 +2365,7 @@ class Importacao extends BaseController
 
                     fclose($handle);
 
-                    exit;
+                    var_dump($handle);exit;
 
                     $this->load->library('CSVReader');
 
