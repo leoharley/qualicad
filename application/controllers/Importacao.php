@@ -2356,24 +2356,20 @@ class Importacao extends BaseController
 
                     $this->load->library('CSVReader');
 
-                    $headers = ["ItemID", "Name", "Ref", "Quantity"];
+                    $list = array (
+                        array('aaa', 'bbb', 'ccc', 'dddd')
+                    );
 
-                    $csvName = "file.csv";
-                    $fileHandle = fopen($csvName, 'w') or die('Can\'t create .csv file, try again later.');
+                    $fp = fopen('file.csv', 'w');
 
-                    //Add the headers
-                    fputcsv($fileHandle, $headers);
-
-                    //Add the data
-                    foreach ($headers as $item) {
-                        fputcsv($fileHandle, $item);
+                    foreach ($list as $fields) {
+                        fputcsv($fp, $fields);
                     }
 
-                    //close file
-                    fclose($fileHandle);
+                    fclose($fp);
 
                     // Parse data from CSV file
-                    $csvData = $this->csvreader->parse_csv($fileHandle);
+                    $csvData = $this->csvreader->parse_csv($fp);
 
                     var_dump($csvData);exit;
 
