@@ -2356,18 +2356,6 @@ class Importacao extends BaseController
 
                     $this->load->library('CSVReader');
 
-                    $list = array (
-                        array('aaa', 'bbb', 'ccc', 'dddd')
-                    );
-
-                    $fp = fopen('file.csv', 'w');
-
-                    foreach ($list as $fields) {
-                        fputcsv($fp, $fields);
-                    }
-
-                    fclose($fp);
-
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name']);
 
