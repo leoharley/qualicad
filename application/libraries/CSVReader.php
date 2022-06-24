@@ -49,12 +49,12 @@ class CSVReader {
         
         // Get Fields and values
         $this->fields = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure);
-        $keys_values = explode('|', $this->fields[1]);
+        $keys_values = explode('|', $this->fields[0]);
         $keys = $this->escape_string($keys_values);
         
         // Store CSV data in an array
         $csvData = array();
-        $i = 1;
+        $i = 2;
         while(($row = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure)) !== FALSE){
             // Skip empty lines
             if($row != NULL){
