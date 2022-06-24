@@ -2354,7 +2354,7 @@ class Importacao extends BaseController
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
                     // Load CSV reader library
 
-                    $this->adicionaCabecalhoSimpro($_FILES['file']['tmp_name']);
+                    $this->adicionaCabecalhoSimpro($_FILES['file']['tmp_name'], array('Office', 'User'));
 
                     $this->load->library('CSVReader');
 
@@ -2458,14 +2458,13 @@ class Importacao extends BaseController
         return preg_replace("/(\d+)\D+(\d+)\D+(\d+)/","$3-$2-$1",$data);
     }
 
-    function adicionaCabecalhoSimpro($data) {
+    function adicionaCabecalhoSimpro($data, $headers = null) {
         $outstream = fopen("php://output", "a");
-
-        $headers = 'Office, User, Tag, Value';
-        fwrite($outstream,$headers);
-
         function __outputCSV(&$vals, $key, $filehandler) {
             fputcsv($filehandler, $vals); // add parameters if you want
+        }
+        if ($headers) {
+            $data = array_merge(array($headers), $data);
         }
         array_walk($data, "__outputCSV", $outstream);
         fclose($outstream);
