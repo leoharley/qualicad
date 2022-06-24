@@ -62,7 +62,7 @@ class CSVReader {
                 if ($tpImportacao == 'simpro') {
                     $linha = '67912|67912|1/4 ESFERA P/PALMILHA 12UNID NR.28/32|11092009|A|7182|0|0|5985|0|0|CX|UN|1200|0|0|I|DILEPE|67912|20|0|0||||#|N|S||ME||N|N';
                     $values = explode('|', $linha);
-                    var_dump($row[0]);exit;
+                    var_dump($linha);exit;
                 }
                 else if ($tpImportacao == 'simpro') {
                     $linha = 'CD_USUARIO|CD_FRACAO|DESCRICAO|VIGENCIA|IDENTIF|PC_EM_FAB|PC_EM_VEN|PC_EM_USU|PC_FR_FAB|PC_FR_VEN|PC_FR_USU|TP_EMBAL|TP_FRACAO|QTDE_EMBAL|QTDE_FRAC|PERC_LUCR|TIP_ALT|FABRICA|CD_SIMPRO|CD_MERCADO|PERC_DESC|VLR_IPI|CD_REG_ANV|DT_REG_ANV|CD_BARRA|LISTA|HOSPITALAR|FRACIONAR|CD_TUSS|CD_CLASSIF|CD_REF_PRO|GENERICO|DIVERSOS';
