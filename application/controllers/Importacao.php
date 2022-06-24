@@ -2354,8 +2354,6 @@ class Importacao extends BaseController
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
                     // Load CSV reader library
 
-                    $this->adicionaCabecalhoSimpro($_FILES['file']['tmp_name'], array('Office', 'User'));
-
                     $this->load->library('CSVReader');
 
                     $headers = array("prezime","ime","datumrodjenja","mestorodjenja","rod","prebivaliste","brojpasosa","izdatod","vazido","profesija","zanimanje","fiksni","mobilni","email","napomena");
