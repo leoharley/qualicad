@@ -72,7 +72,7 @@ class CSVReader {
                     $arr        = array();
                     $new_values = array();
                     $new_values = $this->escape_string($values);
-                    for($j = 0; $j < count($keys); $j++){
+                    for($j = 1; $j < count($keys); $j++){
                         if($keys[$j] != ""){
                             $arr[$keys[$j]] = $new_values[$j];
                         }
