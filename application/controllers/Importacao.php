@@ -2350,13 +2350,11 @@ class Importacao extends BaseController
                         foreach($csvData as $row) {
                             $rowCount++;
 
-                            $vigencia = DateTime::createFromFormat('dmY', $row['VIGENCIA']);
-
                             $memData += array(
                                 'Cd_Usuario' => $row['CD_USUARIO'],
                                 'Cd_Fracao'=> $row['CD_FRACAO'],
                                 'Ds_Produto'=> $row['DESCRICAO'],
-                                'DT_Vigencia'=> $vigencia->format('Y-m-d'),
+                                'DT_Vigencia'=> DateTime::createFromFormat('dmY', $row['VIGENCIA'])->format('Y-m-d'),
                                 'Identificacao'=> $row['IDENTIF'],
                                 'Pr_FabEmbalagem'=> $this->valor($row['PC_EM_FAB']),
                                 'Pr_VenEmbalagem'=> $this->valor($row['PC_EM_VEN']),
