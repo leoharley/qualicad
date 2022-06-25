@@ -2408,28 +2408,11 @@ class Importacao extends BaseController
                                 $notAddCount++;
                             }
                         }
-
-                        var_dump($insertCount);exit;
-
-                        $temp = null;
-
-                        /* DEBUG DE CHAVE NÃO LOCALIZADA */
-                        $i = 0;
-                        foreach ($errosDeChave as $row) {
-                        $i++;
-                        if ($i < sizeof($errosDeChave) ) { 
-                            $temp .= $row . ', ';
-                        } else {
-                            $temp .= $row;
                         }
-                        }
-
-                        $this->session->set_flashdata('errosDeChaveMsg', $temp);
-
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela FatItem importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
+                        $successMsg = 'Tabela Simpro Mãe importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
@@ -2445,8 +2428,7 @@ class Importacao extends BaseController
                 $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
                 //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
             }
-        }
-        redirect('importacaoFatItem');
+        redirect('importacaoSimproMae');
     }
 
 
