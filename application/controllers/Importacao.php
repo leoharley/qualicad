@@ -2350,7 +2350,7 @@ class Importacao extends BaseController
                         foreach($csvData as $row) {
                             $rowCount++;
 
-                            $vigencia = DateTime::createFromFormat('dmYY', $row['VIGENCIA']);
+                            $vigencia = DateTime::createFromFormat('dmY', $row['VIGENCIA']);
 
                             var_dump($vigencia->format('Y/m/d'));exit;
 
