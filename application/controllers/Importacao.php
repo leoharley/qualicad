@@ -2399,9 +2399,7 @@ class Importacao extends BaseController
                                 'Generico_SN'=> $row['GENERICO'],
                                 'Diversos_SN'=> $row['DIVERSOS']);
 
-                        //    $insert = $this->ImportacaoModel->adicionaFatItem($memData);
-
-                            $insert = 1;
+                            $insert = $this->ImportacaoModel->adicionaSimproMae($memData);
 
                             if($insert != 0){
                                 $insertCount++;
@@ -2411,7 +2409,7 @@ class Importacao extends BaseController
                             }
                         }
 
-                        var_dump($memData);exit;
+                        var_dump($insertCount);exit;
 
                         $temp = null;
 
