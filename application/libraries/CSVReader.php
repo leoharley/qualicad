@@ -49,7 +49,8 @@ class CSVReader {
         
         // Get Fields and values
         $this->fields = fgetcsv($csvFile, $this->max_row_size, $this->separator, $this->enclosure);
-        $keys_values = explode('|', $this->fields[0]);
+        $linha = 'CD_USUARIO|CD_FRACAO|DESCRICAO|VIGENCIA|IDENTIF|PC_EM_FAB|PC_EM_VEN|PC_EM_USU|PC_FR_FAB|PC_FR_VEN|PC_FR_USU|TP_EMBAL|TP_FRACAO|QTDE_EMBAL|QTDE_FRAC|PERC_LUCR|TIP_ALT|FABRICA|CD_SIMPRO|CD_MERCADO|PERC_DESC|VLR_IPI|CD_REG_ANV|DT_REG_ANV|CD_BARRA|LISTA|HOSPITALAR|FRACIONAR|CD_TUSS|CD_CLASSIF|CD_REF_PRO|GENERICO|DIVERSOS';
+        $keys_values = explode('|', $linha);
         $keys = $this->escape_string($keys_values);
         
         // Store CSV data in an array
