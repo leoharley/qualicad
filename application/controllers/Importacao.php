@@ -2389,8 +2389,7 @@ class Importacao extends BaseController
 
                             if($insert != 0){
                                 $insertCount++;
-                            } else {
-                                array_push($errosDeChave, ($rowCount+1));
+                            } else {                                
                                 $notAddCount++;
                             }
                         }
