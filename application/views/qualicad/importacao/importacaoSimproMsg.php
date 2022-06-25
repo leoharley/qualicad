@@ -59,7 +59,7 @@
 		
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm">
-            <form action="<?php echo base_url() ?>importaSimpro" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>importaSimproMsg" method="post" enctype="multipart/form-data">
                 <br/>
                 <input type="file" name="file"/>
                 <br/>

@@ -40,6 +40,18 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
+    function adicionaSimproMsg($info)
+    {
+        $this->db->trans_start();
+        $this->db->insert('TbSimproMsg', $info);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
+    }
+
     function carregaInfoProFat($idEmpresa, $searchText = '', $page, $segment)
     {
         $this->db->select('*');

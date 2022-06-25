@@ -2385,7 +2385,7 @@ class Importacao extends BaseController
                                 'Generico_SN'=> $row['GENERICO'],
                                 'Diversos_SN'=> $row['DIVERSOS']);
 
-                            $insert = $this->ImportacaoModel->adicionaSimproMae($memData);
+                            $insert = $this->ImportacaoModel->adicionaSimproMsg($memData);
 
                             if($insert != 0){
                                 $insertCount++;
@@ -2398,7 +2398,7 @@ class Importacao extends BaseController
 
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Tabela Simpro Mãe importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
+                        $successMsg = 'Tabela Simpro Msg importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
 
                         $this->session->set_flashdata('num_linhas_importadas', $insertCount);
                         if ($campoNaoLocalizado == '') {
