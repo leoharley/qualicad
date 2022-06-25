@@ -2351,12 +2351,13 @@ class Importacao extends BaseController
                             $rowCount++;
 
                             $vigencia = DateTime::createFromFormat('d/m/Y', $row['VIGENCIA']);
+                            $vigencia = $vigencia->format('Y-m-d');
 
                             $memData += array(
                                 'Cd_Usuario' => $row['CD_USUARIO'],
                                 'Cd_Fracao'=> $row['CD_FRACAO'],
                                 'Ds_Produto'=> $row['DESCRICAO'],
-                                'DT_Vigencia'=> $vigencia->format('Y-m-d'),
+                                'DT_Vigencia'=> $vigencia,
                                 'Identificacao'=> $row['IDENTIF'],
                                 'Pr_FabEmbalagem'=> $row['PC_EM_FAB'],
                                 'Pr_VenEmbalagem'=> $row['PC_EM_VEN'],
