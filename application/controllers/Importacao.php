@@ -2352,7 +2352,7 @@ class Importacao extends BaseController
 
                             $vigencia = DateTime::createFromFormat('dmY', $row['VIGENCIA']);
 
-                            var_dump($vigencia->format('Y/m/d'));exit;
+                            var_dump($vigencia->format('d/m/Y'));exit;
 
                             $memData += array(
                                 'Cd_Usuario' => $row['CD_USUARIO'],
