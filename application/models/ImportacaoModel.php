@@ -96,7 +96,7 @@ class ImportacaoModel extends CI_Model
 
     function carregaInfoMsgs()
     {
-        $this->db->select('*');
+        $this->db->select('Msg.NumeroMsg, Msg.Dt_Criacao');
         $this->db->from('TbSimproMsg as Msg');
         $this->db->where('Msg.Tp_Ativo', 'S');
         $this->db->order_by('Msg.Id_Simpro', 'ASC');
