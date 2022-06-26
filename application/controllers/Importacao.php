@@ -2318,7 +2318,12 @@ class Importacao extends BaseController
 
         $this->global['pageTitle'] = 'QUALICAD : Importação Simpro';
         
-        $data['infoMsgs'] = $this->ImportacaoModel->carregaInfoMsgs();
+        $data['infoSimproMsgs'] = $this->ImportacaoModel->carregaInfoSimproMsgs();
+
+        $data['consolidadoSimproMsgs'] = $this->ImportacaoModel->carregaConsolidadoSimproMsgs();
+
+        var_dump($data['consolidadoSimproMsgs']);exit;
+
 
         $this->loadViews("qualicad/importacao/importacaoSimproMsg", $this->global, $data, NULL);
     }

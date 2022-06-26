@@ -74,9 +74,9 @@
                 <br/>
                 <br/>
 
-                <p>Última Mensagem: <span style="color:green"><b><?php if (isset($infoMsgs[0]->NumeroMsg)) {echo substr_replace($infoMsgs[0]->NumeroMsg,"/", 2, 0);} ?></b></span></p>
-                <p>Data de Envio: <span style="color:green"><b><?php if (isset($infoMsgs[0]->Dt_Criacao)) {echo date("d/m/Y", strtotime($infoMsgs[0]->Dt_Criacao));} ?></b></span></p>
-                <p>Data da Atualização: <span style="color:green"><b><?php if (isset($infoMsgs[0]->Dt_Criacao)) {echo date("d/m/Y", strtotime($infoMsgs[0]->Dt_Criacao));} ?></b></span></p>
+                <p>Última Mensagem: <span style="color:green"><b><?php if (isset($infoSimproMsgs[0]->NumeroMsg)) {echo substr_replace($infoMsgs[0]->NumeroMsg,"/", 2, 0);} ?></b></span></p>
+                <p>Data de Envio: <span style="color:green"><b><?php if (isset($infoSimproMsgs[0]->Dt_Criacao)) {echo date("d/m/Y", strtotime($infoMsgs[0]->Dt_Criacao));} ?></b></span></p>
+                <p>Data da Atualização: <span style="color:green"><b><?php if (isset($infoSimproMsgs[0]->Dt_Criacao)) {echo date("d/m/Y", strtotime($infoMsgs[0]->Dt_Criacao));} ?></b></span></p>
 
             </form>
         </div>

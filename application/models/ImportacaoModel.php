@@ -94,7 +94,18 @@ class ImportacaoModel extends CI_Model
 
     }
 
-    function carregaInfoMsgs()
+    function carregaConsolidadoSimproMsgs()
+    {
+        $this->db->select('Msg.NumeroMsg, Msg.Dt_Criacao, SUM(CASE WHEN `Tp_Alteracao` = 'I' THEN 1 ELSE 0 END) Inclusoes, SUM(CASE WHEN `Tp_Alteracao` = 'A' THEN 1 ELSE 0 END) Alteracoes, SUM(CASE WHEN `Tp_Alteracao` = 'L' THEN 1 ELSE 0 END) Fora_Linha, SUM(CASE WHEN `Tp_Alteracao` = 'S' THEN 1 ELSE 0 END) Atualizacao_Suspensa, SUM(CASE WHEN `Tp_Alteracao` = 'D' THEN 1 ELSE 0 END) Descontinuados');
+        $this->db->from('TbSimproMsg as Msg');
+        $this->db->where('Msg.Tp_Ativo', 'S');
+        
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function carregaInfoSimproMsgs()
     {
         $this->db->select('Msg.NumeroMsg, Msg.Dt_Criacao');
         $this->db->from('TbSimproMsg as Msg');
