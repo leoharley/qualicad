@@ -78,49 +78,49 @@
                 <p>Data de Envio: <span style="color:green"><b><?php if (isset($infoSimproMsgs[0]->Dt_Criacao)) {echo date("d/m/Y", strtotime($infoSimproMsgs[0]->Dt_Criacao));} ?></b></span></p>
                 <p>Data da Atualização: <span style="color:green"><b><?php if (isset($infoSimproMsgs[0]->Dt_Criacao)) {echo date("d/m/Y", strtotime($infoSimproMsgs[0]->Dt_Criacao));} ?></b></span></p>
 
+                <br/>
+                <br/>
+                <p><b>HISTÓRICO DE MENSAGENS</b></p>
+                <table class="table table-striped table-bordered" id="dataTables-example">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nº da Mensagem</th>
+                            <th>Dt. de Envio</th>
+                            <th>Dt. de Atualização</th>
+                            <th>Inclusões</th>
+                            <th>Alterações</th>
+                            <th>Fora de Linha</th>
+                            <th>Atualização Suspensa</th>
+                            <th>Descontinuados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if(!empty($consolidadoSimproMsgs)){ foreach($consolidadoSimproMsgs as $registro){ ?>
+                        <tr>
+                            <td><?php echo substr_replace($registro->NumeroMsg,"/", 2, 0) ?></td>
+                            <td><?php echo date("d/m/Y", strtotime($registro->Dt_Criacao)) ?></td>
+                            <td><?php echo date("d/m/Y", strtotime($registro->Dt_Criacao)) ?></td>
+                            <td><?php echo $registro->Inclusoes ?></td>
+                            <td><?php echo $registro->Alteracoes ?></td>
+                            <td><?php echo $registro->Fora_Linha ?></td>
+                            <td><?php echo $registro->Atualizacao_Suspensa ?></td>
+                            <td><?php echo $registro->Descontinuados ?></td>
+                        </tr>
+                        <?php } }else{ ?>
+                        <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+
             </form>
         </div>
-
-        <br/>
-        <br/>
-
     <!--    <a class="btn btn-primary" href="<?php //echo base_url(). 'exportaProducao/'.$this->session->flashdata('num_linhas_importadas'); ?>" <?php if ($this->session->flashdata('num_linhas_importadas') == null) {echo 'disabled'; echo ' onclick=\'return false;\''; } ?>>
             <i class="fa fa-upload"></i> Exportar importação atual</a>
         <a class="btn btn-primary" href="<?php //echo base_url(); ?>exportaProducao/0">
             <i class="fa fa-upload"></i> Exportar todos registros</a> -->
 
         <!-- Data list table -->
-        <p><b>HISTÓRICO DE MENSAGENS</b></p>
-        <table class="table table-striped table-bordered" id="dataTables-example">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Nº da Mensagem</th>
-                    <th>Dt. de Envio</th>
-                    <th>Dt. de Atualização</th>
-                    <th>Inclusões</th>
-                    <th>Alterações</th>
-                    <th>Fora de Linha</th>
-                    <th>Atualização Suspensa</th>
-                    <th>Descontinuados</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if(!empty($consolidadoSimproMsgs)){ foreach($consolidadoSimproMsgs as $registro){ ?>
-                <tr>
-                    <td><?php echo substr_replace($registro->NumeroMsg,"/", 2, 0) ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($registro->Dt_Criacao)) ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($registro->Dt_Criacao)) ?></td>
-                    <td><?php echo $registro->Inclusoes ?></td>
-                    <td><?php echo $registro->Alteracoes ?></td>
-                    <td><?php echo $registro->Fora_Linha ?></td>
-                    <td><?php echo $registro->Atualizacao_Suspensa ?></td>
-                    <td><?php echo $registro->Descontinuados ?></td>
-                </tr>
-                <?php } }else{ ?>
-                <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
-                <?php } ?>
-            </tbody>
-        </table>
+        
     </div>
 </div>
 
