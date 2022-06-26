@@ -91,7 +91,7 @@
 
         <!-- Data list table -->
         <p><b>HISTÓRICO DE MENSAGENS</b></p>
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered" id="dataTables-example">
             <thead class="thead-dark">
                 <tr>
                     <th>Nº da Mensagem</th>
