@@ -100,7 +100,7 @@ class ImportacaoModel extends CI_Model
         $this->db->from('TbSimproMsg as Msg');
         $this->db->where('Msg.Tp_Ativo', 'S');
         $this->db->order_by('Msg.id', 'ASC');
-        $this->db->limit(1,0);
+        $this->db->limit(1);
         
         $query = $this->db->get();
 
