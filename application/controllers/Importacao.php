@@ -2340,9 +2340,7 @@ class Importacao extends BaseController
                 if(is_uploaded_file($_FILES['file']['tmp_name'])){
                     // Load CSV reader library
 
-                    $this->load->library('CSVReader');
-
-                    var_dump($this->input->post('outputfile')[4].$this->input->post('outputfile')[5].$this->input->post('outputfile')[7].$this->input->post('outputfile')[8].$this->input->post('outputfile')[9].$this->input->post('outputfile')[10]);exit;
+                    $this->load->library('CSVReader');                   
 
                     // Parse data from CSV file
                     $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name'], 'simpro');
