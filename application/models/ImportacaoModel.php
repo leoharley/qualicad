@@ -107,6 +107,33 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
+    function backupTbSimpro()
+    {
+
+        $this->db->select('*');
+        $this->db->from('TbSimpro as Simpro');
+        $this->db->where('Simpro.Tp_Ativo', 'S');
+        $query = $this->db->get();
+        $num_rows = $query->num_rows();
+
+    if($num_rows>0){
+        $vals = Array(); $z=0;
+        for($i=0; $i<$num_rows; $i++){
+          $items = mysql_fetch_row($result);
+          $vals[$z]="(";
+          for($j=0; $j<count($items); $j++){
+            if (isset($items[$j])) { $vals[$z].= "'".mysql_real_escape_string( $items[$j], $link )."'"; } else { $vals[$z].= "NULL"; }
+            if ($j<(count($items)-1)){ $vals[$z].= ","; }
+          }
+          $vals[$z].= ")"; $z++;
+        }
+        $data.= "INSERT INTO TbSimproHst VALUES ";      
+        $data .= "  ".implode(";\nINSERT INTO TbSimproHst VALUES ", $vals).";\n";
+      }
+
+      return TRUE;
+    }
+
     function carregaInfoTUSS($idEmpresa)
     {
         $this->db->select('*');

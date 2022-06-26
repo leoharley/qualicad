@@ -2399,6 +2399,9 @@ class Importacao extends BaseController
                                 $notAddCount++;
                             }
                         }
+
+                        $backup = $this->ImportacaoModel->backupTbSimpro();
+
                         }
 
                         // Status message with imported data count
