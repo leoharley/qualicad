@@ -101,7 +101,7 @@ function getFile(filePath) {
     }
 
 function getoutput() {
-    outputfile.value = getFile(inputfile.value);
+    $('#outputfile').val(getFile(inputfile.value));    
 }
 
 $(document).ready(function () {
