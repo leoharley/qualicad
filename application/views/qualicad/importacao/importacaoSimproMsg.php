@@ -79,7 +79,6 @@
                 <p>Data da Atualização: <span style="color:green"><b><?php if (isset($infoSimproMsgs[0]->Dt_Criacao)) {echo date("d/m/Y", strtotime($infoSimproMsgs[0]->Dt_Criacao));} ?></b></span></p>
 
                 <br/>
-                <br/>
                 <p><b>HISTÓRICO DE MENSAGENS</b></p>
                 <table class="table table-striped table-bordered" id="dataTables-example">
                     <thead class="thead-dark">
