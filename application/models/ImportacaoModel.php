@@ -94,6 +94,18 @@ class ImportacaoModel extends CI_Model
 
     }
 
+    function carregaInfoMsgs()
+    {
+        $this->db->select('*');
+        $this->db->from('TbSimproMsg as Msg');
+        $this->db->where('Msg.Tp_Ativo', 'S');
+        $this->db->order_by('Msg.id', 'ASC');
+        $this->db->limit(1,0);
+        
+        $query = $this->db->get();
+
+        return $query->result();
+    }
 
     function carregaInfoTUSS($idEmpresa)
     {

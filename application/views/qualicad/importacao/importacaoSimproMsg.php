@@ -74,7 +74,7 @@
                 <br/>
                 <br/>
 
-                <p>Última Mensagem: <span style="color:green"><b>14/2022</b></span></p>
+                <p>Última Mensagem: <span style="color:green"><b><?php echo $infoMsgs[0]['NumeroMsg'] ?></b></span></p>
                 <p>Data de Envio: <span style="color:green"><b>04/04/2022</b></span></p>
                 <p>Data da Atualização: <span style="color:green"><b>04/04/2022</b></span></p>
 
