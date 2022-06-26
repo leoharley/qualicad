@@ -2322,9 +2322,6 @@ class Importacao extends BaseController
 
         $data['consolidadoSimproMsgs'] = $this->ImportacaoModel->carregaConsolidadoSimproMsgs();
 
-        var_dump($data['consolidadoSimproMsgs']);exit;
-
-
         $this->loadViews("qualicad/importacao/importacaoSimproMsg", $this->global, $data, NULL);
     }
 

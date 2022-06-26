@@ -105,16 +105,16 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($infoProducao)){ foreach($infoProducao as $registro){ ?>
+                <?php if(!empty($consolidadoSimproMsgs)){ foreach($consolidadoSimproMsgs as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->TbProFat_Cd_ProFat ?></td>
-                    <td><?php echo $registro->TbPlano_Id_Plano ?></td>
-                    <td><?php echo $registro->Num_Conta ?></td>
-                    <td><?php echo $registro->Num_Atendimento ?></td>
-                    <td><?php echo $registro->Dt_Lancamento ?></td>
-                    <td><?php echo $registro->Qt_Lancamento ?></td>
-                    <td><?php echo $registro->Vl_Conta ?></td>
-                    <td><?php echo $registro->Cd_Movimento ?></td>
+                    <td><?php echo $registro->NumeroMsg ?></td>
+                    <td><?php echo $registro->Dt_Criacao ?></td>
+                    <td><?php echo $registro->Dt_Criacao ?></td>
+                    <td><?php echo $registro->Inclusoes ?></td>
+                    <td><?php echo $registro->Alteracoes ?></td>
+                    <td><?php echo $registro->Fora_Linha ?></td>
+                    <td><?php echo $registro->Atualizacao_Suspensa ?></td>
+                    <td><?php echo $registro->Descontinuados ?></td>
                 </tr>
                 <?php } }else{ ?>
                 <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
