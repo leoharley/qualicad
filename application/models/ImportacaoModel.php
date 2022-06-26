@@ -110,7 +110,7 @@ class ImportacaoModel extends CI_Model
     function backupTbSimpro()
     {
         $this->db->reconnect();
-        $query = $this->db->query("CALL cargaBI()");
+        $query = $this->db->query("CALL backupSIMPRO()");
         $this->db->close();
         return TRUE;
     }
