@@ -2383,7 +2383,10 @@ class Importacao extends BaseController
                                 'Classif_Produto'=> $row['CD_CLASSIF'],
                                 'Refer_Produto'=> $row['CD_REF_PRO'],
                                 'Generico_SN'=> $row['GENERICO'],
-                                'Diversos_SN'=> $row['DIVERSOS']);
+                                'Diversos_SN'=> $row['DIVERSOS'],
+                                'Dt_Criacao'=>date('Y-m-d'),
+                                'CriadoPor'=>$this->vendorId,
+                                'Dt_Ativo'=>date('Y-m-d'));
 
                             $insert = $this->ImportacaoModel->adicionaSimproMsg($memData);
 
