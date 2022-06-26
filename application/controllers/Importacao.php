@@ -2316,7 +2316,9 @@ class Importacao extends BaseController
     {
         $data['roles'] = $this->user_model->getUserRoles();
 
-        $this->global['pageTitle'] = 'QUALICAD : Importação Simpro';       
+        $this->global['pageTitle'] = 'QUALICAD : Importação Simpro';
+        
+        $data['infoMsgs'] = $this->ImportacaoModel->carregaInfoMsgs();
 
         $this->loadViews("qualicad/importacao/importacaoSimproMsg", $this->global, $data, NULL);
     }
@@ -2429,8 +2431,6 @@ class Importacao extends BaseController
         $data['roles'] = $this->user_model->getUserRoles();
 
         $this->global['pageTitle'] = 'QUALICAD : Importação Simpro Mãe';
-
-        $data['infoMsgs'] = $this->ImportacaoModel->carregaInfoMsgs();     
 
         $this->loadViews("qualicad/importacao/importacaoSimproMae", $this->global, $data, NULL);
     }
