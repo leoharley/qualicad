@@ -2439,6 +2439,8 @@ class Importacao extends BaseController
 
         // If import request is submitted
         if($this->input->post('importSubmit')){
+
+            var_dump($this->input->post('importSubmit'));exit;
             // Form field validation rules
             $this->load->library('form_validation');
 
@@ -2463,6 +2465,7 @@ class Importacao extends BaseController
                             $rowCount++;
 
                             $memData += array(
+                                'NumeroMsg' => $_FILES['file']['tmp_name'][4].$_FILES['file']['tmp_name'][5].$_FILES['file']['tmp_name'][7].$_FILES['file']['tmp_name'][8].$_FILES['file']['tmp_name'][9].$_FILES['file']['tmp_name'][10],
                                 'Cd_Usuario' => $row['CD_USUARIO'],
                                 'Cd_Fracao'=> $row['CD_FRACAO'],
                                 'Ds_Produto'=> $row['DESCRICAO'],
