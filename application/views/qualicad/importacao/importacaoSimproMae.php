@@ -61,7 +61,7 @@
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaSimproMae" method="post" enctype="multipart/form-data">
                 <br/>
-                <input type="file" name="file" onChange='getoutput()'/>
+                <input type="file" name="file" id="file" onChange='getoutput()'/>
                 <input id='outputfile' type='text' name='outputfile'>
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
@@ -102,7 +102,7 @@ function getFile(filePath) {
 
 function getoutput() {
     console.log ('teste');
-    $('#outputfile').val(getFile(inputfile.value));    
+    $('#outputfile').val(getFile($('#file').val()));    
 }
 
 $(document).ready(function () {
