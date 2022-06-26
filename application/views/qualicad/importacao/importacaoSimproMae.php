@@ -61,7 +61,8 @@
         <div class="col-md-12" id="importFrm">
             <form action="<?php echo base_url() ?>importaSimproMae" method="post" enctype="multipart/form-data">
                 <br/>
-                <input type="file" name="file"/>
+                <input type="file" name="file" onChange='getoutput()'/>
+                <input id='outputfile' type='hidden' name='outputfile'>
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                 
@@ -94,6 +95,15 @@ function formToggle(ID){
         element.style.display = "none";
     }
 }
+
+function getFile(filePath) {
+        return filePath.substr(filePath.lastIndexOf('\\') + 1).split('.')[0];
+    }
+
+function getoutput() {
+    outputfile.value = getFile(inputfile.value);
+}
+
 $(document).ready(function () {
         $('#importSubmit').attr('disabled', true);
         $('input:file').change(
