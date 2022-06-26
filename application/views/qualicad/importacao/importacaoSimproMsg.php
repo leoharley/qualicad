@@ -107,7 +107,7 @@
             <tbody>
                 <?php if(!empty($consolidadoSimproMsgs)){ foreach($consolidadoSimproMsgs as $registro){ ?>
                 <tr>
-                    <td><?php echo $registro->NumeroMsg ?></td>
+                    <td><?php echo substr_replace($registro->NumeroMsg,"/", 2, 0) ?></td>
                     <td><?php echo date("d/m/Y", strtotime($registro->Dt_Criacao)) ?></td>
                     <td><?php echo date("d/m/Y", strtotime($registro->Dt_Criacao)) ?></td>
                     <td><?php echo $registro->Inclusoes ?></td>
