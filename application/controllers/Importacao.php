@@ -2440,7 +2440,7 @@ class Importacao extends BaseController
         // If import request is submitted
         if($this->input->post('importSubmit')){
 
-            var_dump($this->input->post('importSubmit'));exit;
+            var_dump($_FILES['file']['tmp_name']);exit;
             // Form field validation rules
             $this->load->library('form_validation');
 
