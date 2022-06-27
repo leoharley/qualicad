@@ -2473,6 +2473,8 @@ class Importacao extends BaseController
                         foreach($csvData as $row) {
                             $rowCount++;
 
+                            $memData = array();
+
                             $memData += array(                                
                                 'Cd_Usuario' => $row['CD_USUARIO'],
                                 'Cd_Fracao'=> $row['CD_FRACAO'],
