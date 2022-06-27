@@ -97,8 +97,8 @@
                         <?php if(!empty($consolidadoSimproMsgs)){ foreach($consolidadoSimproMsgs as $registro){ ?>
                         <tr>
                             <td><?php echo substr_replace($registro->NumeroMsg,"/", 2, 0) ?></td>
-                            <td><?php if (isset $registro->Dt_Criacao) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)) } ?></td>
-                            <td><?php if (isset $registro->Dt_Criacao) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)) } ?></td>
+                            <td><?php if (isset ($registro->Dt_Criacao)) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)) } ?></td>
+                            <td><?php if (isset ($registro->Dt_Criacao)) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)) } ?></td>
                             <td><?php echo $registro->Inclusoes ?></td>
                             <td><?php echo $registro->Alteracoes ?></td>
                             <td><?php echo $registro->Fora_Linha ?></td>
