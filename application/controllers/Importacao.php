@@ -2327,7 +2327,7 @@ class Importacao extends BaseController
 
     public function importaSimproMsg(){
        
-        $backupTbSimpro = $this->ImportacaoModel->backupTbSimpro(1);
+        $backupTbSimpro = $this->ImportacaoModel->backupTbSimpro($this->vendorId);
         
         $data = array();
         $memData = array();
