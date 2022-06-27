@@ -136,6 +136,8 @@ class ImportacaoModel extends CI_Model
 
     function atualizaPrecoSimproMae($info)
     {
+
+    var_dump($info);exit;
     $this->db->reconnect();
     $this->db->start_cache();
     $sql="UPDATE TbSimpro Simpro
