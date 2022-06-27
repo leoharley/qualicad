@@ -134,6 +134,24 @@ class ImportacaoModel extends CI_Model
         return $query;
     }
 
+    function atualizaPrecoSimproMae($info)
+    {
+    $this->db->reconnect();
+    $this->db->start_cache();
+    $sql="UPDATE TbSimpro Simpro
+    SET Pr_FabEmbalagem	= $info[0]->Pr_FabEmbalagem,
+    Pr_VenEmbalagem = $info[0]->Pr_VenEmbalagem,
+    Pr_UsuEmbalagem = $info[0]->Pr_UsuEmbalagem,
+    Pr_UsuEmbalagem = $info[0]->Pr_UsuEmbalagem,
+    Pr_UsuEmbalagem = $info[0]->Pr_UsuEmbalagem,
+    Pr_UsuEmbalagem = $info[0]->Pr_UsuEmbalagem
+    WHERE Simpro.Cd_Simpro = $info[0]->Cd_Simpro";
+    $query = $this->db->query($sql);
+    $this->db->stop_cache();
+    $this->db->flush_cache();
+    return $query();
+    }
+
     function carregaInfoTUSS($idEmpresa)
     {
         $this->db->select('*');
