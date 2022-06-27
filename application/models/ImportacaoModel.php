@@ -139,7 +139,7 @@ class ImportacaoModel extends CI_Model
     $this->db->reconnect();
     $this->db->start_cache();
     $sql="UPDATE TbSimpro Simpro
-    SET Pr_FabEmbalagem	= $info['Pr_FabEmbalagem'],
+    SET Pr_FabEmbalagem	= '.$info['Pr_FabEmbalagem'].',
     Pr_VenEmbalagem = $info['Pr_VenEmbalagem'],
     Pr_UsuEmbalagem = $info['Pr_UsuEmbalagem'],
     Pr_UsuEmbalagem = $info['Pr_UsuEmbalagem'],
