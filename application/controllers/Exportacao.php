@@ -603,103 +603,13 @@ class Exportacao extends BaseController
 
     function exportaTbBI()
     {
-    //    $this->killAllProcess();,
-
+        $this->ExportacaoModel->kill_other_processes();
         $this->ExportacaoModel->cargaBI();
 
         $this->session->set_flashdata('concluido', 'true');
         redirect('exportacaoBI_finalizar');
 
-
-    //    $todosInseridosTbBI = false;
-    /*    $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
-        $idEmpresa = $this->input->post('Id_Empresa');
-
-        $insertCountTbBI = $notAddCountTbBI = 0;
-        
-        if ($this->input->post('offsetTbBI') == '') {
-            $o = 0;
-            $this->session->set_flashdata('concluido', 'false');
-            $insertCountTbBISession = $notAddCountTbBISession = 0;
-        } else {
-            $o = $this->input->post('offsetTbBI');
-        }
-
-        $insertCountTbBISession = intval($this->input->post('insertCountTbBISession'));
-
-        $memData = array();
-
-        $consultaTbBI = $this->ExportacaoModel->consultaTbBI($idEmpresa); */
-
-   //     if (!empty($consultaTbBI)) {
-    /*    foreach($consultaTbBI as $row) {
-                foreach($row as $key => $value) {
-                    $memData += array(
-                        $key => $value
-                    );
-                }
-                $memData += array(
-                    'Tp_Ativo'=> 'S');
-
-                $insert = $this->ExportacaoModel->adicionaTbBI($memData);
-
-                if($insert != 0){
-                    $insertCountTbBISession++;
-                    $insertCountTbBI++;
-                } else {
-                    $notAddCountTbBISession++;
-                    $notAddCountTbBI++;
-                }
-                $memData = array();
-            }
-            $o = $o + 40000;
-
-            $this->session->set_flashdata('offsetTbBI', $o); */
-
-        /*    if ($insertCountTbBI == '')
-            {
-                $msgInseridosTbBI = 'Todas as linhas foram inseridas ('.$insertCountTbBISession.')' ;
-                $todosInseridosTbBI = true;
-            } else {
-                $msgInseridosTbBI = 'Inseridos até agora ('.$insertCountTbBISession.')';
-            } */
-
-        /*    $successMsg = 'Tb_BI: '.$msgInseridosTbBI.' | Não inseridos ('.$notAddCountTbBI.')';
-
-            $this->session->set_flashdata('success', $successMsg);
-            $this->session->set_flashdata('idconvenio', $idConvenio);
-            $this->session->set_flashdata('insertCountTbBISession', $insertCountTbBISession); */
-
-
-     /*   } else {
-            $this->session->set_flashdata('concluido', 'true');
-            redirect('exportacaoBI');
-        } */
-
-    //    redirect('exportacaoTbBI_progresso');
-
-
-    //    var_dump($insertCountTbBI);exit;
     }
-
-
-    function killAllProcess()
-    {
-
-        $showallprocess = $this->ExportacaoModel->showallprocess();
-
-        if ($showallprocess) {
-            foreach($showallprocess as $row) {
-                if ($row->Host == 'localhost') {
-                $process_id = $row->Id;
-                $result = $this->ExportacaoModel->killProcess($process_id);
-                }
-            }
-        }
-
-
-    }
-
 
 
 }

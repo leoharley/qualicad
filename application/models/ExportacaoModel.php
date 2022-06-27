@@ -797,13 +797,12 @@ class ExportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function killProcess($id)
+    function kill_other_processes()
     {
-        $sql = "KILL ".$id;
-        $this->db->query($sql);
-
+        $this->db->reconnect();
+        $query = $this->db->query("CALL kill_other_processes()");
+        $this->db->close();
         return TRUE;
-
     }
 
     function cargaBI()
