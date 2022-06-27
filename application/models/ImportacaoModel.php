@@ -155,7 +155,7 @@ class ImportacaoModel extends CI_Model
 
     function atualizaLinhaSimproMae($info)
     {
-        $this->db->where('Cd_Simpro', {$info['Cd_Simpro']});
+        $this->db->where('Cd_Simpro', $info['Cd_Simpro']);
         $this->db->update('TbSimpro', $info);
         
         return TRUE;
