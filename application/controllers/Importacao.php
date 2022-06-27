@@ -2326,6 +2326,9 @@ class Importacao extends BaseController
     }
 
     public function importaSimproMsg(){
+
+        $backupTbSimpro = $this->ImportacaoModel->backupTbSimpro();
+        
         $data = array();
         $memData = array();
 
@@ -2407,9 +2410,7 @@ class Importacao extends BaseController
                             } else {                                
                                 $notAddCount++;
                             }
-                        }
-
-                        $backupTbSimpro = $this->ImportacaoModel->backupTbSimpro();
+                        }   
 
                         $atualizaFatItem = $this->ImportacaoModel->atualizaFatItemPelaSimpro();
 
