@@ -126,13 +126,38 @@ class ImportacaoModel extends CI_Model
         return TRUE;
     }
 
+
     function atualizaFatItemPelaSimpro()
+    {
+    $this->db->reconnect();
+    $this->db->start_cache();
+    $sql="UPDATE TbFatItem FatItem
+    JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND Simpro.Tp_Alteracao = 'I')
+    JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat = 'S')
+    SET 
+    FatItem.Cd_TUSS = (CASE WHEN Simpro.Cd_TUSS = 0 THEN Simpro.Cd_Simpro ELSE Simpro.Cd_TUSS END),
+    FatItem.Ds_FatItem = Simpro.Ds_Produto,
+    FatItem.Vl_Total = Simpro.Pr_FabFracao,
+    FatItem.Qt_Embalagem = Simpro.Qt_Embalagem,
+    FatItem.Ds_Unidade = Simpro.Tp_Fracao,
+    FatItem.Dt_IniVigencia = Simpro.DT_Vigencia,
+    FatItem.Dt_Ativo = Simpro.DT_Vigencia,
+    FatItem.Tp_Ativo = 'S',
+    FatItem.Ds_Motivo_alteracao = Simpro.NumeroMsg";
+    $query = $this->db->query($sql);
+    $this->db->stop_cache();
+    $this->db->flush_cache();
+    return $query->result();
+    }
+
+
+ /*   function atualizaFatItemPelaSimpro()
     {
         $this->db->reconnect();
         $query = $this->db->query("CALL atualizaFatItemPelaSimpro()");
         $this->db->close();
         return $query;
-    }
+    } */
 
     function carregaInfoTUSS($idEmpresa)
     {
