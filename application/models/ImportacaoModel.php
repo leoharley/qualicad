@@ -140,11 +140,11 @@ class ImportacaoModel extends CI_Model
     $this->db->start_cache();
     $sql="UPDATE TbSimpro Simpro
     SET Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
-    Pr_VenEmbalagem = $info['Pr_VenEmbalagem'],
-    Pr_UsuEmbalagem = $info['Pr_UsuEmbalagem'],
-    Pr_UsuEmbalagem = $info['Pr_UsuEmbalagem'],
-    Pr_UsuEmbalagem = $info['Pr_UsuEmbalagem'],
-    Pr_UsuEmbalagem = $info['Pr_UsuEmbalagem']
+    Pr_VenEmbalagem = {$info['Pr_VenEmbalagem']},
+    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
+    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
+    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
+    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']}
     WHERE Simpro.Cd_Simpro = $info[0]->Cd_Simpro";
     $query = $this->db->query($sql);
     $this->db->stop_cache();
