@@ -2354,6 +2354,8 @@ class Importacao extends BaseController
                         foreach($csvData as $row) {
                             $rowCount++;
 
+                            $memData = array();
+
                             $memData += array(
                                 'NumeroMsg' => $this->input->post('outputfile')[4].$this->input->post('outputfile')[5].$this->input->post('outputfile')[7].$this->input->post('outputfile')[8].$this->input->post('outputfile')[9].$this->input->post('outputfile')[10],
                                 'Cd_Usuario' => $row['CD_USUARIO'],
