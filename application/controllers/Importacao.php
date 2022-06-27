@@ -2487,7 +2487,7 @@ class Importacao extends BaseController
                                 'Cd_Usuario' => $row['CD_USUARIO'],
                                 'Cd_Fracao'=> $row['CD_FRACAO'],
                                 'Ds_Produto'=> $row['DESCRICAO'],
-                                'DT_Vigencia'=> $row['VIGENCIA'],
+                                'DT_Vigencia'=> DateTime::createFromFormat('dmY', $row['VIGENCIA'])->format('Y-m-d'),
                                 'Identificacao'=> $row['IDENTIF'],
                                 'Pr_FabEmbalagem'=> $row['PC_EM_FAB'],
                                 'Pr_VenEmbalagem'=> $row['PC_EM_VEN'],
