@@ -2404,7 +2404,9 @@ class Importacao extends BaseController
                             }
                         }
 
-                        $backup = $this->ImportacaoModel->backupTbSimpro();
+                        $backupTbSimpro = $this->ImportacaoModel->backupTbSimpro();
+
+                        $atualizaFatItem = $this->ImportacaoModel->atualizaFatItemPelaSimpro();
 
                         }
 
