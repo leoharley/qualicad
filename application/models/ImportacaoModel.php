@@ -145,7 +145,8 @@ class ImportacaoModel extends CI_Model
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
-    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']}
+    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
+    Tp_Alteracao = {$info['Tp_Alteracao']}
     WHERE Simpro.Cd_Simpro = {$info['Cd_Simpro']}";
     $query = $this->db->query($sql);
     $this->db->stop_cache();
