@@ -118,9 +118,9 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function backupTbSimpro()
+    function backupTbSimpro($idUsuario)
     {
-        $query = $this->db->query("CALL backupSIMPRO()");
+        $query = $this->db->query("CALL backupSIMPRO({$idUsuario})");
         return TRUE;
     }
 
