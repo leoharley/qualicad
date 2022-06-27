@@ -139,7 +139,8 @@ class ImportacaoModel extends CI_Model
     $this->db->reconnect();
     $this->db->start_cache();
     $sql="UPDATE TbSimpro Simpro
-    SET Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
+    SET NumeroMsg = {$info['NumeroMsg']},
+    Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
     Pr_VenEmbalagem = {$info['Pr_VenEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
@@ -151,6 +152,29 @@ class ImportacaoModel extends CI_Model
     $this->db->flush_cache();
     return $query;
     }
+
+    function atualizaLinhaSimproMae($info)
+    {
+        $this->db->where('Cd_Simpro', {$info['Cd_Simpro']});
+        $this->db->update('TbSimpro', $info);
+        
+        return TRUE;
+    }
+
+    function atualizaTipAltSimproMae($info)
+    {
+    $this->db->reconnect();
+    $this->db->start_cache();
+    $sql="UPDATE TbSimpro Simpro
+    SET Tp_Alteracao = {$info['Tp_Alteracao']},
+    NumeroMsg = {$info['NumeroMsg']}
+    WHERE Simpro.Cd_Simpro = {$info['Cd_Simpro']}";
+    $query = $this->db->query($sql);
+    $this->db->stop_cache();
+    $this->db->flush_cache();
+    return $query;
+    }
+
 
     function carregaInfoTUSS($idEmpresa)
     {
