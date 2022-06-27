@@ -131,7 +131,7 @@ class ImportacaoModel extends CI_Model
         $this->db->reconnect();
         $query = $this->db->query("CALL atualizaFatItemPelaSimpro()");
         $this->db->close();
-        return TRUE;
+        return $query;
     }
 
     function carregaInfoTUSS($idEmpresa)

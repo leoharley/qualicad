@@ -2408,6 +2408,8 @@ class Importacao extends BaseController
 
                         $atualizaFatItem = $this->ImportacaoModel->atualizaFatItemPelaSimpro();
 
+                        var_dump($atualizaFatItem);exit;
+
                         }
 
                         // Status message with imported data count
