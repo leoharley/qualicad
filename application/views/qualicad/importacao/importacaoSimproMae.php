@@ -62,7 +62,7 @@
             <form action="<?php echo base_url() ?>importaSimproMae" method="post" enctype="multipart/form-data">
                 <br/>
                 <input type="file" name="file" id="file" onChange='getoutput()'/>
-                <input id='outputfile' type='text' name='outputfile'>
+                <input id='outputfile' type='hidden' name='outputfile'>
                 <br/>
                 <input type="submit" class="btn btn-primary" name="importSubmit" id="importSubmit" value="IMPORTAR">
                 
