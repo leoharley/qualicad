@@ -2359,12 +2359,14 @@ class Importacao extends BaseController
 
                             $memData = array();
 
+                            $vigencia = sprintf('%08d', $row['VIGENCIA']);
+
                             $memData += array(
                                 'NumeroMsg' => $this->input->post('outputfile')[4].$this->input->post('outputfile')[5].$this->input->post('outputfile')[7].$this->input->post('outputfile')[8].$this->input->post('outputfile')[9].$this->input->post('outputfile')[10],
                                 'Cd_Usuario' => $row['CD_USUARIO'],
                                 'Cd_Fracao'=> $row['CD_FRACAO'],
                                 'Ds_Produto'=> $row['DESCRICAO'],
-                                'DT_Vigencia'=> DateTime::createFromFormat('dmY', $row['VIGENCIA'])->format('Y-m-d'),
+                                'DT_Vigencia'=> DateTime::createFromFormat('dmY', $vigencia)->format('Y-m-d'),
                                 'Identificacao'=> $row['IDENTIF'],
                                 'Pr_FabEmbalagem'=> $this->valor($row['PC_EM_FAB']),
                                 'Pr_VenEmbalagem'=> $this->valor($row['PC_EM_VEN']),
