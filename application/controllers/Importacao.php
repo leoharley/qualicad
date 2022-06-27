@@ -2483,11 +2483,13 @@ class Importacao extends BaseController
 
                             $memData = array();
 
+                            $vigencia = sprintf('%08d', $row['VIGENCIA']);
+
                             $memData += array(                                
                                 'Cd_Usuario' => $row['CD_USUARIO'],
                                 'Cd_Fracao'=> $row['CD_FRACAO'],
                                 'Ds_Produto'=> $row['DESCRICAO'],
-                                'DT_Vigencia'=> DateTime::createFromFormat('dmY', $row['VIGENCIA'])->format('Y-m-d'),
+                                'DT_Vigencia'=> DateTime::createFromFormat('dmY', $vigencia)->format('Y-m-d'),
                                 'Identificacao'=> $row['IDENTIF'],
                                 'Pr_FabEmbalagem'=> $row['PC_EM_FAB'],
                                 'Pr_VenEmbalagem'=> $row['PC_EM_VEN'],
