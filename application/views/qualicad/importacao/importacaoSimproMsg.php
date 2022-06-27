@@ -145,6 +145,12 @@ function getoutput() {
 }
 
 $(document).ready(function () {
+
+        $('#importSubmit').click(function() {
+            $(this).attr('disabled', 'disabled');
+            $(this).parents('form').submit();
+        });
+
         $('#importSubmit').attr('disabled', true);
         $('input:file').change(
             function () {
