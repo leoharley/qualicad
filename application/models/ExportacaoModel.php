@@ -454,13 +454,15 @@ class ExportacaoModel extends CI_Model
             and TbConvenio.id_convenio = TbPlano.TbConvenio_Id_Convenio
             and TbConvenio.tbempresa_id_empresa = TbPlano.TbEmpresa_Id_Empresa
             and TbPlano.TbIndice_Id_Indice = TbIndice.Id_Indice
+            and TbPlano.TbEmpresa_Id_Empresa = TbIndice.TbEmpresa_Id_Empresa
             and TbPlano.TbRegra_Id_Regra = TbRegra.Id_Regra
             and TbPlano.TbEmpresa_Id_Empresa = TbRegra.TbEmpresa_Id_Empresa
             and TbRegra.Id_Regra = Tb_RegraGruPro.TbRegra_Id_Regra
             and TbRegra.TbEmpresa_Id_Empresa = Tb_RegraGruPro.TbEmpresa_Id_Empresa
             and Tb_RegraGruPro.TbFaturamento_Id_Faturamento = TbFaturamento.Id_Faturamento
             and Tb_RegraGruPro.TbFaturamento_Id_Faturamento = TbFatItem.TbFaturamento_Id_Faturamento
-            and  Tb_RegraGruPro.TbGrupoPro_CodGrupo = TbGrupoPro.CodGrupoPro 
+            and Tb_RegraGruPro.TbEmpresa_Id_Empresa = TbFatItem.TbEmpresa_Id_Empresa
+            and Tb_RegraGruPro.TbGrupoPro_CodGrupo = TbGrupoPro.CodGrupoPro
             and Tb_RegraGruPro.TbEmpresa_Id_Empresa = TbGrupoPro.TbEmpresa_Id_Empresa 
             and TbConvenio.Tp_Ativo= 'S'
             and TbPlano.Tp_Ativo = 'S'
