@@ -77,6 +77,30 @@ class ImportacaoModel extends CI_Model
         return $insert_id;
     }
 
+
+ /*   function adicionaProFat($info)
+    {
+        $this->db->reconnect();
+        $this->db->start_cache();
+        $sql="INSERT INTO ()
+
+
+UPDATE TbSimpro Simpro
+        SET NumeroMsg = {$info['NumeroMsg']},
+        Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
+        Pr_VenEmbalagem = {$info['Pr_VenEmbalagem']},
+        Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
+        Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
+        Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
+        Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
+        Tp_Alteracao = {$info['Tp_Alteracao']}
+        WHERE Simpro.Cd_Simpro = {$info['Cd_Simpro']}";
+        $query = $this->db->query($sql);
+        $this->db->stop_cache();
+        $this->db->flush_cache();
+        return $query;
+    } */
+
     function apagaProFat()
     {
         $res = $this->db->delete('TbProFat');
