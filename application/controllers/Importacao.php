@@ -299,6 +299,9 @@ class Importacao extends BaseController
                             // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
                             if (isset($memData['CodProFat'])) {
                             if ($this->ImportacaoModel->consultaRegraTbProFatExistente($memData['CodProFat'],$this->session->userdata('IdEmpresa')) != null) {
+                                var_dump($memData['CodProFat']);
+                                var_dump($this->session->userdata('IdEmpresa'));
+                                exit;
                                 $duplicidade++;
                                 } else {
                                     $insert = $this->ImportacaoModel->adicionaProFat($memData);
