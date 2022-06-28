@@ -308,6 +308,8 @@ class Importacao extends BaseController
                             $insert = $this->ImportacaoModel->adicionaProFat($memData);
 
 
+                            var_dump ($insert);
+
                             // ***** FIM DE VERIFICAÇÕES *****    
 
                             if($insert != 0){
@@ -318,6 +320,7 @@ class Importacao extends BaseController
                             }
 
                         }
+                        exit;
 
                         $temp = null;
 
