@@ -81,7 +81,7 @@ class ImportacaoModel extends CI_Model
     function adicionaProFat($info)
     {
 
-        var_dump($info);exit;
+        var_dump($info['Ds_ProFat']);exit;
         $this->db->reconnect();
         $this->db->start_cache();
         $sql="INSERT INTO TbProFat (Ds_ProFat, Ds_Unidade, TbGrupoPro_CodGrupo, Tp_Ativo, SN_PACOTE, CodProFat, TbUsuEmp_Id_UsuEmp, TbEmpresa_Id_Empresa)
