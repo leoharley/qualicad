@@ -297,13 +297,17 @@ class Importacao extends BaseController
 
                             $insert = 0;
                             // ***** VERIFICAÇÕES DE DUPLICIDADE NA ADIÇÃO *****
-                            if (isset($memData['CodProFat'])) {
+                        /*    if (isset($memData['CodProFat'])) {
                             if ($this->ImportacaoModel->consultaRegraTbProFatExistente($memData['CodProFat'],$this->session->userdata('IdEmpresa')) != null) {
                                 $duplicidade++;
                                 } else {
                                     $insert = $this->ImportacaoModel->adicionaProFat($memData);
                                 }
-                            }                        
+                            } */
+
+                            $insert = $this->ImportacaoModel->adicionaProFat($memData);
+
+
                             // ***** FIM DE VERIFICAÇÕES *****    
 
                             if($insert != 0){
