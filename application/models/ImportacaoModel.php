@@ -84,10 +84,10 @@ class ImportacaoModel extends CI_Model
         $this->db->start_cache();
         $sql="INSERT INTO TbProFat (Ds_ProFat, Ds_Unidade, TbGrupoPro_CodGrupo, Tp_Ativo, SN_PACOTE, CodProFat, TbUsuEmp_Id_UsuEmp, TbEmpresa_Id_Empresa)
         VALUES ('{$info['Ds_ProFat']}', '{$info['Ds_Unidade']}', {$info['TbGrupoPro_CodGrupo']}, '{$info['Tp_Ativo']}', '{$info['SN_PACOTE']}', {$info['CodProFat']}, {$info['TbUsuEmp_Id_UsuEmp']}, {$info['TbEmpresa_Id_Empresa']})";
-        var_dump($sql);exit;
         $query = $this->db->query($sql);
         $this->db->stop_cache();
         $this->db->flush_cache();
+        var_dump ($query);exit;
         return $query;
     }
 
