@@ -309,7 +309,7 @@ class Importacao extends BaseController
 
                             // ***** FIM DE VERIFICAÇÕES *****    
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                                 array_push($errosDeChave, ($rowCount+1));

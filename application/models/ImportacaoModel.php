@@ -87,7 +87,6 @@ class ImportacaoModel extends CI_Model
         $query = $this->db->query($sql);
         $this->db->stop_cache();
         $this->db->flush_cache();
-        var_dump ($query);exit;
         return $query;
     }
 
