@@ -65,20 +65,20 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
- /*   function adicionaProFat($info)
+    function adicionaProFat($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbProFat', $info);
+        $insert = $this->db->insert('TbProFat', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
-    } */
+        return $insert;
+    }
 
 
-    function adicionaProFat($info)
+ /*   function adicionaProFat($info)
     {
         $this->db->reconnect();
         $this->db->start_cache();
@@ -88,7 +88,7 @@ class ImportacaoModel extends CI_Model
         $this->db->stop_cache();
         $this->db->flush_cache();
         return $query;
-    }
+    } */
 
     function apagaProFat()
     {
