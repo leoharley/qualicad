@@ -128,7 +128,7 @@ class Importacao extends BaseController
                                 }                        
                                 // ***** FIM DE VERIFICAÇÕES *****    
                             
-                                if($insert != 0){
+                                if($insert){
                                     $insertCount++;
                                 } else {
                                     array_push($errosDeChave, ($rowCount+1));
@@ -508,7 +508,7 @@ class Importacao extends BaseController
                             }                        
                             // ***** FIM DE VERIFICAÇÕES *****
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
 
@@ -674,7 +674,7 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaRegraGruPro($memData);
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                                 array_push($errosDeChave, ($rowCount+1));
@@ -829,7 +829,7 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaFracaoSimproBra($memData);
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                                 array_push($errosDeChave, ($rowCount+1));
@@ -999,7 +999,7 @@ class Importacao extends BaseController
                             }                        
                             // ***** FIM DE VERIFICAÇÕES *****
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                                 array_push($errosDeChave, ($rowCount+1));
@@ -1171,7 +1171,7 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaProducao($memData);
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                                 array_push($errosDeChave, ($rowCount+1));
@@ -1326,7 +1326,7 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaContrato($memData);
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                                 array_push($errosDeChave, ($rowCount+1));
@@ -1585,7 +1585,7 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaPorteMedico($memData);
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                                 array_push($errosDeChave, ($rowCount+1));
@@ -1749,7 +1749,7 @@ class Importacao extends BaseController
                             }                        
                             // ***** FIM DE VERIFICAÇÕES *****
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                                 array_push($errosDeChave, ($rowCount+1));
@@ -1919,7 +1919,7 @@ class Importacao extends BaseController
 
                             $insert = $this->ImportacaoModel->adicionaFatItem($memData);
 
-                            if($insert != 0){
+                            if($insert){
                                 $insertCount++;
                             } else {
                               /*  if (isset($memData['TbProFat_Cd_ProFat'])) {

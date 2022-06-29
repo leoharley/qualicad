@@ -19,13 +19,13 @@ class ImportacaoModel extends CI_Model
     function adicionaGrupoPro($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbGrupoPro', $info);
+        $insert = $this->db->insert('TbGrupoPro', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function adicionaSimproMae($info)
@@ -203,13 +203,13 @@ class ImportacaoModel extends CI_Model
     function adicionaTUSS($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbTUSS', $info);
+        $insert = $this->db->insert('TbTUSS', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoRegraGruPro($idEmpresa)
@@ -227,13 +227,13 @@ class ImportacaoModel extends CI_Model
     function adicionaRegraGruPro($info)
     {
         $this->db->trans_start();
-        $this->db->insert('Tb_RegraGruPro', $info);
+        $insert = $this->db->insert('Tb_RegraGruPro', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoFracaoSimproBra($idEmpresa)
@@ -251,13 +251,13 @@ class ImportacaoModel extends CI_Model
     function adicionaFracaoSimproBra($info)
     {
         $this->db->trans_start();
-        $this->db->insert('Tb_FracaoSimproBra', $info);
+        $insert = $this->db->insert('Tb_FracaoSimproBra', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoProduto($idEmpresa)
@@ -275,13 +275,13 @@ class ImportacaoModel extends CI_Model
     function adicionaProduto($info)
     {
         $this->db->trans_start();
-        $this->db->insert('Tb_Produto', $info);
+        $insert = $this->db->insert('Tb_Produto', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoProducao($idEmpresa)
@@ -299,13 +299,13 @@ class ImportacaoModel extends CI_Model
     function adicionaProducao($info)
     {
         $this->db->trans_start();
-        $this->db->insert('Tb_Producao', $info);
+        $insert = $this->db->insert('Tb_Producao', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoContrato($idEmpresa)
@@ -323,13 +323,13 @@ class ImportacaoModel extends CI_Model
     function adicionaContrato($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbContrato', $info);
+        $insert = $this->db->insert('TbContrato', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoPorteMedico($idEmpresa)
@@ -347,13 +347,13 @@ class ImportacaoModel extends CI_Model
     function adicionaPorteMedico($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbPorteMedico', $info);
+        $insert = $this->db->insert('TbPorteMedico', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoExcecaoValores($idEmpresa)
@@ -371,13 +371,13 @@ class ImportacaoModel extends CI_Model
     function adicionaExcecaoValores($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbExcValores', $info);
+        $insert = $this->db->insert('TbExcValores', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
 
@@ -396,13 +396,13 @@ class ImportacaoModel extends CI_Model
     function adicionaFatItem($info)
     {
         $this->db->trans_start();
-        $this->db->insert('TbFatItem', $info);
+        $insert = $this->db->insert('TbFatItem', $info);
 
         $insert_id = $this->db->insert_id();
 
         $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoFaturamento($idEmpresa)
