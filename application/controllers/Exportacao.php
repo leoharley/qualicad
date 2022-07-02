@@ -473,9 +473,9 @@ class Exportacao extends BaseController
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
-      /*  $this->ExportacaoModel->kill_other_processes();
+        $this->ExportacaoModel->kill_other_processes();
 
-        $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio); */
+        $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
 
         $this->ExportacaoModel->kill_other_processes();        
 
