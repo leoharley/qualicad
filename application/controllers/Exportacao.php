@@ -473,13 +473,15 @@ class Exportacao extends BaseController
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
-        $this->ExportacaoModel->kill_other_processes();
+      /*  $this->ExportacaoModel->kill_other_processes();
 
-        $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
+        $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio); */
 
         $this->ExportacaoModel->kill_other_processes();        
 
-        $this->ExportacaoModel->cargaTmpContrato(($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa))[0]->Cd_EmpresaERP,$idConvenio);
+        var_dump(intval($idEmpresa));exit;
+
+        $this->ExportacaoModel->cargaTmpContrato(($this->ExportacaoModel->consultaCodERPEmpresa(intval($idEmpresa)))[0]->Cd_EmpresaERP,$idConvenio);
 
         $this->session->set_flashdata('concluido', 'true');
         redirect('exportacaoBI_finalizar');
