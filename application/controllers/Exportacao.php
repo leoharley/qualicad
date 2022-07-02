@@ -481,6 +481,10 @@ class Exportacao extends BaseController
 
         $this->ExportacaoModel->cargaTmpContrato(($this->ExportacaoModel->consultaCodERPEmpresa(intval($idEmpresa)))[0]->Cd_EmpresaERP,$idConvenio);
 
+        $this->ExportacaoModel->kill_other_processes();
+        
+        $this->ExportacaoModel->cargaBI();
+
         $this->session->set_flashdata('concluido', 'true');
         redirect('exportacaoBI_finalizar');
 
