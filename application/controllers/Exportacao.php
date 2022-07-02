@@ -478,6 +478,7 @@ class Exportacao extends BaseController
         $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
 
         $this->ExportacaoModel->kill_other_processes();
+        var_dump($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP);exit;
 
         $this->ExportacaoModel->cargaTmpContrato($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa)[0]->Cd_EmpresaERP,$idConvenio);
 
