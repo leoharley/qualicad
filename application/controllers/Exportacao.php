@@ -468,9 +468,18 @@ class Exportacao extends BaseController
     {
         if (array_key_exists('geraTbBI',$this->input->post())) {
             $this->exportaTbBI();
-        } 
+        }
 
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
+        $idEmpresa = $this->input->post('Id_Empresa');
+
+        $this->ExportacaoModel->kill_other_processes();
+        $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
+
+        $this->session->set_flashdata('concluido', 'true');
+        redirect('exportacaoBI_finalizar');
+
+    /*    $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
         set_time_limit(0);
@@ -579,6 +588,7 @@ class Exportacao extends BaseController
 
         $this->session->set_flashdata('insertCountContratoSession', $insertCountContratoSession);
         $this->session->set_flashdata('insertCountConvenioSession', $insertCountConvenioSession);
+        
 
         // COLOCAR NA SESSION O notAddCountConvenio E O notAddCountContrato
 
@@ -589,6 +599,7 @@ class Exportacao extends BaseController
         } else {
             redirect('exportacaoBI_progresso');
         }
+        */
     }
 
     function gerarTbBI()
