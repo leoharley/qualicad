@@ -512,8 +512,8 @@ class Exportacao extends BaseController
             $data->Vl_BrutoProced, $data->vl_contrato_neg, $data->Vl_ExcecaoProced_final, $data->Vl_ContratoProced, 
             $data->Cd_ProibicaoRegra, $data->Tp_ProibicaoRegra, $data->Tp_AtendProibicaoRegra, $data->Vl_ProibicaoRegra, 
             $data->TP_PROIBICAO, $data->TP_TUSS, $data->DS_TIP_TUSS, $data->Cd_Tuss, $data->Ds_Tuss, $data->CD_TISS, 
-            $data->cd_tuss_Valido, $data->ds_tuss_Valido, $data->cd_tiss_fracao,
-            $data->Vl_Venda, $data->vr_operacional, $data->vr_honorario, 
+            $data->cd_tuss_Valido, $data->ds_tuss_Valido, $data->cd_tiss_fracao, $data->Ind-vr, $data->Ind-vr-filme, 
+            $data->Ind-vr-honor, $data->Ind-Vr-Uco, $data->Vl_Venda, $data->vr_operacional, $data->vr_honorario, 
             $data->qt_m2_filme, $data->vr_porte_medico, $data->VL_FATOR_DIVISAO, $data->qt_embalagem, $data->Vl_Excecao, 
             $data->tp_exc_conv, $data->Vl_FinalConv, $data->CD_PRODUTO, $data->DS_PRODUTO, $data->Ds_Unidadeproduto, 
             $data->Vl_CustoMedio, $data->Vl_Fator, $data->Vl_FatorProFat, $data->Vl_CustoFinal, $data->Qt_FinalProd, 
@@ -521,9 +521,10 @@ class Exportacao extends BaseController
             $data->Diverg_sem_tuss, $data->Diverg_sem_simpro_brasindice, $data->Diverg_sem_tab_propriobrasindice, $data->qtde_tuss_duplic, 
             $data->ds_tp_gru_pro, $data->vl_fator_divisao_fracao, $data->tp_AcomodacaoPadrao, $data->ds_ind_quali, $data->ds_regra_quali, 
             $data->cd_gru_pro_quali, $data->cd_tab_Fat_quali, $data->ds_Tab_Fat_quali, $data->tp_Fat_quali, $data->perc_pago_quali, 
-            $data->cd_porte_med_quali, $data->ds_porte_med_quali $data->vr_final_conv, $data->TbEmpresa_Id_Empresa),'|');
+            $data->cd_porte_med_quali, $data->ds_porte_med_quali, $data->vr_final_conv, $data->TbEmpresa_Id_Empresa),'|');
         }
         fclose($handle);
+
 
         $this->session->set_flashdata('concluido', 'true');
         redirect('exportacaoBI_finalizar');
