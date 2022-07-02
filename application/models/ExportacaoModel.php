@@ -213,6 +213,17 @@ class ExportacaoModel extends CI_Model
         return $query->result();
     }
 
+    function exportaTbBI($idEmpresa)
+    {
+        $this->db->select('*');
+        $this->db->from('TbBI as BI');
+        $this->db->where('BI.Tp_Ativo', 'S');
+        $this->db->where('BI.TbEmpresa_Id_Empresa', $idEmpresa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function exportaContrato($idEmpresa,$var)
     {
         if ($var != 0) {
