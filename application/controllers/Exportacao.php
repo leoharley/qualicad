@@ -487,7 +487,7 @@ class Exportacao extends BaseController
 
         $this->ExportacaoModel->cargaBI();
 
-        $exportacao = $this->ExportacaoModel->exportaTbBI(intval($this->session->userdata('IdEmpresa')));
+        $exportacao = $this->ExportacaoModel->exportaTbBI();
 
         header('Content-type: aapplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-type: application/force-download');
