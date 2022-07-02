@@ -217,7 +217,7 @@ class ExportacaoModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('TbBI as BI');
-        $this->db->where('BI.Tp_Ativo', 'S');
+    //    $this->db->where('BI.Tp_Ativo', 'S');
     //    $this->db->where('BI.TbEmpresa_Id_Empresa', $idEmpresa);
         $query = $this->db->get();
 
