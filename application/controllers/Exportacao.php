@@ -470,10 +470,10 @@ class Exportacao extends BaseController
             $this->exportaTbBI();
         }
 
-        var_dump(($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa))[0]->Cd_EmpresaERP);exit;
-
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
+
+        var_dump(($this->ExportacaoModel->consultaCodERPEmpresa($idEmpresa))[0]->Cd_EmpresaERP);exit;
 
         $this->ExportacaoModel->kill_other_processes();
 
