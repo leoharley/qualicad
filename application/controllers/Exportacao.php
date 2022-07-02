@@ -474,7 +474,6 @@ class Exportacao extends BaseController
         $idEmpresa = $this->input->post('Id_Empresa');
 
         $this->ExportacaoModel->kill_other_processes();
-        var_dump($idEmpresa,$idConvenio);exit;
 
         $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
 
