@@ -213,7 +213,7 @@ class ExportacaoModel extends CI_Model
         return $query->result();
     }
 
-    function exportaTbBI($idEmpresa)
+    function exportaTbBI()
     {
         $this->db->select('*');
         $this->db->from('TbBI as BI');
