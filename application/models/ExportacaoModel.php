@@ -822,6 +822,12 @@ class ExportacaoModel extends CI_Model
         return TRUE;
     }
 
+    function cargaTmpContrato($idUsuario,$idConvenio)
+    {
+        $query = $this->db->query("CALL cargaTmpContrato({$idUsuario},{$idConvenio})");
+        return TRUE;
+    }
+
 
     function consultaTbBI($idEmpresa)
     {
