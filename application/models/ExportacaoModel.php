@@ -818,7 +818,7 @@ class ExportacaoModel extends CI_Model
 
     function cargaTmpConvenio($idUsuario,$idConvenio)
     {
-        $query = $this->db->query("CALL cargaConvenioBI({$idUsuario},{$idConvenio})");
+        $query = $this->db->query("CALL cargaTmpConvenio({$idUsuario},{$idConvenio})");
         return TRUE;
     }
 
