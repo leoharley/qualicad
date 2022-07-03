@@ -8,7 +8,7 @@ require APPPATH . '/libraries/BaseController.php';
  * @version : 1.0
  * @since : 27.02.2018
  */
-class ExportacaoComToken extends BaseController
+class ExportacaoAcessoExterno extends BaseController
 {
     /**
      * This is default constructor of the class
@@ -28,7 +28,7 @@ class ExportacaoComToken extends BaseController
    
     }
 
-    function exportaBI_Token()
+    function exportaBI_AE()
     {
         $filename = 'exportBi.csv';
 
