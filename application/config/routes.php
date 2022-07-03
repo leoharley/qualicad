@@ -199,7 +199,7 @@ $route['exportacaoTbBI_progresso'] = "exportacao/exportacaoTbBI_progresso";
 $route['exportaTbBI'] = "exportacao/exportaTbBI";
 $route['exportaBI'] = "exportacao/exportaBI";
 
-$route['exportaBI_Token/:any/:any'] = "exportacaoComToken/exportaBI_Token/$1/$2";
+$route['exportaBI_Token/:any/:any/:any'] = "exportacaoComToken/exportaBI_Token/$1/$2/$3";
 
 
 $route['gerarTbBI'] = "exportacao/gerarTbBI";
