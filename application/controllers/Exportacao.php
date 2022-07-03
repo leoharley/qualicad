@@ -506,7 +506,7 @@ class Exportacao extends BaseController
             $data->cd_Regra, $data->ds_Regra, $data->cd_tab_Fat, $data->ds_Tab_Fat, $data->Cd_GrupoPro, 
             $data->Ds_GrupoPro, $data->Tp_GrupoPro, $data->Tp_Moeda_tab_fat, $data->perc_pgto, $data->cd_indice, 
             $data->ds_indice, $data->vl_indice, $data->vl_M2filme, $data->vl_honorario_ind, $data->vl_uco_ind, 
-            $data->cd_profat, $data->ds_pro_Fat, $data->ds_unidade_Fat, $data->Vl_HonorarioProced, $data->Vl_OperacaoProced, 
+            $data->cd_profat, $data->ds_pro_Fat, $data->ds_unidade_Fat, number_format($data->Vl_HonorarioProced, 4, ',', ' '), $data->Vl_OperacaoProced, 
             $data->Vl_TotalProced, $data->QT_M2_FILME_cont, $data->Vl_ExcecaoProced, $data->CD_PRESTADOR, $data->Cd_PorteMedico, 
             $data->Ds_PorteMedico, $data->Vl_PorteMedico, $data->Cd_PorteMedicoExcecao, $data->Vl_PorteMedicoExcecao, 
             $data->Vl_BrutoProced, $data->vl_contrato_neg, $data->Vl_ExcecaoProced_final, $data->Vl_ContratoProced, 
