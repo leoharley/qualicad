@@ -657,8 +657,8 @@ class Exportacao extends BaseController
     {
         $filename = 'exportBi.csv';
 
-        $idConvenio = $this->uri->segment(2);
-        $idEmpresa = $this->uri->segment(3);
+        $idEmpresa = $this->uri->segment(2);
+        $idConvenio = $this->uri->segment(3);
 
         $this->ExportacaoModel->kill_other_processes();
 
