@@ -84,7 +84,7 @@ class ExportacaoAcessoExterno extends BaseController
             number_format($data->Vl_FinalProd, 4, ',', '.'), $data->vr_dif_vr_convenio_val_pro, $data->vr_dif_venda_custo, $data->Diverg_regra_proibicao_vl, 
             $data->Diverg_sem_tuss, $data->Diverg_sem_simpro_brasindice, $data->Diverg_sem_tab_propriobrasindice, $data->qtde_tuss_duplic, 
             $data->ds_tp_gru_pro, number_format($data->vl_fator_divisao_fracao, 4, ',', '.'), $data->tp_AcomodacaoPadrao, $data->ds_ind_quali, $data->ds_regra_quali, 
-            $data->cd_gru_pro_quali, $data->cd_tab_Fat_quali, $data->ds_Tab_Fat_quali, $data->tp_Fat_quali, $data->perc_pago_quali, 
+            $data->cd_gru_pro_quali, $data->cd_tab_Fat_quali, $data->ds_Tab_Fat_quali, $data->tp_Fat_quali, number_format($data->perc_pago_quali, 4, ',', '.'), 
             $data->cd_porte_med_quali, $data->ds_porte_med_quali, $data->vr_final_conv, $data->TbEmpresa_Id_Empresa),'|');
         }
         fclose($handle);
