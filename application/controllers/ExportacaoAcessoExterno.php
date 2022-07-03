@@ -41,6 +41,8 @@ class ExportacaoAcessoExterno extends BaseController
 
         if ($this->ExportacaoModel->consultaProcesso($token)[0]->ExportaBI == 'N') {
 
+        echo 'EXPORTAÇÃO INICIADA, AGUARDE..';
+
         $this->ExportacaoModel->kill_other_processes();
 
         $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
