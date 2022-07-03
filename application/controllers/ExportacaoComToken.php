@@ -34,6 +34,10 @@ class ExportacaoComToken extends BaseController
 
         $idEmpresa = $this->uri->segment(2);
         $idConvenio = $this->uri->segment(3);
+        $token = $this->uri->segment(4);
+
+
+        if ($token == 'b820bfc5-e344-4c6d-a468-ff4c477234ce') {
 
         $this->ExportacaoModel->kill_other_processes();
 
@@ -84,6 +88,11 @@ class ExportacaoComToken extends BaseController
             $data->cd_porte_med_quali, $data->ds_porte_med_quali, $data->vr_final_conv, $data->TbEmpresa_Id_Empresa),'|');
         }
         fclose($handle);
+
+    }   else
+     {
+        echo 'ACESSO NEGADO';exit;
+     }
 
     }
 
