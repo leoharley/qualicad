@@ -1176,16 +1176,7 @@ group by
 
         return $query->result();
     }
-
-    function consultaProcesso($Token)
-    {
-        $this->db->select('*');
-        $this->db->from('Processos as processo');
-        $this->db->where('processo.Token', $Token);
-        $query = $this->db->get();  
-
-        return $query->result();
-    }
+    
 
 
 }

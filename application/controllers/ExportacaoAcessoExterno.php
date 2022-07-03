@@ -39,10 +39,6 @@ class ExportacaoAcessoExterno extends BaseController
 
         if ($token == 'b820bfc5-e344-4c6d-a468-ff4c477234ce') {
 
-        if ($this->ExportacaoModel->consultaProcesso($token)[0]->ExportaBI == 'N') {
-
-        echo 'EXPORTAÇÃO INICIADA, AGUARDE..';
-
         $this->ExportacaoModel->kill_other_processes();
 
         $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
@@ -92,10 +88,7 @@ class ExportacaoAcessoExterno extends BaseController
             $data->cd_porte_med_quali, $data->ds_porte_med_quali, $data->vr_final_conv, $data->TbEmpresa_Id_Empresa),'|');
         }
         fclose($handle);
-    }
-    else {
-        echo 'PROCESSO JÁ ESTÁ SENDO EXECUTADO';exit;
-    }
+
     }   else
      {
         echo 'ACESSO NEGADO';exit;
