@@ -1156,6 +1156,7 @@ class Importacao extends BaseController
 
                             $memData += array(
                             //    'TbUsuEmp_Id_UsuEmp' => $this->session->userdata('IdUsuEmp'),
+                                'TbEmpresa_Id_Empresa'=>$this->session->userdata('IdEmpresa'),
                                 'Tp_Ativo'=> 'S');
                             
                             $insert = 0;
