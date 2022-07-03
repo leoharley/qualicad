@@ -655,14 +655,10 @@ class Exportacao extends BaseController
 
     function exportaBI_Token()
     {
-        if (array_key_exists('geraTbBI',$this->input->post())) {
-            $this->exportaTbBI();
-        }
-
         $filename = 'exportBi.csv';
 
-        $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
-        $idEmpresa = $this->input->post('Id_Empresa');
+        $idConvenio = $this->uri->segment(2);
+        $idEmpresa = $this->uri->segment(3);
 
         $this->ExportacaoModel->kill_other_processes();
 
