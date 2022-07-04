@@ -2527,6 +2527,8 @@ class Importacao extends BaseController
                                 'Generico_SN'=> $row['GENERICO'],
                                 'Diversos_SN'=> $row['DIVERSOS']);
 
+                            var_dump($memData);exit;
+
                             $insert = $this->ImportacaoModel->adicionaSimproMae($memData);
 
                             if($insert != 0){
