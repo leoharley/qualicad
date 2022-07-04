@@ -45,6 +45,7 @@ class CSVReader {
             $separador = '|';
         }
         
+        var_dump($separador);exit;
         // If file doesn't exist, return false
         if(!file_exists($filepath)){
             return FALSE;            
