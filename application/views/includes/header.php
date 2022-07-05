@@ -399,7 +399,7 @@ $(function() {
 
                 <li class="treeview" data-toggle="collapse" data-target="#test" style="margin-bottom: 20px!important;cursor: pointer!important;">
                     <i class="fa fa-th" style="margin-left:18px;color:white"></i>
-                    <span style="margin-left:5px;color:white">Importação (cargas)</span>
+                    <span style="margin-left:5px;color:white">Iportação (cargas)</span>
 
                     <ul class="nav nav-list collapse" style="margin-top:10px" id="test">
 
