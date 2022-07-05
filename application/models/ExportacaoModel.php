@@ -829,13 +829,17 @@ class ExportacaoModel extends CI_Model
 
     function cargaTmpConvenio($idEmpresa,$idConvenio)
     {
+        $this->db->reconnect();
         $query = $this->db->query("CALL cargaTmpConvenio({$idEmpresa},{$idConvenio})");
+        $this->db->close();
         return TRUE;
     }
 
     function cargaTmpContrato($idEmpresa,$idConvenio)
     {
+        $this->db->reconnect();
         $query = $this->db->query("CALL cargaTmpContrato({$idEmpresa},{$idConvenio})");
+        $this->db->close();
         return TRUE;
     }
 
