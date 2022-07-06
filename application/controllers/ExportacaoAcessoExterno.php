@@ -37,20 +37,7 @@ class ExportacaoAcessoExterno extends BaseController
         $idGrupo = $this->uri->segment(4);
         $token = $this->uri->segment(5);
 
-
         if ($token == 'b820bfc5-e344-4c6d-a468-ff4c477234ce') {
-
-        $this->ExportacaoModel->kill_other_processes();
-
-        $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
-
-        $this->ExportacaoModel->kill_other_processes();        
-
-        $this->ExportacaoModel->cargaTmpContrato(($this->ExportacaoModel->consultaCodERPEmpresa(intval($idEmpresa)))[0]->Cd_EmpresaERP,$idConvenio);
-
-        $this->ExportacaoModel->kill_other_processes();
-
-        $this->ExportacaoModel->cargaBI();
 
         $exportacao = $this->ExportacaoModel->exportaTbBI();
 
