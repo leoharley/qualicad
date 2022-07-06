@@ -2569,7 +2569,7 @@ class Importacao extends BaseController
             $mime = get_mime_by_extension($_FILES['file']['name']);
             $fileAr = explode('.', $_FILES['file']['name']);
             $ext = end($fileAr);
-            if((($ext == 'csv') || ($ext == 'CSV'))  && in_array($mime, $allowed_mime_types)){
+            if((($ext == 'csv') || ($ext == 'CSV'))){
                 return true;
             }else{
                 $this->form_validation->set_message('file_check', 'Favor selecione somente um arquivo CSV.');
