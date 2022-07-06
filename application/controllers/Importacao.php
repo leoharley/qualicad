@@ -2468,7 +2468,7 @@ class Importacao extends BaseController
             // Form field validation rules
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('file', 'callback_file_check');
+            $this->form_validation->set_rules('file');
 
             // Validate submitted form data
             if($this->form_validation->run() == true){
