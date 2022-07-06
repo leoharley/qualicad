@@ -2468,7 +2468,7 @@ class Importacao extends BaseController
             // Form field validation rules
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('file', 'CSV file', 'csv file', 'callback_file_check');
+            $this->form_validation->set_rules('file', 'callback_file_check');
 
             // Validate submitted form data
             if($this->form_validation->run() == true){
@@ -2569,7 +2569,7 @@ class Importacao extends BaseController
             $mime = get_mime_by_extension($_FILES['file']['name']);
             $fileAr = explode('.', $_FILES['file']['name']);
             $ext = end($fileAr);
-            if((($ext == 'csv') || ($ext == 'CSV'))){
+            if(($ext == 'csv') && in_array($mime, $allowed_mime_types)){
                 return true;
             }else{
                 $this->form_validation->set_message('file_check', 'Favor selecione somente um arquivo CSV.');
