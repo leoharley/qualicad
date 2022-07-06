@@ -34,7 +34,8 @@ class ExportacaoAcessoExterno extends BaseController
 
         $idEmpresa = $this->uri->segment(2);
         $idConvenio = $this->uri->segment(3);
-        $token = $this->uri->segment(4);
+        $idGrupo = $this->uri->segment(4);
+        $token = $this->uri->segment(5);
 
 
         if ($token == 'b820bfc5-e344-4c6d-a468-ff4c477234ce') {
