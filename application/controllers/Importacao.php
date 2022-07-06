@@ -2498,7 +2498,7 @@ class Importacao extends BaseController
                                 'Ds_Produto'=> $row['DESCRICAO'],
                                 'DT_Vigencia'=> DateTime::createFromFormat('dmY', $vigencia)->format('Y-m-d'),
                                 'Identificacao'=> $row['IDENTIF'],
-                                'Pr_FabEmbalagem'=> $row['PC_EM_FAB'],
+                                'Pr_FabEmbalagem'=> $row['PC_EM_FAB'] / 100,
                                 'Pr_VenEmbalagem'=> $row['PC_EM_VEN'],
                                 'Pr_UsuEmbalagem'=> $row['PC_EM_USU'],
                                 'Pr_FabFracao'=> $row['PC_FR_FAB'],
