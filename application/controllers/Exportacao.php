@@ -552,7 +552,7 @@ class Exportacao extends BaseController
             $data->cd_gru_pro_quali, $data->cd_tab_Fat_quali, $data->ds_Tab_Fat_quali, $data->tp_Fat_quali, number_format($data->perc_pago_quali, 4, ',', '.'), 
             $data->cd_porte_med_quali, $data->ds_porte_med_quali, number_format($data->vr_final_conv, 4, ',', '.'), $data->TbEmpresa_Id_Empresa),'|');
         }
-        fclose($handle);
+
 
         redirect('exportacaoBI_finalizar');
         }
