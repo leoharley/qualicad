@@ -475,24 +475,42 @@ class Exportacao extends BaseController
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
+        if ($this->input->post('offset') == '') {
+
         $this->ExportacaoModel->kill_other_processes();
 
         $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
 
         $this->session->set_flashdata('offset', 'cargaTmpConvenio');
+        $this->session->set_flashdata('idconvenio', $idConvenio);
 
         redirect('exportacaoBI_progresso');
+
+        } else if ($this->input->post('offset') == 'cargaTmpConvenio') {
 
         $this->ExportacaoModel->kill_other_processes();        
 
         $this->ExportacaoModel->cargaTmpContrato(($this->ExportacaoModel->consultaCodERPEmpresa(intval($idEmpresa)))[0]->Cd_EmpresaERP,$idConvenio);
 
+        $this->session->set_flashdata('offset', 'cargaTmpContrato');
+        $this->session->set_flashdata('idconvenio', $idConvenio);
+
+        redirect('exportacaoBI_progresso');
+        }
+
+        else if ($this->input->post('offset') == 'cargaTmpContrato') {
+
         $this->ExportacaoModel->kill_other_processes();
 
         $this->ExportacaoModel->cargaBI();
 
+        $this->ExportacaoModel->cargaHistoricoBI();
+
         $this->session->set_flashdata('concluido', 'true');
+        $this->session->set_flashdata('idconvenio', $idConvenio);
+
         redirect('exportacaoBI_finalizar');
+        }
 
     /*    $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');

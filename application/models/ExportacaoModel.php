@@ -828,6 +828,14 @@ class ExportacaoModel extends CI_Model
         return TRUE;
     }
 
+    function cargaHistoricoBI()
+    {
+        $this->db->reconnect();
+        $query = $this->db->query("CALL cargaHistoricoBI()");
+        $this->db->close();
+        return TRUE;
+    }
+
 
     function cargaTmpConvenio($idEmpresa,$idConvenio)
     {
