@@ -512,13 +512,14 @@ class Exportacao extends BaseController
 
         $this->ExportacaoModel->cargaHistoricoBI();
 
+        $this->session->set_flashdata('offset', 'concluido');
         $this->session->set_flashdata('concluido', 'true');
         $this->session->set_flashdata('idconvenio', $idConvenio);
 
         $exportacao = $this->ExportacaoModel->exportaTbBI();
 
         header('Content-type: aapplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-type: application/force-download');
+    //    header('Content-type: application/force-download');
         header('Content-Disposition: attachment; filename='.$filename.'');
         header('Pragma: no-cache');
         header('Cache-Control: max-age=0');
@@ -553,7 +554,7 @@ class Exportacao extends BaseController
         }
         fclose($handle);
 
-        header('Location:'.base_url().'exportacaoBI_finalizar');
+        redirect('exportacaoBI_finalizar');
 
         }
 
