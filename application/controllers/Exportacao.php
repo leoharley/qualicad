@@ -523,7 +523,6 @@ class Exportacao extends BaseController
         header('Pragma: no-cache');
         header('Cache-Control: max-age=0');
         header('X-Accel-Buffering: no');
-        header('Location:'.base_url().'exportacaoBI_finalizar');
         ob_clean();
         flush();
 
@@ -553,6 +552,8 @@ class Exportacao extends BaseController
             $data->cd_porte_med_quali, $data->ds_porte_med_quali, number_format($data->vr_final_conv, 4, ',', '.'), $data->TbEmpresa_Id_Empresa),'|');
         }
         fclose($handle);
+
+        header('Location:'.base_url().'exportacaoBI_finalizar');
 
         }
 
