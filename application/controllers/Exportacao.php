@@ -470,8 +470,6 @@ class Exportacao extends BaseController
             $this->exportaTbBI();
         }
 
-        $filename = 'exportBI.csv';
-
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
 
@@ -645,6 +643,9 @@ class Exportacao extends BaseController
 
     function geraCsvBI()
     {
+
+    $filename = 'exportBI.csv';
+
     $exportacao = $this->ExportacaoModel->exportaTbBI();
 
         header('Content-type: aapplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
