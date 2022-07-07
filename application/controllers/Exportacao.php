@@ -69,8 +69,8 @@ class Exportacao extends BaseController
 
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->Id_FatItem, $data->CodFatItem, $data->TbFaturamento_Id_Faturamento,
-            $data->Ds_FatItem,$data->Dt_IniVigencia,$data->Dt_FimVigencia,$data->Vl_Honorário,$data->Vl_Operacional,
-            $this->valor($data->Vl_Total),$data->Vl_Filme,$data->Cd_PorteMedico,$data->Cd_TUSS,$data->Cd_TISS,$data->Qt_Embalagem,
+            $data->Ds_FatItem,$data->Dt_IniVigencia,$data->Dt_FimVigencia,$this->valor($data->Vl_Honorário),$this->valor($data->Vl_Operacional),
+            $this->valor($data->Vl_Total),$this->valor($data->Vl_Filme),$data->Cd_PorteMedico,$data->Cd_TUSS,$data->Cd_TISS,$data->Qt_Embalagem,
             $data->Ds_Unidade,$data->Tp_Ativo),'|');
         }
             fclose($handle);
