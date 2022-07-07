@@ -515,8 +515,6 @@ class Exportacao extends BaseController
         $this->session->set_flashdata('concluido', 'true');
         $this->session->set_flashdata('idconvenio', $idConvenio);
 
-        redirect('exportacaoBI_finalizar');
-        
         $exportacao = $this->ExportacaoModel->exportaTbBI();
 
         header('Content-type: aapplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -556,6 +554,8 @@ class Exportacao extends BaseController
         fclose($handle);
 
         }
+
+        redirect('exportacaoBI_finalizar');
 
     /*    $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
