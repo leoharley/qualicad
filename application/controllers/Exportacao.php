@@ -70,7 +70,7 @@ class Exportacao extends BaseController
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->Id_FatItem, $data->CodFatItem, $data->TbFaturamento_Id_Faturamento,
             $data->Ds_FatItem,$data->Dt_IniVigencia,$data->Dt_FimVigencia,$data->Vl_Honorário,$data->Vl_Operacional,
-            $data->Vl_Total,$data->Vl_Filme,$data->Cd_PorteMedico,$data->Cd_TUSS,$data->Cd_TISS,$data->Qt_Embalagem,
+            $this->valor($data->Vl_Total),$data->Vl_Filme,$data->Cd_PorteMedico,$data->Cd_TUSS,$data->Cd_TISS,$data->Qt_Embalagem,
             $data->Ds_Unidade,$data->Tp_Ativo),'|');
         }
             fclose($handle);
@@ -699,6 +699,13 @@ class Exportacao extends BaseController
         $this->session->set_flashdata('concluido', 'true');
         redirect('exportacaoBI_finalizar');
 
+    }
+
+    function valor($val)
+    {
+        $val = str_replace(",",".",$val);
+        $val = preg_replace('/\.(?=.*\.)/', '', $val);
+        return floatval($val);      
     }
 
 
