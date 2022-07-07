@@ -481,6 +481,8 @@ class Exportacao extends BaseController
 
         $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
 
+        $this->ExportacaoModel->kill_other_processes();
+
         $this->session->set_flashdata('offset', 'cargaTmpConvenio');
         $this->session->set_flashdata('idconvenio', $idConvenio);
 
@@ -491,6 +493,8 @@ class Exportacao extends BaseController
         $this->ExportacaoModel->kill_other_processes();        
 
         $this->ExportacaoModel->cargaTmpContrato(($this->ExportacaoModel->consultaCodERPEmpresa(intval($idEmpresa)))[0]->Cd_EmpresaERP,$idConvenio);
+        
+        $this->ExportacaoModel->kill_other_processes();
 
         $this->session->set_flashdata('offset', 'cargaTmpContrato');
         $this->session->set_flashdata('idconvenio', $idConvenio);
@@ -503,6 +507,8 @@ class Exportacao extends BaseController
         $this->ExportacaoModel->kill_other_processes();
 
         $this->ExportacaoModel->cargaBI();
+
+        $this->ExportacaoModel->kill_other_processes();
 
         $this->ExportacaoModel->cargaHistoricoBI();
 
