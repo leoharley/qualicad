@@ -523,7 +523,7 @@ class Exportacao extends BaseController
         header('Pragma: no-cache');
         header('Cache-Control: max-age=0');
         header('X-Accel-Buffering: no');
-        header('Location:'.base_url().'exportacaoBI_finalizar')
+        header('Location:'.base_url().'exportacaoBI_finalizar');
         ob_clean();
         flush();
 
