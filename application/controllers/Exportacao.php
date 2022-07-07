@@ -470,7 +470,7 @@ class Exportacao extends BaseController
             $this->exportaTbBI();
         }
 
-        $filename = 'exportBi.csv';
+    //    $filename = 'exportBi.csv';
 
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
@@ -478,6 +478,10 @@ class Exportacao extends BaseController
         $this->ExportacaoModel->kill_other_processes();
 
         $this->ExportacaoModel->cargaTmpConvenio($idEmpresa,$idConvenio);
+
+        $this->session->set_flashdata('offset', 'cargaTmpConvenio');
+
+        redirect('exportacaoBI_progresso');
 
         $this->ExportacaoModel->kill_other_processes();        
 
