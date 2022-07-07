@@ -532,16 +532,16 @@ $(function() {
                         <li class="treeview" style="margin-left:22px;">
                             <a href="<?php echo base_url(); ?>exportacaoBI">
                                 <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Exportar Temporárias</span>
+                                <span style="margin-left:5px">Exportar BI</span>
                             </a>
                         </li>
 
-                        <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>exportacaoBI_finalizar">
+                  <!--      <li class="treeview" style="margin-left:22px;">
+                            <a href="<?php //echo base_url(); ?>exportacaoBI_finalizar">
                                 <i class="fa fa-upload"></i>
                                 <span style="margin-left:5px">Exportar Tabela BI</span>
                             </a>
-                        </li>
+                        </li> -->
 
                     </ul>
 
