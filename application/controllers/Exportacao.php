@@ -470,7 +470,7 @@ class Exportacao extends BaseController
             $this->exportaTbBI();
         }
 
-    //    $filename = 'exportBi.csv';
+        $filename = 'exportBI.csv';
 
         $idConvenio = $this->input->post('TbConvenio_Id_Convenio');
         $idEmpresa = $this->input->post('Id_Empresa');
