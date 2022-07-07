@@ -104,7 +104,8 @@
 
                 <input type="hidden" name="offsetTbBI" id="offsetTbBI" value="<?php echo $this->session->flashdata('offsetTbBI'); ?>">
 
-                <?php if ($this->session->flashdata('concluido') == 'true') {echo '<span><strong>Processamento concluído!</strong></span><br/>';} ?>
+                <?php if ($this->session->flashdata('concluido') == 'true') {echo '<span><strong>Processamento concluído!</strong></span><br/><br/> 
+                    <a href="'.base_url().'geraCsvBI"><i class="fa fa-upload"></i><span style="margin-left:5px">Baixar CSV</span></a>';} ?>
 
                 <div id="loader" style="margin-top:30px;display:none">
                 <span><strong>Processando consolidado final, aguarde...    </strong></span>

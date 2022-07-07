@@ -199,6 +199,8 @@ $route['exportacaoTbBI_progresso'] = "exportacao/exportacaoTbBI_progresso";
 $route['exportaTbBI'] = "exportacao/exportaTbBI";
 $route['exportaBI'] = "exportacao/exportaBI";
 
+$route['geraCsvBI'] = "exportacao/geraCsvBI";
+
 $route['exportaBI_AE/:any/:any/:any/:any'] = "ExportacaoAcessoExterno/exportaBI_AE/$1/$2/$3/$4";
 
 
