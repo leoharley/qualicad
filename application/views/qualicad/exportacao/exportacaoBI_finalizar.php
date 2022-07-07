@@ -56,7 +56,7 @@
 
         <!-- File upload form -->
         <div class="col-md-12" id="exportFrm">
-            <form action="<?php echo base_url() ?>exportaTbBI" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url() ?>exportaBI" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="Id_Empresa">Empresa</label>
                     <select class="form-control required" id="Id_Empresa" name="Id_Empresa">
@@ -112,10 +112,12 @@
                 </div>
                 <br/>
 
+                <input type="submit" class="btn btn-primary" name="exportSubmit" id="exportSubmit" value="GERAR" disabled>
+
              <!--   <input type="submit" class="btn btn-primary" value="Processar BI" name="geraTbBI" id="geraTbBI" style="margin-left:5px;"/> -->
-                <a href="<?php echo base_url().'gerarTbBI' ?>">
+              <!--  <a href="<?php //echo base_url().'gerarTbBI' ?>">
                     <span class="btn btn-primary">Gerar BI</span>
-                </a>
+                </a> -->
 
             <br/>
 

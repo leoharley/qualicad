@@ -105,7 +105,7 @@
                 <?php if ($this->session->flashdata('concluido') == 'true') {echo '<span><strong>Processamento concluído!</strong></span><br/>';} ?>
 
                 <div id="loader" style="display:none;margin-top:30px">
-                <span><strong>Processando tabelas temporárias, aguarde...    </strong></span>
+                <span><strong>Gerando BI, aguarde...    </strong></span>
                 <img src="<?php echo base_url(); ?>assets/images/loading.gif" style="width:100px;height:auto">
                 </div>
                 <br/>
