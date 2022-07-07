@@ -200,7 +200,7 @@ class Exportacao extends BaseController
 
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->TbGrupoPro_CodGrupo, $data->TbRegra_Id_Regra, $data->TbFaturamento_Id_Faturamento,
-                $data->Perc_Pago,$data->Dt_IniVigencia,$data->Dt_FimVigencia),'|');
+            $this->valor($data->Perc_Pago),$data->Dt_IniVigencia,$data->Dt_FimVigencia),'|');
         }
         fclose($handle);
         exit;
@@ -232,7 +232,7 @@ class Exportacao extends BaseController
 
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->TbProFat_Cd_ProFat, $data->TbFaturamento_Id_Faturamento, $data->TbTUSS_Id_Tuss,
-                $data->Ds_FracaoSimproBra,$data->Ds_Laboratorio,$data->Ds_Apresentacao,$data->Tp_MatMed,$data->Vl_FatorDivisao,
+                $data->Ds_FracaoSimproBra,$data->Ds_Laboratorio,$data->Ds_Apresentacao,$data->Tp_MatMed,$this->valor($data->Vl_FatorDivisao),
                 $data->Qt_Prod),'|');
         }
         fclose($handle);
@@ -266,8 +266,8 @@ class Exportacao extends BaseController
 
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->TbProFat_Cd_ProFat, $data->Tb_Unidade_Id_Unidade, $data->Cd_Produto,
-                $data->Ds_Produto,$data->Ds_Especie,$data->Cd_ProdutoMestre,$data->SN_Mestre,$data->Vl_CustoMedio,
-                $data->Vl_Fator,$data->Vl_FatorProFat,$data->Vl_CustoFinal),'|');
+                $data->Ds_Produto,$data->Ds_Especie,$data->Cd_ProdutoMestre,$data->SN_Mestre,$this->valor($data->Vl_CustoMedio),
+                $this->valor($data->Vl_Fator),$this->valor($data->Vl_FatorProFat),$this->valor($data->Vl_CustoFinal)),'|');
         }
         fclose($handle);
         exit;
@@ -337,13 +337,13 @@ class Exportacao extends BaseController
 
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->Cd_EmpresaERP, $data->Cd_ConvenioERP, $data->Cd_PlanoERP,
-                $data->Cd_ProFatERP,$data->Cd_IndiceERP,$data->Ds_IndiceERP,$data->Dt_VigenciaIndiceERP,$data->Vl_IndiceERP,
-                $data->Vl_FilmeIndiceERP,$data->Vl_HonorarioIndiceERP,$data->Vl_UCOIndiceERP,$data->Cd_RegraERP,
-                $data->Ds_RegraERP,$data->Cd_TabFatERP,$data->Ds_TabFatERP,$data->Cd_MoedaERP,$data->Ds_MoedaERP,
-                $data->Cd_RegraGruProErp,$data->Ds_RegraGruProErp,$data->Per_RegraPGErp,$data->Ds_ProFatERP,$data->UnidadeProFatERP,
-                $data->Vl_ProHonorarioERP,$data->Vl_ProOperaçãoERP,$data->Vl_ProTotalERP,$data->Vl_ProExcecValorERP,$data->Ds_PrestadoraExcec,
-                $data->Qtde_M2FilmeERP,$data->Cd_PortMedicoERP,$data->Ds_PortMedicoERP,$data->Vl_PorteMedicoERP,$data->Cd_ExcecPorMedicoERP,
-                $data->Vl_ExcecPorMedicoERP,$data->Vl_FinalERP,$data->Vl_FinalExecERP,$data->Tp_ProibicaoERP),'|');
+                $data->Cd_ProFatERP,$data->Cd_IndiceERP,$data->Ds_IndiceERP,$data->Dt_VigenciaIndiceERP,$this->valor($data->Vl_IndiceERP),
+                $this->valor($data->Vl_FilmeIndiceERP),$this->valor($data->Vl_HonorarioIndiceERP),$this->valor($data->Vl_UCOIndiceERP),$data->Cd_RegraERP,
+                $data->Ds_RegraERP,$data->Cd_TabFatERP,$data->Ds_TabFatERP,$data->Cd_MoedaERP,$data->Ds_MoedaERP,$data->Cd_RegraGruProErp,
+                $data->Ds_RegraGruProErp,$data->Per_RegraPGErp,$data->Ds_ProFatERP,$data->UnidadeProFatERP,$this->valor($data->Vl_ProHonorarioERP),
+                $this->valor($data->Vl_ProOperaçãoERP),$this->valor($data->Vl_ProTotalERP),$this->valor($data->Vl_ProExcecValorERP),$data->Ds_PrestadoraExcec,
+                $data->Qtde_M2FilmeERP,$data->Cd_PortMedicoERP,$data->Ds_PortMedicoERP,$this->valor($data->Vl_PorteMedicoERP),$data->Cd_ExcecPorMedicoERP,
+                $this->valor($data->Vl_ExcecPorMedicoERP),$this->valor($data->Vl_FinalERP),$this->valor($data->Vl_FinalExecERP),$data->Tp_ProibicaoERP),'|');
         }
         fclose($handle);
         exit;
@@ -375,7 +375,7 @@ class Exportacao extends BaseController
 
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->Id_PorteMedico, $data->Id_TabFaturamento, $data->Cd_PorteMedico,
-                $data->Ds_PorteMedico,$data->Vl_PorteMedico),'|');
+                $data->Ds_PorteMedico,$this->valor($data->Vl_PorteMedico)),'|');
         }
         fclose($handle);
         exit;
@@ -409,7 +409,7 @@ class Exportacao extends BaseController
         foreach ($exportacao as $data) {
             fputcsv($handle, array($data->Id_ExcValores, $data->CD_Convenio, $data->Cd_TUSS,
                 $data->Cd_ProFat,$data->Ds_ExcValores,$data->ClasseEvento,$data->Tp_ExcValores,
-                $data->Vl_ExcValores),'|');
+                $this->valor($data->Vl_ExcValores)),'|');
         }
         fclose($handle);
         exit;
