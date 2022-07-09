@@ -2405,7 +2405,7 @@ class Importacao extends BaseController
                                 'CriadoPor'=>$this->vendorId,
                                 'Dt_Ativo'=>date('Y-m-d'));
 
-                            $insertMsg = $this->ImportacaoModel->adicionaSimproMsg($memData);
+                        //    $insertMsg = $this->ImportacaoModel->adicionaSimproMsg($memData);
 
                           /*  if ($row['TIP_ALT'] == 'I') { $insertSimpro = $this->ImportacaoModel->adicionaSimproMae($memData); $atualizaFatItem = $this->ImportacaoModel->atualizaInclusaoFatItemPelaSimpro(); }
                             if ($row['TIP_ALT'] == 'P') { $insertSimpro = $this->ImportacaoModel->atualizaPrecoSimproMae($memData); $atualizaFatItem = $this->ImportacaoModel->atualizaPrecoFatItemPelaSimpro(); }
