@@ -147,7 +147,9 @@ class ImportacaoModel extends CI_Model
 
     function atualizaPrecoFatItemPelaSimpro()
     {
-        $query = $this->db->query("CALL atualizaPrecoFatItemPelaSimpro()");
+        $this->db->reconnect();
+        $query = $this->db->query("CALL atualizaPrecoFatItemPelaSimpro();");
+        $this->db->close();
         return $query;
     }
 
