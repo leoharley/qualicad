@@ -137,10 +137,10 @@ class ImportacaoModel extends CI_Model
         return TRUE;
     }
 
-    function atualizaFatItemPelaSimpro()
+    function atualizaInclusaoFatItemPelaSimpro()
     {
         $this->db->reconnect();
-        $query = $this->db->query("CALL atualizaFatItemPelaSimpro()");
+        $query = $this->db->query("CALL atualizaInclusaoFatItemPelaSimpro()");
         $this->db->close();
         return $query;
     }
