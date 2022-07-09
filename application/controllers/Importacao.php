@@ -2405,8 +2405,6 @@ class Importacao extends BaseController
                                 'CriadoPor'=>$this->vendorId,
                                 'Dt_Ativo'=>date('Y-m-d'));
 
-                            var_dump($memData);exit;
-
                             $insertMsg = $this->ImportacaoModel->adicionaSimproMsg($memData);
 
                           /*  if ($row['TIP_ALT'] == 'I') { $insertSimpro = $this->ImportacaoModel->adicionaSimproMae($memData); $atualizaFatItem = $this->ImportacaoModel->atualizaInclusaoFatItemPelaSimpro(); }
