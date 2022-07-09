@@ -145,6 +145,30 @@ class ImportacaoModel extends CI_Model
         return $query;
     }
 
+    function atualizaPrecoFatItemPelaSimpro()
+    {
+        $this->db->reconnect();
+        $query = $this->db->query("CALL atualizaPrecoFatItemPelaSimpro()");
+        $this->db->close();
+        return $query;
+    }
+
+    function atualizaAlteracoesFatItemPelaSimpro()
+    {
+        $this->db->reconnect();
+        $query = $this->db->query("CALL atualizaAlteracoesFatItemPelaSimpro()");
+        $this->db->close();
+        return $query;
+    }
+
+    function atualizaForadeLinhaFatItemPelaSimpro()
+    {
+        $this->db->reconnect();
+        $query = $this->db->query("CALL atualizaForadeLinhaFatItemPelaSimpro()");
+        $this->db->close();
+        return $query;
+    }
+
     function atualizaPrecoSimproMae($info)
     {
     $this->db->reconnect();
