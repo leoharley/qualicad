@@ -2407,7 +2407,7 @@ class Importacao extends BaseController
 
                             $insertMsg = $this->ImportacaoModel->adicionaSimproMsg($memData);
 
-                            if ($row['TIP_ALT'] == 'I') { $insertSimpro = $this->ImportacaoModel->adicionaSimproMae($memData); $atualizaFatItem = $this->ImportacaoModel->atlFatItemPelaSimpro(); }
+                            if ($row['TIP_ALT'] == 'I') { $insertSimpro = $this->ImportacaoModel->adicionaSimproMae($memData); $this->ImportacaoModel->atlFatItemPelaSimpro(); }
                             if ($row['TIP_ALT'] == 'P') { $insertSimpro = $this->ImportacaoModel->atualizaPrecoSimproMae($memData); }
                             if ($row['TIP_ALT'] == 'A') { $insertSimpro = $this->ImportacaoModel->atualizaLinhaSimproMae($memData); }
                             if ($row['TIP_ALT'] == 'L' || $row['TIP_ALT'] == 'D' || $row['TIP_ALT'] == 'S') { $insertSimpro = $this->ImportacaoModel->atualizaTipAltSimproMae($memData); }
