@@ -2409,8 +2409,8 @@ class Importacao extends BaseController
 
                             if ($row['TIP_ALT'] == 'I') { $insertSimpro = $this->ImportacaoModel->adicionaSimproMae($memData); $this->ImportacaoModel->atualizaInclusaoFatItemPelaSimpro(); }
                             if ($row['TIP_ALT'] == 'P') { $insertSimpro = $this->ImportacaoModel->atualizaPrecoSimproMae($memData); $this->ImportacaoModel->atualizaPrecoFatItemPelaSimpro(); }
-                            if ($row['TIP_ALT'] == 'A') { $insertSimpro = $this->ImportacaoModel->atualizaLinhaSimproMae($memData);  }
-                            if ($row['TIP_ALT'] == 'L' || $row['TIP_ALT'] == 'D' || $row['TIP_ALT'] == 'S') { $insertSimpro = $this->ImportacaoModel->atualizaTipAltSimproMae($memData);  }
+                            if ($row['TIP_ALT'] == 'A') { $insertSimpro = $this->ImportacaoModel->atualizaLinhaSimproMae($memData); $atualizaFatItem = $this->ImportacaoModel->atualizaAlteracoesFatItemPelaSimpro(); }
+                            if ($row['TIP_ALT'] == 'L' || $row['TIP_ALT'] == 'D' || $row['TIP_ALT'] == 'S') { $insertSimpro = $this->ImportacaoModel->atualizaTipAltSimproMae($memData); $atualizaFatItem = $this->ImportacaoModel->atualizaForadeLinhaFatItemPelaSimpro(); }
 
                             if($insertMsg != 0){
                                 $insertCount++;
