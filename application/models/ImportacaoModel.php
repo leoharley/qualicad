@@ -43,13 +43,13 @@ class ImportacaoModel extends CI_Model
     function adicionaSimproMsg($info)
     {
     //    $this->db->trans_start();
-        $this->db->insert('TbSimproMsg', $info);
+        $insert = $this->db->insert('TbSimproMsg', $info);
 
         $insert_id = $this->db->insert_id();
 
     //    $this->db->trans_complete();
 
-        return $insert_id;
+        return $insert;
     }
 
     function carregaInfoProFat($idEmpresa, $searchText = '', $page, $segment)
@@ -113,7 +113,7 @@ class ImportacaoModel extends CI_Model
         $this->db->from('TbSimproMsg as Msg');
         $this->db->where('Msg.Tp_Ativo', 'S');
         $this->db->group_by('Msg.NumeroMsg') ;
-        
+
         $query = $this->db->get();
 
         return $query->result();

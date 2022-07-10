@@ -2412,7 +2412,7 @@ class Importacao extends BaseController
                             if ($row['TIP_ALT'] == 'A') { $insertSimpro = $this->ImportacaoModel->atualizaLinhaSimproMae($memData); }
                             if ($row['TIP_ALT'] == 'L' || $row['TIP_ALT'] == 'D' || $row['TIP_ALT'] == 'S') { $insertSimpro = $this->ImportacaoModel->atualizaTipAltSimproMae($memData); }
 
-                            if($insertMsg != 0){
+                            if($insertMsg){
                                 $insertCount++;
                             } else {                                
                                 $notAddCount++;
