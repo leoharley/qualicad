@@ -137,7 +137,7 @@ class ImportacaoModel extends CI_Model
         return TRUE;
     }
 
-    function atlFatItemPelaSimpro()
+    function inclusaoFatItemPelaSimpro()
     {
         $this->db->reconnect();
         $this->db->start_cache();
@@ -160,29 +160,65 @@ class ImportacaoModel extends CI_Model
         return $query;
     }
 
-    function atualizaPrecoFatItemPelaSimpro()
+    function precoFatItemPelaSimpro()
     {
         $this->db->reconnect();
-        $query = $this->db->query("CALL atualizaPrecoFatItemPelaSimpro();");
-        $this->db->close();
+        $this->db->start_cache();
+        $sql="UPDATE TbFatItem FatItem
+        JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND Simpro.Tp_Alteracao = 'P')
+        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat = 'S')
+        SET 
+        FatItem.Vl_Total = Simpro.Pr_FabFracao,
+        FatItem.Qt_Embalagem = Simpro.Qt_Embalagem,
+        FatItem.Ds_Unidade = Simpro.Tp_Fracao,
+        FatItem.Dt_IniVigencia = Simpro.DT_Vigencia,
+        FatItem.Dt_Ativo = Simpro.DT_Vigencia,
+        FatItem.Tp_Ativo = 'S',
+        FatItem.Ds_Motivo_alteracao = Simpro.NumeroMsg;";
+        $query = $this->db->query($sql);
+        $this->db->stop_cache();
+        $this->db->flush_cache();
         return $query;
     }
 
-    function atualizaAlteracoesFatItemPelaSimpro()
+    function alteracoesFatItemPelaSimpro()
     {
         $this->db->reconnect();
-        $query = $this->db->query("CALL atualizaAlteracoesFatItemPelaSimpro()");
-        $this->db->close();
+        $this->db->start_cache();
+        $sql="UPDATE TbFatItem FatItem
+        JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND Simpro.Tp_Alteracao = 'A')
+        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat = 'S')
+        SET 
+        FatItem.Cd_TUSS = (CASE WHEN Simpro.Cd_TUSS = 0 THEN Simpro.Cd_Simpro ELSE Simpro.Cd_TUSS END),
+        FatItem.Ds_FatItem = Simpro.Ds_Produto,
+        FatItem.Vl_Total = Simpro.Pr_FabFracao,
+        FatItem.Qt_Embalagem = Simpro.Qt_Embalagem,
+        FatItem.Ds_Unidade = Simpro.Tp_Fracao,
+        FatItem.Tp_Ativo = 'S',
+        FatItem.Ds_Motivo_alteracao = Simpro.NumeroMsg;";
+        $query = $this->db->query($sql);
+        $this->db->stop_cache();
+        $this->db->flush_cache();
         return $query;
     }
 
-    function atualizaForadeLinhaFatItemPelaSimpro()
+    function foradeLinhaFatItemPelaSimpro()
     {
         $this->db->reconnect();
-        $query = $this->db->query("CALL atualizaForadeLinhaFatItemPelaSimpro()");
-        $this->db->close();
+        $this->db->start_cache();
+        $sql="UPDATE TbFatItem FatItem
+        JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND (Simpro.Tp_Alteracao = 'L' OR Simpro.Tp_Alteracao = 'D' OR Simpro.Tp_Alteracao = 'S'))
+        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat = 'S')
+        SET 
+        FatItem.Dt_FimVigencia = Simpro.Dt_Atualizacao,
+        FatItem.Dt_Inativo = Simpro.Ds_Produto,
+        FatItem.Tp_Ativo = 'N',
+        FatItem.Ds_Motivo_alteracao = Simpro.NumeroMsg;";
+        $query = $this->db->query($sql);
+        $this->db->stop_cache();
+        $this->db->flush_cache();
         return $query;
-    }
+    } 
 
     function atualizaPrecoSimproMae($info)
     {

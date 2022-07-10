@@ -2419,10 +2419,10 @@ class Importacao extends BaseController
                             }
                         }
                         
-                        $atualizaInclusaoFatItem = $this->ImportacaoModel->atualizaInclusaoFatItemPelaSimpro();
-                        $atualizaPrecoFatItem = $this->ImportacaoModel->atualizaPrecoFatItemPelaSimpro();
-                        $atualizaAlteracoesFatItem = $this->ImportacaoModel->atualizaAlteracoesFatItemPelaSimpro();
-                        $atualizaForadeLinhaFatItem = $this->ImportacaoModel->atualizaForadeLinhaFatItemPelaSimpro();
+                        $atualizaInclusaoFatItem = $this->ImportacaoModel->inclusaoFatItemPelaSimpro();
+                        $atualizaPrecoFatItem = $this->ImportacaoModel->precoFatItemPelaSimpro();
+                        $atualizaAlteracoesFatItem = $this->ImportacaoModel->alteracoesFatItemPelaSimpro();
+                        $atualizaForadeLinhaFatItem = $this->ImportacaoModel->foradeLinhaFatItemPelaSimpro();
 
                         }
 
