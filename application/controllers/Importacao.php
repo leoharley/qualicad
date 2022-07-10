@@ -2359,8 +2359,6 @@ class Importacao extends BaseController
 
                     $apagaSimproMsg = $this->ImportacaoModel->apagaSimproMsg($this->input->post('outputfile')[4].$this->input->post('outputfile')[5].$this->input->post('outputfile')[7].$this->input->post('outputfile')[8].$this->input->post('outputfile')[9].$this->input->post('outputfile')[10]);
 
-                    exit;
-
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
                         foreach($csvData as $row) {
