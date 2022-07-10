@@ -235,8 +235,6 @@ class ImportacaoModel extends CI_Model
     Tp_Alteracao = '{$info['Tp_Alteracao']}'
     WHERE Simpro.Cd_Simpro = '{$info['Cd_Simpro']}'";
 
-    if ($info['Tp_Alteracao'] == 'P'){ var_dump($sql);exit;}
-
     $query = $this->db->query($sql);
     $this->db->stop_cache();
     $this->db->flush_cache();
