@@ -119,6 +119,14 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
+    function apagaSimproMsg($numeroMsg)
+    {
+        $this->db->where('NumeroMsg', $numeroMsg);
+        $res = $this->db->delete('TbSimproMsg');
+
+        return TRUE;
+    }
+
     function carregaInfoSimproMsgs()
     {
         $this->db->select('Msg.NumeroMsg, Msg.Dt_Criacao');
