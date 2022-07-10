@@ -225,15 +225,15 @@ class ImportacaoModel extends CI_Model
     $this->db->reconnect();
     $this->db->start_cache();
     $sql="UPDATE TbSimpro Simpro
-    SET NumeroMsg = {$info['NumeroMsg']},
+    SET NumeroMsg = '{$info['NumeroMsg']}',
     Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
     Pr_VenEmbalagem = {$info['Pr_VenEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
-    Tp_Alteracao = {$info['Tp_Alteracao']}
-    WHERE Simpro.Cd_Simpro = {$info['Cd_Simpro']}";
+    Tp_Alteracao = '{$info['Tp_Alteracao']}'
+    WHERE Simpro.Cd_Simpro = '{$info['Cd_Simpro']}'";
 
     if ($info['Tp_Alteracao'] == 'P'){ var_dump($sql);exit;}
 
