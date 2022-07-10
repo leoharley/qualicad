@@ -222,7 +222,6 @@ class ImportacaoModel extends CI_Model
 
     function atualizaPrecoSimproMae($info)
     {
-    if ($info['Tp_Alteracao'] == 'P'){ var_dump($info['Cd_Simpro']);exit;}
     $this->db->reconnect();
     $this->db->start_cache();
     $sql="UPDATE TbSimpro Simpro
@@ -235,6 +234,9 @@ class ImportacaoModel extends CI_Model
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
     Tp_Alteracao = {$info['Tp_Alteracao']}
     WHERE Simpro.Cd_Simpro = {$info['Cd_Simpro']}";
+
+    if ($info['Tp_Alteracao'] == 'P'){ var_dump($sql);exit;}
+
     $query = $this->db->query($sql);
     $this->db->stop_cache();
     $this->db->flush_cache();
