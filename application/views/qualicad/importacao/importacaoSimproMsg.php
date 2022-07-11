@@ -87,6 +87,7 @@
                             <th>Dt. de Envio</th>
                             <th>Dt. de Atualização</th>
                             <th>Inclusões</th>
+                            <th>Atualização de Preços</th>
                             <th>Alterações</th>
                             <th>Fora de Linha</th>
                             <th>Atualização Suspensa</th>
@@ -100,6 +101,7 @@
                             <td><?php if (isset ($registro->Dt_Criacao)) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)); } ?></td>
                             <td><?php if (isset ($registro->Dt_Criacao)) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)); } ?></td>
                             <td><?php echo $registro->Inclusoes ?></td>
+                            <td><?php echo $registro->Precos ?></td>
                             <td><?php echo $registro->Alteracoes ?></td>
                             <td><?php echo $registro->Fora_Linha ?></td>
                             <td><?php echo $registro->Atualizacao_Suspensa ?></td>
