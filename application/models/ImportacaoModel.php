@@ -240,10 +240,9 @@ class ImportacaoModel extends CI_Model
     Pr_FabFracao = {$info['Pr_FabFracao']},
     Pr_VenFracao = {$info['Pr_VenFracao']},
     Tp_Alteracao = '{$info['Tp_Alteracao']}',
-    Dt_Atualizacao = '{$info['Dt_Criacao']}',
+    Dt_Atualizacao = '{$info['Dt_Criacao']}'
     WHERE Simpro.Cd_Simpro = '{$info['Cd_Simpro']}'";
 
-    var_dump($sql);exit;
     $query = $this->db->query($sql);
     $this->db->stop_cache();
     $this->db->flush_cache();
