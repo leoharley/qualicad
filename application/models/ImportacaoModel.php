@@ -197,7 +197,7 @@ class ImportacaoModel extends CI_Model
         $sql="UPDATE TbFatItem FatItem
         JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND Simpro.Tp_Alteracao = 'A')
         JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat IN ('SPFB','SPMC','SPCO'))
-        SET 
+        SET
         FatItem.Cd_TUSS = (CASE WHEN Simpro.Cd_TUSS = 0 THEN Simpro.Cd_Simpro ELSE Simpro.Cd_TUSS END),
         FatItem.Ds_FatItem = Simpro.Ds_Produto,
         FatItem.Vl_Total = (CASE WHEN Faturamento.Tp_TabFat = 'SPFB' THEN Simpro.Pr_FabFracao WHEN Faturamento.Tp_TabFat = 'SPMC' THEN Simpro.Pr_VenFracao ELSE 1 END),
@@ -231,6 +231,8 @@ class ImportacaoModel extends CI_Model
     {
     $this->db->reconnect();
     $this->db->start_cache();
+
+    var_dump($info['Cd_Simpro']);exit;
     $sql="UPDATE TbSimpro Simpro
     SET NumeroMsg = '{$info['NumeroMsg']}',
     Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
