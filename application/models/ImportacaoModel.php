@@ -232,7 +232,6 @@ class ImportacaoModel extends CI_Model
     $this->db->reconnect();
     $this->db->start_cache();
 
-    var_dump($info['Cd_Simpro']);exit;
     $sql="UPDATE TbSimpro Simpro
     SET NumeroMsg = '{$info['NumeroMsg']}',
     Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
