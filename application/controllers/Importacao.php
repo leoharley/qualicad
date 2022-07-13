@@ -2404,6 +2404,7 @@ class Importacao extends BaseController
                                 'Generico_SN'=> $row['GENERICO'],
                                 'Diversos_SN'=> $row['DIVERSOS'],
                                 'Dt_Criacao'=>date('Y-m-d'),
+                                'Dt_Atualizacao'=>date('Y-m-d'),
                                 'CriadoPor'=>$this->vendorId,
                                 'Dt_Ativo'=>date('Y-m-d'));
 

@@ -152,11 +152,11 @@ class ImportacaoModel extends CI_Model
         $this->db->start_cache();
         $sql="UPDATE TbFatItem FatItem
         JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND Simpro.Tp_Alteracao = 'I')
-        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat = 'S')
+        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat IN ('SPFB','SPMC','SPCO'))
         SET 
         FatItem.Cd_TUSS = (CASE WHEN Simpro.Cd_TUSS = 0 THEN Simpro.Cd_Simpro ELSE Simpro.Cd_TUSS END),
         FatItem.Ds_FatItem = Simpro.Ds_Produto,
-        FatItem.Vl_Total = Simpro.Pr_FabFracao,
+        FatItem.Vl_Total = (CASE WHEN Faturamento.Tp_TabFat = 'SPFB' THEN Simpro.Pr_FabFracao WHEN Faturamento.Tp_TabFat = 'SPMC' THEN Simpro.Pr_VenFracao ELSE 1 END),
         FatItem.Qt_Embalagem = Simpro.Qt_Embalagem,
         FatItem.Ds_Unidade = Simpro.Tp_Fracao,
         FatItem.Dt_IniVigencia = Simpro.DT_Vigencia,
@@ -175,9 +175,9 @@ class ImportacaoModel extends CI_Model
         $this->db->start_cache();
         $sql="UPDATE TbFatItem FatItem
         JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND Simpro.Tp_Alteracao = 'P')
-        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat = 'S')
+        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat IN ('SPFB','SPMC','SPCO'))
         SET 
-        FatItem.Vl_Total = Simpro.Pr_FabFracao,
+        FatItem.Vl_Total = (CASE WHEN Faturamento.Tp_TabFat = 'SPFB' THEN Simpro.Pr_FabFracao WHEN Faturamento.Tp_TabFat = 'SPMC' THEN Simpro.Pr_VenFracao ELSE 1 END),
         FatItem.Qt_Embalagem = Simpro.Qt_Embalagem,
         FatItem.Ds_Unidade = Simpro.Tp_Fracao,
         FatItem.Dt_IniVigencia = Simpro.DT_Vigencia,
@@ -196,11 +196,11 @@ class ImportacaoModel extends CI_Model
         $this->db->start_cache();
         $sql="UPDATE TbFatItem FatItem
         JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND Simpro.Tp_Alteracao = 'A')
-        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat = 'S')
+        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat IN ('SPFB','SPMC','SPCO'))
         SET 
         FatItem.Cd_TUSS = (CASE WHEN Simpro.Cd_TUSS = 0 THEN Simpro.Cd_Simpro ELSE Simpro.Cd_TUSS END),
         FatItem.Ds_FatItem = Simpro.Ds_Produto,
-        FatItem.Vl_Total = Simpro.Pr_FabFracao,
+        FatItem.Vl_Total = (CASE WHEN Faturamento.Tp_TabFat = 'SPFB' THEN Simpro.Pr_FabFracao WHEN Faturamento.Tp_TabFat = 'SPMC' THEN Simpro.Pr_VenFracao ELSE 1 END),
         FatItem.Qt_Embalagem = Simpro.Qt_Embalagem,
         FatItem.Ds_Unidade = Simpro.Tp_Fracao,
         FatItem.Tp_Ativo = 'S',
@@ -217,12 +217,10 @@ class ImportacaoModel extends CI_Model
         $this->db->start_cache();
         $sql="UPDATE TbFatItem FatItem
         JOIN TbSimpro Simpro ON (Simpro.Cd_Simpro = FatItem.Cd_TISS AND (Simpro.Tp_Alteracao = 'L' OR Simpro.Tp_Alteracao = 'D' OR Simpro.Tp_Alteracao = 'S'))
-        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat = 'S')
+        JOIN TbFaturamento Faturamento ON (Faturamento.Id_Faturamento = FatItem.TbFaturamento_Id_Faturamento AND Faturamento.Tp_TabFat IN ('SPFB','SPMC','SPCO'))
         SET 
         FatItem.Dt_FimVigencia = Simpro.Dt_Atualizacao,
-        FatItem.Dt_Inativo = Simpro.Ds_Produto,
-        FatItem.Tp_Ativo = 'N',
-        FatItem.Ds_Motivo_alteracao = Simpro.NumeroMsg;";
+        FatItem.Ds_Motivo_alteracao = CONCAT((CASE WHEN Simpro.Tp_Alteracao = 'L' THEN 'Item fora de linha na mensagem' WHEN Simpro.Tp_Alteracao = 'D' THEN 'Item descontinuado na mensagem' WHEN Simpro.Tp_Alteracao = 'S' THEN 'Item suspenso na mensagem' ELSE 1 END), ' - ', Simpro.NumeroMsg);";
         $query = $this->db->query($sql);
         $this->db->stop_cache();
         $this->db->flush_cache();
@@ -238,12 +236,11 @@ class ImportacaoModel extends CI_Model
     Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
     Pr_VenEmbalagem = {$info['Pr_VenEmbalagem']},
     Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
-    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
-    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
-    Pr_UsuEmbalagem = {$info['Pr_UsuEmbalagem']},
-    Tp_Alteracao = '{$info['Tp_Alteracao']}'
+    Pr_FabFracao = {$info['Pr_FabFracao']},
+    Pr_VenFracao = {$info['Pr_VenFracao']},
+    Tp_Alteracao = '{$info['Tp_Alteracao']}',
+    Dt_Atualizacao = '{$info['Dt_Criacao']}',
     WHERE Simpro.Cd_Simpro = '{$info['Cd_Simpro']}'";
-
     $query = $this->db->query($sql);
     $this->db->stop_cache();
     $this->db->flush_cache();
@@ -263,8 +260,9 @@ class ImportacaoModel extends CI_Model
     $this->db->reconnect();
     $this->db->start_cache();
     $sql="UPDATE TbSimpro Simpro
-    SET Tp_Alteracao = {$info['Tp_Alteracao']},
-    NumeroMsg = {$info['NumeroMsg']}
+    SET Tp_Alteracao = '{$info['Tp_Alteracao']}',
+    NumeroMsg = '{$info['NumeroMsg']}',
+    Dt_Atualizacao = '{$info['Dt_Criacao']}'
     WHERE Simpro.Cd_Simpro = {$info['Cd_Simpro']}";
     $query = $this->db->query($sql);
     $this->db->stop_cache();
