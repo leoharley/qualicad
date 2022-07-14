@@ -1001,10 +1001,8 @@ class Importacao extends BaseController
                             // ***** FIM DE VERIFICAÇÕES *****
 
                             if($insert){
-                                var_dump($memData);exit;
                                 $insertCount++;
                             } else {
-                                var_dump($memData);exit;
                                 array_push($errosDeChave, ($rowCount+1));
                                 $notAddCount++;
                             }
