@@ -119,6 +119,26 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
+    function carregaConsolidadoBrasindiceMsgs()
+    {
+        $this->db->select('Msg.NumeroMsg, Msg.Dt_Criacao, SUM(CASE WHEN TP_ALT = "I" THEN 1 ELSE 0 END) Inclusoes, SUM(CASE WHEN TP_ALT = "P" THEN 1 ELSE 0 END) Precos, SUM(CASE WHEN TP_ALT = "A" THEN 1 ELSE 0 END) Alteracoes, SUM(CASE WHEN TP_ALT = "L" THEN 1 ELSE 0 END) Fora_Linha, SUM(CASE WHEN TP_ALT = "S" THEN 1 ELSE 0 END) Atualizacao_Suspensa, SUM(CASE WHEN TP_ALT = "D" THEN 1 ELSE 0 END) Descontinuados');
+        $this->db->from('TbBrasindiceMsg as Msg');
+        $this->db->where('Msg.Tp_Ativo', 'S');
+        $this->db->group_by('Msg.NumeroMsg') ;
+
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function apagaBrasindiceMsg($numeroMsg)
+    {
+        $this->db->where('NumeroMsg', $numeroMsg);
+        $res = $this->db->delete('TbBrasindiceMsg');
+
+        return TRUE;
+    }
+
     function apagaSimproMsg($numeroMsg)
     {
         $this->db->where('NumeroMsg', $numeroMsg);
