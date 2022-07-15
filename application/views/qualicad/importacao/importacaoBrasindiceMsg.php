@@ -83,29 +83,17 @@
                 <table class="table table-striped table-bordered" id="dataTables-example">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Nº da Mensagem</th>
-                            <th>Dt. de Envio</th>
-                            <th>Dt. de Atualização</th>
-                            <th>Inclusões</th>
-                            <th>Atualização de Preços</th>
-                            <th>Alterações</th>
-                            <th>Fora de Linha</th>
-                            <th>Atualização Suspensa</th>
-                            <th>Descontinuados</th>
+                            <th>Data da Atualização</th>
+                            <th>Edição</th>
+                            <th>Qtde. de Itens Alterados</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if(!empty($consolidadoBrasindiceMsgs)){ foreach($consolidadoBrasindiceMsgs as $registro){ ?>
                         <tr>
+                            <td><?php if (isset ($registro->Dt_Criacao)) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)); } ?></td>
                             <td><?php if (isset ($registro->NumeroMsg)) { echo substr_replace($registro->NumeroMsg,"/", 2, 0); } ?></td>
-                            <td><?php if (isset ($registro->Dt_Criacao)) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)); } ?></td>
-                            <td><?php if (isset ($registro->Dt_Criacao)) { echo date("d/m/Y", strtotime($registro->Dt_Criacao)); } ?></td>
-                            <td><?php echo $registro->Inclusoes ?></td>
-                            <td><?php echo $registro->Precos ?></td>
                             <td><?php echo $registro->Alteracoes ?></td>
-                            <td><?php echo $registro->Fora_Linha ?></td>
-                            <td><?php echo $registro->Atualizacao_Suspensa ?></td>
-                            <td><?php echo $registro->Descontinuados ?></td>
                         </tr>
                         <?php } }else{ ?>
                         <tr><td colspan="5">Nenhum registro encontrado...</td></tr>
