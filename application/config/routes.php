@@ -151,6 +151,12 @@ $route['importaSimproMsg'] = "importacao/importaSimproMsg";
 $route['importacaoSimproMae'] = "importacao/importacaoSimproMae";
 $route['importaSimproMae'] = "importacao/importaSimproMae";
 
+$route['importacaoBrasindiceMsg'] = "importacao/importacaoBrasindiceMsg";
+$route['importaBrasindiceMsg'] = "importacao/importaBrasindiceMsg";
+
+$route['importacaoBrasindiceMae'] = "importacao/importacaoBrasindiceMae";
+$route['importaBrasindiceMae'] = "importacao/importaBrasindiceMae";
+
 $route['importacaoDePara/:any/:any'] = "importacao/importacaoDePara/$1/$2";
 $route['importacaoDePara/:any'] = "importacao/importacaoDePara/$1";
 

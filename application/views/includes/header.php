@@ -494,9 +494,9 @@ $(function() {
                           ?>
 
                         <li class="treeview" style="margin-left:22px;">
-                            <a href="<?php echo base_url(); ?>importacaoBrasIndice">
+                            <a href="<?php echo base_url(); ?>importacaoBrasindiceMsg">
                                 <i class="fa fa-upload"></i>
-                                <span style="margin-left:5px">Brasindice</span>
+                                <span style="margin-left:5px">Brasindice (Msg)</span>
                             </a>
                         </li>
 
@@ -505,7 +505,7 @@ $(function() {
                           {
                             echo '
                             <li class="treeview" style="margin-left:22px;">
-                              <a href="'.base_url().'importacaoBrasIndiceMae">
+                              <a href="'.base_url().'importacaoBrasindiceMae">
                                   <i class="fa fa-upload"></i>
                                   <span style="margin-left:5px">Brasindice (Carga mãe)</span>
                               </a>

@@ -2565,6 +2565,256 @@ class Importacao extends BaseController
         redirect('importacaoSimproMae');
     }
 
+    // IMPORTAÇÃO BRASINDICE MSG
+
+    function importacaoBrasindiceMsg()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação Brasindice';
+        
+        $data['infoBrasindiceMsgs'] = $this->ImportacaoModel->carregaInfoBrasindiceMsgs();
+
+        $data['consolidadoBrasindiceMsgs'] = $this->ImportacaoModel->carregaConsolidadoBrasindiceMsgs();
+
+        $this->loadViews("qualicad/importacao/importacaoBrasindiceMsg", $this->global, $data, NULL);
+    }
+
+    public function importaBrasindiceMsg(){
+       
+        $backupTbBrasindice = $this->ImportacaoModel->backupTbBrasindice($this->vendorId);
+        
+        $data = array();
+        $memData = array();
+
+        // If import request is submitted
+        if($this->input->post('importSubmit')){
+            // Form field validation rules
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
+
+            // Validate submitted form data
+            if($this->form_validation->run() == true){
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
+
+                // If file uploaded
+                if(is_uploaded_file($_FILES['file']['tmp_name'])){
+                    // Load CSV reader library
+
+                    $this->load->library('CSVReader');
+
+                    // Parse data from CSV file
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name'], 'simpro');
+
+                    $apagaBrasindiceMsg = $this->ImportacaoModel->apagaBrasindiceMsg($this->input->post('outputfile')[4].$this->input->post('outputfile')[5].$this->input->post('outputfile')[7].$this->input->post('outputfile')[8].$this->input->post('outputfile')[9].$this->input->post('outputfile')[10]);
+
+                    // Insert/update CSV data into database
+                    if(!empty($csvData)){
+                        foreach($csvData as $row) {
+                            $rowCount++;
+
+                            $memData = array();
+
+                            $vigencia = sprintf('%08d', $row['VIGENCIA']);
+
+                            $memData += array(
+                                'NumeroMsg' => $this->input->post('outputfile')[4].$this->input->post('outputfile')[5].$this->input->post('outputfile')[7].$this->input->post('outputfile')[8].$this->input->post('outputfile')[9].$this->input->post('outputfile')[10],
+                                'Cd_Usuario' => $row['CD_USUARIO'],
+                                'Cd_Fracao'=> $row['CD_FRACAO'],
+                                'Ds_Produto'=> $row['DESCRICAO'],
+                                'DT_Vigencia'=> DateTime::createFromFormat('dmY', $vigencia)->format('Y-m-d'),
+                                'Identificacao'=> $row['IDENTIF'],
+                                'Pr_FabEmbalagem'=> $row['PC_EM_FAB'] / 100,
+                                'Pr_VenEmbalagem'=> $row['PC_EM_VEN'] / 100,
+                                'Pr_UsuEmbalagem'=> $row['PC_EM_USU'] / 100,
+                                'Pr_FabFracao'=> $row['PC_FR_FAB'] / 1000,
+                                'Pr_VenFracao'=> $row['PC_FR_VEN'] / 1000,
+                                'Pr_UsuFracao'=> $row['PC_FR_USU'] / 1000,
+                                'Tp_Embalagem'=> $row['TP_EMBAL'],
+                                'Tp_Fracao'=> $row['TP_FRACAO'],
+                                'Qt_Embalagem'=> $row['QTDE_EMBAL'] / 100,
+                                'Qt_Fracao'=> $row['QTDE_FRAC'] / 100,
+                                'Perc_LucroUsu'=> $row['PERC_LUCR'] / 100,
+                                'Tp_Alteracao'=> $row['TIP_ALT'],
+                                'Fabricante'=> $row['FABRICA'],
+                                'Cd_Simpro'=> $row['CD_SIMPRO'],
+                                'Cd_Mercado'=> $row['CD_MERCADO'],
+                                'Perc_Desconto'=> $row['PERC_DESC'] / 100,
+                                'Perc_IPI'=> $row['VLR_IPI'] / 100,
+                                'Nm_RegAnvisa'=> $row['CD_REG_ANV'],
+                                'Dt_ValRegAnvisa'=> $row['DT_REG_ANV'],
+                                'Nm_CodBarra'=> $row['CD_BARRA'],
+                                'Tp_Lista'=> $row['LISTA'],
+                                'Uso_Hospitalar'=> $row['HOSPITALAR'],
+                                'ProdFracao_SN'=> $row['FRACIONAR'],
+                                'Cd_TUSS'=> $row['CD_TUSS'],
+                                'Classif_Produto'=> $row['CD_CLASSIF'],
+                                'Refer_Produto'=> $row['CD_REF_PRO'],
+                                'Generico_SN'=> $row['GENERICO'],
+                                'Diversos_SN'=> $row['DIVERSOS'],
+                                'Dt_Criacao'=>date('Y-m-d'),
+                                'Dt_Atualizacao'=>date('Y-m-d'),
+                                'CriadoPor'=>$this->vendorId,
+                                'Dt_Ativo'=>date('Y-m-d'));
+
+                            $insertMsg = $this->ImportacaoModel->adicionaBrasindiceMsg($memData);
+
+                            if ($row['TIP_ALT'] == 'I') { $insertBrasindice = $this->ImportacaoModel->adicionaBrasindiceMae($memData); }
+                            if ($row['TIP_ALT'] == 'P') { $insertBrasindice = $this->ImportacaoModel->atualizaPrecoBrasindiceMae($memData); }
+                            if ($row['TIP_ALT'] == 'A') { $insertBrasindice = $this->ImportacaoModel->atualizaLinhaBrasindiceMae($memData); }
+                            if ($row['TIP_ALT'] == 'L' || $row['TIP_ALT'] == 'D' || $row['TIP_ALT'] == 'S') { $insertBrasindice = $this->ImportacaoModel->atualizaTipAltBrasindiceMae($memData); }
+
+                            if($insertMsg){
+                                $insertCount++;
+                            } else {                                
+                                $notAddCount++;
+                            }
+                        }
+                        
+                        $atualizaInclusaoFatItem = $this->ImportacaoModel->inclusaoFatItemPelaBrasindice();
+                        $atualizaPrecoFatItem = $this->ImportacaoModel->precoFatItemPelaBrasindice();
+                        $atualizaAlteracoesFatItem = $this->ImportacaoModel->alteracoesFatItemPelaBrasindice();
+                        $atualizaForadeLinhaFatItem = $this->ImportacaoModel->foradeLinhaFatItemPelaBrasindice();
+
+                        }
+
+                        // Status message with imported data count
+                        $notAddCount = ($rowCount - ($insertCount + $updateCount));
+                        $successMsg = 'Tabela Brasindice Msg importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
+
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
+                    }
+                }else{
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
+                //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
+            }
+        redirect('importacaoBrasindiceMsg');
+    }
+
+
+
+    // IMPORTAÇÃO BRASINDICE MAE
+
+    function importacaoBrasindiceMae()
+    {
+        $data['roles'] = $this->user_model->getUserRoles();
+
+        $this->global['pageTitle'] = 'QUALICAD : Importação Brasindice Mãe';
+
+        $this->loadViews("qualicad/importacao/importacaoBrasindiceMae", $this->global, $data, NULL);
+    }
+
+
+    public function importaBrasindiceMae(){
+        $data = array();
+        $memData = array();
+
+        // If import request is submitted
+        if($this->input->post('importSubmit')){
+
+            // Form field validation rules
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('file', 'CSV file', 'callback_file_check');
+
+            // Validate submitted form data
+            if($this->form_validation->run() == true){
+                $insertCount = $updateCount = $rowCount = $notAddCount = $duplicidade = 0;
+
+                // If file uploaded
+                if(is_uploaded_file($_FILES['file']['tmp_name'])){
+                    // Load CSV reader library
+
+                    $this->load->library('CSVReader');
+
+                    // Parse data from CSV file
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_name'], 'simpro');
+
+                    // Insert/update CSV data into database
+                    if(!empty($csvData)){
+                        foreach($csvData as $row) {
+                            $rowCount++;
+
+                            $memData = array();
+
+                            $vigencia = sprintf('%08d', $row['VIGENCIA']);
+
+                            $memData += array(                                
+                                'Cd_Usuario' => $row['CD_USUARIO'],
+                                'Cd_Fracao'=> $row['CD_FRACAO'],
+                                'Ds_Produto'=> $row['DESCRICAO'],
+                                'DT_Vigencia'=> DateTime::createFromFormat('dmY', $vigencia)->format('Y-m-d'),
+                                'Identificacao'=> $row['IDENTIF'],
+                                'Pr_FabEmbalagem'=> $row['PC_EM_FAB'] / 100,
+                                'Pr_VenEmbalagem'=> $row['PC_EM_VEN'] / 100,
+                                'Pr_UsuEmbalagem'=> $row['PC_EM_USU'] / 100,
+                                'Pr_FabFracao'=> $row['PC_FR_FAB'] / 1000,
+                                'Pr_VenFracao'=> $row['PC_FR_VEN'] / 1000,
+                                'Pr_UsuFracao'=> $row['PC_FR_USU'] / 1000,
+                                'Tp_Embalagem'=> $row['TP_EMBAL'],
+                                'Tp_Fracao'=> $row['TP_FRACAO'],
+                                'Qt_Embalagem'=> $row['QTDE_EMBAL'] / 100,
+                                'Qt_Fracao'=> $row['QTDE_FRAC'] / 100,
+                                'Perc_LucroUsu'=> $row['PERC_LUCR'] / 100,
+                                'Tp_Alteracao'=> $row['TIP_ALT'],
+                                'Fabricante'=> $row['FABRICA'],
+                                'Cd_Simpro'=> $row['CD_SIMPRO'],
+                                'Cd_Mercado'=> $row['CD_MERCADO'],
+                                'Perc_Desconto'=> $row['PERC_DESC'] / 100,
+                                'Perc_IPI'=> $row['VLR_IPI'] / 100,
+                                'Nm_RegAnvisa'=> $row['CD_REG_ANV'],
+                                'Dt_ValRegAnvisa'=> $row['DT_REG_ANV'],
+                                'Nm_CodBarra'=> $row['CD_BARRA'],
+                                'Tp_Lista'=> $row['LISTA'],
+                                'Uso_Hospitalar'=> $row['HOSPITALAR'],
+                                'ProdFracao_SN'=> $row['FRACIONAR'],
+                                'Cd_TUSS'=> $row['CD_TUSS'],
+                                'Classif_Produto'=> $row['CD_CLASSIF'],
+                                'Refer_Produto'=> $row['CD_REF_PRO'],
+                                'Generico_SN'=> $row['GENERICO'],
+                                'Diversos_SN'=> $row['DIVERSOS']);
+
+                            $insert = $this->ImportacaoModel->adicionaBrasindiceMae($memData);
+
+                            if($insert != 0){
+                                $insertCount++;
+                            } else {
+                                array_push($errosDeChave, ($rowCount+1));
+                                $notAddCount++;
+                            }
+                        }
+                        }
+
+                        // Status message with imported data count
+                        $notAddCount = ($rowCount - ($insertCount + $updateCount));
+                        $successMsg = 'Tabela Brasindice Mãe importada com sucesso! Qtd. Linhas ('.$rowCount.') | Inseridos ('.$insertCount.') | Atualizados ('.$updateCount.') | Não inseridos ('.$notAddCount.') | Duplicidades ('.$duplicidade.')';
+
+                        $this->session->set_flashdata('num_linhas_importadas', $insertCount);
+                        if ($campoNaoLocalizado == '') {
+                            $this->session->set_flashdata('success', $successMsg);
+                        } else {
+                            $this->session->set_flashdata('error', $campoNaoLocalizado);
+                        }
+                    }
+                }else{
+                    $this->session->set_flashdata('error', 'Erro no upload do arquivo, tente novamente.');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Arquivo inválido! Selecione um arquivo CSV');
+                //    $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
+            }
+        redirect('importacaoBrasindiceMae');
+    }
+
 
     /*
      * Callback function to check file value and type during validation
