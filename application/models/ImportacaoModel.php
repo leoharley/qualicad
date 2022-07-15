@@ -140,6 +140,20 @@ class ImportacaoModel extends CI_Model
         return $query->result();
     }
 
+
+    function carregaInfoBrasindiceMsgs()
+    {
+        $this->db->select('Msg.NumeroMsg, Msg.Dt_Criacao');
+        $this->db->from('TbBrasindiceMsg as Msg');
+        $this->db->where('Msg.Tp_Ativo', 'S');
+        $this->db->order_by('Msg.Id_Brasindice ', 'DESC');
+        $this->db->limit(1);
+        
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function backupTbSimpro($idUsuario)
     {
         $query = $this->db->query("CALL backupSIMPRO({$idUsuario})");
