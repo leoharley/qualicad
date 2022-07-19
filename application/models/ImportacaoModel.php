@@ -266,6 +266,8 @@ class ImportacaoModel extends CI_Model
     $this->db->reconnect();
     $this->db->start_cache();
 
+    $cdSimpro = ltrim($info['Cd_Simpro'], "0");
+
     $sql="UPDATE TbSimpro Simpro
     SET NumeroMsg = '{$info['NumeroMsg']}',
     Pr_FabEmbalagem	= {$info['Pr_FabEmbalagem']},
@@ -275,7 +277,7 @@ class ImportacaoModel extends CI_Model
     Pr_VenFracao = {$info['Pr_VenFracao']},
     Tp_Alteracao = '{$info['Tp_Alteracao']}',
     Dt_Atualizacao = CONVERT_TZ(NOW(), @@session.time_zone, '-03:00')
-    WHERE Simpro.Cd_Simpro = '{$info['Cd_Simpro']}'";
+    WHERE Simpro.Cd_Simpro = '{$cdSimpro}'";
 
     $query = $this->db->query($sql);
     $this->db->stop_cache();
@@ -285,7 +287,8 @@ class ImportacaoModel extends CI_Model
 
     function atualizaLinhaSimproMae($info)
     {
-        $this->db->where('Cd_Simpro', $info['Cd_Simpro']);
+        $cdSimpro = ltrim($info['Cd_Simpro'], "0");
+        $this->db->where('Cd_Simpro', $cdSimpro);
         $this->db->update('TbSimpro', $info);
         
         return TRUE;
@@ -293,13 +296,16 @@ class ImportacaoModel extends CI_Model
 
     function atualizaTipAltSimproMae($info)
     {
+
+    $cdSimpro = ltrim($info['Cd_Simpro'], "0");
+
     $this->db->reconnect();
     $this->db->start_cache();
     $sql="UPDATE TbSimpro Simpro
     SET Tp_Alteracao = '{$info['Tp_Alteracao']}',
     NumeroMsg = '{$info['NumeroMsg']}',
     Dt_Atualizacao = CONVERT_TZ(NOW(), @@session.time_zone, '-03:00')
-    WHERE Simpro.Cd_Simpro = {$info['Cd_Simpro']}";
+    WHERE Simpro.Cd_Simpro = {$cdSimpro}";
     $query = $this->db->query($sql);
     $this->db->stop_cache();
     $this->db->flush_cache();

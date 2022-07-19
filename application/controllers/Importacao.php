@@ -2517,7 +2517,7 @@ class Importacao extends BaseController
                                 'Perc_LucroUsu'=> $row['PERC_LUCR'] / 100,
                                 'Tp_Alteracao'=> $row['TIP_ALT'],
                                 'Fabricante'=> $row['FABRICA'],
-                                'Cd_Simpro'=> $row['CD_SIMPRO'],
+                                'Cd_Simpro'=> ltrim($row['CD_SIMPRO'], "0"),
                                 'Cd_Mercado'=> $row['CD_MERCADO'],
                                 'Perc_Desconto'=> $row['PERC_DESC'] / 100,
                                 'Perc_IPI'=> $row['VLR_IPI'] / 100,
