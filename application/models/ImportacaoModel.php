@@ -298,7 +298,7 @@ class ImportacaoModel extends CI_Model
     $sql="UPDATE TbSimpro Simpro
     SET Tp_Alteracao = '{$info['Tp_Alteracao']}',
     NumeroMsg = '{$info['NumeroMsg']}',
-    Dt_Atualizacao = NOW()
+    Dt_Atualizacao = CONVERT_TZ(NOW(),'SYSTEM','America/Sao_Paulo')
     WHERE Simpro.Cd_Simpro = {$info['Cd_Simpro']}";
     $query = $this->db->query($sql);
     $this->db->stop_cache();
