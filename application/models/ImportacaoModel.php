@@ -274,7 +274,7 @@ class ImportacaoModel extends CI_Model
     Pr_FabFracao = {$info['Pr_FabFracao']},
     Pr_VenFracao = {$info['Pr_VenFracao']},
     Tp_Alteracao = '{$info['Tp_Alteracao']}',
-    Dt_Atualizacao = '{$info['Dt_Criacao']}'
+    Dt_Atualizacao = CONVERT_TZ(NOW(), @@session.time_zone, '-03:00')
     WHERE Simpro.Cd_Simpro = '{$info['Cd_Simpro']}'";
 
     $query = $this->db->query($sql);
