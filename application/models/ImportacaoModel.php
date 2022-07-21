@@ -266,7 +266,8 @@ class ImportacaoModel extends CI_Model
     $this->db->reconnect();
     $this->db->start_cache();
 
-    $cdSimpro = ltrim($info['Cd_Simpro'], "0");
+    //$cdSimpro = ltrim($info['Cd_Simpro'], "0");
+    $cdSimpro = $info['Cd_Simpro'];
 
     $sql="UPDATE TbSimpro Simpro
     SET NumeroMsg = '{$info['NumeroMsg']}',
@@ -287,7 +288,9 @@ class ImportacaoModel extends CI_Model
 
     function atualizaLinhaSimproMae($info)
     {
-        $cdSimpro = ltrim($info['Cd_Simpro'], "0");
+        //$cdSimpro = ltrim($info['Cd_Simpro'], "0");
+        $cdSimpro = $info['Cd_Simpro'];
+
         $this->db->where('Cd_Simpro', $cdSimpro);
         $this->db->update('TbSimpro', $info);
         
@@ -297,7 +300,8 @@ class ImportacaoModel extends CI_Model
     function atualizaTipAltSimproMae($info)
     {
 
-    $cdSimpro = ltrim($info['Cd_Simpro'], "0");
+    //$cdSimpro = ltrim($info['Cd_Simpro'], "0");
+    $cdSimpro = $info['Cd_Simpro'];
 
     $this->db->reconnect();
     $this->db->start_cache();
